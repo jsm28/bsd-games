@@ -1,3 +1,8 @@
+2001-03-03  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* install-man.in, install-score.in: Use POSIX "chown user:group"
+	instead of GNU "chown user.group".
+
 2001-02-08  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* rogue/USD.doc/rogue.me: Fix typo (s/scroll/potion/).  Reported
