@@ -1,4 +1,4 @@
-/*	$NetBSD: words.c,v 1.7 2000/09/09 18:03:58 jsm Exp $	*/
+/*	$NetBSD: words.c,v 1.9 2000/09/21 17:44:34 jsm Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -38,7 +38,7 @@
 #if 0
 static char sccsid[] = "@(#)words.c	8.2 (Berkeley) 4/28/95";
 #else
-__RCSID("$NetBSD: words.c,v 1.7 2000/09/09 18:03:58 jsm Exp $");
+__RCSID("$NetBSD: words.c,v 1.9 2000/09/21 17:44:34 jsm Exp $");
 #endif
 #endif				/* not lint */
 

@@ -1,5 +1,14 @@
 2000-09-25  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* atc/atc.6.in, hack/Makefile.bsd: Update from NetBSD CVS.
+	* battlestar/battlestar.c, battlestar/com1.c, battlestar/com2.c,
+	battlestar/com3.c, battlestar/com4.c, battlestar/com5.c,
+	battlestar/com6.c, battlestar/com7.c, battlestar/cypher.c,
+	battlestar/dayfile.c, battlestar/extern.h, battlestar/fly.c,
+	battlestar/getcom.c, battlestar/globals.c, battlestar/nightfile.c,
+	battlestar/parse.c, battlestar/room.c, battlestar/words.c: Update
+	from NetBSD CVS after merge.
+
 	* battlestar/com3.c (jump): Use defined constant FINAL instead of
 	hardcoded number 275.  From OpenBSD.
 
