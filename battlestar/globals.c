@@ -221,14 +221,14 @@ const int     objcumber[NUMOFOBJECTS] = {
 };
 
 const int objflags[NUMOFOBJECTS] = {
-	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, OBJ_PLURAL, 0, OBJ_PLURAL,
-	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, OBJ_PLURAL, 0, 0, 0,
-	0, 0, 0, 0, OBJ_PLURAL, 0, 0, OBJ_PLURAL,
-	0, 0, OBJ_PLURAL, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0
+	0,	0,	0,	0,	0,	0,	0,	0,
+	0,	0,	0,	0,	0,  OBJ_PLURAL,	0,  OBJ_PLURAL,
+	0,    OBJ_AN,	0,	0,	0,	0,	0,	0,
+	0,	0,	0,	0,  OBJ_PLURAL,	0,	0,	0,
+	0,	0,    OBJ_AN,	0,  OBJ_PLURAL,	0,	0,  OBJ_PLURAL,
+	0,	0,  OBJ_PLURAL,	0,	0,	0,	0,	0,
+	0,	0,	0,	0,	0,	0,	0,	0,
+      OBJ_AN,	0,	0,	0,	0,	0,	0,	0
 };
 
 int     win = 1;

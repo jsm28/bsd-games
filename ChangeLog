@@ -1,5 +1,14 @@
 2000-09-25  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/extern.h: Define new macros for handling "a" versus
+	"an" and "is" versus "are" wording issues.
+	* battlestar/globals.c (objflags): Add OBJ_AN flags; reformat.
+	From OpenBSD.
+	* battlestar/com2.c (wearit, murder), battlestar/com4.c (take,
+	eat): Use these macros.
+	* tests/battlestar.in41, tests/battlestar.out41: New test.
+	* tests/battlestar.test: Update.
+
 	* battlestar/cypher.c (cypher): Remove excess blank lines.  From
 	OpenBSD.
 
