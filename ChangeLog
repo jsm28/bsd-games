@@ -1,5 +1,10 @@
 2001-08-30  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* worm/worm.c: Keep track of visible worm length.
+	(newpos): If nowhere is available for the new prize, have the
+	player win rather than hanging.  Bug reported by Malcolm Parsons
+	<malcolm@ivywell.screaming.net>.
+
 	* phantasia/Makefrag: Use a stamp file for generating score files.
 	* phantasia/.cvsignore: Update.
 
