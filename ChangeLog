@@ -1,5 +1,9 @@
 2001-08-30  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* COPYING, NEWS, TODO, bsd-games-non-free.lsm, bsd-games.lsm:
+	Update.
+	* phantasia/Makefrag: Update copyright dates.
+
 	* hunt/hunt/hunt.c, hunt/huntd/get_names.c: Define MAXHOSTNAMELEN
 	if not already defined.  May fix Hurd compilation (original patch
 	from Igor Khavkine <i_khavki@alcor.concordia.ca>).

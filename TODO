@@ -85,7 +85,8 @@ those.  The issues listed there are not included in this list.
              fixed in battlestar through this already.  It probably
              works best with GCC bounded pointers.
 
-2000-09-09 - Support for HURD-based GNU systems.
+2000-09-09 - Support for HURD-based GNU systems.  This may now (2.13)
+             work.
 
 2000-09-24 - Fix any and all date-related bugs (Y2038, Y10K, etc.) so
              that the games will work on any date provided only that
