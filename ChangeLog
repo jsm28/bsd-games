@@ -1,3 +1,7 @@
+2004-06-07  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* wtf/acronyms.comp: Update from NetBSD CVS.
+
 2004-06-02  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* hack/hack.6.in: Update from NetBSD CVS.
