@@ -1,5 +1,11 @@
 2001-08-29  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* worm/worm.c (main): Check for too small a screen size.
+	(newpos): Fix off-by-one error preventing the prize from being
+	placed on the top line.
+	(process): Position score appropriately for different width
+	screens.
+
 	* worm/worm.c: Whitespace tweak.
 
 	* worm/worm.c, worm/worm.6: Remove documented bug with long worm

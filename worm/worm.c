@@ -117,6 +117,15 @@ main(argc, argv)
 #endif
 	slow = (baudrate() <= 1200);
 	clear();
+	if (COLS < 18 || LINES < 5) {
+		/*
+		 * Insufficient room for the line with " Worm" and the
+		 * score if fewer than 18 columns; insufficient room for
+		 * anything much if fewer than 5 lines.
+		 */
+		endwin();
+		errx(1, "screen too small");
+	}
 	if (argc == 2)
 		start_len = atoi(argv[1]);
 	if ((start_len <= 0) || (start_len > ((LINES-3) * (COLS-2)) / 3))
@@ -225,7 +234,7 @@ newpos(bp)
 	struct body * bp;
 {
 	do {
-		bp->y = rnd(LINES-3)+ 2;
+		bp->y = rnd(LINES-3)+ 1;
 		bp->x = rnd(COLS-3) + 1;
 		wmove(tv, bp->y, bp->x);
 	} while(winch(tv) != ' ');
@@ -311,7 +320,7 @@ process(ch)
 		prize();
 		score += growing;
 		running = 0;
-		wmove(stw, 0, 68);
+		wmove(stw, 0, COLS - 12);
 		wprintw(stw, "Score: %3d", score);
 		wrefresh(stw);
 	}
