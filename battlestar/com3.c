@@ -88,7 +88,7 @@ jump()
 		position = 145;
 		break;
 	case 232:
-		position = 275;
+		position = FINAL;
 		break;
 	case 3:
 		position = 1;

@@ -1,5 +1,8 @@
 2000-09-25  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com3.c (jump): Use defined constant FINAL instead of
+	hardcoded number 275.  From OpenBSD.
+
 	* battlestar/com2.c (murder): Fix logic of use of n and wordnumber
 	when using laser.  From OpenBSD.
 	* tests/battlestar.in39, tests/battlestar.out39: New test.
