@@ -14,17 +14,19 @@ those.  The issues listed there are not included in this list.
              OpenBSD, but a thorough audit is needed - see SECURITY.
 	     The Linux Security Audit Project looked at the games but
              never bothered to send me their fixes; I think they are
-             now included.
+             now included.  Rogue and tetris could probably be adapted
+             to keep their score files open and so need no more
+             privileges than an open file descriptor.  Sail could
+             better use a daemon than a file for interfacing between
+             multiple players; Paul Janzen might do this at some point.
 
 1997-04-29 - Fix compilation warnings with increasingly strict warning
              options.  The main reasonable ones have now been done,
              but maybe some bits are left, and new warnings get added
-             to new versions of egcs.
+             to new versions of GCC.
 
-1997-04-29 - Get changes (at least the bug-fixes) merged back into NetBSD.
-             Various patches for specific bugs have been sent in and
-             applied: more still needs to be done, and some patches
-             are currently waiting in their bug tracking system.
+1997-04-29 - Merge remaining changes back into NetBSD.  This is going
+             somewhat quicker now I have NetBSD CVS write access.
 
 1997-05-01 - Games with scorefiles should lock them when updating them.
 
@@ -40,25 +42,23 @@ those.  The issues listed there are not included in this list.
              be compiled with -fwritable-strings.
 
 1998-08-27 - Convert the games that use termcap to use curses.
-             Currently these are backgammon, snake, and tetris; rain
-             and worms have been done.
+             Currently these are backgammon and tetris; rain, snake
+             and worms have been done.  If it becomes possible to
+             distribute hack or larn, this will apply to them as well.
 
 1998-08-27 - If we build a game that links to another game's manpage,
              but don't install the other game, then we get a dangling
              symlink or .so for the manpage.
 
 1998-08-27 - Merge in improvements from OpenBSD.  Perhaps FreeBSD also
-             has some.
-
-1998-08-27 - Fix warnings with -Wl,--warn-common (i.e., variables should be
-             declared extern in the header, and defined non-extern
-             exactly once).
+             has some; Paul Janzen is adding FreeBSD changes to
+             OpenBSD, so they may reach me that way.
 
 1998-09-04 - dm should not access the utmp file directly.
 
-1998-09-11 - Move building of the manpages and headers in which
-             configuration variables are substituted from the
-             configure script into the Makefiles.
+1998-09-11 - Move building of more files in which configuration
+             variables are substituted from the configure script into
+             the Makefiles.
 
 1998-12-06 - Allow alternative dictionaries to be specified at runtime
              for boggle and hangman.
@@ -79,6 +79,7 @@ those.  The issues listed there are not included in this list.
              when people boot up their system just to play a game and
              so it is constant.
 
+1999-07-29 - Provide support for giving each setgid game its own gid.
 
 
 Local Variables:

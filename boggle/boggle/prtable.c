@@ -1,4 +1,4 @@
-/*	$NetBSD: prtable.c,v 1.4 1997/10/11 02:12:17 lukem Exp $	*/
+/*	$NetBSD: prtable.c,v 1.5 1999/09/08 21:17:45 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1993
@@ -40,7 +40,7 @@
 
 #include <sys/cdefs.h>
 #ifndef lint
-__RCSID("$NetBSD: prtable.c,v 1.4 1997/10/11 02:12:17 lukem Exp $");
+__RCSID("$NetBSD: prtable.c,v 1.5 1999/09/08 21:17:45 jsm Exp $");
 #endif /* not lint */
 
 #include <curses.h>

@@ -1,4 +1,4 @@
-/*	$NetBSD: fish.c,v 1.6 1998/09/13 15:27:27 hubertf Exp $	*/
+/*	$NetBSD: fish.c,v 1.10 1999/09/12 09:02:21 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1990, 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1990, 1993\n\
 #if 0
 static char sccsid[] = "@(#)fish.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: fish.c,v 1.6 1998/09/13 15:27:27 hubertf Exp $");
+__RCSID("$NetBSD: fish.c,v 1.10 1999/09/12 09:02:21 jsm Exp $");
 #endif
 #endif /* not lint */
 
@@ -164,7 +164,7 @@ usermove()
 	for (;;) {
 		(void)printf("You ask me for: ");
 		(void)fflush(stdout);
-		if (fgets(buf, BUFSIZ, stdin) == NULL)
+		if (fgets(buf, sizeof(buf), stdin) == NULL)
 			exit(0);
 		if (buf[0] == '\0')
 			continue;

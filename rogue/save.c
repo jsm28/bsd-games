@@ -1,4 +1,4 @@
-/*	$NetBSD: save.c,v 1.5 1998/11/10 13:01:32 hubertf Exp $	*/
+/*	$NetBSD: save.c,v 1.6 1999/09/13 17:19:55 jsm Exp $	*/
 
 /*
  * Copyright (c) 1988, 1993
@@ -41,7 +41,7 @@
 #if 0
 static char sccsid[] = "@(#)save.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: save.c,v 1.5 1998/11/10 13:01:32 hubertf Exp $");
+__RCSID("$NetBSD: save.c,v 1.6 1999/09/13 17:19:55 jsm Exp $");
 #endif
 #endif /* not lint */
 

@@ -1,4 +1,4 @@
-/*	$NetBSD: rogue.h,v 1.8 1998/11/10 13:01:32 hubertf Exp $	*/
+/*	$NetBSD: rogue.h,v 1.11 1999/09/13 17:14:08 jsm Exp $	*/
 
 /*
  * Copyright (c) 1988, 1993
@@ -436,22 +436,7 @@ struct rogue_time {
 	short second;	/* 0 - 59 */
 };
 
-#ifdef CURSES
-struct _win_st {
-	short _cury, _curx;
-	short _maxy, _maxx;
-};
-
-typedef struct _win_st WINDOW;
-
-extern int LINES, COLS;
-extern WINDOW *curscr;
-extern char *CL;
-
-#else
 #include <curses.h>
-#undef CURSES /* Fix ncurses breakage */
-#endif
 
 /*
  * external routine declarations.
@@ -590,7 +575,7 @@ boolean	is_pack_letter __P((short *, unsigned short *));
 boolean	is_passable __P((int, int));
 boolean	is_vowel __P((short));
 void	kick_into_pack __P((void));
-void	killed_by __P((const object *, short));
+void	killed_by __P((const object *, short)) __attribute__((__noreturn__));
 long	lget_number __P((const char *));
 void	light_passage __P((int, int));
 void	light_up_room __P((int));
@@ -602,15 +587,9 @@ void	make_room __P((short, short, short, short));
 void	make_scroll_titles __P((void));
 boolean	mask_pack __P((const object *, unsigned short));
 boolean	mask_room __P((short, short *, short *, unsigned short));
-#ifdef CURSES
-void	md_cbreak_no_echo_nonl __P((boolean));
-#endif
 boolean	md_df __P((const char *));
 void	md_exit __P((int)) __attribute__((__noreturn__));
 void	md_gct __P((struct rogue_time *));
-#ifdef CURSES
-char   *md_gdtcf __P((void));
-#endif
 int	md_get_file_id __P((const char *));
 void	md_gfmt __P((const char *, struct rogue_time *));
 int	md_gseed __P((void));
@@ -621,9 +600,6 @@ void	md_lock __P((boolean));
 void	md_shell __P((const char *));
 void	md_sleep __P((int));
 void	md_slurp __P((void));
-#ifdef CURSES
-void	md_tstp __P((void));
-#endif
 void	message __P((const char *, boolean));
 void	mix_colors __P((void));
 void	mix_colors __P((void));
@@ -756,7 +732,7 @@ void	wanderer __P((void));
 void	wdrain_life __P((object *));
 void	wear __P((void));
 void	wield __P((void));
-void	win __P((void));
+void	win __P((void)) __attribute__((__noreturn__));
 void	wizardize __P((void));
 void	write_pack __P((const object *, FILE *));
 void	write_string __P((char *, FILE *));

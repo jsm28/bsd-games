@@ -9,6 +9,3 @@ primes_install:	primes_all
 	$(INSTALL_BINARY) primes/primes $(INSTALL_PREFIX)$(GAMESDIR)/primes
 	$(HIDE_GAME) primes
 	$(INSTALL_MANUAL) factor.6 primes.6
-
-primes_check:	primes_all
-	primes/primes 100 200

@@ -1,4 +1,4 @@
-/*	$NetBSD: screen.c,v 1.9 1999/01/03 17:13:51 hubertf Exp $	*/
+/*	$NetBSD: screen.c,v 1.12 1999/09/08 21:45:31 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1992, 1993
@@ -67,16 +67,16 @@ static struct termios oldtt;
 static void (*tstp) __P((int));
 
 static	void	scr_stop __P((int));
-static	void	stopset __P((int));
+static	void	stopset __P((int)) __attribute__((__noreturn__));
 
 
 /*
  * Capabilities from TERMCAP.
  */
-char	PC, *BC, *UP;		/* tgoto requires globals: ugh! */
+extern char	PC, *BC, *UP;	/* tgoto requires globals: ugh! */
 static char BCdefault[] = "\b";
 #ifndef NCURSES_VERSION
-speed_t	ospeed;
+short	ospeed;
 #endif
 
 static char

@@ -1,4 +1,4 @@
-/*	$NetBSD: worm.c,v 1.9 1998/09/13 15:27:30 hubertf Exp $	*/
+/*	$NetBSD: worm.c,v 1.16 1999/09/12 09:02:24 jsm Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -43,7 +43,7 @@ __COPYRIGHT("@(#) Copyright (c) 1980, 1993\n\
 #if 0
 static char sccsid[] = "@(#)worm.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: worm.c,v 1.9 1998/09/13 15:27:30 hubertf Exp $");
+__RCSID("$NetBSD: worm.c,v 1.16 1999/09/12 09:02:24 jsm Exp $");
 #endif
 #endif /* not lint */
 
@@ -93,7 +93,6 @@ void	process __P((char));
 void	prize __P((void));
 int	rnd __P((int));
 void	setup __P((void));
-void	suspend __P((int));
 void	wake __P((int));
 
 int
@@ -115,7 +114,6 @@ main(argc, argv)
 	signal(SIGALRM, wake);
 	signal(SIGINT, leave);
 	signal(SIGQUIT, leave);
-	signal(SIGTSTP, suspend);	/* process control signal */
 	initscr();
 	crmode();
 	noecho();
@@ -188,9 +186,14 @@ display(pos, chr)
 
 void
 leave(dummy)
-	int dummy __attribute__((__unused__));
+	int dummy;
 {
 	endwin();
+
+	if (dummy == 0){	/* called via crash() */
+		printf("\nWell, you ran into something and the game is over.\n");
+		printf("Your final score was %d\n\n", score);
+	}
 	exit(0);
 }
 
@@ -253,7 +256,6 @@ process(ch)
 		case 'K': y--; running = RUNLEN/2; ch = tolower(ch); break;
 		case 'L': x++; running = RUNLEN; ch = tolower(ch); break;
 		case '\f': setup(); return;
-		case CNTRL('Z'): suspend(0); return;
 		case CNTRL('C'): crash(); return;
 		case CNTRL('D'): crash(); return;
 		default: if (! running) alarm(1);
@@ -304,28 +306,7 @@ process(ch)
 void
 crash()
 {
-	sleep(2);
-	clear();
-	move(23, 0);
-	refresh();
-	printf("Well, you ran into something and the game is over.\n");
-	printf("Your final score was %d\n", score);
 	leave(0);
-}
-
-void
-suspend(dummy)
-	int dummy __attribute__((__unused__));
-{
-	move(LINES-1, 0);
-	refresh();
-	endwin();
-	fflush(stdout);
-	kill(getpid(), SIGTSTP);
-	signal(SIGTSTP, suspend);
-	crmode();
-	noecho();
-	setup();
 }
 
 void

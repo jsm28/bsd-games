@@ -11,6 +11,3 @@ caesar_install:	caesar_all
 	$(HIDE_GAME) rot13
 	$(INSTALL_MANUAL) caesar/caesar.6
 	$(INSTALL_MANUAL) caesar.6 rot13.6
-
-#caesar_check:	caesar_all
-#	caesar/caesar <fortune/datfiles/fortunes-o.fake.rot13

@@ -1,4 +1,4 @@
-/*	$NetBSD: fortune.c,v 1.14 1998/09/13 15:27:28 hubertf Exp $	*/
+/*	$NetBSD: fortune.c,v 1.19 1999/09/09 17:30:19 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1986, 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1986, 1993\n\
 #if 0
 static char sccsid[] = "@(#)fortune.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: fortune.c,v 1.14 1998/09/13 15:27:28 hubertf Exp $");
+__RCSID("$NetBSD: fortune.c,v 1.19 1999/09/09 17:30:19 jsm Exp $");
 #endif
 #endif /* not lint */
 
@@ -63,7 +63,6 @@ __RCSID("$NetBSD: fortune.c,v 1.14 1998/09/13 15:27:28 hubertf Exp $");
 # include	<string.h>
 # include	<err.h>
 # include	<time.h>
-# include	<netinet/in.h>
 # include	"strfile.h"
 # include	"pathnames.h"
 
@@ -121,7 +120,7 @@ char	*Fortbuf = NULL;			/* fortune buffer for -m */
 
 int	Fort_len = 0;
 
-off_t	Seekpts[2];			/* seek pointers to fortunes */
+u_int64_t	Seekpts[2];			/* seek pointers to fortunes */
 
 FILEDESC	*File_list = NULL,	/* Head of file list */
 		*File_tail = NULL;	/* Tail of file list */
@@ -201,6 +200,12 @@ regex_t *Re_pat = NULL;
 # else
 	#error "Need to define HAVE_REGCMP, HAVE_RE_COMP, or HAVE_REGCOMP"
 # endif
+#endif
+
+#if (defined(__linux__) && !defined(__GLIBC__)) || (defined(__GLIBC__) && !defined(_DIRENT_HAVE_D_NAMLEN))
+#define		NAMLEN(d)	(strlen((d)->d_name))
+#else
+#define		NAMLEN(d)	((d)->d_namlen)
 #endif
 
 int
@@ -721,9 +726,9 @@ add_dir(fp)
 	DPRINTF(1, (stderr, "adding dir \"%s\"\n", fp->path));
 	fp->num_children = 0;
 	while ((dirent = readdir(dir)) != NULL) {
-		if (strlen(dirent->d_name) == 0)
+		if (NAMLEN(dirent) == 0)
 			continue;
-		name = copy(dirent->d_name, strlen(dirent->d_name));
+		name = copy(dirent->d_name, NAMLEN(dirent));
 		if (add_file(NO_PROB, name, fp->path, &fp->child, &tailp, fp))
 			fp->num_children++;
 		else
@@ -974,7 +979,7 @@ get_fort()
 			choice = random() % Noprob_tbl.str_numstr;
 			DPRINTF(1, (stderr, "choice = %d (of %d) \n", choice,
 				    Noprob_tbl.str_numstr));
-			while ((unsigned long)choice >= fp->tbl.str_numstr) {
+			while ((u_int32_t)choice >= fp->tbl.str_numstr) {
 				choice -= fp->tbl.str_numstr;
 				fp = fp->next;
 				DPRINTF(1, (stderr,
@@ -997,8 +1002,8 @@ get_fort()
 	(void) lseek(fp->datfd,
 		     (off_t) (sizeof fp->tbl + fp->pos * sizeof Seekpts[0]), SEEK_SET);
 	read(fp->datfd, Seekpts, sizeof Seekpts);
-	Seekpts[0] = ntohl(Seekpts[0]);
-	Seekpts[1] = ntohl(Seekpts[1]);
+	BE64TOH(Seekpts[0]);
+	BE64TOH(Seekpts[1]);
 }
 
 /*
@@ -1026,7 +1031,7 @@ pick_child(parent)
 		choice = random() % parent->tbl.str_numstr;
 		DPRINTF(1, (stderr, "    choice = %d (of %d)\n",
 			    choice, parent->tbl.str_numstr));
-		for (fp = parent->child; (unsigned long)choice >= fp->tbl.str_numstr;
+		for (fp = parent->child; (u_int32_t)choice >= fp->tbl.str_numstr;
 		     fp = fp->next) {
 			choice -= fp->tbl.str_numstr;
 			DPRINTF(1, (stderr, "\tskip %s, %d (choice = %d)\n",
@@ -1117,7 +1122,7 @@ get_pos(fp)
 		fp->pos = random() % fp->tbl.str_numstr;
 #endif /* OK_TO_WRITE_DISK */
 	}
-	if ((unsigned long)++(fp->pos) >= fp->tbl.str_numstr)
+	if ((u_int64_t)++(fp->pos) >= fp->tbl.str_numstr)
 		fp->pos -= fp->tbl.str_numstr;
 	DPRINTF(1, (stderr, "pos for %s is %qd\n", fp->name, fp->pos));
 }
@@ -1141,11 +1146,11 @@ get_tbl(fp)
 		if (read(fd, (char *) &fp->tbl, sizeof fp->tbl) != sizeof fp->tbl) {
 			errx(1, "Database `%s' corrupted", fp->path);
 		}
-		/* fp->tbl.str_version = ntohl(fp->tbl.str_version); */
-		fp->tbl.str_numstr = ntohl(fp->tbl.str_numstr);
-		fp->tbl.str_longlen = ntohl(fp->tbl.str_longlen);
-		fp->tbl.str_shortlen = ntohl(fp->tbl.str_shortlen);
-		fp->tbl.str_flags = ntohl(fp->tbl.str_flags);
+		/* BE32TOH(fp->tbl.str_version); */
+		BE32TOH(fp->tbl.str_numstr);
+		BE32TOH(fp->tbl.str_longlen);
+		BE32TOH(fp->tbl.str_shortlen);
+		BE32TOH(fp->tbl.str_flags);
 		(void) close(fd);
 	}
 	else {
@@ -1302,7 +1307,7 @@ maxlen_in_list(list)
 		}
 		else {
 			get_tbl(fp);
-			if (fp->tbl.str_longlen > (unsigned long)maxlen)
+			if (fp->tbl.str_longlen > (u_int32_t)maxlen)
 				maxlen = fp->tbl.str_longlen;
 		}
 	}

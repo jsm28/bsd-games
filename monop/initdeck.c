@@ -1,4 +1,4 @@
-/*	$NetBSD: initdeck.c,v 1.5 1997/10/12 17:45:12 christos Exp $	*/
+/*	$NetBSD: initdeck.c,v 1.11 1999/09/10 00:18:21 jsm Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -43,13 +43,15 @@ __COPYRIGHT("@(#) Copyright (c) 1980, 1993\n\
 #if 0
 static char sccsid[] = "@(#)initdeck.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: initdeck.c,v 1.5 1997/10/12 17:45:12 christos Exp $");
+__RCSID("$NetBSD: initdeck.c,v 1.11 1999/09/10 00:18:21 jsm Exp $");
 #endif
 #endif /* not lint */
 
 #include <err.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/endian.h>
 #include "deck.h"
 
 /*
@@ -63,11 +65,10 @@ __RCSID("$NetBSD: initdeck.c,v 1.5 1997/10/12 17:45:12 christos Exp $");
  * string to print, terminated with a null byte.
  */
 
-# define	TRUE	1
-# define	FALSE	0
+#define	TRUE	1
+#define	FALSE	0
 
-# define	bool	char
-# define	reg	register
+#define	bool	char
 
 const char	*infile		= "cards.inp",	/* input file		*/
 		*outfile	= "cards.pck";	/* "packed" file	*/
@@ -84,8 +85,11 @@ static void putem __P((void));
 
 int
 main(ac, av)
-int	ac;
-char	*av[]; {
+	int ac;
+	char *av[];
+{
+	int i;
+	int32_t nc;
 
 	getargs(ac, av);
 	if ((inf = fopen(infile, "r")) == NULL) {
@@ -96,38 +100,61 @@ char	*av[]; {
 	/*
 	 * allocate space for pointers.
 	 */
-	CC_D.offsets = (long *)calloc(CC_D.num_cards + 1, sizeof (long));
-	CH_D.offsets = (long *)calloc(CH_D.num_cards + 1, sizeof (long));
+	CC_D.offsets = (u_int64_t *)calloc(CC_D.num_cards + 1, sizeof (u_int64_t));
+	CH_D.offsets = (u_int64_t *)calloc(CH_D.num_cards + 1, sizeof (u_int64_t));
 	if (CC_D.offsets == NULL || CH_D.offsets == NULL)
 		errx(1, "out of memory");
 	fseek(inf, 0L, SEEK_SET);
 	if ((outf = fopen(outfile, "w")) == NULL)
 		err(1, "fopen %s", outfile);
 
-	fwrite(deck, sizeof (DECK), 2, outf);
-	fwrite(CC_D.offsets, sizeof (long), CC_D.num_cards, outf);
-	fwrite(CH_D.offsets, sizeof (long), CH_D.num_cards, outf);
+	/*
+	 * these fields will be overwritten after the offsets are calculated,
+	 * so byte-order doesn't matter yet.
+	 */
+	fwrite(&nc, sizeof(nc), 1, outf);
+	fwrite(&nc, sizeof(nc), 1, outf);
+	fwrite(CC_D.offsets, sizeof (u_int64_t), CC_D.num_cards, outf);
+	fwrite(CH_D.offsets, sizeof (u_int64_t), CH_D.num_cards, outf);
+
+	/*
+	 * write out the cards themselves (calculating the offsets).
+	 */
 	putem();
 
 	fclose(inf);
 	fseek(outf, 0, SEEK_SET);
-	fwrite(deck, sizeof (DECK), 2, outf);
-	fwrite(CC_D.offsets, sizeof (long), CC_D.num_cards, outf);
-	fwrite(CH_D.offsets, sizeof (long), CH_D.num_cards, outf);
+
+	/* number of community chest cards first... */
+	nc = htobe32(CC_D.num_cards);
+	fwrite(&nc, sizeof(nc), 1, outf);
+	/* ... then number of chance cards. */
+	nc = htobe32(CH_D.num_cards);
+	fwrite(&nc, sizeof(nc), 1, outf);
+
+	/* convert offsets to big-endian byte order */
+	for (i = 0; i < CC_D.num_cards; i++)
+		HTOBE64(CC_D.offsets[i]);
+	for (i = 0; i < CH_D.num_cards; i++)
+		HTOBE64(CH_D.offsets[i]);
+	/* then dump the offsets out */
+	fwrite(CC_D.offsets, sizeof (u_int64_t), CC_D.num_cards, outf);
+	fwrite(CH_D.offsets, sizeof (u_int64_t), CH_D.num_cards, outf);
+
 	fflush(outf);
 	if (ferror(outf))
 		err(1, "fwrite %s", outfile);
 	fclose(outf);
-	printf("There were %d com. chest and %d chance cards\n", CC_D.num_cards, CH_D.num_cards);
+	printf("There were %d com. chest and %d chance cards\n",
+	    CC_D.num_cards, CH_D.num_cards);
 	exit(0);
 }
 
 static void
 getargs(ac, av)
-int	ac;
-char	*av[];
+	int ac;
+	char *av[];
 {
-
 	if (ac > 1)
 		infile = av[1];
 	if (ac > 2)
@@ -140,10 +167,9 @@ char	*av[];
 static void
 count() 
 {
-
-	reg bool	newline;
-	reg DECK	*in_deck;
-	reg int		c;
+	bool newline;
+	DECK *in_deck;
+	int c;
 
 	newline = TRUE;
 	in_deck = &CC_D;
@@ -158,17 +184,17 @@ count()
 			newline = (c == '\n');
 	in_deck->num_cards++;
 }
+
 /*
  *	put strings in the file
  */
 static void
 putem() 
 {
-
-	reg bool	newline;
-	reg DECK	*in_deck;
-	reg int		c;
-	reg int		num;
+	bool newline;
+	DECK *in_deck;
+	int c;
+	int num;
 
 	in_deck = &CC_D;
 	CC_D.num_cards = 1;

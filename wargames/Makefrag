@@ -8,6 +8,3 @@ wargames_install:	wargames_all
 	$(INSTALL_SCRIPT) wargames/wargames $(INSTALL_PREFIX)$(GAMESDIR)/wargames
 	$(HIDE_GAME) wargames
 	$(INSTALL_MANUAL) wargames/wargames.6
-
-wargames_check:	wargames_all
-	echo "test" | wargames/wargames

@@ -1,3 +1,32 @@
+# exec.objs - details of objects that go into bsd-games programs.
+# This file is used for automatic makefile generation.
+#
+# Copyright (c) 1998, 1999 Joseph Samuel Myers.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 3. The name of the author may not be used to endorse or promote products
+#    derived from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+# IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+# AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
 adventure		crc.o data.o done.o init.o io.o main.o save.o subr.o \
 	vocab.o wizard.o
 adventure/setup		setup.o
@@ -61,15 +90,15 @@ primes			pattern.o pr_tbl.o primes.o
 quiz			quiz.o rxp.o lib/fgetln.o
 rain			rain.o
 random			random.o
-robots			extern.o flush_in.o init_field.o main.o make_level.o \
-	move.o move_robs.o play_level.o query.o rnd_pos.o score.o
+robots			auto.o extern.o flush_in.o init_field.o main.o \
+	make_level.o move.o move_robs.o play_level.o query.o rnd_pos.o score.o
 rogue			hit.o init.o inventory.o level.o machdep.o main.o \
 	message.o monster.o move.o object.o pack.o play.o random.o ring.o \
 	room.o save.o score.o spec_hit.o throw.o trap.o use.o zap.o
 sail			assorted.o game.o globals.o dr_1.o dr_2.o dr_3.o \
 	dr_4.o dr_5.o dr_main.o lo_main.o main.o misc.o parties.o pl_1.o \
 	pl_2.o pl_3.o pl_4.o pl_5.o pl_6.o pl_7.o pl_main.o sync.o version.o
-snake/snake/snake	move.o snake.o
+snake/snake/snake	snake.o
 snake/snscore/snscore	snscore.o
 tetris			input.o scores.o screen.o shapes.o tetris.o
 trek			abandon.o attack.o autover.o capture.o cgetc.o \

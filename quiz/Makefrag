@@ -1,5 +1,6 @@
 # Makefrag - makefile fragment for quiz
 
+quiz_DEFS := $(FGETLN_DEFS)
 quiz_DIRS := $(GAMESDIR) $(MAN6DIR)
 
 quiz_all:	quiz/quiz quiz/quiz.6

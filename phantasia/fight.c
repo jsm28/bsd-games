@@ -1,4 +1,4 @@
-/*	$NetBSD: fight.c,v 1.4 1998/08/30 09:19:39 veego Exp $	*/
+/*	$NetBSD: fight.c,v 1.5 1999/09/08 21:57:18 jsm Exp $	*/
 
 /*
  * fight.c   Phantasia monster fighting routines

@@ -11,6 +11,3 @@ factor_install:	factor_all
 	$(INSTALL_BINARY) factor/factor $(INSTALL_PREFIX)$(GAMESDIR)/factor
 	$(HIDE_GAME) factor
 	$(INSTALL_MANUAL) factor/factor.6
-
-factor_check:	factor_all
-	factor/factor 69300

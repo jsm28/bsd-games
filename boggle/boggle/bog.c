@@ -1,4 +1,4 @@
-/*	$NetBSD: bog.c,v 1.9 1998/08/30 09:19:36 veego Exp $	*/
+/*	$NetBSD: bog.c,v 1.12 1999/09/08 21:17:44 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1993\n\
 #if 0
 static char sccsid[] = "@(#)bog.c	8.2 (Berkeley) 5/4/95";
 #else
-__RCSID("$NetBSD: bog.c,v 1.9 1998/08/30 09:19:36 veego Exp $");
+__RCSID("$NetBSD: bog.c,v 1.12 1999/09/08 21:17:44 jsm Exp $");
 #endif
 #endif /* not lint */
 
@@ -594,7 +594,7 @@ checkdict()
 			 */
 			if (i != previndex + 1) {
 				if (dictseek(dictfp,
-				    dictindex[i].start, 0) < 0) {
+				    dictindex[i].start, SEEK_SET) < 0) {
 					warnx("seek error in checkdict()");
 					cleanup();
 					exit(1);

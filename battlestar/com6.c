@@ -1,4 +1,4 @@
-/*	$NetBSD: com6.c,v 1.10 1999/02/10 01:36:50 hubertf Exp $	*/
+/*	$NetBSD: com6.c,v 1.15 1999/09/14 18:08:46 jsm Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -38,11 +38,10 @@
 #if 0
 static char sccsid[] = "@(#)com6.c	8.2 (Berkeley) 4/28/95";
 #else
-__RCSID("$NetBSD: com6.c,v 1.10 1999/02/10 01:36:50 hubertf Exp $");
+__RCSID("$NetBSD: com6.c,v 1.15 1999/09/14 18:08:46 jsm Exp $");
 #endif
 #endif				/* not lint */
 
-#include <time.h>
 #include "extern.h"
 #include "pathnames.h"
 

@@ -33,6 +33,9 @@ have `README.linux' files you may wish to read.
 The statement of year 2000 issues associated with bsd-games and
 bsd-games-non-free is in the file `YEAR2000'.
 
+The copyrights and licence terms for the games, as best as I can
+determine them, are in `COPYING'.
+
 This package contains the following games:
 
 adventure:	the original adventure by Crowther and Woods
@@ -77,16 +80,17 @@ trek:		We come in peace, shoot to kill.  It's worse than that, he's
 wargames:	would you like to play a game?
 worm:		eat the numbers without running into anything
 worms:		random worms scurrying across your screen
+wtf:		translate acronyms, e.g. `wtf is WTF'
 wump:		hunt the wumpus
 
 If you have questions about bsd-games or bsd-games-non-free you can
 contact me at <jsm28@cam.ac.uk> (this is the preferred address for
 mail about bsd-games; but if you find it is no longer valid you could
-try <J.S.Myers@dpmms.cam.ac.uk> or <jsm@octomino.demon.co.uk>).  Bug
-reports should state the versions of ncurses and libc used, unless
-clearly not relevant (e.g., bugs in data files, or where you have an
-analysis and patch).  If you want to be informed by email of new
-releases when they come out, please let me know.
+try <jsm@netbsd.org> or <jsm@octomino.demon.co.uk>).  Bug reports
+should state the versions of ncurses and libc used, unless clearly not
+relevant (e.g., bugs in data files, or where you have an analysis and
+patch).  If you want to be informed by email of new releases when they
+come out, please let me know.
 
 Known bugs are listed in the file BUGS; please do not send bug reports
 for bugs listed there, but patches that fix them are welcome.
@@ -97,7 +101,7 @@ then context diffs are OK.  Please remember to include details of the
 bug and your analysis of the problem if you are sending a patch; I
 have ported the code from NetBSD to Linux, but may not be familiar
 with the workings of any particular program, whereas you will be if
-you have been tracing and fixing a bug.  The gcc info manual contains
+you have been tracing and fixing a bug.  The GCC info manual contains
 a discussion of how to produce good bug reports.
 
 Joseph S. Myers

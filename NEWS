@@ -11,6 +11,31 @@ changes in installation instructions.  Packagers should also reread
 the PACKAGING file each version (or do a diff between the old and new
 versions of the package and read that).
 
+Version 2.8
+===========
+
+* Robots scorefile format has changed - remove or rename your old
+score file when upgrading to this version.
+
+* Various minor changes and bug-fixes (some from OpenBSD).
+
+* New `game': wtf.
+
+* Updated from NetBSD CVS of yyyy-mm-dd; many more changes merged back
+into NetBSD.
+
+* All constant data files are now architecture independent (installed
+under /usr/share by default).
+
+* bsd-games is no longer tested by me with libc older than glibc
+2.1.2; fixes for compilation with older libc will still be accepted.
+
+* Details of the copyrights and licence terms applicable to these
+games, as best as I can determine them, now appear in COPYING.
+
+* bsd-games now has a testsuite (for programs that can be tested
+non-interactively only).
+
 Version 2.7
 ===========
 

@@ -1,0 +1,11 @@
+# Makefrag - makefile fragment for wtf
+
+wtf_DIRS := $(GAMESDIR) $(MAN6DIR) $(shell dirname $(WTF_ACRONYMFILE))
+
+wtf_all:	wtf/wtf wtf/wtf.6
+
+wtf_install:	wtf_all
+	$(INSTALL_SCRIPT) wtf/wtf $(INSTALL_PREFIX)$(GAMESDIR)/wtf
+	$(HIDE_GAME) wtf
+	$(INSTALL_DATA) wtf/acronyms $(INSTALL_PREFIX)$(WTF_ACRONYMFILE)
+	$(INSTALL_MANUAL) wtf/wtf.6

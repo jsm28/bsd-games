@@ -45,7 +45,9 @@ trade-off between security and functionality present, and you may wish
 to choose a potentially more secure default and allow the sysadmin to
 change permissions if they are in an environment (for example, a home
 system with only trusted users) where the functionality is preferred,
-while ensuring such changes persist across upgrades.
+while ensuring such changes persist across upgrades.  Some packagers
+may wish to provide a security-hardened system by giving each setgid
+game its own group so bugs in one do not affect others.
 
 You may wish to include auxiliary documentation for users, such as the
 BSD Users' Supplementary Documents for trek and rogue
@@ -138,3 +140,9 @@ where not known and listed in AUTHORS, or up-to-date contact details
 for authors listed there, please send me the details so they can
 receive their due credit in future versions, and thanks from any
 appreciative users.
+
+
+
+Local Variables:
+mode: text
+End:

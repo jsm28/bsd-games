@@ -67,7 +67,7 @@ int     tflag = 0;		/* cursor addressing flag */
 int     iroll = 0;		/* special flag for inputting rolls */
 int     rfl = 0;
 
-const char *const color[] = {"White", "Red", "white", "red"};
+const char   *const color[] = {"White", "Red", "white", "red"};
 
 
 const char	*const *Colorptr;

@@ -39,6 +39,10 @@ setgid privileges from dm; note that in this case it does not make
 sense for dm to be setgid to some gid other than the one (normally
 `games') with write access to the score files.
 
+This package does not yet support security hardening by giving each
+setgid game its own gid, but in some environments you may wish to do
+this.
+
 ***********************************************************************
 *                                                                     *
 * DO NOT INSTALL ANY GAMES SETUID, ONLY SETGID.                       *

@@ -1,4 +1,4 @@
-/*	$NetBSD: input.c,v 1.11 1998/11/10 13:43:31 hubertf Exp $	*/
+/*	$NetBSD: input.c,v 1.13 1999/07/25 00:24:38 hubertf Exp $	*/
 
 /*-
  * Copyright (c) 1990, 1993
@@ -50,7 +50,7 @@
 #if 0
 static char sccsid[] = "@(#)input.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: input.c,v 1.11 1998/11/10 13:43:31 hubertf Exp $");
+__RCSID("$NetBSD: input.c,v 1.13 1999/07/25 00:24:38 hubertf Exp $");
 #endif
 #endif not lint
 
@@ -434,13 +434,12 @@ Right(c)
 }
 
 const char	*
-delayb(ch)
-	char ch;
+delayb(c)
+	char c;
 {
 	int	xdiff, ydiff;
-	unsigned char c;
 
-	c = ch - '0';
+	c -= '0';
 
 	if (c >= sp->num_beacons)
 		return ("Unknown beacon");
@@ -556,12 +555,10 @@ setrelalt(c)
 }
 
 const char	*
-benum(ch)
-	char ch;
+benum(c)
+	char c;
 {
-	unsigned char c;
-
-	dest_no = c = ch - '0';
+	dest_no = c -= '0';
 
 	switch (dest_type) {
 	case T_BEACON:

@@ -1,5 +1,6 @@
 # Makefrag - makefile fragment for battlestar
 
+battlestar_DEFS := $(FGETLN_DEFS)
 battlestar_DIRS := $(GAMESDIR) $(MAN6DIR)
 
 battlestar_all:	battlestar/battlestar battlestar/battlestar.6

@@ -1,4 +1,4 @@
-/*	$NetBSD: caesar.c,v 1.7 1998/09/13 15:27:27 hubertf Exp $	*/
+/*	$NetBSD: caesar.c,v 1.9 1999/09/08 21:17:46 jsm Exp $	*/
 
 /*
  * Copyright (c) 1989, 1993
@@ -51,7 +51,7 @@ __COPYRIGHT("@(#) Copyright (c) 1989, 1993\n\
 #if 0
 static char sccsid[] = "@(#)caesar.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: caesar.c,v 1.7 1998/09/13 15:27:27 hubertf Exp $");
+__RCSID("$NetBSD: caesar.c,v 1.9 1999/09/08 21:17:46 jsm Exp $");
 #endif
 #endif /* not lint */
 

@@ -1,4 +1,4 @@
-/*	$NetBSD: teach.c,v 1.8 1999/02/10 12:29:48 hubertf Exp $	*/
+/*	$NetBSD: teach.c,v 1.10 1999/08/14 16:29:23 tron Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -43,7 +43,7 @@ __COPYRIGHT("@(#) Copyright (c) 1980, 1993\n\
 #if 0
 static char sccsid[] = "@(#)teach.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: teach.c,v 1.8 1999/02/10 12:29:48 hubertf Exp $");
+__RCSID("$NetBSD: teach.c,v 1.10 1999/08/14 16:29:23 tron Exp $");
 #endif
 #endif				/* not lint */
 
@@ -51,7 +51,7 @@ __RCSID("$NetBSD: teach.c,v 1.8 1999/02/10 12:29:48 hubertf Exp $");
 #include "tutor.h"
 
 #ifndef NCURSES_VERSION
-extern speed_t ospeed;		/* tty output speed for termlib */
+extern short ospeed;		/* tty output speed for termlib */
 #endif
 
 const char   *const helpm[] = {

@@ -1,4 +1,4 @@
-/*	$NetBSD: tetris.c,v 1.9 1999/03/22 06:12:23 abs Exp $	*/
+/*	$NetBSD: tetris.c,v 1.12 1999/09/12 09:02:24 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1992, 1993
@@ -61,6 +61,21 @@ __COPYRIGHT("@(#) Copyright (c) 1992, 1993\n\
 #include "scores.h"
 #include "screen.h"
 #include "tetris.h"
+
+cell	board[B_SIZE];		/* 1 => occupied, 0 => empty */
+
+int	Rows, Cols;		/* current screen size */
+
+const struct shape *curshape;
+const struct shape *nextshape;
+
+long	fallrate;		/* less than 1 million; smaller => faster */
+
+int	score;			/* the obvious thing */
+gid_t	gid, egid;
+
+char	key_msg[100];
+int	showpreview;
 
 static	void	elide __P((void));
 static	void	setup_board __P((void));

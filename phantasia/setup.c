@@ -1,4 +1,4 @@
-/*	$NetBSD: setup.c,v 1.8 1997/11/24 01:47:26 mrg Exp $	*/
+/*	$NetBSD: setup.c,v 1.9 1999/09/08 21:17:55 jsm Exp $	*/
 
 /*
  * setup.c - set up all files for Phantasia
@@ -9,7 +9,7 @@
 #include "include.h"
 
 int main __P((int, char *[]));
-void Error __P((const char *, const char *));
+void Error __P((const char *, const char *)) __attribute__((__noreturn__));
 double drandom __P((void));
 
 /**/
@@ -135,6 +135,9 @@ main(argc, argv)
     else
 	{
 	fwrite(&Enrgyvoid, SZ_VOIDSTRUCT, 1, fp);
+	fflush(fp);
+	if (ferror(fp))
+	    Error("Writing %s.\n", path);
 	fclose(fp);
 	}
 
@@ -171,6 +174,9 @@ main(argc, argv)
 		fwrite((char *) &Curmonster, SZ_MONSTERSTRUCT, 1, Monstfp);
 		}
 	    fclose(fp);
+	    fflush(Monstfp);
+	    if (ferror(Monstfp))
+		Error("Writing %s.\n", path);
 	    fclose(Monstfp);
 	    }
 	}

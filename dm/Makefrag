@@ -1,7 +1,7 @@
 # Makefrag - makefile fragment for dm
 
 # Add -DLOG if you want logging
-dm_DEFS := # -DLOG
+dm_DEFS := $(GETLOADAVG_DEFS) # -DLOG
 dm_DIRS := $(GAMESDIR) $(MAN8DIR) $(MAN5DIR)
 
 dm_all:	dm/dm dm/dm.8 dm/dm.conf.5

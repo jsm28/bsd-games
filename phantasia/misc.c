@@ -1,4 +1,4 @@
-/*	$NetBSD: misc.c,v 1.4 1998/08/30 09:19:39 veego Exp $	*/
+/*	$NetBSD: misc.c,v 1.6 1999/09/08 21:57:19 jsm Exp $	*/
 
 /*
  * misc.c  Phantasia miscellaneous support routines

@@ -1,4 +1,4 @@
-/*	$NetBSD: init.c,v 1.8 1999/02/10 01:36:50 hubertf Exp $	*/
+/*	$NetBSD: init.c,v 1.10 1999/09/13 17:18:57 jsm Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -38,17 +38,18 @@
 #if 0
 static char sccsid[] = "@(#)init.c	8.4 (Berkeley) 4/30/95";
 #else
-__RCSID("$NetBSD: init.c,v 1.8 1999/02/10 01:36:50 hubertf Exp $");
+__RCSID("$NetBSD: init.c,v 1.10 1999/09/13 17:18:57 jsm Exp $");
 #endif
 #endif				/* not lint */
 
 #include "extern.h"
 
 void
-initialize(startup)
-	const char   *startup;
+initialize(filename)
+	const char   *filename;
 {
 	const struct objs *p;
+	char *savefile;
 
 	puts("Version 4.2, fall 1984.");
 	puts("First Adventure game written by His Lordship, the honorable");
@@ -57,7 +58,7 @@ initialize(startup)
 	srand(getpid());
 	getutmp(username);
 	wordinit();
-	if (startup == NULL) {
+	if (filename == NULL) {
 		direction = NORTH;
 		ourtime = 0;
 		snooze = CYCLE * 1.5;
@@ -67,8 +68,11 @@ initialize(startup)
 		torps = TORPEDOES;
 		for (p = dayobjs; p->room != 0; p++)
 			setbit(location[p->room].objects, p->obj);
-	} else
-		restore(startup, strlen(startup));
+	} else {
+		savefile = save_file_name(filename, strlen(filename));
+		restore(savefile);
+		free(savefile);
+	}
 	wiz = wizard(username);
 	signal(SIGINT, diesig);
 }

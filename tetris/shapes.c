@@ -1,4 +1,4 @@
-/*	$NetBSD: shapes.c,v 1.3 1997/10/12 02:03:47 lukem Exp $	*/
+/*	$NetBSD: shapes.c,v 1.4 1999/09/08 21:18:01 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1992, 1993

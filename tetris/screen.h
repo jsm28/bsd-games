@@ -41,8 +41,8 @@
 /*
  * Capabilities from TERMCAP (used in the score code).
  */
-char *SEstr;			/* end standout mode */
-char *SOstr;			/* begin standout mode */
+extern char *SEstr;		/* end standout mode */
+extern char *SOstr;		/* begin standout mode */
 
 /*
  * putpad() is for padded strings with count=1.

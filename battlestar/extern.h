@@ -1,4 +1,4 @@
-/*	$NetBSD: extern.h,v 1.10 1999/02/10 01:36:50 hubertf Exp $ */
+/*	$NetBSD: extern.h,v 1.15 1999/09/14 19:54:47 jsm Exp $ */
 
 /*
  * Copyright (c) 1983, 1993
@@ -35,8 +35,6 @@
  *	@(#)externs.h	8.1 (Berkeley) 5/31/93
  */
 
-#include <sys/time.h>
-
 #include <ctype.h>
 #include <err.h>
 #include <pwd.h>
@@ -44,6 +42,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <unistd.h>
 
 #define BITS (8 * sizeof (int))
@@ -238,7 +237,7 @@ struct room {
 };
 extern struct room dayfile[];
 extern struct room nightfile[];
-struct room *location;
+extern struct room *location;
 
  /* object characteristics */
 extern const char   *const objdes[NUMOFOBJECTS];
@@ -249,42 +248,41 @@ extern const int     objcumber[NUMOFOBJECTS];
 
  /* current input line */
 #define NWORD	20		/* words per line */
-char    words[NWORD][15];
-int     wordvalue[NWORD];
-int     wordtype[NWORD];
-int     wordcount, wordnumber;
+extern char    words[NWORD][15];
+extern int     wordvalue[NWORD];
+extern int     wordtype[NWORD];
+extern int     wordcount, wordnumber;
 
  /* state of the game */
-int     ourtime;
-int     position;
-int     direction;
-int     left, right, ahead, back;
-int     ourclock, fuel, torps;
-int     carrying, encumber;
-int     rythmn;
+extern int     ourtime;
+extern int     position;
+extern int     direction;
+extern int     left, right, ahead, back;
+extern int     ourclock, fuel, torps;
+extern int     carrying, encumber;
+extern int     rythmn;
 extern int     followfight;
-int     ate;
-int     snooze;
-int     meetgirl;
+extern int     ate;
+extern int     snooze;
+extern int     meetgirl;
 extern int     followgod;
-int     godready;
+extern int     godready;
 extern int     win;
-int     wintime;
-int     wiz;
-int     tempwiz;
-int     matchlight;
-extern int matchcount;
-int     loved;
-int     pleasure, power, ego;
+extern int     wintime;
+extern int     wiz;
+extern int     tempwiz;
+extern int     matchlight, matchcount;
+extern int     loved;
+extern int     pleasure, power, ego;
 extern int     WEIGHT;
 extern int     CUMBER;
-int     notes[NUMOFNOTES];
-unsigned int inven[NUMOFWORDS];
-unsigned int wear[NUMOFWORDS];
-char    beenthere[NUMOFROOMS + 1];
-char    injuries[NUMOFINJURIES];
+extern int     notes[NUMOFNOTES];
+extern unsigned int inven[NUMOFWORDS];
+extern unsigned int wear[NUMOFWORDS];
+extern char    beenthere[NUMOFROOMS + 1];
+extern char    injuries[NUMOFINJURIES];
 
-char    username[9];
+extern char    username[9];
 
 struct wlist {
 	const char   *string;
@@ -294,7 +292,7 @@ struct wlist {
 #define HASHSIZE	256
 #define HASHMUL		81
 #define HASHMASK	(HASHSIZE - 1)
-struct wlist *hashtab[HASHSIZE];
+extern struct wlist *hashtab[HASHSIZE];
 extern struct wlist wlist[];
 
 struct objs {
@@ -350,9 +348,10 @@ void printobjs __P((void));
 int put __P((void));
 int puton __P((void));
 void ravage __P((void));
-void restore __P((const char *, size_t));
+void restore __P((const char *));
 int ride __P((void));
-void save __P((const char *, size_t));
+void save __P((const char *));
+char *save_file_name __P((const char *, size_t));
 void screen __P((void));
 int shoot __P((void));
 void succumb __P((int));

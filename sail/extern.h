@@ -1,4 +1,4 @@
-/*	$NetBSD: extern.h,v 1.9 1999/02/10 00:45:45 hubertf Exp $ */
+/*	$NetBSD: extern.h,v 1.11 1999/09/08 21:45:30 jsm Exp $ */
 
 /*
  * Copyright (c) 1983, 1993
@@ -44,21 +44,21 @@
 #include "machdep.h"
 
 	/* program mode */
-int mode;
-jmp_buf restart;
+extern int mode;
+extern jmp_buf restart;
 #define MODE_PLAYER	1
 #define MODE_DRIVER	2
 #define MODE_LOGGER	3
 
 	/* command line flags */
-char debug;				/* -D */
-char randomize;				/* -x, give first available ship */
-char longfmt;				/* -l, print score in long format */
-char nobells;				/* -b, don't ring bell before Signal */
+extern char debug;			/* -D */
+extern char randomize;			/* -x, give first available ship */
+extern char longfmt;			/* -l, print score in long format */
+extern char nobells;			/* -b, don't ring bell before Signal */
 
 	/* other initial modes */
-gid_t gid;
-gid_t egid;
+extern gid_t gid;
+extern gid_t egid;
 
 #define die()		((rand() >> 3) % 6 + 1)
 #define sqr(a)		((a) * (a))
@@ -259,8 +259,8 @@ struct shipspecs {
 };
 extern struct shipspecs specs[];
 
-struct scenario *cc;		/* the current scenario */
-struct ship *ls;		/* &cc->ship[cc->vessels] */
+extern struct scenario *cc;		/* the current scenario */
+extern struct ship *ls;		/* &cc->ship[cc->vessels] */
 
 #define SHIP(s)		(&cc->ship[s])
 #define foreachship(sp)	for ((sp) = cc->ship; (sp) < ls; (sp)++)
@@ -292,13 +292,13 @@ extern const char rangeofshot[];
 
 extern const char dr[], dc[];
 
-int winddir;
-int windspeed;
-int turn;
-int game;
-int alive;
-int people;
-char hasdriver;
+extern int winddir;
+extern int windspeed;
+extern int turn;
+extern int game;
+extern int alive;
+extern int people;
+extern char hasdriver;
 
 /* assorted.c */
 void table __P((int, int, int, struct ship *, struct ship *, int));
@@ -374,7 +374,7 @@ void choke __P((int)) __attribute__((__noreturn__));
 void child __P((int));
 
 /* pl_2.c */
-void play __P((void));
+void play __P((void)) __attribute__((__noreturn__));
 
 /* pl_3.c */
 void acceptcombat __P((void));

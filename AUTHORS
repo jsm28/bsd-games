@@ -54,8 +54,9 @@ primes:		Landon Curt Noll <chongo@toad.com>
 quiz:		Jim R. Oldroyd
 rain:		Eric P. Scott
 random:		Guy Harris
-robots:		Ken Arnold
-rogue:		Timothy Stoehr, Michael C. Toy, Kenneth C. R. C. Arnold
+robots:		Ken Arnold, Christos Zoulas <christos@zoulas.com>
+rogue:		Timothy Stoehr, Michael C. Toy, Kenneth C. R. C. Arnold,
+		Glenn Wichman
 sail:		Dave Riggle <riggle@ernie.berkeley.edu>,
 		Ed Wang <edward@ucbarpa.berkeley.edu>; Craig Leres,
 		Chris Guthrie
@@ -63,6 +64,13 @@ snake:		(unknown)
 tetris:		Nancy L. Tinkham, Darren F. Provine, Chris Torek
 trek:		Eric Allman
 wargames:	(unknown)
-worm:		(unknown)
+worm:		Michael Toy
 worms:		Eric P. Scott
+wtf:		Allen Briggs
 wump:		Dave Taylor
+
+
+
+Local Variables:
+mode: text
+End:

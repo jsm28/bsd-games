@@ -1,3 +1,455 @@
+1999-09-15  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* substfiles: Move manpages and some other non-headers into
+	substfiles2 (new file).
+	* quiz/datfiles/Makefrag (quiz_datfiles_all): Depend on
+	quiz/datfiles/index.
+	* configure: Only generate rules for files in substfiles2, don't
+	actually build them at configure time.
+	* TODO: Update.
+
+	* configure: Allow for comments in exec.objs, exec.libs and
+	substfiles.
+	* exec.objs, exec.libs, substfiles: Add explanatory comments,
+	copyright notices and licence terms.
+
+	* substscr: New file to handle substitution logic.  Also generate
+	subst.rules makefile for redoing the substitutions if required.
+	* configure: Use it to do substitutions.  Handle subst.rules.
+
+	* fortune/unstr/unstr.c: Don't include <machine/endian.h> at all.
+	* gomoku/pickmove.c: Likewise, unconditionally include <limits.h>
+	rather than <machine/limits.h>.
+
+	* fortune/fortune/fortune.c: Use macro NAMLEN rather than
+	strlen(dirent->d_name).
+
+1999-09-14  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* gomoku/main.c: Tweak for NetBSD alignment.
+
+	* battlestar/com6.c, battlestar/extern.h, battlestar/globals.c,
+	pom/pom.6, pom/pom.c, snake/snake/Makefile.bsd,
+	snake/snake/snake.6.in, snake/snake/snake.c: Update from NetBSD
+	CVS after further merge.
+
+	* fortune/fortune/fortune.c: Adjust (unsigned long) casts to use
+	(u_int32_t) and (u_int64_t) as appropriate.
+
+	* TODO: Update.
+
+	* phantasia/setup.c: Add checks for write errors.
+
+	* fortune/fortune/fortune.6.in, fortune/fortune/pathnames.h.in:
+	Fix references to @usrlibdir@.
+
+	* quiz/datfiles/pres: Update to OpenBSD version (minor
+	corrections, and includes vice-presidents).
+	* quiz/datfiles/index.in: Update.
+
+1999-09-13  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* battlestar/com6.c, battlestar/extern.h, battlestar/init.c,
+	cribbage/instr.c, gomoku/gomoku.h, gomoku/main.c,
+	phantasia/main.c, rogue/Makefile.bsd, rogue/machdep.c,
+	rogue/rogue.h, rogue/save.c: Update from NetBSD CVS after further
+	merge.
+
+	* fortune/datfiles/Makefile.bsd, fortune/datfiles/limerick,
+	fortune/datfiles/limerick-o.fake,
+	fortune/datfiles/limerick-o.real, fortune/datfiles/limerick.fake,
+	fortune/datfiles/limerick.real,
+	fortune/datfiles/unamerican-o.fake,
+	fortune/datfiles/unamerican-o.real,
+	fortune/datfiles/unamerican.fake,
+	fortune/datfiles/unamerican.real: Update from NetBSD CVS
+	(offensive fortunes renamed to ...-o).
+	* fortune/datfiles/Makefrag: Update.
+
+	* tests/*: Add testsuite.
+	* configure: Update.
+	* bcd/Makefrag, caesar/Makefrag, factor/Makefrag, morse/Makefrag,
+	number/Makefrag, pig/Makefrag, pom/Makefrag, ppt/Makefrag,
+	primes/Makefrag, wargames/Makefrag: Remove old test fragments.
+	* COPYING: Update.
+	* INSTALL: Update.
+	* NEWS: Update.
+
+	* lib/fgetln.c, lib/getloadavg.c: Add copyright notice and licence
+	terms.
+	* include/signal.h, include/stdio.h, include/stdlib.h,
+	include/termios.h, include/tzfile.h, include/sys/cdefs.h,
+	include/sys/endian.h, include/sys/ttydefaults.h: Likewise.
+	* hide-game.in, install-man.in, install-score.in, mkdep: Likewise.
+	* configure, Makeconfig.in: Likewise.
+	* COPYING: Update.
+
+1999-09-12  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* wargames/wargames.6: Add copyright notice and licence terms;
+	convert to use tmac.doc.
+	* COPYING: Update.
+
+	* snake/snake/snake.6.in: Fix substitution.
+
+	* snake/snake/snake.c: #ifdef keypad functionality so snake can be
+	built/tested on systems without it.
+
+	* AUTHORS: Fix entries for rogue and worm.
+
+	* canfield/canfield/canfield.c, canfield/cfscores/cfscores.c,
+	cribbage/crib.c, fish/fish.c, gomoku/main.c, hangman/main.c,
+	mille/mille.c, monop/monop.c, morse/morse.c, ppt/ppt.c,
+	quiz/quiz.c, robots/main.c, robots/robots.h, robots/score.c,
+	rogue/init.c, rogue/machdep.c, rogue/rogue.h, rogue/score.c,
+	snake/snake/snake.c, snake/snscore/snscore.c, tetris/scores.c,
+	tetris/tetris.c, tetris/tetris.h, trek/main.c, worm/worm.c,
+	wump/wump.c: Update from NetBSD CVS after merge of most security
+	changes.
+
+1999-09-11  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* wtf/acronyms: Updatef from NetBSD-current.
+
+	* COPYING: New file.
+	* NEWS: Update.
+	* README: Update.
+
+1999-09-10  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* wump/wump.c: Update from NetBSD CVS.
+
+	* rogue/curses.c: Remove.
+	* rogue/machdep.c, rogue/rogue.h: Remove traces of CURSES.
+
+	* THANKS: Update.
+	* NEWS: Update.
+
+	* gomoku/main.c (main): Comment tweak.
+
+	* rogue/init.c: Add blank line.
+
+	* robots/main.c (main): Restore errno before printing error
+	message.
+
+	* robots/query.c: NetBSD alignment tweak.
+
+	* atc/graphics.c, boggle/mkdict/mkdict.c,
+	boggle/mkindex/mkindex.c, cribbage/cribbage.h,
+	fortune/strfile/strfile.c, monop/initdeck.c: Update from NetBSD
+	CVS after further merge.
+
+1999-09-09  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* monop/initdeck.c (main): Whitespace tweaks.
+
+	* backgammon/backgammon/main.c, boggle/boggle/extern.h,
+	canfield/canfield/canfield.c, fortune/fortune/fortune.c,
+	fortune/strfile/strfile.c, gomoku/pickmove.c, hangman/setup.c,
+	mille/save.c, monop/cards.c, monop/initdeck.c, monop/monop.c,
+	monop/monop.h, monop/prop.c, rogue/init.c, sail/sync.c,
+	snake/snscore/snscore.c, worm/worm.c, wump/wump.c: Update from
+	NetBSD CVS after merge of malloc checks and <time.h> includes.
+
+	* fortune/strfile/strfile.8: Update from NetBSD CVS.
+
+	* mille/save.c: Move <time.h> include up.
+
+	* backgammon/backgammon/main.c: Move <time.h> include up.  Use
+	NULL as argument of time() instead of 0.
+
+	* backgammon/common_source/subs.c, battlestar/com6.c,
+	battlestar/fly.c, boggle/boggle/bog.c, boggle/boggle/extern.h,
+	boggle/boggle/mach.c, boggle/boggle/prtable.c,
+	boggle/boggle/word.c, caesar/caesar.c,
+	canfield/canfield/canfield.c, canfield/cfscores/cfscores.c,
+	cribbage/cards.c, cribbage/crib.c, cribbage/cribbage.h,
+	cribbage/io.c, cribbage/score.c, cribbage/support.c,
+	factor/factor.c, fish/fish.c, fortune/fortune/fortune.c,
+	fortune/strfile/strfile.c, fortune/unstr/unstr.c, gomoku/bdisp.c,
+	gomoku/gomoku.h, gomoku/main.c, gomoku/makemove.c,
+	gomoku/pickmove.c, gomoku/stoc.c, hangman/extern.c,
+	hangman/getword.c, hangman/hangman.h, hangman/main.c,
+	hangman/setup.c, mille/comp.c, mille/extern.c, mille/mille.c,
+	mille/mille.h, mille/move.c, mille/print.c, mille/save.c,
+	monop/cards.c, monop/execute.c, monop/getinp.c, monop/houses.c,
+	monop/initdeck.c, monop/misc.c, monop/monop.c, monop/monop.def,
+	monop/monop.ext, monop/monop.h, monop/morg.c, monop/print.c,
+	monop/spec.c, monop/trade.c, morse/morse.c, number/number.c,
+	phantasia/fight.c, phantasia/gamesupport.c,
+	phantasia/interplayer.c, phantasia/io.c, phantasia/main.c,
+	phantasia/misc.c, phantasia/phantglobs.c, phantasia/phantglobs.h,
+	phantasia/phantstruct.h, phantasia/setup.c, primes/pattern.c,
+	primes/pr_tbl.c, primes/primes.c, quiz/quiz.c, quiz/quiz.h,
+	quiz/rxp.c, random/random.c, robots/auto.c, robots/extern.c,
+	robots/init_field.c, robots/main.c, robots/move.c, robots/query.c,
+	robots/robots.h, robots/score.c, rogue/init.c, rogue/rogue.h,
+	sail/assorted.c, sail/dr_1.c, sail/dr_2.c, sail/driver.h,
+	sail/extern.h, sail/globals.c, sail/lo_main.c, sail/pl_1.c,
+	sail/pl_3.c, sail/pl_4.c, sail/pl_7.c, sail/sync.c,
+	snake/snake/snake.c, snake/snscore/snscore.c, tetris/scores.c,
+	tetris/screen.c, tetris/shapes.c, tetris/tetris.c,
+	tetris/tetris.h, trek/abandon.c, trek/capture.c, trek/cgetc.c,
+	trek/computer.c, trek/dcrept.c, trek/destruct.c, trek/dock.c,
+	trek/dumpgame.c, trek/getpar.h, trek/help.c, trek/impulse.c,
+	trek/lrscan.c, trek/phaser.c, trek/play.c, trek/rest.c,
+	trek/setwarp.c, trek/torped.c, trek/trek.h, trek/visual.c,
+	worm/worm.c: Update from NetBSD CVS after initial merge of const,
+	attribute and symbolic constant changes.
+
+1999-09-08  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* README: Update.
+
+	* NEWS: Update.
+
+1999-08-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* INSTALL: Update.
+
+1999-08-22  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* README: Update.
+	* NEWS: Update.
+	* TODO: Update.
+
+	* include/sys/endian.h: Add the 16-bit functions in case they get
+	used in the games later.  Still does not include the little-endian
+	functions until some game starts using data in little-endian
+	format.
+
+	* AUTHORS: Update.
+	* BUGS: Update.
+
+1999-08-21  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* include/sys/endian.h: New file (compatibility with changes in
+	NetBSD).
+	* fortune/fortune/fortune.c, fortune/strfile/strfile.8,
+	fortune/strfile/strfile.c, fortune/strfile/strfile.h,
+	fortune/fortune/unstr.c: Update from NetBSD anoncvs.
+	* fortune/datfiles/Makefrag: fortune data is now arch-independent.
+	* phantasia/Makefile.bsd, phantasia/main.c: Update from NetBSD
+	anoncvs.
+	* monop/cards.c, monop/deck.h, monop/execute.c, monop/getinp.c,
+	monop/houses.c, monop/initdeck.c, monop/jail.c, monop/misc.c,
+	monop/monop.c, monop/monop.def, monop/monop.h, monop/morg.c,
+	monop/print.c, monop/prop.c, monop/rent.c, monop/roll.c,
+	monop/spec.c, monop/trade.c: Update from NetBSD anoncvs.
+	* configure, Makeconfig.in: monop data is now arch-independent.
+	* NEWS: Update.
+
+	* NEWS: Update.
+
+1999-08-18  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* fish/fish.6: Update from NetBSD anoncvs.
+
+1999-08-17  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* NEWS: Update.
+
+	* snake/snake/snake.c: Move to use curses.  Other minor fixes.
+	* snake/snake/move.c, snake/snake/snake.h: Remove (incorporated in
+	snake.c).
+	* snake/snake/snake.6.in: Update.
+	* exec.objs: Update.
+	* TODO: Update.
+
+	* snake/snake/snake.c, snake/snake/move.c: Minor fixes from
+	OpenBSD.
+
+1999-08-16  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* backgammon/backgammon/main.c, backgammon/teachgammon/teach.c,
+	fortune/datfiles/fortunes2, snake/snake/move.c,
+	snake/snake/snake.h, tetris/screen.c: Update from NetBSD anoncvs.
+
+1999-08-14  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* AUTHORS: Update.
+	* NEWS: Update.
+
+	* wtf/wtf.in: Update from NetBSD anoncvs.
+
+	* wtf/acronyms: Update from NetBSD-current.
+
+1999-08-11  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* worm/worm.c: Update from NetBSD anoncvs.
+
+1999-08-09  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* sail/sync.c: Tweak for NetBSD alignment.
+
+	* monop/monop.def: Tweak for NetBSD alignment.
+
+	* rain/rain.c, worm/worm.c: Update from NetBSD anoncvs.
+
+1999-08-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* fortunes/datfiles/Makefile.bsd,
+	fortune/datfiles/unamerican.fake,
+	fortune/datfiles/unamerican.real, rain/Makefile.bsd, rain/rain.6,
+	rain/rain.c, worms/worms.6, worms/worms.c: Update from NetBSD
+	anoncvs.
+	* fortune/datfiles/Makefrag: Update.
+
+1999-07-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* adventure/hdr.h, adventure/init.c, atc/graphics.c,
+	backgammon/backgammon/main.c, backgammon/common_source/save.c,
+	battlestar/battlestar.6, battlestar/battlestar.c,
+	battlestar/cypher.c, battlestar/extern.h, battlestar/init.c,
+	battlestar/save.c, bcd/bcd.6, bcd/bcd.c, worm/worm.c, wtf/wtf.in:
+	Update from NetBSD anoncvs.
+
+1999-07-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* atc/grammar.y, backgammon/common_source/back.h,
+	backgammon/common_source/fancy.c, backgammon/common_source/subs.c:
+	Update from NetBSD anoncvs of yesterday.
+
+1999-07-27  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* TODO, SECURITY, PACKAGING: Add note on security hardening.
+
+	* phantasia/phantglobs.h: Mark `catchalarm' as noreturn.
+	* sail/extern.h: Mark `play' as noreturn.
+	* snake/snake/snake.h: Mark `mainloop' as noreturn.
+	* tetris/screen.c: Mark `stopset' as noreturn.
+	* trek/trek.h: Mark `lose', `myreset', `play' and `win' as
+	noreturn.
+
+	* bcd/bcd.6: Fix mdoc usage in references.
+
+	* adventure/hdr.h, adventure/init.c: Fix use of linker commons.
+	* battlestar/extern.h, battlestar/globals.c: Likewise.
+	* backgammon/common_source/fancy.c: Likewise.
+	* sail/extern.h, sail/globals.c, sail/player.h, sail/pl_7.c:
+	Likewise.
+	* snake/snake/snake.h, snake/snake/snake.c: Likewise.
+	* tetris/screen.h, tetris/screen.c, tetris/tetris.h,
+	tetris/tetris.c: Likewise.
+	* trek/trek.h, trek/externs.c: Likewise.
+	* TODO: Update.
+
+	* backgammon/common_source/save.c (save): Fix other case of
+	executable save files.
+
+	* atc/graphics.c (getAChar): Be yet more paranoid about EINTR.
+
+	* atc/input.c (delayb, benum): Revert old unsigned char change
+	(NetBSD now casts the subscripts to int).
+
+	* configure: Check for fgetln and getloadavg in case they are
+	added to glibc in future.
+	* include/stdio.h: Update.
+	* include/stdlib.h: Update.
+	* lib/fgetln.c: Update.
+	* lib/getloadavg.c: Update.
+	* Makeconfig.in: Add GETLOADAVG_DEFS and FGETLN_DEFS.
+	* battlestar/Makefrag, dm/Makefrag, quiz/Makefrag: Use them.
+
+1999-07-26  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* battlestar/battlestar.6: Fix mdoc usage (use .Op Ar saved-file
+	instead of .Op saved-file).
+
+	* wtf/wtf.in, wtf/wtf.6.in: Update from NetBSD anoncvs.
+
+1999-07-25  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* atc/grammer.y, atc/graphics.c, atc/input.c, atc/log.c,
+	atc/main.c, atc/update.c, backgammon/teachgammon/ttext1.c: Update
+	from NetBSD anoncvs.
+
+1999-07-24  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* atc/main.c: Change to use getopt.
+
+	* substfiles: Fix error.
+	* backgammon/common_source/init.c: Whitespace alignment with
+	NetBSD.
+
+1999-07-23  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* Makefile.bsd, atc/grammar.y, backgammon/backgammon/main.c,
+	backgammon/teachgammon/teach.c, banner/banner.c,
+	battlestar/battlestar.c, battlestar/com6.c, battlestar/extern.h,
+	bcd/bcd.c, boggle/boggle/bog.c, caesar/caesar.c, trek/computer.c,
+	trek/externs.c, trek/getpar.c, trek/getpar.h, trek/help.c,
+	trek/kill.c, trek/lose.c, trek/out.c, trek/phaser.c, trek/play.c,
+	trek/setup.c, trek/shield.c, trek/srscan.c, trek/systemname.c,
+	trek/trek.h, trek/win.c: Update from NetBSD-current of 1999-07-23.
+	* wtf/wtf.6.in, wtf/wtf.in: New game.
+	* wtf/Makefrag: New file.
+	* configure, substfiles, Makeconfig.in: Update.
+	* wtf/acronyms: Acronym collection from NetBSD.
+	* README, bsd-games.lsm, NEWS: Update.
+
+1999-07-18  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* atc/grammar.y (wdef): Check sp->width instead of sp->height.
+
+	* INSTALL, TODO: Update for egcs/gcc terminology change.
+
+	* adventure/save.c, arithmetic/arithmetic.c, atc/Makefile.bsd,
+	atc/atc.6.in, atc/extern.h, atc/input.c, atc/log.c, atc/main.c,
+	atc/struct.h: Update from NetBSD-current of 1999-07-18.
+
+	* battlestar/save.c, battlestar/extern.h, battlestar/init.c,
+	battlestar/cypher.c: Change saving interface again; new function
+	save_file_name() determines the name under which to save.
+
+	* battlestar/com6.c, battlestar/extern.h: Don't include <time.h>
+	in com6.c, include it instead of <sys/time.h> in extern.h.
+
+1999-07-16  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* adventure/hdr.h, adventure/main.c, adventure/save.c,
+	adventure/setup.c, adventure/wizard.c,
+	backgammon/backgammon/main.c, battlestar/com1.c,
+	battlestar/com2.c, battlestar/com5.c, battlestar/dayfile.c,
+	battlestar/globals.c, battlestar/nightfile.c, boggle/boggle/bog.c,
+	dm/dm.c, fish/fish.c, wump/wump.c: Update from NetBSD-current of
+	1999-07-16 (more of my changes merged back in).
+
+1999-07-15  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* adventure/save.c (restore): Check for errors writing the save
+	file.
+
+1999-07-14  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* boggle/boggle/bog.c (checkdict): Use SEEK_SET with dictseek().
+
+	* atc/atc.6.in: New atc.6 from NetBSD-current of 1999-06-28,
+	parametrised.
+	* substfiles: Include atc/atc.6.
+
+1999-06-30  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* battlestar/fly.c, fish/fish.c, hunt/hunt/otto.c,
+	robots/Makefile.bsd, robots/auto.c, robots/extern.c,
+	robots/main.c, robots/make_level.c, robots/move.c,
+	robots/move_robs.c, robots/robots.6, robots/robots.h,
+	robots/score.c, rogue/Makefile.bsd, sail/player.h, trek/trek.6.in:
+	Update from NetBSD-current of 1999-05-18.
+	* exec.objs: Update.
+	* INSTALL, NEWS: Note score file format change.
+	* robots/auto.c, robots/robots.h, robots/extern.c, robots/score.c:
+	Fix new warnings.
+	* backgammon/common_source/back.h: Mark `norec' and `errexit' as
+	`noreturn'.
+	* hangman/hangman.h: Mark `die' as `noreturn'.
+	* hunt/huntd/hunt.h: Mark `bad_con', `bad_ver', `sigterm' and
+	`sigemt' as `noreturn'.
+	* phantasia/setup.c: Mark `Error' as `noreturn'.
+	* pom/pom.c: Mark `badformat' as `noreturn'.
+	* random/random.c: Mark `usage' as `noreturn'.
+	* rogue/rogue.h: Mark `killed_by' and `win' as `noreturn'.
+
 1999-04-10  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* BUGS: Update.

@@ -1,4 +1,4 @@
-/*	$NetBSD: strfile.c,v 1.8 1998/09/13 15:27:28 hubertf Exp $	*/
+/*	$NetBSD: strfile.c,v 1.13 1999/09/10 00:18:21 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1989, 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1989, 1993\n\
 #if 0
 static char sccsid[] = "@(#)strfile.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: strfile.c,v 1.8 1998/09/13 15:27:28 hubertf Exp $");
+__RCSID("$NetBSD: strfile.c,v 1.13 1999/09/10 00:18:21 jsm Exp $");
 #endif
 #endif /* not lint */
 
@@ -54,7 +54,6 @@ __RCSID("$NetBSD: strfile.c,v 1.8 1998/09/13 15:27:28 hubertf Exp $");
 # include	<sys/param.h>
 # include	<err.h>
 # include	<ctype.h>
-# include	<netinet/in.h>
 # include	<stdio.h>
 # include	<stdlib.h>
 # include	<string.h>
@@ -124,7 +123,7 @@ int	Rflag		= FALSE;	/* randomize order flag */
 int	Xflag		= FALSE;	/* set rotated bit */
 long	Num_pts		= 0;		/* number of pointers/strings */
 
-off_t	*Seekpts;
+u_int64_t	*Seekpts;
 
 FILE	*Sort_1, *Sort_2;		/* pointers for sorting */
 
@@ -158,7 +157,8 @@ main(ac, av)
 {
 	char		*sp, dc;
 	FILE		*inf, *outf;
-	off_t		last_off, length, pos, *p;
+	off_t		last_off, length, pos;
+	u_int64_t	*p;
 	int		first, cnt;
 	char		*nsp;
 	STR		*fp;
@@ -234,22 +234,22 @@ main(ac, av)
 			puts("There was 1 string");
 		else
 			printf("There were %d strings\n", (int)(Num_pts - 1));
-		printf("Longest string: %lu byte%s\n", Tbl.str_longlen,
+		printf("Longest string: %lu byte%s\n", (unsigned long)Tbl.str_longlen,
 		       Tbl.str_longlen == 1 ? "" : "s");
-		printf("Shortest string: %lu byte%s\n", Tbl.str_shortlen,
+		printf("Shortest string: %lu byte%s\n", (unsigned long)Tbl.str_shortlen,
 		       Tbl.str_shortlen == 1 ? "" : "s");
 	}
 
 	(void) fseek(outf, (off_t) 0, SEEK_SET);
-	Tbl.str_version = htonl(Tbl.str_version);
-	Tbl.str_numstr = htonl(Num_pts - 1);
-	Tbl.str_longlen = htonl(Tbl.str_longlen);
-	Tbl.str_shortlen = htonl(Tbl.str_shortlen);
-	Tbl.str_flags = htonl(Tbl.str_flags);
+	HTOBE32(Tbl.str_version);
+	Tbl.str_numstr = htobe32(Num_pts - 1);
+	HTOBE32(Tbl.str_longlen);
+	HTOBE32(Tbl.str_shortlen);
+	HTOBE32(Tbl.str_flags);
 	(void) fwrite((char *) &Tbl, sizeof Tbl, 1, outf);
 	if (STORING_PTRS) {
 		for (p = Seekpts, cnt = Num_pts; cnt--; ++p)
-			*p = htonl(*p);
+			HTOBE64(*p);
 		(void) fwrite((char *) Seekpts, sizeof *Seekpts, (int) Num_pts, outf);
 	}
 	fflush(outf);
@@ -331,10 +331,10 @@ add_offset(fp, off)
 	FILE	*fp;
 	off_t	off;
 {
-	off_t net;
+	u_int64_t net;
 
 	if (!STORING_PTRS) {
-		net = htonl(off);
+		net = htobe64(off);
 		fwrite(&net, 1, sizeof net, fp);
 	} else {
 		ALLOC(Seekpts, Num_pts + 1);
@@ -351,7 +351,7 @@ void
 do_order()
 {
 	int	i;
-	off_t	*lp;
+	u_int64_t	*lp;
 	STR	*fp;
 
 	Sort_1 = fopen(Infile, "r");
@@ -453,7 +453,7 @@ randomize()
 {
 	int	cnt, i;
 	off_t	tmp;
-	off_t	*sp;
+	u_int64_t	*sp;
 
 	srandom((int)(time((time_t *) NULL) + getpid()));
 

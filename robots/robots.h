@@ -1,4 +1,4 @@
-/*	$NetBSD: robots.h,v 1.8 1998/09/13 15:27:29 hubertf Exp $	*/
+/*	$NetBSD: robots.h,v 1.12 1999/09/12 09:02:22 jsm Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -41,6 +41,7 @@
 # include	<err.h>
 # include	<errno.h>
 # include	<fcntl.h>
+# include	<netinet/in.h>
 # include	<pwd.h>
 # include	<setjmp.h>
 # include	<signal.h>
@@ -87,9 +88,11 @@ typedef struct {
 } COORD;
 
 typedef struct {
-	int	s_uid;
-	int	s_score;
-	char	s_name[MAXNAME];
+	u_int32_t	s_uid;
+	u_int32_t	s_score;
+	u_int32_t	s_auto;
+	u_int32_t	s_level;
+	char		s_name[MAXNAME];
 } SCORE;
 
 typedef struct passwd	PASSWD;
@@ -99,7 +102,7 @@ typedef struct passwd	PASSWD;
  */
 
 extern bool	Dead, Full_clear, Jump, Newscore, Real_time, Running,
-		Teleport, Waiting, Was_bonus;
+		Teleport, Waiting, Was_bonus, Auto_bot;
 
 #ifdef	FANCY
 extern bool	Pattern_roll, Stand_still;
@@ -108,10 +111,12 @@ extern bool	Pattern_roll, Stand_still;
 extern char	Cnt_move, Field[Y_FIELDSIZE][X_FIELDSIZE], Run_ch;
 extern const char *Next_move, *Move_list;
 
-extern int	Count, Level, Num_robots, Num_scores, Score,
-		Start_level, Wait_bonus;
+extern int	Count, Level, Num_robots, Num_scrap, Num_scores,
+		Start_level, Wait_bonus, Num_games;
 
-extern COORD	Max, Min, My_pos, Robots[];
+extern u_int32_t	Score;
+
+extern COORD	Max, Min, My_pos, Robots[], Scrap[];
 
 extern jmp_buf	End_move;
 
@@ -141,3 +146,4 @@ void	score __P((int));
 void	set_name __P((SCORE *));
 void	show_score __P((void));
 int	sign __P((int));
+char	automove __P((void));
