@@ -1,5 +1,7 @@
 2001-08-29  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* phantasia/Makefrag: Fix typo.
+
 	* arithmetic/arithmetic.6, atc/atc.6.in, atc/list.c,
 	backgammon/backgammon/backgammon.6,
 	backgammon/teachgammon/teach.c, battlestar/battlestar.6,

@@ -29,7 +29,7 @@
 phantasia_DIRS := $(GAMESDIR) $(MAN6DIR) $(PHANTASIA_DIR)
 phantasia_VFILES1 := gold lastdead mess monsters motd void
 phantasia_VFILES2 := scoreboard characs
-phantasia_CLEANFILES := $(phantasia_VFILES2) $(phantasia_VFILES2)
+phantasia_CLEANFILES := $(phantasia_VFILES1) $(phantasia_VFILES2)
 
 phantasia_all:	phantasia/phantasia phantasia/phantasia.6 phantasia_scorefiles
 
