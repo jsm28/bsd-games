@@ -52,7 +52,8 @@ wearit()
 
 	firstnumber = wordnumber;
 	while (wordtype[++wordnumber] == ADJS);
-	while (wordnumber <= wordcount) {
+	while (wordnumber <= wordcount && (wordtype[wordnumber] == OBJECT ||
+	    wordtype[wordnumber] == NOUNS) && wordvalue[wordnumber] != DOOR) {
 		value = wordvalue[wordnumber];
 		for (n = 0; objsht[value][n]; n++);
 		switch (value) {

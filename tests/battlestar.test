@@ -116,3 +116,23 @@ testno 15
 battlestar/battlestar </dev/null >test.out 2>&1 || failtest
 compare test.out tests/battlestar.out15
 rm -f test.out
+
+testno 16
+battlestar/battlestar <tests/battlestar.in16 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out16
+rm -f test.out
+
+testno 17
+battlestar/battlestar <tests/battlestar.in17 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out17
+rm -f test.out
+
+testno 18
+battlestar/battlestar <tests/battlestar.in18 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out18
+rm -f test.out
+
+testno 19
+battlestar/battlestar <tests/battlestar.in19 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out19
+rm -f test.out

@@ -1,5 +1,15 @@
 2000-09-21  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com2.c (wearit): Partly from OpenBSD: don't try to
+	wear anything that isn't OBJECT or NOUNS, and don't try to wear
+	DOOR.  Fixes with a different patch a bug report from Peter
+	Maydell <pmaydell@chiark.greenend.org.uk>.
+	* tests/battlestar.in16, tests/battlestar.out16,
+	tests/battlestar.in17, tests/battlestar.out17,
+	tests/battlestar.in18, tests/battlestar.out18,
+	tests/battlestar.in19, tests/battlestar.out19: New tests.
+	* tests/battlestar.test: Update.
+
 	* battlestar/com2.c (murder): From OpenBSD: shoot with laser if no
 	hand-to-hand weapon available.
 
