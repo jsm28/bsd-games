@@ -84,7 +84,7 @@ to stdout.
 accesses a dictionary file, a dictionary index file, and a helpfile.
 Locations are system dependent.  In this configuration, the files are
 located in the
-.I @sharedir@/bog
+.I @bog_dir@
 directory.
 The dictionary file must have been created by
 .I mkdict

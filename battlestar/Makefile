@@ -4,8 +4,6 @@ include ../Makeconfig
 
 PROG = battlestar
 
-SCOREFILE = $(VARLIBDIR)/battlestar.log
-
 SRCS=	battlestar.c com1.c com2.c com3.c com4.c com5.c com6.c com7.c \
 	init.c cypher.c getcom.c parse.c room.c save.c fly.c misc.c \
 	globals.c dayfile.c nightfile.c dayobjs.c nightobjs.c words.c
@@ -17,7 +15,7 @@ LIBS = $(NCURSES_LIB) $(BSD_LIB)
 
 INCS = $(BSD_INCS) $(NCURSES_INCS)
 
-DEFS = $(BSD_DEFS) -D_PATH_SCORE=\"$(SCOREFILE)\"
+DEFS = $(BSD_DEFS) -D_PATH_SCORE=\"$(BATTLESTAR_SCOREFILE)\"
 
 all:	$(PROG)
 
@@ -35,9 +33,7 @@ install:	$(PROG)
 	$(INSTALL_SCORE_GAME) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
 	$(HIDE_GAME) $(PROG)
 	$(INSTALL_MANUAL) $(PROG).6
-	touch $(INSTALL_PREFIX)$(SCOREFILE)
-	$(INSTALL_SCORE_FILE2) $(INSTALL_PREFIX)$(SCOREFILE)
-	$(INSTALL_SCORE_FILE3) $(INSTALL_PREFIX)$(SCOREFILE)
+	$(INSTALL_SCORE_FILE) $(BATTLESTAR_SCOREFILE)
 
 clean:
 	rm -f $(PROG) core *.o

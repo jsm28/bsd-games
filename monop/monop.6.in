@@ -183,6 +183,6 @@ it is the same as typing
 .SH AUTHOR
 Ken Arnold
 .SH FILES
-@usrlibdir@/monop-cards.pck	Chance and Community Chest cards
+@monop_cardsfile@	Chance and Community Chest cards
 .SH BUGS
 No command can be given an argument instead of a response to a query.

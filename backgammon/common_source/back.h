@@ -64,7 +64,7 @@ extern int	pnum;		/* color of player:
 					 1 = red
 					 0 = both
 					 2 = not yet init'ed */
-char	args[100];		/* args passed to teachgammon and back */
+extern char	args[100];	/* args passed to teachgammon and back */
 extern int	acnt;		/* length of args */
 extern int	aflag;		/* flag to ask for rules or instructions */
 extern int	bflag;		/* flag for automatic board printing */

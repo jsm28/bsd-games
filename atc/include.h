@@ -1,6 +1,8 @@
+/*	$NetBSD: include.h,v 1.5 1995/04/27 21:22:23 mycroft Exp $	*/
+
 /*-
- * Copyright (c) 1990 The Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1990, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * This code is derived from software contributed to Berkeley by
  * Ed James.
@@ -33,7 +35,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- *	@(#)include.h	5.3 (Berkeley) 4/30/90
+ *	@(#)include.h	8.1 (Berkeley) 5/31/93
  */
 
 /*
@@ -46,12 +48,14 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
 #include <sys/types.h>
 #include <pwd.h>
+#include <termios.h>
 
 #ifdef BSD
-#include <sgtty.h>
 #include <sys/time.h>
 #include <sys/file.h>
 #endif
@@ -59,7 +63,6 @@
 #ifdef SYSV
 #include <fcntl.h>
 #include <unistd.h>
-#include <string.h>
 #include <sys/utsname.h>
 #endif
 
@@ -75,9 +78,6 @@
 #define	bzero(a,b)	memset((a), '\0', (b))
 #define	srandom	srand
 #define	random	rand
-#define	sgttyb	termio
-#define	sg_erase c_cc[2]
-#define	sg_kill c_cc[3]
 #endif
 
 #include "def.h"

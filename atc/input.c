@@ -1,6 +1,8 @@
+/*	$NetBSD: input.c,v 1.5 1997/01/13 06:50:25 tls Exp $	*/
+
 /*-
- * Copyright (c) 1990 The Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1990, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * This code is derived from software contributed to Berkeley by
  * Ed James.
@@ -44,7 +46,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)input.c	5.4 (Berkeley) 4/30/90";
+#if 0
+static char sccsid[] = "@(#)input.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: input.c,v 1.5 1997/01/13 06:50:25 tls Exp $";
+#endif
 #endif not lint
 
 #include "include.h"
@@ -247,10 +253,10 @@ getcommand()
 
 	do {
 		c = gettoken();
-		if (c == tty_new.sg_erase) {
+		if (c == tty_new.c_cc[VERASE]) {
 			if (pop() < 0)
 				noise();
-		} else if (c == tty_new.sg_kill) {
+		} else if (c == tty_new.c_cc[VKILL]) {
 			while (pop() >= 0)
 				;
 		} else {
@@ -341,8 +347,8 @@ gettoken()
 			}
 
 			wait(0);
+			tcsetattr(fileno(stdin), TCSADRAIN, &tty_new);
 #ifdef BSD
-			ioctl(fileno(stdin), TIOCSETP, &tty_new);
 			itv.it_value.tv_sec = 0;
 			itv.it_value.tv_usec = 1;
 			itv.it_interval.tv_sec = sp->update_secs;
@@ -350,7 +356,6 @@ gettoken()
 			setitimer(ITIMER_REAL, &itv, NULL);
 #endif
 #ifdef SYSV
-			ioctl(fileno(stdin), TCSETAW, &tty_new);
 			alarm(aval);
 #endif
 		}
@@ -373,7 +378,7 @@ setplane(c)
 	pp = findplane(number(c));
 	if (pp == NULL)
 		return ("Unknown Plane");
-	bcopy(pp, &p, sizeof (p));
+	memcpy(&p, pp, sizeof (p));
 	p.delayd = 0;
 	return (NULL);
 }

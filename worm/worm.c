@@ -125,6 +125,8 @@ main(argc, argv)
 		}
 		else
 		{
+		    wmove(tv, head->y, head->x);
+		    wrefresh(tv);
 		    fflush(stdout);
 		    if (read(0, &ch, 1) >= 0)
 			process(ch);

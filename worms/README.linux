@@ -1,8 +1,0 @@
-8/11/93
-
-As usual the Makefiles were done completely from scratch.  The original
-is in Makefile.orig.  Other than that, the source should still compile
-under bsd.
-
-Curt Olson
-curt@sledge.mn.org

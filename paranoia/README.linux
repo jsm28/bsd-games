@@ -1,9 +1,0 @@
-8/25/93
-
-As usual the Makefiles were done completely from scratch.
-
-Note:  we currently do not have a man page for this program.  The program
-is designed to not need a man page.  Run it and see!
-
-Curt Olson
-curt@sledge.mn.org

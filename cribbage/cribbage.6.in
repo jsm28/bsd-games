@@ -125,9 +125,9 @@ desired to discard the king of diamonds, any of the following could be typed:
 .ta 2i
 @gamesdir@/cribbage
 .br
-@varlibdir@/criblog
+@cribbage_scorefile@
 .br
-@sharedir@/cribbage.instr
+@cribbage_instrfile@
 .SH AUTHORS
 Earl T. Cohen wrote the logic.
 Ken Arnold added the screen oriented interface.

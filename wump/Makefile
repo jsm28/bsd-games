@@ -4,14 +4,11 @@ include ../Makeconfig
 
 PROG = wump
 
-WUMPINFOFILE = $(SHAREDIR)/wump.info
-PAGERFILE    = /usr/bin/less
-
 LIBS = $(NCURSES_LIB) $(BSD_LIB)
 
 INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -D_PATH_PAGER=\"$(PAGERFILE)\" \
-	-D_PATH_WUMPINFO=\"$(WUMPINFOFILE)\"
+DEFS = $(BSD_DEFS) -D_PATH_PAGER=\"$(PAGER)\" \
+	-D_PATH_WUMPINFO=\"$(WUMP_INFOFILE)\"
 
 all:	$(PROG)
 
@@ -21,7 +18,7 @@ $(PROG):	$(PROG).c pathnames.h
 install:	$(PROG)
 	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
 	$(HIDE_GAME) $(PROG)
-	$(INSTALL_DATA) wump.info $(INSTALL_PREFIX)$(WUMPINFOFILE)
+	$(INSTALL_DATA) wump.info $(INSTALL_PREFIX)$(WUMP_INFOFILE)
 	$(INSTALL_MANUAL) $(PROG).6
 
 clean:

@@ -2,13 +2,11 @@
 
 include ../../Makeconfig
 
-RULES      = \"$(SHAREDIR)/backrules\"
-
 EXEC_PATH  = \"$(GAMESDIR)/backgammon\"
 TEACH_PATH = \"$(GAMESDIR)/teachgammon\"
 
 INCS = $(BSD_INCS)
-DEFS = $(BSD_DEFS) -DRULES=$(RULES) -DEXEC_PATH=$(EXEC_PATH) \
+DEFS = $(BSD_DEFS) -DRULES=$(BACKGAMMON_RULES) -DEXEC_PATH=$(EXEC_PATH) \
 	-DTEACH_PATH=$(TEACH_PATH)
 
 OBJS = allow.o board.o check.o fancy.o init.o odds.o one.o save.o \

@@ -1,4 +1,96 @@
+Sat May  3 00:27:49 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* Version 1.3.2beta.
+
+	* NEWS: Update.
+
+	* TODO: Update.
+
+	* Makefile.orig, Makefile.inc.orig: Update from NetBSD-current of
+	1997-04-26.
+
+	* Makefile (distclean): Remove install-score.
+
+Fri May  2 13:23:28 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* atc/*: Update from NetBSD-current of 1997-04-26.
+
+	* arithmetic/*: Update from NetBSD-current of 1997-04-26.
+
+	* worm/worm.c (main): Place cursor on head of worm.
+
+	* snake/snake/snake.c (mainloop): Place cursor on you, not one
+	cell to the left and above.
+
+	* backgammon/common_source/init.c,
+	backgammon/common_source/back.h: Initialise args to start with
+	'-'.
+
+	* bsd-games-non-free.lsm: New file - LSM entry for
+	bsd-games-non-free.
+
+	* bsd-games.lsm: Update.
+
+	* INSTALL: Update.
+
+	* README.linux: Rename to README.
+	* README: Update.
+
+	* README.non-free: New file - README for non-free distribution.
+
+	* fortune/README.linux: Update.
+
+	* bog/README.linux: Update.
+
 Thu May  1 00:45:58 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* atc/Makefile, battlestar/Makefile, canfield/canfield/Makefile,
+	cribbage/Makefile, robots/Makefile, sail/Makefile,
+	snake/snake/Makefile, tetris/Makefile: Use INSTALL_SCORE_FILE.
+
+	* tetris/Makefile (install): Use INSTALL_SCORE_GAME.
+
+	* configure, Makeconfig.in: Update for this.
+
+	* install-score.in: New file - install a score file.
+
+	* TODO: Update.
+
+	* INSTALL: Update.
+
+	* README.linux: Update.
+
+	* arithmetic/README.linux, atc/README.linux,
+	battlestar/README.linux, bcd/README.linux, caesar/README.linux,
+	canfield/README.linux, cribbage/README.linux, factor/README.linux,
+	fish/README.linux, hangman/README.linux, mille/README.linux,
+	monop/README.linux, morse/README.linux, number/README.linux,
+	paranoia/README.linux, pom/README.linux, ppt/README.linux,
+	primes/README.linux, rain/README.linux, robots/README.linux,
+	sail/README.linux, snake/README.linux, trek/README.linux,
+	wargames/README.linux, worm/README.linux, worms/README.linux,
+	wump/README.linux: Remove.
+
+	* fortune/fortune/Makefile: Remove unused definition.
+
+	* configure, Makeconfig.in, atc/Makefile, backgammon/Makefile,
+	backgammon/backgammon/Makefile, backgammon/common_source/Makefile,
+	backgammon/teachgammon/Makefile, battlestar/Makefile,
+	bog/Makefile, bog/bog.6.in, canfield/Makefile,
+	canfield/canfield/Makefile, canfield/cfscores/Makefile,
+	canfield/canfield/canfield.6.in, cribbage/Makefile,
+	cribbage/cribbage.6.in, fish/Makefile, hangman/Makefile,
+	hangman/hangman.6.in, monop/Makefile, monop/monop.6.in,
+	robots/Makefile, robots/robots.6.in, sail/Makefile,
+	snake/Makefile, snake/snake/Makefile, snake/snake/snake.6.in,
+	snake/snscore/Makefile, tetris/Makefile, tetris/tetris.6.in,
+	wump/Makefile: Configure paths for data files for individual games
+	with configure script.
+
+	* configure: Find default list of games to build from what
+	directories are present.
+
+	* Version 1.3.1beta privately distributed for comments.
 
 	* NEWS: New file - summary of changes.
 
@@ -55,7 +147,7 @@ Tue Apr 29 10:37:00 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* Makefile (distclean): Delete all substituted-in manpages.
 
 	* fortune/fortune/Makefile, fortune/datfiles/Makefile: Fortunes go
- 	under $(LIBDIR), not $(SHAREDIR).
+	under $(LIBDIR), not $(SHAREDIR).
 
 	* TODO: Update.
 
@@ -137,7 +229,7 @@ Mon Apr 28 12:22:57 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	dependencies.
 
 	* snake/snscore/snscore.c (main): Initialise noplayers; check for
- 	empty scorefile (from Debian).
+	empty scorefile (from Debian).
 
 	* snake/snscore/snscore.c (MAXPLAYERS): Increase to 65534 (from
 	Debian).
@@ -175,12 +267,12 @@ Sun Apr 27 00:02:40 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	dependencies.
 
 	* robots/init_field.c (init_field), robots/move.c (get_move):
- 	Don't call flushok.
+	Don't call flushok.
 
 	* robots/main.c (quit): Condition out bit using CE (from Debian).
 
 	* robots/robots.h, robots/move.c: Use character constants as
- 	argument to CTRL macro.
+	argument to CTRL macro.
 
 	* robots/robots.6: Rename to robots.6.in.
 	* robots/robots.6.in: Parametrise.
@@ -246,7 +338,7 @@ Sun Apr 27 00:02:40 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	dependencies.
 
 	* hangman/Makefile, hunt/Makefile, mille/Makefile: Add use of
- 	$(HIDE_GAME).
+	$(HIDE_GAME).
 
 	* monop/monop.6: Rename to monop.6.in.
 	* monop/monop.6.in: Parametrise.
@@ -257,7 +349,7 @@ Sat Apr 26 19:10:52 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* mille/README.linux: Update.
 
 	* mille/init.c (newscore): Add force_counter hack from Debian to
- 	fix problem with ncurses's addch not returning ERR at EOL.
+	fix problem with ncurses's addch not returning ERR at EOL.
 
 	* mille/unctrl.h: Do nothing if NCURSES_VERSION is defined.
 
@@ -348,10 +440,10 @@ Wed Apr 23 00:03:24 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* cribbage/README.linux: Update.
 
 	* cribbage/crib.c, cribbage/extern.c, cribbage/io.c,
- 	cribbage/support.c: Change conditional inclusion of ncurses.h or
- 	curses.h to unconditional inclusion of curses.h (ncurses provides
- 	curses.h in the appropriate directory, used with -I if needed, but
- 	ncurses.h is non-standard).
+	cribbage/support.c: Change conditional inclusion of ncurses.h or
+	curses.h to unconditional inclusion of curses.h (ncurses provides
+	curses.h in the appropriate directory, used with -I if needed, but
+	ncurses.h is non-standard).
 
 	* cribbage/instr.c (instructions): Change `pstat' to an int; use
 	WEXITSTATUS macro (from Debian).
@@ -396,8 +488,8 @@ Tue Apr 22 00:08:42 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* configure: Substitute in this file.
 
 	* arithmetic/Makefile, atc/Makefile,
- 	backgammon/backgammon/Makefile, backgammon/teachgammon/Makefile,
- 	bcd/Makefile: Use $(HIDE_GAME).
+	backgammon/backgammon/Makefile, backgammon/teachgammon/Makefile,
+	bcd/Makefile: Use $(HIDE_GAME).
 
 	* hide-game.in: Use `set -e'.
 
@@ -406,9 +498,9 @@ Tue Apr 22 00:08:42 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* Makeconfig.in (INSTALL_DM): Provide macro for this.
 
 	* arithmetic/Makefile, atc/Makefile,
- 	backgammon/backgammon/Makefile, backgammon/common_source/Makefile,
- 	backgammon/teachgammon/Makefile, battlestar/Makefile,
- 	bcd/Makefile: Use LDFLAGS in link.
+	backgammon/backgammon/Makefile, backgammon/common_source/Makefile,
+	backgammon/teachgammon/Makefile, battlestar/Makefile,
+	bcd/Makefile: Use LDFLAGS in link.
 
 	* bcd/README.linux: Update.
 
@@ -445,13 +537,13 @@ Tue Apr 22 00:08:42 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	segfault from `shoot all' without a laser.
 
 	* battlestar/com2.c (use): Set notes[CANTSEE] to 0 when moving
- 	into the light.
+	into the light.
 
 	* battlestar/battlestar.c: Change exit() to exit(1) in default
 	case that shouldn't occur.
 
 	* battlestar/externs.h: Mark as `extern' variables initialised
- 	somewhere.
+	somewhere.
 
 	* battlestar/fly.c: Change <bsd/signal.h> to <signal.h>.
 
@@ -474,10 +566,10 @@ Sat Apr 19 20:06:08 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
 	NULL (from Debian).
 
 	* backgammon/backgammon/main.c, backgammon/backgammon/move.c,
- 	backgammon/backgammon/text.c, backgammon/commmon_source/back.h,
- 	backgammon/common_source/board.c, backgammon/teachgammon/teach.c,
- 	backgammon/teachgammon/ttext1.c, backgammon/teachgammon/ttext2.c:
- 	Change `raw' to `bg_raw', and `remove' to `removetxt' (from
+	backgammon/backgammon/text.c, backgammon/commmon_source/back.h,
+	backgammon/common_source/board.c, backgammon/teachgammon/teach.c,
+	backgammon/teachgammon/ttext1.c, backgammon/teachgammon/ttext2.c:
+	Change `raw' to `bg_raw', and `remove' to `removetxt' (from
 	Debian).
 
 	* backgammon/teachgammon/teach.c: Mark variables as `extern'.
@@ -574,7 +666,7 @@ Wed Apr 16 21:31:18 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
 	* bsd-games.lsm: New file - new-style LSM entry.
 
 	* configure, Makeconfig.in, hide-game.in: New files - beginnings
- 	of a configuration system.
+	of a configuration system.
 
 	* CHANGELOG: Rename to ChangeLog.0.
 	* ChangeLog: New file.

@@ -1,6 +1,8 @@
+/*	$NetBSD: extern.h,v 1.4 1995/04/27 21:22:22 mycroft Exp $	*/
+
 /*-
- * Copyright (c) 1990 The Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1990, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * This code is derived from software contributed to Berkeley by
  * Ed James.
@@ -33,7 +35,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- *	@(#)extern.h	5.4 (Berkeley) 10/30/90
+ *	@(#)extern.h	8.1 (Berkeley) 5/31/93
  */
 
 /*
@@ -55,7 +57,7 @@ extern C_SCREEN		screen, *sp;
 
 extern LIST		air, ground;
 
-extern struct sgttyb	tty_start, tty_new;
+extern struct termios	tty_start, tty_new;
 
 extern DISPLACEMENT	displacement[MAXDIR];
 

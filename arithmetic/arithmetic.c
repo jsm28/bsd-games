@@ -1,6 +1,8 @@
+/*	$NetBSD: arithmetic.c,v 1.6 1996/03/21 18:30:19 jtc Exp $	*/
+
 /*
- * Copyright (c) 1989 The Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1989, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * This code is derived from software contributed to Berkeley by
  * Eamonn McManus of Trinity College Dublin.
@@ -35,13 +37,17 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1989 The Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1989, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)arithmetic.c	5.5 (Berkeley) 2/27/91";
+#if 0
+static char sccsid[] = "@(#)arithmetic.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: arithmetic.c,v 1.6 1996/03/21 18:30:19 jtc Exp $";
+#endif
 #endif /* not lint */
 
 /*
@@ -73,14 +79,11 @@ static char sccsid[] = "@(#)arithmetic.c	5.5 (Berkeley) 2/27/91";
  */
 
 #include <sys/types.h>
-#include <sys/signal.h>
+#include <signal.h>
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
-
-#ifdef linux
 #include <time.h>
-#endif
 
 char keylist[] = "+-x/";
 char defaultkeys[] = "+-";
@@ -98,7 +101,7 @@ time_t qtime;
  * bound is 10.  After every NQUESTS questions, statistics on the performance
  * so far are printed.
  */
-void
+int
 main(argc, argv)
 	int argc;
 	char **argv;
@@ -106,9 +109,6 @@ main(argc, argv)
 	extern char *optarg;
 	extern int optind;
 	int ch, cnt;
-#ifndef linux
-	time_t time();
-#endif
 	void intr();
 
 	while ((ch = getopt(argc, argv, "r:o:")) != EOF)

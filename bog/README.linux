@@ -1,11 +1,10 @@
-9/23/93
+1997-05-02
 
 I grabbed this game from comp.sources.games/volume4.  The original Makefile 
 is in Makefile.orig.  
 
-As usual, set the BOGDIR in the Makefile.  If you change this,
-remember to update bog.6 as well.  If you wish to use a different
-dictionary, you can set DICTSRC in the Makefile as well.
+If you wish to use a different dictionary, you can set DICTSRC in the
+Makefile.
 
 Define PURE in the DEFS if you desire "pure/original" BSD behavior.  Not
 defining this will allow certain Linux "improvements" to be compiled in.

@@ -2,9 +2,7 @@
 
 include ../../Makeconfig
 
-SCOREFILE = $(VARLIBDIR)/cfscores
-
-DEFS = -D_PATH_SCORE=\"$(SCOREFILE)\" $(BSD_DEFS)
+DEFS = -D_PATH_SCORE=\"$(CANFIELD_SCOREFILE)\" $(BSD_DEFS)
 INCS= -I../canfield $(BSD_INCS) $(NCURSES_INCS)
 
 all:	cfscores

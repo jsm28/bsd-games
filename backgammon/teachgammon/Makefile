@@ -2,10 +2,8 @@
 
 include ../../Makeconfig
 
-RULES = \"$(SHAREDIR)/backrules\"
-
 INCS = -I../common_source $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -DV7 -DRULES=$(RULES)
+DEFS = $(BSD_DEFS) -DV7 -DRULES=$(BACKGAMMON_RULES)
 LIBS = $(NCURSES_LIB) $(BSD_LIB)
 
 OBJS= data.o teach.o ttext1.o ttext2.o tutor.o

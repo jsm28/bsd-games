@@ -2,15 +2,13 @@
 
 include ../Makeconfig
 
-RULES = \"$(SHAREDIR)/backrules\"
-
 all:	backgammon/backgammon teachgammon/teachgammon
 
 backgammon/backgammon:
 	@set -e; for i in common_source backgammon; do \
 	    echo "Making all in $$i"; \
 	    cd $$i; \
-	    make all RULES=$(RULES); \
+	    make all; \
 	    cd ..; \
 	done
 
@@ -18,7 +16,7 @@ teachgammon/teachgammon:
 	@set -e; for i in common_source teachgammon; do \
 	    echo "Making all in $$i"; \
 	    cd $$i; \
-	    make all RULES=$(RULES); \
+	    make all; \
 	    cd ..; \
 	done
 
@@ -26,7 +24,7 @@ install:
 	@set -e; for i in backgammon teachgammon; do \
 	    echo "Making install in $$i"; \
 	    cd $$i; \
-	    make install RULES=$(RULES); \
+	    make install; \
 	    cd ..; \
 	done
 

@@ -1,6 +1,8 @@
+/*	$NetBSD: update.c,v 1.5 1997/01/13 06:50:27 tls Exp $	*/
+
 /*-
- * Copyright (c) 1990 The Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1990, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * This code is derived from software contributed to Berkeley by
  * Ed James.
@@ -44,7 +46,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)update.c	5.5 (Berkeley) 10/30/90";
+#if 0
+static char sccsid[] = "@(#)update.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: update.c,v 1.5 1997/01/13 06:50:27 tls Exp $";
+#endif
 #endif not lint
 
 #include "include.h"
@@ -54,9 +60,6 @@ update()
 	int	i, dir_diff, mask, unclean;
 	PLANE	*pp, *p1, *p2, *p;
 
-#ifdef BSD
-	mask = sigblock(sigmask(SIGINT));
-#endif
 #ifdef SYSV
 	alarm(0);
 	signal(SIGALRM, update);
@@ -211,9 +214,6 @@ update()
 	if ((rand() % sp->newplane_time) == 0)
 		addplane();
 
-#ifdef BSD
-	sigsetmask(mask);
-#endif
 #ifdef SYSV
 	alarm(sp->update_secs);
 #endif
@@ -304,7 +304,7 @@ addplane()
 	PLANE	p, *pp, *p1;
 	int	i, num_starts, close, rnd, rnd2, pnum;
 
-	bzero(&p, sizeof (p));
+	memset(&p, 0, sizeof (p));
 
 	p.status = S_MARKED;
 	p.plane_type = random() % 2;
@@ -359,7 +359,7 @@ addplane()
 	p.plane_no = pnum;
 
 	pp = newplane();
-	bcopy(&p, pp, sizeof (p));
+	memcpy(pp, &p, sizeof (p));
 
 	if (pp->orig_type == T_AIRPORT)
 		append(&ground, pp);

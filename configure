@@ -71,12 +71,29 @@ building_in () {
     echo "$build_dirs" |grep -w "$1" >/dev/null
 }
 
+game_ask () {
+    game="$1"
+    if building_in "$game"; then
+	ask "$2" "$3" "$4"
+    fi
+}
+
 echo "For normal usage the installation prefix will be empty.  If you wish"
 echo "to install everything in another directory to that in which it will"
 echo "finally be located (so that your packaging system can then move it"
-echo "there) you should name that directory here."
+echo "there) you should name that directory here.  This is most likely to"
+echo "be the case if you are packaging bsd-games for a Linux distribution."
 ask "Installation prefix" install_prefix ''
-ask "Games to build" build_dirs "arithmetic atc backgammon battlestar bcd bog caesar canfield cribbage factor fish fortune gomoku hangman hunt mille monop morse number paranoia pom ppt primes rain robots sail snake tetris trek wargames worm worms wump"
+
+def_build_dirs=
+for file in *; do
+    if [ -d "$file" ]; then
+	def_build_dirs="$def_build_dirs $file"
+    fi
+done
+def_build_dirs=${def_build_dirs## }
+
+ask "Games to build" build_dirs "$def_build_dirs"
 ask "Games directory" gamesdir /usr/games
 if building_in hunt; then
     echo
@@ -156,12 +173,6 @@ fi
 askperms "Manpage" manpage root root 0644
 askperms "Constant data" constdata root root 0644
 askperms "Variable data" vardata root root 0644 # or 0666?
-if [ $do_chown = y ]; then
-    chown_vardata="chown $vardata_owner:$vardata_group"
-else
-    chown_vardata=:
-fi
-subst_vars="$subst_vars chown_vardata"
 
 use_dot_so=
 while test x$use_dot_so = x; do
@@ -213,6 +224,33 @@ ask "BSD-compat defines" bsd_defs -D_BSD_SOURCE
 ask "Other CFLAGS" other_cflags ''
 ask "Other LDFLAGS" other_ldflags ''
 
+echo
+ask "Pager" pager /usr/bin/less
+
+echo
+echo "You can configure the exact names used for data files by various"
+echo "of the games.  Most probably the defaults are OK."
+game_ask atc "Directory for atc static data" atc_dir "$sharedir/atc"
+game_ask atc "Score file for atc" atc_scorefile "$varlibdir/atc_score"
+# These rules don't exist
+game_ask backgammon "File for backgammon rules" backgammon_rules "$sharedir/backrules"
+game_ask battlestar "Score file for battlestar" battlestar_scorefile "$varlibdir/battlestar.log"
+# Bog has some other configuration
+game_ask bog "Directory for bog static data" bog_dir "$sharedir/bog"
+game_ask canfield "Score file for canfield" canfield_scorefile "$varlibdir/cfscores"
+game_ask cribbage "File for cribbage instructions" cribbage_instrfile "$sharedir/cribbage.instr"
+game_ask cribbage "Score file for cribbage" cribbage_scorefile "$varlibdir/criblog"
+game_ask fish "File for fish instructions" fish_instrfile "$sharedir/fish.instr"
+game_ask hangman "Words file for hangman" hangman_wordsfile "$sharedir/hangman-words"
+# Hunt has some other configuration
+game_ask monop "File for monop cards" monop_cardsfile "$usrlibdir/monop-cards.pck"
+game_ask robots "Score file for robots" robots_scorefile "$varlibdir/robots_roll"
+game_ask sail "Score file for sail" sail_scorefile "$varlibdir/saillog"
+game_ask snake "Score file for snake" snake_scorefile "$varlibdir/snake.log"
+game_ask snake "Raw score file for snake" snake_rawscorefile "$varlibdir/snakerawscores"
+game_ask tetris "Score file for tetris" tetris_scorefile "$varlibdir/tetris.scores"
+game_ask wump "File for wump info" wump_infofile "$sharedir/wump.info"
+
 # Generate simplistic substitution script.
 # This does not allow escapes @s in the substituted file, will fail on
 # newline or % in filenames, etc..  The justification is that proper insertion
@@ -236,8 +274,9 @@ substitute () {
     done
 }
 
-substitute Makeconfig.in install-man.in backgammon/backgammon/backgammon.6.in \
-	bog/bog.6.in canfield/canfield/canfield.6.in cribbage/cribbage.6.in \
+substitute Makeconfig.in install-man.in install-score.in \
+	backgammon/backgammon/backgammon.6.in bog/bog.6.in \
+	canfield/canfield/canfield.6.in cribbage/cribbage.6.in \
 	hangman/hangman.6.in hunt/hunt.6.in hunt/huntd.6.in mille/mille.6.in \
 	monop/monop.6.in robots/robots.6.in snake/snake/snake.6.in \
 	tetris/tetris.6.in trek/trek.6.in

@@ -132,8 +132,8 @@ Advance into the higher levels directly, skipping the lower, easier levels.
 Ken Arnold
 .SH FILES
 .ta
-.ta \w'@varlibdir@/robots_roll\ \ \ \ 'u
-@varlibdir@/robots_roll	the score file
+.ta \w'@robots_scorefile@\ \ \ \ 'u
+@robots_scorefile@	the score file
 .SH BUGS
 Bugs?
 You

@@ -1,6 +1,22 @@
 This file contains a summary of changes in each version after 1.3.
 For fuller details, see ChangeLog and ChangeLog.0.
 
+Version 1.3.2beta
+=================
+
+* Non-free games (bog and paranoia) now distributed separately -
+unpack both source packages together before configuring if you want to
+build them.
+
+* Configuration script improved: now the default list of games to
+build is the list of subdirectories, and you can configure the exact
+paths to score files and data files for individual games using it - so
+they are always correctly substituted in the manpages.
+
+* Bug-fixes in backgammon, snake and worm.
+
+* Arithmetic and atc updated to the versions in NetBSD-current.
+
 Version 1.3.1beta
 =================
 

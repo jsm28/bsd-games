@@ -140,8 +140,8 @@ Scores which are the highest on a given level
 are marked with asterisks
 .Dq * .
 .Sh FILES
-.Bl -tag -width @varlibdir@/tetris.scoresxx
-.It @varlibdir@/tetris.scores
+.Bl -tag -width @tetris_scorefile@xx
+.It @tetris_scorefile@
 high score file
 .El
 .Sh BUGS

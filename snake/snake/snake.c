@@ -180,11 +180,14 @@ char **argv;
 mainloop()
 {
 	int j, k;
+	struct point tmp;
 
 	for (;;) {
 		int c,lastc,match;
 
-		move(&you);
+		tmp.col = you.col + 1;
+		tmp.line = you.line + 1; /* Highlight you, not left & above */
+		move(&tmp);
 		fflush(stdout);
 		if (((c = getchar() & 0177) <= '9') && (c >= '0')) {
 			ungetc(c,stdin);

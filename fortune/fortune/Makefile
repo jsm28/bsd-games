@@ -2,8 +2,6 @@
 
 include ../../Makeconfig
 
-FORTDIR=\"$(DESTDIR)\"
-
 LIBS = $(BSD_LIB)
 INCS = -I../strfile $(BSD_INCS)
 DEFS = $(BSD_DEFS) -DFORTDIR=\"$(LIBDIR)\"

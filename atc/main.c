@@ -1,6 +1,8 @@
+/*	$NetBSD: main.c,v 1.4 1995/04/27 21:22:25 mycroft Exp $	*/
+
 /*-
- * Copyright (c) 1990 The Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1990, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * This code is derived from software contributed to Berkeley by
  * Ed James.
@@ -44,13 +46,17 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1990 The Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1990, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)main.c	5.4 (Berkeley) 3/5/91";
+#if 0
+static char sccsid[] = "@(#)main.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: main.c,v 1.4 1995/04/27 21:22:25 mycroft Exp $";
+#endif
 #endif /* not lint */
 
 #include "include.h"
@@ -64,6 +70,7 @@ main(ac, av)
 	int			f_printpath = 0;
 	char			*file = NULL;
 	char			*name, *ptr;
+	struct sigaction	sa;
 #ifdef BSD
 	struct itimerval	itv;
 #endif
@@ -158,27 +165,21 @@ main(ac, av)
 	signal(SIGHUP, log_score);
 	signal(SIGTERM, log_score);
 
-#ifdef BSD
-	ioctl(fileno(stdin), TIOCGETP, &tty_start);
-	bcopy(&tty_start, &tty_new, sizeof(tty_new));
-	tty_new.sg_flags |= CBREAK;
-	tty_new.sg_flags &= ~ECHO;
-	tty_new.sg_flags |= CRMOD; /* Needed with ncurses 1.9.9g (3.4)
-				      or later */
-	ioctl(fileno(stdin), TIOCSETP, &tty_new);
-#endif
-
-#ifdef SYSV
-	ioctl(fileno(stdin), TCGETA, &tty_start);
-	bcopy(&tty_start, &tty_new, sizeof(tty_new));
-	tty_new.c_lflag &= ~ICANON;
-	tty_new.c_lflag &= ~ECHO;
+	tcgetattr(fileno(stdin), &tty_start);
+	tty_new = tty_start;
+	tty_new.c_lflag &= ~(ICANON|ECHO);
+	tty_new.c_iflag |= ICRNL; /* Needed with ncurses 1.9.9g (3.4)
+				   * or later */
 	tty_new.c_cc[VMIN] = 1;
 	tty_new.c_cc[VTIME] = 0;
-	ioctl(fileno(stdin), TCSETAW, &tty_new);
-#endif
+	tcsetattr(fileno(stdin), TCSADRAIN, &tty_new);
 
-	signal(SIGALRM, update);
+	sa.sa_handler = update;
+	sigemptyset(&sa.sa_mask);
+	sigaddset(&sa.sa_mask, SIGALRM);
+	sigaddset(&sa.sa_mask, SIGINT);
+	sa.sa_flags = 0;
+	sigaction(SIGALRM, &sa, (struct sigaction *)0);
 
 #ifdef BSD
 	itv.it_value.tv_sec = 0;

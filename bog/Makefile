@@ -5,17 +5,15 @@ include ../Makeconfig
 
 PROG   = bog
 
-BOGDIR = $(SHAREDIR)/bog
-
 OBJS   = bog.o help.o mach.o prtable.o timer.o word.o
 #
 # Defining PURE causes this program to be compiled with the default BSD 
 # behavior.  Not defining it will allow any Linux "improvements" to be
 # included.
 #
-DEFS = $(BSD_DEFS) -DDICT=\"$(BOGDIR)/dict\" \
-	-DDICTINDEX=\"$(BOGDIR)/dict.ind\" \
-	-DHELPFILE=\"$(BOGDIR)/helpfile\" # -DPURE
+DEFS = $(BSD_DEFS) -DDICT=\"$(BOG_DIR)/dict\" \
+	-DDICTINDEX=\"$(BOG_DIR)/dict.ind\" \
+	-DHELPFILE=\"$(BOG_DIR)/helpfile\" # -DPURE
 LIBS   = $(NCURSES_LIB) $(BSD_LIB)
 INCS   = $(BSD_INCS) $(NCURSES_INCS)
 
@@ -53,9 +51,9 @@ $(OBJS):	bog.h
 install:	all
 	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
 	$(HIDE_GAME) $(PROG)
-	test -d $(INSTALL_PREFIX)$(BOGDIR) || \
-	    install -d $(INSTALL_PREFIX)$(BOGDIR)
-	$(INSTALL_DATA) dict dict.ind helpfile $(INSTALL_PREFIX)$(BOGDIR)
+	test -d $(INSTALL_PREFIX)$(BOG_DIR) || \
+	    install -d $(INSTALL_PREFIX)$(BOG_DIR)
+	$(INSTALL_DATA) dict dict.ind helpfile $(INSTALL_PREFIX)$(BOG_DIR)
 	$(INSTALL_MANUAL) $(PROG).6
 
 clean:	

@@ -10,11 +10,10 @@ OBJS=	endgame.o extern.o getguess.o getword.o main.o playgame.o \
 	prdata.o prman.o prword.o setup.o
 
 WORDS     = words
-WORDSFILE = $(SHAREDIR)/hangman-$(WORDS)
 
 LIBS = $(NCURSES_LIB) $(BSD_LIB)
 INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -D_PATH_DICT=\"$(WORDSFILE)\"
+DEFS = $(BSD_DEFS) -D_PATH_DICT=\"$(HANGMAN_WORDSFILE)\"
 
 all:	$(PROG)
 
@@ -29,7 +28,7 @@ $(OBJS):	hangman.h pathnames.h
 install:	$(PROG)
 	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
 	$(HIDE_GAME) $(PROG)
-	$(INSTALL_DATA) $(WORDS) $(INSTALL_PREFIX)$(WORDSFILE)
+	$(INSTALL_DATA) $(WORDS) $(INSTALL_PREFIX)$(HANGMAN_WORDSFILE)
 	$(INSTALL_MANUAL) $(PROG).6
 
 clean:

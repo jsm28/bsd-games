@@ -4,9 +4,6 @@ include ../Makeconfig
 
 PROG		= atc
 
-ATCDIR		= $(SHAREDIR)/atc/
-SCOREFILE	= $(VARLIBDIR)/atc_score
-
 YACC		= bison
 YFLAGS		= -d -y
 
@@ -19,11 +16,12 @@ OBJS=	extern.o grammar.o graphics.o input.o lex.o list.o log.o \
 
 LIBS=	-lm $(NCURSES_LIB) $(BSD_LIB) -ll
 
-GAMES=	Game_List Killer crossover default easy game_2
+GAMES = Game_List default easy crossover Killer game_2 Atlantis OHare \
+	Tic-Tac-Toe airports box crosshatch game_3 game_4 novice two-corners
 
 INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -DBSD -D_PATH_GAMES=\"$(ATCDIR)\" \
-	-D_PATH_SCORE=\"$(SCOREFILE)\"
+DEFS = $(BSD_DEFS) -DBSD -D_PATH_GAMES=\"$(ATC_DIR)/\" \
+	-D_PATH_SCORE=\"$(ATC_SCOREFILE)\"
 
 all:	$(PROG)
 
@@ -46,13 +44,11 @@ $(OBJS):	def.h extern.h include.h pathnames.h struct.h tunable.h
 install:	$(PROG)
 	$(INSTALL_SCORE_GAME) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
 	$(HIDE_GAME) $(PROG)
-	test -d $(INSTALL_PREFIX)$(ATCDIR) || \
-	    install -d $(INSTALL_PREFIX)$(ATCDIR)
+	test -d $(INSTALL_PREFIX)$(ATC_DIR) || \
+	    install -d $(INSTALL_PREFIX)$(ATC_DIR)
 	(set -e; cd games; \
-	    $(INSTALL_DATA) $(GAMES) $(INSTALL_PREFIX)$(ATCDIR) )
-	touch $(INSTALL_PREFIX)$(SCOREFILE)
-	$(INSTALL_SCORE_FILE2) $(INSTALL_PREFIX)$(SCOREFILE)
-	$(INSTALL_SCORE_FILE3) $(INSTALL_PREFIX)$(SCOREFILE)
+	    $(INSTALL_DATA) $(GAMES) $(INSTALL_PREFIX)$(ATC_DIR) )
+	$(INSTALL_SCORE_FILE) $(ATC_SCOREFILE)
 	$(INSTALL_MANUAL) $(PROG).6
 
 clean:

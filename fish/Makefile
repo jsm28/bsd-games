@@ -4,10 +4,7 @@ include ../Makeconfig
 
 PROG = fish
 
-INSTRFILE = $(SHAREDIR)/fish.instr
-PAGERFILE = /usr/bin/less
-
-DEFS = -D_PATH_INSTR=\"$(INSTRFILE)\" -D_PATH_MORE=\"$(PAGERFILE)\"
+DEFS = -D_PATH_INSTR=\"$(FISH_INSTRFILE)\" -D_PATH_MORE=\"$(PAGER)\"
 
 all:	$(PROG)
 
@@ -17,7 +14,7 @@ $(PROG):	$(PROG).c pathnames.h
 install:	$(PROG)
 	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
 	$(HIDE_GAME) $(PROG)
-	$(INSTALL_DATA) fish.instr $(INSTALL_PREFIX)$(INSTRFILE)
+	$(INSTALL_DATA) fish.instr $(INSTALL_PREFIX)$(FISH_INSTRFILE)
 	$(INSTALL_MANUAL) $(PROG).6
 
 clean:

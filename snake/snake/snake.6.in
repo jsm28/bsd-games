@@ -99,9 +99,9 @@ To see who wastes time playing snake, run
 .I snscore .
 .SH FILES
 .nf
-.ta \w'@varlibdir@/snakerawscores 'u
-@varlibdir@/snakerawscores	database of personal bests
-@varlibdir@/snake.log	log of games played
+.ta \w'@snake_rawscorefile@ 'u
+@snake_rawscorefile@	database of personal bests
+@snake_scorefile@	log of games played
 .DT
 .fi
 .SH BUGS

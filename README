@@ -1,22 +1,31 @@
-1995-05-01
+1995-05-02
 
-Here is version 1.3.1beta of the bsd-games package, containing ports of 
-your favorite curses-based bsd games (descriptions to follow).
-These games mostly came from ftp.uu.net:/systems/unix/bsd-sources/games 
-with some older versions from the Tahoe release. There's not much to do in
-porting most of them, mostly busy-work. We didn't really try to enhance
-them. Maybe later. We wanted to get out what we thought were the most
-popular games first so we will eventually hopefully have the whole
-bunch done (If you want to help, contact us!).
+Here is the bsd-games package, containing ports of your favorite
+(mostly curses-based) BSD games (descriptions to follow).  These games
+mostly came from ftp.uu.net:/systems/unix/bsd-sources/games with some
+older versions from the Tahoe release.  There's not much to do in
+porting most of them, mostly busy-work.  We didn't really try to
+enhance them.  Maybe later.  We wanted to get out what we thought were
+the most popular games first so we will eventually hopefully have the
+whole bunch done.  (If you want to help, contact me!).
 
 The games should work with ncurses (3.0, 3.4 or 4.0 at least).  They
 may also work with curses/termcap, but this is not tested by me.
 Support for libc 6 will be added in a later release.
 
-You need to configure the package with `./configure'.  In any case,
-you should read the README.linux files for anything you plan to
-install. You can make each package individually or do a make in the
-top level directory to make everything.
+You need to configure the package with `./configure'.  You should read
+any README.linux files for the games you plan to install.  (Some of
+these README.linux files are out of date). You can make each package
+individually or do a make in the top level directory to make
+everything.  The `Makefile.orig' files are the original BSD makefiles.
+
+Two games that were in this package up to version 1.3, bog and
+paranoia, are now distributed separately because of restrictive
+copyrights.  If you want them, get the bsd-games-non-free package,
+which will unpack into a `bsd-games-n.n' directory like this one does,
+and read the README.non-free that it contains.  (These games aren't
+actually from BSD.)  This probably won't be available from tsx-11, but
+may be on sunsite.
 
 Here's what we have so far:
 
@@ -25,7 +34,6 @@ atc:		air traffic control
 backgammon:	backgammon
 battlestar:	adventure game on a battlestar
 bcd:		outputs text in an antique form
-bog:		boggle
 caesar:		reads fortunes from the game fortune, also some internet posts
 canfield:	curses-based solitaire
 cribbage:	cribbage
@@ -39,8 +47,6 @@ mille:		mille borne against the computer
 monop:		monopoly
 morse:		output morse code
 number:		output the English text for a number
-paranoia:	you, the trouble shooter must foil the insidious Christmas plot
-		this isn't a bsd game -- I don't know how it snuck in here.
 pom:		display the phase of the moon
 ppt:		outputs text in another antique form
 primes:		generate primes

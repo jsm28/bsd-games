@@ -4,10 +4,6 @@ include ../Makeconfig
 
 PROG = monop
 
-# This file is arch-dependent (as it involves binary structures that
-# depend on word length/endianness), despite where BSD puts it :-(
-CARDSFILE = $(LIBDIR)/monop-cards.pck
-
 SRCS=	monop.c cards.c execute.c getinp.c houses.c jail.c misc.c morg.c \
 	print.c prop.c rent.c roll.c spec.c trade.c
 OBJS=	monop.o cards.o execute.o getinp.o houses.o jail.o misc.o morg.o \
@@ -15,7 +11,7 @@ OBJS=	monop.o cards.o execute.o getinp.o houses.o jail.o misc.o morg.o \
 
 LIBS = $(BSD_LIB)
 INCS = $(BSD_INCS)
-DEFS = $(BSD_DEFS) -D_PATH_CARDS=\"$(CARDSFILE)\"
+DEFS = $(BSD_DEFS) -D_PATH_CARDS=\"$(MONOP_CARDSFILE)\"
 
 all:	$(PROG) cards.pck
 
@@ -39,7 +35,7 @@ install:	all
 	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
 	$(HIDE_GAME) $(PROG)
 	$(INSTALL_MANUAL) $(PROG).6
-	$(INSTALL_DATA) cards.pck $(INSTALL_PREFIX)$(CARDSFILE)
+	$(INSTALL_DATA) cards.pck $(INSTALL_PREFIX)$(MONOP_CARDSFILE)
 
 clean:
 	rm -f $(PROG) initdeck cards.pck core *.o
