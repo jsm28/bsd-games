@@ -1,22 +1,23 @@
 README for bsd-games
 ====================
 
-This is the bsd-games package for Linux, containing ports of all the
-games from NetBSD-current that are free in the usual (DFSG/OSD) sense
-(i.e. modified and unmodified versions can be freely distributed,
-including for profit).  NetBSD-current contains three other games,
-rogue, hack and larn.  Rogue has a standard BSD licence, but with an
-additional contradictory licence that does not allow for-profit
-distribution; hack's licence permits porting but not gameplay changes;
-larn has no licence at all, only a notice that "Copying for Profit is
-Prohibited".  If you want rogue and hack, get the bsd-games-non-free
-package (which should be on sunsite, but not tsx-11), and read the
-README.non-free that it contains: rogue and hack are being distributed
-separately, and larn not distributed at all in this Linux port, in the
-absence of definite confirmation of what licences really apply to
-rogue and larn.  A game not from NetBSD, paranoia, was in earlier
-versions of bsd-games-non-free (and bsd-games 1.2 and 1.3) but has
-been removed because of the lack of a clear licence.
+This is the bsd-games package for Linux (and GNU Hurd), containing
+ports of all the games from NetBSD-current that are free in the usual
+(DFSG/OSD) sense (i.e. modified and unmodified versions can be freely
+distributed, including for profit).  NetBSD-current contains three
+other games, rogue, hack and larn.  Rogue has a standard BSD licence,
+but with an additional contradictory licence that does not allow
+for-profit distribution; hack's licence permits porting but not
+gameplay changes; larn has no licence at all, only a notice that
+"Copying for Profit is Prohibited".  If you want rogue and hack, get
+the bsd-games-non-free package (which should be on sunsite, but not
+tsx-11), and read the README.non-free that it contains: rogue and hack
+are being distributed separately, and larn not distributed at all in
+this Linux port, in the absence of definite confirmation of what
+licences really apply to rogue and larn.  A game not from NetBSD,
+paranoia, was in earlier versions of bsd-games-non-free (and bsd-games
+1.2 and 1.3) but has been removed because of the lack of a clear
+licence.
 
 The games are mostly not enhanced from the NetBSD versions, but many
 bugs are fixed.

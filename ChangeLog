@@ -1,3 +1,8 @@
+2002-01-20  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* README: Note this collection supports GNU Hurd as well as Linux.
+	* COPYING: Update.
+
 2002-01-19  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* phantasia/fight.c (encounter): Make firsthit and flockcnt
