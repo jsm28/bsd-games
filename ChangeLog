@@ -1,5 +1,8 @@
 2000-09-25  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/extern.h: Add flags OBJ_PERSON and OBJ_NONOBJ.
+	* battlestar/globals.c (objflags): Use them.
+
 	* battlestar/extern.h: Define new macros for handling "a" versus
 	"an" and "is" versus "are" wording issues.
 	* battlestar/globals.c (objflags): Add OBJ_AN flags; reformat.
