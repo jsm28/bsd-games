@@ -312,7 +312,8 @@ cypher()
 					if (testbit(inven, n))
 						printf("\t%s\n", objsht[n]);
 				printf("\n= %d kilogram%s (%d%%)\n", carrying, (carrying == 1 ? "." : "s."), (WEIGHT ? carrying * 100 / WEIGHT : -1));
-				printf("Your arms are %d%% full.\n", encumber * 100 / CUMBER);
+				printf("Your arms are %d%% full.\n",
+				    (CUMBER ? encumber * 100 / CUMBER : -1));
 			} else
 				puts("You aren't carrying anything.");
 

@@ -214,11 +214,17 @@ news()
 				WEIGHT = 0;
 		}
 	if (injuries[ARM] == 2) {
-		CUMBER -= 5;
+		if (CUMBER > 5)
+			CUMBER -= 5;
+		else
+			CUMBER = 0;
 		injuries[ARM]++;
 	}
 	if (injuries[RIBS] == 2) {
-		CUMBER -= 2;
+		if (CUMBER > 2)
+			CUMBER -= 2;
+		else
+			CUMBER = 0;
 		injuries[RIBS]++;
 	}
 	if (injuries[SPINE] == 2) {
