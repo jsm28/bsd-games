@@ -1,8 +1,0 @@
-  This is a very simple, but amusing, adventure game.  It is based on the
-role-playing game "Paranoia".  It requires no instructions, as it is self-
-prompting, and has been written in the simplest C that I could imagine, so
-as to be implementable on almost any system.  This also means that it could
-be translateable to any other language.
-
-  Note that since it uses random functions to simulate dice rolls, it will
-choose its own pathways in some circumstances, unlike many adventure games.
