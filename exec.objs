@@ -102,7 +102,7 @@ pom			pom.o
 ppt			ppt.o
 primes			pattern.o pr_tbl.o primes.o
 quiz			quiz.o rxp.o lib/fgetln.o
-rain			rain.o
+rain			rain.o lib/getprogname.o
 random			random.o
 robots			auto.o extern.o flush_in.o init_field.o main.o \
 	make_level.o move.o move_robs.o play_level.o query.o rnd_pos.o score.o
