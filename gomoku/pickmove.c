@@ -1058,7 +1058,7 @@ updatecombo(cbp, color)
 void
 appendcombo(cbp, color)
 	struct combostr *cbp;
-	int color __attribute__((unused));
+	int color __attribute__((__unused__));
 {
 	struct combostr *pcbp, *ncbp;
 

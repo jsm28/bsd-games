@@ -58,7 +58,7 @@ int main __P((int, char **));
 /*ARGSUSED*/
 int
 main(argc, argv)
-	int argc __attribute__((unused));
+	int argc __attribute__((__unused__));
 	char **argv;
 {
 	char *p;

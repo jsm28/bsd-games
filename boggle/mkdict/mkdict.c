@@ -126,5 +126,8 @@ main(argc, argv)
 		current = !current;
 	}
 	warnx("%d words", nwords);
+	fflush(stdout);
+	if (ferror(stdout))
+		err(1, "writing standard output");
 	exit(0);
 }

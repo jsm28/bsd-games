@@ -354,7 +354,7 @@ pegscore(crd, tbl, n, sum)
 int
 adjust(cb, tnv)
 	const CARD cb[];
-	CARD tnv __attribute__((unused));
+	CARD tnv __attribute__((__unused__));
 {
 	long scr;
 	int i, c0, c1;

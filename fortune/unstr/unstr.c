@@ -92,7 +92,7 @@ void	order_unstr __P((STRFILE *));
 /* ARGSUSED */
 int
 main(ac, av)
-	int	ac __attribute__((unused));
+	int	ac __attribute__((__unused__));
 	char	**av;
 {
 	static STRFILE	tbl;		/* description table */

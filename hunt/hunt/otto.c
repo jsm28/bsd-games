@@ -129,7 +129,7 @@ STATIC	void		wander __P((void));
 
 STATIC SIGNAL_TYPE
 nothing(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 }
 

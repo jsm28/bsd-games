@@ -58,7 +58,7 @@ __RCSID("$NetBSD: update.c,v 1.8 1998/11/10 13:43:31 hubertf Exp $");
 
 void
 update(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	int	i, dir_diff, unclean;
 	PLANE	*pp, *p1, *p2;

@@ -927,7 +927,7 @@ winnings(won)
 
 void
 stop(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	signal(SIGINT, SIG_IGN);
 	ll();

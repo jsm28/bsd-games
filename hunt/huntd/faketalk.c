@@ -53,7 +53,7 @@ SIGNAL_TYPE	exorcise __P((int));
 
 SIGNAL_TYPE
 exorcise(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	(void) wait(0);
 }

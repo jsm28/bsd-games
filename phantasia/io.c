@@ -238,7 +238,7 @@ getanswer(choices, def)
 
 void
 catchalarm(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	longjmp(Timeoenv, 1);
 }

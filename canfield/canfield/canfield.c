@@ -1748,7 +1748,7 @@ finish()
  */
 void
 cleanup(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 
 	total.thinktime += 1;
@@ -1772,7 +1772,7 @@ cleanup(dummy)
  */
 void
 askquit(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	move(msgrow, msgcol);
 	printw("Really wish to quit?    ");

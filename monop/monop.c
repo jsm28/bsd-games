@@ -95,7 +95,7 @@ char	*av[]; {
 /*ARGSUSED*/
 static void
 do_quit(n)
-	int n __attribute__((unused));
+	int n __attribute__((__unused__));
 {
 	quit();
 }

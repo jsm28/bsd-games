@@ -89,7 +89,7 @@ const struct cvntab	Comtab[] =
 /*ARGSUSED*/
 void
 myreset(v)
-	int v __attribute__((unused));
+	int v __attribute__((__unused__));
 {
 	extern jmp_buf env;
 

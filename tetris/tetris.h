@@ -1,4 +1,4 @@
-/*	$NetBSD: tetris.h,v 1.3 1998/09/13 15:27:30 hubertf Exp $	*/
+/*	$NetBSD: tetris.h,v 1.5 1999/01/03 17:13:51 hubertf Exp $	*/
 
 /*-
  * Copyright (c) 1992, 1993
@@ -134,6 +134,9 @@ struct shape {
 extern const struct shape shapes[];
 #define	randshape() (&shapes[random() % 7])
 
+const struct shape *curshape;
+const struct shape *nextshape;
+
 /*
  * Shapes fall at a rate faster than once per second.
  *
@@ -168,6 +171,7 @@ int	score;			/* the obvious thing */
 gid_t	gid, egid;
 
 char	key_msg[100];
+int	showpreview;
 
 int	fits_in __P((const struct shape *, int));
 void	place __P((const struct shape *, int, int));

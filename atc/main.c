@@ -65,7 +65,7 @@ __RCSID("$NetBSD: main.c,v 1.8 1998/11/10 13:43:31 hubertf Exp $");
 
 int
 main(ac, av)
-	int	 ac __attribute__((unused));
+	int	 ac __attribute__((__unused__));
 	char	*av[];
 {
 	int			seed;

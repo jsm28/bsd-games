@@ -379,7 +379,7 @@ check_edir(x, y, dir)
 
 void
 check_adir(x, y, dir)
-	int x __attribute__((unused)), y __attribute__((unused)), dir __attribute__((unused));
+	int x __attribute__((__unused__)), y __attribute__((__unused__)), dir __attribute__((__unused__));
 {
 }
 

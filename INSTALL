@@ -75,6 +75,23 @@ Security
 See the SECURITY file for a discussion of security issues about the
 BSD games.
 
+Alternative implementations
+===========================
+
+Some of the programs in this package have alternative implementations
+for Linux available, which you may wish to use some of instead of the
+BSD versions:
+
+* banner is in util-linux.
+* factor is in GNU sh-utils as of version 1.12q.
+* An extensively modified version of fortune is available as
+`fortune-mod'.  There are also many additional fortune data files
+(including translations of the ones included here) available.
+* Perl implementations of some of the games are included in the `Perl
+Power Tools' project (http://language.perl.com/ppt/).
+* My enhanced version of ppt with support for PostScript output is
+available as `nppt' from metalab and its mirrors.
+
 Building and installation
 =========================
 
@@ -84,12 +101,10 @@ Building and installation
 
 2.  Run `./configure' and configure the installation to your liking.
     There may be some games you don't want to build because you have
-    them from elsewhere; for example, there is another fortune package
-    (fortune-mod) available, and factor is included in GNU sh-utils as
-    of version 1.12q.  Also banner is in util-linux.  You can specify
-    particular games you do not want built before specifying the list
-    of games to build (which will default to all those available,
-    except those you have excluded).
+    them from elsewhere (see above).  You can specify particular games
+    you do not want built before specifying the list of games to build
+    (which will default to all those available, except those you have
+    excluded).
 
     The filesystem structure used defaults to that the the Filesystem
     Hierarchy Standard (FHS), version 2.0.  If you are using the older

@@ -46,7 +46,7 @@ __RCSID("$NetBSD: cgetc.c,v 1.4 1997/10/12 21:24:30 christos Exp $");
 # include	"trek.h"
 
 char	cgetc(i)
-int	i __attribute__((unused));
+int	i __attribute__((__unused__));
 {
 	return ( getchar() );
 }

@@ -48,7 +48,7 @@
  */
 
 extern char		GAMES[];
-extern const char      *file;
+extern const char	*file;
 
 extern int		clck, safe_planes, start_time, test_mode;
 

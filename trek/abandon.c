@@ -73,7 +73,7 @@ __RCSID("$NetBSD: abandon.c,v 1.4 1997/10/12 21:24:25 christos Exp $");
 /*ARGSUSED*/
 void
 abandon(v)
-	int v __attribute__((unused));
+	int v __attribute__((__unused__));
 {
 	struct quad	*q;
 	int		i;

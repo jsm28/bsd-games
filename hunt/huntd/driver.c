@@ -254,6 +254,14 @@ init()
 # endif
 
 # ifndef DEBUG
+	switch (fork()) {
+	  case -1:
+		err(1, "fork");
+	  case 0:
+		break; /* child */
+	  default:
+		exit(0); /* parent */
+	}
 	if (setsid() == -1)
 		err(1, "setsid");
 	(void) signal(SIGHUP, SIG_IGN);

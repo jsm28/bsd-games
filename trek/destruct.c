@@ -70,7 +70,7 @@ __RCSID("$NetBSD: destruct.c,v 1.4 1997/10/12 21:24:40 christos Exp $");
 /*ARGSUSED*/
 void
 destruct(v)
-	int v __attribute__((unused));
+	int v __attribute__((__unused__));
 {
 	char		checkpass[15];
 	int	i, j;

@@ -188,7 +188,7 @@ display(pos, chr)
 
 void
 leave(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	endwin();
 	exit(0);
@@ -196,7 +196,7 @@ leave(dummy)
 
 void
 wake(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	signal(SIGALRM, wake);
 	fflush(stdout);
@@ -315,7 +315,7 @@ crash()
 
 void
 suspend(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	move(LINES-1, 0);
 	refresh();

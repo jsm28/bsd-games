@@ -63,7 +63,7 @@ __RCSID("$NetBSD: dock.c,v 1.4 1997/10/12 21:24:41 christos Exp $");
 /*ARGSUSED*/
 void
 dock(v)
-	int v __attribute__((unused));
+	int v __attribute__((__unused__));
 {
 	int		i, j;
 	int		ok;
@@ -137,7 +137,7 @@ dock(v)
 /*ARGSUSED*/
 void
 undock(v)
-	int v __attribute__((unused));
+	int v __attribute__((__unused__));
 {
 	struct event	*e;
 	int		i;

@@ -1,4 +1,4 @@
-/*	$NetBSD: tetris.c,v 1.5 1998/09/13 15:27:30 hubertf Exp $	*/
+/*	$NetBSD: tetris.c,v 1.9 1999/03/22 06:12:23 abs Exp $	*/
 
 /*-
  * Copyright (c) 1992, 1993
@@ -81,11 +81,7 @@ setup_board()
 
 	p = board;
 	for (i = B_SIZE; i; i--)
-#ifndef mips
 		*p++ = i <= (2 * B_COLS) || (i % B_COLS) < 2;
-#else /* work around compiler bug */
-		*p++ = i <= (2 * B_COLS) || (i % B_COLS) < 2 ? 1 : 0;
-#endif
 }
 
 /*
@@ -122,7 +118,6 @@ main(argc, argv)
 	char *argv[];
 {
 	register int pos, c;
-	register const struct shape *curshape;
 	register const char *keys;
 	register int level = 2;
 	char key_write[6][10];
@@ -140,7 +135,7 @@ main(argc, argv)
 
 	keys = "jkl pq";
 
-	while ((ch = getopt(argc, argv, "k:l:s")) != -1)
+	while ((ch = getopt(argc, argv, "k:l:ps")) != -1)
 		switch(ch) {
 		case 'k':
 			if (strlen(keys = optarg) != 6)
@@ -150,10 +145,13 @@ main(argc, argv)
 			level = atoi(optarg);
 			if (level < MINLEVEL || level > MAXLEVEL) {
 				(void)fprintf(stderr,
-				    "tetris: level must be from %d to %d",
+				    "tetris: level must be from %d to %d\n",
 				    MINLEVEL, MAXLEVEL);
 				exit(1);
 			}
+			break;
+		case 'p':
+			showpreview = 1;
 			break;
 		case 's':
 			showscores(0);
@@ -175,7 +173,7 @@ main(argc, argv)
 		for (j = i+1; j <= 5; j++) {
 			if (keys[i] == keys[j]) {
 				(void)fprintf(stderr,
-				    "%s: Duplicate command keys specified.\n",
+				    "%s: duplicate command keys specified.\n",
 				    argv[0]);
 				exit (1);
 			}
@@ -201,6 +199,7 @@ main(argc, argv)
 	scr_set();
 
 	pos = A_FIRST*B_COLS + (B_COLS/2)-1;
+	nextshape = randshape();
 	curshape = randshape();
 
 	scr_msg(key_msg, 1);
@@ -231,7 +230,8 @@ main(argc, argv)
 			 * Choose a new shape.  If it does not fit,
 			 * the game is over.
 			 */
-			curshape = randshape();
+			curshape = nextshape;
+			nextshape = randshape();
 			pos = A_FIRST*B_COLS + (B_COLS/2)-1;
 			if (!fits_in(curshape, pos))
 				break;
@@ -289,8 +289,10 @@ main(argc, argv)
 			}
 			continue;
 		}
-		if (c == '\f')
+		if (c == '\f') {
 			scr_clear();
+			scr_msg(key_msg, 1);
+		}
 	}
 
 	scr_clear();
@@ -313,7 +315,7 @@ main(argc, argv)
 
 void
 onintr(signo)
-	int signo __attribute__((unused));
+	int signo __attribute__((__unused__));
 {
 	scr_clear();
 	scr_end();
@@ -323,6 +325,6 @@ onintr(signo)
 void
 usage()
 {
-	(void)fprintf(stderr, "usage: tetris [-s] [-l level] [-keys]\n");
+	(void)fprintf(stderr, "usage: tetris [-ps] [-k keys] [-l level]\n");
 	exit(1);
 }

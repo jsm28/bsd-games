@@ -1,4 +1,4 @@
-/*	$NetBSD: ttext1.c,v 1.4 1997/10/10 08:59:53 lukem Exp $	*/
+/*	$NetBSD: ttext1.c,v 1.5 1999/02/10 12:29:48 hubertf Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -38,15 +38,15 @@
 #if 0
 static char sccsid[] = "@(#)ttext1.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: ttext1.c,v 1.4 1997/10/10 08:59:53 lukem Exp $");
+__RCSID("$NetBSD: ttext1.c,v 1.5 1999/02/10 12:29:48 hubertf Exp $");
 #endif
 #endif				/* not lint */
 
 #include "back.h"
 #include "tutor.h"
 
-const char   *opts = " QIMRHEDSPT";
-const char   *prompt = "-->";
+const char   *const opts = " QIMRHEDSPT";
+const char   *const prompt = "-->";
 
 const char   *const list[] = {
 	"\n\n\tI\tIntroduction to Backgammon",

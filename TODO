@@ -40,16 +40,15 @@ those.  The issues listed there are not included in this list.
              be compiled with -fwritable-strings.
 
 1998-08-27 - Convert the games that use termcap to use curses.
-             Currently these are backgammon, rain, snake, tetris and
-             worms.  Somewhat hacked versions of rain and worms that
-             use curses are distributed as test programs with ncurses;
-             these might just possibly be useful.
+             Currently these are backgammon, snake, and tetris; rain
+             and worms have been done.
 
 1998-08-27 - If we build a game that links to another game's manpage,
              but don't install the other game, then we get a dangling
              symlink or .so for the manpage.
 
-1998-08-27 - Merge in improvements from OpenBSD.
+1998-08-27 - Merge in improvements from OpenBSD.  Perhaps FreeBSD also
+             has some.
 
 1998-08-27 - Fix warnings with -Wl,--warn-common (i.e., variables should be
              declared extern in the header, and defined non-extern
@@ -74,6 +73,11 @@ those.  The issues listed there are not included in this list.
 
 1998-12-14 - Check for any more constant data that could be marked
              const.
+
+1998-12-28 - Fix any places that use the pid as random seed to use
+             something else, such as the time, because the pid is bad
+             when people boot up their system just to play a game and
+             so it is constant.
 
 
 

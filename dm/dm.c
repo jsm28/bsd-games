@@ -83,7 +83,7 @@ int	users __P((void));
 
 int
 main(argc, argv)
-	int argc __attribute__((unused));
+	int argc __attribute__((__unused__));
 	char *argv[];
 {
 	char *cp;

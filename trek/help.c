@@ -73,7 +73,7 @@ const char	*const Cntvect[3] =
 /*ARGSUSED*/
 void
 help(v)
-	int v __attribute__((unused));
+	int v __attribute__((__unused__));
 {
 	int		i;
 	double		dist, x;

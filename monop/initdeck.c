@@ -114,6 +114,9 @@ char	*av[]; {
 	fwrite(deck, sizeof (DECK), 2, outf);
 	fwrite(CC_D.offsets, sizeof (long), CC_D.num_cards, outf);
 	fwrite(CH_D.offsets, sizeof (long), CH_D.num_cards, outf);
+	fflush(outf);
+	if (ferror(outf))
+		err(1, "fwrite %s", outfile);
 	fclose(outf);
 	printf("There were %d com. chest and %d chance cards\n", CC_D.num_cards, CH_D.num_cards);
 	exit(0);

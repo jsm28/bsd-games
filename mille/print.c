@@ -122,7 +122,11 @@ static char	Score_fmt[] = "%4d";
 
 void
 prscore(for_real)
-	bool	for_real; 
+#ifdef EXTRAP
+	bool	for_real;
+#else
+	bool	for_real __attribute__((__unused__));
+#endif
 {
 	PLAY	*pp;
 	int	x;

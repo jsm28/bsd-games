@@ -612,7 +612,7 @@ getline()
 
 void
 rint(signo)
-	int signo __attribute__((unused));
+	int signo __attribute__((__unused__));
 {
 	bye();
 	exit(1);

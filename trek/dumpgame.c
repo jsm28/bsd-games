@@ -87,7 +87,7 @@ struct dump	Dump_template[] =
 /*ARGSUSED*/
 void
 dumpgame(v)
-	int v __attribute__((unused));
+	int v __attribute__((__unused__));
 {
 	int		version;
 	int		fd;

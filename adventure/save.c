@@ -95,7 +95,7 @@ struct savestruct save_array[] =
 	{&oldlc2, sizeof(oldlc2)},
 	{&oldloc, sizeof(oldloc)},
 	{&panic, sizeof(panic)},
-	{&saved, sizeof(saved)},
+	{&saveday, sizeof(saveday)},
 	{&savet, sizeof(savet)},
 	{&scorng, sizeof(scorng)},
 	{&spk, sizeof(spk)},

@@ -292,7 +292,7 @@ log_score(list_em)
 
 void
 log_score_quit(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	(void)log_score(0);
 	exit(0);

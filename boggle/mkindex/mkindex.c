@@ -50,6 +50,7 @@ __RCSID("$NetBSD: mkindex.c,v 1.4 1998/09/11 13:16:05 hubertf Exp $");
 #endif
 #endif /* not lint */
 
+#include <err.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -77,6 +78,9 @@ main(void)
 		off += clen + 1;
 	}
 	printf("%c %6ld %6ld\n", prev, start, off - 1);
+	fflush(stdout);
+	if (ferror(stdout))
+		err(1, "writing standard output");
 	exit(0);
 }
 

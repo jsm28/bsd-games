@@ -1,13 +1,13 @@
 Begin3
 Title:		bsd-games-non-free
-Version:	2.6
-Entered-date:	20DEC98
+Version:	2.7
+Entered-date:	04APR99
 Description:	Games from NetBSD with restrictive licences
 	(cannot be sold for profit).  Includes: only rogue now.
 Keywords:	games, NetBSD
 Maintained-by:	jsm28@cam.ac.uk (Joseph S. Myers)
 Primary-site:	metalab.unc.edu /pub/Linux/games
-		bsd-games-non-free-2.6.tar.gz
+		bsd-games-non-free-2.7.tar.gz
 Platforms:	Requires ncurses (curses/termcap may also work but are no
 	longer tested/supported)
 Copying-policy:	restricted

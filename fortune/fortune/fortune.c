@@ -86,10 +86,6 @@ __RCSID("$NetBSD: fortune.c,v 1.14 1998/09/13 15:27:28 hubertf Exp $");
 # define	NDEBUG	1
 # endif
 
-# ifdef __linux__
-# define	d_namlen	d_reclen
-# endif
-
 typedef struct fd {
 	int		percent;
 	int		fd, datfd;
@@ -725,9 +721,9 @@ add_dir(fp)
 	DPRINTF(1, (stderr, "adding dir \"%s\"\n", fp->path));
 	fp->num_children = 0;
 	while ((dirent = readdir(dir)) != NULL) {
-		if (dirent->d_namlen == 0)
+		if (strlen(dirent->d_name) == 0)
 			continue;
-		name = copy(dirent->d_name, dirent->d_namlen);
+		name = copy(dirent->d_name, strlen(dirent->d_name));
 		if (add_file(NO_PROB, name, fp->path, &fp->child, &tailp, fp))
 			fp->num_children++;
 		else
@@ -768,7 +764,7 @@ is_fortfile(file, datp, posp, check_for_offend)
 	const char	*file;
 	char		**datp, **posp
 # ifndef OK_TO_WRITE_DISK
-	__attribute__((unused))
+	__attribute__((__unused__))
 # endif
 	;
 	int	check_for_offend;

@@ -1,4 +1,4 @@
-/*	$NetBSD: teach.c,v 1.7 1998/09/15 13:43:35 frueauf Exp $	*/
+/*	$NetBSD: teach.c,v 1.8 1999/02/10 12:29:48 hubertf Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -43,7 +43,7 @@ __COPYRIGHT("@(#) Copyright (c) 1980, 1993\n\
 #if 0
 static char sccsid[] = "@(#)teach.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: teach.c,v 1.7 1998/09/15 13:43:35 frueauf Exp $");
+__RCSID("$NetBSD: teach.c,v 1.8 1999/02/10 12:29:48 hubertf Exp $");
 #endif
 #endif				/* not lint */
 
@@ -69,7 +69,7 @@ const char   *const contin[] = {
 
 int
 main(argc, argv)
-	int     argc __attribute__((unused));
+	int     argc __attribute__((__unused__));
 	char   *argv[];
 {
 	int     i;

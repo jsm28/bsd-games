@@ -11,6 +11,16 @@ changes in installation instructions.  Packagers should also reread
 the PACKAGING file each version (or do a diff between the old and new
 versions of the package and read that).
 
+Version 2.7
+===========
+
+* Bug fixes.
+
+* Updated from NetBSD-current of 1999-03-26; more changes merged back
+into NetBSD.
+
+* Other minor changes.
+
 Version 2.6
 ===========
 

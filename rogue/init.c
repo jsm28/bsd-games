@@ -220,7 +220,7 @@ stop_window()
 
 void
 byebye(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	md_ignore_signals();
 	if (ask_quit) {
@@ -233,7 +233,7 @@ byebye(dummy)
 
 void
 onintr(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	md_ignore_signals();
 	if (cant_int) {
@@ -247,7 +247,7 @@ onintr(dummy)
 
 void
 error_save(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	save_is_interactive = 0;
 	save_into_file(error_file);

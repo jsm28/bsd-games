@@ -748,7 +748,7 @@ bad_ver()
  */
 SIGNAL_TYPE
 sigterm(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	leave(0, (char *) NULL);
 	/* NOTREACHED */
@@ -761,7 +761,7 @@ sigterm(dummy)
  */
 SIGNAL_TYPE
 sigemt(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	leave(1, "Unable to start driver.  Try again.");
 	/* NOTREACHED */
@@ -774,7 +774,7 @@ sigemt(dummy)
  */
 SIGNAL_TYPE
 sigalrm(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	return;
 }
@@ -801,7 +801,7 @@ rmnl(s)
  */
 SIGNAL_TYPE
 intr(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	int	ch;
 	int	explained;

@@ -63,7 +63,7 @@ __RCSID("$NetBSD: rest.c,v 1.4 1997/10/12 21:25:10 christos Exp $");
 /*ARGSUSED*/
 void
 rest(v)
-	int v __attribute__((unused));
+	int v __attribute__((__unused__));
 {
 	double		t;
 	int		percent;

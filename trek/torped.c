@@ -71,7 +71,7 @@ static int randcourse __P((int));
 /*ARGSUSED*/
 void
 torped(v)
-	int v __attribute__((unused));
+	int v __attribute__((__unused__));
 {
 	int		ix, iy;
 	double		x, y, dx, dy;

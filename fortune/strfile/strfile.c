@@ -95,11 +95,6 @@ __RCSID("$NetBSD: strfile.c,v 1.8 1998/09/13 15:27:28 hubertf Exp $");
 # define	STORING_PTRS	(Oflag || Rflag)
 # define	CHUNKSIZE	512
 
-#ifdef lint
-# define	ALWAYS	atoi("1")
-#else
-# define	ALWAYS	1
-#endif
 # define	ALLOC(ptr,sz)	do { \
 			if (ptr == NULL) \
 				ptr = malloc((unsigned int) (CHUNKSIZE * sizeof *ptr)); \
@@ -257,6 +252,9 @@ main(ac, av)
 			*p = htonl(*p);
 		(void) fwrite((char *) Seekpts, sizeof *Seekpts, (int) Num_pts, outf);
 	}
+	fflush(outf);
+	if (ferror(outf))
+		err(1, "fwrite %s", Outfile);
 	(void) fclose(outf);
 	exit(0);
 }

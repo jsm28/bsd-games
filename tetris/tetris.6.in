@@ -1,4 +1,4 @@
-.\"	$NetBSD: tetris.6,v 1.4 1997/09/01 23:26:11 mikel Exp $
+.\"	$NetBSD: tetris.6,v 1.6 1999/01/03 17:13:51 hubertf Exp $
 .\"
 .\" Copyright (c) 1992, 1993
 .\"	The Regents of the University of California.  All rights reserved.
@@ -44,7 +44,7 @@
 .Nd the game of tetris
 .Sh SYNOPSIS
 .Nm
-.Op Fl s
+.Op Fl ps
 .Op Fl k Ar keys
 .Op Fl l Ar level
 .Sh DESCRIPTION
@@ -97,6 +97,8 @@ during play.
 Select a level of play.
 .It Fl s
 Display the top scores.
+.It Fl p
+Switch on previewing of the shape that will appear next. 
 .El
 .Pp
 .Sh PLAY
@@ -155,3 +157,5 @@ Chris Torek and Darren F. Provine.
 .Pp
 Manual adapted from the original entry written by Nancy L. Tinkham and
 Darren F. Provine.
+.Pp
+Code for previewing next shape added by Hubert Feyrer in 1999.

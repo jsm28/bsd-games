@@ -55,9 +55,9 @@ elif [ $# = 2 ]; then
 	    linkto="../man$section1/$page1"
 	fi
 	if [ @gzip_manpages@ = y ]; then
-	    ln -s "$linkto.gz" "$mandir/$page2.gz"
+	    ln -sf "$linkto.gz" "$mandir/$page2.gz"
 	else
-	    ln -s "$linkto" "$mandir/$page2"
+	    ln -sf "$linkto" "$mandir/$page2"
 	fi
     fi
 else

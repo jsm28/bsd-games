@@ -99,7 +99,7 @@ struct banks
 /*ARGSUSED*/
 void
 phaser(v)
-	int v __attribute__((unused));
+	int v __attribute__((__unused__));
 {
 	int		i;
 	int		j;

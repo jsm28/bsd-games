@@ -294,7 +294,7 @@ ioerror(pos, len, str)
 
 void
 quit(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	int			c, y, x;
 #ifdef BSD

@@ -598,7 +598,7 @@ tty_setup()
 
 static void
 stop_catcher(signo)
-	int signo __attribute__((unused));
+	int signo __attribute__((__unused__));
 {
 	sigset_t sigset, osigset;
 
@@ -619,7 +619,7 @@ stop_catcher(signo)
  
 static void
 cont_catcher(signo)
-	int signo __attribute__((unused));
+	int signo __attribute__((__unused__));
 {
 	noecho();
 	raw();
@@ -635,7 +635,7 @@ cont_catcher(signo)
  */
 static void
 winch_catcher(signo)
-	int signo __attribute__((unused));
+	int signo __attribute__((__unused__));
 {
 	/*
 	struct winsize win;

@@ -165,7 +165,7 @@ main(argc, argv)
 /* Handle interrupt character.  Print score and exit. */
 void
 intr(dummy)
-	int dummy __attribute__((unused));
+	int dummy __attribute__((__unused__));
 {
 	showstats();
 	exit(0);
