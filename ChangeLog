@@ -1,3 +1,11 @@
+2000-09-20  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* battlestar/com5.c (kiss): From OpenBSD, "take" the bathing
+	goddess if required; give a better message when trying to kiss a
+	person who is not present.
+	* tests/battlestar.in14, tests/battlestar.out14: New tests.
+	* tests/battlestar.test: Update.
+
 2000-09-17  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* battlestar/dayfile.c (dayfile), battlestar/nightfile.c
