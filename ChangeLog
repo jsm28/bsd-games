@@ -1,3 +1,10 @@
+2004-01-25  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* fortune/fortune/fortune.c: Add test for __CYGWIN__.
+	* configure: Test for sig_t.
+	* include/signal.h: Use it.
+	Cygwin issues reported by David A Bagley <bagleyd@tux.org>.
+
 2004-01-16  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms, wtf/acronyms.comp: Update from NetBSD CVS.

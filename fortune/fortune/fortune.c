@@ -210,7 +210,7 @@ char	 Re_error[1024];
 # endif
 #endif
 
-#if (defined(__linux__) && !defined(__GLIBC__)) || (defined(__GLIBC__) && !defined(_DIRENT_HAVE_D_NAMLEN))
+#if (defined(__linux__) && !defined(__GLIBC__)) || (defined(__GLIBC__) && !defined(_DIRENT_HAVE_D_NAMLEN)) || defined(__CYGWIN__)
 #define		NAMLEN(d)	(strlen((d)->d_name))
 #else
 #define		NAMLEN(d)	((d)->d_namlen)

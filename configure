@@ -415,6 +415,18 @@ main(void)
 }
 EOF
 
+check_func sig_t <<EOF
+#include <signal.h>
+
+sig_t s;
+
+int
+main(void)
+{
+  return 0;
+}
+EOF
+
 echo "#endif /* !defined(LINUX_BSD_GAMES_H) */" >>include/bsd-games.h
 
 
