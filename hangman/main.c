@@ -47,6 +47,7 @@ __RCSID("$NetBSD: main.c,v 1.9 2000/05/08 07:56:04 mycroft Exp $");
 #endif
 #endif /* not lint */
 
+#include	<err.h>
 #include	"hangman.h"
 
 /*
