@@ -1,3 +1,8 @@
+2004-04-24  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* backgammon/common_source/fancy.c, fortune/datfiles/farber:
+	Update from NetBSD CVS.
+
 2004-04-12  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* phantasia/fight.c, phantasia/gamesupport.c,
