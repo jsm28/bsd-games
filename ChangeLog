@@ -1,5 +1,7 @@
 2000-09-25  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* Version 2.12.
+
 	* NEWS, bsd-games.lsm, bsd-games-non-free.lsm: Update.
 
 	* battlestar/com2.c, battlestar/com4.c, battlestar/com5.c,
