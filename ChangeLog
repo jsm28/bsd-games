@@ -1,3 +1,8 @@
+2004-01-26  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* configure: Consistently use balanced parentheses in case
+	statements.
+
 2004-01-25  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* monop/misc.c, monop/monop.def, monop/monop.ext: Rename yn to
