@@ -1,6 +1,6 @@
 2003-04-01  Joseph S. Myers  <jsm@polyomino.org.uk>
 
-	* Version 2.14.
+	* configure: Fix bug in OpenSSL support.
 
 	* NEWS, bsd-games.lsm, bsd-games-non-free.lsm: Update.
 

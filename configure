@@ -338,6 +338,8 @@ echo "this blank.  Leave it blank if /usr/include/ncurses is a symbolic link"
 echo "to /usr/include."
 ask "Ncurses includes" ncurses_includes ''
 
+openssl_lib=
+openssl_includes=
 if building_in factor; then
     echo
     echo "factor can use libcrypto from OpenSSL to handle large numbers."
@@ -354,12 +356,9 @@ if building_in factor; then
 	echo "(for example, -L/usr/ssl/lib -lcrypto); otherwise, leave the"
 	echo "default, which is probably correct."
 	ask "OpenSSL libcrypto library" openssl_lib -lcrypto
-    else
-	openssl_lib=
-	openssl_includes=
-	subst_vars="$subst_vars openssl_lib openssl_includes"
     fi
 fi
+subst_vars="$subst_vars openssl_lib openssl_includes"
 
 ask "Other CFLAGS" other_cflags ''
 ask "Other LDFLAGS" other_ldflags ''
