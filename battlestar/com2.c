@@ -264,7 +264,8 @@ murder()
 			break;
 
 		default:
-			if (wordtype[wordnumber] != OBJECT)
+			if (wordtype[wordnumber] != OBJECT ||
+			    wordvalue[wordnumber] == EVERYTHING)
 				puts("You can't kill that!");
 			else
 				printf("You can't kill the %s!\n",

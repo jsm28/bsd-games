@@ -1,5 +1,10 @@
 2000-09-21  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com2.c (murder): Give error rather than crashing on
+	"kill all".  From OpenBSD.
+	* tests/battlestar.in25, tests/battlestar.out25: New test.
+	* tests/battlestar.test: Update.
+
 	* battlestar/extern.h: Define and use WORDLEN.  From OpenBSD.
 	* battlestar/globals.c: Also use WORDLEN.  From OpenBSD.
 	* battlestar/battlestar.c (main): Use NWORD rather than 20 (from
