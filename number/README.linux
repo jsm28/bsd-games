@@ -1,0 +1,7 @@
+8/25/93
+
+As usual the Makefiles were done completely from scratch.  Verify that 
+DESTDIR and MANDIR are properly set in the Makefile.
+
+Curt Olson
+curt@sledge.mn.org

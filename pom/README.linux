@@ -1,0 +1,15 @@
+8/19/93
+
+As usual the Makefiles were done completely from scratch.  The original
+is in Makefile.orig.  Other than that, the source should still compile
+under bsd.
+
+Also as usual, set the DESTDIR and MANDIR in the Makefiles.
+
+I added the following line, which probably was supposed to be in 
+/usr/include/bsd/tzfile.h, but wasn't.
+
+#define isleap(y) (((y) % 4) == 0 && ((y) % 100) != 0 || ((y) % 400) == 0)
+
+Curt Olson
+curt@sledge.mn.org

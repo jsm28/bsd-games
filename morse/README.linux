@@ -1,0 +1,14 @@
+8/19/93
+
+As usual the Makefiles were done completely from scratch.  The original
+is in Makefile.orig.  Other than that, the source should still compile
+under bsd.
+
+Also as usual, set the DESTDIR in the Makefiles.  There is no available
+man page.  If you wish to create one, or know where to find one, please
+let me know.
+
+Morse takes text from stdin, and outputs morse code to stdout.
+
+Curt Olson
+curt@sledge.mn.org

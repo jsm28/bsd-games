@@ -1,0 +1,11 @@
+8/23/93 - fix bug in bog.  core dumps after reading help file.
+
+8/21/93 - use -I/usr/include/bsd instead if #include <bsd/sgtty.h>
+
+8/14/93	- Set up Makefiles to inherit things like installation directories.
+	  Add things like GAMESROOT=/usr/games, GAMESLIB=$(GAMESROOT)/lib
+	  Installation starts with -mkdir $(GAMESROOT), -mkdir $(GAMESLIB)
+
+8/14/93 - Review score file permission scheme.  Someone might appreciate it
+	  being a little bit more secure ... especially in a multi-user
+	  environment

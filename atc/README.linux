@@ -1,0 +1,15 @@
+8/1/93
+
+To use ncurses, change the #include in include.h to ncurses.h instead of 
+curses.h, and change the LIBS from -lcurses to -lncurses in the Makefile.
+
+As usual the Makefiles were done completely from scratch.  The original
+is in Makefile.orig.  Other than that, the source should still compile
+under bsd.
+
+Also as usual, set the DESTDIR in the Makefile, and edit the location
+of the related files in pathnames.h.  Also set the MANDIR and DATADIR in
+the Makefile.
+
+Curt Olson
+curt@sledge.mn.org

@@ -1,0 +1,18 @@
+7/31/93
+
+For a while, this version uses ncurses because curses doesn't seem to
+be installed correctly on my system. Now it uses curses because I
+fixed my problem. If this complains about an error in curses.h, fix
+your curses.h by bracketing the "#undef HZ" and "#define HZ HZ" lines,
+in your /usr/include/curses.h, with "#if 0" and "#endif", to comment
+them out. Or use ncurses. If you have ncurses installed and want to
+use it, edit mille.h to include ncurses.h instead of curses.h, and
+edit the Makefile to say -lncurses instead of -lcurses.
+
+Edit the Makefile to set the DESTDIR and MANDIR appropriately for your
+system. Then just make or make install.
+
+The original bsd makefile is in Makefile.orig.
+
+Andy Tefft
+teffta@engr.dnet.ge.com

@@ -1,0 +1,15 @@
+8/2/93
+
+To use ncurses, change the #include in fly.c to ncurses.h instead of 
+curses.h, and change the LIBS from -lcurses to -lncurses in the Makefile.
+
+As usual the Makefiles were done completely from scratch.  The original
+is in Makefile.orig.  Other than that, the source should still compile
+under bsd.
+
+Also as usual, set the DESTDIR in the Makefiles, and edit the location
+of the score file in pathnames.h.  Also set the MANDIR in
+the Makefile.
+
+Curt Olson
+curt@sledge.mn.org

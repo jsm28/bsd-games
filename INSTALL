@@ -1,0 +1,25 @@
+8/21/93 - Installation directions
+---------------------------------
+
+Source Release
+
+  1.  cd to the top level directory in the source distribution.  i.e. the
+      directory that contains this file.  (Your probably already here!)
+  2.  type make
+  3.  become root
+  4.  type make install
+
+  If something doesn't install correctly you probably have a non-standard
+  Linux configuration. :) :) :)  Actually, let us know, we probably
+  screwed something up.  (curt@sledge.mn.org or teffta@engr.dnet.ge.com)
+
+  Each subdirectory has a README.linux file.  If you are still having 
+  trouble with a program, check this file first -- it may contain some 
+  helpful hints.
+
+
+Binary Release:
+
+  1.  become root
+  2.  cd /
+  3.  zcat <bin-tar-file-name> | tar xvf -

@@ -1,0 +1,18 @@
+8/19/93
+
+As usual the Makefiles were done completely from scratch.  The original
+is in Makefile.orig.  Other than that, the source should still "compile"
+under bsd.
+
+Also as usual, set the DESTDIR in the Makefiles.  
+
+There is no man page for this program.  
+
+Hmmm ... Jonah, John, Jim, Jeffrey ... ???
+Well ... Deuteronomy, ..., Judges, RUTH!, I & II Samueul, ... ???
+
+Hmmm ... Joshua!  Yes, that's it.  Would you like to play a game?
+
+
+Curt Olson
+curt@sledge.mn.org
