@@ -4,10 +4,9 @@ include ../../Makeconfig
 
 PROG = snscore
 
-INCS = -I../snake $(BSD_INCS)
-DEFS = $(BSD_DEFS) -D_PATH_LOGFILE=\"$(SNAKE_SCOREFILE)\" \
-	-D_PATH_RAWSCORES=\"$(SNAKE_RAWSCOREFILE)\"
-LIBS = $(BSD_LIB)
+INCS = -I../../include -I../snake
+DEFS = 
+LIBS = 
 
 all:	$(PROG)
 

@@ -10,7 +10,7 @@ SRCS=	abandon.c attack.c autover.c capture.c check_out.c checkcond.c \
 	getcodi.c getpar.c help.c impulse.c initquad.c kill.c klmove.c \
 	lose.c lrscan.c main.c move.c nova.c out.c phaser.c play.c ram.c \
 	ranf.c rest.c schedule.c score.c setup.c setwarp.c \
-	shield.c snova.c srscan.c systemname.c torped.c utility.c \
+	shield.c snova.c srscan.c systemname.c torped.c \
 	visual.c warp.c win.c cgetc.c
 OBJS=	abandon.o attack.o autover.o capture.o check_out.o checkcond.o \
 	compkl.o computer.o damage.o damaged.o dcrept.o destruct.o \
@@ -18,12 +18,12 @@ OBJS=	abandon.o attack.o autover.o capture.o check_out.o checkcond.o \
 	getcodi.o getpar.o help.o impulse.o initquad.o kill.o klmove.o \
 	lose.o lrscan.o main.o move.o nova.o out.o phaser.o play.o ram.o \
 	ranf.o rest.o schedule.o score.o setup.o setwarp.o \
-	shield.o snova.o srscan.o systemname.o torped.o utility.o \
+	shield.o snova.o srscan.o systemname.o torped.o \
 	visual.o warp.o win.o cgetc.o
 
-LIBS = -lm $(BSD_LIB)
-INCS = $(BSD_INCS)
-DEFS = $(BSD_DEFS)
+LIBS = -lm
+INCS = -I../include
+DEFS = 
 
 all:	$(PROG)
 

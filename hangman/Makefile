@@ -11,9 +11,9 @@ OBJS=	endgame.o extern.o getguess.o getword.o main.o playgame.o \
 
 WORDS     = words
 
-LIBS = $(NCURSES_LIB) $(BSD_LIB)
-INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -D_PATH_DICT=\"$(HANGMAN_WORDSFILE)\"
+LIBS = $(NCURSES_LIB)
+INCS = -I../include $(NCURSES_INCS)
+DEFS = 
 
 all:	$(PROG)
 

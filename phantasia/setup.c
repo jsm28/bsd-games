@@ -1,13 +1,17 @@
-/*	$NetBSD: setup.c,v 1.5 1997/01/07 12:20:39 tls Exp $	*/
+/*	$NetBSD: setup.c,v 1.7.2.1 1997/11/24 01:49:07 mrg Exp $	*/
 
 /*
  * setup.c - set up all files for Phantasia
  */
 #include <sys/param.h>
 #include <sys/stat.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include <fcntl.h>
 #include "include.h"
+
+int main __P((int, char *[]));
+void Error __P((char *, char *));
+double drandom __P((void));
+
 /**/
 /************************************************************************
 /
@@ -38,7 +42,7 @@
 /	put in these files.
 /	Also, the monster binary data base is created here.
 /
-/************************************************************************/
+/ ************************************************************************/
 
 static char *files[] = {		/* all files to create */
 	_PATH_MONST,
@@ -66,7 +70,7 @@ main(argc, argv)
 	int ch;
 	char path[MAXPATHLEN], *prefix;
 
-	while ((ch = getopt(argc, argv, "m:")) != EOF)
+	while ((ch = getopt(argc, argv, "m:")) != -1)
 		switch(ch) {
 		case 'm':
 			monsterfile = optarg;
@@ -95,6 +99,13 @@ main(argc, argv)
 	    {
 	    if (!strcmp(*filename, _PATH_PEOPLE))
 		/* do not reset character file if it already exists */
+		{
+		++filename;
+		continue;
+		}
+
+	    if (!strcmp(*filename, _PATH_SCORE))
+		/* do not reset score file if it already exists */
 		{
 		++filename;
 		continue;
@@ -227,8 +238,9 @@ main(argc, argv)
 / DESCRIPTION:
 /	Print an error message, then exit.
 /
-/************************************************************************/
+/ ************************************************************************/
 
+void
 Error(str, file)
 char	*str, *file;
 {
@@ -259,7 +271,7 @@ char	*str, *file;
 /
 / DESCRIPTION: 
 /
-/************************************************************************/
+/ ************************************************************************/
 
 double
 drandom()

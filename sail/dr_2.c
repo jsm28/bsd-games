@@ -1,4 +1,4 @@
-/*	$NetBSD: dr_2.c,v 1.4 1995/04/24 12:25:12 cgd Exp $	*/
+/*	$NetBSD: dr_2.c,v 1.6 1997/10/13 21:03:18 christos Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -33,21 +33,24 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)dr_2.c	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: dr_2.c,v 1.4 1995/04/24 12:25:12 cgd Exp $";
+__RCSID("$NetBSD: dr_2.c,v 1.6 1997/10/13 21:03:18 christos Exp $");
 #endif
 #endif /* not lint */
 
 #include "driver.h"
+#include <stdlib.h>
 
 #define couldwin(f,t) (f->specs->crew2 > t->specs->crew2 * 1.5)
 
+void
 thinkofgrapples()
 {
-	register struct ship *sp, *sq;
+	struct ship *sp, *sq;
 	char friendly;
 
 	foreachship(sp) {
@@ -75,10 +78,11 @@ thinkofgrapples()
 	}
 }
 
+void
 checkup()
 {
-	register struct ship *sp, *sq;
-	register char explode, sink;
+	struct ship *sp, *sq;
+	char explode, sink;
 
 	foreachship(sp) {
 		if (sp->file->dir == 0)
@@ -95,19 +99,20 @@ checkup()
 			foreachship(sq)
 				cleansnag(sp, sq, 1);
 		if (sink != 1) {
-			makesignal(sp, "exploding!", (struct ship *)0);
+			makemsg(sp, "exploding!");
 			foreachship(sq) {
 				if (sp != sq && sq->file->dir && range(sp, sq) < 4)
 					table(RIGGING, L_EXPLODE, sp->specs->guns/13, sq, sp, 6);
 			}
 		} else
-			makesignal(sp, "sinking!", (struct ship *)0);
+			makemsg(sp, "sinking!");
 	}
 }
 
+void
 prizecheck()
 {
-	register struct ship *sp;
+	struct ship *sp;
 
 	foreachship(sp) {
 		if (sp->file->captured == 0)
@@ -123,18 +128,20 @@ prizecheck()
 	}
 }
 
+int
 strend(str)
 char *str;
 {
-	register char *p;
+	char *p;
 
 	for (p = str; *p; p++)
 		;
 	return p == str ? 0 : p[-1];
 }
 
+void
 closeon(from, to, command, ta, ma, af)
-register struct ship *from, *to;
+struct ship *from, *to;
 char command[];
 int ma, ta, af;
 {
@@ -148,21 +155,22 @@ int ma, ta, af;
 
 int dtab[] = {0,1,1,2,3,4,4,5};		/* diagonal distances in x==y */
 
+int
 score(movement, ship, to, onlytemp)
 char movement[];
-register struct ship *ship, *to;
+struct ship *ship, *to;
 char onlytemp;
 {
 	char drift;
 	int row, col, dir, total, ran;
-	register struct File *fp = ship->file;
+	struct File *fp = ship->file;
 
 	if ((dir = fp->dir) == 0)
 		return 0;
 	row = fp->row;
 	col = fp->col;
 	drift = fp->drift;
-	move(movement, ship, &fp->dir, &fp->row, &fp->col, &drift);
+	sail_move(movement, ship, &fp->dir, &fp->row, &fp->col, &drift);
 	if (!*movement)
 		(void) strcpy(movement, "d");
 
@@ -181,12 +189,13 @@ char onlytemp;
 	return total;
 }
 
-move(p, ship, dir, row, col, drift)
-register char *p;
-register struct ship *ship;
-register char *dir;
-register short *row, *col;
-register char *drift;
+void
+sail_move(p, ship, dir, row, col, drift)
+char *p;
+struct ship *ship;
+unsigned char *dir;
+short *row, *col;
+char *drift;
 {
 	int dist;
 	char moved = 0;
@@ -215,7 +224,7 @@ register char *drift;
 	}
 	if (!moved) {
 		if (windspeed != 0 && ++*drift > 2) {
-			if (ship->specs->class >= 3 && !snagged(ship)
+			if ((ship->specs->class >= 3 && !snagged(ship))
 			    || (turn & 1) == 0) {
 				*row -= dr[winddir];
 				*col -= dc[winddir];
@@ -225,12 +234,13 @@ register char *drift;
 		*drift = 0;
 }
 
+void
 try(command, temp, ma, ta, af, vma, dir, f, t, high, rakeme)
-register struct ship *f, *t;
-int ma, ta, af, *high, rakeme;
+struct ship *f, *t;
+int ma, ta, af, vma, dir, *high, rakeme;
 char command[], temp[];
 {
-	register int new, n;
+	int new, n;
 	char st[4];
 #define rakeyou (gunsbear(f, t) && !gunsbear(t, f))
 
@@ -247,10 +257,10 @@ char command[], temp[];
 				dir, f, t, high, rakeme);
 			rmend(temp);
 		}
-	if (ma > 0 && ta > 0 && (n = strend(temp)) != 'l' && n != 'r' || !strlen(temp)) {
+	if ((ma > 0 && ta > 0 && (n = strend(temp)) != 'l' && n != 'r') || !strlen(temp)) {
 		(void) strcat(temp, "r");
 		new = score(temp, f, t, rakeme);
-		if (new > *high && (!rakeme || gunsbear(f, t) && !gunsbear(t, f))) {
+		if (new > *high && (!rakeme || (gunsbear(f, t) && !gunsbear(t, f)))) {
 			*high = new;
 			(void) strcpy(command, temp);
 		}
@@ -269,10 +279,11 @@ char command[], temp[];
 	}
 }
 
+void
 rmend(str)
 char *str;
 {
-	register char *p;
+	char *p;
 
 	for (p = str; *p; p++)
 		;

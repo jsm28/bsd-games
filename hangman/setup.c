@@ -1,4 +1,4 @@
-/*	$NetBSD: setup.c,v 1.3 1995/03/23 08:32:59 cgd Exp $	*/
+/*	$NetBSD: setup.c,v 1.5 1997/10/11 08:01:06 lukem Exp $	*/
 
 /*-
  * Copyright (c) 1983, 1993
@@ -33,24 +33,28 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)setup.c	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: setup.c,v 1.3 1995/03/23 08:32:59 cgd Exp $";
+__RCSID("$NetBSD: setup.c,v 1.5 1997/10/11 08:01:06 lukem Exp $");
 #endif
-#endif /* not lint */
+#endif				/* not lint */
 
-# include	"hangman.h"
+#include	<err.h>
+#include	<time.h>
+#include	"hangman.h"
 
 /*
  * setup:
  *	Set up the strings on the screen.
  */
+void
 setup()
 {
-	register char		**sp;
-	static struct stat	sbuf;
+	char **sp;
+	static struct stat sbuf;
 
 	noecho();
 	crmode();
@@ -69,9 +73,8 @@ setup()
 
 	srand(time(NULL) + getpid());
 	if ((Dict = fopen(_PATH_DICT, "r")) == NULL) {
-		perror(_PATH_DICT);
 		endwin();
-		exit(1);
+		err(1, "fopen %s", _PATH_DICT);
 	}
 	fstat(fileno(Dict), &sbuf);
 	Dict_size = sbuf.st_size;

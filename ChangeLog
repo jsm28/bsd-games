@@ -1,3 +1,450 @@
+1997-12-25  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* Version 2.0.
+
+	* INSTALL: Add name and email address to bottom.
+
+	* Credits: Update.
+
+Sun Dec 21 11:59:34 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* configure: Don't ask for file for backgammon rules.
+
+	* TODO: Update.
+
+	* Makefile (install): Don't create $(SOCKETDIR), which is no
+	longer defined.
+
+	* bsd-games-non-free.lsm: Update.
+
+	* bsd-games.lsm: Update.
+
+	* README: Update.
+
+	* configure: Don't configure bsd_lib or bsd_includes.
+	* Makeconfig.in: Delete BSD_LIB, BSD_INCS, BSD_DEFS.
+
+	* configure (warning_flags): Default to -Wall -W
+	-Wstrict-prototypes -Wmissing-prototypes.
+
+Sat Dec 20 11:25:48 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* All games (except paranoia) now updated to NetBSD-current of
+	1997-12-12.
+
+	* wump/wump.c: Include <time.h>.
+
+	* wump/*: Update from NetBSD-current of 1997-12-12.
+	* wump/Makefile: Use -I../include; don't define path; don't use
+	libbsd or ncurses.
+	* substfiles: Include wump/pathnames.h.
+
+	* worms/worms.c (onsig): Mark unused parameter.
+
+	* worms/*: Update from NetBSD-current of 1997-12-12.
+	* worms/Makefile: Use -I../include; use BSD signal defines only.
+
+	* worm/worm.c: Mark unused parameters.
+
+	* worm/worm.6: Fix.
+
+	* worm/*: Update from NetBSD-current of 1997-12-12.
+	* worm/Makefile: Use -I../include; use BSD signal defines only.
+
+	* trek/warp.c (dowarp): Mark parameter as int.
+
+	* trek/abandon.c, trek/capture.c, trek/computer.c, trek/dcrept.c,
+	trek/destruct.c, trek/dock.c, trek/dumpgame.c, trek/help.c,
+	trek/impulse.c, trek/lrscan.c, trek/phaser.c, trek/play.c,
+	trek/rest.c, trek/setwarp.c, trek/torped.c, trek/visual.c,
+	trek/cgetc.c: Mark unused parameters.
+
+	* trek/*: Update from NetBSD-current of 1997-12-12.
+	* trek/Makefile: Use -I../include; don't use libbsd.
+
+	* tetris/tetris.c: Mark unused parameter.
+
+	* tetris/scores.c: Fix warnings.
+
+	* tetris/screen.c, tetris/screen.h: Make put return int.
+
+	* tetris/screen.c: Don't declare ospeed.
+
+	* tetris/*: Update from NetBSD-current of 1997-12-12.
+	* tetris/Makefile: Use -I../include; don't define paths; use BSD
+	signal defines only.
+	* substfiles: Include tetris/pathnames.h.
+
+	* snake/snake/snake.c, snake/snscore/snscore.c: Mark unused
+	parameters.
+
+	* snake/snake/snake.h, snake/snake/move.c: Make outch return int.
+
+	* snake/snake/snake.h, snake/snake/move.c: Don't declare ospeed.
+
+	* snake/*: Update from NetBSD-current of 1997-12-12.
+	* snake/snake/Makefile, snake/snscore/Makefile: Use
+	-I../../include; don't define paths; use BSD signal defines only.
+	* substfiles: Include snake/snake/pathnames.h.
+
+	* sail/pl_main.c, sail/pl_7.c, sail/player.h: Move screen
+	initialisation into initscreen(); no longer do echo() in
+	SCREENTEST().
+
+	* sail/sync.c: Include <sys/file.h> and <time.h>; mark int
+	parameter.
+
+	* sail/misc.c: Include <sys/file.h>, for flock().
+
+	* sail/game.c: Fix pointer/integer comparison warning.
+
+	* sail/dr_2.c: Mark int parameters as such.
+
+	* sail/player.h (SCREENTEST): Compare initscr() against NULL, not
+	ERR.
+
+	* sail/main.c, sail/pl_1.c, sail/pl_7.c: Mark unused parameters.
+
+	* sail/dr_2.c, sail/extern.h: Rename move to sail_move.
+
+	* sail/*: Update from NetBSD-current of 1997-12-12.
+	* sail/Makefile: Use -I../include; don't define paths; use BSD
+	signal defines only.
+	* substfiles: Include sail/pathnames.h
+
+	* rogue/save.c: Fix signed/unsigned warnings.
+
+	* rogue/monster.c, rogue/object.c, rogue/pack.c, rogue/room.c:
+	Mark int parameters as such.
+
+	* rogue/init.c: Mark unused parameters.
+
+	* rogue/*: Update from NetBSD-current of 1997-12-12.
+	* rogue/Makefile: Use -I../include; don't define path; use BSD
+	signal defines only.
+	* substfiles: Include rogue/pathnames.h.
+
+	* robots/move.c (get_move): Always initialise lastmove, to shut up
+	gcc.
+
+	* robots/main.c: Remove unused function __cputchar; mark unused
+	parameter.
+
+	* robots/move.c (get_move): Restore declaration of lastmove.
+
+	* robots/*: Update from NetBSD-current of 1997-12-12.
+	* robots/Makefile: Use -I../include; don't define path; use BSD
+	signal defines only.
+	* substfiles: Include robots/pathnames.h.
+
+	* Credits: List original authors.
+
+	* bsd-games.lsm: Update.
+
+	* NEWS: Update.
+
+	* INSTALL: Update.
+
+	* README.non-free: Update.
+
+	* README: Update.
+
+	* countmail/*: New game, from NetBSD-current of 1997-12-12.
+
+	* configure (install_script): New variable, avoid warnings about
+	stripping scripts.
+	* Makeconfig.in (INSTALL_SCRIPT): Define.
+	* caesar/Makefile, wargames/Makefile: Use $(INSTALL_SCRIPT).
+
+Fri Dec 19 14:37:56 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* TODO: Update.
+
+	* hunt/*: New port, replacing the old one, based on NetBSD-current
+	of 1997-12-12.
+	* substfiles: Update accordingly.
+	* configure, Makeconfig.in: No longer need to configure directory
+	for sockets.
+
+	* random/*: Update from NetBSD-current of 1997-12-12.
+	* random/Makefile: Use -I../include.
+
+	* rain/rain.c: Make fputchar return int, since this is what tputs
+	expects.  Also mark unused parameters.
+
+	* rain/*: Update from NetBSD-current of 1997-12-12.
+	* rain/Makefile: Use -I../include; don't use libbsd.
+	* substfiles: Don't include rain/rain.6.
+
+	* quiz/quiz.c (appdstr): Change NULL to '\0' to fix warning.
+
+	* quiz/*: Update from NetBSD-current of 1997-12-12.
+	* quiz/Makefile: Use -I../include; don't define paths.
+	* substfiles: Include quiz/pathnames.h.in.
+
+	* primes/*: Update from NetBSD-current of 1997-12-12.
+	* primes/Makefile: Use -I../include.
+
+	* include/sys/ttydefaults.h: New file, wrap <sys/ttydefaults.h> so
+	that individual games need not know that it is in glibc but not
+	libc5.
+	* hangman/getguess.c: Restore to NetBSD version since these
+	conditionals are no longer needed.
+
+	* lib/select.c: New file, emulate BSD select for games that need
+	it (I think only hunt), so that libbsd will not be needed at all
+	and games will work fine with libc6.
+
+Thu Dec 18 13:24:54 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* ppt/*: Update from NetBSD-current of 1997-12-12.
+	* ppt/Makefile: Use -I../include.
+
+	* pom/pom.c: Mark unused parameters.
+
+	* pom/*: Update from NetBSD-current of 1997-12-12.
+	* pom/Makefile: Use -I../include; don't use libbsd.
+	* include/tzfile.h: New file.
+
+	* pig/pig.c (main): Fix signed/unsigned warning.
+
+	* pig/*: Update from NetBSD-current of 1997-12-12.
+	* pig/Makefile: Use -I../include.
+
+	* phantasia/setup.c: Include <fcntl.h>; fix warnings; add
+	prototypes and function return types.
+
+	* phantasia/interplayer.c (dotampered): Avoid signed/unsigned
+	warning.
+
+	* phantasia/io.c (catchalarm): Mark unused parameter.
+
+	* phantasia/*: Update from NetBSD-current of 1997-12-12.
+	* phantasia/Makefile: Don't define paths; use BSD signal defines
+	only.
+	* substfiles: Include phantasia/pathnames.h.
+
+	* paranoia/paranoia.c: Include headers, add prototypes and
+	function return types; changes to avoid warnings.
+
+	* number/*: Update from NetBSD-current of 1997-12-12.
+	* number/Makefile: Use -I../include.
+
+	* morse/*: Update from NetBSD-current of 1997-12-12.
+	* morse/Makefile: Use -I../include.
+
+	* monop/cards.c: Avoid signed/unsigned warning.
+
+	* monop/monop.c (do_quit): Mark unused parameter.
+
+	* monop/*: Update from NetBSD-current of 1997-12-12.
+	* monop/Makefile: Use -I../include; don't define path; use BSD
+	signal defines only.
+	* substfiles: Include monop/pathnames.h.
+
+	* NEWS: Update; fix typo.
+
+	* mille/save.c: Include <time.h>.
+
+	* mille/mille.h, varpush.c: Use size_t for last argument of last
+	argument of varpush.
+
+	* mille/comp.c (calcmove): Avoid signed/unsigned warning.
+
+	* mille/mille.c (rub): Mark unused parameter.
+
+	* mille/*: Update from NetBSD-current of 1997-12-12.
+	* mille/Makefile: Use -I../include; don't use libbsd.
+	* substfiles: Don't include mille/mille.6, it's no longer needed.
+
+	* hangman/setup.c: Include <time.h>.
+
+	* hangman/main.c: Mark unused parameters.
+
+	* hangman/*: Update from NetBSD-current of 1997-12-12.
+	* hangman/Makefile: Use -I../include; don't define path; don't use
+	libbsd.
+	* substfiles: Include hangman/pathnames.h.
+
+Wed Dec 17 16:14:21 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* gomoku/pickmove.c: Fix signed/unsigned warnings; mark unused
+	parameter.
+
+	* gomoku/main.c: Include <time.h>; mark unused parameter.
+
+	* gomoku/*: Update from NetBSD-current of 1997-12-12.
+	* gomoku/Makefile: Use -I../include; use BSD signal defines only.
+
+	* fortune/strfile/strfile.c, fortune/fortune/fortune.c,
+	fortune/unstr/unstr.c: Changes to avoid warnings.
+
+	* fortune/*: Update from NetBSD-current of 1997-12-12.
+	* fortune/fortune/Makefile, fortune/strfile/Makefile,
+	fortune/unstr/Makefile: Use -I../../include; don't use libbsd;
+	don't define paths.
+	* substfiles: Include fortune/fortune/pathnames.h.
+
+	* fish/*: Update from NetBSD-current of 1997-12-12.
+	* fish/Makefile: Use -I../include.
+	* substfiles: Include fish/pathnames.h.
+
+	* primes/pr_tbl.c: Use __RCSID.
+
+	* factor/*: Update from NetBSD_current of 1997-12-12.
+	* factor/Makefile: Use -I../include.
+
+	* Makeconfig.in: Remove dm variables.
+
+	* dm/dm.c: Mark unused parameter.
+
+	* dm/pathnames.h.in: Undefine _PATH_LOG before defining it.
+
+	* dm/dm.8.in: Fix.
+
+	* dm/*: Update from NetBSD-current of 1997-12-12.
+	* dm/Makefile: Use -I../include; don't define paths.
+	* substfiles: Include dm/pathnames.h.
+
+Tue Dec 16 10:35:32 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* cribbage/io.c, cribbage/score.c: Avoid signed/unsigned warning;
+	mark unused parameters.
+
+	* cribbage/*: Update from NetBSD-current of 1997-12-12.
+	* cribbage/Makefile: Use -I../include; don't use libbsd or define
+	paths.
+	* substfiles: Include cribbage/pathnames.h.
+
+	* canfield/canfield/canfield.c: Include <time.h>; mark unused
+	parameters.
+
+	* canfield/*: Update from NetBSD-current of 1997-12-12.
+	* canfield/canfield/Makefile, canfield/cfscores/Makefile: Use
+	-I../../include.
+	* substfiles: Include canfield/canfield/pathnames.h.
+	* canfield/canfield/Makefile, canfield/cfscores/Makefile: Don't
+	define _PATH_SCORE; don't use libbsd.
+
+	* caesar/*: Update from NetBSD-current of 1997-12-12.
+	* caesar/Makefile: Use -I../include.
+	* caesar/rot13.in: Use "$@" instead of $*.
+
+	* boggle/boggle/mach.c: Mark unused parameters.
+
+	* boggle/boggle/bog.c: Changes to avoid warnings.
+
+	* boggle/mkindex/mkindex.c (main): Make it take no arguments,
+	since they are unused.
+
+	* boggle/mkdict/mkdict.c: Include <err.h>; other changes to avoid
+	warnings.
+
+	* boggle/*: Update from NetBSD-current of 1997-12-12.
+	* boggle/boggle/Makefile, boggle/mkdict/Makefile,
+	boggle/mkindex/Makefile: Use -I../../include.
+	* substfiles: Include boggle/boggle/bog.h.
+	* boggle/boggle/Makefile: Don't define paths.
+	* boggle/Makefile, boggle/README.linux: Update for change to bog.h.in.
+
+	* bcd/bcd.6: Fix.
+
+	* bcd/*: Update from NetBSD-current of 1997-12-12.
+	* bcd/Makefile: Use -I../include.
+
+	* battlestar/battlestar.6: Fix typo.
+
+	* battlestar/com6.c, battlestar/fly.c: Mark unused parameters.
+
+	* battlestar/*: Update from NetBSD-current of 1997-12-12.
+	* battlestar/Makefile: Use -I../include, and BSD signal defines
+	only.
+	* substfiles: Include battlestar/pathnames.h.
+	* battlestar/Makefile: Don't define _PATH_SCORE.
+
+Mon Dec 15 10:07:10 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* banner/Makefile: Use -I../include.
+
+	* banner/*: Update from NetBSD-current of 1997-12-12.
+
+	* TODO: Update.
+
+	* backgammon/common_source/subs.c (getarg): Check that an argument
+	is given to -s.
+
+	* backgammon/common_source/subs.c, backgammon/backgammon/main.c,
+	backgammon/teachgammon/teach.c: Mark unused parameters.
+
+	* backgammon/common_source/subs.c (addbuf): Make addbuf return an
+	int, since this is what tputs expects.
+	* backgammon/common_source/back.h: Likewise.
+
+	* backgammon/teachgammon/teach.c: Don't declare ospeed.
+
+	* backgammon/backgammon/main.c: Don't declare ospeed; include
+	<time.h>.
+
+	* backgammon/backgammon/Makefile,
+	backgammon/common_source/Makefile,
+	backgammon/teachgammon/Makefile: Use -I../../include.
+
+	* Makeconfig.in (BACKGAMMON_RULES): Remove.
+
+	* backgammon/*: Update from NetBSD-current of 1997-12-12; make
+	changes for no longer having simple game.
+
+	* atc/pathnames.h: Remove.
+	* atc/pathnames.h.in: New file, from NetBSD-current and
+	parametrised.
+	* substfiles: Substitute in this file.
+	* atc/Makefile: Don't define _PATH_GAMES and _PATH_SCORE any more.
+
+	* substfiles: New file - list of files created by substitution.
+	* configure, Makefile: Use this list.
+
+	* atc/log.c (log_score): Use nodename, not sysname.
+
+	* atc/grammar.y, atc/graphics.c, atc/log.c, atc/main.c,
+	atc/update.c: Mark unused parameters and add parameter types.
+
+	* atc/Makefile: Use -I../include and -DYY_NO_UNPUT.
+
+	* atc/*: Update from NetBSD-current of 1997-12-12.
+
+	* adventure/setup.c: Use __RCSID and __COPYRIGHT.
+
+	* include/sys/cdefs.h: Mark rcsid and copyright unused, so -Dlint
+	is not needed when using warnings.
+
+	* arithmetic/arithmetic.c (intr): Mark `dummy' unused.
+
+	* arithmetic/Makefile: Use -I../include.
+
+	* arithmetic/*: Update from NetBSD-current of 1997-12-12.
+
+	* adventure/init.c, adventure/subr.c, adventure/wizard.c: Add
+	argument types and mark unused arguments as
+	__attribute__((unused)).
+
+	* adventure/crc.c: Make step unsigned int.
+
+	* adventure/setup.c: Add prototype; include <err.h>.
+	* adventure/extern.h: Remove prototypes for setup.c.
+
+	* adventure/Makefile: Use -I../include.
+
+	* adventure/*: Update from NetBSD-current of 1997-12-12.
+
+	* include/signal.h: New file, wrapper to typedef sig_t without
+	needing <bsd/signal.h> for libc5.
+
+	* include/sys/cdefs.h: New file, wrapper to define __RCSID and
+	__COPYRIGHT.
+
+	* Makefile.bsd, Makefile.inc.bsd: Update from NetBSD-current of
+	1997-12-12.
+
 Wed Sep 24 13:44:06 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
 
 	* caesar/caesar.c: Include <string.h> and <stdlib.h>; add

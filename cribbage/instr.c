@@ -1,4 +1,4 @@
-/*	$NetBSD: instr.c,v 1.5 1997/07/10 06:47:30 mikel Exp $	*/
+/*	$NetBSD: instr.c,v 1.7 1997/10/11 02:44:31 lukem Exp $	*/
 
 /*-
  * Copyright (c) 1990, 1993
@@ -33,11 +33,12 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)instr.c	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: instr.c,v 1.5 1997/07/10 06:47:30 mikel Exp $";
+__RCSID("$NetBSD: instr.c,v 1.7 1997/10/11 02:44:31 lukem Exp $");
 #endif
 #endif /* not lint */
 
@@ -46,6 +47,7 @@ static char rcsid[] = "$NetBSD: instr.c,v 1.5 1997/07/10 06:47:30 mikel Exp $";
 #include <sys/stat.h>
 
 #include <curses.h>
+#include <err.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -60,7 +62,7 @@ void
 instructions()
 {
 	struct stat sb;
-#ifdef linux
+#ifdef __linux__
 	int pstat;
 #else
 	union wait pstat;
@@ -68,15 +70,11 @@ instructions()
 	pid_t pid;
 	char *pager, *path;
 
-	if (stat(_PATH_INSTR, &sb)) {
-		(void)fprintf(stderr, "cribbage: %s: %s.\n", _PATH_INSTR,
-		    strerror(errno));
-		exit(1);
-	}
+	if (stat(_PATH_INSTR, &sb))
+		err(1, "stat %s", _PATH_INSTR);
 	switch (pid = vfork()) {
 	case -1:
-		(void)fprintf(stderr, "cribbage: %s.\n", strerror(errno));
-		exit(1);
+		err(1, "vfork");
 	case 0:
 		if (!(path = getenv("PAGER")))
 			path = _PATH_MORE;
@@ -84,13 +82,13 @@ instructions()
 			++pager;
 		pager = path;
 		execlp(path, pager, _PATH_INSTR, NULL);
-		(void)fprintf(stderr, "cribbage: %s.\n", strerror(errno));
+		warn("%s", "");
 		_exit(1);
 	default:
 		do {
 			pid = waitpid(pid, (int *)&pstat, 0);
 		} while (pid == -1 && errno == EINTR);
-#ifdef linux
+#ifdef __linux__
 		if (pid == -1 || WEXITSTATUS(pstat))
 #else
 		if (pid == -1 || pstat.w_status)

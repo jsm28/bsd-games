@@ -99,14 +99,9 @@ if building_in hunt; then
     echo
     echo "Hunt includes a daemon for coordinating games with multiple players"
     ask "Daemon directory" sbindir /usr/sbin
-    echo "The default socket directory is /var/run following the FSSTND, but"
-    echo "you may wish to use /tmp if ordinary users are to start the hunt"
-    echo "daemon."
-    ask "Directory for Unix domain sockets" socketdir /var/run
 else
     sbindir=
-    socketdir=
-    subst_vars="$subst_vars sbindir socketdir"
+    subst_vars="$subst_vars sbindir"
 fi
 if building_in fortune; then
     echo
@@ -212,6 +207,10 @@ ask_yn "Gzip manpages" gzip_manpages y
 
 ask_yn "Strip installed binaries" strip_install y
 
+# Save old install_binary as install_script
+install_script="$install_binary"
+subst_vars="$subst_vars install_script"
+
 if [ $strip_install = y ]; then
     for type in binary score_game daemon; do
 	eval install_$type=\"\$install_$type -s\"
@@ -223,7 +222,9 @@ echo "It is presumed in some places by the Makefiles that the compiler"
 echo "will be some form of gcc."
 ask "Compiler" cc gcc
 ask "Optimize flags" optimize_flags "-g -O2"
-ask "Compiler warning flags" warning_flags '' # When it works, -Wall
+echo
+echo "The default warning flags should give a compile with few warnings."
+ask "Compiler warning flags" warning_flags "-Wall -W -Wstrict-prototypes -Wmissing-prototypes"
 echo
 echo "You probably want the default here, or could use -lncurses_g for"
 echo "debugging ncurses.  Use -lcurses -ltermcap if you want to try that,"
@@ -241,20 +242,13 @@ ask "Libc version" libc_version 5
 case "$libc_version" in
     4*|5*)
     libc_version=5
-    def_bsd_inc=-I/usr/include/bsd
-    def_bsd_lib=-lbsd
     def_bsd_sig=-D__USE_BSD_SIGNAL
     ;;
     *)
     libc_version=6
-    def_bsd_inc=
-    def_bsd_lib=-lbsd-compat
     def_bsd_sig=
     ;;
 esac
-ask "BSD-compat library" bsd_lib "$def_bsd_lib"
-ask "BSD-compat includes" bsd_includes "$def_bsd_inc"
-ask "BSD-compat defines" bsd_defs -D_BSD_SOURCE
 echo
 echo "With libc5 -D__USE_BSD_SIGNAL is needed for BSD signal semantics if not"
 echo "using libbsd or _BSD_SOURCE, but with libc6 the default signal semantics"
@@ -291,8 +285,6 @@ echo "You can configure the exact names used for data files by various"
 echo "of the games.  Most probably the defaults are OK."
 game_ask atc "Directory for atc static data" atc_dir "$sharedir/atc"
 game_ask atc "Score file for atc" atc_scorefile "$varlibdir/atc_score"
-# These rules don't exist
-game_ask backgammon "File for backgammon rules" backgammon_rules "$sharedir/backrules"
 game_ask battlestar "Score file for battlestar" battlestar_scorefile "$varlibdir/battlestar.log"
 # Bog has some other configuration
 game_ask boggle "Directory for boggle static data" boggle_dir "$sharedir/boggle"
@@ -331,21 +323,18 @@ substitute () {
     for file in "$@"; do
 	dir="${file%%/*}"
 	if building_in $dir || [ "$file" = "$dir" ]; then
-	    genfile="${file%%.in}"
-	    echo "Extracting $genfile from $file"
-	    cp "$file" "$genfile" # set permissions
-	    sed -f subst.sed <"$file" >"$genfile"
+	    source_file="${file}.in"
+	    echo "Extracting $file from $source_file"
+	    cp "$source_file" "$file" # set permissions
+	    sed -f subst.sed <"$source_file" >"$file"
 	fi
     done
 }
 
-substitute Makeconfig.in install-man.in install-score.in \
-	backgammon/backgammon/backgammon.6.in caesar/rot13.in \
-	canfield/canfield/canfield.6.in cribbage/cribbage.6.in dm/dm.8.in \
-	dm/dm.conf.5.in hangman/hangman.6.in hunt/hunt.6.in hunt/huntd.6.in \
-	mille/mille.6.in monop/monop.6.in quiz/datfiles/index.in \
-	quiz/quiz.6.in rain/rain.6.in robots/robots.6.in rogue/rogue.6.in \
-	snake/snake/snake.6.in tetris/tetris.6.in trek/trek.6.in
+subst_files="`cat substfiles`"
+
 if [ x"$use_dm" = xy ]; then
-    substitute hide-game.in
+    subst_files="$subst_files hide-game"
 fi
+
+substitute $subst_files

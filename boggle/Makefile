@@ -48,7 +48,7 @@ linux-patch:
 	-diff -u ../../other/bog/README README >>patch.tmp
 	-diff -u ../../other/bog/bog.man boggle/boggle.6 >>patch.tmp
 	-diff -u ../../other/bog/bog.c boggle/bog.c >>patch.tmp
-	-diff -u ../../other/bog/bog.h boggle/bog.h >>patch.tmp
+	-diff -u ../../other/bog/bog.h boggle/bog.h.in >>patch.tmp
 	-diff -u ../../other/bog/help.c boggle/help.c >>patch.tmp
 	-diff -u ../../other/bog/helpfile boggle/helpfile >>patch.tmp
 	-diff -u ../../other/bog/mach.c boggle/mach.c >>patch.tmp

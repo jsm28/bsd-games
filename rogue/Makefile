@@ -8,10 +8,10 @@ OBJS =	curses.o hit.o init.o inventory.o level.o machdep.o main.o \
 	message.o monster.o move.o object.o pack.o play.o random.o ring.o \
 	room.o save.o score.o spec_hit.o throw.o trap.o use.o zap.o
 
-LIBS = $(NCURSES_LIB) $(BSD_LIB)
+LIBS = $(NCURSES_LIB)
 
-INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -DUNIX -DUNIX_SYSV -D_PATH_SCOREFILE=\"$(ROGUE_SCOREFILE)\"
+INCS = -I../include $(NCURSES_INCS)
+DEFS = $(BSD_SIGNAL_DEFS) -DUNIX -DUNIX_SYSV
 
 all:	$(PROG)
 

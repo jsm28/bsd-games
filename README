@@ -1,14 +1,25 @@
-1995-07-15
+1997-12-21
 
-Here is the bsd-games package, containing ports of your favorite
-(mostly curses-based) BSD games (descriptions to follow).  These games
-came from NetBSD-current, except for hunt.  The original sources for
-hunt are at <URL:ftp://ftp.cgl.ucsf.edu/pub/hunt.shar.Z>.  There's not
-much to do in porting most of them, mostly busy-work.  We didn't
-really try to enhance them.  Maybe later.  We wanted to get out what
-we thought were the most popular games first so we will eventually
-hopefully have the whole bunch done.  (If you want to help, contact
-me!).
+This is the bsd-games package for Linux, containing ports of all the
+games from NetBSD-current that are free in the usual sense
+(i.e. modified and unmodified versions can be freely distributed,
+including for profit).  Two games that were in this package up to
+version 1.3, boggle and paranoia, are now distributed separately
+because of restrictive copyrights.  If you want them, get the
+bsd-games-non-free package, which will unpack into a `bsd-games-n.n'
+directory like this one does, and read the README.non-free that it
+contains.  (Paranoia isn't actually from NetBSD).  Rogue is also in
+bsd-games-non-free.  This probably won't be available from tsx-11, but
+may be on sunsite.  You can also build bsd-games-non-free separately;
+it contains some of the same files, which are all exact duplicates.
+If the only subdirectories you have are boggle, hangman, include,
+paranoia and rogue, then you have just bsd-games-non-free.  The other
+two games in NetBSD-current, as of the time of writing, are hack and
+larn; they have no statement at all of the conditions under which they
+can be distrbiuted, and so are not in bsd-games-non-free either.
+
+The games are mostly not enhanced from the NetBSD versions, but some
+bugs are fixed.
 
 The games should work with ncurses (3.0, 3.4, 4.0 or 4.1 at least).
 They may also work with curses/termcap, but this is not tested by me.
@@ -18,24 +29,14 @@ release, so tell me if some versions don't work.
 
 For the current release, libc6 support is BETA level only and the
 games may not even compile, but they should be much closer to
-compiling with libc6 than in version 1.4.
+compiling with libc6 than in version 1.4.  Version 1.5 compiled with
+libc6 with only a few changes, so hopefully this version will as well.
 
 You need to configure the package with `./configure'.  You should read
 any README.linux files for the games you plan to install. You can make
 each game individually or do a make in the top level directory to make
 everything.  The `Makefile.bsd' files are the original BSD makefiles.
-
-Two games that were in this package up to version 1.3, boggle and
-paranoia, are now distributed separately because of restrictive
-copyrights.  If you want them, get the bsd-games-non-free package,
-which will unpack into a `bsd-games-n.n' directory like this one does,
-and read the README.non-free that it contains.  (These games aren't
-actually from BSD.  Rogue is also in bsd-games-non-free.)  This
-probably won't be available from tsx-11, but may be on sunsite.  You
-can also build bsd-games-non-free separately; it contains some of the
-same files, which are all exact duplicates.  If the only
-subdirectories you have are boggle, hangman, paranoia and rogue, then you
-have just bsd-games-non-free.
+See the file `INSTALL' for detailed installation instructions.
 
 Here's what we have so far:
 
@@ -48,6 +49,7 @@ battlestar:	adventure game on a battlestar
 bcd:		outputs text in an antique form
 caesar:		reads fortunes from the game fortune, also some internet posts
 canfield:	curses-based solitaire
+countmail:	tell you how much new mail you have
 cribbage:	cribbage
 dm:		dungeon master, regulates games playing
 factor:		factor a number
@@ -81,11 +83,10 @@ worm:		eat the numbers without running into anything
 worms:		random worms scurrying across your screen
 wump:		hunt the wumpus
 
-Coming `soon':
+If you have questions about bsd-games or bsd-games-non-free you can
+contact me at <jsm28@cam.ac.uk>.  Bug reports should state the
+versions of ncurses and libc used.  If you want to be informed by
+email of new releases when they come out, please let me know.
 
-Nothing planned (hack and larn have no statement of distribution
-conditions so I won't include them).
-
-If you have questions you can contact me at:
-
-Joseph Myers <jsm28@cam.ac.uk>
+Joseph S. Myers
+jsm28@cam.ac.uk

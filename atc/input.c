@@ -1,4 +1,4 @@
-/*	$NetBSD: input.c,v 1.5 1997/01/13 06:50:25 tls Exp $	*/
+/*	$NetBSD: input.c,v 1.6 1997/10/10 02:07:18 lukem Exp $	*/
 
 /*-
  * Copyright (c) 1990, 1993
@@ -45,11 +45,12 @@
  * For more info on this and all of my stuff, mail edjames@berkeley.edu.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)input.c	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: input.c,v 1.5 1997/01/13 06:50:25 tls Exp $";
+__RCSID("$NetBSD: input.c,v 1.6 1997/10/10 02:07:18 lukem Exp $");
 #endif
 #endif not lint
 
@@ -73,7 +74,7 @@ typedef struct {
 	int	token;
 	int	to_state;
 	char	*str;
-	char	*(*func) __P((int));
+	char	*(*func) __P((char));
 } RULE;
 
 typedef struct {
@@ -99,13 +100,6 @@ typedef struct {
 
 #define NUMSTATES	NUMELS(st)
 
-char	*setplane __P((int)), *circle __P((int)), *left __P((int)),
-	*right __P((int)), *Left __P((int)), *Right __P((int)), 
-	*beacon __P((int)), *ex_it __P((int)), *climb __P((int)),
-	*descend __P((int)), *setalt __P((int)), *setrelalt __P((int)), 
-	*benum __P((int)), *to_dir __P((int)), *rel_dir __P((int)),
-	*delayb __P((int)), *mark __P((int)), *unmark __P((int)),
-	*airport __P((int)), *turn __P((int)), *ignore __P((int));
 
 RULE	state0[] = {	{ ALPHATOKEN,	1,	"%c:",		setplane},
 			{ RETTOKEN,	-1,	"",		NULL	},
@@ -199,12 +193,6 @@ int	level;
 int	tval;
 int	dest_type, dest_no, dir;
 
-int gettoken __P((void));
-void noise __P((void));
-int pop __P((void));
-void push __P((int, int));
-void rezero __P((void));
-
 int
 pop()
 {
@@ -260,7 +248,7 @@ int
 getcommand()
 {
 	int	c, i, done;
-	char	*s, *(*func) __P((int));
+	char	*s, *(*func) __P((char));
 	PLANE	*pp;
 
 	rezero();
@@ -388,7 +376,7 @@ gettoken()
 
 char	*
 setplane(c)
-	int c;
+	char c;
 {
 	PLANE	*pp;
 
@@ -402,7 +390,7 @@ setplane(c)
 
 char	*
 turn(c)
-	int c;
+	char c;
 {
 	if (p.altitude == 0)
 		return ("Planes at airports may not change direction");
@@ -411,7 +399,7 @@ turn(c)
 
 char	*
 circle(c)
-	int c;
+	char c;
 {
 	if (p.altitude == 0)
 		return ("Planes cannot circle on the ground");
@@ -421,7 +409,7 @@ circle(c)
 
 char	*
 left(c)
-	int c;
+	char c;
 {
 	dir = D_LEFT;
 	p.new_dir = p.dir - 1;
@@ -432,7 +420,7 @@ left(c)
 
 char	*
 right(c)
-	int c;
+	char c;
 {
 	dir = D_RIGHT;
 	p.new_dir = p.dir + 1;
@@ -443,7 +431,7 @@ right(c)
 
 char	*
 Left(c)
-	int c;
+	char c;
 {
 	p.new_dir = p.dir - 2;
 	if (p.new_dir < 0)
@@ -453,7 +441,7 @@ Left(c)
 
 char	*
 Right(c)
-	int c;
+	char c;
 {
 	p.new_dir = p.dir + 2;
 	if (p.new_dir > MAXDIR)
@@ -463,7 +451,7 @@ Right(c)
 
 char	*
 delayb(c)
-	int c;
+	char c;
 {
 	int	xdiff, ydiff;
 
@@ -509,7 +497,7 @@ delayb(c)
 
 char	*
 beacon(c)
-	int c;
+	char c;
 {
 	dest_type = T_BEACON;
 	return (NULL);
@@ -517,7 +505,7 @@ beacon(c)
 
 char	*
 ex_it(c)
-	int c;
+	char c;
 {
 	dest_type = T_EXIT;
 	return (NULL);
@@ -525,7 +513,7 @@ ex_it(c)
 
 char	*
 airport(c)
-	int c;
+	char c;
 {
 	dest_type = T_AIRPORT;
 	return (NULL);
@@ -533,7 +521,7 @@ airport(c)
 
 char	*
 climb(c)
-	int c;
+	char c;
 {
 	dir = D_UP;
 	return (NULL);
@@ -541,7 +529,7 @@ climb(c)
 
 char	*
 descend(c)
-	int c;
+	char c;
 {
 	dir = D_DOWN;
 	return (NULL);
@@ -549,7 +537,7 @@ descend(c)
 
 char	*
 setalt(c)
-	int c;
+	char c;
 {
 	if ((p.altitude == c - '0') && (p.new_altitude == p.altitude))
 		return ("Already at that altitude");
@@ -559,7 +547,7 @@ setalt(c)
 
 char	*
 setrelalt(c)
-	int c;
+	char c;
 {
 	if (c == 0)
 		return ("altitude not changed");
@@ -584,7 +572,7 @@ setrelalt(c)
 
 char	*
 benum(c)
-	int c;
+	char c;
 {
 	dest_no = c -= '0';
 
@@ -616,7 +604,7 @@ benum(c)
 
 char	*
 to_dir(c)
-	int c;
+	char c;
 {
 	p.new_dir = dir_no(c);
 	return (NULL);
@@ -624,7 +612,7 @@ to_dir(c)
 
 char	*
 rel_dir(c)
-	int c;
+	char c;
 {
 	int	angle;
 
@@ -649,7 +637,7 @@ rel_dir(c)
 
 char	*
 mark(c)
-	int c;
+	char c;
 {
 	if (p.altitude == 0)
 		return ("Cannot mark planes on the ground");
@@ -661,7 +649,7 @@ mark(c)
 
 char	*
 unmark(c)
-	int c;
+	char c;
 {
 	if (p.altitude == 0)
 		return ("Cannot unmark planes on the ground");
@@ -673,7 +661,7 @@ unmark(c)
 
 char	*
 ignore(c)
-	int c;
+	char c;
 {
 	if (p.altitude == 0)
 		return ("Cannot ignore planes on the ground");
@@ -689,6 +677,7 @@ dir_no(ch)
 {
 	int	dir;
 
+	dir = -1;
 	switch (ch) {
 	case 'w':	dir = 0;	break;
 	case 'e':	dir = 1;	break;

@@ -7,10 +7,9 @@ PROG      = cribbage
 SRCS=	extern.c crib.c cards.c instr.c io.c score.c support.c
 OBJS=	extern.o crib.o cards.o instr.o io.o score.o support.o
 
-LIBS = $(NCURSES_LIB) $(BSD_LIB)
-INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -D_PATH_LOG=\"$(CRIBBAGE_SCOREFILE)\" \
-	-D_PATH_INSTR=\"$(CRIBBAGE_INSTRFILE)\" -D_PATH_MORE=\"$(PAGER)\"
+LIBS = $(NCURSES_LIB)
+INCS = -I../include $(NCURSES_INCS)
+DEFS = 
 
 all:	$(PROG)
 

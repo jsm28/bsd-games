@@ -5,8 +5,7 @@ include ../../Makeconfig
 all:	strfile
 
 strfile:	strfile.c strfile.h
-	$(CC) $(LDFLAGS) $(CFLAGS) $(BSD_DEFS) $(BSD_INCS) \
-	    -o strfile strfile.c $(BSD_LIB)
+	$(CC) $(LDFLAGS) $(CFLAGS) -I../../include -o strfile strfile.c
 
 install:	all
 	$(INSTALL_BINARY) strfile $(INSTALL_PREFIX)$(USRBINDIR)

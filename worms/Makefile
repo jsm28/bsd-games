@@ -4,9 +4,9 @@ include ../Makeconfig
 
 PROG = worms
 
-LIBS = $(NCURSES_LIB) $(BSD_LIB)
-INCS = $(BSD_INCS)
-DEFS = $(BSD_DEFS)
+LIBS = $(NCURSES_LIB)
+INCS = -I../include $(NCURSES_INCS)
+DEFS = $(BSD_SIGNAL_DEFS)
 
 all:	$(PROG)
 

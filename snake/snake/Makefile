@@ -7,11 +7,10 @@ PROG = snake
 SRCS=	move.c snake.c
 OBJS=	move.o snake.o
 
-INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -D_PATH_LOGFILE=\"$(SNAKE_SCOREFILE)\" \
-	-D_PATH_RAWSCORES=\"$(SNAKE_RAWSCOREFILE)\"
+INCS = -I../../include $(NCURSES_INCS)
+DEFS = $(BSD_SIGNAL_DEFS)
 
-LIBS = -lm $(NCURSES_LIB) $(BSD_LIB)
+LIBS = -lm $(NCURSES_LIB)
 
 all:	$(PROG)
 

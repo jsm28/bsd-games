@@ -13,8 +13,6 @@ INSTALL_PREFIX = @install_prefix@
 GAMESDIR = @gamesdir@
 # Daemon directory
 SBINDIR = @sbindir@
-# Directory for sockets (hunt)
-SOCKETDIR = @socketdir@
 # Other binaries directory
 USRBINDIR = @usrbindir@
 # Manual pages, section 6
@@ -33,6 +31,7 @@ VARLIBDIR = @varlibdir@
 LIBEXECDIR = @libexecdir@
 # Installation commands, with install -c -o whatever -s etc.
 INSTALL_BINARY = @install_binary@
+INSTALL_SCRIPT = @install_script@
 INSTALL_SCORE_GAME = @install_score_game@
 INSTALL_DAEMON = @install_daemon@
 INSTALL_MANUAL = @srcdir@/install-man
@@ -54,9 +53,6 @@ CFLAGS = $(OPTIMIZE) $(WARNING) @other_cflags@
 LDFLAGS = @other_ldflags@
 NCURSES_LIB = @ncurses_lib@
 NCURSES_INCS = @ncurses_includes@
-BSD_LIB = @bsd_lib@
-BSD_INCS = @bsd_includes@
-BSD_DEFS = @bsd_defs@
 BSD_SIGNAL_DEFS = @bsd_signal_defs@
 YACC = @yacc@
 LEX = @lex@
@@ -68,15 +64,11 @@ PAGER = @pager@
 # Individual games
 ATC_DIR = @atc_dir@
 ATC_SCOREFILE = @atc_scorefile@
-BACKGAMMON_RULES = @backgammon_rules@
 BATTLESTAR_SCOREFILE = @battlestar_scorefile@
 BOGGLE_DIR = @boggle_dir@
 CANFIELD_SCOREFILE = @canfield_scorefile@
 CRIBBAGE_INSTRFILE = @cribbage_instrfile@
 CRIBBAGE_SCOREFILE = @cribbage_scorefile@
-DM_CONFIG = @dm_configfile@
-DM_NOGAMESFILE = @dm_nogamesfile@
-DM_LOGFILE = @dm_logfile@
 FISH_INSTRFILE = @fish_instrfile@
 FORTUNE_TYPE = @fortune_type@
 HANGMAN_WORDSFILE = @hangman_wordsfile@

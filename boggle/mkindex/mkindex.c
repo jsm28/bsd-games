@@ -1,4 +1,4 @@
-/*	$NetBSD: mkindex.c,v 1.2 1995/03/21 12:14:52 cgd Exp $	*/
+/*	$NetBSD: mkindex.c,v 1.3 1997/10/11 02:12:23 lukem Exp $	*/
 
 /*-
  * Copyright (c) 1993
@@ -36,17 +36,17 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
-static char copyright[] =
-"@(#) Copyright (c) 1993\n\
-	The Regents of the University of California.  All rights reserved.\n";
+__COPYRIGHT("@(#) Copyright (c) 1993\n\
+	The Regents of the University of California.  All rights reserved.\n");
 #endif /* not lint */
 
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)mkindex.c	8.1 (Berkeley) 6/11/93";
 #else
-static char rcsid[] = "$NetBSD: mkindex.c,v 1.2 1995/03/21 12:14:52 cgd Exp $";
+__RCSID("$NetBSD: mkindex.c,v 1.3 1997/10/11 02:12:23 lukem Exp $");
 #endif
 #endif /* not lint */
 
@@ -55,13 +55,11 @@ static char rcsid[] = "$NetBSD: mkindex.c,v 1.2 1995/03/21 12:14:52 cgd Exp $";
 
 #include "bog.h"
 
-int main __P((int, char *[]));
+int main __P((void));
 char *nextword __P((FILE *, char *, int *, int *));
 
 int
-main(argc, argv)
-	int argc;
-	char *argv[];
+main()
 {
 	int clen, rlen, prev;
 	long off, start;
@@ -94,8 +92,8 @@ nextword(fp, buffer, clen, rlen)
 	char *buffer;
 	int *clen, *rlen;
 {
-	register int ch, pcount;
-	register char *p, *q;
+	int ch, pcount;
+	char *p, *q;
 	static char buf[MAXWORDLEN + 1];
 	static int first = 1;
 	static int lastch = 0;

@@ -9,10 +9,9 @@ SRCS=	extern.c init_field.c main.c make_level.c move.c move_robs.c \
 OBJS=	extern.o init_field.o main.o make_level.o move.o move_robs.o \
 	play_level.o query.o rnd_pos.o score.o flush_in.o
 
-LIBS = $(NCURSES_LIB) $(BSD_LIB)
-INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -DFANCY -DMAX_PER_UID=5 \
-	-D_PATH_SCORE=\"$(ROBOTS_SCOREFILE)\"
+LIBS = $(NCURSES_LIB)
+INCS = -I../include $(NCURSES_INCS)
+DEFS = $(BSD_SIGNAL_DEFS) -DFANCY -DMAX_PER_UID=5
 
 all:	$(PROG)
 

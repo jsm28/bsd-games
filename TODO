@@ -1,13 +1,10 @@
-Let me know if you're interested in doing any of these.  The order is just
-the order they were added in, not any priority order.
-
-1993-09-25 - Hunt needs to worked through to make sure it will run over a
-             network.
+Let me (jsm28@cam.ac.uk) know if you're interested in doing any of these.
+The order is just the order they were added in, not any priority order.
 
 1997-04-29 - Test architectures other than i386 (I can't do this myself).
-             The Debian version builds on m68k, or at least has done so in
-             the past.  I have also done an alpha build, and glibc has
-             worked in the past.
+             The Debian version builds on m68k, powerpc, sparc, or at least
+             has done so in the past.  I have also done an alpha build, and
+             glibc has worked in the past.
 
 1997-04-29 - Improve security of games when running setgid.  At present,
              they do not even drop setgid privileges except for writing
@@ -19,8 +16,7 @@ the order they were added in, not any priority order.
              unless you are prepared for your users _easily_ to be able to
              get a shell with gid games privileges.)
 
-1997-04-29 - Fix all compilation warnings.  Then fix all warnings with
-             gcc -Wall.
+1997-04-29 - Fix compilation warnings with increasingly strict warning options.
 
 1997-04-29 - Paranoia and wargames have no manpages.  Minimal ones should
              be written.
@@ -31,3 +27,7 @@ the order they were added in, not any priority order.
 1997-05-01 - Games with scorefiles should lock them when updating them.
 
 1997-07-15 - Get distribution permission for hack and larn.
+
+1997-12-15 - Backgammon should return sensible exit statuses on error.
+
+1997-12-19 - Hunt needs to be thoroughly tested.

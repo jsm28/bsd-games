@@ -7,9 +7,9 @@ SRCS=	comp.c end.c extern.c init.c mille.c misc.c move.c print.c \
 OBJS=	mille.o comp.o end.o extern.o init.o misc.o move.o print.o \
 	roll.o save.o types.o varpush.o
 
-LIBS = $(NCURSES_LIB) $(BSD_LIB)
-INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS)
+LIBS = $(NCURSES_LIB)
+INCS = -I../include $(NCURSES_INCS)
+DEFS = 
 
 all:	mille
 

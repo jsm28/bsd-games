@@ -6,10 +6,9 @@ PROG = phantasia
 
 OBJS = main.o fight.o io.o interplayer.o gamesupport.o misc.o phantglobs.o
 
-LIBS = -lm $(NCURSES_LIB) $(BSD_LIB)
-INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -DPHANTASIA_DIR=\"$(PHANTASIA_DIR)\" \
-	-D_PATH_GAMEPROG=\"$(GAMESDIR)/$(PROG)\"
+LIBS = -lm $(NCURSES_LIB)
+INCS = $(NCURSES_INCS)
+DEFS = $(BSD_SIGNAL_DEFS)
 
 VFILES = gold lastdead mess monsters motd characs scoreboard void
 

@@ -5,9 +5,9 @@ include ../Makeconfig
 SRCS = bdinit.c bdisp.c main.c makemove.c pickmove.c stoc.c
 OBJS = bdinit.o bdisp.o main.o makemove.o pickmove.o stoc.o
 
-LIBS = $(NCURSES_LIB) $(BSD_LIB)
-INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS)
+LIBS = $(NCURSES_LIB)
+INCS = -I../include $(NCURSES_INCS)
+DEFS = $(BSD_SIGNAL_DEFS)
 
 all:	gomoku
 

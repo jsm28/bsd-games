@@ -15,7 +15,7 @@ $(PROG):	$(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(PROG)
 
 .c.o:	
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I../include -c $< -o $@
 
 $(OBJS):	primes.h
 

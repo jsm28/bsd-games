@@ -4,7 +4,7 @@ include ../Makeconfig
 
 PROG = factor
 
-INCS = -I../primes
+INCS = -I../include -I../primes
 
 all:	$(PROG)
 
@@ -12,7 +12,7 @@ $(PROG):	pr_tbl.o $(PROG).c
 	$(CC) $(CFLAGS) $(LDFLAGS) $(INCS) -o $(PROG) $(PROG).c pr_tbl.o
 
 pr_tbl.o:	../primes/primes.h ../primes/pr_tbl.c
-	$(CC) $(CFLAGS) -c ../primes/pr_tbl.c -o pr_tbl.o
+	$(CC) $(CFLAGS) $(INCS) -c ../primes/pr_tbl.c -o pr_tbl.o
 
 install:	$(PROG)
 	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)

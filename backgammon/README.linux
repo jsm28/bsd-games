@@ -1,9 +1,5 @@
-Here are actually two backgammon games. One is a simple version
-for dumb terminals and the other is 'fancier' and uses termcaps.
-
-The simple one is not made by default. To make it, go to common_source
-and make simple. It leaves the game in 'sbackgammon'.
-
 The makefiles are not too smart. If you change a file in common_source,
 you should probably remove its .o file if you are going to do a make
 from the backgammon or teachgammon directories.
+
+The version of backgammon for dumb terminals is no longer included.

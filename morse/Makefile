@@ -7,7 +7,7 @@ PROG = morse
 all:	$(PROG)
 
 $(PROG):	$(PROG).c
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(PROG) $(PROG).c
+	$(CC) $(CFLAGS) -I../include $(LDFLAGS) -o $(PROG) $(PROG).c
 
 install:	$(PROG)
 	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)

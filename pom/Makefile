@@ -4,9 +4,9 @@ include ../Makeconfig
 
 PROG = pom
 
-INCS = $(BSD_INCS)
-DEFS = $(BSD_DEFS)
-LIBS = -lm $(BSD_LIB)
+INCS = -I../include
+DEFS = 
+LIBS = -lm
 
 all:	$(PROG)
 

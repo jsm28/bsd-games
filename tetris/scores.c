@@ -1,4 +1,4 @@
-/*	$NetBSD: scores.c,v 1.3 1997/01/13 06:51:57 tls Exp $	*/
+/*	$NetBSD: scores.c,v 1.4 1997/10/14 01:14:20 lukem Exp $	*/
 
 /*-
  * Copyright (c) 1992, 1993
@@ -51,13 +51,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/file.h>
 #include <time.h>
+#include <termcap.h>
 #include <unistd.h>
-
-/*
- * XXX - need a <termcap.h>
- */
-int	tputs __P((const char *, int, int (*)(int)));
 
 #include "pathnames.h"
 #include "screen.h"
@@ -205,7 +202,7 @@ savescore(level)
 		 */
 		nscores = checkscores(scores, nscores);
 		rewind(sf);
-		if (fwrite(scores, sizeof(*sp), nscores, sf) != nscores ||
+		if (fwrite(scores, sizeof(*sp), nscores, sf) != (size_t)nscores ||
 		    fflush(sf) == EOF)
 			(void)fprintf(stderr,
 			    "tetris: error writing %s: %s -- %s\n",

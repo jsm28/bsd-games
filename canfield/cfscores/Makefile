@@ -2,8 +2,8 @@
 
 include ../../Makeconfig
 
-DEFS = -D_PATH_SCORE=\"$(CANFIELD_SCOREFILE)\" $(BSD_DEFS)
-INCS= -I../canfield $(BSD_INCS) $(NCURSES_INCS)
+DEFS = 
+INCS = -I../../include -I../canfield $(NCURSES_INCS)
 
 all:	cfscores
 

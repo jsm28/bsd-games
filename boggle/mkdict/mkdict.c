@@ -1,4 +1,4 @@
-/*	$NetBSD: mkdict.c,v 1.2 1995/03/21 12:14:49 cgd Exp $	*/
+/*	$NetBSD: mkdict.c,v 1.3 1997/10/11 02:12:21 lukem Exp $	*/
 
 /*-
  * Copyright (c) 1993
@@ -36,17 +36,17 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
-static char copyright[] =
-"@(#) Copyright (c) 1993\n\
-	The Regents of the University of California.  All rights reserved.\n";
+__COPYRIGHT("@(#) Copyright (c) 1993\n\
+	The Regents of the University of California.  All rights reserved.\n");
 #endif /* not lint */
 
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)mkdict.c	8.1 (Berkeley) 6/11/93";
 #else
-static char rcsid[] = "$NetBSD: mkdict.c,v 1.2 1995/03/21 12:14:49 cgd Exp $";
+__RCSID("$NetBSD: mkdict.c,v 1.3 1997/10/11 02:12:21 lukem Exp $");
 #endif
 #endif /* not lint */
 
@@ -62,6 +62,7 @@ static char rcsid[] = "$NetBSD: mkdict.c,v 1.2 1995/03/21 12:14:49 cgd Exp $";
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <err.h>
 
 #include "bog.h"
 
@@ -72,22 +73,19 @@ main(argc, argv)
 	int argc;
 	char *argv[];
 {
-	register char *p, *q;
-	register int ch, common, n, nwords;
+	char *p, *q;
+	int ch, common, nwords;
 	int current, len, prev, qcount;
 	char buf[2][MAXWORDLEN + 1];
 
 	prev = 0;
 	current = 1;
 	buf[prev][0] = '\0';
-	if (argc == 2)
-		n = atoi(argv[1]);
 
 	for (nwords = 1;
 	    fgets(buf[current], MAXWORDLEN + 1, stdin) != NULL; ++nwords) {
-		if ((p = index(buf[current], '\n')) == NULL) {
-			fprintf(stderr,
-			    "mkdict: word too long: %s\n", buf[current]);
+		if ((p = strchr(buf[current], '\n')) == NULL) {
+			warnx("word too long: %s", buf[current]);
 			while ((ch = getc(stdin)) != EOF && ch != '\n')
 				;
 			if (ch == EOF)
@@ -103,7 +101,7 @@ main(argc, argv)
 				if (*q != 'u')
 					break;
 				else {
-					while (*q = *(q + 1))
+					while ((*q = *(q + 1)))
 						q++;
 				}
 				len++;
@@ -112,7 +110,7 @@ main(argc, argv)
 		}
 		if (*p != '\n' || len < 3 || len > MAXWORDLEN)
 			continue;
-		if (argc == 2 && nwords % n)
+		if (argc == 2 && nwords % atoi(argv[1]))
 			continue;
 
 		*p = '\0';
@@ -127,6 +125,6 @@ main(argc, argv)
 		prev = !prev;
 		current = !current;
 	}
-	fprintf(stderr, "%d words\n", nwords);
+	warnx("%d words", nwords);
 	exit(0);
 }

@@ -11,11 +11,11 @@ OBJS=	battlestar.o com1.o com2.o com3.o com4.o com5.o com6.o com7.o \
 	init.o cypher.o getcom.o parse.o room.o save.o fly.o misc.o \
 	globals.o dayfile.o nightfile.o dayobjs.o nightobjs.o words.o
 
-LIBS = $(NCURSES_LIB) $(BSD_LIB)
+LIBS = $(NCURSES_LIB)
 
-INCS = $(BSD_INCS) $(NCURSES_INCS)
+INCS = -I../include $(NCURSES_INCS)
 
-DEFS = $(BSD_DEFS) -D_PATH_SCORE=\"$(BATTLESTAR_SCOREFILE)\"
+DEFS = $(BSD_SIGNAL_DEFS)
 
 all:	$(PROG)
 

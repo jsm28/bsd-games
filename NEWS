@@ -1,11 +1,30 @@
 This file contains a summary of changes in each version after 1.3.
 For fuller details, see ChangeLog and ChangeLog.0.
 
+Version 2.0
+===========
+
+* All games updated to NetBSD-current as of 1997-12-12 (except for
+paranoia).  Hunt and boggle are now based on the NetBSD versions.
+
+* Many bugs fixed.
+
+* Added countmail.
+
+* Better libc6 support - adventure should now work.
+
+* No longer uses libbsd with libc5.
+
+* Nearly warning-free compile with -Wall -W -Wstrict-prototypes
+-Wmissing-prototypes.
+
+* Hunt now uses internet domain sockets (untested).
+
 Version 1.5
 ===========
 
 * All games updated to NetBSD-current as of 1997-07-12 (except for
-bog, hunt and paprnoia).
+bog, hunt and paranoia).
 
 * Added adventure, banner, dm, phantasia, pig, quiz, random and rogue.
 (Rogue is in bsd-games-non-free only).

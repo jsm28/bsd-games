@@ -1,4 +1,4 @@
-/*	$NetBSD: grammar.y,v 1.3 1995/03/21 15:03:59 cgd Exp $	*/
+/*	$NetBSD: grammar.y,v 1.4 1997/10/10 02:07:08 lukem Exp $	*/
 
 /*-
  * Copyright (c) 1990, 1993
@@ -63,27 +63,17 @@
 %{
 #include "include.h"
 
+#include <sys/cdefs.h>
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)grammar.y	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: grammar.y,v 1.3 1995/03/21 15:03:59 cgd Exp $";
+__RCSID("$NetBSD: grammar.y,v 1.4 1997/10/10 02:07:08 lukem Exp $");
 #endif
 #endif /* not lint */
 
 int	errors = 0;
 int	line = 1;
-
-void check_adir __P((int, int, int));
-void check_edge __P((int, int));
-void check_edir __P((int, int, int));
-void check_line __P((int, int, int, int));
-void check_linepoint __P((int, int));
-void check_point __P((int, int));
-int checkdefs __P((void));
-int yyerror __P((char *));
-int yylex __P((void));
-
 %}
 
 %%
@@ -346,7 +336,7 @@ check_line(x1, y1, x2, y2)
 
 int
 yyerror(s)
-	char *s;
+	const char *s;
 {
 	fprintf(stderr, "\"%s\": line %d: %s\n", file, line, s);
 	errors++;
@@ -389,7 +379,7 @@ check_edir(x, y, dir)
 
 void
 check_adir(x, y, dir)
-	int x, y, dir;
+	int x __attribute__((unused)), y __attribute__((unused)), dir __attribute__((unused));
 {
 }
 

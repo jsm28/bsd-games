@@ -1,4 +1,4 @@
-/*	$NetBSD: pl_7.c,v 1.6 1995/04/22 10:37:17 cgd Exp $	*/
+/*	$NetBSD: pl_7.c,v 1.8 1997/10/13 21:04:32 christos Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -33,18 +33,23 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)pl_7.c	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: pl_7.c,v 1.6 1995/04/22 10:37:17 cgd Exp $";
+__RCSID("$NetBSD: pl_7.c,v 1.8 1997/10/13 21:04:32 christos Exp $");
 #endif
 #endif /* not lint */
 
-#if !defined(linux) || defined(__GLIBC__)
 #include <sys/ttydefaults.h>
-#endif
 #include "player.h"
+#ifdef __STDC__
+#include <stdarg.h>
+#else
+#include <varargs.h>
+#endif
+#include <unistd.h>
 
 
 /*
@@ -56,8 +61,13 @@ static char *sc_prompt;
 static char *sc_buf;
 static int sc_line;
 
+void
 initscreen()
 {
+	if (!SCREENTEST()) {
+		printf("Can't sail on this terminal.\n");
+		exit(1);
+	}
 	/* initscr() already done in SCREENTEST() */
 	view_w = newwin(VIEW_Y, VIEW_X, VIEW_T, VIEW_L);
 	slot_w = newwin(SLOT_Y, SLOT_X, SLOT_T, SLOT_L);
@@ -73,6 +83,7 @@ initscreen()
 	crmode();
 }
 
+void
 cleanupscreen()
 {
 	/* alarm already turned off */
@@ -84,8 +95,10 @@ cleanupscreen()
 	}
 }
 
+/*ARGSUSED*/
 void
-newturn()
+newturn(n)
+	int n __attribute__((unused));
 {
 	repaired = loaded = fired = changed = 0;
 	movebuf[0] = '\0';
@@ -137,23 +150,65 @@ newturn()
 }
 
 /*VARARGS2*/
-Signal(fmt, ship, a, b, c, d)
-char *fmt;
-register struct ship *ship;
-int a, b, c, d;
+void
+#ifdef __STDC__
+Signal(const char *fmt, struct ship *ship, ...)
+#else
+Signal(va_alist)
+	va_dcl
+#endif
 {
+	va_list ap;
+	char format[BUFSIZ];
+#ifndef __STDC__
+	const char *fmt;
+	struct ship *ship;
+
+	va_start(ap);
+	fmt = va_arg(ap, const char *);
+	ship = va_arg(ap, struct ship *);
+#else
+	va_start(ap, ship);
+#endif
 	if (!done_curses)
 		return;
 	if (*fmt == '\7')
 		putchar(*fmt++);
-	if (ship == 0)
-		(void) wprintw(scroll_w, fmt, a, b, c, d);
-	else
-		(void) wprintw(scroll_w, fmt, ship->shipname,
-			colours(ship), sterncolour(ship), a, b, c, d);
+	fmtship(format, sizeof(format), fmt, ship);
+	(void) vwprintw(scroll_w, format, ap);
+	va_end(ap);
 	Scroll();
 }
 
+/*VARARGS2*/
+void
+#ifdef __STDC__
+Msg(const char *fmt, ...)
+#else
+Msg(va_alist)
+	va_dcl
+#endif
+{
+	va_list ap;
+#ifndef __STDC__
+	const char *fmt;
+
+	va_start(ap);
+	fmt = va_arg(ap, const char *);
+#else
+	va_start(ap, fmt);
+#endif
+
+	if (!done_curses)
+		return;
+	if (*fmt == '\7')
+		putchar(*fmt++);
+	(void) vwprintw(scroll_w, fmt, ap);
+	va_end(ap);
+	Scroll();
+}
+
+void
 Scroll()
 {
 	if (++sc_line >= SCROLL_Y)
@@ -162,23 +217,21 @@ Scroll()
 	(void) wclrtoeol(scroll_w);
 }
 
+void
 prompt(p, ship)
-register char *p;
+char *p;
 struct ship *ship;
 {
-	static char buf[60];
+	static char buf[BUFSIZ];
 
-	if (ship != 0) {
-		(void)sprintf(buf, p, ship->shipname, colours(ship),
-			sterncolour(ship));
-		p = buf;
-	}
-	sc_prompt = p;
+	fmtship(buf, sizeof(buf), p, ship);
+	sc_prompt = buf;
 	sc_buf = "";
 	sc_hasprompt = 1;
-	(void) waddstr(scroll_w, p);
+	(void) waddstr(scroll_w, buf);
 }
 
+void
 endprompt(flag)
 char flag;
 {
@@ -187,13 +240,13 @@ char flag;
 		Scroll();
 }
 
+int
 sgetch(p, ship, flag)
 char *p;
 struct ship *ship;
 char flag;
 {
-	register c;
-
+	int c;
 	prompt(p, ship);
 	blockalarm();
 	(void) wrefresh(scroll_w);
@@ -206,13 +259,14 @@ char flag;
 	return c;
 }
 
+void
 sgetstr(pr, buf, n)
 char *pr;
-register char *buf;
-register n;
+char *buf;
+int n;
 {
-	register c;
-	register char *p = buf;
+	int c;
+	char *p = buf;
 
 	prompt(pr, (struct ship *)0);
 	sc_buf = buf;
@@ -244,6 +298,7 @@ register n;
 	}
 }
 
+void
 draw_screen()
 {
 	draw_view();
@@ -253,9 +308,10 @@ draw_screen()
 	(void) wrefresh(scroll_w);		/* move the cursor */
 }
 
+void
 draw_view()
 {
-	register struct ship *sp;
+	struct ship *sp;
 
 	(void) werase(view_w);
 	foreachship(sp) {
@@ -276,6 +332,7 @@ draw_view()
 	(void) wrefresh(view_w);
 }
 
+void
 draw_turn()
 {
 	(void) wmove(turn_w, 0, 0);
@@ -283,6 +340,7 @@ draw_turn()
 	(void) wrefresh(turn_w);
 }
 
+void
 draw_stat()
 {
 	(void) wmove(stat_w, STAT_1, 0);
@@ -323,6 +381,7 @@ draw_stat()
 	(void) wrefresh(stat_w);
 }
 
+void
 draw_slot()
 {
 	if (!boarding(ms, 0)) {
@@ -386,9 +445,10 @@ draw_slot()
 	(void) wrefresh(slot_w);
 }
 
+void
 draw_board()
 {
-	register int n;
+	int n;
 
 	(void) clear();
 	(void) werase(view_w);
@@ -433,32 +493,38 @@ draw_board()
 	(void) refresh();
 }
 
+void
 centerview()
 {
 	viewrow = mf->row - VIEW_Y / 2;
 	viewcol = mf->col - VIEW_X / 2;
 }
 
+void
 upview()
 {
 	viewrow -= VIEW_Y / 3;
 }
 
+void
 downview()
 {
 	viewrow += VIEW_Y / 3;
 }
 
+void
 leftview()
 {
 	viewcol -= VIEW_X / 5;
 }
 
+void
 rightview()
 {
 	viewcol += VIEW_X / 5;
 }
 
+void
 adjustview()
 {
 	if (dont_adjust)

@@ -2,19 +2,18 @@
 
 include ../../Makeconfig
 
-LIBS = $(BSD_LIB)
-INCS = -I../strfile $(BSD_INCS)
-DEFS = $(BSD_DEFS) -DFORTDIR=\"$(LIBDIR)\"
+INCS = -I../../include -I../strfile
+DEFS = 
 
 all:	fortune
 
 fortune:	fortune.c pathnames.h ../strfile/strfile.h
-	$(CC) $(LDFLAGS) $(CFLAGS) $(DEFS) $(INCS) -o fortune fortune.c $(LIBS)
+	$(CC) $(LDFLAGS) $(CFLAGS) $(DEFS) $(INCS) -o fortune fortune.c
 
 test:	fortune.test
 
 fortune.test:	fortune.c pathnames.h ../strfile/strfile.h
-	$(CC) $(LDFLAGS) $(CFLAGS) $(BSD_DEFS) -DTEST -DFORTDIR=\"..\" \
+	$(CC) $(LDFLAGS) $(CFLAGS) $(DEFS) -DTEST -DFORTDIR=\"..\" \
 	    $(INCS) -o fortune.test fortune.c $(LIBS)
 
 install:	all

@@ -1,4 +1,4 @@
-/*	$NetBSD: mach.c,v 1.5 1995/04/28 22:28:48 mycroft Exp $	*/
+/*	$NetBSD: mach.c,v 1.8 1997/10/13 21:09:59 cjs Exp $	*/
 
 /*-
  * Copyright (c) 1993
@@ -36,11 +36,12 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)mach.c	8.1 (Berkeley) 6/11/93";
 #else
-static char rcsid[] = "$NetBSD: mach.c,v 1.5 1995/04/28 22:28:48 mycroft Exp $";
+__RCSID("$NetBSD: mach.c,v 1.8 1997/10/13 21:09:59 cjs Exp $");
 #endif
 #endif /* not lint */
 
@@ -49,6 +50,8 @@ static char rcsid[] = "$NetBSD: mach.c,v 1.5 1995/04/28 22:28:48 mycroft Exp $";
  *
  * Input is raw and unechoed
  */
+#include <sys/ioctl.h>
+
 #include <ctype.h>
 #include <curses.h>
 #include <fcntl.h>
@@ -97,7 +100,7 @@ setup(sflag, seed)
 		time(&seed);
 	srandom(seed);
 	if (debug)
-		(void) printf("seed = %ld\n", seed);
+		(void) printf("seed = %ld\n", (long) seed);
 	return(0);
 }
 
@@ -170,8 +173,8 @@ char *
 getline(q)
 	char *q;
 {
-	register int ch, done;
-	register char *p;
+	int ch, done;
+	char *p;
 	int row, col;
 
 	p = q;
@@ -596,7 +599,7 @@ tty_setup()
 
 static void
 stop_catcher(signo)
-	int signo;
+	int signo __attribute__((unused));
 {
 	sigset_t sigset, osigset;
 
@@ -617,7 +620,7 @@ stop_catcher(signo)
  
 static void
 cont_catcher(signo)
-	int signo;
+	int signo __attribute__((unused));
 {
 	noecho();
 	raw();
@@ -633,7 +636,7 @@ cont_catcher(signo)
  */
 static void
 winch_catcher(signo)
-	int signo;
+	int signo __attribute__((unused));
 {
 	/*
 	struct winsize win;
@@ -661,7 +664,7 @@ static void
 tty_showboard(b)
 	char *b;
 {
-	register int i;
+	int i;
 	int line;
 
 	clear();

@@ -1,4 +1,4 @@
-/*	$NetBSD: log.c,v 1.4 1997/01/13 06:50:26 tls Exp $	*/
+/*	$NetBSD: log.c,v 1.6 1997/10/11 02:01:02 lukem Exp $	*/
 
 /*-
  * Copyright (c) 1990, 1993
@@ -45,24 +45,26 @@
  * For more info on this and all of my stuff, mail edjames@berkeley.edu.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)log.c	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: log.c,v 1.4 1997/01/13 06:50:26 tls Exp $";
+__RCSID("$NetBSD: log.c,v 1.6 1997/10/11 02:01:02 lukem Exp $");
 #endif
 #endif not lint
 
 #include "include.h"
 #include "pathnames.h"
 
-int compar __P((SCORE *, SCORE *)); /* Not correct for qsort */
-char *timestr __P((int));
-
 int
-compar(a, b)
-	SCORE	*a, *b;
+compar(va, vb)
+	const void *va, *vb;
 {
+	SCORE	*a, *b;
+
+	a = (SCORE *)va;
+	b = (SCORE *)vb;
 	if (b->planes == a->planes)
 		return (b->time - a->time);
 	else
@@ -103,19 +105,17 @@ int
 log_score(list_em)
 	int list_em;
 {
-	register int	i, fd, num_scores = 0, good, changed = 0, found = 0;
+	int		i, fd, num_scores = 0, good, changed = 0, found = 0;
 	struct passwd	*pw;
 	FILE		*fp;
 	char		*cp;
 	SCORE		score[100], thisscore;
-#ifdef SYSV
 	struct utsname	name;
-#endif
 
 	umask(0);
 	fd = open(_PATH_SCORE, O_CREAT|O_RDWR, 0644);
 	if (fd < 0) {
-		perror(_PATH_SCORE);
+		warn("open %s", _PATH_SCORE);
 		return (-1);
 	}
 	/*
@@ -124,7 +124,7 @@ log_score(list_em)
 	 */
 	fp = fdopen(fd, "r+");
 	if (fp == NULL) {
-		perror(_PATH_SCORE);
+		warn("fdopen %s", _PATH_SCORE);
 		return (-1);
 	}
 #ifdef BSD
@@ -134,7 +134,7 @@ log_score(list_em)
 	while (lockf(fileno(fp), F_LOCK, 1) < 0)
 #endif
 	{
-		perror("flock");
+		warn("flock %s", _PATH_SCORE);
 		return (-1);
 	}
 	for (;;) {
@@ -156,16 +156,9 @@ log_score(list_em)
 			return (-1);
 		}
 		strcpy(thisscore.name, pw->pw_name);
-#ifdef BSD
-		if (gethostname(thisscore.host, sizeof (thisscore.host)) < 0) {
-			perror("gethostname");
-			return (-1);
-		}
-#endif
-#ifdef SYSV
 		uname(&name);
-		strcpy(thisscore.host, name.sysname);
-#endif
+		strncpy(thisscore.host, name.nodename, sizeof(thisscore.host)-1);
+		thisscore.host[sizeof(thisscore.host) - 1] = '\0';
 
 		cp = strrchr(file, '/');
 		if (cp == NULL) {
@@ -256,5 +249,13 @@ log_score(list_em)
 			score[i].planes);
 	}
 	putchar('\n');
-	return(0);
+	return (0);
+}
+
+void
+log_score_quit(dummy)
+	int dummy __attribute__((unused));
+{
+	(void)log_score(0);
+	exit(0);
 }

@@ -1,4 +1,4 @@
-/*	$NetBSD: bog.c,v 1.6 1997/01/07 12:00:29 tls Exp $	*/
+/*	$NetBSD: bog.c,v 1.8 1997/10/11 02:12:11 lukem Exp $	*/
 
 /*-
  * Copyright (c) 1993
@@ -36,17 +36,17 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
-static char copyright[] =
-"@(#) Copyright (c) 1993\n\
-	The Regents of the University of California.  All rights reserved.\n";
+__COPYRIGHT("@(#) Copyright (c) 1993\n\
+	The Regents of the University of California.  All rights reserved.\n");
 #endif /* not lint */
 
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)bog.c	8.2 (Berkeley) 5/4/95";
 #else
-static char rcsid[] = "$NetBSD: bog.c,v 1.6 1997/01/07 12:00:29 tls Exp $";
+__RCSID("$NetBSD: bog.c,v 1.8 1997/10/11 02:12:11 lukem Exp $");
 #endif
 #endif /* not lint */
 
@@ -61,8 +61,8 @@ static char rcsid[] = "$NetBSD: bog.c,v 1.6 1997/01/07 12:00:29 tls Exp $";
 #include "bog.h"
 #include "extern.h"
 
-static int	compar __P((const void *, const void *));
-int		main __P((int, char *[]));
+static	int	compar __P((const void *, const void *));
+	int	main __P((int, char *[]));
 
 struct dictindex dictindex[26];
 
@@ -132,12 +132,13 @@ main(argc, argv)
 	int ch, done, i, selfuse, sflag;
 	char *bspec, *p;
 
+	seed = 0;
 	batch = debug = reuse = selfuse = sflag = 0;
 	bspec = NULL;
 	minlength = 3;
 	tlimit = 180;		/* 3 minutes is standard */
 
-	while ((ch = getopt(argc, argv, "bds:t:w:")) != EOF)
+	while ((ch = getopt(argc, argv, "bds:t:w:")) != -1)
 		switch(ch) {
 		case 'b':
 			batch = 1;
@@ -280,8 +281,8 @@ char *
 batchword(fp)
 	FILE *fp;
 {
-	register int *p, *q;
-	register char *w;
+	int *p, *q;
+	char *w;
 
 	q = &wordpath[MAXWORDLEN + 1];
 	p = wordpath;
@@ -308,7 +309,6 @@ batchword(fp)
 void
 playgame()
 {
-	/* Can't use register variables if setjmp() is used! */
 	int i, *p, *q;
 	time_t t;
 	char buf[MAXWORDLEN + 1];
@@ -352,7 +352,7 @@ playgame()
 			showstr(buf, 1);
 			continue;
 		}
-		if (strlen(buf) < minlength) {
+		if (strlen(buf) < (size_t)minlength) {
 			badword();
 			continue;
 		}
@@ -432,8 +432,8 @@ checkword(word, prev, path)
 	char *word;
 	int prev, *path;
 {
-	register char *p, *q;
-	register int i, *lm;
+	char *p, *q;
+	int i, *lm;
 
 	if (debug) {
 		(void) printf("checkword(%s, %d, [", word, prev);
@@ -514,8 +514,8 @@ int
 validword(word)
 	char *word;
 {
-	register int j;
-	register char *q, *w;
+	int j;
+	char *q, *w;
 
 	j = word[0] - 'a';
 	if (dictseek(dictfp, dictindex[j].start, 0) < 0) {
@@ -548,8 +548,8 @@ validword(word)
 void
 checkdict()
 {
-	register char *p, **pw, *w;
-	register int i;
+	char *p, **pw, *w;
+	int i;
 	int prevch, previndex, *pi, *qi, st;
 
 	mwordsp = mwords;
@@ -614,7 +614,8 @@ checkdict()
 		}
 		mword[nmwords++] = mwordsp;
 		p = w;
-		while (*mwordsp++ = *p++);
+		while ((*mwordsp++ = *p++))
+		    	;
 	}
 }
 
@@ -627,7 +628,7 @@ void
 newgame(b)
 	char *b;
 {
-	register int i, p, q;
+	int i, p, q;
 	char *tmp;
 	int *lm[26];
 	static char *cubes[16] = {
@@ -673,7 +674,7 @@ newgame(b)
 	}
 
 	for (i = 0; i < 16; i++) {
-		register int j;
+		int j;
 
 		j = (int) (board[i] - 'a');
 		*lm[j] = i;

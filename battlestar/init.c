@@ -1,4 +1,4 @@
-/*	$NetBSD: init.c,v 1.5 1997/01/07 11:56:45 tls Exp $	*/
+/*	$NetBSD: init.c,v 1.7 1997/10/11 02:07:25 lukem Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -33,28 +33,22 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)init.c	8.4 (Berkeley) 4/30/95";
 #else
-static char rcsid[] = "$NetBSD: init.c,v 1.5 1997/01/07 11:56:45 tls Exp $";
+__RCSID("$NetBSD: init.c,v 1.7 1997/10/11 02:07:25 lukem Exp $");
 #endif
-#endif /* not lint */
+#endif				/* not lint */
 
-#include <unistd.h>
-#include <sys/types.h>
 #include "extern.h"
-#include <pwd.h>
-
-int checkout __P((char *));
-void getutmp __P((char *));
-int wizard __P((char *));
 
 void
 initialize(startup)
-	char startup;
+	char    startup;
 {
-	register struct objs *p;
+	struct objs *p;
 
 	puts("Version 4.2, fall 1984.");
 	puts("First Adventure game written by His Lordship, the honorable");
@@ -65,7 +59,7 @@ initialize(startup)
 	wordinit();
 	if (startup) {
 		direction = NORTH;
-		btime = 0;
+		ourtime = 0;
 		snooze = CYCLE * 1.5;
 		position = 22;
 		setbit(wear, PAJAMAS);
@@ -76,12 +70,12 @@ initialize(startup)
 	} else
 		restore();
 	wiz = wizard(uname);
-	signal(SIGINT, die);
+	signal(SIGINT, diesig);
 }
 
 void
 getutmp(uname)
-	char *uname;
+	char   *uname;
 {
 	struct passwd *ptr;
 
@@ -89,7 +83,7 @@ getutmp(uname)
 	strcpy(uname, ptr ? ptr->pw_name : "");
 }
 
-char *list[] = {	/* hereditary wizards */
+char   *list[] = {		/* hereditary wizards */
 	"riggle",
 	"chris",
 	"edward",
@@ -100,7 +94,7 @@ char *list[] = {	/* hereditary wizards */
 	0
 };
 
-char *badguys[] = {
+char   *badguys[] = {
 	"wnj",
 	"root",
 	"ted",
@@ -109,20 +103,20 @@ char *badguys[] = {
 
 int
 wizard(uname)
-	char *uname;
+	char   *uname;
 {
-	char flag;
+	int     flag;
 
-	if (flag = checkout(uname))
+	if ((flag = checkout(uname)) != 0)
 		printf("You are the Great wizard %s.\n", uname);
 	return flag;
 }
 
 int
 checkout(uname)
-	register char *uname;
+	char   *uname;
 {
-	register char **ptr;
+	char  **ptr;
 
 	for (ptr = list; *ptr; ptr++)
 		if (strcmp(*ptr, uname) == 0)
@@ -130,10 +124,10 @@ checkout(uname)
 	for (ptr = badguys; *ptr; ptr++)
 		if (strcmp(*ptr, uname) == 0) {
 			printf("You are the Poor anti-wizard %s.  Good Luck!\n",
-				uname);
+			    uname);
 			CUMBER = 3;
 			WEIGHT = 9;	/* that'll get him! */
-			bclock = 10;
+			ourclock = 10;
 			setbit(location[7].objects, WOODSMAN);	/* viper room */
 			setbit(location[20].objects, WOODSMAN);	/* laser " */
 			setbit(location[13].objects, DARK);	/* amulet " */

@@ -1,4 +1,4 @@
-/*	$NetBSD: battlestar.c,v 1.4 1997/01/07 11:56:32 tls Exp $	*/
+/*	$NetBSD: battlestar.c,v 1.6 1997/10/11 02:06:55 lukem Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -33,19 +33,19 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
-static char copyright[] =
-"@(#) Copyright (c) 1983, 1993\n\
-	The Regents of the University of California.  All rights reserved.\n";
-#endif /* not lint */
+__COPYRIGHT("@(#) Copyright (c) 1983, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n");
+#endif				/* not lint */
 
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)battlestar.c	8.2 (Berkeley) 4/28/95";
 #else
-static char rcsid[] = "$NetBSD: battlestar.c,v 1.4 1997/01/07 11:56:32 tls Exp $";
+__RCSID("$NetBSD: battlestar.c,v 1.6 1997/10/11 02:06:55 lukem Exp $");
 #endif
-#endif /* not lint */
+#endif				/* not lint */
 
 /*
  * Battlestar - a stellar-tropical adventure game
@@ -56,27 +56,27 @@ static char rcsid[] = "$NetBSD: battlestar.c,v 1.4 1997/01/07 11:56:32 tls Exp $
 
 #include "extern.h"
 
-int main __P((int, char **));
+int main __P((int, char *[]));
 
 int
-main(argc,argv)
-int  argc;
-char **argv;
+main(argc, argv)
+	int     argc;
+	char  **argv;
 {
-	char mainbuf[LINELENGTH];
-	char *next;
+	char    mainbuf[LINELENGTH];
+	char   *next;
 
 	initialize(argc < 2 || strcmp(argv[1], "-r"));
 start:
 	news();
 	beenthere[position]++;
 	if (notes[LAUNCHED])
-		crash();		/* decrements fuel & crash */
+		crash();	/* decrements fuel & crash */
 	if (matchlight) {
 		puts("Your match splutters out.");
 		matchlight = 0;
 	}
-	if (!notes[CANTSEE] || testbit(inven,LAMPON) ||
+	if (!notes[CANTSEE] || testbit(inven, LAMPON) ||
 	    testbit(location[position].objects, LAMPON)) {
 		writedes();
 		printobjs();
@@ -85,16 +85,16 @@ start:
 	whichway(location[position]);
 run:
 	next = getcom(mainbuf, sizeof mainbuf, ">-: ",
-		"Please type in something.");
+	    "Please type in something.");
 	for (wordcount = 0; next && wordcount < 20; wordcount++)
 		next = getword(next, words[wordcount], -1);
 	parse();
 	switch (cypher()) {
-		case -1:
-			goto run;
-		case 0:
-			goto start;
-		default:
-			exit(1);
+	case -1:
+		goto run;
+	case 0:
+		goto start;
+	default:
+		exit(1); /* Shouldn't happen */
 	}
 }

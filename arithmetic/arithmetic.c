@@ -1,4 +1,4 @@
-/*	$NetBSD: arithmetic.c,v 1.6 1996/03/21 18:30:19 jtc Exp $	*/
+/*	$NetBSD: arithmetic.c,v 1.9 1997/10/15 08:53:24 is Exp $	*/
 
 /*
  * Copyright (c) 1989, 1993
@@ -36,17 +36,17 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
-static char copyright[] =
-"@(#) Copyright (c) 1989, 1993\n\
-	The Regents of the University of California.  All rights reserved.\n";
+__COPYRIGHT("@(#) Copyright (c) 1989, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n");
 #endif /* not lint */
 
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)arithmetic.c	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: arithmetic.c,v 1.6 1996/03/21 18:30:19 jtc Exp $";
+__RCSID("$NetBSD: arithmetic.c,v 1.9 1997/10/15 08:53:24 is Exp $");
 #endif
 #endif /* not lint */
 
@@ -79,13 +79,23 @@ static char rcsid[] = "$NetBSD: arithmetic.c,v 1.6 1996/03/21 18:30:19 jtc Exp $
  */
 
 #include <sys/types.h>
-#include <signal.h>
+#include <err.h>
 #include <ctype.h>
+#include <signal.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <stdlib.h>
 #include <unistd.h>
+
+int	getrandom __P((int, int, int));
+void	intr __P((int));
+int	main __P((int, char *[]));
+int	opnum __P((int));
+void	penalise __P((int, int, int));
+int	problem __P((void));
+void	showstats __P((void));
+void	usage __P((void));
 
 char keylist[] = "+-x/";
 char defaultkeys[] = "+-";
@@ -95,15 +105,6 @@ int rangemax = 10;
 int nright, nwrong;
 time_t qtime;
 #define	NQUESTS	20
-
-int getrandom __P((int, int, int));
-void intr __P((int));
-int main __P((int, char **));
-int opnum __P((int));
-void penalise __P((int, int, int));
-int problem __P((void));
-void showstats __P((void));
-void usage __P((void));
 
 /*
  * Select keys from +-x/ to be asked addition, subtraction, multiplication,
@@ -121,26 +122,20 @@ main(argc, argv)
 	extern int optind;
 	int ch, cnt;
 
-	while ((ch = getopt(argc, argv, "r:o:")) != EOF)
+	while ((ch = getopt(argc, argv, "r:o:")) != -1)
 		switch(ch) {
 		case 'o': {
-			register char *p;
+			char *p;
 
 			for (p = keys = optarg; *p; ++p)
-				if (!index(keylist, *p)) {
-					(void)fprintf(stderr,
-					    "arithmetic: unknown key.\n");
-					exit(1);
-				}
+				if (!strchr(keylist, *p))
+					errx(1, "arithmetic: unknown key.");
 			nkeys = p - optarg;
 			break;
 		}
 		case 'r':
-			if ((rangemax = atoi(optarg)) <= 0) {
-				(void)fprintf(stderr,
-				    "arithmetic: invalid range.\n");
-				exit(1);
-			}
+			if ((rangemax = atoi(optarg)) <= 0)
+				errx(1, "arithmetic: invalid range.");
 			break;
 		case '?':
 		default:
@@ -166,8 +161,8 @@ main(argc, argv)
 
 /* Handle interrupt character.  Print score and exit. */
 void
-intr(signum)
-	int signum;
+intr(dummy)
+	int dummy __attribute__((unused));
 {
 	showstats();
 	exit(0);
@@ -198,11 +193,12 @@ showstats()
 int
 problem()
 {
-	register char *p;
+	char *p;
 	time_t start, finish;
 	int left, op, right, result;
 	char line[80];
 
+	right = left = result = 0;
 	op = keys[random() % nkeys];
 	if (op != '/')
 		right = getrandom(rangemax + 1, op, 1);
@@ -333,7 +329,7 @@ getrandom(maxval, op, operand)
 	int maxval, op, operand;
 {
 	int value;
-	register struct penalty **pp, *p;
+	struct penalty **pp, *p;
 
 	op = opnum(op);
 	value = random() % (maxval + penalty[op][operand]);
@@ -368,8 +364,7 @@ getrandom(maxval, op, operand)
 	 * correspond to the actual sum of penalties in the list.  Provide an
 	 * obscure message.
 	 */
-	(void)fprintf(stderr, "arithmetic: bug: inconsistent penalties\n");
-	exit(1);
+	errx(1, "arithmetic: bug: inconsistent penalties.");
 	/* NOTREACHED */
 }
 
@@ -380,11 +375,9 @@ opnum(op)
 {
 	char *p;
 
-	if (op == 0 || (p = index(keylist, op)) == NULL) {
-		(void)fprintf(stderr,
-		    "arithmetic: bug: op %c not in keylist %s\n", op, keylist);
-		exit(1);
-	}
+	if (op == 0 || (p = strchr(keylist, op)) == NULL)
+		errx(1, "arithmetic: bug: op %c not in keylist %s",
+		    op, keylist);
 	return(p - keylist);
 }
 
@@ -392,6 +385,9 @@ opnum(op)
 void
 usage()
 {
-	(void)fprintf(stderr, "usage: arithmetic [-o +-x/] [-r range]\n");
+	extern char *__progname;	/* from crt0.o */
+
+	(void)fprintf(stderr, "usage: %s [-o +-x/] [-r range]\n",
+		__progname);
 	exit(1);
 }

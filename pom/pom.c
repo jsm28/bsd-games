@@ -1,4 +1,4 @@
-/*	$NetBSD: pom.c,v 1.6 1996/02/06 22:47:29 jtc Exp $	*/
+/*	$NetBSD: pom.c,v 1.8 1997/10/12 01:01:39 lukem Exp $	*/
 
 /*
  * Copyright (c) 1989, 1993
@@ -35,17 +35,17 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
-static char copyright[] =
-"@(#) Copyright (c) 1989, 1993\n\
-	The Regents of the University of California.  All rights reserved.\n";
+__COPYRIGHT("@(#) Copyright (c) 1989, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n");
 #endif /* not lint */
 
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)pom.c	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: pom.c,v 1.6 1996/02/06 22:47:29 jtc Exp $";
+__RCSID("$NetBSD: pom.c,v 1.8 1997/10/12 01:01:39 lukem Exp $");
 #endif
 #endif /* not lint */
 
@@ -60,15 +60,12 @@ static char rcsid[] = "$NetBSD: pom.c,v 1.6 1996/02/06 22:47:29 jtc Exp $";
  */
 
 #include <sys/time.h>
+#include <err.h>
+#include <errno.h>
+#include <math.h>
 #include <stdio.h>
 #include <string.h>
-#ifdef __GLIBC__
-#define isleap(y) (((y) % 4) == 0 && ((y) % 100) != 0 || ((y) % 400) == 0)
-#else
 #include <tzfile.h>
-#endif
-#include <math.h>
-#include <errno.h>
 
 #ifndef PI
 #define	PI	  3.14159265358979323846
@@ -81,21 +78,25 @@ static char rcsid[] = "$NetBSD: pom.c,v 1.6 1996/02/06 22:47:29 jtc Exp $";
 #define	Pzero	  192.917585	/* lunar mean long of perigee at EPOCH */
 #define	Nzero	  55.204723	/* lunar mean long of node at EPOCH */
 
-double dtor(), potm(), adj360();
+void	adj360 __P((double *));
+double	dtor __P((double));
+int	main __P((int, char *[]));
+double	potm __P((double));
 
-main()
+int
+main(argc, argv)
+	int argc __attribute__((unused));
+	char *argv[] __attribute__((unused));
 {
 	struct timeval tp;
 	struct timezone tzp;
-	struct tm *GMT, *gmtime();
+	struct tm *GMT;
 	time_t tmpt;
 	double days, today, tomorrow;
 	int cnt;
 
-	if (gettimeofday(&tp,&tzp)) {
-		(void)fprintf(stderr, "pom: %s\n", strerror(errno));
-		exit(1);
-	}
+	if (gettimeofday(&tp,&tzp))
+		err(1, "gettimeofday");
 	tmpt = tp.tv_sec;
 	GMT = gmtime(&tmpt);
 	days = (GMT->tm_yday + 1) + ((GMT->tm_hour +
@@ -179,7 +180,7 @@ dtor(deg)
  * adj360 --
  *	adjust value so 0 <= deg <= 360
  */
-double
+void
 adj360(deg)
 	double *deg;
 {

@@ -9,9 +9,9 @@ SRCS=	monop.c cards.c execute.c getinp.c houses.c jail.c misc.c morg.c \
 OBJS=	monop.o cards.o execute.o getinp.o houses.o jail.o misc.o morg.o \
 	print.o prop.o rent.o roll.o spec.o trade.o
 
-LIBS = $(BSD_LIB)
-INCS = $(BSD_INCS)
-DEFS = $(BSD_DEFS) -D_PATH_CARDS=\"$(MONOP_CARDSFILE)\"
+LIBS = 
+INCS = -I../include
+DEFS = $(BSD_SIGNAL_DEFS)
 
 all:	$(PROG) cards.pck
 
@@ -29,7 +29,7 @@ cards.pck:	initdeck cards.inp
 	./initdeck ./cards.inp
 
 initdeck:	initdeck.c
-	$(CC) $(CFLAGS) $(LDFLAGS) -o initdeck initdeck.c
+	$(CC) $(CFLAGS) -I../include $(LDFLAGS) -o initdeck initdeck.c
 
 install:	all
 	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)

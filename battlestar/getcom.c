@@ -1,4 +1,4 @@
-/*	$NetBSD: getcom.c,v 1.3 1995/03/21 15:07:30 cgd Exp $	*/
+/*	$NetBSD: getcom.c,v 1.5 1997/10/11 02:07:21 lukem Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -33,26 +33,25 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)getcom.c	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: getcom.c,v 1.3 1995/03/21 15:07:30 cgd Exp $";
+__RCSID("$NetBSD: getcom.c,v 1.5 1997/10/11 02:07:21 lukem Exp $");
 #endif
-#endif /* not lint */
+#endif				/* not lint */
 
-#include <stdio.h>
-#include <ctype.h>
 #include "extern.h"
 
-char *
+char   *
 getcom(buf, size, prompt, error)
-	char *buf;
-	int size;
-	char *prompt, *error;
+	char   *buf;
+	int     size;
+	char   *prompt, *error;
 {
 	for (;;) {
-		fputs(prompt, stdout); 
+		fputs(prompt, stdout);
 		if (fgets(buf, size, stdin) == 0) {
 			clearerr(stdin);
 			continue;
@@ -72,10 +71,10 @@ getcom(buf, size, prompt, error)
  * shifts to UPPERCASE if flag > 0, lowercase if flag < 0,
  * and leaves it unchanged if flag = 0
  */
-char *
+char   *
 getword(buf1, buf2, flag)
-	register char *buf1, *buf2;
-	register int flag;
+	char   *buf1, *buf2;
+	int     flag;
 {
 	while (isspace(*buf1))
 		buf1++;
@@ -90,13 +89,14 @@ getword(buf1, buf2, flag)
 					*buf2++ = tolower(*buf1++);
 				else
 					*buf2++ = *buf1++;
-			else if (flag > 0)
-				if (islower(*buf1))
-					*buf2++ = toupper(*buf1++);
+			else
+				if (flag > 0)
+					if (islower(*buf1))
+						*buf2++ = toupper(*buf1++);
+					else
+						*buf2++ = *buf1++;
 				else
 					*buf2++ = *buf1++;
-			else
-				*buf2++ = *buf1++;
 	} else
 		*buf2++ = *buf1++;
 	*buf2 = 0;

@@ -6,7 +6,7 @@ PROG = adventure
 
 OBJS = main.o init.o done.o save.o subr.o vocab.o wizard.o io.o data.o crc.o
 
-DEFS = -D'__RCSID(arg)=static char rcsid[] = arg' -D'__COPYRIGHT(arg)=static char copyright[] = arg'
+INCS = -I../include
 
 all:	$(PROG)
 
@@ -17,10 +17,10 @@ data.c:	glorkz setup
 	./setup glorkz >data.c
 
 setup:	setup.c hdr.h
-	$(CC) $(CFLAGS) $(DEFS) $(LDFLAGS) setup.c -o setup
+	$(CC) $(CFLAGS) $(INCS) $(LDFLAGS) setup.c -o setup
 
 .c.o:	
-	$(CC) $(CFLAGS) $(DEFS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 $(OBJS):	hdr.h extern.h
 

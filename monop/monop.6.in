@@ -177,7 +177,7 @@ it is the same as typing
 .Sh AUTHOR
 Ken Arnold
 .Sh FILES
-.Bl -tag -width /usr/share/games/cards.pck -compact
+.Bl -tag -width @monop_cardsfile@ -compact
 .It Pa @monop_cardsfile@
 Chance and Community Chest cards
 .El

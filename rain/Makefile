@@ -4,9 +4,9 @@ include ../Makeconfig
 
 PROG = rain
 
-LIBS = $(NCURSES_LIB) $(BSD_LIB)
-INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS)
+LIBS = $(NCURSES_LIB)
+INCS = -I../include $(NCURSES_INCS)
+DEFS = 
 
 all:	$(PROG)
 

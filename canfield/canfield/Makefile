@@ -2,10 +2,10 @@
 
 include ../../Makeconfig
 
-LIBS = $(NCURSES_LIB) $(BSD_LIB)
+LIBS = $(NCURSES_LIB)
 
-DEFS = -D_PATH_SCORE=\"$(CANFIELD_SCOREFILE)\" $(BSD_DEFS)
-INCS = $(BSD_INCS) $(NCURSES_INCS)
+DEFS = 
+INCS = -I../../include $(NCURSES_INCS)
 
 all:	canfield
 

@@ -17,7 +17,7 @@ install:
 	@echo "If directory creation fails, you can create the directories \
 	      by hand."
 	@echo "Creating base directories:"
-	@set -e; for i in $(GAMESDIR) $(SBINDIR) $(SOCKETDIR) $(USRBINDIR) \
+	@set -e; for i in $(GAMESDIR) $(SBINDIR) $(USRBINDIR) \
 	    $(MAN5DIR) $(MAN6DIR) $(MAN8DIR) $(LIBDIR) $(SHAREDIR) \
 	    $(VARLIBDIR); do \
 	    echo " $(INSTALL_PREFIX)$$i"; \
@@ -41,13 +41,8 @@ clean:
 	done
 
 distclean:	clean
-	rm -f subst.sed Makeconfig install-man install-score hide-game
-	rm -f backgammon/backgammon/backgammon.6 caesar/rot13
-	rm -f canfield/canfield/canfield.6 cribbage/cribbage.6 dm/dm.8
-	rm -f dm/dm.conf.5 hangman/hangman.6 hunt/hunt.6 hunt/huntd.6
-	rm -f mille/mille.6 monop/monop.6 quiz/datfiles/index quiz/quiz.6
-	rm -f rain/rain.6 robots/robots.6 rogue/rogue.6 snake/snake/snake.6
-	rm -f tetris/tetris.6 trek/trek.6
+	rm -f subst.sed hide-game
+	rm -f `cat substfiles`
 
 test:
 	@set -e; for i in $(TESTDIRS); do \

@@ -11,9 +11,9 @@ OBJS=	main.o pl_main.o pl_1.o pl_2.o pl_3.o pl_4.o pl_5.o pl_6.o pl_7.o \
 	dr_main.o dr_1.o dr_2.o dr_3.o dr_4.o dr_5.o lo_main.o \
 	assorted.o game.o globals.o misc.o parties.o sync.o version.o
 
-LIBS    = $(NCURSES_LIB) $(BSD_LIB)
-INCS    = $(BSD_INCS) $(NCURSES_INCS)
-DEFS    = $(BSD_DEFS) -D_PATH_LOGFILE=\"$(SAIL_SCOREFILE)\"
+LIBS    = $(NCURSES_LIB)
+INCS    = -I../include $(NCURSES_INCS)
+DEFS    = $(BSD_SIGNAL_DEFS)
 
 all:	$(PROG)
 

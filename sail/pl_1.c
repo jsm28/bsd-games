@@ -1,4 +1,4 @@
-/*	$NetBSD: pl_1.c,v 1.3 1995/04/22 10:37:07 cgd Exp $	*/
+/*	$NetBSD: pl_1.c,v 1.5 1997/10/13 21:04:02 christos Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -33,17 +33,19 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)pl_1.c	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: pl_1.c,v 1.3 1995/04/22 10:37:07 cgd Exp $";
+__RCSID("$NetBSD: pl_1.c,v 1.5 1997/10/13 21:04:02 christos Exp $");
 #endif
 #endif /* not lint */
 
 #include "player.h"
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 /*
  * If we get here before a ship is chosen, then ms == 0 and
@@ -53,6 +55,7 @@ static char rcsid[] = "$NetBSD: pl_1.c,v 1.3 1995/04/22 10:37:07 cgd Exp $";
  * Of course, we don't do any more Sync()'s if we got here
  * because of a Sync() failure.
  */
+void
 leave(conditions)
 int conditions;
 {
@@ -63,28 +66,24 @@ int conditions;
 	(void) signal(SIGCHLD, SIG_IGN);
 
 	if (done_curses) {
-		Signal("It looks like you've had it!",
-			(struct ship *)0);
+		Msg("It looks like you've had it!");
 		switch (conditions) {
 		case LEAVE_QUIT:
 			break;
 		case LEAVE_CAPTURED:
-			Signal("Your ship was captured.",
-				(struct ship *)0);
+			Msg("Your ship was captured.");
 			break;
 		case LEAVE_HURRICAN:
-			Signal("Hurricane!  All ships destroyed.",
-				(struct ship *)0);
+			Msg("Hurricane!  All ships destroyed.");
 			break;
 		case LEAVE_DRIVER:
-			Signal("The driver died.", (struct ship *)0);
+			Msg("The driver died.");
 			break;
 		case LEAVE_SYNC:
-			Signal("Synchronization error.", (struct ship *)0);
+			Msg("Synchronization error.");
 			break;
 		default:
-			Signal("A funny thing happened (%d).",
-				(struct ship *)0, conditions);
+			Msg("A funny thing happened (%d).", conditions);
 		}
 	} else {
 		switch (conditions) {
@@ -106,27 +105,32 @@ int conditions;
 	}
 
 	if (ms != 0) {
-		log(ms);
+		logger(ms);
 		if (conditions != LEAVE_SYNC) {
-			makesignal(ms, "Captain %s relinquishing.",
-				(struct ship *)0, mf->captain);
+			makemsg(ms, "Captain %s relinquishing.",
+				mf->captain);
 			Write(W_END, ms, 0, 0, 0, 0, 0);
 			(void) Sync();
 		}
 	}
 	sync_close(!hasdriver);
+	sleep(5);
 	cleanupscreen();
 	exit(0);
 }
 
+/*ARGSUSED*/
 void
-choke()
+choke(n)
+	int n __attribute__((unused));
 {
 	leave(LEAVE_QUIT);
 }
 
+/*ARGSUSED*/
 void
-child()
+child(n)
+	int n __attribute__((unused));
 {
 	union wait status;
 	int pid;
@@ -134,7 +138,7 @@ child()
 	(void) signal(SIGCHLD, SIG_IGN);
 	do {
 		pid = wait3((int *)&status, WNOHANG, (struct rusage *)0);
-		if (pid < 0 || pid > 0 && !WIFSTOPPED(status))
+		if (pid < 0 || (pid > 0 && !WIFSTOPPED(status)))
 			hasdriver = 0;
 	} while (pid > 0);
 	(void) signal(SIGCHLD, child);

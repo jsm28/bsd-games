@@ -3,8 +3,8 @@
 include ../../Makeconfig
 
 unstr:	unstr.c ../strfile/strfile.h
-	$(CC) $(LDFLAGS) $(CFLAGS) $(BSD_DEFS) -I../strfile $(BSD_INCS) \
-	    -o unstr unstr.c $(BSD_LIB)
+	$(CC) $(LDFLAGS) $(CFLAGS) -I../../include -I../strfile \
+	    -o unstr unstr.c
 
 install:	all
 	$(INSTALL_BINARY) unstr $(INSTALL_PREFIX)$(USRBINDIR)

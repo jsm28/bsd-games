@@ -4,12 +4,13 @@ include ../Makeconfig
 
 PROG = fish
 
-DEFS = -D_PATH_INSTR=\"$(FISH_INSTRFILE)\" -D_PATH_MORE=\"$(PAGER)\"
+DEFS = 
+INCS = -I../include
 
 all:	$(PROG)
 
 $(PROG):	$(PROG).c pathnames.h
-	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFS) -o $(PROG) $(PROG).c
+	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFS) $(INCS) -o $(PROG) $(PROG).c
 
 install:	$(PROG)
 	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)

@@ -1,4 +1,4 @@
-/*	$NetBSD: update.c,v 1.5 1997/01/13 06:50:27 tls Exp $	*/
+/*	$NetBSD: update.c,v 1.6 1997/10/10 02:07:34 lukem Exp $	*/
 
 /*-
  * Copyright (c) 1990, 1993
@@ -45,25 +45,23 @@
  * For more info on this and all of my stuff, mail edjames@berkeley.edu.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)update.c	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: update.c,v 1.5 1997/01/13 06:50:27 tls Exp $";
+__RCSID("$NetBSD: update.c,v 1.6 1997/10/10 02:07:34 lukem Exp $");
 #endif
 #endif not lint
 
 #include "include.h"
 
-int dir_deg __P((int));
-int next_plane __P((void));
-int too_close __P((PLANE *, PLANE *, int));
-
 void
-update()
+update(dummy)
+	int dummy __attribute__((unused));
 {
-	int	i, dir_diff, mask, unclean;
-	PLANE	*pp, *p1, *p2, *p;
+	int	i, dir_diff, unclean;
+	PLANE	*pp, *p1, *p2;
 
 #ifdef SYSV
 	alarm(0);
@@ -267,7 +265,7 @@ name(p)
 
 int
 number(l)
-	int l;
+	char l;
 {
 	if (l < 'a' && l > 'z' && l < 'A' && l > 'Z')
 		return (-1);
@@ -395,7 +393,7 @@ findplane(n)
 int
 too_close(p1, p2, dist)
 	PLANE	*p1, *p2;
-	int dist;
+	int	 dist;
 {
 	if (ABS(p1->altitude - p2->altitude) <= dist &&
 	    ABS(p1->xpos - p2->xpos) <= dist && ABS(p1->ypos - p2->ypos) <= dist)

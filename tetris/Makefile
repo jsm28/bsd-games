@@ -5,9 +5,9 @@ include ../Makeconfig
 SRCS = input.c screen.c shapes.c scores.c tetris.c
 OBJS = input.o screen.o shapes.o scores.o tetris.o
 
-LIBS = $(NCURSES_LIB) $(BSD_LIB)
-INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -D_PATH_SCOREFILE=\"$(TETRIS_SCOREFILE)\"
+LIBS = $(NCURSES_LIB)
+INCS = -I../include $(NCURSES_INCS)
+DEFS = $(BSD_SIGNAL_DEFS)
 
 all:	tetris
 

@@ -1,4 +1,4 @@
-/*	$NetBSD: dr_4.c,v 1.4 1997/01/07 12:42:15 tls Exp $	*/
+/*	$NetBSD: dr_4.c,v 1.6 1997/10/13 21:03:37 christos Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -33,20 +33,23 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)dr_4.c	8.2 (Berkeley) 4/28/95";
 #else
-static char rcsid[] = "$NetBSD: dr_4.c,v 1.4 1997/01/07 12:42:15 tls Exp $";
+__RCSID("$NetBSD: dr_4.c,v 1.6 1997/10/13 21:03:37 christos Exp $");
 #endif
 #endif /* not lint */
 
 #include "extern.h"
+#include <stdlib.h>
 
+void
 ungrap(from, to)
-register struct ship *from, *to;
+struct ship *from, *to;
 {
-	register k;
+	int k;
 	char friend;
 
 	if ((k = grappled2(from, to)) == 0)
@@ -55,17 +58,18 @@ register struct ship *from, *to;
 	while (--k >= 0) {
 		if (friend || die() < 3) {
 			cleangrapple(from, to, 0);
-			makesignal(from, "ungrappling %s (%c%c)", to);
+			makesignal(from, "ungrappling $$", to);
 		}
 	}
 }
 
+void
 grap(from, to)
-register struct ship *from, *to;
+struct ship *from, *to;
 {
 	if (capship(from)->nationality != capship(to)->nationality && die() > 2)
 		return;
 	Write(W_GRAP, from, 0, to->file->index, 0, 0, 0);
 	Write(W_GRAP, to, 0, from->file->index, 0, 0, 0);
-	makesignal(from, "grappled with %s (%c%c)", to);
+	makesignal(from, "grappled with $$", to);
 }

@@ -1,5 +1,5 @@
-1997-07-15 - Installation directions
-====================================
+1997-12-25 - Installation instructions
+======================================
 
 Non-free games
 ==============
@@ -7,32 +7,56 @@ Non-free games
 Three games, boggle, paranoia and rogue, are distributed separately
 because of copyright restrictions.  If you want them, get the
 bsd-games-non-free package, and unpack it in the same directory you
-unpacked this in before proceeding.  If you do, cd to boggle and decide
-if you want -DPURE or not -- see boggle/README.linux for more
+unpacked this in before proceeding.  If you do, cd to boggle and
+decide if you want -DPURE or not -- see boggle/README.linux for more
 information.  If you are in a hurry, don't worry about it ... it
 really is more of an aesthetic thing.  You can also build
 bsd-games-non-free separately.  (This file is also in
-bsd-games-non-free; if you only have boggle, hangman, paranoia and rogue
-subdirectories, then you have just this package.)
+bsd-games-non-free; if you only have boggle, hangman, include,
+paranoia and rogue subdirectories, then you have just this package.)
+
+Prerequisites
+=============
+
+You need gcc, libc5 (versions 5.4.x) or libc6, and ncurses (version
+3.0 or later).  Older versions of libc5 (or even libc4) may work, as
+may older versions of ncurses, or BSD curses/termcap, but these are
+completely unsupported; even with ncurses 3.0 or later you may run
+into problems with some games dependent on the version of ncurses; if
+so, get a debugging version of ncurses (libncurses_g.a), link with
+-lncurses_g instead of -lncurses, and good luck bug-hunting.  If the
+display gets confused in ordinary use (as opposed for example to after
+resizing the window), this might be a bug in the game, but is probably
+a bug in ncurses.  You also need some sort of lex and yacc; by default
+this package will use flex and bison, but byacc will probably work as
+well.
+
+The makefiles assume `make' is GNU make, which it almost certainly
+will be on any Linux system.  Any other make that understands
+`include' directives to include other makefiles would probably work as
+well.  The configure script uses `#!/bin/bash', but you can run it
+with `bash configure' if you keep bash in another place, and it should
+indeed work with any POSIX.2 shell.
 
 Building and installation
 =========================
 
-1.  cd to the top level directory in the source distribution.  i.e. the
-    directory that contains this file.  (You're probably already here!)
-2.  Run ./configure and configure the installation to your liking.
+1.  cd to the top level directory in the source distribution, i.e. the
+    directory that contains this file.  There is not yet any support for
+    building in a directory other than the source directory.
+2.  Run `./configure' and configure the installation to your liking.
     There may be some games you don't want to build because you have them
-    from another package; for example, there is another fortune package
+    from elsewhere; for example, there is another fortune package
     (fortune-mod) available, and factor is included in GNU sh-utils as of
     version 1.12q.  Also banner is in util-linux.  At present, there's no
     simple way to say you don't want a particular game - you have to list
     those you do want.  You can work around this by removing the
-    directories for the games you don't want, or renaming them to begin
-    with a dot.
-3.  Type make.  Ignore compiler warnings.  They will mostly be fixed in
-    a later release.
+    directories for the games you don't want before running configure, or
+    renaming them to begin with a dot.
+3.  Type `make'.  You can probably ignore compiler warnings, although most
+    should be fixed in this release.
 4.  Become root.
-5.  Type make install.
+5.  Type `make install'.
 6.  If you had an old installation of bsd-games, check for file locations
     that have changed.  You will probably want to remove old executables
     and static data (formerly defaulting to installation in /usr/games/lib),
@@ -40,6 +64,8 @@ Building and installation
     ones (checking the permissions).
 7.  You may wish to do something with the BSD Users' Supplementary Documents
     for trek and rogue, in trek/USD.doc/trek.me and rogue/USD.doc/rogue.me.
+    You can look at them on a text terminal with `nroff -me' (piped to your
+    pager), or format in PostScript for printing with `groff -me -Tps'.
 
 Further information
 ===================
@@ -50,3 +76,6 @@ helpful hints, or information about further configuaration options.
 
 See TODO for information on what needs to be improved in this package;
 you may want to volunteer for some of the things in there.
+
+Joseph S. Myers
+jsm28@cam.ac.uk

@@ -6,13 +6,14 @@ PROG = dm
 
 # Add -DLOG if you want logging
 
-DEFS = -D_PATH_CONFIG=\"$(DM_CONFIG)\" -D_PATH_HIDE=\"$(LIBEXECDIR)\" \
-	-D_PATH_NOGAMES=\"$(DM_NOGAMESFILE)\" -D_PATH_LOG=\"$(DM_LOGFILE)\"
+DEFS = # -DLOG
+
+INCS = -I../include
 
 all:	$(PROG)
 
 $(PROG):	$(PROG).c pathnames.h
-	$(CC) $(CFLAGS) $(DEFS) $(LDFLAGS) -o $(PROG) $(PROG).c
+	$(CC) $(CFLAGS) $(DEFS) -I../include $(LDFLAGS) -o $(PROG) $(PROG).c
 
 install:	$(PROG)
 	$(INSTALL_DM) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)

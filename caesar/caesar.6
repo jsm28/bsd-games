@@ -1,4 +1,4 @@
-.\"	$NetBSD: caesar.6,v 1.4 1995/03/21 15:08:20 cgd Exp $
+.\"	$NetBSD: caesar.6,v 1.5.2.1 1997/11/12 01:01:24 mrg Exp $
 .\"
 .\" Copyright (c) 1989, 1991, 1993
 .\"	The Regents of the University of California.  All rights reserved.
@@ -37,22 +37,18 @@
 .Dt CAESAR 6
 .Os
 .Sh NAME
-.Nm caesar
+.Nm caesar ,
+.Nm rot13
 .Nd decrypt caesar cyphers
-.br
-.Nm rot13
-.Nd decrypt rot13ed Usenet posts
 .Sh SYNOPSIS
-.Nm caesar
+.Nm
 .Op Ar rotation
-.br
-.Nm rot13
 .Sh DESCRIPTION
 The
-.Nm caesar
+.Nm
 utility attempts to decrypt caesar cyphers using English letter frequency
 statistics.
-.Nm Caesar
+.Nm
 reads from the standard input and writes to the standard output.
 .Pp
 The optional numerical argument

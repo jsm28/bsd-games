@@ -1,4 +1,4 @@
-/*	$NetBSD: screen.c,v 1.4 1995/04/29 01:11:36 mycroft Exp $	*/
+/*	$NetBSD: screen.c,v 1.6 1997/10/14 01:14:28 lukem Exp $	*/
 
 /*-
  * Copyright (c) 1992, 1993
@@ -49,6 +49,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <termcap.h>
 #include <termios.h>
 #include <unistd.h>
 
@@ -63,28 +64,23 @@
 #define OXTABS XTABS
 #endif
 
-/*
- * XXX - need a <termcap.h>
- */
-int	tgetent __P((char *, const char *));
-int	tgetflag __P((const char *));
-int	tgetnum __P((const char *));
-int	tputs __P((const char *, int, int (*)(int)));
-
 static cell curscreen[B_SIZE];	/* 1 => standout (or otherwise marked) */
 static int curscore;
 static int isset;		/* true => terminal is in game mode */
 static struct termios oldtt;
-static void (*tstp)();
+static void (*tstp) __P((int));
 
-char	*tgetstr(), *tgoto();
+static	void	scr_stop __P((int));
+static	void	stopset __P((int));
 
 
 /*
  * Capabilities from TERMCAP.
  */
 char	PC, *BC, *UP;		/* tgoto requires globals: ugh! */
+#ifndef __linux__
 speed_t	ospeed;
+#endif
 
 static char
 	*bcstr,			/* backspace char */
@@ -112,21 +108,21 @@ struct tcsinfo {	/* termcap string info; some abbrevs above */
 	char tcname[3];
 	char **tcaddr;
 } tcstrings[] = {
-	"bc", &bcstr,
-	"ce", &CEstr,
-	"cl", &CLstr,
-	"cm", &CMstr,
+	{"bc", &bcstr},
+	{"ce", &CEstr},
+	{"cl", &CLstr},
+	{"cm", &CMstr},
 #ifdef unneeded
-	"cr", &CRstr,
+	{"cr", &CRstr},
 #endif
-	"le", &BC,		/* move cursor left one space */
-	"pc", &pcstr,
-	"se", &SEstr,
-	"so", &SOstr,
-	"te", &TEstr,
-	"ti", &TIstr,
-	"up", &UP,		/* cursor up */
-	0
+	{"le", &BC},		/* move cursor left one space */
+	{"pc", &pcstr},
+	{"se", &SEstr},
+	{"so", &SOstr},
+	{"te", &TEstr},
+	{"ti", &TIstr},
+	{"up", &UP},		/* cursor up */
+	{ {0}, NULL}
 };
 
 /* This is where we will actually stuff the information */
@@ -142,7 +138,7 @@ put(c)
 	int c;
 {
 
-	return (putchar(c));
+	return putchar(c);
 }
 
 /*
@@ -168,18 +164,18 @@ scr_init()
 		char tcname[3];
 		int *tcaddr;
 	} tcflags[] = {
-		"bs", &bsflag,
-		"ms", &MSflag,
+		{"bs", &bsflag},
+		{"ms", &MSflag},
 #ifdef unneeded
-		"nc", &ncflag,
+		{"nc", &ncflag},
 #endif
-		"xs", &xsflag,
-		0
+		{"xs", &xsflag},
+		{ {0}, NULL}
 	}, tcnums[] = {
-		"co", &COnum,
-		"li", &LInum,
-		"sg", &sgnum,
-		0
+		{"co", &COnum},
+		{"li", &LInum},
+		{"sg", &sgnum},
+		{ {0}, NULL}
 	};
 	
 	if ((term = getenv("TERM")) == NULL)
@@ -261,7 +257,7 @@ scr_set()
 	struct winsize ws;
 	struct termios newtt;
 	sigset_t sigset, osigset;
-	void (*ttou)();
+	void (*ttou) __P((int));
 
 	sigemptyset(&sigset);
 	sigaddset(&sigset, SIGTSTP);

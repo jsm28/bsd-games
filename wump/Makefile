@@ -4,11 +4,10 @@ include ../Makeconfig
 
 PROG = wump
 
-LIBS = $(NCURSES_LIB) $(BSD_LIB)
+LIBS = 
 
-INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -D_PATH_PAGER=\"$(PAGER)\" \
-	-D_PATH_WUMPINFO=\"$(WUMP_INFOFILE)\"
+INCS = -I../include
+DEFS = 
 
 all:	$(PROG)
 

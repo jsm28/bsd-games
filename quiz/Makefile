@@ -11,7 +11,8 @@ CATS = africa america areas arith asia babies bard chinese collectives \
 	midearth morse mult murders poetry posneg pres province seq-easy \
 	seq-hard sexes sov spell state trek ucc
 
-DEFS = -D_PATH_PAGER=\"$(PAGER)\" -D_PATH_QUIZIDX=\"$(QUIZ_DIR)/index\"
+DEFS = 
+INCS = -I../include
 
 all:	$(PROG)
 
@@ -19,7 +20,7 @@ $(PROG):	$(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) -o $(PROG)
 
 .c.o:	
-	$(CC) $(CFLAGS) $(DEFS) -c $< -o $@
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
 quiz.o:	quiz.h pathnames.h
 

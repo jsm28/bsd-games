@@ -1,4 +1,4 @@
-/*	$NetBSD: main.c,v 1.4 1995/04/27 21:22:25 mycroft Exp $	*/
+/*	$NetBSD: main.c,v 1.6 1997/10/11 02:01:05 lukem Exp $	*/
 
 /*-
  * Copyright (c) 1990, 1993
@@ -45,32 +45,27 @@
  * For more info on this and all of my stuff, mail edjames@berkeley.edu.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
-static char copyright[] =
-"@(#) Copyright (c) 1990, 1993\n\
-	The Regents of the University of California.  All rights reserved.\n";
+__COPYRIGHT("@(#) Copyright (c) 1990, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n");
 #endif /* not lint */
 
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)main.c	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: main.c,v 1.4 1995/04/27 21:22:25 mycroft Exp $";
+__RCSID("$NetBSD: main.c,v 1.6 1997/10/11 02:01:05 lukem Exp $");
 #endif
 #endif /* not lint */
 
 #include "include.h"
 #include "pathnames.h"
 
-char *default_game __P((void));
-char *okay_game __P((char *));
-int list_games __P((void));
-int main __P((int, char *[]));
-int read_file __P((char *));
 
 int
 main(ac, av)
-	int ac;
+	int	 ac __attribute__((unused));
 	char	*av[];
 {
 	int			seed;
@@ -89,7 +84,7 @@ main(ac, av)
 	while (*av) {
 #ifndef SAVEDASH
 		if (**av == '-') 
-			*++*av;
+			++*av;
 		else
 			break;
 #endif
@@ -120,8 +115,7 @@ main(ac, av)
 				av++;
 				break;
 			default: 
-				fprintf(stderr, "%s: Unknown option '%c'\n",
-					name, *ptr);
+				warnx("unknown option '%c'\n", *ptr);
 				f_usage++;
 				break;
 			}
@@ -168,8 +162,8 @@ main(ac, av)
 	signal(SIGTSTP, SIG_IGN);
 	signal(SIGSTOP, SIG_IGN);
 #endif
-	signal(SIGHUP, log_score);
-	signal(SIGTERM, log_score);
+	signal(SIGHUP, log_score_quit);
+	signal(SIGTERM, log_score_quit);
 
 	tcgetattr(fileno(stdin), &tty_start);
 	tty_new = tty_start;
@@ -211,7 +205,7 @@ main(ac, av)
 			alarm(0);
 #endif
 
-			update();
+			update(0);
 
 #ifdef BSD
 			itv.it_value.tv_sec = sp->update_secs;
@@ -237,7 +231,7 @@ read_file(s)
 	file = s;
 	yyin = fopen(s, "r");
 	if (yyin == NULL) {
-		perror(s);
+		warn("fopen %s", s);
 		return (-1);
 	}
 	retval = yyparse();
@@ -260,7 +254,7 @@ default_game()
 	strcat(games, GAMES);
 
 	if ((fp = fopen(games, "r")) == NULL) {
-		perror(games);
+		warn("fopen %s", games);
 		return (NULL);
 	}
 	if (fgets(line, sizeof(line), fp) == NULL) {
@@ -286,7 +280,7 @@ okay_game(s)
 	strcat(games, GAMES);
 
 	if ((fp = fopen(games, "r")) == NULL) {
-		perror(games);
+		warn("fopen %s", games);
 		return (NULL);
 	}
 	while (fgets(line, sizeof(line), fp) != NULL) {
@@ -320,7 +314,7 @@ list_games()
 	strcat(games, GAMES);
 
 	if ((fp = fopen(games, "r")) == NULL) {
-		perror(games);
+		warn("fopen %s", games);
 		return (-1);
 	}
 	puts("available games:");

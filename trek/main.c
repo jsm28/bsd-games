@@ -1,4 +1,4 @@
-/*	$NetBSD: main.c,v 1.4 1995/04/22 10:59:10 cgd Exp $	*/
+/*	$NetBSD: main.c,v 1.6 1997/10/13 22:18:32 cjs Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -33,24 +33,29 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
-static char copyright[] =
-"@(#) Copyright (c) 1980, 1993\n\
-	The Regents of the University of California.  All rights reserved.\n";
+__COPYRIGHT("@(#) Copyright (c) 1980, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n");
 #endif /* not lint */
 
 #ifndef lint
 #if 0
 static char sccsid[] = "@(#)main.c	8.1 (Berkeley) 5/31/93";
 #else
-static char rcsid[] = "$NetBSD: main.c,v 1.4 1995/04/22 10:59:10 cgd Exp $";
+__RCSID("$NetBSD: main.c,v 1.6 1997/10/13 22:18:32 cjs Exp $");
 #endif
 #endif /* not lint */
 
-# include	"trek.h"
-# include	<stdio.h>
-# include	<setjmp.h>
-# include	<termios.h>
+#include <stdio.h>
+#include <setjmp.h>
+#include <termios.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <err.h>
+#include <time.h>
+#include "trek.h"
+#include "getpar.h"
 
 # define	PRIO		00	/* default priority */
 
@@ -155,22 +160,26 @@ int	Mother	= 51 + (51 << 8);
 
 jmp_buf env;
 
+int main __P((int, char **));
+
+int
 main(argc, argv)
 int	argc;
 char	**argv;
 {
+	time_t		curtime;
 	long			vect;
-	/* extern FILE		*f_log; */
-	register char		opencode;
+	char		opencode;
 	int			prio;
-	register int		ac;
-	register char		**av;
+	int		ac;
+	char		**av;
 	struct	termios		argp;
 
 	av = argv;
 	ac = argc;
 	av++;
-	time(&vect);
+	time(&curtime);
+	vect = (long) curtime;
 	srand(vect);
 	opencode = 'w';
 	prio = PRIO;
@@ -220,7 +229,7 @@ char	**argv;
 		av++;
 	}
 	if (ac > 2)
-		syserr(0, "arg count");
+		errx(1, "arg count");
 		/*
 	if (ac > 1)
 		f_log = fopen(av[0], opencode);
@@ -240,4 +249,5 @@ char	**argv;
 	} while (getynpar("Another game"));
 
 	fflush(stdout);
+	return 0;
 }

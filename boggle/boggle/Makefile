@@ -10,11 +10,9 @@ OBJS   = bog.o help.o mach.o prtable.o timer.o word.o
 # behavior.  Not defining it will allow any Linux "improvements" to be
 # included.
 #
-DEFS = $(BSD_SIGNAL_DEFS) -DDICT=\"$(BOGGLE_DIR)/dictionary\" \
-	-DDICTINDEX=\"$(BOGGLE_DIR)/dictindex\" \
-	-DHELPFILE=\"$(BOGGLE_DIR)/helpfile\" # -DPURE
+DEFS = $(BSD_SIGNAL_DEFS) # -DPURE
 LIBS   = $(NCURSES_LIB)
-INCS   = $(NCURSES_INCS)
+INCS   = -I../../include $(NCURSES_INCS)
 
 all:	$(PROG)
 

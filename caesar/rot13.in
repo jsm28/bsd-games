@@ -35,4 +35,4 @@
 #	@(#)rot13.sh	8.1 (Berkeley) 5/31/93
 #
 
-@gamesdir@/caesar 13 $*
+exec @gamesdir@/caesar 13 "$@"

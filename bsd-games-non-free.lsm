@@ -1,14 +1,14 @@
 Begin3
 Title:		bsd-games-non-free
-Version:	1.5
-Entered-date:	17JUL97
+Version:	2.0
+Entered-date:	21DEC97
 Description:	Games that were in bsd-games, but have restrictive
 	copyrights (cannot be sold for profit).  Includes: boggle, paranoia
 	and rogue.
-Keywords:	games
+Keywords:	games, NetBSD
 Maintained-by:	jsm28@cam.ac.uk (Joseph S. Myers)
 Primary-site:	sunsite.unc.edu /pub/Linux/games
-		bsd-games-non-free-1.5.tar.gz
+		bsd-games-non-free-2.0.tar.gz
 Platforms:	Requires ncurses (curses/termcap may also work but are no
 	longer tested/supported)
 Copying-policy:	restricted

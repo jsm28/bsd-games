@@ -1,4 +1,4 @@
-/*	$NetBSD: bcd.c,v 1.6 1995/04/24 12:22:23 cgd Exp $	*/
+/*	$NetBSD: bcd.c,v 1.7 1997/10/10 09:54:18 lukem Exp $	*/
 
 /*
  * Copyright (c) 1989, 1993
@@ -36,14 +36,18 @@
  * SUCH DAMAGE.
  */
 
+#include <sys/cdefs.h>
 #ifndef lint
-static char copyright[] =
-"@(#) Copyright (c) 1989, 1993\n\
-	The Regents of the University of California.  All rights reserved.\n";
+__COPYRIGHT("@(#) Copyright (c) 1989, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n");
 #endif /* not lint */
 
 #ifndef lint
+#if 0
 static char sccsid[] = "@(#)bcd.c	8.2 (Berkeley) 3/20/94";
+#else
+__RCSID("$NetBSD: bcd.c,v 1.7 1997/10/10 09:54:18 lukem Exp $");
+#endif
 #endif /* not lint */
 
 /*
@@ -81,7 +85,6 @@ static char sccsid[] = "@(#)bcd.c	8.2 (Berkeley) 3/20/94";
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include <stdlib.h>
 
 u_short holes[256] = {
     0x0,	 0x0,	  0x0,	   0x0,	    0x0,     0x0,     0x0,     0x0,
@@ -123,8 +126,8 @@ u_short holes[256] = {
  */
 #define	bit(w,i)	((w)&(1<<(i)))
 
-int main __P((int, char **));
-void printcard __P((char *));
+int	main __P((int, char *[]));
+void	printcard __P((char *));
 
 int
 main(argc, argv)
@@ -151,11 +154,11 @@ main(argc, argv)
 
 void
 printcard(str)
-	register char *str;
+	char *str;
 {
 	static char rowchars[] = "   123456789";
-	register int i, row;
-	register unsigned char *p;
+	int i, row;
+	unsigned char *p;
 
 	/* ruthlessly remove newlines and truncate at 48 characters. */
 	if ((p = strchr(str, '\n')))
@@ -182,7 +185,7 @@ printcard(str)
 	p = str;
 	putchar('/');
 	for (i = 1; *p; i++, p++)
-		if (holes[*p])
+		if (holes[(int)*p])
 			putchar(*p);
 		else
 			putchar(' ');
@@ -200,7 +203,7 @@ printcard(str)
 	for (row = 0; row <= 11; ++row) {
 		putchar('|');
 		for (i = 0, p = str; *p; i++, p++) {
-			if (bit(holes[*p], 11 - row))
+			if (bit(holes[(int)*p], 11 - row))
 				putchar(']');
 			else
 				putchar(rowchars[row]);
