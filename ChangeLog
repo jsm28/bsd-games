@@ -1,3 +1,8 @@
+2004-01-04  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* phantasia/phantasia.6, wtf/acronyms, wtf/acronyms.comp: Update
+	from NetBSD CVS.
+
 2004-01-02  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/atc.6.in, backgammon/backgammon/main.c,
