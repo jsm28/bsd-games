@@ -44,6 +44,10 @@ __RCSID("$NetBSD: parse.c,v 1.7 1999/02/10 01:36:50 hubertf Exp $");
 
 #include "extern.h"
 
+static int hash __P((const char *));
+static void install __P((struct wlist *));
+static struct wlist *lookup __P((const char *));
+
 void
 wordinit()
 {
@@ -53,7 +57,7 @@ wordinit()
 		install(w);
 }
 
-int
+static int
 hash(s)
 	const char   *s;
 {
@@ -67,7 +71,7 @@ hash(s)
 	return hashval;
 }
 
-struct wlist *
+static struct wlist *
 lookup(s)
 	const char   *s;
 {
@@ -79,7 +83,7 @@ lookup(s)
 	return NULL;
 }
 
-void
+static void
 install(wp)
 	struct wlist *wp;
 {
