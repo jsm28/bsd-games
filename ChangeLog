@@ -25,7 +25,7 @@
 	* battlestar/globals.c (verbose): New variable, from OpenBSD.
 	* battlestar/room.c (writedes): If verbose, always give long
 	description; from OpenBSD.
-	* battlestar/words.c (wlist): Add synonyms "payaya" and "coconut"
+	* battlestar/words.c (wlist): Add synonyms "papaya" and "coconut"
 	and verbs "open", "unlock", "verbose" and "brief", from OpenBSD.
 
 2000-09-10  Joseph S. Myers  <jsm28@cam.ac.uk>
