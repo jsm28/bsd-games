@@ -1,5 +1,10 @@
 2000-09-23  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com2.c (murder), battlestar/com3.c (shoot),
+	battlestar/com4.c (take): Correct "dont" to "don't".  From
+	OpenBSD.
+	* tests/battlestar.out28: Update.
+
 	* battlestar/parse.c: Make local functions static.
 	* battlestar/extern.h: Remove declarations of functions now static
 	in parse.c.

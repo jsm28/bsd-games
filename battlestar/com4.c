@@ -79,7 +79,7 @@ take(from)
 				    (is_plural_object(value) ? " " : " a "),
 				    objsht[value]);
 			else if (!testbit(from, value))
-				printf("I dont see any %s around here.\n", objsht[value]);
+				printf("I don't see any %s around here.\n", objsht[value]);
 			else if (!heavy)
 				printf("The %s %s too heavy.\n", objsht[value],
 				    (is_plural_object(value) ? "are" : "is"));

@@ -227,7 +227,7 @@ murder()
 					if (wintime)
 						live();
 				} else
-					puts("I dont see her anywhere.");
+					puts("I don't see her anywhere.");
 			break;
 		case TIMER:
 			if (testbit(location[position].objects, TIMER)) {

@@ -211,7 +211,7 @@ shoot()
 				if (value == BOMB)
 					die();
 			} else
-				printf("I dont see any %s around here.\n", objsht[value]);
+				printf("I don't see any %s around here.\n", objsht[value]);
 			if (wordnumber < wordcount - 1 && wordvalue[++wordnumber] == AND)
 				wordnumber++;
 			else
