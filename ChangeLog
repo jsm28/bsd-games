@@ -1,3 +1,13 @@
+2004-02-11  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* tests/pom.2003fm1, tests/pom.2003fm2, tests/pom.2003fq1,
+	tests/pom.2003fq2, tests/pom.2003lq1, tests/pom.2003lq2,
+	tests/pom.2003nm1, tests/pom.2003nm2, tests/pom.2003ph1,
+	tests/pom.2003ph2, tests/pom.2003ph3, tests/pom.2003ph4,
+	tests/pom.2003ph5, tests/pom.2003ph6, tests/pom.2003ph7,
+	tests/pom.2003ph8: New tests.
+	* tests/pom.test: Update.
+
 2004-02-10  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* primes/primes.6: Update from NetBSD CVS.
