@@ -292,6 +292,8 @@ scr_set()
 	newtt = oldtt;
 	newtt.c_lflag &= ~(ICANON|ECHO);
 	newtt.c_oflag &= ~OXTABS;
+	newtt.c_cc[VMIN] = 1;
+	newtt.c_cc[VTIME] = 0;
 	if (tcsetattr(0, TCSADRAIN, &newtt) < 0)
 		stop("tcsetattr() fails");
 	ospeed = cfgetospeed(&newtt);

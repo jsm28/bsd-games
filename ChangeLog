@@ -1,3 +1,7 @@
+2001-11-18  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* tetris/screen.c (scr_set): Set VMIN and VTIME.
+
 2001-10-06  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* backgammon/backgammon/main.c, hack/hack.fix, monop/monop.c,
