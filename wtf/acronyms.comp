@@ -1,4 +1,4 @@
-$NetBSD: acronyms.comp,v 1.33 2004/01/14 00:11:53 grant Exp $
+$NetBSD: acronyms.comp,v 1.37 2004/01/15 03:35:20 grant Exp $
 
 ABI	application binary interface
 ACPI	advanced configuration and power interface
@@ -11,6 +11,7 @@ APIC	advanced programmable interrupt controller
 AT	advanced technology
 ATA	advanced technology attachment
 ATAPI	advanced technology attachment packet interface
+ATM	asynchronous transfer mode
 ATX	advanced technology extended
 BEDO	burst extended data output
 BGP	border gateway protocol
@@ -27,6 +28,7 @@ CHS	cylinder/head/sector
 CIDR	classless inter-domain routing
 CLI	command line interface
 CLV	constant linear velocity (as opposed to CAV)
+COFF	common object file format
 CPU	central processing unit
 CRLF	carriage return line feed
 CRT	cathode ray tube
@@ -50,6 +52,7 @@ EDO	extended data out
 EEPROM	electrically erasable programmable read only memory
 EGA	enhanced graphics array
 EISA	extended industry standard architecture
+ELF	executable and linking format
 EPP	enhanced parallel port
 EPROM	erasable programmable read only memory
 ESDRAM	enhanced synchronous dynamic random access memory
@@ -101,6 +104,7 @@ LBA	logical block addressing
 LCD	liquid crystal display
 LDAP	lightweight directory access protocol
 LED	light emitting diode
+LIR	local internet registry
 LSB	least significant bit [or: byte]
 LUN	logical unit number
 MAC	media access control
@@ -116,12 +120,14 @@ MTA	mail transfer agent
 MTU	maximum transmission unit
 MUA	mail user agent
 NAT	network address translation
-NFS	networking file system
+NFS	network file system
 NIC	network interface card
 NIS	network information service
 NUMA	non uniform memory access
 OEM	original equipment manufacturer
+OSF	open software foundation
 OTP	one time password
+PAM	pluggable authentication modules
 PAX	portable archive exchange
 PCI	peripheral component interconnect
 PCMCIA	Personal Computer Memory Card International Association
@@ -136,6 +142,7 @@ POP	post office protocol
 POSIX	portable operating system interface [for] unix
 POST	power on self test
 PPP	point-to-point protocol
+PPPOA	point-to-point protocol over ATM
 PPPOE	point-to-point protocol over ethernet
 PROM	programmable read only memory
 PTE	page table entry
