@@ -42,6 +42,14 @@ INSTALL_DM = @install_dm@
 # scorefile?)
 # For games which can start with empty scorefile we do:
 INSTALL_SCORE_FILE = @srcdir@/install-score
+# Definitions of INSTALL_* that may have -s added
+DEFS_TO_PASS = INSTALL_BINARY="$(INSTALL_BINARY)" \
+	INSTALL_SCORE_GAME="$(INSTALL_SCORE_GAME)" \
+	INSTALL_DAEMON="$(INSTALL_DAEMON)" INSTALL_DM="$(INSTALL_DM)"
+# For the top level install-strip target
+DEFS_TO_PASS_STRIP = INSTALL_BINARY="$(INSTALL_BINARY) -s" \
+	INSTALL_SCORE_GAME="$(INSTALL_SCORE_GAME) -s" \
+	INSTALL_DAEMON="$(INSTALL_DAEMON) -s" INSTALL_DM="$(INSTALL_DM) -s"
 # srcdir/hide-game or :
 HIDE_GAME = @hidegame@
 
@@ -53,7 +61,6 @@ CFLAGS = $(OPTIMIZE) $(WARNING) @other_cflags@
 LDFLAGS = @other_ldflags@
 NCURSES_LIB = @ncurses_lib@
 NCURSES_INCS = @ncurses_includes@
-BSD_SIGNAL_DEFS = @bsd_signal_defs@
 YACC = @yacc@
 LEX = @lex@
 LEX_LIB = @lex_lib@

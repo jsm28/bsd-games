@@ -1,4 +1,4 @@
-/*	$NetBSD: extern.h,v 1.6 1997/10/11 02:07:18 lukem Exp $ */
+/*	$NetBSD: extern.h,v 1.7 1998/02/03 05:39:25 perry Exp $ */
 
 /*
  * Copyright (c) 1983, 1993
@@ -34,6 +34,8 @@
  *
  *	@(#)externs.h	8.1 (Berkeley) 5/31/93
  */
+
+#include <sys/time.h>
 
 #include <ctype.h>
 #include <err.h>
@@ -324,7 +326,7 @@ int follow __P((void));
 void getutmp __P((char *));
 int give __P((void));
 int hash __P((char *));
-void initialize __P((char));
+void initialize __P((char *));
 void install __P((struct wlist *));
 int jump __P((void));
 void kiss __P((void));
@@ -345,9 +347,9 @@ void printobjs __P((void));
 int put __P((void));
 int puton __P((void));
 void ravage __P((void));
-void restore __P((void));
+void restore __P((char *));
 int ride __P((void));
-void save __P((void));
+void save __P((char *));
 void screen __P((void));
 int shoot __P((void));
 void succumb __P((int));

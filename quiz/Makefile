@@ -4,7 +4,7 @@ include ../Makeconfig
 
 PROG = quiz
 
-OBJS = quiz.o rxp.o
+OBJS = quiz.o rxp.o fgetln.o
 
 CATS = africa america areas arith asia babies bard chinese collectives \
 	ed elements europe flowers greek inca index latin locomotive \
@@ -25,6 +25,9 @@ $(PROG):	$(OBJS)
 quiz.o:	quiz.h pathnames.h
 
 rxp.o:	quiz.h
+
+fgetln.o:	../lib/fgetln.c
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
 install:	$(PROG)
 	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)

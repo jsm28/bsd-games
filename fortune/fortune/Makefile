@@ -3,7 +3,7 @@
 include ../../Makeconfig
 
 INCS = -I../../include -I../strfile
-DEFS = 
+DEFS = -DHAVE_REGCOMP
 
 all:	fortune
 

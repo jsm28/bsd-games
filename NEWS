@@ -1,6 +1,29 @@
 This file contains a summary of changes in each version after 1.3.
 For fuller details, see ChangeLog and ChangeLog.0.
 
+Version 2.1
+===========
+
+* This is mainly a bug-fix release.
+
+* All games updated to NetBSD-current as of 1998-03-21 (except for
+paranoia).  The changes are mostly minor, replacing warning fixes
+local to bsd-games with ones now in NetBSD.
+
+* Some bugs fixed, and most of the additional warnings given by the
+current egcs snapshot fixed as well.
+
+* Configuration / installation change - to strip the installed
+binaries, use `make install-strip' instead of `make install'; this
+replaces the configuration option for `make install' to strip the
+installed binaries.
+
+* Manpages for wargames and paranoia, thanks to Joey Hess
+<joeyh@kitenet.net>.
+
+* Battlestar save file name can be chosen at runtime, and defaults to
+`.Bstar' instead of `Bstar' for cleaner directory listings.
+
 Version 2.0
 ===========
 

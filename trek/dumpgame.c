@@ -130,7 +130,7 @@ restartgame()
 	int	fd;
 	int		version;
 
-	if ((fd = open("trek.dump", 0)) < 0 ||
+	if ((fd = open("trek.dump", O_RDONLY)) < 0 ||
 	    read(fd, &version, sizeof version) != sizeof version ||
 	    version != VERSION ||
 	    readdump(fd))

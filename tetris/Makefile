@@ -7,7 +7,7 @@ OBJS = input.o screen.o shapes.o scores.o tetris.o
 
 LIBS = $(NCURSES_LIB)
 INCS = -I../include $(NCURSES_INCS)
-DEFS = $(BSD_SIGNAL_DEFS)
+DEFS = 
 
 all:	tetris
 

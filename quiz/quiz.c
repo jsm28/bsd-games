@@ -80,10 +80,6 @@ void	 score __P((u_int, u_int, u_int));
 void	 show_index __P((void));
 void	 usage __P((void));
 
-#ifdef __linux__
-char   *fgetln __P((FILE *, size_t *)); /* Implemented below */
-#endif
-
 int
 main(argc, argv)
 	int argc;
@@ -382,37 +378,3 @@ usage()
 	(void)fprintf(stderr, "quiz [-t] [-i file] category1 category2\n");
 	exit(1);
 }
-
-#ifdef __linux__ /* Linux doesn't have fgetln */
-/* This is a bad implementation, since I don't have a spec for fgetln */
-char *
-fgetln(stream, len)
-	FILE *stream;
-	size_t *len;
-{
-	static char *buf = NULL;
-	static size_t buflen = 0;
-	char *res;
-
-	if (buf == NULL)
-		buf = (char *)malloc(buflen = 1024);
-	
-	*(buf + buflen - 1) = 1;
-	res = fgets(buf, buflen, stream);
-	if (res == NULL)
-	        return(NULL);
-	
-	while (*(buf + buflen - 1) == 0) { /* long line */
-		buf = realloc(buf, buflen *= 2);
-		if (buf == NULL)
-			return(NULL);
-		*(buf + buflen - 1) = 1;
-		res = fgets(buf + buflen/2 - 1, buflen/2 + 1, stream);
-		if (res == NULL)
-		        return(NULL);
-	}
-	
-	*len = strlen(buf);
-	return(buf);
-}
-#endif

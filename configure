@@ -202,20 +202,13 @@ ask_yn "Gzip manpages" gzip_manpages y
 
 # What we do with manpages is a bit complicated.  If either ppt or morse is
 # being built, we must also install the bcd manpage, even if bcd isn't being
-# built.  We then need to do either .so or symlink.  This is all handled
-# by the install-man.in script.
+# built.  We then need to do either .so or symlink.  This should all be handled
+# by the install-man.in script, but the installation of linked-to manpages
+# isn't implemented yet.
 
-ask_yn "Strip installed binaries" strip_install y
-
-# Save old install_binary as install_script
+# Copy install_binary to install_script
 install_script="$install_binary"
 subst_vars="$subst_vars install_script"
-
-if [ $strip_install = y ]; then
-    for type in binary score_game daemon; do
-	eval install_$type=\"\$install_$type -s\"
-    done
-fi
 
 echo
 echo "It is presumed in some places by the Makefiles that the compiler"
@@ -235,25 +228,6 @@ echo "If you built ncurses with --disable-overwrite, you may need"
 echo "-I/usr/include/ncurses here"
 ask "Ncurses includes" ncurses_includes ''
 
-# Should we try to detect the libc version?
-echo
-echo "Libc versions other than 5 or 6 may not work."
-ask "Libc version" libc_version 5
-case "$libc_version" in
-    4*|5*)
-    libc_version=5
-    def_bsd_sig=-D__USE_BSD_SIGNAL
-    ;;
-    *)
-    libc_version=6
-    def_bsd_sig=
-    ;;
-esac
-echo
-echo "With libc5 -D__USE_BSD_SIGNAL is needed for BSD signal semantics if not"
-echo "using libbsd or _BSD_SOURCE, but with libc6 the default signal semantics"
-echo "are BSD and no such define is needed."
-ask "Defines for BSD signal semantics" bsd_signal_defs "$def_bsd_sig"
 ask "Other CFLAGS" other_cflags ''
 ask "Other LDFLAGS" other_ldflags ''
 if building_in atc; then

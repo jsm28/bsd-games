@@ -249,7 +249,7 @@ char	*file;
 	char 		*start, *end;
 	STAT		sbuf;
 
-	if ((inf=open(file, 0)) < 0) {
+	if ((inf=open(file, O_RDONLY)) < 0) {
 		perror(file);
 		return FALSE;
 	}

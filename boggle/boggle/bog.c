@@ -166,18 +166,19 @@ main(argc, argv)
 	argv += optind;
 
 	/* process final arguments */
-	if (argc > 0)
+	if (argc > 0) {
 		if (strcmp(argv[0], "+") == 0)
 			reuse = 1;
 		else if (strcmp(argv[0], "++") == 0)
 			selfuse = 1;
+	}
 
 	if (reuse || selfuse) {
 		argc -= 1;
 		argv += 1;
 	}
 
-	if (argc > 0)
+	if (argc > 0) {
 		if (islower(argv[0][0])) {
 			if (strlen(argv[0]) != 16) {
 				usage();
@@ -188,6 +189,7 @@ main(argc, argv)
 		} else {
 		  	usage();
 		}
+	}
 
 	if (batch && bspec == NULL)
 		errx(1, "must give both -b and a board setup");

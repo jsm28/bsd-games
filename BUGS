@@ -1,0 +1,29 @@
+1998-03-26 - Known bugs
+=======================
+
+I know of the following bugs in bsd-games; there is no need to report
+them if you come across them, but fixes are welcome.
+
+General
+=======
+
+Some games may not handle signals (especially resizing) properly.
+
+Some games may not check for errors when they should, or may return
+inappropriate exit statuses.
+
+Some games may have arbitrary limits that they should not have.
+
+Specific games
+==============
+
+Under some circumstances, hunt fails to start the hunt daemon if one
+is not already running.
+
+Saving in monop is completely broken.  Since it assumes it can save by
+writing out the whole data space from 0 to sbrk(0) and read it in to
+restore, it may not be easy to fix.
+
+
+Joseph S. Myers
+jsm28@cam.ac.uk

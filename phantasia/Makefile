@@ -8,7 +8,7 @@ OBJS = main.o fight.o io.o interplayer.o gamesupport.o misc.o phantglobs.o
 
 LIBS = -lm $(NCURSES_LIB)
 INCS = $(NCURSES_INCS)
-DEFS = $(BSD_SIGNAL_DEFS)
+DEFS = 
 
 VFILES = gold lastdead mess monsters motd characs scoreboard void
 

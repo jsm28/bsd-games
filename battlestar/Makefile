@@ -14,8 +14,7 @@ OBJS=	battlestar.o com1.o com2.o com3.o com4.o com5.o com6.o com7.o \
 LIBS = $(NCURSES_LIB)
 
 INCS = -I../include $(NCURSES_INCS)
-
-DEFS = $(BSD_SIGNAL_DEFS)
+DEFS = 
 
 all:	$(PROG)
 

@@ -10,7 +10,7 @@ OBJS   = bog.o help.o mach.o prtable.o timer.o word.o
 # behavior.  Not defining it will allow any Linux "improvements" to be
 # included.
 #
-DEFS = $(BSD_SIGNAL_DEFS) # -DPURE
+DEFS = # -DPURE
 LIBS   = $(NCURSES_LIB)
 INCS   = -I../../include $(NCURSES_INCS)
 

@@ -6,7 +6,7 @@ PROG = worm
 
 LIBS = $(NCURSES_LIB)
 INCS = -I../include $(NCURSES_INCS)
-DEFS = $(BSD_SIGNAL_DEFS)
+DEFS = 
 
 all:	$(PROG)
 

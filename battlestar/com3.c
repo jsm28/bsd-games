@@ -196,11 +196,10 @@ shoot()
 	int     firstnumber, value;
 	int     n;
 
-	firstnumber = wordcount + 2;
+	firstnumber = wordnumber;
 	if (!testbit(inven, LASER))
 		puts("You aren't holding a blaster.");
 	else {
-		firstnumber = wordnumber;
 		while (wordtype[++wordnumber] == ADJS);
 		while (wordnumber <= wordcount && wordtype[wordnumber] == OBJECT) {
 			value = wordvalue[wordnumber];

@@ -14,6 +14,7 @@ dm/dm.8
 dm/dm.conf.5
 dm/pathnames.h
 fish/pathnames.h
+fortune/fortune/fortune.6
 fortune/fortune/pathnames.h
 hangman/hangman.6
 hangman/pathnames.h

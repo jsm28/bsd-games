@@ -92,7 +92,7 @@ love()
 
 	while (wordtype[++wordnumber] != NOUNS && wordnumber <= wordcount);
 	if (wordtype[wordnumber] == NOUNS && testbit(location[position].objects, wordvalue[wordnumber])) {
-		if (wordvalue[wordnumber] == NORMGOD && !loved)
+		if (wordvalue[wordnumber] == NORMGOD && !loved) {
 			if (godready >= 2) {
 				puts("She cuddles up to you, and her mouth starts to work:\n'That was my sister's amulet.  The lovely goddess, Purl, was she.  The Empire\ncaptured her just after the Darkness came.  My other sister, Vert, was killed\nby the Dark Lord himself.  He took her amulet and warped its power.\nYour quest was foretold by my father before he died, but to get the Dark Lord's\namulet you must use cunning and skill.  I will leave you my amulet.");
 				puts("which you may use as you wish.  As for me, I am the last goddess of the\nwaters.  My father was the Island King, and the rule is rightfully mine.'\n\nShe pulls the throne out into a large bed.");
@@ -116,6 +116,7 @@ love()
 				puts("You wish!");
 				return;
 			}
+		}
 		if (wordvalue[wordnumber] == NATIVE) {
 			puts("The girl is easy prey.  She peals off her sarong and indulges you.");
 			power++;
@@ -244,7 +245,7 @@ give()
 {
 	int     obj = -1, result = -1, person = 0, firstnumber, last1, last2;
 
-	last1 = last2 = wordcount + 2;
+	last1 = last2 = 0;
 	firstnumber = wordnumber;
 	while (wordtype[++wordnumber] != OBJECT && wordvalue[wordnumber] != AMULET && wordvalue[wordnumber] != MEDALION && wordvalue[wordnumber] != TALISMAN && wordnumber <= wordcount);
 	if (wordnumber <= wordcount) {
@@ -258,6 +259,10 @@ give()
 	if (wordtype[wordnumber] == NOUNS) {
 		person = wordvalue[wordnumber];
 		last2 = wordnumber;
+	}
+	if (last1 == 0) {
+		puts("You didn't say what to give.");
+		return (0);
 	}
 	wordnumber = last1 - 1;
 	if (person && testbit(location[position].objects, person))

@@ -219,7 +219,7 @@ main(argc, argv)
 		checkbattle();	/* check for player to player battle */
 		neatstuff();	/* gurus, medics, etc. */
 
-		if (Player.p_status == S_CLOAKED)
+		if (Player.p_status == S_CLOAKED) {
 			/* costs 3 mana per turn to be cloaked */
 			if (Player.p_mana > 3.0)
 				Player.p_mana -= 3.0;
@@ -229,6 +229,7 @@ main(argc, argv)
 				Player.p_status = S_PLAYING;
 				Changed = TRUE;
 			}
+		}
 
 		if (Player.p_status != S_PLAYING && Player.p_status != S_CLOAKED)
 			/* change status back to S_PLAYING */

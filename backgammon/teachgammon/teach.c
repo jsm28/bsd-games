@@ -74,7 +74,7 @@ main(argc, argv)
 {
 	int     i;
 
-	signal(2, getout);
+	signal(SIGINT, getout);
 	if (tcgetattr(0, &old) == -1)	/* get old tty mode */
 		errexit("teachgammon(gtty)");
 	noech = old;

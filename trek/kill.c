@@ -113,13 +113,14 @@ int	qx, qy;
 
 	if (q->bases <= 0)
 		return;
-	if (!damaged(SSRADIO))
+	if (!damaged(SSRADIO)) {
 		/* then update starchart */
 		if (q->scanned < 1000)
 			q->scanned -= 10;
 		else
 			if (q->scanned > 1000)
 				q->scanned = -1;
+	}
 	q->bases = 0;
 	Now.bases -= 1;
 	for (b = Now.base; ; b++)

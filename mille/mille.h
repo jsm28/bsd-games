@@ -249,7 +249,7 @@ int	onecard __P((PLAY *));
 int	playcard __P((PLAY *));
 void	prboard __P((void));
 void	prompt __P((int));
-void	prscore __P((int));
+void	prscore __P((bool));
 int	readch __P((void));
 bool	rest_f __P((char *));
 int	roll __P((int, int));
@@ -261,4 +261,8 @@ void	show_score __P((int, int, int, int *));
 void	shuffle __P((void));
 void	sort __P((CARD *));
 void	undoex __P((int));
+#if defined(__linux__) && !defined(__GLIBC__)
 bool	varpush __P((int, ssize_t __P((int, const struct iovec *, size_t))));
+#else
+bool	varpush __P((int, ssize_t __P((int, const struct iovec *, int))));
+#endif

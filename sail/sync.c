@@ -231,7 +231,6 @@ Sync()
 	long a, b, c, d;
 	char buf[80];
 	char erred = 0;
-	extern errno;
 
 	sighup = signal(SIGHUP, SIG_IGN);
 	sigint = signal(SIGINT, SIG_IGN);
@@ -353,7 +352,7 @@ sync_update(type, ship, a, b, c, d)
 		}
 	case W_UNFOUL: {
 		struct snag *p = &ship->file->foul[a];
-		if (p->sn_count > 0)
+		if (p->sn_count > 0) {
 			if (b) {
 				ship->file->nfoul -= p->sn_count;
 				p->sn_count = 0;
@@ -361,11 +360,12 @@ sync_update(type, ship, a, b, c, d)
 				ship->file->nfoul--;
 				p->sn_count--;
 			}
+		}
 		break;
 		}
 	case W_UNGRAP: {
 		struct snag *p = &ship->file->grap[a];
-		if (p->sn_count > 0)
+		if (p->sn_count > 0) {
 			if (b) {
 				ship->file->ngrap -= p->sn_count;
 				p->sn_count = 0;
@@ -373,14 +373,16 @@ sync_update(type, ship, a, b, c, d)
 				ship->file->ngrap--;
 				p->sn_count--;
 			}
+		}
 		break;
 		}
 	case W_SIGNAL:
-		if (mode == MODE_PLAYER)
+		if (mode == MODE_PLAYER) {
 			if (nobells)
 				Signal("$$: %s", ship, (char *) a);
 			else
 				Signal("\7$$: %s", ship, (char *) a);
+		}
 		break;
 	case W_CREW: {
 		struct shipspecs *s = ship->specs;

@@ -11,7 +11,7 @@ OBJS=	monop.o cards.o execute.o getinp.o houses.o jail.o misc.o morg.o \
 
 LIBS = 
 INCS = -I../include
-DEFS = $(BSD_SIGNAL_DEFS)
+DEFS = 
 
 all:	$(PROG) cards.pck
 

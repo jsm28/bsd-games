@@ -116,7 +116,7 @@ main(argc, argv)
 
 	/* initialization */
 	bflag = 2;		/* default no board */
-	signal(2, getout);	/* trap interrupts */
+	signal(SIGINT, getout);	/* trap interrupts */
 	if (tcgetattr(0, &old) == -1)	/* get old tty mode */
 		errexit("backgammon(gtty)");
 	noech = old;
@@ -216,7 +216,7 @@ main(argc, argv)
 					else
 						writec('\n');
 					writel("Password:");
-					signal(14, getout);
+					signal(SIGALRM, getout);
 					cflag = 1;
 					alarm(10);
 					for (i = 0; i < 10; i++) {

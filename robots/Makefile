@@ -11,7 +11,7 @@ OBJS=	extern.o init_field.o main.o make_level.o move.o move_robs.o \
 
 LIBS = $(NCURSES_LIB)
 INCS = -I../include $(NCURSES_INCS)
-DEFS = $(BSD_SIGNAL_DEFS) -DFANCY -DMAX_PER_UID=5
+DEFS = -DFANCY -DMAX_PER_UID=5
 
 all:	$(PROG)
 

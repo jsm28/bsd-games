@@ -4,7 +4,8 @@ Joey Hess <joeyh@master.debian.org>
 
   For the Debian patches, which covered what was needed to make the games
   compile with current libraries, provided many bug fixes and showed
-  where I needed to do things like parametrise manpages.
+  where I needed to do things like parametrise manpages.  Also many other
+  bug reports and fixes, and manpages for wargames and paranoia.
 
 David Frey <david@eos.lugs.ch>
 
@@ -64,6 +65,7 @@ phantasia:	Edward Estes <ihnp4!ttrde!estes>, with thanks to
 		Chris Robertson
 pig:		(unknown)
 pom:		Keith E. Brandt
+ppt:		(unknown)
 primes:		Landon Curt Noll <chongo@toad.com>
 quiz:		Jim R. Oldroyd
 rain:		Eric P. Scott

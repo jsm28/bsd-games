@@ -1,4 +1,4 @@
-/*	$NetBSD: fortune.c,v 1.11 1997/10/19 17:58:53 mycroft Exp $	*/
+/*	$NetBSD: fortune.c,v 1.12 1998/02/04 10:16:20 christos Exp $	*/
 
 /*-
  * Copyright (c) 1986, 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1986, 1993\n\
 #if 0
 static char sccsid[] = "@(#)fortune.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: fortune.c,v 1.11 1997/10/19 17:58:53 mycroft Exp $");
+__RCSID("$NetBSD: fortune.c,v 1.12 1998/02/04 10:16:20 christos Exp $");
 #endif
 #endif /* not lint */
 
@@ -61,8 +61,8 @@ __RCSID("$NetBSD: fortune.c,v 1.11 1997/10/19 17:58:53 mycroft Exp $");
 # include	<ctype.h>
 # include	<stdlib.h>
 # include	<string.h>
+# include	<err.h>
 # include	<time.h>
-# include	<regex.h>
 # include	<netinet/in.h>
 # include	"strfile.h"
 # include	"pathnames.h"
@@ -86,9 +86,9 @@ __RCSID("$NetBSD: fortune.c,v 1.11 1997/10/19 17:58:53 mycroft Exp $");
 # define	NDEBUG	1
 # endif
 
-#ifdef __linux__
-#define d_namlen d_reclen
-#endif
+# ifdef __linux__
+# define	d_namlen	d_reclen
+# endif
 
 typedef struct fd {
 	int		percent;
@@ -175,20 +175,36 @@ int	 maxlen_in_list __P((FILEDESC *));
 #endif
 
 #ifndef NO_REGEX
-#ifdef REGCMP
-# define	RE_COMP(p)	(Re_pat = regcmp(p, NULL))
-# define	BAD_COMP(f)	((f) == NULL)
-# define	RE_EXEC(p)	regex(Re_pat, (p))
+# if HAVE_REGCMP
+#  define	RE_INIT()
+#  define	RE_COMP(p)	(Re_pat = regcmp(p, NULL))
+#  define	BAD_COMP(f)	((f) == NULL)
+#  define	RE_EXEC(p)	regex(Re_pat, (p))
+#  define	RE_FREE()
 
 char	*Re_pat;
 
 char	*regcmp(), *regex();
-#else
-# define	RE_COMP(p)	(p = re_comp(p))
-# define	BAD_COMP(f)	((f) != NULL)
-# define	RE_EXEC(p)	re_exec(p)
-
-#endif
+# elif HAVE_RE_COMP
+#  define	RE_INIT()
+#  define	RE_COMP(p)	(p = re_comp(p))
+#  define	BAD_COMP(f)	((f) != NULL)
+#  define	RE_EXEC(p)	re_exec(p)
+#  define	RE_FREE()
+# elif HAVE_REGCOMP
+#  include <regex.h>
+regex_t *Re_pat = NULL;
+#  define	RE_INIT()	if (Re_pat == NULL && \
+				    (Re_pat = calloc(sizeof(*Re_pat), 1)) == NULL)\
+					err(1, "%s", "")
+#  define	RE_COMP(p)	(regcomp(Re_pat, p, REG_EXTENDED))
+#  define	BAD_COMP(f)	((f) != 0)
+#  define	RE_EXEC(p)	(!regexec(Re_pat, p, 0, NULL, 0))
+#  define	RE_FREE()	if (Re_pat != NULL) \
+					regfree(Re_pat), Re_pat = NULL
+# else
+	#error "Need to define HAVE_REGCMP, HAVE_RE_COMP, or HAVE_REGCOMP"
+# endif
 #endif
 
 int
@@ -217,10 +233,8 @@ main(ac, av)
 	display(Fortfile);
 
 #ifdef	OK_TO_WRITE_DISK
-	if ((fd = creat(Fortfile->posfile, 0666)) < 0) {
-		perror(Fortfile->posfile);
-		exit(1);
-	}
+	if ((fd = creat(Fortfile->posfile, 0666)) < 0)
+		err(1, "Can't create `%s'", Fortfile->posfile);
 #ifdef	LOCK_EX
 	/*
 	 * if we can, we exclusive lock, but since it isn't very
@@ -241,8 +255,7 @@ main(ac, av)
 			(void) fortlen();
 		sleep((unsigned int) max(Fort_len / CPERS, MINW));
 	}
-	exit(0);
-	/* NOTREACHED */
+	return(0);
 }
 
 void
@@ -256,12 +269,13 @@ display(fp)
 	(void) fseek(fp->inf, (long)Seekpts[0], 0);
 	for (Fort_len = 0; fgets(line, sizeof line, fp->inf) != NULL &&
 	    !STR_ENDSTRING(line, fp->tbl); Fort_len++) {
-		if (fp->tbl.str_flags & STR_ROTATED)
+		if (fp->tbl.str_flags & STR_ROTATED) {
 			for (p = line; (ch = *p) != 0; ++p)
 				if (isupper(ch))
 					*p = 'A' + (ch - 'A' + 13) % 26;
 				else if (islower(ch))
 					*p = 'a' + (ch - 'a' + 13) % 26;
+		}
 		fputs(line, stdout);
 	}
 	(void) fflush(stdout);
@@ -346,9 +360,7 @@ getargs(argc, argv)
 # ifdef	NO_REGEX
 		case 'i':			/* case-insensitive match */
 		case 'm':			/* dump out the fortunes */
-			(void) fprintf(stderr,
-			    "fortune: can't match fortunes on this system (Sorry)\n");
-			exit(0);
+			errx(1, "Can't match fortunes on this system (Sorry)");
 # else	/* NO_REGEX */
 		case 'm':			/* dump out the fortunes */
 			Match++;
@@ -380,12 +392,14 @@ getargs(argc, argv)
 	if (pat != NULL) {
 		if (ignore_case)
 			pat = conv_pat(pat);
+		RE_INIT();
 		if (BAD_COMP(RE_COMP(pat))) {
-#ifndef REGCMP
-			fprintf(stderr, "%s\n", pat);
-#else	/* REGCMP */
-			fprintf(stderr, "bad pattern: %s\n", pat);
-#endif	/* REGCMP */
+#ifdef HAVE_REGCMP
+			warnx("bad pattern: %s\n", pat);
+#else	/* !HAVE_REGCMP */
+			warnx("%s\n", pat);
+#endif	/* !HAVE_REGCMP */
+			RE_FREE();
 		}
 	}
 # endif	/* NO_REGEX */
@@ -403,13 +417,14 @@ form_file_list(files, file_cnt)
 	int	i, percent;
 	char	*sp;
 
-	if (file_cnt == 0)
+	if (file_cnt == 0) {
 		if (Find_files)
 			return add_file(NO_PROB, FORTDIR, NULL, &File_list,
 					&File_tail, NULL);
 		else
 			return add_file(NO_PROB, "fortunes", FORTDIR,
 					&File_list, &File_tail, NULL);
+	}
 	for (i = 0; i < file_cnt; i++) {
 		percent = NO_PROB;
 		if (!isdigit(files[i][0]))
@@ -419,11 +434,11 @@ form_file_list(files, file_cnt)
 			for (sp = files[i]; isdigit(*sp); sp++)
 				percent = percent * 10 + *sp - '0';
 			if (percent > 100) {
-				fprintf(stderr, "percentages must be <= 100\n");
+				warnx("Percentages must be <= 100");
 				return FALSE;
 			}
 			if (*sp == '.') {
-				fprintf(stderr, "percentages must be integers\n");
+				warnx("Percentages must be integers");
 				return FALSE;
 			}
 			/*
@@ -437,7 +452,7 @@ form_file_list(files, file_cnt)
 			}
 			else if (*++sp == '\0') {
 				if (++i >= file_cnt) {
-					fprintf(stderr, "percentages must precede files\n");
+					warnx("Percentages must precede files");
 					return FALSE;
 				}
 				sp = files[i];
@@ -498,7 +513,7 @@ add_file(percent, file, dir, head, tail, parent)
 
 	DPRINTF(1, (stderr, "adding file \"%s\"\n", path));
 over:
-	if ((fd = open(path, 0)) < 0) {
+	if ((fd = open(path, O_RDONLY)) < 0) {
 		/*
 		 * This is a sneak.  If the user said -a, and if the
 		 * file we're given isn't a file, we check to see if
@@ -521,7 +536,7 @@ over:
 			return add_file(percent, file, FORTDIR, head, tail,
 					parent);
 		if (parent == NULL)
-			perror(path);
+			warn("Cannot open `%s'", path);
 		if (was_malloc)
 			free(path);
 		return FALSE;
@@ -541,9 +556,7 @@ over:
 	     !is_fortfile(path, &fp->datfile, &fp->posfile, (parent != NULL))))
 	{
 		if (parent == NULL)
-			fprintf(stderr,
-				"fortune:%s not a fortune file or directory\n",
-				path);
+			warnx("`%s' not a fortune file or directory", path);
 		free((char *) fp);
 		if (was_malloc)
 			free(path);
@@ -651,7 +664,7 @@ all_forts(fp, offensive)
 		return;
 	if (!is_fortfile(offensive, &datfile, &posfile, FALSE))
 		return;
-	if ((fd = open(offensive, 0)) < 0)
+	if ((fd = open(offensive, O_RDONLY)) < 0)
 		return;
 	DPRINTF(1, (stderr, "adding \"%s\" because of -a\n", offensive));
 	scene = new_fp();
@@ -699,7 +712,7 @@ add_dir(fp)
 	(void) close(fp->fd);
 	fp->fd = -1;
 	if ((dir = opendir(fp->path)) == NULL) {
-		perror(fp->path);
+		warn("Cannot open `%s'", fp->path);
 		return FALSE;
 	}
 	tailp = NULL;
@@ -715,8 +728,7 @@ add_dir(fp)
 			free(name);
 	}
 	if (fp->num_children == 0) {
-		(void) fprintf(stderr,
-		    "fortune: %s: No fortune files in directory.\n", fp->path);
+		warnx("`%s': No fortune files in directory.\n", fp->path);
 		return FALSE;
 	}
 	return TRUE;
@@ -748,9 +760,9 @@ is_dir(file)
 int
 is_fortfile(file, datp, posp, check_for_offend)
 	char	*file, **datp, **posp
-#ifndef OK_TO_WRITE_DISK
+# ifndef OK_TO_WRITE_DISK
 	__attribute__((unused))
-#endif
+# endif
 	;
 	int	check_for_offend;
 {
@@ -843,10 +855,8 @@ do_malloc(size)
 {
 	void	*new;
 
-	if ((new = malloc(size)) == NULL) {
-		(void) fprintf(stderr, "fortune: out of memory.\n");
-		exit(1);
-	}
+	if ((new = malloc(size)) == NULL)
+		err(1, "%s", "");
 	return new;
 }
 
@@ -891,24 +901,15 @@ init_prob()
 			percent += fp->percent;
 	DPRINTF(1, (stderr, "summing probabilities:%d%% with %d NO_PROB's",
 		    percent, num_noprob));
-	if (percent > 100) {
-		(void) fprintf(stderr,
-		    "fortune: probabilities sum to %d%%!\n", percent);
-		exit(1);
-	}
-	else if (percent < 100 && num_noprob == 0) {
-		(void) fprintf(stderr,
-		    "fortune: no place to put residual probability (%d%%)\n",
+	if (percent > 100)
+		errx(1, "Probabilities sum to %d%%!", percent);
+	else if (percent < 100 && num_noprob == 0)
+		errx(1, "No place to put residual probability (%d%%)",
 		    percent);
-		exit(1);
-	}
-	else if (percent == 100 && num_noprob != 0) {
-		(void) fprintf(stderr,
-		    "fortune: no probability left to put in residual files\n");
-		exit(1);
-	}
+	else if (percent == 100 && num_noprob != 0)
+		errx(1, "No probability left to put in residual files");
 	percent = 100 - percent;
-	if (Equal_probs)
+	if (Equal_probs) {
 		if (num_noprob != 0) {
 			if (num_noprob > 1) {
 				frac = percent / num_noprob;
@@ -922,6 +923,7 @@ init_prob()
 			last->percent = percent;
 			DPRINTF(1, (stderr, ", residual = %d%%", percent));
 		}
+	}
 	else {
 		DPRINTF(1, (stderr,
 			    ", %d%% distributed over remaining fortunes\n",
@@ -1071,10 +1073,8 @@ void
 open_fp(fp)
 	FILEDESC	*fp;
 {
-	if (fp->inf == NULL && (fp->inf = fdopen(fp->fd, "r")) == NULL) {
-		perror(fp->path);
-		exit(1);
-	}
+	if (fp->inf == NULL && (fp->inf = fdopen(fp->fd, "r")) == NULL)
+		err(1, "Cannot open `%s'", fp->path);
 }
 
 /*
@@ -1085,10 +1085,8 @@ void
 open_dat(fp)
 	FILEDESC	*fp;
 {
-	if (fp->datfd < 0 && (fp->datfd = open(fp->datfile, 0)) < 0) {
-		perror(fp->datfile);
-		exit(1);
-	}
+	if (fp->datfd < 0 && (fp->datfd = open(fp->datfile, O_RDONLY)) < 0)
+		err(1, "Cannot open `%s'", fp->datfile);
 }
 
 /*
@@ -1107,7 +1105,7 @@ get_pos(fp)
 	assert(fp->read_tbl);
 	if (fp->pos == POS_UNKNOWN) {
 #ifdef	OK_TO_WRITE_DISK
-		if ((fd = open(fp->posfile, 0)) < 0 ||
+		if ((fd = open(fp->posfile, O_RDONLY)) < 0 ||
 		    read(fd, &fp->pos, sizeof fp->pos) != sizeof fp->pos)
 			fp->pos = random() % fp->tbl.str_numstr;
 		else if (fp->pos >= fp->tbl.str_numstr)
@@ -1137,14 +1135,10 @@ get_tbl(fp)
 	if (fp->read_tbl)
 		return;
 	if (fp->child == NULL) {
-		if ((fd = open(fp->datfile, 0)) < 0) {
-			perror(fp->datfile);
-			exit(1);
-		}
+		if ((fd = open(fp->datfile, O_RDONLY)) < 0)
+			err(1, "Cannot open `%s'", fp->datfile);
 		if (read(fd, (char *) &fp->tbl, sizeof fp->tbl) != sizeof fp->tbl) {
-			(void)fprintf(stderr,
-			    "fortune: %s corrupted\n", fp->path);
-			exit(1);
+			errx(1, "Database `%s' corrupted", fp->path);
 		}
 		/* fp->tbl.str_version = ntohl(fp->tbl.str_version); */
 		fp->tbl.str_numstr = ntohl(fp->tbl.str_numstr);
@@ -1247,10 +1241,8 @@ conv_pat(orig)
 			cnt += 4;
 		else
 			cnt++;
-	if ((new = malloc(cnt)) == NULL) {
-		fprintf(stderr, "pattern too long for ignoring case\n");
-		exit(1);
-	}
+	if ((new = malloc(cnt)) == NULL)
+		err(1, "%s", "");
 
 	for (sp = new; *orig != '\0'; orig++) {
 		if (islower(*orig)) {
@@ -1356,13 +1348,15 @@ matches_in_list(list)
 				sp = Fortbuf;
 			}
 	}
+	RE_FREE();
 }
 # endif	/* NO_REGEX */
 
 void
 usage()
 {
-	(void) fprintf(stderr, "fortune [-a");
+	extern char *__progname;
+	(void) fprintf(stderr, "%s [-a", __progname);
 #ifdef	DEBUG
 	(void) fprintf(stderr, "D");
 #endif	/* DEBUG */

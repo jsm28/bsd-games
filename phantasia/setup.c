@@ -1,4 +1,4 @@
-/*	$NetBSD: setup.c,v 1.7.2.1 1997/11/24 01:49:07 mrg Exp $	*/
+/*	$NetBSD: setup.c,v 1.8 1997/11/24 01:47:26 mrg Exp $	*/
 
 /*
  * setup.c - set up all files for Phantasia

@@ -186,13 +186,14 @@ double	speed;
 			Ship.quady = iy / NSECTS;
 			Ship.sectx = ix % NSECTS;
 			Ship.secty = iy % NSECTS;
-			if (ix < 0 || Ship.quadx >= NQUADS || iy < 0 || Ship.quady >= NQUADS)
+			if (ix < 0 || Ship.quadx >= NQUADS || iy < 0 || Ship.quady >= NQUADS) {
 				if (!damaged(COMPUTER))
 				{
 					dumpme(0);
 				}
 				else
 					lose(L_NEGENB);
+			}
 			initquad(0);
 			n = 0;
 			break;

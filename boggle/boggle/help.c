@@ -102,7 +102,6 @@ help()
 		inputch();
 	}
 	delwin(win);
-	clearok(stdscr, 1);
-	refresh();
+	redrawwin(stdscr);
 	return(0);
 }

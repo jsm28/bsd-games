@@ -83,7 +83,7 @@ main(argc, argv)
 		printf("Usage: cfscores [user]\n");
 		exit(1);
 	}
-	dbfd = open(_PATH_SCORE, 0);
+	dbfd = open(_PATH_SCORE, O_RDONLY);
 	if (dbfd < 0)
 		err(2, "open %s", _PATH_SCORE);
 	setpwent();

@@ -1,5 +1,7 @@
 # Makefile - makefile for boggle
 
+include ../Makeconfig
+
 # DICTSRC is the dictionary that will be used to construct the word list used
 # by bog.
 DICTSRC=../hangman/words
@@ -10,22 +12,22 @@ dictionary:	mkdict/mkdict
 	mkdict/mkdict <$(DICTSRC) >dictionary
 
 mkdict/mkdict:	mkdict/mkdict.c
-	cd mkdict && make mkdict
+	cd mkdict && $(MAKE) mkdict
 
 dictindex:	mkindex/mkindex dictionary
 	mkindex/mkindex <dictionary >dictindex
 
 mkindex/mkindex:	mkindex/mkindex.c
-	cd mkindex && make mkindex
+	cd mkindex && $(MAKE) mkindex
 
 boggle/boggle:	boggle/bog.c boggle/bog.h boggle/extern.h boggle/help.c boggle/mach.c boggle/prtable.c boggle/timer.c boggle/word.c
-	cd boggle && make boggle
+	cd boggle && $(MAKE) boggle
 
 install:
 	@set -e; for i in boggle; do \
 	    echo "Making install in $$i"; \
 	    cd $$i; \
-	    make install; \
+	    $(MAKE) install $(DEFS_TO_PASS); \
 	    cd ..; \
 	done
 
@@ -33,7 +35,7 @@ clean:
 	@set -e; for i in boggle mkdict mkindex; do \
 	    echo "Making clean in $$i"; \
 	    cd $$i; \
-	    make clean; \
+	    $(MAKE) clean; \
 	    cd ..; \
 	done
 	rm -f dictionary dictindex patch.tmp README.linux.old

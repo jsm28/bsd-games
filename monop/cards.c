@@ -188,11 +188,12 @@ DECK	*dp;
 		}
 		num_h = num_H = 0;
 		for (op = cur_p->own_list; op; op = op->next)
-			if (op->sqr->type == PRPTY)
+			if (op->sqr->type == PRPTY) {
 				if (op->sqr->desc->houses == 5)
 					++num_H;
 				else
 					num_h += op->sqr->desc->houses;
+			}
 		num = per_h * num_h + per_H * num_H;
 		printf("You had %d Houses and %d Hotels, so that cost you $%d\n", num_h, num_H, num);
 		if (num == 0)

@@ -13,7 +13,7 @@ OBJS=	main.o pl_main.o pl_1.o pl_2.o pl_3.o pl_4.o pl_5.o pl_6.o pl_7.o \
 
 LIBS    = $(NCURSES_LIB)
 INCS    = -I../include $(NCURSES_INCS)
-DEFS    = $(BSD_SIGNAL_DEFS)
+DEFS    = 
 
 all:	$(PROG)
 

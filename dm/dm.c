@@ -1,4 +1,4 @@
-/*	$NetBSD: dm.c,v 1.7.2.1 1997/11/19 21:06:50 mellon Exp $	*/
+/*	$NetBSD: dm.c,v 1.8 1997/11/19 08:24:09 mrg Exp $	*/
 
 /*
  * Copyright (c) 1987, 1993
@@ -43,7 +43,7 @@ __COPYRIGHT("@(#) Copyright (c) 1987, 1993\n\
 #if 0
 static char sccsid[] = "@(#)dm.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: dm.c,v 1.7.2.1 1997/11/19 21:06:50 mellon Exp $");
+__RCSID("$NetBSD: dm.c,v 1.8 1997/11/19 08:24:09 mrg Exp $");
 #endif
 #endif /* not lint */
 
@@ -239,23 +239,11 @@ c_game(s_game, s_load, s_users, s_priority)
 double
 load()
 {
-#ifndef __linux__
 	double avenrun[3];
 
 	if (getloadavg(avenrun, sizeof(avenrun)/sizeof(avenrun[0])) < 0)
 		err(1, "getloadavg() failed.");
 	return(avenrun[2]);
-#else /* Linux has its own way of getting the load average */
-	FILE *fp;
-	double loadavg = 0;
-
-	fp = fopen("/proc/loadavg", "r");
-	if (fp == NULL)
-		err(1, "fopen /proc/loadavg failed.");
-	fscanf(fp, "%*f%*f%lf", &loadavg);
-	fclose(fp);
-	return(loadavg);
-#endif
 }
 
 /*

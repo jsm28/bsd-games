@@ -3,7 +3,7 @@
 include ../../Makeconfig
 
 INCS = -I../../include -I../common_source $(NCURSES_INCS)
-DEFS = $(BSD_SIGNAL_DEFS) -DV7
+DEFS = -DV7
 LIBS = $(NCURSES_LIB)
 
 OBJS = extra.o main.o move.o text.o version.o

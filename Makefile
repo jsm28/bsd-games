@@ -14,9 +14,7 @@ all:
 	done
 
 install:
-	@echo "If directory creation fails, you can create the directories \
-	      by hand."
-	@echo "Creating base directories:"
+	@echo "Creating installation directories:"
 	@set -e; for i in $(GAMESDIR) $(SBINDIR) $(USRBINDIR) \
 	    $(MAN5DIR) $(MAN6DIR) $(MAN8DIR) $(LIBDIR) $(SHAREDIR) \
 	    $(VARLIBDIR); do \
@@ -24,13 +22,16 @@ install:
 	    test -d $(INSTALL_PREFIX)$$i || \
 	    install -d $(INSTALL_PREFIX)$$i; \
 	done
-	@echo ""
+	@echo
 	@set -e; for i in $(BUILDDIRS); do \
 	    echo "Making install in $$i"; \
 	    cd $$i; \
-	    make install; \
+	    make install $(DEFS_TO_PASS); \
 	    cd $(SRCDIR); \
 	done
+
+install-strip:
+	@$(MAKE) install $(DEFS_TO_PASS_STRIP)
 
 clean:
 	@set -e; for i in $(BUILDDIRS); do \

@@ -1,4 +1,5 @@
-1997-12-21
+1998-03-29 - README
+===================
 
 This is the bsd-games package for Linux, containing ports of all the
 games from NetBSD-current that are free in the usual sense
@@ -16,29 +17,22 @@ If the only subdirectories you have are boggle, hangman, include,
 paranoia and rogue, then you have just bsd-games-non-free.  The other
 two games in NetBSD-current, as of the time of writing, are hack and
 larn; they have no statement at all of the conditions under which they
-can be distrbiuted, and so are not in bsd-games-non-free either.
+can be distributed, and so are not in bsd-games-non-free either.
 
-The games are mostly not enhanced from the NetBSD versions, but some
+The games are mostly not enhanced from the NetBSD versions, but many
 bugs are fixed.
 
-The games should work with ncurses (3.0, 3.4, 4.0 or 4.1 at least).
-They may also work with curses/termcap, but this is not tested by me.
-They should work with both libc5 and libc6 (glibc 2).  Note however
-that I don't test all possible combinations of libraries for each
-release, so tell me if some versions don't work.
+The games should work with ncurses (any reasonably recent version).
+They might also work with BSD curses/termcap, but this is not tested
+by me.  They should work with both libc5 (version 5.4.5 or later -
+earlier versions won't work) and libc6 (glibc 2).  Note however that I
+don't test all possible combinations of libraries for each release, so
+tell me if some versions don't work.
 
-For the current release, libc6 support is BETA level only and the
-games may not even compile, but they should be much closer to
-compiling with libc6 than in version 1.4.  Version 1.5 compiled with
-libc6 with only a few changes, so hopefully this version will as well.
+For installation instructions, see the file `INSTALL'.  Some games
+have `README.linux' files you may wish to read.
 
-You need to configure the package with `./configure'.  You should read
-any README.linux files for the games you plan to install. You can make
-each game individually or do a make in the top level directory to make
-everything.  The `Makefile.bsd' files are the original BSD makefiles.
-See the file `INSTALL' for detailed installation instructions.
-
-Here's what we have so far:
+This package contains the following games:
 
 adventure:	the original adventure by Crowther and Woods
 arithmetic:	arithmetic quiz/speed test
@@ -87,6 +81,9 @@ If you have questions about bsd-games or bsd-games-non-free you can
 contact me at <jsm28@cam.ac.uk>.  Bug reports should state the
 versions of ncurses and libc used.  If you want to be informed by
 email of new releases when they come out, please let me know.
+
+Known bugs are listed in the file BUGS; please do not send bug reports
+for bugs listed there, but patches that fix them are welcome.
 
 Joseph S. Myers
 jsm28@cam.ac.uk

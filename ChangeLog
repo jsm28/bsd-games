@@ -1,3 +1,220 @@
+1998-03-29  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* Version 2.1.
+
+	* TODO: Update.
+
+	* README: Update.
+
+	* INSTALL: Update.
+
+	* Credits: Update.
+
+1998-03-28  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* boggle/README.linux: Rebuild.
+
+	* bsd-games.lsm, bsd-games-non-free.lsm, NEWS: Update.
+
+	* configure: Don't ask about libc version or BSD signal defines.
+
+	* Makeconfig.in (BSD_SIGNAL_DEFS): Removed.
+
+	* */Makefile, */*/Makefile, hunt/Makeconfig: Don't use
+	$(BSD_SIGNAL_DEFS).
+
+	* include/signal.h: Define __USE_BSD_SIGNAL if libc5, so that the
+	Makefiles don't need to.
+
+	* lib/fgetln.c: New file, implementation of fgetln() (from
+	quiz/quiz.c).
+	* include/stdio.h: New file, wrap <stdio.h> and declare fgetln().
+	* quiz/quiz.c: Don't include implementation of fgetln().
+
+1998-03-27  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* dm/dm.c (load): Use getloadavg().
+	* dm/Makefile: Use getloadavg() from lib/getloadavg.c.
+
+	* lib/getloadavg.c: New file, implementation of getloadavg().
+	* include/stdlib.h: New file, wrap <stdlib.h> and declare
+	getloadavg().
+
+	* wump/wump.c (move_to, shoot): Add explicit braces to avoid
+	ambiguous else.
+
+	* trek/shield.c (shield): Add explicit braces to avoid ambiguous
+	else.
+
+	* trek/nova.c (nova): Add explicit braces to avoid ambiguous else.
+
+	* trek/move.c (move): Add explicit braces to avoid ambiguous else.
+
+	* trek/kill.c (killb): Add explicit braces to avoid ambiguous
+	else.
+
+	* sail/sync.c (sync_update): Add explicit braces to avoid
+	ambiguous else.
+
+	* sail/sync.c (Sync): Don't declare errno.
+
+	* sail/dr_1.c (compcombat, next): Add explicit braces to avoid
+	ambiguous else.
+
+	* sail/pl_7.c (newturn): Add explicit braces to avoid ambiguous
+	else.
+
+	* sail/pl_3.c (acceptcombat): Add explicit braces to avoid
+	ambiguous else.
+
+	* phantasia/misc.c (tradingpost): Add explicit braces to avoid
+	ambiguous else.
+
+	* phantasia/fight.c (playerhits, awardtreasure): Add explicit
+	braces to avoid ambiguous else.
+
+	* phantasia/main.c (main): Add explicit braces to avoid ambiguous
+	else.
+
+	* fortune/fortune/fortune.6: Rename to fortune.6.in.
+	* fortune/fortune/fortune.6.in: Parametrise.
+	* substfiles: Include fortune/fortune/fortune.6.
+
+	* monop/morg.c (set_mlist): Add explicit braces to avoid ambiguous
+	else.
+
+	* monop/cards.c (get_card): Add explicit braces to avoid ambiguous
+	else.
+
+	* hunt/hunt/hunt.c (list_drivers): Add explicit int in declaration
+	of `initial'.
+	(env_init): Add explicit braces to avoid ambiguous else.
+
+	* fortune/fortune/fortune.c (display, form_file_list): Add
+	explicit braces to avoid ambiguous else.
+	(init_prob): Add braces to make if/else binding agree with the
+	indentation.
+
+	* cribbage/score.c (scorehand): Add explicit braces to avoid
+	ambiguous else.
+
+	* cribbage/crib.c (peg): Add explicit braces to avoid ambiguous
+	else.
+
+	* boggle/boggle/bog.c (main): Add explicit braces to avoid
+	ambiguous else.
+
+	* battlestar/com5.c (love): Add explicit braces to avoid ambiguous
+	else.
+
+	* atc/input.c (delayb, benum): Change char to unsigned char for
+	subscript.
+
+	* Credits: Update.
+
+	* paranoia/paranoia.6: New manpage, from Joey Hess.
+	* paranoia/Makefile: Install it.
+
+	* wargames/wargames.6: New manpage, from Joey Hess
+	<joeyh@kitenet.net>.
+	* wargames/Makefile: Install it.
+
+	* hunt/Makefile.inc.bsd, hunt/hunt/Makefile.bsd, hunt/huntd/bsd.h,
+	hunt/huntd/hunt.h, hunt/huntd/huntd.6.in, hunt/huntd/talk_ctl.h:
+	Update from NetBSD-current of 1998-03-21.
+
+	* fortune/*: Update from NetBSD-current of 1998-03-21.
+	* fortune/fortune/Makefile: Use -DHAVE_REGCOMP.
+
+	* Makefile.inc.bsd, adventure/init.c, atc/Makefile.bsd,
+	backgammon/Makefile.inc.bsd, battlestar/Makefile.bsd,
+	battlestar/extern.h, boggle/*/Makefile.bsd, caesar/caesar.6,
+	canfield/*/Makefile.bsd, cribbage/Makefile.bsd, dm/Makefile.bsd,
+	dm/dm.c, factor/Makefile.bsd, fish/fish.c, rain/Makefile.bsd,
+	robots/Makefile.bsd, rogue/Makefile.bsd, sail/Makefile.bsd,
+	snake/*/Makefile.bsd, tetris/Makefile.bsd, worm/Makefile.bsd,
+	worms/Makefile.bsd, gomoku/Makefile.bsd, gomoku/main.c,
+	hangman/Makefile.bsd, mille/Makefile.bsd, phantasia/Makefile.bsd,
+	phantasia/setup.c, quiz/datfiles/pres: Update from NetBSD-current
+	of 1998-03-21.
+
+1998-03-26  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* monop/monop.c (main): Use SIGINT instead of 2 in signal.
+
+	* backgammon/teachgammon/teach.c (main): Use SIGINT instead of 2
+	in signal.
+
+	* backgammon/backgammon/main.c (main): Use SIGINT instead of 2 in
+	signal, and 14 instead of SIGALRM.
+
+	* BUGS: New file, lists known bugs.
+	* INSTALL, README, TODO: Update.
+
+	* trek/dumpgame.c (restartgame): Use O_RDONLY instead of 0 in
+	open.
+
+	* monop/execute.c (rest_f): Use O_RDONLY instead of 0 in open.
+
+	* fortune/fortune/fortune.c (add_file, all_forts, open_dat,
+	get_pos, get_tbl): Use O_RDONLY instead of 0 in open.
+
+	* canfield/cfscores/cfscores.c (main): Use O_RDONLY instead of 0
+	in open.
+
+	* canfield/canfield/canfield.c (initall): Use O_RDWR instead of 2
+	in open.
+
+	* quiz/datfiles/europe: Added more new countries.
+
+1998-03-25  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* quiz/datfiles/europe: Update for political changes of the 1990s
+	(needs more work).
+
+	* Credits: Update.
+	* INSTALL, README: Update (need libc 5.4.5 or later if using
+	libc5).
+
+1998-01-02  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* battlestar/battlestar.c, battlestar/init.c, battlestar/save.c,
+	battlestar/extern.h, battlestar/cypher.c,
+	battlestar/battlerstar.6: Let save file name vary.
+
+1997-12-30  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* battlestar/com5.c (give): The value 0 used in NetBSD is as good
+	as any for initialising last1 and last2, so use it; check for it
+	in last1 at the appropriate place and give an error if so.
+
+	* battlestar/com3.c (shoot): Correct initialiser for firstnumber
+	is always wordnumber.
+
+1997-12-29  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* mille/mille.h, mille/varpush.c: Make previous change conditional
+	on defined(__linux__) && !defined(__GLIBC__), since the X/Open
+	spec says you should use int but libc5 (only) uses size_t.
+
+	* boggle/boggle/help.c (help): Use redrawwin(stdscr) at the end,
+	to get proper redrawing with ncurses.
+	* boggle/README.linux: Rebuild.
+
+	* Makeconfig.in (DEFS_TO_PASS, DEFS_TO_PASS_STRIP): New variables,
+	definitions of installation variables to pass to sub-makes.
+	* Makefile (install, install-strip): Use these.
+	* configure (strip_install): Remove configuration option.
+	* INSTALL: Update.
+	* backgammon/Makefile, boggle/Makefile, canfield/Makefile,
+	fortune/Makefile, hunt/Makefile, snake/Makefile: Pass DEFS_TO_PASS
+	in install.
+
+1997-12-26  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* mille/mille.h: prscore's argument is bool, not int (from Joey
+	Hess).
+
 1997-12-25  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
 
 	* Version 2.0.

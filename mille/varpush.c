@@ -56,7 +56,11 @@ __RCSID("$NetBSD: varpush.c,v 1.6 1997/10/12 00:54:44 lukem Exp $");
 bool
 varpush(file, func)
 	int	file;
+#if defined(__linux__) && !defined(__GLIBC__)
 	ssize_t	(*func) __P((int, const struct iovec *, size_t)); 
+#else
+	ssize_t	(*func) __P((int, const struct iovec *, int)); 
+#endif
 {
 	int		temp;
 	const struct iovec vec[] = {

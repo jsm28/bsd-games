@@ -45,20 +45,35 @@ __RCSID("$NetBSD: save.c,v 1.7 1997/10/12 02:06:15 lukem Exp $");
 #include "extern.h"
 
 void
-restore()
+restore(filename)
+	char *filename;
 {
 	char   *home;
-	char    home1[100];
+	char    home1[1024];
 	int     n;
 	int     tmp;
 	FILE   *fp;
 
-	home = getenv("HOME");
-	strcpy(home1, home);
-	strcat(home1, "/Bstar");
+	if (strchr(filename, '/')) {
+		if (strlen(filename) + 1 > sizeof(home1))
+			errx(1, "save file name too long");
+		strcpy(home1, filename);
+	} else {
+		home = getenv("HOME");
+		if (home != NULL) {
+			if (strlen(home) + strlen(filename) + 2 > sizeof(home1))
+				errx(1, "save file name too long");
+			strcpy(home1, home);
+			strcat(home1, "/");
+			strcat(home1, filename);
+		} else {
+			if (strlen(filename) > 1023)
+				errx(1, "save file name too long");
+			strcpy(home1, filename);
+		}
+	}
 	if ((fp = fopen(home1, "r")) == 0) {
-		warn("fopen %s", home1);
-		exit(1);
+		err(1, "fopen %s", home1);
 	}
 	fread(&WEIGHT, sizeof WEIGHT, 1, fp);
 	fread(&CUMBER, sizeof CUMBER, 1, fp);
@@ -94,23 +109,41 @@ restore()
 	fread(&loved, sizeof loved, 1, fp);
 	fread(&pleasure, sizeof pleasure, 1, fp);
 	fread(&power, sizeof power, 1, fp);
-	fread(&ego, sizeof ego, 1, fp);
+	/* We must check the last read, to catch truncated save files */
+	if (fread(&ego, sizeof ego, 1, fp) < 1)
+		errx(1, "save file %s too short", home1);
 	fclose(fp);
 }
 
 void
-save()
+save(filename)
+	char *filename;
 {
 	char   *home;
-	char    home1[100];
+	char    home1[1024];
 	int     n;
 	int     tmp;
 	FILE   *fp;
 
-	home = getenv("HOME");
-	strcpy(home1, home);
-	strcat(home1, "/Bstar");
-	if ((fp = fopen(home1, "w")) == 0) {
+	if (strchr(filename, '/')) {
+		if (strlen(filename) + 1 > sizeof(home1))
+			errx(1, "save file name too long");
+		strcpy(home1, filename);
+	} else {
+		home = getenv("HOME");
+		if (home != NULL) {
+			if (strlen(home) + strlen(filename) + 2 > sizeof(home1))
+				errx(1, "save file name too long");
+			strcpy(home1, home);
+			strcat(home1, "/");
+			strcat(home1, filename);
+		} else {
+			if (strlen(filename) > 1023)
+				errx(1, "save file name too long");
+			strcpy(home1, filename);
+		}
+	}
+	if ((fp = fopen(home1, "w")) == NULL) {
 		warn("fopen %s", home1);
 		return;
 	}
@@ -150,5 +183,8 @@ save()
 	fwrite(&pleasure, sizeof pleasure, 1, fp);
 	fwrite(&power, sizeof power, 1, fp);
 	fwrite(&ego, sizeof ego, 1, fp);
+	fflush(fp);
+	if (ferror(fp))
+		warn("fwrite %s", home1);
 	fclose(fp);
 }

@@ -66,7 +66,8 @@ main(argc, argv)
 	char    mainbuf[LINELENGTH];
 	char   *next;
 
-	initialize(argc < 2 || strcmp(argv[1], "-r"));
+	initialize((argc < 2) ? NULL : (strcmp(argv[1], "-r") ? argv[1]
+					: (argv[2] ? argv[2] : ".Bstar")));
 start:
 	news();
 	beenthere[position]++;

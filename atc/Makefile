@@ -15,7 +15,7 @@ GAMES = Game_List default easy crossover Killer game_2 Atlantis OHare \
 	Tic-Tac-Toe airports box crosshatch game_3 game_4 novice two-corners
 
 INCS = -I../include $(NCURSES_INCS)
-DEFS = $(BSD_SIGNAL_DEFS) -DBSD -DYY_NO_UNPUT
+DEFS = -DBSD -DYY_NO_UNPUT
 
 all:	$(PROG)
 

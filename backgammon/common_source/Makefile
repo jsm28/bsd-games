@@ -6,7 +6,7 @@ EXEC_PATH  = $(GAMESDIR)/backgammon
 TEACH_PATH = $(GAMESDIR)/teachgammon
 
 INCS = -I../../include $(NCURSES_INCS)
-DEFS = $(BSD_SIGNAL_DEFS) -DEXEC_PATH=\"$(EXEC_PATH)\" -DTEACH_PATH=\"$(TEACH_PATH)\"
+DEFS = -DEXEC_PATH=\"$(EXEC_PATH)\" -DTEACH_PATH=\"$(TEACH_PATH)\"
 
 OBJS = allow.o board.o check.o fancy.o init.o odds.o one.o save.o \
 	subs.o table.o

@@ -343,7 +343,7 @@ tradingpost()
 					printw("A blessing requires a %.0f gp donation.  Still want one ? ", blessingcost);
 					ch = getanswer("NY", FALSE);
 
-					if (ch == 'Y')
+					if (ch == 'Y') {
 						if (Player.p_gold < blessingcost)
 							++cheat;
 						else {
@@ -354,6 +354,7 @@ tradingpost()
 							else
 								Player.p_blessing = TRUE;
 						}
+					}
 					break;
 				}
 			break;

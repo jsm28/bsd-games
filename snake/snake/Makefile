@@ -8,7 +8,7 @@ SRCS=	move.c snake.c
 OBJS=	move.o snake.o
 
 INCS = -I../../include $(NCURSES_INCS)
-DEFS = $(BSD_SIGNAL_DEFS)
+DEFS = 
 
 LIBS = -lm $(NCURSES_LIB)
 

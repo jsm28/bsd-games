@@ -80,7 +80,7 @@ char	*av[]; {
 	}
 	num_luck = sizeof lucky_mes / sizeof (char *);
 	init_decks();
-	signal(2, do_quit);
+	signal(SIGINT, do_quit);
 	for (;;) {
 		printf("\n%s (%d) (cash $%d) on %s\n", cur_p->name, player + 1,
 			cur_p->money, board[cur_p->loc].name);

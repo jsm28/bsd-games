@@ -140,11 +140,12 @@ int	f;
 			printf("down\n");
 		return;
 	}
-	if (i)
+	if (i) {
 		if (f >= 0)
 			Ship.energy -= Param.shupengy;
 		else
 			Ship.cloakgood = 0;
+	}
 	Move.free = 0;
 	if (f >= 0)
 		Move.shldchg = 1;

@@ -1682,7 +1682,7 @@ initall()
 	uid = getuid();
 	if (uid < 0)
 		uid = 0;
-	dbfd = open(_PATH_SCORE, 2);
+	dbfd = open(_PATH_SCORE, O_RDWR);
 	if (dbfd < 0)
 		return;
 	i = lseek(dbfd, uid * sizeof(struct betinfo), 0);

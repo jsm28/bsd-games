@@ -46,7 +46,7 @@ __RCSID("$NetBSD: init.c,v 1.7 1997/10/11 02:07:25 lukem Exp $");
 
 void
 initialize(startup)
-	char    startup;
+	char   *startup;
 {
 	struct objs *p;
 
@@ -57,7 +57,7 @@ initialize(startup)
 	srand(getpid());
 	getutmp(uname);
 	wordinit();
-	if (startup) {
+	if (startup == NULL) {
 		direction = NORTH;
 		ourtime = 0;
 		snooze = CYCLE * 1.5;
@@ -68,7 +68,7 @@ initialize(startup)
 		for (p = dayobjs; p->room != 0; p++)
 			setbit(location[p->room].objects, p->obj);
 	} else
-		restore();
+		restore(startup);
 	wiz = wizard(uname);
 	signal(SIGINT, diesig);
 }

@@ -1,4 +1,4 @@
-1997-12-25 - Installation instructions
+1998-03-29 - Installation instructions
 ======================================
 
 Non-free games
@@ -18,18 +18,20 @@ paranoia and rogue subdirectories, then you have just this package.)
 Prerequisites
 =============
 
-You need gcc, libc5 (versions 5.4.x) or libc6, and ncurses (version
-3.0 or later).  Older versions of libc5 (or even libc4) may work, as
-may older versions of ncurses, or BSD curses/termcap, but these are
-completely unsupported; even with ncurses 3.0 or later you may run
-into problems with some games dependent on the version of ncurses; if
-so, get a debugging version of ncurses (libncurses_g.a), link with
--lncurses_g instead of -lncurses, and good luck bug-hunting.  If the
-display gets confused in ordinary use (as opposed for example to after
-resizing the window), this might be a bug in the game, but is probably
-a bug in ncurses.  You also need some sort of lex and yacc; by default
-this package will use flex and bison, but byacc will probably work as
-well.
+You need gcc, libc5 (version 5.4.5 or later) or libc6, and ncurses
+(any reasonably recent version).  Older versions of ncurses may work
+(but are much more buggy), and BSD curses / termcap just might work
+(but is obsolete), but these are completely unsupported; even with
+recent ncurses versions you could run into problems with some games
+dependent on the version of ncurses; if so, get a debugging version of
+ncurses (libncurses_g.a), link with -lncurses_g instead of -lncurses,
+and good luck bug-hunting.  If the display gets confused in ordinary
+use (as opposed for example to after resizing the window), this might
+be a bug in the game, but is probably a bug in ncurses.  You also need
+some sort of lex and yacc; by default this package will use flex and
+bison, but byacc will probably work as well.  Libc5 versions before
+5.4.5, or libc4, will not work since they don't have the BSD <err.h>
+error reporting functions.
 
 The makefiles assume `make' is GNU make, which it almost certainly
 will be on any Linux system.  Any other make that understands
@@ -37,6 +39,43 @@ will be on any Linux system.  Any other make that understands
 well.  The configure script uses `#!/bin/bash', but you can run it
 with `bash configure' if you keep bash in another place, and it should
 indeed work with any POSIX.2 shell.
+
+Security
+========
+
+Some games maintain system-wide score files or logs, and need
+appropriate privileges to write to these files.  They can get these
+privileges by being installed setgid games, or through the files being
+world writable.  If they do not have these privileges, they will run,
+but fail to update the score files.  Most of the games were written at
+a time when security was not considered important; therefore, making
+games setgid means that users can probably get a shell with gid games.
+(This will also apply to many modern games that are badly written.)
+Thus, you should only install them setgid if this is in line with
+system security policy (for example, on a single-user system).  Games
+should not be installed setuid, since if a setuid game is cracked this
+allows games to be replaced with trojans.  Games should not be
+installed setgid to a system group such as `root' or `daemon'.
+
+An option is to use the `dungeon master' dm to regulate games playing.
+I do not recommend this, since it does not actually have any useful
+preventative effect because users can use their own copies of games.
+I believe that it is safe (but pointless) to have dm installed setgid
+if it is not being used to regulate games playing; if it is being so
+used, games not designed to run setgid may nevertheless run setgid.
+
+***********************************************************************
+*                                                                     *
+* DO NOT INSTALL ANY GAMES SETUID, ONLY SETGID.                       *
+*                                                                     *
+* INSTALLING GAMES SETGID GAMES MAY GIVE USERS SHELLS WITH GID GAMES. *
+*                                                                     *
+* IF IN DOUBT, CHOOSE THE DEFAULT OPTIONS FOR PERMISSIONS AND DO      *
+* WITHOUT SCOREFILES.                                                 *
+*                                                                     *
+* THESE GAMES COME WITH NO WARRANTY.                                  *
+*                                                                     *
+***********************************************************************
 
 Building and installation
 =========================
@@ -55,14 +94,18 @@ Building and installation
     renaming them to begin with a dot.
 3.  Type `make'.  You can probably ignore compiler warnings, although most
     should be fixed in this release.
-4.  Become root.
-5.  Type `make install'.
-6.  If you had an old installation of bsd-games, check for file locations
+4.  Save copies of any old versions of games you like and their
+    datafiles, until you know that the new versions work.
+5.  Become root.
+6.  Type `make install'.  If you want the installed binaries to be stripped,
+    use `make install-strip' instead.  This saves disk space, but means that
+    you cannot debug the installed binaries.
+7.  If you had an old installation of bsd-games, check for file locations
     that have changed.  You will probably want to remove old executables
     and static data (formerly defaulting to installation in /usr/games/lib),
     and replace any empty score files that have been installed with your old
     ones (checking the permissions).
-7.  You may wish to do something with the BSD Users' Supplementary Documents
+8.  You may wish to do something with the BSD Users' Supplementary Documents
     for trek and rogue, in trek/USD.doc/trek.me and rogue/USD.doc/rogue.me.
     You can look at them on a text terminal with `nroff -me' (piped to your
     pager), or format in PostScript for printing with `groff -me -Tps'.
@@ -76,6 +119,8 @@ helpful hints, or information about further configuaration options.
 
 See TODO for information on what needs to be improved in this package;
 you may want to volunteer for some of the things in there.
+
+The file BUGS lists known bugs.
 
 Joseph S. Myers
 jsm28@cam.ac.uk

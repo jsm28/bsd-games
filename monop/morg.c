@@ -122,13 +122,14 @@ set_mlist()
 
 	num_good = 0;
 	for (op = cur_p->own_list; op; op = op->next)
-		if (!op->sqr->desc->morg)
+		if (!op->sqr->desc->morg) {
 			if (op->sqr->type == PRPTY && op->sqr->desc->houses)
 				got_houses++;
 			else {
 				names[num_good] = op->sqr->name;
 				square[num_good++] = sqnum(op->sqr);
 			}
+		}
 	names[num_good++] = "done";
 	names[num_good--] = 0;
 	return num_good;

@@ -41,7 +41,8 @@
 .Nd a tropical adventure game
 .Sh SYNOPSIS
 .Nm
-.Op Fl r Em Pq recover a saved game
+.Op Fl r
+.Op saved-file
 .Sh DESCRIPTION
 .Nm
 is an adventure game in the classic style.  However, it's slightly less
@@ -122,9 +123,12 @@ will drop the knife you just took.
 The two commands "score" and "inven" will print out your current status
 in the game.
 .Sh SAVING A GAME
-The command "save" will save your game in a file called "Bstar."  You
-can recover a saved game by using the "-r" option when you start up the
-game.
+The command "save" will save your game in a file, by default called
+".Bstar" in your home directory.  You
+can recover a saved game by using the 
+.Fl r
+option when you start up the
+game, or by giving the name of the saved file as an argument.
 .Sh DIRECTIONS
 The compass directions N, S, E, and W can be used if you have a compass.
 If you don't have a compass, you'll have to say R, L, A, or B, which

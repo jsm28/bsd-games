@@ -70,9 +70,9 @@ __RCSID("$NetBSD: unstr.c,v 1.4 1997/10/11 07:59:09 lukem Exp $");
 # endif
 # include	<ctype.h>
 # include	<err.h>
+# include	<netinet/in.h>
 # include	<stdio.h>
 # include	<string.h>
-# include	<netinet/in.h>
 # include	"strfile.h"
 
 # ifndef MAXPATHLEN

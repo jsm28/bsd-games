@@ -391,7 +391,7 @@ list_drivers()
 	int			test_socket;
 	int			namelen;
 	char			local_name[256];
-	static			initial = TRUE;
+	static int		initial = TRUE;
 	static struct in_addr	local_address;
 	struct hostent		*hp;
 	extern int		errno;
@@ -1044,11 +1044,12 @@ env_init(enter_status)
 				envp = s + 1;
 			}
 		}
-		if (*envp != '\0')
+		if (*envp != '\0') {
 			if (envname == NULL)
 				strncpy(name, envp, NAMELEN);
 			else
 				printf("unknown option %s\n", envp);
+		}
 	}
 	return enter_status;
 }

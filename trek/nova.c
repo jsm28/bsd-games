@@ -124,7 +124,7 @@ int	x, y;
 			  case ENTERPRISE:
 			  case QUEENE:
 				se = 2000;
-				if (Ship.shldup)
+				if (Ship.shldup) {
 					if (Ship.shield >= se)
 					{
 						Ship.shield -= se;
@@ -135,6 +135,7 @@ int	x, y;
 						se -= Ship.shield;
 						Ship.shield = 0;
 					}
+				}
 				Ship.energy -= se;
 				if (Ship.energy <= 0)
 					lose(L_SUICID);

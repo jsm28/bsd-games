@@ -7,7 +7,7 @@ OBJS = bdinit.o bdisp.o main.o makemove.o pickmove.o stoc.o
 
 LIBS = $(NCURSES_LIB)
 INCS = -I../include $(NCURSES_INCS)
-DEFS = $(BSD_SIGNAL_DEFS)
+DEFS = 
 
 all:	gomoku
 

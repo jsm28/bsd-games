@@ -1,28 +1,25 @@
 Let me (jsm28@cam.ac.uk) know if you're interested in doing any of these.
 The order is just the order they were added in, not any priority order.
 
-1997-04-29 - Test architectures other than i386 (I can't do this myself).
-             The Debian version builds on m68k, powerpc, sparc, or at least
-             has done so in the past.  I have also done an alpha build, and
-             glibc has worked in the past.
+The file BUGS lists known bugs; you may wish to work on some of those.
 
 1997-04-29 - Improve security of games when running setgid.  At present,
              they do not even drop setgid privileges except for writing
              scorefiles (sail has checks for being setuid).  The games
              should only run with setgid privileges when opening scorefiles
-             for writing, and need thorough checking for anything that
-             might cause a security hole.  (This probably needs an expert.
-             Without it, I do not recommend making the games setgid games
-             unless you are prepared for your users _easily_ to be able to
-             get a shell with gid games privileges.)
+             for writing, and need a thorough audit for anything that
+             might cause a security hole.  (OpenBSD has some security fixes,
+             but the last time I checked their source tree was very
+             distant from that for NetBSD because they had not
+             incorporated the NetBSD compiler warning fixes, making
+             security fixes difficult to incorporate.  If NetBSD add
+             security fixes they will get included.)
 
 1997-04-29 - Fix compilation warnings with increasingly strict warning options.
 
-1997-04-29 - Paranoia and wargames have no manpages.  Minimal ones should
-             be written.
-
 1997-04-29 - Get changes (at least the bug-fixes) merged back into NetBSD.
-             Or should it be FreeBSD or OpenBSD?
+             Or should it be FreeBSD or OpenBSD?  (This is waiting on a
+             response from NetBSD to PR 4032.)
 
 1997-05-01 - Games with scorefiles should lock them when updating them.
 

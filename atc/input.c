@@ -450,12 +450,13 @@ Right(c)
 }
 
 char	*
-delayb(c)
-	char c;
+delayb(ch)
+	char ch;
 {
 	int	xdiff, ydiff;
+	unsigned char c;
 
-	c -= '0';
+	c = ch - '0';
 
 	if (c >= sp->num_beacons)
 		return ("Unknown beacon");
@@ -571,10 +572,12 @@ setrelalt(c)
 }
 
 char	*
-benum(c)
-	char c;
+benum(ch)
+	char ch;
 {
-	dest_no = c -= '0';
+	unsigned char c;
+
+	dest_no = c = ch - '0';
 
 	switch (dest_type) {
 	case T_BEACON:
