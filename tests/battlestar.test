@@ -191,3 +191,8 @@ testno 30
 battlestar/battlestar <tests/battlestar.in30 >test.out 2>&1 || failtest
 compare test.out tests/battlestar.out30
 rm -f test.out
+
+testno 31
+battlestar/battlestar <tests/battlestar.in31 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out31
+rm -f test.out

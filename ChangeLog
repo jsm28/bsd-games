@@ -1,5 +1,14 @@
 2000-09-22  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/extern.h: Add OBJ_PLURAL, objflags and
+	is_plural_object.
+	* battlestar/globals.c: Add objflags.
+	* battlestar/com2.c (wearit), battlestar/com3.c (shoot),
+	battlestar/com4.c (take, eat): Use is_plural_object rather than
+	looking for a final 's'.
+	* tests/battlestar.in31, tests/battlestar.out31: New test.
+	* tests/battlestar.test: Update.
+
 	* battlestar/com4.c (drop): When kicking, check for objects being
 	worn or not present.  From OpenBSD.
 	* tests/battlestar.in29, tests/battlestar.out29,

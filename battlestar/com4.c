@@ -49,7 +49,6 @@ take(from)
 	unsigned int from[];
 {
 	int     firstnumber, heavy, bulky, value;
-	int     n;
 
 	firstnumber = wordnumber;
 	if (wordnumber < wordcount && wordvalue[wordnumber + 1] == OFF) {
@@ -61,7 +60,6 @@ take(from)
 		while (wordnumber <= wordcount && wordtype[wordnumber] == OBJECT) {
 			value = wordvalue[wordnumber];
 			printf("%s:\n", objsht[value]);
-			for (n = 0; objsht[value][n]; n++);
 			heavy = (carrying + objwt[value]) <= WEIGHT;
 			bulky = (encumber + objcumber[value]) <= CUMBER;
 			if ((testbit(from, value) || wiz || tempwiz) && heavy && bulky && !testbit(inven, value)) {
@@ -77,13 +75,18 @@ take(from)
 				if (value == MEDALION)
 					win--;
 			} else if (testbit(inven, value))
-				printf("You're already holding%s%s.\n", (objsht[value][n - 1] == 's' ? " " : " a "), objsht[value]);
+				printf("You're already holding%s%s.\n",
+				    (is_plural_object(value) ? " " : " a "),
+				    objsht[value]);
 			else if (!testbit(from, value))
 				printf("I dont see any %s around here.\n", objsht[value]);
 			else if (!heavy)
-				printf("The %s %s too heavy.\n", objsht[value], (objsht[value][n - 1] == 's' ? "are" : "is"));
+				printf("The %s %s too heavy.\n", objsht[value],
+				    (is_plural_object(value) ? "are" : "is"));
 			else
-				printf("The %s %s too cumbersome to hold.\n", objsht[value], (objsht[value][n - 1] == 's' ? "are" : "is"));
+				printf("The %s %s too cumbersome to hold.\n",
+				    objsht[value],
+				    (is_plural_object(value) ? "are" : "is"));
 			if (wordnumber < wordcount - 1 && wordvalue[++wordnumber] == AND)
 				wordnumber++;
 			else
@@ -343,6 +346,8 @@ eat()
 	wordnumber++;
 	while (wordnumber <= wordcount) {
 		value = wordvalue[wordnumber];
+		if (wordtype[wordnumber] != OBJECT)
+			value = -1;
 		switch (value) {
 
 		case -1:
@@ -351,11 +356,8 @@ eat()
 
 		default:
 			printf("You can't eat%s%s!\n",
-			    wordtype[wordnumber] == OBJECT &&
-			    objsht[value]
-			    [strlen(objsht[value]) - 1] == 's' ?
-			    " " : " a ",
-			    words[wordnumber]);
+			    is_plural_object(value) ? " " : " a ",
+			    objsht[value]);
 			return (firstnumber);
 
 		case PAPAYAS:

@@ -194,7 +194,6 @@ int
 shoot()
 {
 	int     firstnumber, value;
-	int     n;
 
 	firstnumber = wordnumber;
 	if (!testbit(inven, LASER))
@@ -204,11 +203,11 @@ shoot()
 		while (wordnumber <= wordcount && wordtype[wordnumber] == OBJECT) {
 			value = wordvalue[wordnumber];
 			printf("%s:\n", objsht[value]);
-			for (n = 0; objsht[value][n]; n++);
 			if (testbit(location[position].objects, value)) {
 				clearbit(location[position].objects, value);
 				ourtime++;
-				printf("The %s explode%s\n", objsht[value], (objsht[value][n - 1] == 's' ? (objsht[value][n - 2] == 's' ? "s." : ".") : "s."));
+				printf("The %s explode%s\n", objsht[value],
+				    (is_plural_object(value) ? "." : "s."));
 				if (value == BOMB)
 					die();
 			} else

@@ -227,6 +227,9 @@
 #define MAXWEIGHT	60
 #define MAXCUMBER	10
 
+/* Flags for objects.  */
+#define OBJ_PLURAL	1
+
 struct room {
 	const char   *name;
 	int     link[8];
@@ -251,6 +254,8 @@ extern const char   *const objsht[NUMOFOBJECTS];
 extern const char   *const ouch[NUMOFINJURIES];
 extern const int     objwt[NUMOFOBJECTS];
 extern const int     objcumber[NUMOFOBJECTS];
+extern const int     objflags[NUMOFOBJECTS];
+#define is_plural_object(n)	(objflags[(n)] & OBJ_PLURAL)
 
  /* current input line */
 #define WORDLEN	15

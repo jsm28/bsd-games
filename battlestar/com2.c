@@ -47,7 +47,6 @@ __RCSID("$NetBSD: com2.c,v 1.9 2000/09/10 10:51:16 jsm Exp $");
 int
 wearit()
 {				/* synonyms = {sheathe, sheath} */
-	int     n;
 	int     firstnumber, value;
 
 	firstnumber = wordnumber;
@@ -57,7 +56,6 @@ wearit()
 		value = wordvalue[wordnumber];
 		if (objsht[value] == NULL)
 			break;
-		for (n = 0; objsht[value][n]; n++);
 		switch (value) {
 
 		case -1:
@@ -65,7 +63,7 @@ wearit()
 			return (firstnumber);
 
 		default:
-			printf("You can't wear%s%s!\n", (objsht[value][n - 1] == 's' ? " " : " a "), objsht[value]);
+			printf("You can't wear%s%s!\n", (is_plural_object(value) ? " " : " a "), objsht[value]);
 			return (firstnumber);
 
 		case KNIFE:
@@ -94,7 +92,7 @@ wearit()
 				encumber -= objcumber[value];
 				ourtime++;
 				printf("You are now wearing %s %s.\n",
-				    (objsht[value][n - 1] == 's' ? "the"
+				    (is_plural_object(value) ? "the"
 					: "a"), objsht[value]);
 			} else
 				if (testbit(wear, value))
