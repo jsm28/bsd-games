@@ -1,5 +1,9 @@
 2001-08-30  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* wump/wump.c (gcd): New function.
+	(cave_init): Ensure that gcd of (delta + 1) and room_num is 1.
+	Based on bug report and patch by <afghan@afghanhound.org.uk>.
+
 	* worm/worm.c: Keep track of visible worm length.
 	(newpos): If nowhere is available for the new prize, have the
 	player win rather than hanging.  Bug reported by Malcolm Parsons
