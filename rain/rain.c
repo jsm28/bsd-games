@@ -58,6 +58,7 @@ __RCSID("$NetBSD: rain.c,v 1.13 1999/08/08 02:06:01 simonb Exp $");
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <termios.h>
 #include <unistd.h>
 
 volatile sig_atomic_t sig_caught = 0;
@@ -144,7 +145,10 @@ main(argc, argv)
 		xpos[j] = x;
 		ypos[j] = y;
 		refresh();
-		if (delay) usleep(delay);
+		if (delay)
+			usleep(delay);
+		else
+			tcdrain(STDOUT_FILENO);
 	}
 }
 

@@ -1,3 +1,9 @@
+2000-12-20  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* rain/rain.c (main): If delay is zero, do tcdrain(STDOUT_FILENO)
+	at the end of each iteration to avoid buffered output preventing
+	Ctrl-C from working within a reasonable time.
+
 2000-10-17  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* cribbage/cribbage.h: Mark msg() and addmsg() with printf format
