@@ -1,3 +1,20 @@
+2000-05-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* bsd-games now under CVS version control.  At present there is no
+	anoncvs access, so this isn't particularly relevant to anyone else
+	yet.  The CVS tree up to now has been generated with scripts based
+	on RCS to include all past releases and betas from 1.3 onwards,
+	and those snapshots of the bsd-games source tree from in between
+	releases that I have, with checkin dates set to the dates of the
+	ChangeLogs in the respective releases and snapshots.  Tags used
+	are BSD_GAMES_DATE_yyyy_mm_dd for dated snapshots; BSD_GAMES_v_v
+	for versioned bsd-games releases; BSD_GAMES_NON_FREE_v_v for
+	bsd-games-non-free releases; and BSD_GAMES_VERSION_v_v for the
+	union of corresponding bsd-games and bsd-games-non-free releases,
+	and for bsd-games releases before the split, but this tag was not
+	applied where no bsd-games-non-free release corresponded to a
+	particular bsd-games release.
+
 2000-04-26  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* bsd-games.lsm, bsd-games-non-free.lsm: Update to LSM format
