@@ -1,5 +1,9 @@
 2001-08-30  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* snake/snake/snake.c (post): Always lseek back to the beginning
+	of the file.  Patch from Malcolm Parsons
+	<malcolm@ivywell.screaming.net>.
+
 	* wump/wump.c (gcd): New function.
 	(cave_init): Ensure that gcd of (delta + 1) and room_num is 1.
 	Based on bug report and patch by <afghan@afghanhound.org.uk>.

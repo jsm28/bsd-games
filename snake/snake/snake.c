@@ -541,8 +541,10 @@ post(iscore, flag)
 	read(rawscores, &allbwho, sizeof(short));
 	lseek(rawscores, uid * sizeof(short), SEEK_SET);
 	read(rawscores, &oldbest, sizeof(short));
-	if (!flag)
+	if (!flag) {
+		lseek(rawscores, 0, SEEK_SET);
 		return (score > oldbest ? 1 : 0);
+	}
 
 	/* Update this jokers best */
 	if (score > oldbest) {
