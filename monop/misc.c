@@ -53,7 +53,7 @@ getyn(prompt)
 	int com;
 
 	for (;;)
-		if ((com=getinp(prompt, yn)) < 2)
+		if ((com=getinp(prompt, yncoms)) < 2)
 			return com;
 		else
 			(*func[com-2])();

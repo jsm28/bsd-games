@@ -1,5 +1,8 @@
 2004-01-25  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* monop/misc.c, monop/monop.def, monop/monop.ext: Rename yn to
+	yncoms.
+
 	* cribbage/cribbage.h, cribbage/crib.c, cribbage/io.c: Rename rint
 	to receive_int.
 

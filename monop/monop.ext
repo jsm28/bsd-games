@@ -36,7 +36,7 @@
 
 extern bool	trading, spec, fixing, told_em;
 
-extern const char	*const yn[], *const comlist[], *name_list[], *const lucky_mes[];
+extern const char	*const yncoms[], *const comlist[], *name_list[], *const lucky_mes[];
 
 extern int	num_play, player, num_doub, num_luck;
 
