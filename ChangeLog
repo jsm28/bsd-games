@@ -1,3 +1,7 @@
+2000-09-07  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* tests/battlestar.test: Test for wizard or anti-wizard users.
+
 2000-09-06  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* tests/battlestar.in5, tests/battlestar.out5,

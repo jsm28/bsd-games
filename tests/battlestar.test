@@ -33,6 +33,11 @@ set -e
 
 testexec battlestar battlestar/battlestar
 
+if echo quit | battlestar/battlestar |grep wizard >/dev/null; then
+    echo "Can't test battlestar as this user."
+    exit 0
+fi
+
 # These tests cover various past bugs found in battlestar.
 
 testno 1
