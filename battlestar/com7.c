@@ -244,7 +244,7 @@ fighton:
 		break;
 
 	default:
-		puts("You don't have a chance, he is too quick.");
+		puts("You don't have a chance; he is too quick.");
 		break;
 
 	}
@@ -258,7 +258,7 @@ fighton:
 		return (0);
 	}
 	puts("He attacks...");
-	/* some embellisments */
+	/* Some embellishments. */
 	hurt = rnd(NUMOFINJURIES) - (testbit(inven, SHIELD) != 0) - (testbit(wear, MAIL) != 0) - (testbit(wear, HELM) != 0);
 	hurt += (testbit(wear, AMULET) != 0) + (testbit(wear, MEDALION) != 0) + (testbit(wear, TALISMAN) != 0);
 	hurt = hurt < 0 ? 0 : hurt;

@@ -70,7 +70,7 @@ kiss()
 			}
 			break;
 		case NATIVE:
-			puts("The lips are warm and her body robust.  She pulls you down to the ground.");
+			puts("Her lips are warm and her body robust.  She pulls you down to the ground.");
 			break;
 		case TIMER:
 			puts("The old man blushes.");

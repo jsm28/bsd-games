@@ -370,7 +370,7 @@ cypher()
 			break;
 
 		case SAVE:
-			printf("\nSave file name (default %s) ",
+			printf("\nSave file name (default %s): ",
 			       DEFAULT_SAVE_FILE);
 			filename = fgetln(stdin, &filename_len);
 			if (filename_len == 0

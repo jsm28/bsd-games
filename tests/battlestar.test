@@ -74,3 +74,8 @@ testno 7
 battlestar/battlestar <tests/battlestar.in6 >/dev/null 2>test.out || failtest
 compare test.out tests/battlestar.err6
 rm -f test.out
+
+testno 8
+battlestar/battlestar <tests/battlestar.in8 >test.out 2>/dev/null || failtest
+compare test.out tests/battlestar.out8
+rm -f test.out

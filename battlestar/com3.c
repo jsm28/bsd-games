@@ -286,7 +286,7 @@ shoot()
 					clearbit(location[position].objects, TIMER);
 					setbit(location[position].objects, DEADTIME);
 				} else
-					puts("What old timer?");
+					puts("What old-timer?");
 				break;
 			case MAN:
 				if (testbit(location[position].objects, MAN)) {

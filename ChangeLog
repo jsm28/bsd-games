@@ -1,5 +1,16 @@
 2000-09-09  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com2.c (murder): Give an appropriate message for
+	trying to kill non-OBJECT things (from OpenBSD); fixes "kill door"
+	segfault.
+	* com3.c (shoot), com4.c (take), com5.c (kiss), com6.c (ride),
+	com7.c (fight), cypher.c (save): Wording, spelling, punctuation
+	and line length adjustments from OpenBSD.
+	* tests/battlestar.out5, tests/battlestar.out6: Update for changed
+	wording.
+	* tests/battlestar.in8, tests/battlestar.out8: New tests.
+	* tests/battlestar.test: Update.
+
 	* battlestar/words.c: Make spacing nicer and add missing
 	initialisers.
 

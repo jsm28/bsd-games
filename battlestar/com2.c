@@ -239,8 +239,8 @@ murder()
 			break;
 
 		default:
-			if (wordtype[wordnumber] != NOUNS)
-				puts("Kill what?");
+			if (wordtype[wordnumber] != OBJECT)
+				puts("You can't kill that!");
 			else
 				printf("You can't kill the %s!\n",
 				    objsht[wordvalue[wordnumber]]);

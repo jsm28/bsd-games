@@ -212,7 +212,7 @@ ride()
 {
 	if (testbit(location[position].objects, HORSE)) {
 		puts("You climb onto the stallion and kick it in the guts.  The stupid steed launches");
-		puts("forward through bush and fern.  You are thrown and the horse gallups off.");
+		puts("forward through bush and fern.  You are thrown and the horse gallops off.");
 		clearbit(location[position].objects, HORSE);
 		while (!(position = rnd(NUMOFROOMS + 1)) || !OUTSIDE || !beenthere[position] || location[position].flyhere);
 		setbit(location[position].objects, HORSE);

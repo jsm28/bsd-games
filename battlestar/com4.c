@@ -143,9 +143,9 @@ take(from)
 			if (testbit(location[position].objects, AMULET)) {
 				puts("The amulet is warm to the touch, and its beauty catches your breath.");
 				puts("A mist falls over your eyes, but then it is gone.  Sounds seem clearer");
-				puts("and sharper but far away as if in a dream.  The sound of purling water reaches");
-				puts("you from afar.  The mist falls again, and your heart leaps in horror.  The gold");
-				puts("freezes your hands and fathomless darkness engulfs your soul.");
+				puts("and sharper but far away as if in a dream.  The sound of purling water");
+				puts("reaches you from afar.  The mist falls again, and your heart leaps in horror.");
+				puts("The gold freezes your hands and fathomless darkness engulfs your soul.");
 			}
 			wordtype[wordnumber--] = OBJECT;
 			return (take(from));
@@ -171,7 +171,7 @@ take(from)
 				puts("Water droplets like liquid silver bedew her golden skin, but when they part");
 				puts("from her, they fall as teardrops.  She wraps a single cloth around her and");
 				puts("ties it at the waist.  Around her neck hangs a golden amulet.");
-				puts("She bids you to follow her.");
+				puts("She bids you to follow her, and walks away.");
 				pleasure++;
 				followgod = ourtime;
 				clearbit(location[position].objects, BATHGOD);
