@@ -1,5 +1,11 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* backgammon/backgammon/main.c (main): Only score as a Gammon or a
+	Backgammon if the opponent hasn't removed any pieces, not if the
+	opponent has removed pieces but has had a piece knocked back to
+	the bar afterwards.  Fixes Debian bug 185101 from Konstantin
+	Seiler <list@kseiler.de>.
+
 	* fortune/fortune/fortune.c (fortlen): Return proper fortune
 	length for fortune files without STR_RANDOM or STR_ORDERED rather
 	than comparing it to SLEN.  Bug reported by Simon Williams

@@ -474,7 +474,7 @@ main(argc, argv)
 		/* compute game value */
 		if (tflag)
 			curmove(20, 0);
-		if (*offopp == 15 && *offptr <= 0) {
+		if (*offopp == 15 && (*offptr == 0 || *offptr == -15)) {
 			if (mflag) {
 				writel(bgammon);
 				gvalue *= 3;
