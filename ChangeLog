@@ -1,5 +1,7 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* PACKAGING: Remove some old version references.
+
 	* INSTALL: Simplify and remove some obsolete information.
 
 	* adventure/Makefile.bsd, adventure/adventure.6, adventure/crc.c,
