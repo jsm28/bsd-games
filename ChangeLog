@@ -1,5 +1,7 @@
 2003-12-18  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* Version 2.15.
+
 	* NEWS, bsd-games.lsm, bsd-games-non-free.lsm: Update.
 
 	* README: Update.
