@@ -156,7 +156,7 @@ interrupt()
 int
 getanswer(choices, def)
 	const char   *choices;
-	bool    def;
+	phbool  def;
 {
 	int     ch;		/* input */
 	volatile int	loop;	/* counter */

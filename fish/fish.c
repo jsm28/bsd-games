@@ -472,7 +472,7 @@ instructions()
 			err(1, "open %s", _PATH_INSTR);
 		if (dup2(fd, 0) == -1)
 			err(1, "dup2");
-		(void)execl("/bin/sh", "sh", "-c", pager, NULL);
+		(void)execl("/bin/sh", "sh", "-c", pager, (char *) NULL);
 		err(1, "exec sh -c %s", pager);
 		/*NOTREACHED*/
 	case -1:

@@ -40,6 +40,9 @@ struct cvntab		/* used for getcodpar() parameter list */
 	int	value2;
 };
 
+extern const struct cvntab	Skitab[];
+extern const struct cvntab	Lentab[];
+
 int getintpar(const  char *);
 double getfltpar(const char *);
 int getynpar(const char *);

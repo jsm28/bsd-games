@@ -205,9 +205,6 @@ struct xy
 };
 
 
-extern const struct cvntab	Skitab[];
-extern const struct cvntab	Lentab[];
-
 /*
  *	note that much of the stuff in the following structs CAN NOT
  *	be moved around!!!!

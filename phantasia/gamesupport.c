@@ -10,7 +10,7 @@
 
 void
 changestats(ingameflag)
-	bool    ingameflag;
+	phbool  ingameflag;
 {
 	static char flag[2] =	/* for printing values of bools */
 	{'F', 'T'};
@@ -22,7 +22,7 @@ changestats(ingameflag)
 	long    loc;		/* location in player file */
 	time_t  now;		/* time now */
 	double  dtemp;		/* temporary variable */
-	bool   *bptr;		/* pointer to bool item to change */
+	phbool *bptr;		/* pointer to bool item to change */
 	double *dptr;		/* pointer to double item to change */
 	short  *sptr;		/* pointer to short item to change */
 

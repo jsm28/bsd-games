@@ -152,7 +152,8 @@ main(argc, argv)
 			if (yorn(0)) {
 
 				fixtty(&old);	/* restore tty */
-				execl(TEACH, "teachgammon", args[1]?args:0, 0);
+				execl(TEACH, "teachgammon", args[1]?args:0,
+				      (char *) 0);
 
 				tflag = 0;	/* error! */
 				writel(noteach);

@@ -1,5 +1,19 @@
 2005-02-14  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* hack/hack.termcap.c: Remove "static" from some variables.  Fix
+	from Andreas Jochens <aj@andaco.de> in Debian bug 284750.
+	* exec.objs: Include lib/strlcpy.o for atc and sail.
+	* atc/input.c, backgammon/backgammon/main.c,
+	backgammon/teachgammon/teach.c, cribbage/instr.c, fish/fish.c,
+	phantasia/misc.c, rogue/machdep.c, wump/wump.c: Cast last argument
+	of execl to char *.
+	* rogue/rogue.h: Avoid arrays of incomplete types.
+	* trek/trek.h: Likewise.  Don't declare Skitab and Lentab here.
+	* trek/getpar.h: Declare Skitab and Lentab here.
+	* phantasia/phantstruct.h: Define phbool.
+	* phantasia/gamesupport.c, phantasia/interplayer.c,
+	phantasia/io.c, phantasia/misc.c: Use phbool where necessary.
+
 	* .cvsignore, adventure/.cvsignore, arithmetic/.cvsignore,
 	atc/.cvsignore, backgammon/backgammon/.cvsignore,
 	backgammon/common_source/.cvsignore,

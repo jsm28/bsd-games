@@ -152,7 +152,7 @@ leave()
 	else
 		writec('\n');
 	fixtty(&old);
-	execl(EXEC, "backgammon", "-n", args[1]?args:0, 0);
+	execl(EXEC, "backgammon", "-n", args[1]?args:0, (char *) 0);
 	writel("Help! Backgammon program is missing\007!!\n");
 	exit(1);
 }

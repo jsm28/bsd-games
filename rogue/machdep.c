@@ -485,7 +485,7 @@ md_shell(shell)
 	int w;
 
 	if (!fork()) {
-		execl(shell, shell, 0);
+		execl(shell, shell, (char *) 0);
 	}
 	wait(&w);
 }

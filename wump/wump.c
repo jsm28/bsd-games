@@ -776,7 +776,7 @@ puff of greasy black smoke! (poof)\n");
 			err(1, "open %s", _PATH_WUMPINFO);
 		if (dup2(fd, STDIN_FILENO) == -1)
 			err(1, "dup2");
-		(void)execl("/bin/sh", "sh", "-c", pager, NULL);
+		(void)execl("/bin/sh", "sh", "-c", pager, (char *) NULL);
 		err(1, "exec sh -c %s", pager);
 	case -1:
 		err(1, "fork");

@@ -65,7 +65,7 @@ movelevel()
 const char   *
 descrlocation(playerp, shortflag)
 	struct player *playerp;
-	bool    shortflag;
+	phbool  shortflag;
 {
 	double  circle;		/* corresponding circle for coordinates */
 	int     quadrant;	/* quandrant of grid */
@@ -447,7 +447,7 @@ allstatslist()
 const char   *
 descrtype(playerp, shortflag)
 	struct player *playerp;
-	bool    shortflag;
+	phbool  shortflag;
 {
 	int     type;		/* for caluculating result subscript */
 	static const char *const results[] =/* description table */
@@ -673,7 +673,7 @@ death(how)
 	if (ch == 'Y') {
 		cleanup(FALSE);
 		execl(_PATH_GAMEPROG, "phantasia", "-s",
-		    (Wizard ? "-S" : (char *) NULL), 0);
+		    (Wizard ? "-S" : (char *) NULL), (char *) NULL);
 		exit(0);
 		/* NOTREACHED */
 	}

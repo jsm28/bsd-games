@@ -539,7 +539,7 @@ tampered(what, arg1, arg2)
 
 void
 userlist(ingameflag)
-	bool    ingameflag;
+	phbool  ingameflag;
 {
 	int     numusers = 0;	/* number of users on file */
 

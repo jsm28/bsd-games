@@ -85,7 +85,7 @@ instructions()
 			warn("dup2");
 			_exit(1);
 		}
-		execl("/bin/sh", "sh", "-c", path, NULL);
+		execl("/bin/sh", "sh", "-c", path, (char *) NULL);
 		warn(NULL);
 		_exit(1);
 	default:

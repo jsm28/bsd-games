@@ -561,7 +561,7 @@ void	idntfy(void);
 boolean	imitating(int, int);
 int	init(int, char **);
 void	init_str(char **, const char *);
-void	insert_score(char [][], char [][], const char *, short, short, const object *, int);
+void	insert_score(char [][82], char [][30], const char *, short, short, const object *, int);
 void	inv_armor_weapon(boolean);
 void	inv_rings(void);
 void	inventory(const object *, unsigned short);
