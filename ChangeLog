@@ -1,5 +1,9 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* hack/hack.options.c (parseoptions): Refer to 'O' rather than 'o'
+	as command to set options.  Bug reported by Christian Garbs
+	<debian@cgarbs.de> in Debian bug 191452.
+
 	* caesar/caesar.c (main): Make dot and winnerdot of type double.
 	Patch from Jan Vornberger <jan@uos.de> in Debian bug 197816.
 	* tests/caesar.197816in, tests/caesar.197816out: New tests.
