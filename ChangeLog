@@ -1,3 +1,8 @@
+2001-02-08  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* rogue/USD.doc/rogue.me: Fix typo (s/scroll/potion/).  Reported
+	by Lidovski Vladimir <yyterry@chat.ru>.
+
 2001-02-07  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* adventure/hdr.h, adventure/init.c, arithmetic/arithmetic.c,
