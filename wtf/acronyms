@@ -1,4 +1,4 @@
-$NetBSD: acronyms,v 1.40 1999/09/16 12:47:31 kleink Exp $
+$NetBSD: acronyms,v 1.48 1999/11/05 08:59:17 lukem Exp $
 
 AFAICR	as far as I can recall
 AFAICT	as far as I can tell
@@ -14,6 +14,7 @@ BIAF	back in a few
 BIAS	back in a second
 BIAW	back in a while
 BRB	[I'll] be right back
+BTDT	been there, done that
 BTTH	butt to the head
 BTW	by the way
 CMIIW	correct me if I'm wrong
@@ -27,7 +28,7 @@ EMSG	email message
 ETLA	extended three letter acronym
 FSDO	for some definition of
 FUBAR	fucked up beyond all recognition
-FUD	fear, uncertianty and doubt
+FUD	fear, uncertainty and doubt
 FWIW	for what it's worth
 FYI	for your information
 G	grin
@@ -45,18 +46,25 @@ IOW	in other words
 IRL	in real life
 ISTM	it seems to me
 ISTR	I seem to recall
+JK	just kidding
 JMO	just my opinion
 JTLYK	just to let you know
 KISS	keep it simple, stupid
+KNF	kernel normal form
 L8R	later
 LMSO	laughing my socks off
 LOL	laughing out loud
 LTNS	long time no see
+MOTAS	member of the appropriate sex
+MOTOS	member of the opposite sex
+MOTSS	member of the same sex
 MTF	more to follow
 MYOB	mind your own business
+NBD	no big deal
 NFC	no fucking clue
 NFI	no fucking idea
 NIH	not invented here
+NP	no problem
 NRN	no reply necessary
 OIC	oh, I see
 OTOH	on the other hand
@@ -65,6 +73,7 @@ PITA	pain in the ass
 PPL	pretty please
 RL	real life
 ROTFL	rolling on the floor laughing
+RSN	real soon now
 RTFB	read the fine book
 RTFM	read the fine manual
 RTFMP	read the fine man page
@@ -72,12 +81,14 @@ RTFS	read the fine source
 SEP	someone else's problem
 SFA	sweet fuck all
 SHID	slaps head in disgust
-SMLSFB	So many losers, so few bullets
+SMLSFB	so many losers, so few bullets
 SMOP	simple matter of programming
 SNAFU	situation normal, all fucked up
-SNERT	Snot-Nosed egotistical rude teenager
+SNERT	snot-nosed egotistical rude teenager
 SO	significant other
 SOL	shit out [of] luck
+SWAG	silly, wild-assed guess
+SWAHBI	silly, wild-assed hare-brained idea
 TIA	thanks in advance
 TLA	three letter acronym
 TMI	too much information
@@ -87,5 +98,6 @@ UTSL	use the source, Luke
 VEG	very evil grin
 WTF	{what,where,who,why} the fuck
 WTH	{what,where,who,why} the hell
+WYSIWYG	what you see is what you get
 YKWIM	you know what I mean
 YMMV	your mileage may vary

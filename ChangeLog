@@ -1,3 +1,56 @@
+1999-11-12  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* Version 2.9.
+
+	* bsd-games.lsm: Update.
+
+	* NEWS: Update.
+
+1999-11-11  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* boggle/mkindex/mkindex.c (main): Add index entries for letters
+	not found in the dictionary (problem reported by Mike Castle
+	<dalgoda@ix.netcom.com>).
+
+	* robots/main.c (main): Reinitialise Num_games to 1 after looping
+	through Num_games games, so if you ask for another game then you
+	still get this prompt next time.  Bug report and suggested fix
+	from Malcolm Parsons <malcolm@bits.bris.ac.uk>.
+
+	* robots/score.c (score): Fix reporting of auto-bot scores, bug
+	report and suggested fix from Malcolm Parsons
+	<malcolm@bits.bris.ac.uk>.
+
+	* cribbage/instr.c, fortune/fortune/fortune.c,
+	snake/snake/snake.6.in, snake/snake/snake.c, worm/worm.6,
+	worm/worm.c: Update from NetBSD CVS.
+
+1999-11-05  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* wtf/acronyms: Update from NetBSD CVS.
+
+1999-10-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* wtf/acronyms: Update from NetBSD CVS.
+
+	* random/random.c: Use RAND_MAX rather than LONG_MAX (patch from
+	William Brioschi).
+
+	* tests/rot13.*: Removed; test not meaningful since it uses the
+	installed caesar (which may not be present) rather than the
+	just-built one.  Bug reported by Roman Hodek
+	<Roman.Hodek@informatik.uni-erlangen.de>.
+
+1999-10-21  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* backgammon/common_source/back.h,
+	backgammon/common_source/subs.c, robots/main.c, tetris/screen.c,
+	tetris/screen.h: Update from NetBSD CVS.
+
+1999-10-11  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* wtf/acronyms: Update from NetBSD CVS.
+
 1999-10-01  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* cribbage/cribbage.6.in, mille/move.c: Update from NetBSD CVS

@@ -1,4 +1,4 @@
-/*	$NetBSD: screen.c,v 1.12 1999/09/08 21:45:31 jsm Exp $	*/
+/*	$NetBSD: screen.c,v 1.13 1999/10/04 23:27:03 lukem Exp $	*/
 
 /*-
  * Copyright (c) 1992, 1993
@@ -135,7 +135,7 @@ put(c)
 	int c;
 {
 
-	return putchar(c);
+	return (putchar(c));
 }
 
 /*

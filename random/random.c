@@ -118,7 +118,7 @@ main(argc, argv)
 
 	/* Compute a random exit status between 0 and denom - 1. */
 	if (random_exit)
-		return ((denom * random()) / LONG_MAX);
+		return ((denom * random()) / RAND_MAX);
 
 	/*
 	 * Act as a filter, randomly choosing lines of the standard input
@@ -133,7 +133,7 @@ main(argc, argv)
 	 * 0 (which has a 1 / denom chance of being true), we select the
 	 * line.
 	 */
-	selected = (int)(denom * random() / LONG_MAX) == 0;
+	selected = (int)(denom * random() / RAND_MAX) == 0;
 	while ((ch = getchar()) != EOF) {
 		if (selected)
 			(void)putchar(ch);
@@ -143,7 +143,7 @@ main(argc, argv)
 				err(2, "stdout");
 
 			/* Now see if the next line is to be printed. */
-			selected = (int)(denom * random() / LONG_MAX) == 0;
+			selected = (int)(denom * random() / RAND_MAX) == 0;
 		}
 	}
 	if (ferror(stdin))

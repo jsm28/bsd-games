@@ -177,7 +177,7 @@ score(score_wfd)
 			standout();
 		printw("%5.5d %5.5d %-8.8s %-9.9s %5.5d",
 		    (scp - Top) + 1, scp->s_score, scp->s_name,
-		    Auto_bot ? "(autobot)" : "", scp->s_level);
+		    scp->s_auto ? "(autobot)" : "", scp->s_level);
 		if (!done_show && scp->s_uid == uid && scp->s_score == Score) {
 			standend();
 			done_show = TRUE;

@@ -62,7 +62,7 @@ char *nextword __P((FILE *, char *, int *, int *));
 int
 main(void)
 {
-	int clen, rlen, prev;
+	int clen, rlen, prev, i;
 	long off, start;
 	char buf[MAXWORDLEN + 1];
 
@@ -70,14 +70,24 @@ main(void)
 	off = start = 0L;
 	while (nextword(stdin, buf, &clen, &rlen) != NULL) {
 		if (*buf != prev) {
+			/*
+			 * Boggle expects a full index even if the dictionary
+			 * had no words beginning with some letters.
+			 * So we write out entries for every letter from prev
+			 * to *buf.
+			 */
 			if (prev != '\0')
 				printf("%c %6ld %6ld\n", prev, start, off - 1);
+			for (i = (prev ? prev + 1 : 'a'); i < *buf; i++)
+				printf("%c %6ld %6ld\n", i, off, off - 1);
 			prev = *buf;
 			start = off;
 		}
 		off += clen + 1;
 	}
 	printf("%c %6ld %6ld\n", prev, start, off - 1);
+	for (i = prev + 1; i <= 'z'; i++)
+		printf("%c %6ld %6ld\n", i, off, off - 1);
 	fflush(stdout);
 	if (ferror(stdout))
 		err(1, "writing standard output");
