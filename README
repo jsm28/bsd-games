@@ -38,6 +38,12 @@ bsd-games-non-free is in the file "YEAR2000".
 The copyrights and licence terms for the games, as best as I can
 determine them, are in "COPYING".
 
+This package contains cryptographic software (caesar and rot13).  In
+some jurisdictions, use or distribution of these utilities may be
+restricted, whether under export control regulations or because these
+cryptosystems have been used as technical protection measures to
+restrict access to and copying of copyright works.
+
 This package contains the following games:
 
 adventure:	the original adventure by Crowther and Woods

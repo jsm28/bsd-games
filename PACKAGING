@@ -120,6 +120,9 @@ minors; this includes but is not limited to the offensive fortunes.
 It is your responsibility to determine and apply any restriction on
 your distribution of the games that may be necessary in consequence.
 
+This package contains cryptographic software (caesar and rot13).  See
+the warnings in README about this.
+
 Notification of new versions
 ============================
 

@@ -1,3 +1,8 @@
+2001-08-02  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* README, PACKAGING: Warn about inclusion of cryptographic
+	software.
+
 2001-03-24  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* hack/hack.cmd.c: Whitespace adjustments for NetBSD alignment.
