@@ -1,4 +1,4 @@
-/*	$NetBSD: misc.c,v 1.13 2003/08/07 09:37:43 agc Exp $	*/
+/*	$NetBSD: misc.c,v 1.14 2004/02/08 00:32:48 jsm Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -34,7 +34,7 @@
 #if 0
 static char sccsid[] = "@(#)misc.c	8.2 (Berkeley) 4/28/95";
 #else
-__RCSID("$NetBSD: misc.c,v 1.13 2003/08/07 09:37:43 agc Exp $");
+__RCSID("$NetBSD: misc.c,v 1.14 2004/02/08 00:32:48 jsm Exp $");
 #endif
 #endif /* not lint */
 
