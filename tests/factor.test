@@ -56,23 +56,33 @@ EOF
 compare test.out tests/factor.123456
 rm -f test.out
 
+testno 5
+factor/factor 8675309 >test.out 2>&1 || failtest
+compare test.out tests/factor.8675309
+rm -f test.out
+
 if grep -q HAVE_OPENSSL include/bsd-games.h; then
-    testno 5
+    testno 6
+    factor/factor 6172538568 >test.out 2>&1 || failtest
+    compare test.out tests/factor.6172538568
+    rm -f test.out
+
+    testno 7
     factor/factor 987654321987654 >test.out 2>&1 || failtest
     compare test.out tests/factor.987654321987654
     rm -f test.out
 
-    testno 6
+    testno 8
     factor/factor 987654321987654321987 >test.out 2>&1 || failtest
     compare test.out tests/factor.987654321987654321987
     rm -f test.out
 
-    testno 7
+    testno 9
     factor/factor 99999999999991 >test.out 2>&1 || failtest
     compare test.out tests/factor.99999999999991
     rm -f test.out
 
-    testno 8
+    testno 10
     factor/factor 2147483647111311 >test.out 2>&1 || failtest
     compare test.out tests/factor.2147483647111311
     rm -f test.out
