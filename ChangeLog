@@ -1,5 +1,8 @@
 2001-08-30  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* mille/save.c (save): Handle '\r' the same as '\n'.  Bug reported
+	by Nicolas Lichtmaier <nick@technisys.com.ar>.
+
 	* snake/snake/snake.c (post): Always lseek back to the beginning
 	of the file.  Patch from Malcolm Parsons
 	<malcolm@ivywell.screaming.net>.

@@ -81,7 +81,7 @@ over:
 		leaveok(Board, FALSE);
 		refresh();
 		sp = buf;
-		while ((*sp = readch()) != '\n') {
+		while ((*sp = readch()) != '\n' && *sp != '\r') {
 			if (*sp == killchar())
 				goto over;
 			else if (*sp == erasechar()) {
