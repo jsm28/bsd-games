@@ -125,7 +125,10 @@ Building and installation
     me know about any that are normally significant in such cases.
     Recent versions of gcc give many `missing initializer' warnings;
     these are harmless, as are the warnings in system headers
-    mentioned above.
+    mentioned above.  Likewise, `null format string' warnings are
+    harmless; future versions of GCC will probably eliminate them, by
+    allowing headers to specify whether it is OK for a format argument
+    to a particular function to be null.
 
     At the start of the build, there will be many `No such file or
     directory' warnings from make.  Ignore these as long as make does

@@ -65,6 +65,7 @@ __RCSID("$NetBSD: unstr.c,v 1.7 1999/09/18 19:38:50 jsm Exp $");
 
 # include	<sys/types.h>
 # include	<sys/param.h>
+# include	<sys/endian.h>
 # include	<ctype.h>
 # include	<err.h>
 # include	<stdio.h>

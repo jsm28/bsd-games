@@ -1,4 +1,4 @@
-/*	$NetBSD: mkindex.c,v 1.6 1999/09/18 20:50:29 jsm Exp $	*/
+/*	$NetBSD: mkindex.c,v 1.7 1999/12/07 07:47:08 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1993\n\
 #if 0
 static char sccsid[] = "@(#)mkindex.c	8.1 (Berkeley) 6/11/93";
 #else
-__RCSID("$NetBSD: mkindex.c,v 1.6 1999/09/18 20:50:29 jsm Exp $");
+__RCSID("$NetBSD: mkindex.c,v 1.7 1999/12/07 07:47:08 jsm Exp $");
 #endif
 #endif /* not lint */
 

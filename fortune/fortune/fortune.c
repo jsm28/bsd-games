@@ -52,6 +52,7 @@ __RCSID("$NetBSD: fortune.c,v 1.22 1999/11/09 15:06:33 drochner Exp $");
 
 # include	<sys/param.h>
 # include	<sys/stat.h>
+# include	<sys/endian.h>
 
 # include	<dirent.h>
 # include	<fcntl.h>

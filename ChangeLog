@@ -1,3 +1,111 @@
+2000-02-12  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* Version 2.10.
+
+	* fortune/fortune/fortune.c: Include <sys/endian.h>.
+	* fortune/unstr/unstr.c: Likewise.
+	* fortune/strfile/strfile.c: Include <netinet/in.h>.
+	* monop/initdeck.c: Likewise.  Remove unnecessary casts.
+
+	* NEWS: Update.
+	* bsd-games.lsm: Update.
+
+	* fortune/datfiles/netbsd, sail/Makefile.bsd: Update from NetBSD
+	CVS.
+
+	* COPYING: Add 2000 to copyright years.
+
+	* wtf/acronyms: Update from NetBSD CVS.
+
+2000-02-09  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* wtf/acronyms: Update from NetBSD CVS.
+
+	* THANKS: Update.
+	* INSTALL: Update.
+
+	* Essentially all relevant changes now merged back into NetBSD
+	(except for hunt).
+	* TODO: Update.
+	* NEWS: Update.
+
+	* sail/Makefile.bsd, sail/dr_main.c, sail/extern.h,
+	sail/globals.c, sail/main.c, sail/misc.c, sail/pathnames.h.in,
+	sail/pl_7.c, sail/pl_main.c, sail/sync.c: Update from NetBSD CVS
+	after further merge.
+
+	* fortune/datfiles/Makefile.bsd, wargames/Makefile.bsd: Update
+	from NetBSD CVS.
+	* fortune/datfiles/netbsd: New, from NetBSD.
+
+2000-02-01  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* wtf/acronyms: Update from NetBSD CVS.
+
+2000-01-24  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* snake/snscore/snscore.c, tetris/scores.c, tetris/tetris.c,
+	wargames/Makefile.bsd, wargames/wargames.6: Update from NetBSD CVS
+	after further merge.
+
+	* boggle/Makefile.bsd, fortune/Makefile.bsd,
+	fortune/datfiles/Makefile.bsd, hunt/hunt/hunt.c,
+	hunt/huntd/hunt.h, phantasia/Makefile.bsd: Update from NetBSD CVS.
+
+2000-01-20  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* robots/main.c, robots/score.c: Update from NetBSD CVS after
+	further merge.
+
+2000-01-19  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* fortune/strfile/strfile.c, random/random.c: Update from NetBSD
+	CVS after further merge.
+
+2000-01-17  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* random/random.c: Define MAXRANDOM rather than using RAND_MAX.
+
+2000-01-13  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* adventure/io.c, adventure/vocab.c, battlestar/save.c,
+	caesar/caesar.c, monop/monop.c, worm/worm.c: Update from NetBSD
+	CVS after further merge.
+
+2000-01-08  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* wtf/acronyms: Update from NetBSD CVS.
+
+2000-01-02  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* tetris/screen.h, tetris/tetris.c, tetris/tetris.h: Update from
+	NetBSD CVS after further merge.
+
+1999-12-31  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* fortune/strfile/strfile.c, fortune/strfile/strfile.h,
+	monop/cards.c, monop/initdeck.c: Update from NetBSD CVS.
+
+1999-12-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* sail/extern.h, sail/globals.c, sail/pl_7.c, sail/player.h:
+	Update from NetBSD CVS after further merge.
+
+1999-12-16  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* ppt/ppt.c, quiz/quiz.c: Update from NetBSD CVS (more changes
+	merged into NetBSD).
+
+	* quiz/quiz.c (show_index): Refer error message to the pager
+	actually used.
+
+	* fortune/strfile/strfile.c: Use err(1, NULL) for out-of-memory
+	error.
+
+	* boggle/mkindex/mkindex.c, fortune/datfiles/fortunes,
+	fortune/strfile/strfile.c, wargames/wargames, wtf/wtf.in: Update
+	from NetBSD CVS.
+
 1999-12-07  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* adventure/io.c, adventure/vocab.c, battlestar/save.c,

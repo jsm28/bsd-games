@@ -1,4 +1,4 @@
-/*	$NetBSD: snscore.c,v 1.11 1999/09/12 09:02:23 jsm Exp $	*/
+/*	$NetBSD: snscore.c,v 1.12 2000/01/21 00:27:03 jsm Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -43,7 +43,7 @@ __COPYRIGHT("@(#) Copyright (c) 1980, 1993\n\
 #if 0
 static char sccsid[] = "@(#)snscore.c	8.1 (Berkeley) 7/19/93";
 #else
-__RCSID("$NetBSD: snscore.c,v 1.11 1999/09/12 09:02:23 jsm Exp $");
+__RCSID("$NetBSD: snscore.c,v 1.12 2000/01/21 00:27:03 jsm Exp $");
 #endif
 #endif /* not lint */
 

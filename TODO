@@ -25,9 +25,6 @@ those.  The issues listed there are not included in this list.
              but maybe some bits are left, and new warnings get added
              to new versions of GCC.
 
-1997-04-29 - Merge remaining changes back into NetBSD.  This is going
-             somewhat quicker now I have NetBSD CVS write access.
-
 1997-05-01 - Games with scorefiles should lock them when updating them.
 
 1997-07-15 - Get distribution permission for hack and larn.  Get

@@ -1,4 +1,4 @@
-/*	$NetBSD: tetris.h,v 1.7 1999/09/12 09:02:24 jsm Exp $	*/
+/*	$NetBSD: tetris.h,v 1.8 2000/01/01 10:15:17 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1992, 1993

@@ -1,4 +1,4 @@
-/*	$NetBSD: player.h,v 1.7 1999/04/18 03:30:12 simonb Exp $	*/
+/*	$NetBSD: player.h,v 1.8 1999/12/28 18:05:25 jsm Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
