@@ -41,11 +41,11 @@ phantasia_install:	phantasia_all
 	$(INSTALL_SCORE_GAME) phantasia/phantasia $(INSTALL_PREFIX)$(GAMESDIR)/phantasia
 	$(HIDE_GAME) phantasia
 	(set -e; for f in $(phantasia_VFILES1); do \
-	    cp phantasia/$$f $(PHANTASIA_DIR)/$$f; \
+	    cp phantasia/$$f $(INSTALL_PREFIX)$(PHANTASIA_DIR)/$$f; \
 	    $(INSTALL_SCORE_FILE) $(PHANTASIA_DIR)/$$f; done)
 	(set -e; for f in $(phantasia_VFILES2); do \
 	    if [ ! -e $(PHANTASIA_DIR)/$$f ]; then \
-		cp phantasia/$$f $(PHANTASIA_DIR)/$$f; fi; done; \
+		cp phantasia/$$f $(INSTALL_PREFIX)$(PHANTASIA_DIR)/$$f; fi; done; \
 	    $(INSTALL_SCORE_FILE) $(PHANTASIA_DIR)/scoreboard; \
 	    $(INSTALL_SCORE_FILE) -p $(PHANTASIA_DIR)/characs)
 	$(INSTALL_MANUAL) phantasia/phantasia.6

@@ -1,3 +1,11 @@
+2001-12-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* phantasia/Makefrag (phantasia_install): Use $(INSTALL_PREFIX)
+	when copying score files.  Patch from Joey Hess
+	<joeyh@debian.org>.
+	* AUTHORS, THANKS: Update email address for Joey Hess.  Patch from
+	Joey Hess <joeyh@debian.org>.
+
 2001-12-08  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* battlestar/fly.c, cribbage/crib.c, fortune/datfiles/fortunes2,
