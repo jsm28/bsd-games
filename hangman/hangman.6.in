@@ -42,6 +42,7 @@
 .Sh SYNOPSIS
 .Nm
 .Op Fl d Ar wordlist
+.Op Fl m Ar minlen
 .Sh DESCRIPTION
 In
 .Nm "" ,
@@ -55,6 +56,8 @@ and how many wrong guesses you have made on the screen in a graphic fashion.
 Use the specified
 .Ar wordlist
 instead of the default one named below.
+.It Fl m
+Set the minimum word length to use. The default is 6 letters.
 .El
 .Sh FILES
 .Bl -tag -width @hangman_wordsfile@ -compact

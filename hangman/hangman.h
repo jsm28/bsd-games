@@ -73,6 +73,7 @@ extern char Word[], Known[];
 extern const char *const Noose_pict[];
 
 extern int Errors, Wordnum;
+extern unsigned int Minlen;
 
 extern double Average;
 

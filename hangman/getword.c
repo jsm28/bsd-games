@@ -64,7 +64,7 @@ getword()
 		if (fgets(Word, BUFSIZ, inf) == NULL)
 			continue;
 		Word[strlen(Word) - 1] = '\0';
-		if (strlen(Word) < MINLEN)
+		if (strlen(Word) < Minlen)
 			continue;
 		for (wp = Word; *wp; wp++)
 			if (!islower(*wp))

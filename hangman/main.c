@@ -62,14 +62,19 @@ main(argc, argv)
 	/* Revoke setgid privileges */
 	setregid(getgid(), getgid());
 
-	while ((ch = getopt(argc, argv, "d:")) != -1) {
+	while ((ch = getopt(argc, argv, "d:m:")) != -1) {
 		switch (ch) {
 		case 'd':
 			Dict_name = optarg;
 			break;
+		case 'm':
+			Minlen = atoi(optarg);
+			if (Minlen < 2)
+				errx(1, "minimum word length too short");
+			break;
 		case '?':
 		default:
-			(void)fprintf(stderr, "usage: hangman [-d wordlist]\n");
+			(void)fprintf(stderr, "usage: hangman [-d wordlist] [-m minlen]\n");
 			exit(1);
 		}
 	}

@@ -1,3 +1,10 @@
+2002-01-19  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* hangman/extern.c, hangman/getword.c, hangman/hangman.6.in,
+	hangman/hangman.h, hangman/main.c: Allow minimum word length to be
+	set on the command line.  Patch from Joey Hess <joeyh@debian.org>.
+	* COPYING: Update.
+
 2001-12-29  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* phantasia/Makefrag (phantasia_install): Use $(INSTALL_PREFIX)

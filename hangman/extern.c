@@ -61,6 +61,7 @@ const char *const Noose_pict[] = {
 };
 
 int     Errors, Wordnum = 0;
+unsigned int Minlen = MINLEN;
 
 double  Average = 0.0;
 
