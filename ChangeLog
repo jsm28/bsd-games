@@ -1,5 +1,7 @@
 2000-09-24  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* NEWS, TODO: Update.
+
 	* COPYING, INSTALL, NEWS, PACKAGING, README, SECURITY: Don't use
 	ASCII backquotes and neutral apostrophes as matched quotes.
 

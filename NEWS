@@ -14,7 +14,8 @@ versions of the package and read that).
 Version 2.12 (yyyy-mm-dd)
 ============
 
-* Improvements and bugfixes to battlestar from OpenBSD.
+* Improvements and bugfixes to battlestar, mainly from OpenBSD.
+Though there are still known bugs, it should be much harder to crash.
 
 * Should compile with glibc 2.2.
 
