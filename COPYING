@@ -102,11 +102,11 @@ These terms also apply to "hunt/Makeconfig", which is derived from the
 hunt "Makefile.inc" distributed by NetBSD.
 
 The files "backgammon/backgammon/backlocal.h", "countmail/countmail",
-"hack/extern.h", "robots/auto.c", "sail/display.h", "sail/restart.h"
-and the game "dab" have a similar licence, but copyright is held by
-the NetBSD Foundation:
+"dm/utmpentry.c", "dm/utmpentry.h", "hack/extern.h", "robots/auto.c",
+"sail/display.h", "sail/restart.h" and the game "dab" have a similar
+licence, but copyright is held by the NetBSD Foundation:
 
-   Copyright (c) 1997, 1998, 1999, 2001, 2003 The NetBSD Foundation, Inc.
+   Copyright (c) 1997, 1998, 1999, 2001, 2002, 2003 The NetBSD Foundation, Inc.
    All rights reserved.
 
    Redistribution and use in source and binary forms, with or without

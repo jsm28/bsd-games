@@ -1,5 +1,12 @@
 2004-01-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* dm/utmpentry.c, dm/utmpentry.h: New from NetBSD CVS of
+	usr.bin/who.
+	* COPYING: Update.
+	* dm/dm.c: Follow NetBSD in use of this utmp handling.
+	* dm/Makefrag: Update.
+	* exec.objs: Update.
+
 	* lib/getprogname.c: New file.
 	* include/stdlib.h: Update.
 	* configure: Check for getprogname.

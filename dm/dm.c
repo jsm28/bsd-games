@@ -1,5 +1,4 @@
 /*	$NetBSD: dm.c,v 1.19 2004/01/27 20:30:29 jsm Exp $	*/
-/* For Linux: still using old utmp interface from version 1.16.  */
 
 /*
  * Copyright (c) 1987, 1993
@@ -58,8 +57,8 @@ __RCSID("$NetBSD: dm.c,v 1.19 2004/01/27 20:30:29 jsm Exp $");
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include <utmp.h>
 
+#include "utmpentry.h"
 #include "pathnames.h"
 
 static time_t	now;			/* current time value */
@@ -253,16 +252,16 @@ load()
 int
 users()
 {
-	
-	int nusers, utmp;
-	struct utmp buf;
+	static struct utmpentry *ohead = NULL;	
+	struct utmpentry *ep;
+	int nusers;
 
-	if ((utmp = open(_PATH_UTMP, O_RDONLY, 0)) < 0)
-		err(1, "%s", _PATH_UTMP);
-	for (nusers = 0; read(utmp, (char *)&buf, sizeof(struct utmp)) > 0;)
-		if (buf.ut_name[0] != '\0')
-			++nusers;
-	return (nusers);
+	nusers = getutentries(NULL, &ep);
+	if (ep != ohead) {
+		freeutentries(ep);
+		ohead = ep;
+	}
+	return nusers;
 }
 
 void

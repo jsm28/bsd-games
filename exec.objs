@@ -61,7 +61,7 @@ canfield/cfscores/cfscores	cfscores.o
 cribbage		cards.o crib.o extern.o instr.o io.o score.o support.o
 dab			algor.o board.o box.o gamescreen.o human.o main.o \
 	player.o random.o ttyscrn.o
-dm			dm.o lib/getloadavg.o
+dm			dm.o utmpentry.o lib/getloadavg.o
 factor			factor.o primes/pr_tbl.o
 fish			fish.o
 fortune/fortune/fortune	fortune.o lib/getprogname.o
