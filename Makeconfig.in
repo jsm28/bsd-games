@@ -1,6 +1,6 @@
 # Makeconfig.in - configuration included in Makefiles after substitution.
 #
-# Copyright (c) 1997, 1998, 1999, 2000 Joseph Samuel Myers.
+# Copyright (c) 1997, 1998, 1999, 2000, 2003 Joseph Samuel Myers.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -91,7 +91,9 @@ FGETLN_DEFS := @fgetln_defs@
 GETLOADAVG_DEFS := @getloadavg_defs@
 NCURSES_LIB := @ncurses_lib@
 NCURSES_INCS := @ncurses_includes@
-BASE_INCS := -Iinclude $(NCURSES_INCS)
+OPENSSL_LIB := @openssl_lib@
+OPENSSL_INCS := @openssl_includes@
+BASE_INCS := -Iinclude $(NCURSES_INCS) $(OPENSSL_INCS)
 BASE_LIBS := @base_libs@
 YACC := @yacc@
 LEX := @lex@

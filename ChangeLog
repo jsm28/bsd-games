@@ -1,3 +1,11 @@
+2003-04-01  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* configure, Makeconfig.in, exec.libs: Support OpenSSL for factor.
+	* INSTALL: Update.
+	* tests/factor.987654321987654,
+	tests/factor.987654321987654321987: New files.
+	* tests/factor.test: Update.
+
 2003-03-29  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* hack/COPYRIGHT, hack/COPYRIGHT-JF, hack/alloc.c, hack/config.h,

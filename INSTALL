@@ -45,7 +45,8 @@ in the game, but is probably a bug in ncurses.  You also need some
 sort of lex and yacc; by default this package will use flex and bison,
 but byacc will probably work as well.  Libc5 versions before 5.4.5, or
 libc4, will not work since they don't have the BSD <err.h> error
-reporting functions.
+reporting functions.  libcrypto from OpenSSL can optionally be used by
+factor.
 
 You now need a word list for boggle and hangman; bsd-games no longer
 provides one itself.  The GNU miscfiles package contains one, for

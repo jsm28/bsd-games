@@ -338,12 +338,39 @@ echo "this blank.  Leave it blank if /usr/include/ncurses is a symbolic link"
 echo "to /usr/include."
 ask "Ncurses includes" ncurses_includes ''
 
+if building_in factor; then
+    echo
+    echo "factor can use libcrypto from OpenSSL to handle large numbers."
+    ask_yn "Use libcrypto" use_libcrypto y
+    if [ $use_libcrypto = y ]; then
+	echo "If the OpenSSL includes (with files such as bn.h) are not in"
+	echo "/usr/include/openssl, then you will need to specify a -I option"
+	echo "here, naming a directory containing an \"openssl\" subdirectory"
+	echo "with the OpenSSL headers."
+	ask "OpenSSL includes" openssl_includes ''
+	echo "If the OpenSSL libcrypto library is not in a location searched"
+	echo "by the compiler by default, or has a strange name, you will"
+	echo "need to specify the appropriate options to find it here"
+	echo "(for example, -L/usr/ssl/lib -lcrypto); otherwise, leave the"
+	echo "default, which is probably correct."
+	ask "OpenSSL libcrypto library" openssl_lib -lcrypto
+    else
+	openssl_lib=
+	openssl_includes=
+	subst_vars="$subst_vars openssl_lib openssl_includes"
+    fi
+fi
+
 ask "Other CFLAGS" other_cflags ''
 ask "Other LDFLAGS" other_ldflags ''
 
 # Check for functions - not in glibc 2.1.1, but could be added later.
 echo "#ifndef LINUX_BSD_GAMES_H" >include/bsd-games.h
 echo "#define LINUX_BSD_GAMES_H 1" >>include/bsd-games.h
+
+if [ "$use_libcrypto" = "y" ]; then
+    echo "#define HAVE_OPENSSL 1" >>include/bsd-games.h
+fi
 
 check_func getloadavg <<EOF
 #include <stdlib.h>
