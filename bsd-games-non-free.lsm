@@ -1,13 +1,13 @@
 Begin4
 Title:		bsd-games-non-free
-Version:	2.11
-Entered-date:	2000-04-19
+Version:	2.12
+Entered-date:	2000-09-25
 Description:	Games from NetBSD with restrictive licences
 	(not DFSG/OSD-free).  Includes: hack, rogue.
 Keywords:	games, NetBSD
 Maintained-by:	jsm28@cam.ac.uk (Joseph S. Myers)
 Primary-site:	metalab.unc.edu /pub/Linux/games
-		bsd-games-non-free-2.11.tar.gz
+		bsd-games-non-free-2.12.tar.gz
 Platforms:	Requires ncurses (curses/termcap may also work but are no
 	longer tested/supported)
 Copying-policy:	restricted

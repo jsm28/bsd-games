@@ -11,16 +11,17 @@ changes in installation instructions.  Packagers should also reread
 the PACKAGING file each version (or do a diff between the old and new
 versions of the package and read that).
 
-Version 2.12 (yyyy-mm-dd)
+Version 2.12 (2000-09-25)
 ============
 
 * Improvements and bugfixes to battlestar, mainly from OpenBSD.
-Though there are still known bugs, it should be much harder to crash.
+Though there are still plenty of known bugs, it should be much harder
+to crash.
 
-* Should compile with glibc 2.2.
+* Should compile with glibc 2.2 (tested with 2.1.94).
 
 * Other minor changes and bugfixes; current with NetBSD CVS of
-yyyy-mm-dd.
+2000-09-25.
 
 Version 2.11 (2000-04-19)
 ============
