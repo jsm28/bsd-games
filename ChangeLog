@@ -1,3 +1,9 @@
+2000-08-19  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* fortune/datfiles/.cvsignore, fortune/fortune/.cvsignore,
+	fortune/strfile/.cvsignore, fortune/unstr/.cvsignore,
+	gomoku/.cvsignore, hack/.cvsignore, hangman/.cvsignore: New files.
+
 2000-08-18  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* caesar/.cvsignore, canfield/canfield/.cvsignore,
