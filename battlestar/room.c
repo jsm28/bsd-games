@@ -55,9 +55,12 @@ writedes()
 	if (beenthere[position] < ROOMDESC) {
 		compass = NORTH;
 		for (p = location[position].desc; (c = *p++) != 0;)
-			if (c != '-' && c != '*' && c != '+')
-				putchar(c);
-			else {
+			if (c != '-' && c != '*' && c != '+') {
+				if (c == '=')
+					putchar('-');
+				else
+					putchar(c);
+			} else {
 				if (c != '*')
 					printf(truedirec(compass, c));
 				compass++;

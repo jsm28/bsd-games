@@ -1,5 +1,13 @@
 2000-09-09  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/room.c (writedes): Process '=' in descriptions as
+	meaning a literal '-'; from OpenBSD.
+	* battlestar/dayfile.c (dayfile), battlestar/nightfile.c
+	(nightfile): Spelling, punctuation and line length adjustments
+	from OpenBSD.
+	* tests/battlestar.out4, tests/battlestar.out5,
+	tests/battlestar.out8: Update for changes in line length.
+
 	* battlestar/com2.c (murder): Give an appropriate message for
 	trying to kill non-OBJECT things (from OpenBSD); fixes "kill door"
 	segfault.
