@@ -36,8 +36,8 @@ Most games are under the standard BSD terms:
    OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
    SUCH DAMAGE.
 
-The files `backgammon/backgammon/backlocal.h', `countmail/countmail'
-and `robots/auto.c' have a similar licence, but copyright is held by
+The files "backgammon/backgammon/backlocal.h", "countmail/countmail"
+and "robots/auto.c" have a similar licence, but copyright is held by
 the NetBSD Foundation:
 
    Copyright (c) 1997, 1998, 1999 The NetBSD Foundation, Inc.
@@ -71,7 +71,7 @@ the NetBSD Foundation:
    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
    POSSIBILITY OF SUCH DAMAGE.
 
-In the case of `adventure/extern.h' and `hack/extern.h' the copyright
+In the case of "adventure/extern.h" and "hack/extern.h" the copyright
 is held by Christos Zoulas:
 
    Copyright (c) 1997 Christos Zoulas.  All rights reserved.
@@ -101,7 +101,7 @@ is held by Christos Zoulas:
    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
    THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-In the case of `countmail/countmail.6' the copyright is held by
+In the case of "countmail/countmail.6" the copyright is held by
 Matthew R. Green:
 
    Copyright (c) 1997 Matthew R. Green
@@ -130,7 +130,7 @@ Matthew R. Green:
    OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
    SUCH DAMAGE.
 
-In the case of `wargames/wargames.6', the copyright is held by Joey
+In the case of "wargames/wargames.6", the copyright is held by Joey
 Hess:
 
    Copyright (c) 1998 Joey Hess
@@ -159,7 +159,7 @@ Hess:
    OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
    SUCH DAMAGE.
 
-The game `atc' bears additional notices in the name of Ed James:
+The game "atc" bears additional notices in the name of Ed James:
 
    Copyright (c) 1987 by Ed James, UC Berkeley.  All rights reserved.
 
@@ -168,12 +168,12 @@ The game `atc' bears additional notices in the name of Ed James:
 
    For more info on this and all of my stuff, mail edjames@berkeley.edu.
 
-The game `boggle' used to bear a copyright notice in the name of Barry
+The game "boggle" used to bear a copyright notice in the name of Barry
 Brachman, but he confirmed that he had assigned his copyright to the
 University of California and the continued inclusion of the old
 copyright notice was an omission on their part.
 
-The game `hunt' appears to be copyrighted by its authors and the
+The game "hunt" appears to be copyrighted by its authors and the
 University of California:
 
    Copyright (c) 1985 Conrad C. Huang, Gregory S. Couch, Kenneth C.R.C. Arnold
@@ -188,18 +188,18 @@ University of California:
    and the University of California.  You may redistribute freely
    as long as the copyright notices are retained.
 
-These terms also apply to `hunt/Makeconfig', which is derived from the
-hunt `Makefile.inc' distributed by NetBSD.
+These terms also apply to "hunt/Makeconfig", which is derived from the
+hunt "Makefile.inc" distributed by NetBSD.
 
-The game `phantasia' is not copyright (except for
-`phantasia/pathnames.h.in' to which the BSD copyright and licence
-apply); the notice in `phantasia/COPYRIGHT' applies to it.
+The game "phantasia" is not copyright (except for
+"phantasia/pathnames.h.in" to which the BSD copyright and licence
+apply); the notice in "phantasia/COPYRIGHT" applies to it.
 
-The game `wtf' is also not copyright, and bears the notice
+The game "wtf" is also not copyright, and bears the notice
 
    Public domain
 
-The game `rogue' (in bsd-games-non-free) bears the standard BSD
+The game "rogue" (in bsd-games-non-free) bears the standard BSD
 notices, and then the following:
 
    This source herein may be modified and/or distributed by anybody who
@@ -209,7 +209,7 @@ notices, and then the following:
       3.)  This code is not to be traded, sold, or used for personal
            gain or profit.
 
-The following applies to the game `hack' (in bsd-games-non-free):
+The following applies to the game "hack" (in bsd-games-non-free):
 
    Hack 1.0.3 is copyright (c) Andries Brouwer, Stichting Mathematich Centrum,
    Amsterdam, 1985.
@@ -249,19 +249,19 @@ Some historical information from the permission letter to BSD:
    can be found in the sources. All these contributions are in the
    public domain.
 
-`hack/pathnames.h' bears a BSD copyright notice and licence;
-`hack/hack.tty.c' bears one in addition to that in the name of the
-Stichting Mathematisch Centrum; `hack/extern.h' bears the notice in
+"hack/pathnames.h" bears a BSD copyright notice and licence;
+"hack/hack.tty.c" bears one in addition to that in the name of the
+Stichting Mathematisch Centrum; "hack/extern.h" bears the notice in
 the name of Christos Zoulas listed above.
 
 Auxiliary and data files, distributed with the games in NetBSD, but
 not bearing copyright notices, probably fall under the terms of the
-UCB or NetBSD copyrights and licences.  The file `fortune/Notes'
+UCB or NetBSD copyrights and licences.  The file "fortune/Notes"
 contains a warning in regard to the fortune databases.
 
 Some files, beyond those present in NetBSD, have been added to the
 Linux bsd-games collection.  The following terms apply to the files in
-the `include' and `lib' directories (relevant to binary distributions
+the "include" and "lib" directories (relevant to binary distributions
 insofar as they get compiled into the games; note that the include
 files are probably irrelevant for this purpose as it is unlikely they
 are significant enough to make any binary a derived work).
@@ -298,16 +298,16 @@ significantly derived from bsd-games 1.3 by Curt Olson and Andy Tefft;
 this is all of them except for the files mentioned below to which the
 similar terms given below are expected to apply.  This includes the
 testsuite scripts; the testsuite input and output for caesar
-(`tests/caesar.constin' and `tests/caesar.constout') are from the US
+("tests/caesar.constin" and "tests/caesar.constout") are from the US
 Constitution, so not copyright; I believe the other testsuite expected
 outputs are too trivial, or translations of inputs too trivial, to
 qualify for copyright; but if not, then the terms given above apply
 (and, of course, running the test command gives an identical output
 file to which you could apply your own copyright).
 
-The files `bsd-games.lsm', `ChangeLog.0', `THANKS', `INSTALL',
-`README', `TODO', `boggle/README.linux', `fortune/README.linux', and
-`hunt/README.linux' are still significantly derived from files in the
+The files "bsd-games.lsm", "ChangeLog.0", "THANKS", "INSTALL",
+"README", "TODO", "boggle/README.linux", "fortune/README.linux", and
+"hunt/README.linux" are still significantly derived from files in the
 original bsd-games package for Linux by Curt Olson and Andy Tefft.  It
 is expected that the following terms will apply to these files, and to
 the compilation copyright on the package as a whole; ***this has yet

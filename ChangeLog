@@ -1,5 +1,8 @@
 2000-09-24  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* COPYING, INSTALL, NEWS, PACKAGING, README, SECURITY: Don't use
+	ASCII backquotes and neutral apostrophes as matched quotes.
+
 	* battlestar/getcom.c (getcom): If a line of standard input goes
 	beyond our buffer, discard extra characters rather than reading
 	them as our next command.  From OpenBSD.

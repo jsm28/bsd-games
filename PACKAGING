@@ -27,12 +27,12 @@ target system.  If used, this prefix must be an absolute path.
 
 Although the configuration script is by default interactive (although
 it does not need a terminal), it can also be used non-interactively.
-If a file `config.params' exists in the source directory, it will be
+If a file "config.params" exists in the source directory, it will be
 sourced by the configure script.  If this file (which can be an
-arbitrary shell script) sets `bsd_games_cfg_non_interactive' to `y',
+arbitrary shell script) sets "bsd_games_cfg_non_interactive" to "y",
 then the default answers to all questions will be taken without
-interaction.  If this sets `bsd_games_cfg_FOO' to `BAR' then the
-default value for configuration parameter `FOO' will become `BAR'
+interaction.  If this sets "bsd_games_cfg_FOO" to "BAR" then the
+default value for configuration parameter "FOO" will become "BAR"
 instead of whatever default the script would otherwise give.  You can
 find the names and meanings of the configuration parameters by reading
 the configure script; they are not otherwise documented.
@@ -63,8 +63,8 @@ of the games have licences requiring this), and separate your patches
 from the original source .tar.gz files (whether in separate files or
 in a single file source package including them as separable
 components), arranging the building of the source so that your patches
-add a `config.params' as described above, and do any other necessary
-changes to `configure' or other source files, and so that the build
+add a "config.params" as described above, and do any other necessary
+changes to "configure" or other source files, and so that the build
 process runs configure non-interactively and then builds the package,
 makes it easier for readers to see how you have packaged it than
 running configure interactively and including the generated files in
@@ -129,10 +129,10 @@ not currently receive this notification, please let me know.
 A note on terminology and credit
 ================================
 
-I am not the `upstream author' of the games packaged here; for an
+I am not the "upstream author" of the games packaged here; for an
 incomplete list of the authors see AUTHORS, but do not give me this
 credit I do not deserve at the expense of the true authors.  Rather I
-am the `upstream maintainer' of the bsd-games and bsd-games-non-free
+am the "upstream maintainer" of the bsd-games and bsd-games-non-free
 packages (upstream relative to distributions), and upstream of me is
 NetBSD, who also are maintainers of the games, but not for the most
 part authors.  Nor am I the creator of the bsd-games package, although

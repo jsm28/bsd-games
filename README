@@ -8,8 +8,8 @@ including for profit).  NetBSD-current contains three other games,
 rogue, hack and larn.  Rogue has a standard BSD licence, but with an
 additional contradictory licence that does not allow for-profit
 distribution; hack's licence permits porting but not gameplay changes;
-larn has no licence at all, only a notice that `Copying for Profit is
-Prohibited'.  If you want rogue and hack, get the bsd-games-non-free
+larn has no licence at all, only a notice that "Copying for Profit is
+Prohibited".  If you want rogue and hack, get the bsd-games-non-free
 package (which should be on sunsite, but not tsx-11), and read the
 README.non-free that it contains: rogue and hack are being distributed
 separately, and larn not distributed at all in this Linux port, in the
@@ -29,14 +29,14 @@ don't test all possible combinations of libraries for each release, so
 tell me if some versions don't work.  For details of prerequisites,
 see INSTALL.
 
-For installation instructions, see the file `INSTALL'.  Some games
-have `README.linux' files you may wish to read.
+For installation instructions, see the file "INSTALL".  Some games
+have "README.linux" files you may wish to read.
 
 The statement of year 2000 issues associated with bsd-games and
-bsd-games-non-free is in the file `YEAR2000'.
+bsd-games-non-free is in the file "YEAR2000".
 
 The copyrights and licence terms for the games, as best as I can
-determine them, are in `COPYING'.
+determine them, are in "COPYING".
 
 This package contains the following games:
 
@@ -82,7 +82,7 @@ trek:		We come in peace, shoot to kill.  It's worse than that, he's
 wargames:	would you like to play a game?
 worm:		eat the numbers without running into anything
 worms:		random worms scurrying across your screen
-wtf:		translate acronyms, e.g. `wtf is WTF'
+wtf:		translate acronyms, e.g. "wtf is WTF"
 wump:		hunt the wumpus
 
 If you have questions about bsd-games or bsd-games-non-free you can
@@ -97,8 +97,8 @@ come out, please let me know.
 Known bugs are listed in the file BUGS; please do not send bug reports
 for bugs listed there, but patches that fix them are welcome.
 
-For patches, I prefer unidiffs (use `diff -u OLD NEW', or `diff -ruN
-OLD-DIRECTORY NEW-DIRECTORY'), but if your diff cannot produce them
+For patches, I prefer unidiffs (use "diff -u OLD NEW", or "diff -ruN
+OLD-DIRECTORY NEW-DIRECTORY"), but if your diff cannot produce them
 then context diffs are OK.  Please remember to include details of the
 bug and your analysis of the problem if you are sending a patch; I
 have ported the code from NetBSD to Linux, but may not be familiar
