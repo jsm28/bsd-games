@@ -1,3 +1,15 @@
+2000-07-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* adventure/done.c, adventure/main.c, adventure/subr.c, bcd/bcd.c,
+	canfield/cfscores/cfscores.c, countmail/countmail.6,
+	fortune/datfiles/fortunes, fortune/datfiles/fortunes2,
+	fortune/datfiles/netbsd, gomoku/stoc.c, hack/hack.h,
+	hunt/huntd/get_names.c, morse/morse.c, phantasia/Makefile.bsd,
+	ppt/ppt.c, rogue/init.c, sail/Makefile.bsd, sail/lo_main.c,
+	sail/pl_1.c, sail/pl_7.c, trek/computer.c, trek/destruct.c,
+	trek/getpar.c, trek/setup.c, trek/torped.c: Update from NetBSD
+	CVS.
+
 2000-05-28  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* adventure/Makefile.bsd, adventure/main.c,
