@@ -1,18 +1,19 @@
-1997-05-21 - Installation directions
+1997-07-15 - Installation directions
 ====================================
 
 Non-free games
 ==============
 
-Two games, bog and paranoia, are distributed separately because of
-copyright restrictions.  If you want them, get the bsd-games-non-free
-package, and unpack it in the same directory you unpacked this in
-before proceeding.  If you do, cd to bog and decide if you want -DPURE
-or not -- see bog/README.linux for more information.  If you are in a
-hurry, don't worry about it ... it really is more of an aesthetic
-thing.  You can also build bsd-games-non-free separately.  (This file
-is also in bsd-games-non-free; if you only have bog, hangman and
-paranoia subdirectories, then you have just this package.)
+Three games, bog, paranoia and rogue, are distributed separately
+because of copyright restrictions.  If you want them, get the
+bsd-games-non-free package, and unpack it in the same directory you
+unpacked this in before proceeding.  If you do, cd to bog and decide
+if you want -DPURE or not -- see bog/README.linux for more
+information.  If you are in a hurry, don't worry about it ... it
+really is more of an aesthetic thing.  You can also build
+bsd-games-non-free separately.  (This file is also in
+bsd-games-non-free; if you only have bog, hangman, paranoia and rogue
+subdirectories, then you have just this package.)
 
 Building and installation
 =========================
@@ -23,19 +24,22 @@ Building and installation
     There may be some games you don't want to build because you have them
     from another package; for example, there is another fortune package
     (fortune-mod) available, and factor is included in GNU sh-utils as of
-    version 1.12q.  At present, there's no simple way to say you don't
-    want a particular game - you have to list those you do want.  You can
-    work around this by removing the directories for the games you don't
-    want, or renaming them to begin with a dot.
+    version 1.12q.  Also banner is in util-linux.  At present, there's no
+    simple way to say you don't want a particular game - you have to list
+    those you do want.  You can work around this by removing the
+    directories for the games you don't want, or renaming them to begin
+    with a dot.
 3.  Type make.  Ignore compiler warnings.  They will mostly be fixed in
     a later release.
 4.  Become root.
 5.  Type make install.
-6.  If you had an old installation, check for file locations that have
-    changed.  You will probably want to remove old executables and static
-    data (formerly defaulting to installation in /usr/games/lib), and
-    replace any empty score files that have been installed with your old
+6.  If you had an old installation of bsd-games, check for file locations
+    that have changed.  You will probably want to remove old executables
+    and static data (formerly defaulting to installation in /usr/games/lib),
+    and replace any empty score files that have been installed with your old
     ones (checking the permissions).
+7.  You may wish to do something with the BSD Users' Supplementary Documents
+    for trek and rogue, in trek/USD.doc/trek.me and rogue/USD.doc/rogue.me.
 
 Further information
 ===================

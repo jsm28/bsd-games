@@ -1,6 +1,18 @@
 This file contains a summary of changes in each version after 1.3.
 For fuller details, see ChangeLog and ChangeLog.0.
 
+Version 1.5
+===========
+
+* All games updated to NetBSD-current as of 1997-07-12 (except for
+bog, hunt and paprnoia).
+
+* Added adventure, banner, dm, phantasia, pig, quiz, random and rogue.
+(Rogue is in bsd-games-non-free only).
+
+* BETA level libc6 support.  (It may not yet compile, but should be
+nearer to compiling with libc6 than version 1.4.)
+
 Version 1.4
 ===========
 

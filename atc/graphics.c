@@ -54,7 +54,7 @@ static char rcsid[] = "$NetBSD: graphics.c,v 1.3 1995/03/21 15:04:04 cgd Exp $";
 #endif /* not lint */
 
 #include "include.h"
-#ifdef SYSV
+#if defined(SYSV) || defined(linux)
 #include <errno.h>
 #endif
 
@@ -70,10 +70,10 @@ WINDOW	*radar, *cleanradar, *credit, *input, *planes;
 
 getAChar()
 {
-#ifdef BSD
+#if defined(BSD) && !defined(linux)
 	return (getchar());
 #endif
-#ifdef SYSV
+#if defined(SYSV) || defined(linux)
 	int c;
 
 	while ((c = getchar()) == -1 && errno == EINTR) ;

@@ -21,12 +21,16 @@ USRBINDIR = @usrbindir@
 MAN6DIR = @man6dir@
 # Manual pages, section 8
 MAN8DIR = @man8dir@
+# Manual pages, section 5
+MAN5DIR = @man5dir@
 # Constant data (arch-dependent)
 LIBDIR = @usrlibdir@
 # Constant data (arch-independent)
 SHAREDIR = @sharedir@
 # Variable data
 VARLIBDIR = @varlibdir@
+# Directory for hidden games (dm)
+LIBEXECDIR = @libexecdir@
 # Installation commands, with install -c -o whatever -s etc.
 INSTALL_BINARY = @install_binary@
 INSTALL_SCORE_GAME = @install_score_game@
@@ -66,11 +70,16 @@ BOG_DIR = @bog_dir@
 CANFIELD_SCOREFILE = @canfield_scorefile@
 CRIBBAGE_INSTRFILE = @cribbage_instrfile@
 CRIBBAGE_SCOREFILE = @cribbage_scorefile@
+DM_CONFIG = @dm_configfile@
+DM_NOGAMESFILE = @dm_nogamesfile@
 FISH_INSTRFILE = @fish_instrfile@
 FORTUNE_TYPE = @fortune_type@
 HANGMAN_WORDSFILE = @hangman_wordsfile@
 MONOP_CARDSFILE = @monop_cardsfile@
+PHANTASIA_DIR = @phantasia_dir@
+QUIZ_DIR = @quiz_dir@
 ROBOTS_SCOREFILE = @robots_scorefile@
+ROGUE_SCOREFILE = @rogue_scorefile@
 SAIL_SCOREFILE = @sail_scorefile@
 SNAKE_SCOREFILE = @snake_scorefile@
 SNAKE_RAWSCOREFILE = @snake_rawscorefile@

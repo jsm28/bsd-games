@@ -132,8 +132,11 @@ if building_in dm; then
     fi
 fi
 ask "Section 6 manpage directory" man6dir /usr/man/man6
-if building_in hunt || building_in fortune; then
+if building_in dm || building_in fortune; then
     ask "Section 8 manpage directory" man8dir /usr/man/man8
+fi
+if building_in dm; then
+    ask "Section 5 manpage directory" man5dir /usr/man/man5
 fi
 # arch-dependent data is a bad thing, and we should change the games to
 # avoid it where possible, but until then this is needed.
@@ -206,6 +209,9 @@ if [ $strip_install = y ]; then
     done
 fi
 
+echo
+echo "It is presumed in some places by the Makefiles that the compiler"
+echo "will be some form of gcc."
 ask "Compiler" cc gcc
 ask "Optimize flags" optimize_flags "-g -O2"
 ask "Compiler warning flags" warning_flags '' # When it works, -Wall
@@ -257,11 +263,16 @@ game_ask bog "Directory for bog static data" bog_dir "$sharedir/bog"
 game_ask canfield "Score file for canfield" canfield_scorefile "$varlibdir/cfscores"
 game_ask cribbage "File for cribbage instructions" cribbage_instrfile "$sharedir/cribbage.instr"
 game_ask cribbage "Score file for cribbage" cribbage_scorefile "$varlibdir/criblog"
+game_ask dm "Configuration file for dm" dm_configfile /etc/dm.conf
+game_ask dm "File to disable games playing" dm_nogamesfile /etc/nogames
 game_ask fish "File for fish instructions" fish_instrfile "$sharedir/fish.instr"
 game_ask hangman "Words file for hangman" hangman_wordsfile "$sharedir/hangman-words"
 # Hunt has some other configuration
 game_ask monop "File for monop cards" monop_cardsfile "$usrlibdir/monop-cards.pck"
+game_ask phantasia "Directory for phantasia variable data" phantasia_dir "$varlibdir/phantasia"
+game_ask quiz "Directory for quiz static data" quiz_dir "$sharedir/quiz"
 game_ask robots "Score file for robots" robots_scorefile "$varlibdir/robots_roll"
+game_ask rogue "Score file for rogue" rogue_scorefile "$varlibdir/rogue.scores"
 game_ask sail "Score file for sail" sail_scorefile "$varlibdir/saillog"
 game_ask snake "Score file for snake" snake_scorefile "$varlibdir/snake.log"
 game_ask snake "Raw score file for snake" snake_rawscorefile "$varlibdir/snakerawscores"
@@ -269,7 +280,7 @@ game_ask tetris "Score file for tetris" tetris_scorefile "$varlibdir/tetris-bsd.
 game_ask wump "File for wump info" wump_infofile "$sharedir/wump.info"
 
 # Generate simplistic substitution script.
-# This does not allow escapes @s in the substituted file, will fail on
+# This does not allow escaped @s in the substituted file, will fail on
 # newline or % in filenames, etc..  The justification is that proper insertion
 # of arbitrary 8-bit data in different files requires too much knowledge
 # of escapes specific to the particular file type, so these things would
@@ -293,9 +304,10 @@ substitute () {
 
 substitute Makeconfig.in install-man.in install-score.in \
 	backgammon/backgammon/backgammon.6.in bog/bog.6.in caesar/rot13.in \
-	canfield/canfield/canfield.6.in cribbage/cribbage.6.in \
-	hangman/hangman.6.in hunt/hunt.6.in hunt/huntd.6.in mille/mille.6.in \
-	monop/monop.6.in rain/rain.6.in robots/robots.6.in \
+	canfield/canfield/canfield.6.in cribbage/cribbage.6.in dm/dm.8.in \
+	dm/dm.conf.5.in hangman/hangman.6.in hunt/hunt.6.in hunt/huntd.6.in \
+	mille/mille.6.in monop/monop.6.in quiz/datfiles/index.in \
+	quiz/quiz.6.in rain/rain.6.in robots/robots.6.in rogue/rogue.6.in \
 	snake/snake/snake.6.in tetris/tetris.6.in trek/trek.6.in
 if [ x"$use_dm" = xy ]; then
     substitute hide-game.in

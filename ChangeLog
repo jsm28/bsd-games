@@ -1,10 +1,143 @@
+Thu Jul 17 16:41:29 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* Version 1.5.
+
+	* bsd-games-non-free.lsm: Update.
+
+	* bsd-games.lsm: Update.
+
+Wed Jul 16 12:50:00 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* bsd-games.lsm: Update.
+
+	* NEWS: Update.
+
+	* Makefile (install): Create MAN5DIR.
+
+	* NEWS: Update.
+
+	* bsd-games-non-free.lsm: Update.
+
+	* bsd-games.lsm: Update.
+
+Tue Jul 15 15:57:06 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* bsd-games-non-free.lsm: Update.
+
+	* bsd-games.lsm: Update.
+
+	* TODO: Update.
+
+	* README.non-free: Update.
+
+	* README: Update.
+
+	* INSTALL: Update.
+
+	* rogue/machdep.c (md_slurp): Use tcflush() under Linux.
+
+	* rogue/Makefile (DEFS): Add UNIX_SYSV to get <time.h> included in
+	machdep.c.
+
+	* rogue/*: Added from NetBSD-current.
+	* rogue/Makefile: Renamed to Makefile.bsd.
+	* rogue/USD.doc/Makefile: Renamed to Makefile.bsd.
+	* rogue/Makefile: New file.
+	* rogue/rogue.6: Rename to rogue.6.in.
+	* rogue/rogue.6.in: Parametrise.
+	* configure: Ask for rogue scorefile; substitute in this file.
+	* Makefile: Remove rogue.6 in distclean.
+	* Makeconfig.in: Include ROGUE_SCOREFILE.
+	* rogue/pathnames.h: The path for the score file is in the
+	Makefile.
+
+Mon Jul 14 11:46:56 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* quiz/Makefile (clean): Add target.
+
+	* random/*: Added from NetBSD-current.
+	* random/Makefile: Renamed to Makefile.bsd.
+	* random/Makefile: New file.
+
+	* quiz/quiz.c (fgetln): Add implementation since Linux libc lacks
+	fgetln.
+
+	* quiz/*: Added from NetBSD-current.
+	* quiz/Makefile: Renamed to Makefile.bsd.
+	* quiz/Makefile: New file.
+	* quiz/datfiles/index: Rename to index.in.
+	* quiz/datfiles/index.in: Parametrise.
+	* quiz/quiz.6: Rename to quiz.6.in.
+	* quiz/quiz.6.in: Parametrise.
+	* configure: Ask for quiz directory; substitute in these files.
+	* Makeconfig.in (QUIZ_DIR): Add for quiz directory.
+	* Makefile: Remove index and quiz.6 in distclean.
+	* quiz/pathnames.h: Paths are defined in the Makefile.
+
+	* pig/*: Added from NetBSD-current.
+	* pig/Makefile: Renamed to Makefile.bsd.
+	* pig/Makefile: New file.
+
+	* phantasia/main.c (playinit): Add ICRNL to terminal modes if
+	using ncurses.
+
+	* phantasia/Makefile (install): Bug-fix.
+
+	* configure: Configure directory for phantasia.
+	* Makeconfig.in: Include PHANTASIA_DIR.
+	* phantasia/pathnames.h: Paths are defined in Makefile.
+	* phantasia/Makefile: Supply motd to setup.
+
+Sun Jul 13 18:28:52 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* phantasia/*: Added from NetBSD-current.
+	* phantasia/Makefile: Renamed to Makefile.bsd.
+	* phantasia/Makefile: New file.
+
+	* dm/dm.c (load): Add Linux-specific way of getting load average.
+
+	* dm/dm.8: Rename to dm.8.in.
+	* dm/dm.conf.5: Rename to dm.conf.5.in.
+	* dm/dm.8.in, dm/dm.conf.5.in: Parametrise.
+	* configure: Substitute in these files.
+	* Makefile: Remove dm.8 and dm.conf.5 in distclean.
+
+	* configure: Do additional configuration for dm.
+	* Makeconfig.in: Include these variables.
+	* install-man.in: Allow manual section 5.
+
+	* dm/*: Added from NetBSD-current.
+	* dm/Makefile: Renamed to Makefile.bsd.
+	* dm/Makefile: New file.
+
+	* TODO: Update.
+
+	* All games, except bog, hunt, and paranoia, now updated from
+	NetBSD-current of 1997-07-12.
+
+	* cribbage/*: Update from NetBSD-current of 1997-07-12.
+
+Fri Jul 11 19:09:24 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* bog/README.linux: Comply with licence conditions by including
+	patch from original bog.
+	* bog/Makefile (linux-patch): Create or update this patch.
+
+	* banner/*: Added from NetBSD-current.
+	* banner/Makefile: Renamed to Makefile.bsd.
+	* banner/Makefile: New file.
+
+	* atc/graphics.c (getAChar): Use SYSV method instead of BSD one
+	under Linux; change conditional on inclusion of <errno.h> to allow
+	for this.
+
 Thu Jun 12 20:32:57 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* adventure/*: Added from NetBSD-current.
 	* adventure/Makefile: Renamed to Makefile.bsd.
 	* adventure/Makefile: New file.
 
-Wed Jun 11 12:09:38 1997  Joseph S. Myers  <jsm28@inch.demon.co.uk>
+Wed Jun 11 12:09:38 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* Now builds with glibc without needing stray <bsd/*> headers.
 

@@ -57,4 +57,28 @@ install:	all
 	$(INSTALL_MANUAL) $(PROG).6
 
 clean:	
-	rm -f *.o core $(PROG) dict dict.ind mkdict mkindex showdict
+	rm -f *.o core $(PROG) dict dict.ind mkdict mkindex showdict \
+	    README.linux.old
+
+# This target is for maintainer use to update the patch at the end
+# of README.linux.
+linux-patch:	
+	sed /=====/q README.linux >README.linux.new
+	@echo "Error 1 (ignored) is just when differences are found."
+	@echo "Error 2 means trouble."
+	-diff -u ../../other/bog/Makefile Makefile.bsd >>README.linux.new
+	-diff -u ../../other/bog/README README >>README.linux.new
+	-diff -u ../../other/bog/bog.man bog.6.in >>README.linux.new
+	-diff -u ../../other/bog/bog.c bog.c >>README.linux.new
+	-diff -u ../../other/bog/bog.h bog.h >>README.linux.new
+	-diff -u ../../other/bog/help.c help.c >>README.linux.new
+	-diff -u ../../other/bog/helpfile helpfile >>README.linux.new
+	-diff -u ../../other/bog/mach.c mach.c >>README.linux.new
+	-diff -u ../../other/bog/mkdict.c mkdict.c >>README.linux.new
+	-diff -u ../../other/bog/mkindex.c mkindex.c >>README.linux.new
+	-diff -u ../../other/bog/prtable.c prtable.c >>README.linux.new
+	-diff -u ../../other/bog/showdict.c showdict.c >>README.linux.new
+	-diff -u ../../other/bog/timer.c timer.c >>README.linux.new
+	-diff -u ../../other/bog/word.c word.c >>README.linux.new
+	mv README.linux README.linux.old
+	mv README.linux.new README.linux
