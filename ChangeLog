@@ -1,5 +1,12 @@
 2000-09-23  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com4.c (eat): Check first for having the object to be
+	eaten, then for needing a knife, then for being stuffed.  Also
+	give a better message for things it doesn't make sense to eat.
+	From OpenBSD.
+	* tests/battlestar.in38, tests/battlestar.out38: New test.
+	* tests/battlestar.test: Update.
+
 	* battlestar/fly.c: Remove abs() macro; make local variables and
 	functions static.
 	* battlestar/extern.h: Remove declarations of functions now static

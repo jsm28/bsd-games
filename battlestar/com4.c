@@ -371,9 +371,13 @@ eat()
 	wordnumber++;
 	while (wordnumber <= wordcount) {
 		value = wordvalue[wordnumber];
-		if (wordtype[wordnumber] != OBJECT)
-			value = -1;
+		if (wordtype[wordnumber] != OBJECT || objsht[value] == NULL)
+			value = -2;
 		switch (value) {
+
+		case -2:
+			puts("You can't eat that!");
+			return (firstnumber);
 
 		case -1:
 			puts("Eat what?");
@@ -402,12 +406,12 @@ eat()
 				snooze += CYCLE / 10;
 				ourtime++;
 				puts("Eaten.  You can explore a little longer now.");
-			} else if (ourtime < ate - CYCLE)
-				puts("You're stuffed.");
+			} else if (!testbit(inven, value))
+				printf("You aren't holding the %s.\n", objsht[value]);
 			else if (!testbit(inven, KNIFE))
 				puts("You need a knife.");
 			else
-				printf("You aren't holding the %s.\n", objsht[value]);
+				puts("You're stuffed.");
 			if (wordnumber < wordcount - 1 && wordvalue[++wordnumber] == AND)
 				wordnumber++;
 			else
