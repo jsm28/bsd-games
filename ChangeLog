@@ -1,3 +1,8 @@
+2001-03-19  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* bsd-games.lsm (Primary-site), bsd-games-non-free.lsm
+	(Primary-site): Change metalab.unc.edu to ibiblio.org.
+
 2001-03-03  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* install-man.in, install-score.in: Use POSIX "chown user:group"

@@ -10,7 +10,7 @@ Description:	Port of most of the games from NetBSD-current.  Games
 	worms wtf wump.
 Keywords:	games, NetBSD
 Maintained-by:	jsm28@cam.ac.uk (Joseph S. Myers)
-Primary-site:	metalab.unc.edu /pub/Linux/games
+Primary-site:	ibiblio.org /pub/Linux/games
 		bsd-games-2.12.tar.gz
 Alternate-site:	tsx-11.mit.edu /pub/linux/sources/usr.games
 Original-site:	ftp.netbsd.org /pub/NetBSD/NetBSD-current/tar_files/src
