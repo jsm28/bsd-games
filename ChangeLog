@@ -1,5 +1,9 @@
 2005-01-30  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* fortune/datfiles/fortunes2: Update from NetBSD CVS.
+
+2005-01-30  Joseph S. Myers  <jsm@polyomino.org.uk>
+
 	* wtf/acronyms, wtf/acronyms.comp: Update from NetBSD CVS.
 	* COPYING: Update copyright dates.
 
