@@ -1,3 +1,11 @@
+2000-08-03  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* adventure/setup.c, battlestar/com1.c, battlestar/com7.c,
+	battlestar/cypher.c, battlestar/extern.h, boggle/mkdict/mkdict.c,
+	boggle/mkindex/mkindex.c, fortune/datfiles/netbsd,
+	fortune/strfile/strfile.c, hack/makedefs.c, monop/initdeck.c:
+	Update from NetBSD CVS.
+
 2000-08-02  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* sail/extern.h (abs): Don't define; breaks with glibc 2.2.
