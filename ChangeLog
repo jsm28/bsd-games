@@ -1,5 +1,13 @@
 2000-08-05  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* .cvsignore, include/.cvsignore, adventure/.cvsignore,
+	arithmetic/.cvsignore, atc/.cvsignore,
+	backgammon/backgammon/.cvsignore,
+	backgammon/common_source/.cvsignore,
+	backgammon/teachgammon/.cvsignore, banner/.cvsignore,
+	battlestar/.cvsignore, bcd/.cvsignore, boggle/boggle/.cvsignore,
+	boggle/mkdict/.cvsignore, boggle/mkindex/.cvsignore: New files.
+
 	* wtf/acronyms: Update from NetBSD CVS.
 
 2000-08-04  Joseph S. Myers  <jsm28@cam.ac.uk>
