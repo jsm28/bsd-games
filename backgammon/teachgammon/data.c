@@ -88,7 +88,7 @@ const char   *const text4[] = {
 
 const char   *const text5[] = {
 	"Not a spectacular move, but a safe one.  I follow by rolling 6 1.",
-	"I decide to use this roll to move 22-16,16-17.  It leaves me with",
+	"I decide to use this roll to move 22-16,16-15.  It leaves me with",
 	"one man still open, but the blot is farther back on the board, and",
 	"would suffer less of a loss by being hit.",
 	0
@@ -119,7 +119,7 @@ const char   *const text8[] = {
 
 const char   *const text9[] = {
 	"My venture off the bar did not last long.  However, I got lucky",
-	"and rolled double 1's, allowing me to move 0-1,1-2,15-14,15-14.",
+	"and rolled double 1's, allowing me to move 25-24,24-23,15-14,15-14.",
 	0
 };
 

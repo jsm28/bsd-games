@@ -1,5 +1,9 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* backgammon/teachgammon/data.c: Make tutorial text match actual
+	moves.  From FreeBSD via OpenBSD.  Fixes Debian bug 212478 from
+	Jim W. Jaszewski <grok@sprint.ca>.
+
 	* adventure/glorkz: Fix capitalisation of compass directions.
 
 	* phantasia/main.c (cleanup): Only close files that have been
