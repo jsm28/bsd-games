@@ -1,5 +1,7 @@
 2001-08-30  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* Version 2.13.
+
 	* COPYING, NEWS, TODO, bsd-games-non-free.lsm, bsd-games.lsm:
 	Update.
 	* phantasia/Makefrag: Update copyright dates.
