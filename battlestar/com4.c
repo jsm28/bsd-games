@@ -78,12 +78,12 @@ take(from)
 					win--;
 			} else if (testbit(inven, value))
 				printf("You're already holding%s%s.\n", (objsht[value][n - 1] == 's' ? " " : " a "), objsht[value]);
+			else if (!testbit(from, value))
+				printf("I dont see any %s around here.\n", objsht[value]);
 			else if (!heavy)
 				printf("The %s %s too heavy.\n", objsht[value], (objsht[value][n - 1] == 's' ? "are" : "is"));
-			else if (!bulky)
-				printf("The %s %s too cumbersome to hold.\n", objsht[value], (objsht[value][n - 1] == 's' ? "are" : "is"));
 			else
-				printf("I dont see any %s around here.\n", objsht[value]);
+				printf("The %s %s too cumbersome to hold.\n", objsht[value], (objsht[value][n - 1] == 's' ? "are" : "is"));
 			if (wordnumber < wordcount - 1 && wordvalue[++wordnumber] == AND)
 				wordnumber++;
 			else
