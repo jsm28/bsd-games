@@ -1,3 +1,11 @@
+2000-09-10  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* battlestar/com2.c, battlestar/com3.c, battlestar/com4.c,
+	battlestar/com5.c, battlestar/com6.c, battlestar/com7.c,
+	battlestar/cypher.c, battlestar/dayfile.c, battlestar/nightfile.c,
+	battlestar/room.c, battlestar/words.c: Update from NetBSD CVS
+	after merge.
+
 2000-09-09  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* battlestar/room.c (writedes): Process '=' in descriptions as
@@ -11,9 +19,10 @@
 	* battlestar/com2.c (murder): Give an appropriate message for
 	trying to kill non-OBJECT things (from OpenBSD); fixes "kill door"
 	segfault.
-	* com3.c (shoot), com4.c (take), com5.c (kiss), com6.c (ride),
-	com7.c (fight), cypher.c (save): Wording, spelling, punctuation
-	and line length adjustments from OpenBSD.
+	* battlestar/com3.c (shoot), battlestar/com4.c (take),
+	battlestar/com5.c (kiss), battlestar/com6.c (ride),
+	battlestar/com7.c (fight), battlestar/cypher.c (save): Wording,
+	spelling, punctuation and line length adjustments from OpenBSD.
 	* tests/battlestar.out5, tests/battlestar.out6: Update for changed
 	wording.
 	* tests/battlestar.in8, tests/battlestar.out8: New tests.

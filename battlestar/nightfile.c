@@ -1,4 +1,4 @@
-/*	$NetBSD: nightfile.c,v 1.9 2000/09/08 17:25:32 jsm Exp $	*/
+/*	$NetBSD: nightfile.c,v 1.10 2000/09/10 10:52:56 jsm Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -38,7 +38,7 @@
 #if 0
 static char sccsid[] = "@(#)nightfile.c	8.2 (Berkeley) 4/28/95";
 #else
-__RCSID("$NetBSD: nightfile.c,v 1.9 2000/09/08 17:25:32 jsm Exp $");
+__RCSID("$NetBSD: nightfile.c,v 1.10 2000/09/10 10:52:56 jsm Exp $");
 #endif
 #endif				/* not lint */
 
