@@ -1,3 +1,8 @@
+2004-10-31  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* lib/fgetln.c: Handle case of line just fitting in buffer
+	correctly.
+
 2004-10-23  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* dm/utmpentry.c: Update from NetBSD CVS.
