@@ -1,4 +1,4 @@
-/*	$NetBSD: pom.c,v 1.13 2003/08/07 09:37:32 agc Exp $	*/
+/*	$NetBSD: pom.c,v 1.14 2004/01/27 20:30:30 jsm Exp $	*/
 
 /*
  * Copyright (c) 1989, 1993
@@ -41,7 +41,7 @@ __COPYRIGHT("@(#) Copyright (c) 1989, 1993\n\
 #if 0
 static char sccsid[] = "@(#)pom.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: pom.c,v 1.13 2003/08/07 09:37:32 agc Exp $");
+__RCSID("$NetBSD: pom.c,v 1.14 2004/01/27 20:30:30 jsm Exp $");
 #endif
 #endif /* not lint */
 

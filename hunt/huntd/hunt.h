@@ -1,4 +1,4 @@
-/*	$NetBSD: hunt.h,v 1.9 2003/06/11 12:04:06 wiz Exp $	*/
+/*	$NetBSD: hunt.h,v 1.10 2004/01/27 20:30:29 jsm Exp $	*/
 
 /*
  * Copyright (c) 1983-2003, Regents of the University of California.

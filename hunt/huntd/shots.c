@@ -1,4 +1,4 @@
-/*	$NetBSD: shots.c,v 1.4 2003/06/11 12:00:23 wiz Exp $	*/
+/*	$NetBSD: shots.c,v 1.5 2004/01/27 20:30:29 jsm Exp $	*/
 /*
  * Copyright (c) 1983-2003, Regents of the University of California.
  * All rights reserved.
@@ -32,7 +32,7 @@
 
 #include <sys/cdefs.h>
 #ifndef lint
-__RCSID("$NetBSD: shots.c,v 1.4 2003/06/11 12:00:23 wiz Exp $");
+__RCSID("$NetBSD: shots.c,v 1.5 2004/01/27 20:30:29 jsm Exp $");
 #endif /* not lint */
 
 # include	<err.h>

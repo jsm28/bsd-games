@@ -1,4 +1,4 @@
-/*	$NetBSD: dm.c,v 1.18 2003/08/07 09:37:11 agc Exp $	*/
+/*	$NetBSD: dm.c,v 1.19 2004/01/27 20:30:29 jsm Exp $	*/
 /* For Linux: still using old utmp interface from version 1.16.  */
 
 /*
@@ -40,7 +40,7 @@ __COPYRIGHT("@(#) Copyright (c) 1987, 1993\n\
 #if 0
 static char sccsid[] = "@(#)dm.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: dm.c,v 1.18 2003/08/07 09:37:11 agc Exp $");
+__RCSID("$NetBSD: dm.c,v 1.19 2004/01/27 20:30:29 jsm Exp $");
 #endif
 #endif /* not lint */
 

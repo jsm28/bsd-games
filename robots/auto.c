@@ -1,4 +1,4 @@
-/*	$NetBSD: auto.c,v 1.5 2002/01/31 17:35:52 christos Exp $	*/
+/*	$NetBSD: auto.c,v 1.6 2004/01/27 20:30:30 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1999 The NetBSD Foundation, Inc.

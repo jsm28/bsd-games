@@ -1,4 +1,4 @@
-/*	$NetBSD: backlocal.h,v 1.1 1997/10/10 08:59:35 lukem Exp $	*/
+/*	$NetBSD: backlocal.h,v 1.2 2004/01/27 20:30:28 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1997 The NetBSD Foundation, Inc.

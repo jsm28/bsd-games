@@ -1,4 +1,4 @@
-/*	$NetBSD: hack.do.c,v 1.6 2003/04/02 18:36:35 jsm Exp $	*/
+/*	$NetBSD: hack.do.c,v 1.7 2004/01/27 20:30:29 jsm Exp $	*/
 
 /*
  * Copyright (c) 1985, Stichting Centrum voor Wiskunde en Informatica,
@@ -63,7 +63,7 @@
 
 #include <sys/cdefs.h>
 #ifndef lint
-__RCSID("$NetBSD: hack.do.c,v 1.6 2003/04/02 18:36:35 jsm Exp $");
+__RCSID("$NetBSD: hack.do.c,v 1.7 2004/01/27 20:30:29 jsm Exp $");
 #endif				/* not lint */
 
 /* Contains code for 'd', 'D' (drop), '>', '<' (up, down) and 't' (throw) */

@@ -1,4 +1,4 @@
-/*	$NetBSD: def.func_tab.h,v 1.6 2003/04/02 18:36:34 jsm Exp $	*/
+/*	$NetBSD: def.func_tab.h,v 1.7 2004/01/27 20:30:29 jsm Exp $	*/
 
 /*
  * Copyright (c) 1985, Stichting Centrum voor Wiskunde en Informatica,

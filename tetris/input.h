@@ -1,4 +1,4 @@
-/*	$NetBSD: input.h,v 1.4 2003/08/07 09:37:48 agc Exp $	*/
+/*	$NetBSD: input.h,v 1.5 2004/01/27 20:30:30 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1992, 1993

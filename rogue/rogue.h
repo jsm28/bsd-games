@@ -1,4 +1,4 @@
-/*	$NetBSD: rogue.h,v 1.15 2004/01/01 16:05:12 jsm Exp $	*/
+/*	$NetBSD: rogue.h,v 1.16 2004/01/27 20:30:30 jsm Exp $	*/
 
 /*
  * Copyright (c) 1988, 1993

@@ -1,4 +1,4 @@
-/*	$NetBSD: robots.h,v 1.16 2003/08/07 09:37:37 agc Exp $	*/
+/*	$NetBSD: robots.h,v 1.18 2004/01/27 20:30:30 jsm Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993

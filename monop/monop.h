@@ -1,4 +1,4 @@
-/*	$NetBSD: monop.h,v 1.11 2003/08/07 09:37:29 agc Exp $	*/
+/*	$NetBSD: monop.h,v 1.12 2004/01/27 20:30:30 jsm Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993

@@ -1,4 +1,4 @@
-/*	$NetBSD: talk_ctl.h,v 1.5 2003/06/11 12:00:23 wiz Exp $	*/
+/*	$NetBSD: talk_ctl.h,v 1.6 2004/01/27 20:30:29 jsm Exp $	*/
 
 /*
  * Copyright (c) 1983-2003, Regents of the University of California.

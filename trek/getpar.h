@@ -1,4 +1,4 @@
-/*	$NetBSD: getpar.h,v 1.8 2003/11/17 11:16:10 wiz Exp $	*/
+/*	$NetBSD: getpar.h,v 1.9 2004/01/27 20:30:31 jsm Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993

@@ -1,4 +1,4 @@
-/*	$NetBSD: back.h,v 1.13 2003/08/07 09:36:56 agc Exp $	*/
+/*	$NetBSD: back.h,v 1.14 2004/01/27 20:30:28 jsm Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993

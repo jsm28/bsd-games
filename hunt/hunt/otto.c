@@ -1,4 +1,4 @@
-/*	$NetBSD: otto.c,v 1.5 2003/06/11 12:00:21 wiz Exp $	*/
+/*	$NetBSD: otto.c,v 1.6 2004/01/27 20:30:29 jsm Exp $	*/
 # ifdef OTTO
 /*
  * Copyright (c) 1983-2003, Regents of the University of California.
@@ -45,7 +45,7 @@
 
 #include <sys/cdefs.h>
 #ifndef lint
-__RCSID("$NetBSD: otto.c,v 1.5 2003/06/11 12:00:21 wiz Exp $");
+__RCSID("$NetBSD: otto.c,v 1.6 2004/01/27 20:30:29 jsm Exp $");
 #endif /* not lint */
 
 # include	<sys/time.h>

@@ -1,4 +1,4 @@
-/*	$NetBSD: malloc.c,v 1.2 2003/08/07 09:37:28 agc Exp $	*/
+/*	$NetBSD: malloc.c,v 1.3 2004/01/27 20:30:30 jsm Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -34,7 +34,7 @@
 #if 0
 static char sccsid[] = "@(#)malloc.c	8.1 (Berkeley) 6/4/93";
 #else
-__RCSID("$NetBSD: malloc.c,v 1.2 2003/08/07 09:37:28 agc Exp $");
+__RCSID("$NetBSD: malloc.c,v 1.3 2004/01/27 20:30:30 jsm Exp $");
 #endif
 #endif /* LIBC_SCCS and not lint */
 

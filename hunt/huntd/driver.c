@@ -1,4 +1,4 @@
-/*	$NetBSD: driver.c,v 1.9 2003/06/11 12:00:22 wiz Exp $	*/
+/*	$NetBSD: driver.c,v 1.10 2004/01/27 20:30:29 jsm Exp $	*/
 /*
  * Copyright (c) 1983-2003, Regents of the University of California.
  * All rights reserved.
@@ -32,7 +32,7 @@
 
 #include <sys/cdefs.h>
 #ifndef lint
-__RCSID("$NetBSD: driver.c,v 1.9 2003/06/11 12:00:22 wiz Exp $");
+__RCSID("$NetBSD: driver.c,v 1.10 2004/01/27 20:30:29 jsm Exp $");
 #endif /* not lint */
 
 # include	<sys/ioctl.h>

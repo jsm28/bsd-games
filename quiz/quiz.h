@@ -1,4 +1,4 @@
-/*	$NetBSD: quiz.h,v 1.6 2003/08/07 09:37:34 agc Exp $	*/
+/*	$NetBSD: quiz.h,v 1.7 2004/01/27 20:30:30 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1991, 1993
