@@ -1,5 +1,11 @@
 2000-09-21  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/cypher.c (cypher): Give appropriate messages for
+	verbs applied to "all" where nothing relevant is present.  From
+	OpenBSD.
+	* tests/battlestar.in27, tests/battlestar.out27: New test.
+	* tests/battlestar.test: Update.
+
 	* battlestar/com2.c (wearit, use, murder), battlestar/com3.c
 	(shoot), battlestar/com4.c (take, throw, drop, eat),
 	battlestar/com6.c (dooropen), battlestar/cypher.c (cypher),
