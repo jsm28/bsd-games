@@ -1,7 +1,13 @@
 2000-09-23  Joseph S. Myers  <jsm28@cam.ac.uk>
 
-	* com1.c (news): Don't let CUMBER go negative.
-	* cypher.c (cypher): For INVEN, show -1% if CUMBER is zero.
+	* battlestar/fly.c: Remove abs() macro; make local variables and
+	functions static.
+	* battlestar/extern.h: Remove declarations of functions now static
+	in fly.c
+
+	* battlestar/com1.c (news): Don't let CUMBER go negative.
+	* battlestar/cypher.c (cypher): For INVEN, show -1% if CUMBER is
+	zero.
 
 	* battlestar/com4.c (drop): Disambiguate BODY; handle "kick
 	door".  From OpenBSD.
