@@ -1,6 +1,6 @@
-/* stdlib.h - bsd-games wrapper for <stdlib.h>.
+/* lib/getprogname.c - bsd-games implementation of getprogname.
  *
- * Copyright (c) 1998, 1999, 2000, 2004 Joseph Samuel Myers.
+ * Copyright (c) 2004 Joseph Samuel Myers.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,17 +27,14 @@
  * SUCH DAMAGE.
  */
 
-#if __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 96)
-#pragma GCC system_header
-#endif
-
-#include <bsd-games.h>
-#include_next <stdlib.h>
-
-#ifndef HAVE_getloadavg
-extern int getloadavg(double loadavg[], int nelem);
-#endif
+#include <stdlib.h>
 
 #ifndef HAVE_getprogname
-extern const char *getprogname(void);
-#endif
+extern char *__progname;
+
+const char *
+getprogname(void)
+{
+  return __progname;
+}
+#endif /* !defined(HAVE_getprogname) */

@@ -1,5 +1,12 @@
 2004-01-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* lib/getprogname.c: New file.
+	* include/stdlib.h: Update.
+	* configure: Check for getprogname.
+	* arithmetic/arithmetic.c, fortune/fortune/fortune.c: Follow
+	NetBSD in use of getprogname().
+	* exec.objs: Update.
+
 	* adventure/extern.h, adventure/main.c, arithmetic/arithmetic.c,
 	atc/extern.h, atc/input.c, backgammon/backgammon/backlocal.h,
 	backgammon/backgammon/move.c, backgammon/common_source/back.h,

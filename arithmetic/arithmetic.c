@@ -102,8 +102,6 @@ int nright, nwrong;
 time_t qtime;
 #define	NQUESTS	20
 
-extern char *__progname;	/* from crt0.o */
-
 /*
  * Select keys from +-x/ to be asked addition, subtraction, multiplication,
  * and division problems.  More than one key may be given.  The default is
@@ -390,6 +388,6 @@ void
 usage()
 {
 	(void)fprintf(stderr, "Usage: %s [-o +-x/] [-r range]\n",
-		__progname);
+		getprogname());
 	exit(1);
 }

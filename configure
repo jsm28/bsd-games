@@ -427,6 +427,17 @@ main(void)
 }
 EOF
 
+check_func getprogname <<EOF
+#include <stdlib.h>
+
+int
+main(void)
+{
+  const char *n = getprogname();
+  return 0;
+}
+EOF
+
 echo "#endif /* !defined(LINUX_BSD_GAMES_H) */" >>include/bsd-games.h
 
 

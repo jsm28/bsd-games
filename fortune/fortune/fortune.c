@@ -216,8 +216,6 @@ char	 Re_error[1024];
 #define		NAMLEN(d)	((d)->d_namlen)
 #endif
 
-extern char *__progname;
-
 int
 main(ac, av)
 	int	ac;
@@ -1403,7 +1401,8 @@ matches_in_list(list)
 void
 usage()
 {
-	(void) fprintf(stderr, "Usage: %s [-ae", __progname);
+
+	(void) fprintf(stderr, "Usage: %s [-ae", getprogname());
 #ifdef	DEBUG
 	(void) fprintf(stderr, "D");
 #endif	/* DEBUG */
