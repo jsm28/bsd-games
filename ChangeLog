@@ -1,5 +1,39 @@
 2004-01-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* adventure/extern.h, adventure/main.c, arithmetic/arithmetic.c,
+	atc/extern.h, atc/input.c, backgammon/backgammon/backlocal.h,
+	backgammon/backgammon/move.c, backgammon/common_source/back.h,
+	backgammon/teachgammon/tutor.h, banner/banner.c,
+	battlestar/battlestar.c, battlestar/extern.h, battlestar/fly.c,
+	battlestar/init.c, battlestar/parse.c, bcd/bcd.c,
+	boggle/boggle/bog.c, boggle/boggle/extern.h, boggle/boggle/mach.c,
+	boggle/boggle/prtable.c, boggle/boggle/timer.c, caesar/caesar.c,
+	canfield/canfield/canfield.c, canfield/cfscores/cfscores.c,
+	cribbage/crib.c, cribbage/cribbage.h, dm/dm.c, fish/fish.c,
+	fortune/fortune/fortune.c, fortune/unstr/unstr.c, gomoku/gomoku.h,
+	gomoku/main.c, hack/def.func_tab.h, hack/extern.h,
+	hack/hack.apply.c, hack/hack.do.c, hack/hack.h,
+	hack/hack.invent.c, hack/hack.main.c, hack/hack.shk.c,
+	hack/hack.vault.c, hack/hack.zap.c, hangman/hangman.h,
+	hunt/hunt/hunt.c, hunt/hunt/otto.c, hunt/hunt/playit.c,
+	hunt/huntd/driver.c, hunt/huntd/execute.c, hunt/huntd/expl.c,
+	hunt/huntd/faketalk.c, hunt/huntd/hunt.h, hunt/huntd/makemaze.c,
+	hunt/huntd/shots.c, hunt/huntd/talk_ctl.h, mille/mille.h,
+	mille/table.c, mille/varpush.c, monop/cards.c, monop/execute.c,
+	monop/getinp.c, monop/houses.c, monop/monop.c, monop/monop.def,
+	monop/monop.ext, monop/monop.h, monop/morg.c, monop/print.c,
+	monop/prop.c, monop/trade.c, monop/malloc.c, morse/morse.c,
+	number/number.c, pig/pig.c, pom/pom.c, ppt/ppt.c, primes/primes.c,
+	quiz/quiz.c, quiz/quiz.h, quiz/rxp.c, rain/rain.c,
+	random/random.c, robots/auto.c, robots/main.c, robots/robots.h,
+	robots/score.c, rogue/main.c, rogue/rogue.h, snake/snake/snake.c,
+	snake/snscore/snscore.c, tetris/input.h, tetris/scores.c,
+	tetris/scores.h, tetris/screen.c, tetris/screen.h,
+	tetris/tetris.c, tetris/tetris.h, trek/compkl.c, trek/computer.c,
+	trek/dumpgame.c, trek/getpar.c, trek/getpar.h, trek/main.c,
+	trek/torped.c, trek/trek.h, worm/worm.c, worms/worms.c,
+	wump/wump.c: Remove uses of __P.
+
 	* THANKS: Mention David A Bagley.
 
 	* sail/pl_1.c (child): Use int for wait status.

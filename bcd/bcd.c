@@ -124,8 +124,8 @@ const u_short holes[256] = {
  */
 #define	bit(w,i)	((w)&(1<<(i)))
 
-int	main __P((int, char *[]));
-void	printcard __P((unsigned char *));
+int	main(int, char *[]);
+void	printcard(unsigned char *);
 
 int
 main(argc, argv)

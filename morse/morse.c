@@ -95,10 +95,10 @@ static const char
 	"--..",
 };
 
-int	main __P((int, char *[]));
-void	morse __P((int));
-void	decode __P((const char *));
-void	show __P((const char *));
+int	main(int, char *[]);
+void	morse(int);
+void	decode(const char *);
+void	show(const char *);
 
 static int sflag;
 static int dflag;

@@ -67,7 +67,7 @@ typedef struct {
 	int	token;
 	int	to_state;
 	const char	*str;
-	const char	*(*func) __P((char));
+	const char	*(*func)(char);
 } RULE;
 
 typedef struct {
@@ -229,7 +229,7 @@ int
 getcommand()
 {
 	int	c, i, done;
-	const char	*s, *(*func) __P((char));
+	const char	*s, *(*func)(char);
 	PLANE	*pp;
 
 	rezero();

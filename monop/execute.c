@@ -57,7 +57,7 @@ static char	buf[257];
 static bool	new_play;	/* set if move on to new player		*/
 extern void 	*heapstart;
 
-static void show_move __P((void));
+static void show_move(void);
 
 /*
  *	This routine executes the given command by index number

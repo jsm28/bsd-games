@@ -40,9 +40,9 @@ __RCSID("$NetBSD: init.c,v 1.13 2003/08/07 09:37:02 agc Exp $");
 
 #include "extern.h"
 
-static int checkout __P((const char *));
-static const char *getutmp __P((void));
-static int wizard __P((const char *));
+static int checkout(const char *);
+static const char *getutmp(void);
+static int wizard(const char *);
 
 void
 initialize(filename)

@@ -52,13 +52,13 @@ int     ourclock = 120;		/* time for all the flights in the game */
 static char    cross = 0;
 static sig_t   oldsig;
 
-static void blast __P((void));
-static void endfly __P((void));
-static void moveenemy __P((int));
-static void notarget __P((void));
-static void screen __P((void));
-static void succumb __P((int));
-static void target __P((void));
+static void blast(void);
+static void endfly(void);
+static void moveenemy(int);
+static void notarget(void);
+static void screen(void);
+static void succumb(int);
+static void target(void);
 
 static void
 succumb(dummy)

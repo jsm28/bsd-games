@@ -157,7 +157,7 @@ uid_t	Mother	= 51 + (51 << 8);
 
 jmp_buf env;
 
-int main __P((int, char **));
+int main(int, char **);
 
 int
 main(argc, argv)

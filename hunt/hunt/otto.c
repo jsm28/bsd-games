@@ -142,15 +142,15 @@ STATIC	int		num_turns;		/* for wandering */
 STATIC	char		been_there[HEIGHT][WIDTH2];
 STATIC	struct itimerval	pause_time	= { { 0, 0 }, { 0, 55000 }};
 
-STATIC	void		attack __P((int, struct item *));
-STATIC	void		duck __P((int));
-STATIC	void		face_and_move_direction __P((int, int));
-STATIC	int		go_for_ammo __P((char));
-STATIC	void		ottolook __P((int, struct item *));
-STATIC	void		look_around __P((void));
-STATIC	SIGNAL_TYPE	nothing __P((int));
-STATIC	int		stop_look __P((struct item *, char, int, int));
-STATIC	void		wander __P((void));
+STATIC	void		attack(int, struct item *);
+STATIC	void		duck(int);
+STATIC	void		face_and_move_direction(int, int);
+STATIC	int		go_for_ammo(char);
+STATIC	void		ottolook(int, struct item *);
+STATIC	void		look_around(void);
+STATIC	SIGNAL_TYPE	nothing(int);
+STATIC	int		stop_look(struct item *, char, int, int);
+STATIC	void		wander(void);
 
 extern	int	Otto_count;
 

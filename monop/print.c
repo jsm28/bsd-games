@@ -42,7 +42,7 @@ __RCSID("$NetBSD: print.c,v 1.7 2003/08/07 09:37:29 agc Exp $");
 
 static const char *header = "Name      Own      Price Mg # Rent";
 
-static void printmorg __P((const SQUARE *));
+static void printmorg(const SQUARE *);
 
 /*
  *	This routine prints out the current board

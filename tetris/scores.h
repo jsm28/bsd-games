@@ -48,5 +48,5 @@ struct highscore {
 #define MAXSCORES	9	/* maximum high score entries per person */
 #define	EXPIRATION	(5L * 365 * 24 * 60 * 60)
 
-void	savescore __P((int));
-void	showscores __P((int));
+void	savescore(int);
+void	showscores(int);

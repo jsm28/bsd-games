@@ -55,11 +55,11 @@ static int	used[MAX_PRP];
 
 static TRADE	trades[2];
 
-static void get_list __P((int, int ));
-static int set_list __P((OWN *));
-static void summate __P((void));
-static void do_trade __P((void));
-static void move_em __P((TRADE *, TRADE *));
+static void get_list(int, int );
+static int set_list(OWN *);
+static void summate(void);
+static void do_trade(void);
+static void move_em(TRADE *, TRADE *);
 
 void
 trade()

@@ -44,7 +44,7 @@ __RCSID("$NetBSD: getpar.c,v 1.11 2003/08/07 09:37:51 agc Exp $");
 #include "getpar.h"
 #include "trek.h"
 
-static int testterm __P((void));
+static int testterm(void);
 
 /**
  **	get integer parameter

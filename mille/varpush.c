@@ -53,9 +53,9 @@ bool
 varpush(file, func)
 	int	file;
 #if defined(__linux__) && !defined(__GLIBC__)
-	ssize_t	(*func) __P((int, const struct iovec *, size_t)); 
+	ssize_t	(*func)(int, const struct iovec *, size_t); 
 #else
-	ssize_t	(*func) __P((int, const struct iovec *, int)); 
+	ssize_t	(*func)(int, const struct iovec *, int); 
 #endif
 {
 	int		temp;

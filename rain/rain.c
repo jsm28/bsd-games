@@ -59,8 +59,8 @@ __RCSID("$NetBSD: rain.c,v 1.14 2003/08/07 09:37:35 agc Exp $");
 
 volatile sig_atomic_t sig_caught = 0;
 
-int	main __P((int, char **));
-void	onsig __P((int));
+int	main(int, char **);
+void	onsig(int);
 
 
 int

@@ -61,7 +61,7 @@ struct	player	{
 	char	*name;
 } players[MAXPLAYERS], temp;
 
-int	main __P((void));
+int	main(void);
 
 int
 main()

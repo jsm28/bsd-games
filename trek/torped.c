@@ -63,7 +63,7 @@ __RCSID("$NetBSD: torped.c,v 1.7 2003/08/07 09:37:54 agc Exp $");
 **	the misfire damages your torpedo tubes.
 */
 
-static int randcourse __P((int));
+static int randcourse(int);
 
 /*ARGSUSED*/
 void

@@ -120,16 +120,16 @@ static	u_int nmalloc[NBUCKETS];
 
 static	mutex_t malloc_mutex = MUTEX_INITIALIZER;
 
-static void morecore __P((int));
-static int findbucket __P((union overhead *, int));
+static void morecore(int);
+static int findbucket(union overhead *, int);
 #ifdef MSTATS
-void mstats __P((const char *));
+void mstats(const char *);
 #endif
 
 #if defined(DEBUG) || defined(RCHECK)
 #define	ASSERT(p)   if (!(p)) botch(__STRING(p))
 
-static void botch __P((const char *));
+static void botch(const char *);
 
 /*
  * NOTE: since this may be called while malloc_mutex is locked, stdio must not

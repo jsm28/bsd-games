@@ -66,8 +66,8 @@ extern	char		*my_machine_name;
 extern	char		*First_arg, *Last_arg;
 extern	char		**environ;
 
-static	void	do_announce __P((char *));
-SIGNAL_TYPE	exorcise __P((int));
+static	void	do_announce(char *);
+SIGNAL_TYPE	exorcise(int);
 /*
  *	exorcise - disspell zombies
  */

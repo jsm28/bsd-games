@@ -52,7 +52,7 @@ __RCSID("$NetBSD: compkl.c,v 1.5 2003/08/07 09:37:50 agc Exp $");
 **	move.
 */
 
-static void sortkl __P((void));
+static void sortkl(void);
 
 void
 compkldist(f)

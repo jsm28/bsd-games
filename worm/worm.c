@@ -80,17 +80,17 @@ int visible_len;
 int lastch;
 char outbuf[BUFSIZ];
 
-void	crash __P((void)) __attribute__((__noreturn__));
-void	display __P((const struct body *, char));
-int	main __P((int, char **));
-void	leave __P((int)) __attribute__((__noreturn__));
-void	life __P((void));
-void	newpos __P((struct body *));
-void	process __P((int));
-void	prize __P((void));
-int	rnd __P((int));
-void	setup __P((void));
-void	wake __P((int));
+void	crash(void) __attribute__((__noreturn__));
+void	display(const struct body *, char);
+int	main(int, char **);
+void	leave(int) __attribute__((__noreturn__));
+void	life(void);
+void	newpos(struct body *);
+void	process(int);
+void	prize(void);
+int	rnd(int);
+void	setup(void);
+void	wake(int);
 
 int
 main(argc, argv)

@@ -51,7 +51,7 @@ __RCSID("$NetBSD: table.c,v 1.6 2003/08/07 09:37:26 agc Exp $");
 
 # include	"mille.h"
 
-int	main __P((int, char **));
+int	main(int, char **);
 
 int
 main(argc, argv)

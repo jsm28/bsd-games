@@ -59,8 +59,8 @@ __RCSID("$NetBSD: random.c,v 1.8 2003/08/07 09:37:35 agc Exp $");
 
 #define MAXRANDOM	2147483647
 
-int  main __P((int, char **));
-void usage __P((void)) __attribute__((__noreturn__));
+int  main(int, char **);
+void usage(void) __attribute__((__noreturn__));
 
 int
 main(argc, argv)

@@ -45,9 +45,9 @@ static char	cur_prop[80];
 
 static MON	*monops[N_MON];
 
-static void buy_h __P((MON *));
-static void sell_h __P((MON *));
-static void list_cur __P((MON *));
+static void buy_h(MON *);
+static void sell_h(MON *);
+static void list_cur(MON *);
 /*
  *	These routines deal with buying and selling houses
  */

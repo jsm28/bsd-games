@@ -52,7 +52,7 @@ __RCSID("$NetBSD: battlestar.c,v 1.13 2003/08/07 09:37:00 agc Exp $");
 
 #include "extern.h"
 
-int main __P((int, char *[]));
+int main(int, char *[]);
 
 int
 main(argc, argv)

@@ -76,12 +76,12 @@ static const char	*const name1[] = {
 	"novemdecillion",		"vigintillion",
 };
 
-void	convert __P((char *));
-int	main __P((int, char *[]));
-int	number __P((const char *, int));
-void	pfract __P((int));
-int	unit __P((int, const char *));
-void	usage __P((void)) __attribute__((__noreturn__));
+void	convert(char *);
+int	main(int, char *[]);
+int	number(const char *, int);
+void	pfract(int);
+int	unit(int, const char *);
+void	usage(void) __attribute__((__noreturn__));
 
 int lflag;
 

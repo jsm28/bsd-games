@@ -34,6 +34,6 @@
  *	@(#)input.h	8.1 (Berkeley) 5/31/93
  */
 
-int	rwait __P((struct timeval *));
-int	tgetchar __P((void));
-void	tsleep __P((void));
+int	rwait(struct timeval *);
+int	tgetchar(void);
+void	tsleep(void);

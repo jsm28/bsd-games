@@ -73,14 +73,14 @@ extern int usedbits, wordpath[];
 extern time_t start_t;
 extern int debug;
 
-static void	cont_catcher __P((int));
-static int	prwidth __P((const char *const [], int));
-static void	prword __P((const char *const [], int));
-static void	stop_catcher __P((int));
-static void	tty_cleanup __P((void));
-static int	tty_setup __P((void));
-static void	tty_showboard __P((const char *));
-static void	winch_catcher __P((int));
+static void	cont_catcher(int);
+static int	prwidth(const char *const [], int);
+static void	prword(const char *const [], int);
+static void	stop_catcher(int);
+static void	tty_cleanup(void);
+static int	tty_setup(void);
+static void	tty_showboard(const char *);
+static void	winch_catcher(int);
 
 /*
  * Do system dependent initialization

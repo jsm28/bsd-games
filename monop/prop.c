@@ -41,7 +41,7 @@ __RCSID("$NetBSD: prop.c,v 1.8 2003/08/07 09:37:29 agc Exp $");
 #include <stdlib.h>
 #include "monop.ext"
 
-static int value __P((SQUARE *));
+static int value(SQUARE *);
 
 /*
  *	This routine deals with buying property, setting all the

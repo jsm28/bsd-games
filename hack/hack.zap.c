@@ -386,8 +386,8 @@ bhit(ddx, ddy, range, sym, fhitm, fhito, obj)
 	int             ddx, ddy, range;	/* direction and range */
 	char            sym;	/* symbol displayed on path */
 	/* fns called when mon/obj hit */
-	void          (*fhitm) __P((struct monst *, struct obj *));
-	int	      (*fhito) __P((struct obj *, struct obj *));
+	void          (*fhitm)(struct monst *, struct obj *);
+	int	      (*fhito)(struct obj *, struct obj *);
 	struct obj     *obj;	/* 2nd arg to fhitm/fhito */
 {
 	struct monst   *mtmp;

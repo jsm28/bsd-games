@@ -114,8 +114,8 @@ static struct monst *guard;
 static int      gdlevel;
 #define	EGD	((struct egd *)(&(guard->mextra[0])))
 
-static void restfakecorr __P((void));
-static int goldincorridor __P((void));
+static void restfakecorr(void);
+static int goldincorridor(void);
 
 static void
 restfakecorr()

@@ -69,11 +69,11 @@ static short	square[MAX_PRP+2];
 static int	num_good,got_houses;
 
 
-static int set_mlist __P((void));
-static void m __P((int));
-static int set_umlist __P((void));
-static void unm __P((int));
-static void fix_ex __P((int));
+static int set_mlist(void);
+static void m(int);
+static int set_umlist(void);
+static void unm(int);
+static void fix_ex(int);
 
 /*
  *	This routine is the command level response the mortgage command.

@@ -179,9 +179,9 @@ static struct	worm {
 
 volatile sig_atomic_t sig_caught = 0;
 
-int	 main __P((int, char **));
-void	 nomem __P((void)) __attribute__((__noreturn__));
-void	 onsig __P((int));
+int	 main(int, char **);
+void	 nomem(void) __attribute__((__noreturn__));
+void	 onsig(int);
 
 int
 main(argc, argv)

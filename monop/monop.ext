@@ -40,7 +40,7 @@ extern const char	*const yncoms[], *const comlist[], *name_list[], *const lucky_
 
 extern int	num_play, player, num_doub, num_luck;
 
-extern void (*const func[]) __P((void));
+extern void (*const func[])(void);
 
 extern DECK	deck[2];
 

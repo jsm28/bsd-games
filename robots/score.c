@@ -49,8 +49,8 @@ static SCORE	Top[MAXSCORES];
 
 static u_int32_t	numscores, max_uid;
 
-static void read_score __P((int));
-static void write_score __P((int));
+static void read_score(int);
+static void write_score(int);
 
 /*
  * read_score:

@@ -57,8 +57,8 @@ static const char	*cardfile	= "cards.pck";
 
 static FILE	*deckf;
 
-static void set_up __P((DECK *));
-static void printmes __P((void));
+static void set_up(DECK *);
+static void printmes(void);
 
 /*
  *	This routine initializes the decks from the data file,

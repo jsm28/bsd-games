@@ -53,7 +53,7 @@ struct dump
 	int	count;
 };
 
-static int readdump __P((int));
+static int readdump(int);
 
 
 struct dump	Dump_template[] =

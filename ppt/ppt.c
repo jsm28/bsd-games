@@ -51,10 +51,10 @@ __RCSID("$NetBSD: ppt.c,v 1.15 2003/08/07 09:37:33 agc Exp $");
 
 #define	EDGE	"___________"
 
-       void	usage __P((void));
-	int	main __P((int, char *[]));
-static void	putppt __P((int));
-	int	getppt __P((const char *));
+       void	usage(void);
+	int	main(int, char *[]);
+static void	putppt(int);
+	int	getppt(const char *);
 
 void
 usage(void)

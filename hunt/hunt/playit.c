@@ -95,8 +95,8 @@ static unsigned char	ibuf[256], *iptr = ibuf;
 extern int	_putchar();
 #endif
 
-static	unsigned char	getchr __P((void));
-static	void		send_stuff __P((void));
+static	unsigned char	getchr(void);
+static	void		send_stuff(void);
 
 /*
  * playit:

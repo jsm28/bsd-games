@@ -62,7 +62,7 @@ extern	const char	*const stragy[];
 extern	const struct situatn	test[];
 
 
-int	brdeq __P((const int *, const int *));
-void	clrest __P((void));
-void	leave __P((void)) __attribute__((__noreturn__));
-void	tutor __P((void)) __attribute__((__noreturn__));
+int	brdeq(const int *, const int *);
+void	clrest(void);
+void	leave(void) __attribute__((__noreturn__));
+void	tutor(void) __attribute__((__noreturn__));

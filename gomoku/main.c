@@ -79,7 +79,7 @@ int	movelog[BSZ * BSZ];		/* log of all the moves */
 int	movenum;			/* current move number */
 const char	*plyr[2];			/* who's who */
 
-int	main __P((int, char *[]));
+int	main(int, char *[]);
 
 int
 main(argc, argv)

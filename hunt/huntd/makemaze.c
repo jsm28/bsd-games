@@ -40,10 +40,10 @@ __RCSID("$NetBSD: makemaze.c,v 1.3 2003/06/11 12:00:22 wiz Exp $");
 # define	ISCLEAR(y,x)	(Maze[y][x] == SPACE)
 # define	ODD(n)		((n) & 01)
 
-static	int	candig __P((int, int));
-static	void	dig __P((int, int));
-static	void	dig_maze __P((int, int));
-static	void	remap __P((void));
+static	int	candig(int, int);
+static	void	dig(int, int);
+static	void	dig_maze(int, int);
+static	void	remap(void);
 
 void
 makemaze()

@@ -61,10 +61,10 @@ static cell curscreen[B_SIZE];	/* 1 => standout (or otherwise marked) */
 static int curscore;
 static int isset;		/* true => terminal is in game mode */
 static struct termios oldtt;
-static void (*tstp) __P((int));
+static void (*tstp)(int);
 
-static	void	scr_stop __P((int));
-static	void	stopset __P((int)) __attribute__((__noreturn__));
+static	void	scr_stop(int);
+static	void	stopset(int) __attribute__((__noreturn__));
 
 
 /*
@@ -251,7 +251,7 @@ scr_set()
 	struct winsize ws;
 	struct termios newtt;
 	sigset_t sigset, osigset;
-	void (*ttou) __P((int));
+	void (*ttou)(int);
 
 	sigemptyset(&sigset);
 	sigaddset(&sigset, SIGTSTP);

@@ -49,11 +49,11 @@ __RCSID("$NetBSD: monop.c,v 1.14 2003/08/07 09:37:28 agc Exp $");
 #include <unistd.h>
 #include "monop.def"
 
-int main __P((int, char *[]));
-static void getplayers __P((void));
-static void init_players __P((void));
-static void init_monops __P((void));
-static void do_quit __P((int));
+int main(int, char *[]);
+static void getplayers(void);
+static void init_players(void);
+static void init_monops(void);
+static void do_quit(int);
 void *heapstart;
 
 /*

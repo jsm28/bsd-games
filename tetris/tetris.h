@@ -169,6 +169,6 @@ extern gid_t	gid, egid;
 extern char	key_msg[100];
 extern int	showpreview;
 
-int	fits_in __P((const struct shape *, int));
-void	place __P((const struct shape *, int, int));
-void	stop __P((const char *)) __attribute__((__noreturn__));
+int	fits_in(const struct shape *, int);
+void	place(const struct shape *, int, int);
+void	stop(const char *) __attribute__((__noreturn__));

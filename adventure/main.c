@@ -59,7 +59,7 @@ __RCSID("$NetBSD: main.c,v 1.17 2003/08/07 09:36:51 agc Exp $");
 #include "hdr.h"
 #include "extern.h"
 
-int main __P((int, char **));
+int main(int, char **);
 
 int
 main(argc, argv)

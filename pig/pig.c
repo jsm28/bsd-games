@@ -52,9 +52,9 @@ __RCSID("$NetBSD: pig.c,v 1.9 2003/08/07 09:37:32 agc Exp $");
 #include <string.h>
 #include <unistd.h>
 
-int main __P((int, char *[]));
-void pigout __P((char *, int));
-void usage __P((void)) __attribute__((__noreturn__));
+int main(int, char *[]);
+void pigout(char *, int);
+void usage(void) __attribute__((__noreturn__));
 
 int
 main(argc, argv)

@@ -71,14 +71,14 @@ __RCSID("$NetBSD: hack.shk.c,v 1.6 2003/04/02 18:36:40 jsm Exp $");
 #include "extern.h"
 
 #ifndef QUEST
-static void setpaid __P((void));
-static void addupbill __P((void));
-static void findshk __P((int));
-static struct bill_x *onbill __P((struct obj *));
-static void pay __P((long, struct monst *));
-static int dopayobj __P((struct bill_x *));
-static int getprice __P((struct obj *));
-static int realhunger __P((void));
+static void setpaid(void);
+static void addupbill(void);
+static void findshk(int);
+static struct bill_x *onbill(struct obj *);
+static void pay(long, struct monst *);
+static int dopayobj(struct bill_x *);
+static int getprice(struct obj *);
+static int realhunger(void);
 #endif
 
 #ifdef QUEST

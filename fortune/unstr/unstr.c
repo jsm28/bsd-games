@@ -79,9 +79,9 @@ char	*Infile,			/* name of input file */
 
 FILE	*Inf, *Dataf;
 
-void	getargs __P((char *[]));
-int	main __P((int, char *[]));
-void	order_unstr __P((STRFILE *));
+void	getargs(char *[]);
+int	main(int, char *[]);
+void	order_unstr(STRFILE *);
 
 /* ARGSUSED */
 int

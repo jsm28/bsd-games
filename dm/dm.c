@@ -67,16 +67,16 @@ static int	priority = 0;		/* priority game runs at */
 static char	*game,			/* requested game */
 		*gametty;		/* from tty? */
 
-void	c_day __P((const char *, const char *, const char *));
-void	c_game __P((const char *, const char  *, const char *, const char *));
-void	c_tty __P((const char *));
-const char *hour __P((int));
-double	load __P((void));
-int	main __P((int, char *[]));
-void	nogamefile __P((void));
-void	play __P((char **)) __attribute__((__noreturn__));
-void	read_config __P((void));
-int	users __P((void));
+void	c_day(const char *, const char *, const char *);
+void	c_game(const char *, const char  *, const char *, const char *);
+void	c_tty(const char *);
+const char *hour(int);
+double	load(void);
+int	main(int, char *[]);
+void	nogamefile(void);
+void	play(char **) __attribute__((__noreturn__));
+void	read_config(void);
+int	users(void);
 
 int
 main(argc, argv)

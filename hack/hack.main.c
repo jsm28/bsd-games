@@ -79,8 +79,8 @@ __RCSID("$NetBSD: hack.main.c,v 1.8 2003/04/02 18:36:37 jsm Exp $");
 #define	gamename	"hack"
 #endif
 
-int             (*afternmv)  __P((void));
-int             (*occupation)  __P((void));
+int             (*afternmv)(void);
+int             (*occupation)(void);
 const char           *occtxt;		/* defined when occupation != NULL */
 
 int             hackpid;	/* current pid */
@@ -92,8 +92,8 @@ char            SAVEF[PL_NSIZ + 11] = "save/";	/* save/99999player */
 char           *hname;		/* name of the game (argv[0] of call) */
 char            obuf[BUFSIZ];	/* BUFSIZ is defined in stdio.h */
 
-int main __P((int, char *[]));
-static void chdirx __P((const char *, boolean));
+int main(int, char *[]);
+static void chdirx(const char *, boolean);
 
 int
 main(argc, argv)

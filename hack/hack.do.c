@@ -75,7 +75,7 @@ __RCSID("$NetBSD: hack.do.c,v 1.6 2003/04/02 18:36:35 jsm Exp $");
 #include <stdlib.h>
 
 
-static int drop __P((struct obj *));
+static int drop(struct obj *);
 
 int
 dodrop()
@@ -406,8 +406,8 @@ dothrow()
 		mon = bhit(u.dx, u.dy, (obj->otyp == ICE_BOX) ? 1 :
 			(!Punished || obj != uball) ? 8 : !u.ustuck ? 5 : 1,
 			   obj->olet,
-			   (void (*) __P((struct monst *, struct obj *))) 0,
-			   (int (*) __P((struct obj *, struct obj *))) 0, obj);
+			   (void (*)(struct monst *, struct obj *)) 0,
+			   (int (*)(struct obj *, struct obj *)) 0, obj);
 	}
 	if (mon) {
 		/* awake monster if sleeping */

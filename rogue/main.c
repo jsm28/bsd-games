@@ -60,7 +60,7 @@ __RCSID("$NetBSD: main.c,v 1.5 2003/08/07 09:37:38 agc Exp $");
 
 #include "rogue.h"
 
-int	main __P((int, char **));
+int	main(int, char **);
 
 int
 main(argc, argv)

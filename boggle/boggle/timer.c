@@ -54,7 +54,7 @@ __RCSID("$NetBSD: timer.c,v 1.8 2003/08/07 09:37:06 agc Exp $");
 #include "bog.h"
 #include "extern.h"
 
-static int waitch __P((int));
+static int waitch(int);
 
 extern int tlimit;
 extern time_t start_t;

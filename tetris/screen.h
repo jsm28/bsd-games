@@ -45,10 +45,10 @@ extern char *SOstr;		/* begin standout mode */
  */
 #define	putpad(s)	tputs(s, 1, put)
 
-int	put __P((int));		/* just calls putchar; for tputs */
-void	scr_clear __P((void));
-void	scr_end __P((void));
-void	scr_init __P((void));
-void	scr_msg __P((char *, int));
-void	scr_set __P((void));
-void	scr_update __P((void));
+int	put(int);		/* just calls putchar; for tputs */
+void	scr_clear(void);
+void	scr_end(void);
+void	scr_init(void);
+void	scr_msg(char *, int);
+void	scr_set(void);
+void	scr_update(void);

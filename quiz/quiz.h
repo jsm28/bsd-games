@@ -54,6 +54,6 @@ typedef struct qentry {
 
 extern char rxperr[];
 
-int	 rxp_compile __P((const char *));
-char	*rxp_expand __P((void));
-int	 rxp_match __P((const char *));
+int	 rxp_compile(const char *);
+char	*rxp_expand(void);
+int	 rxp_match(const char *);

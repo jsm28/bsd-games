@@ -57,8 +57,8 @@ __RCSID("$NetBSD: bog.c,v 1.17 2003/08/07 09:37:05 agc Exp $");
 #include "bog.h"
 #include "extern.h"
 
-static	int	compar __P((const void *, const void *));
-	int	main __P((int, char *[]));
+static	int	compar(const void *, const void *);
+	int	main(int, char *[]);
 
 struct dictindex dictindex[26];
 

@@ -83,13 +83,13 @@ static int cg[5];		/* candidate finish position */
 static int race;		/* game reduced to a race */
 
 
-static int bcomp __P((struct BOARD *, struct BOARD *));
-static struct BOARD *bsave __P((void));
-static void binsert __P((struct BOARD *));
-static void boardcopy __P((struct BOARD *));
-static void makefree __P((struct BOARD *));
-static void mvcheck __P((struct BOARD *, struct BOARD *));
-static struct BOARD *nextfree __P((void));
+static int bcomp(struct BOARD *, struct BOARD *);
+static struct BOARD *bsave(void);
+static void binsert(struct BOARD *);
+static void boardcopy(struct BOARD *);
+static void makefree(struct BOARD *);
+static void mvcheck(struct BOARD *, struct BOARD *);
+static struct BOARD *nextfree(void);
 
 
 void

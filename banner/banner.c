@@ -1026,7 +1026,7 @@ int	debug, i, j, linen, max, nchars, pc, term, trace, x, y;
 int	width = DWIDTH;	/* -w option: scrunch letters to 80 columns */
 
 
-int main __P((int, char *[]));
+int main(int, char *[]);
 
 int
 main(argc, argv)

@@ -45,7 +45,7 @@ __RCSID("$NetBSD: main.c,v 1.19 2003/08/07 09:37:36 agc Exp $");
 
 # include	"robots.h"
 
-int main __P((int, char **));
+int main(int, char **);
 
 extern const char	*Scorefile;
 extern int	Max_per_uid;

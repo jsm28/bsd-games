@@ -56,7 +56,7 @@ __RCSID("$NetBSD: crib.c,v 1.18 2004/01/26 09:58:35 jsm Exp $");
 #include "cribcur.h"
 #include "pathnames.h"
 
-int	main __P((int, char *[]));
+int	main(int, char *[]);
 
 int
 main(argc, argv)

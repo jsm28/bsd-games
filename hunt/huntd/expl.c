@@ -38,7 +38,7 @@ __RCSID("$NetBSD: expl.c,v 1.3 2003/06/11 12:00:22 wiz Exp $");
 # include	<stdlib.h>
 # include	"hunt.h"
 
-static	void	remove_wall __P((int, int));
+static	void	remove_wall(int, int);
 
 
 /*

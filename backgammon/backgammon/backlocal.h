@@ -36,13 +36,13 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-void		dble __P((void));
-int		dblgood __P((void));
-int		eval __P((void));
-int		freemen __P((int));
-void		movcmp __P((void));
-void		move __P((int));
-int		movegood __P((void));
-void		pickmove __P((void));
-int		trapped __P((int, int));
-void		trymove __P((int, int));
+void		dble(void);
+int		dblgood(void);
+int		eval(void);
+int		freemen(int);
+void		movcmp(void);
+void		move(int);
+int		movegood(void);
+void		pickmove(void);
+int		trapped(int, int);
+void		trymove(int, int);

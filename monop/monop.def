@@ -76,7 +76,7 @@ int	player,			/* current player number		*/
 	num_luck	= sizeof lucky_mes / sizeof (char *);
 
 /* list of command functions		*/
-void (*const func[]) __P((void)) = { /* array of function calls for commands */
+void (*const func[])(void) = { /* array of function calls for commands */
 	quit,			/* quit game		|*  0 *|	*/
 	printboard,		/* print board		|*  1 *|	*/
 	where,			/* where players are	|*  2 *|	*/

@@ -69,13 +69,13 @@ u_short	stat_port;		/* port # of statistics tcp socket */
 # define	DAEMON_SIZE	(sizeof Daemon - 1)
 # endif
 
-static	void	clear_scores __P((void));
-static	int	havechar __P((PLAYER *, int));
-static	void	init __P((void));
-	int	main __P((int, char *[], char *[]));
-static	void	makeboots __P((void));
-static	void	send_stats __P((void));
-static	void	zap __P((PLAYER *, FLAG, int));
+static	void	clear_scores(void);
+static	int	havechar(PLAYER *, int);
+static	void	init(void);
+	int	main(int, char *[], char *[]);
+static	void	makeboots(void);
+static	void	send_stats(void);
+static	void	zap(PLAYER *, FLAG, int);
 
 
 /*

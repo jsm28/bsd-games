@@ -103,4 +103,4 @@ extern	CTL_MSG msg;
 #define	p_error(str)	warn(str)
 #endif
 
-void	ctl_transact __P((struct in_addr, CTL_MSG, int, CTL_RESPONSE *));
+void	ctl_transact(struct in_addr, CTL_MSG, int, CTL_RESPONSE *);

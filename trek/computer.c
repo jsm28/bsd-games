@@ -104,8 +104,8 @@ struct cvntab	Cputab[] =
 	{ NULL,		NULL,			NULL,			0 }
 };
 
-static int kalc __P((int, int, int, int, double *));
-static void prkalc __P((int, double));
+static int kalc(int, int, int, int, double *);
+static void prkalc(int, double);
 
 /*ARGSUSED*/
 void
