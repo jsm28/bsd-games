@@ -26,23 +26,25 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 
-fortune_datfiles_DATFILES := fortunes.dat fortunes2.dat limerick.dat startrek.dat zippy.dat
+fortune_datfiles_DATFILES := farber.dat fortunes.dat fortunes2.dat limerick.dat startrek.dat zippy.dat
 fortune_datfiles_DATFILES_off := fortunes-o.dat fortunes2-o.dat limerick-o.dat unamerican-o.dat
 fortune_datfiles_GENSRCFILES := fortunes-o fortunes2-o limerick-o unamerican-o
-fortune_datfiles_SRCFILES := fortunes fortunes2 limerick startrek zippy
+fortune_datfiles_SRCFILES := farber fortunes fortunes2 limerick startrek zippy
 
-fortune_datfiles_DATFILESp := fortune/datfiles/fortunes.dat \
-	fortune/datfiles/fortunes2.dat fortune/datfiles/limerick.dat \
-	fortune/datfiles/startrek.dat fortune/datfiles/zippy.dat
+fortune_datfiles_DATFILESp := fortune/datfiles/farber.dat \
+	fortune/datfiles/fortunes.dat fortune/datfiles/fortunes2.dat \
+	fortune/datfiles/limerick.dat fortune/datfiles/startrek.dat \
+	fortune/datfiles/zippy.dat
 fortune_datfiles_DATFILES_offp := fortune/datfiles/fortunes-o.dat \
 	fortune/datfiles/fortunes2-o.dat fortune/datfiles/limerick-o.dat \
 	fortune/datfiles/unamerican-o.dat
 fortune_datfiles_GENSRCFILESp := fortune/datfiles/fortunes-o \
 	fortune/datfiles/fortunes2-o fortune/datfiles/limerick-o \
 	fortune/datfiles/unamerican-o
-fortune_datfiles_SRCFILESp := fortune/datfiles/fortunes \
-	fortune/datfiles/fortunes2 fortune/datfiles/limerick \
-	fortune/datfiles/startrek fortune/datfiles/zippy
+fortune_datfiles_SRCFILESp := fortune/datfiles/farber \
+	fortune/datfiles/fortunes fortune/datfiles/fortunes2 \
+	fortune/datfiles/limerick fortune/datfiles/startrek \
+	fortune/datfiles/zippy
 
 fortune_datfiles_CLEANFILES := $(fortune_datfiles_DATFILES) $(fortune_datfiles_DATFILES_off) $(fortune_datfiles_GENSRCFILES)
 fortune_datfiles_DIRS := $(SHAREDIR)/fortunes

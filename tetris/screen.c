@@ -1,4 +1,4 @@
-/*	$NetBSD: screen.c,v 1.15 2000/05/24 14:43:00 blymn Exp $	*/
+/*	$NetBSD: screen.c,v 1.16 2001/11/02 18:27:00 christos Exp $	*/
 /* For Linux: still using old termcap interface from version 1.13.  */
 
 /*-

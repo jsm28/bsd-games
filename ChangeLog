@@ -1,5 +1,24 @@
 2001-11-18  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com1.c: Rename to battlestar/command1.c.
+	* battlestar/com2.c: Rename to battlestar/command2.c.
+	* battlestar/com3.c: Rename to battlestar/command3.c.
+	* battlestar/com4.c: Rename to battlestar/command4.c.
+	* battlestar/com5.c: Rename to battlestar/command5.c.
+	* battlestar/com6.c: Rename to battlestar/command6.c.
+	* battlestar/com7.c: Rename to battlestar/command7.c.
+	From NetBSD CVS.
+	* exec.objs: Update.
+	* battlestar/Makefile.bsd, battlestar/command1.c,
+	battlestar/command2.c, battlestar/command3.c,
+	battlestar/command4.c, battlestar/command5.c,
+	battlestar/command6.c, battlestar/command7.c,
+	fortune/datfiles/Makefile.bsd, fortune/datfiles/limerick,
+	fortune/fortune/fortune.c, hack/hack.termcap.c, tetris/screen.c:
+	Update from NetBSD CVS.
+	* fortune/datfiles/farber: New file.  From NetBSD CVS.
+	* fortune/datfiles/Makefrag: Update.
+
 	* tetris/screen.c (scr_set): Set VMIN and VTIME.
 
 2001-10-06  Joseph S. Myers  <jsm28@cam.ac.uk>

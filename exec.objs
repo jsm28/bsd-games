@@ -47,10 +47,10 @@ backgammon/teachgammon/teachgammon	data.o teach.o ttext1.o ttext2.o \
 	backgammon/common_source/one.o backgammon/common_source/save.o \
 	backgammon/common_source/subs.o backgammon/common_source/table.o
 banner			banner.o
-battlestar		battlestar.o com1.o com2.o com3.o com4.o com5.o \
-	com6.o com7.o cypher.o dayfile.o dayobjs.o fly.o getcom.o globals.o \
-	init.o misc.o nightfile.o nightobjs.o parse.o room.o save.o words.o \
-	lib/fgetln.o
+battlestar		battlestar.o command1.o command2.o command3.o \
+	command4.o command5.o command6.o command7.o cypher.o dayfile.o \
+	dayobjs.o fly.o getcom.o globals.o init.o misc.o nightfile.o \
+	nightobjs.o parse.o room.o save.o words.o lib/fgetln.o
 bcd			bcd.o
 boggle/boggle/boggle	bog.o help.o mach.o prtable.o timer.o word.o
 boggle/mkdict/mkdict	mkdict.o

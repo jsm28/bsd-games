@@ -1,4 +1,4 @@
-/*	$NetBSD: fortune.c,v 1.30 2001/08/15 17:25:42 atatat Exp $	*/
+/*	$NetBSD: fortune.c,v 1.32 2001/10/28 19:52:53 wiz Exp $	*/
 
 /*-
  * Copyright (c) 1986, 1993
@@ -46,12 +46,13 @@ __COPYRIGHT("@(#) Copyright (c) 1986, 1993\n\
 #if 0
 static char sccsid[] = "@(#)fortune.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: fortune.c,v 1.30 2001/08/15 17:25:42 atatat Exp $");
+__RCSID("$NetBSD: fortune.c,v 1.32 2001/10/28 19:52:53 wiz Exp $");
 #endif
 #endif /* not lint */
 
 # include	<sys/param.h>
 # include	<sys/stat.h>
+# include	<sys/time.h>
 # include	<sys/endian.h>
 
 # include	<dirent.h>
@@ -224,6 +225,7 @@ main(ac, av)
 	int	ac;
 	char	*av[];
 {
+	struct timeval tv;
 #ifdef	OK_TO_WRITE_DISK
 	int	fd;
 #endif	/* OK_TO_WRITE_DISK */
@@ -239,7 +241,12 @@ main(ac, av)
 #endif
 
 	init_prob();
-	srandom((int)(time((time_t *) NULL) ^ getpid() * getpid()));
+	if (gettimeofday(&tv, NULL) != 0)
+		err(1, "gettimeofday()");
+	srandom(((unsigned long)tv.tv_sec)    *
+                ((unsigned long)tv.tv_usec+1) *
+	        ((unsigned long)getpid()+1)   *
+                ((unsigned long)getppid()+1));
 	do {
 		get_fort();
 	} while ((Short_only && fortlen() > SLEN) ||
