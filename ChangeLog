@@ -1,5 +1,9 @@
 2000-08-18  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* caesar/.cvsignore, canfield/canfield/.cvsignore,
+	canfield/cfscores/.cvsignore, cribbage/.cvsignore, dm/.cvsignore,
+	factor/.cvsignore, fish/.cvsignore: New files.
+
 	* fortune/datfiles/Makefile.bsd, fortune/datfiles/fortunes,
 	fortune/datfiles/netbsd, fortune/datfiles/netbsd-o.fake,
 	fortune/datfiles/netbsd-o.real, wtf/acronyms: Update from NetBSD
