@@ -1,5 +1,7 @@
 2000-09-09  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* NEWS, TODO: Update.
+
 	* battlestar/battlestar.6, battlestar/battlestar.c,
 	battlestar/com1.c, battlestar/com5.c, battlestar/cypher.c,
 	battlestar/dayfile.c, battlestar/extern.h, battlestar/globals.c,

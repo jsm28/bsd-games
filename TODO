@@ -23,12 +23,14 @@ those.  The issues listed there are not included in this list.
 1997-04-29 - Fix compilation warnings with increasingly strict warning
              options.  The main reasonable ones have now been done,
              but maybe some bits are left, and new warnings get added
-             to new versions of GCC.
+             to new versions of GCC.  Fixes for -pedantic warnings are
+             in progress.
 
 1997-05-01 - Games with scorefiles should lock them when updating them.
 
 1997-07-15 - Get distribution permission for larn.  Get licence of
-             rogue clarified.  (See NetBSD PR 5850.)
+             rogue clarified.  (See NetBSD PR 5850.  Note that the
+             original author of larn, Noah Morgan, is dead.)
 
 1998-07-28 - Support building in a directory other than the source directory.
 
@@ -77,6 +79,11 @@ those.  The issues listed there are not included in this list.
              so it is constant.
 
 1999-07-29 - Provide support for giving each setgid game its own gid.
+
+2000-09-09 - Fuzz testing (i.e., pass random input to games in an
+             attempt to crash them).
+
+2000-09-09 - Support for HURD-based GNU systems.
 
 
 Local Variables:
