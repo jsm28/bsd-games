@@ -1,5 +1,0 @@
-The makefiles are not too smart. If you change a file in common_source,
-you should probably remove its .o file if you are going to do a make
-from the backgammon or teachgammon directories.
-
-The version of backgammon for dumb terminals is no longer included.
