@@ -241,7 +241,7 @@ main(argc, argv)
 	    sizeof(struct worm))) || !(mp = malloc((size_t)1024)))
 		nomem();
 	initscr();
-	leaveok(stdscr, TRUE);
+	curs_set(0);
 	CO = COLS;
 	LI = LINES;
 	last = CO - 1;

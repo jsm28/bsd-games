@@ -1,5 +1,8 @@
 2004-02-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* rain/rain.c, worms/worms.c: Hide the cursor with curs_set(0).
+	From OpenBSD.
+
 	* tests/factor.8675309, tests/factor.6172538568: New tests (from
 	NetBSD src/regress).
 	* tests/factor.test: Update.

@@ -92,7 +92,6 @@ main(argc, argv)
 		}
 
 	initscr();
-	leaveok(stdscr, TRUE);
 	cols = COLS - 4;
 	lines = LINES - 4;
 
@@ -103,6 +102,7 @@ main(argc, argv)
 	(void)signal(SIGTSTP, onsig);
 	(void)signal(SIGTERM, onsig);
 
+	curs_set(0);
 	for (j = 4; j >= 0; --j) {
 		xpos[j] = random() % cols + 2;
 		ypos[j] = random() % lines + 2;
