@@ -1,3 +1,7 @@
+2004-09-08  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* atc/log.c, sail/dr_1.c, sail/sync.c: Update from NetBSD CVS.
+
 2004-09-04  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.
