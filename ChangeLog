@@ -1,5 +1,9 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* worm/worm.6: Score is in upper right corner, not upper left
+	corner.  Patch from Robert Hunter <roh@cryptocracy.hn.org> in
+	Debian bug 209034.
+
 	* atc/atc.6.in: Document that pressing return allows you to "fast
 	forward" the game clock.  Patch from Peter Maydell
 	<pmaydell@chiark.greenend.org.uk> in Debian bug 216980.
