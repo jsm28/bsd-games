@@ -1,4 +1,4 @@
-$NetBSD: acronyms,v 1.68 2000/09/10 20:49:20 wiz Exp $
+$NetBSD: acronyms,v 1.75 2000/12/31 13:39:02 ad Exp $
 
 AFAICR	as far as I can recall
 AFAICT	as far as I can tell
@@ -15,6 +15,7 @@ BIAB	back in a bit
 BIAF	back in a few
 BIAS	back in a second
 BIAW	back in a while
+BOFH	bastard operator from hell
 BRB	[I'll] be right back
 BTDT	been there, done that
 BTTH	butt to the head
@@ -30,9 +31,10 @@ EG	evil grin
 EMSG	email message
 ETLA	extended three letter acronym
 FAQ	frequently asked question
-FIIK	fuck if I know
+FIIK	fuck[ed] if I know
 FOAD	fall over and die
 FSDO	for some definition of
+FSVO	for some value of
 FUBAR	fucked up beyond all recognition
 FUD	fear, uncertainty and doubt
 FWIW	for what it's worth
@@ -56,6 +58,7 @@ IRL	in real life
 ISTM	it seems to me
 ISTR	I seem to recall
 ITYM	I think you mean
+JIC	just in case
 JK	just kidding
 JMO	just my opinion
 JTLYK	just to let you know
@@ -63,6 +66,8 @@ KISS	keep it simple, stupid
 KITA	kick in the ass
 KNF	kernel normal form
 L8R	later
+LART	luser attitude readjustment tool (ie, hammer)
+LJBF	let's just be friends
 LMSO	laughing my socks off
 LOL	laughing out loud
 LTNS	long time no see
@@ -74,6 +79,7 @@ MYOB	mind your own business
 NBD	no big deal
 NFC	no fucking clue
 NFI	no fucking idea
+NFW	no fucking way
 NIH	not invented here
 NP	no problem
 NRFPT	not ready for prime time
@@ -82,6 +88,7 @@ OIC	oh, I see
 OTL	out to lunch
 OTOH	on the other hand
 OTTOMH	off the top of my head
+PFY	pimply faced youth
 PITA	pain in the ass
 PNG	persona non grata
 POC	point of contact
@@ -93,10 +100,10 @@ RL	real life
 ROTFL	rolling on the floor laughing
 RP	responsible person
 RSN	real soon now
-RTFB	read the fine book
-RTFM	read the fine manual
-RTFMP	read the fine man page
-RTFS	read the fine source
+RTFB	read the fine/fucking book
+RTFM	read the fine/fucking manual
+RTFMP	read the fine/fucking man page
+RTFS	read the fine/fucking source
 SCNR	sorry, could not resist
 SEP	someone else's problem
 SFA	sweet fuck all
@@ -107,6 +114,7 @@ SNAFU	situation normal, all fucked up
 SNERT	snot-nosed egotistical rude teenager
 SO	significant other
 SOL	shit out [of] luck
+SUS	stupid user syndrome
 SWAG	silly, wild-assed guess
 SWAHBI	silly, wild-assed hare-brained idea
 TIA	thanks in advance

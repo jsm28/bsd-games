@@ -1,3 +1,7 @@
+2001-02-07  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* wtf/acronyms: Update from NetBSD CVS.
+
 2001-01-11  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* mkdep: Update to work with current CVS GCC.
