@@ -1,3 +1,24 @@
+1999-10-01  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* cribbage/cribbage.6.in, mille/move.c: Update from NetBSD CVS
+	after further merge.
+
+1999-09-30  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* atc/def.h, cribbage/cards.c, cribbage/cribbage.h, cribbage/io.c,
+	mille/comp.c, mille/init.c, mille/mille.h, mille/move.c,
+	mille/types.h, monop/misc.c, monop/monop.h, monop/trade.c,
+	phantasia/phantdefs.h, robots/robots.h, sail/dr_1.c, sail/dr_2.c,
+	sail/dr_3.c, sail/extern.h: Update from NetBSD CVS after further
+	merge.
+
+	* cribbage/cribbage.6.in (FILES): Tweak.
+
+1999-09-27  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* quiz/datfiles/europe (Monaco): Change capital to Monaco, bug
+	reported by <capo@writeme.com>.
+
 1999-09-26  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* Version 2.8.

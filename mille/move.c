@@ -1,4 +1,4 @@
-/*	$NetBSD: move.c,v 1.10 1999/09/08 21:17:51 jsm Exp $	*/
+/*	$NetBSD: move.c,v 1.12 1999/10/01 17:06:01 jsm Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -38,7 +38,7 @@
 #if 0
 static char sccsid[] = "@(#)move.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: move.c,v 1.10 1999/09/08 21:17:51 jsm Exp $");
+__RCSID("$NetBSD: move.c,v 1.12 1999/10/01 17:06:01 jsm Exp $");
 #endif
 #endif /* not lint */
 

@@ -1,4 +1,4 @@
-/*	$NetBSD: phantdefs.h,v 1.2 1995/03/24 03:59:28 cgd Exp $	*/
+/*	$NetBSD: phantdefs.h,v 1.3 1999/09/30 18:01:33 jsm Exp $	*/
 
 /*
  * phantdefs.h - important constants for Phantasia

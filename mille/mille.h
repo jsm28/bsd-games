@@ -1,4 +1,4 @@
-/*	$NetBSD: mille.h,v 1.10 1999/09/08 21:17:50 jsm Exp $	*/
+/*	$NetBSD: mille.h,v 1.11 1999/09/30 18:01:32 jsm Exp $	*/
 
 /*
  * Copyright (c) 1982, 1993
