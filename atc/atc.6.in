@@ -1,4 +1,4 @@
-.\"	$NetBSD: atc.6,v 1.16 2003/02/25 10:34:44 wiz Exp $
+.\"	$NetBSD: atc.6,v 1.19 2003/08/07 09:36:53 agc Exp $
 .\"
 .\" Copyright (c) 1990, 1993
 .\"	The Regents of the University of California.  All rights reserved.
@@ -14,11 +14,7 @@
 .\" 2. Redistributions in binary form must reproduce the above copyright
 .\"    notice, this list of conditions and the following disclaimer in the
 .\"    documentation and/or other materials provided with the distribution.
-.\" 3. All advertising materials mentioning features or use of this software
-.\"    must display the following acknowledgement:
-.\"	This product includes software developed by the University of
-.\"	California, Berkeley and its contributors.
-.\" 4. Neither the name of the University nor the names of its contributors
+.\" 3. Neither the name of the University nor the names of its contributors
 .\"    may be used to endorse or promote products derived from this software
 .\"    without specific prior written permission.
 .\"
@@ -122,7 +118,7 @@ Depending on the terminal you run
 on, the screen will be divided into 4 areas.
 It should be stressed that the terminal driver portion of the
 game was designed to be reconfigurable, so the display format can vary
-depending the version you are playing.
+depending on the version you are playing.
 The descriptions here are based on the ascii version of the game.
 The game rules and input format, however, should remain consistent.
 Control-L redraws the screen, should it become muddled.
@@ -179,7 +175,7 @@ Changing altitude is not considered
 to be a command and is therefore not displayed.
 The following are some possible information lines:
 .Pp
-.Bd -literal -unfilled -offset indent
+.Bd -literal -offset indent
 B4*A0: Circle @ b1
 g7 E4: 225
 .Ed
@@ -377,7 +373,7 @@ Plane X: ignore
 .It
 Jets move every update; prop planes move every other update.
 .It
-All planes turn a most 90 degrees per movement.
+All planes turn at most 90 degrees per movement.
 .It
 Planes enter at 7000 feet and leave at 9000 feet.
 .It
@@ -430,8 +426,8 @@ For beacons, a simple x, y coordinate pair is used (enclosed in parenthesis).
 Airports and exits require a third value, which is one of the directions
 .Em wedcxzaq .
 For airports, this is the direction that planes must be going to take
-off and land, and for exits, this is the direction that planes will going
-when they
+off and land, and for exits, this is the direction that planes will be
+going when they
 .Em enter
 the arena.
 This may not seem intuitive, but as there is no restriction on
@@ -452,7 +448,7 @@ the lines are horizontal, vertical or
 .Em exactly
 diagonal.
 .Ss FIELD FILE EXAMPLE
-.Bd -literal -unfilled
+.Bd -literal
 # This is the default game.
 
 update = 5;
