@@ -2,7 +2,7 @@
 
 	* battlestar/com5.c (love): Allow for bathing goddess; better
 	message when the lover is not present or for certain choices of
-	lover.
+	lover.  From OpenBSD.
 
 	* battlestar/com2.c (ravage): Allow for the bathing goddess.  From
 	OpenBSD.
