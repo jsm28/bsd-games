@@ -1,5 +1,8 @@
 2000-09-09  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/words.c: Make spacing nicer and add missing
+	initialisers.
+
 	* NEWS, TODO: Update.
 
 	* battlestar/battlestar.6, battlestar/battlestar.c,
