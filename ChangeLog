@@ -1,5 +1,10 @@
 2000-09-21  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com2.c (wearit): Don't attempt to wear anything with
+	no short description.
+	* tests/battlestar.in20, tests/battlestar.out20: New tests.
+	* tests/battlestar.test: Update.
+
 	* battlestar/com2.c (wearit): Partly from OpenBSD: don't try to
 	wear anything that isn't OBJECT or NOUNS, and don't try to wear
 	DOOR.  Fixes with a different patch a bug report from Peter

@@ -55,6 +55,8 @@ wearit()
 	while (wordnumber <= wordcount && (wordtype[wordnumber] == OBJECT ||
 	    wordtype[wordnumber] == NOUNS) && wordvalue[wordnumber] != DOOR) {
 		value = wordvalue[wordnumber];
+		if (objsht[value] == NULL)
+			break;
 		for (n = 0; objsht[value][n]; n++);
 		switch (value) {
 
