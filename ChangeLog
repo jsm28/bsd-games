@@ -1,5 +1,8 @@
 2004-01-04  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* COPYING: Note that TODO no longer contains anything from the
+	original bsd-games 1.3.
+
 	* phantasia/phantasia.6, wtf/acronyms, wtf/acronyms.comp: Update
 	from NetBSD CVS.
 

@@ -427,7 +427,7 @@ qualify for copyright; but if not, then the terms given above apply
 file to which you could apply your own copyright).
 
 The files "bsd-games.lsm", "ChangeLog.0", "THANKS", "INSTALL",
-"README", "TODO", "boggle/README.linux", "fortune/README.linux", and
+"README", "boggle/README.linux", "fortune/README.linux", and
 "hunt/README.linux" are still significantly derived from files in the
 original bsd-games package for Linux by Curt Olson and Andy Tefft.  It
 is expected that the following terms will apply to these files, and to
