@@ -1,3 +1,239 @@
+Wed Sep 24 13:44:06 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* caesar/caesar.c: Include <string.h> and <stdlib.h>; add
+	prototypes and function return types; remove old declarations.
+
+	* boggle/boggle/mach.c (winch_catcher): Don't ioctl(TIOCGWINSZ).
+
+	* boggle/boggle/bog.c: Add prototypes.
+
+	* boggle/mkdict/mkdict.c: Add prototypes.
+	* boggle/mkindex/mkindex.c: Add prototypes; include <stdlib.h>.
+
+	* boggle/README.linux: Update.
+
+	* INSTALL: Update.
+	* README: Update.
+	* README.non-free: Update.
+	* TODO: Update.
+	* bsd-games-non-free.lsm: Update.
+	* Makeconfig.in: Update.
+
+	* configure: Use boggle instead of bog; don't substitute in
+	bog.6.in.
+	* Makefile: Don't remove bog/bog.6.
+
+	* boggle/boggle/extern.h: Include <time.h> (for time_t).
+
+	* boggle/boggle/Makefile: Use BSD signal defines only.
+
+	* boggle/*: From NetBSD-current; merge in Linux changes from bog.
+
+	* atc/log.c, atc/update.c: Consistently use strchr and strrchr.
+	* atc/include.h [SYSV]: Remove #defines of index and rindex.
+
+	* bcd/bcd.c (printcard): Remove declaration of index(); use
+	strchr(); make p unsigned char.
+
+	* bcd/bcd.c: Include <stdlib.h>.
+
+	* bcd/bcd.c: Add prototypes and function return types.
+
+Sat Sep 13 21:08:53 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* configure: Fix spelling errors; some cleanup.
+
+Tue Sep  2 17:28:22 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* configure: Use empty man8dir if not building in dm or fortune.
+
+Sun Aug 24 10:33:08 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* adventure/*: Update from NetBSD-current of 1997-08-24.
+	* adventure/Makefile: Add dependency on extern.h.
+	* adventure/Makefile: Add definitions of __RCSID and __COPYRIGHT.
+
+	* fortune/*: Update from NetBSD-current of 1997-08-24.
+
+	* battlestar/fly.c: Include <unistd.h>.
+
+	* battlestar/fly.c (visual): Remove declaration of moveenemy().
+
+	* battlestar/save.c (restore): Remove declaration of getenv().
+	(save): Likewise.
+
+	* battlestar/getcom.c: Include "extern.h" for prototypes.
+
+	* battlestar/init.c: Include <unistd.h>.
+
+	* battlestar/init.c (initialize): Remove declaration of die().
+
+	* battlestar/com6.c (post): Remove declaration of ctime().
+
+	* battlestar/com1.c: Include <unistd.h> (for sleep).
+	* battlestar/com1.c (convert): Make i and j unsigned to avoid
+	warnings for comparison with unsigned.
+	* battlestar/com4.c (throw): Make n unsigned for the save reason.
+
+	* battlestar/extern.h, battlestar/parse.c, battlestar/room.c,
+	battlestar/save.c: Add prototypes and function return types.
+
+Sat Aug 23 21:17:20 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* battlestar/battlestar.c, battlestar/com1.c, battlestar/com2.c,
+	battlestar/com3.c, battlestar/com4.c, battlestar/com5.c,
+	battlestar/com6.c, battlestar/com7.c, battlestar/cypher.c,
+	battlestar/extern.h, battlestar/fly.c, battlestar/getcom.c,
+	battlestar/init.c, battlestar/misc.c: Add prototypes and function
+	return types.
+
+	* battlestar/extern.h: Don't conditionalise inclusion of
+	<stdlib.h>.
+
+Mon Aug 18 09:14:17 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* banner/banner.c: Add prototype for main().
+
+	* backgammon/common_source/Makefile,
+	backgammon/backgammon/Makefile, backgammon/teachgammon/Makefile:
+	Use BSD signal defines only.
+
+	* atc/include.h: Include <sys/stat.h> (for umask).
+
+	* atc/Makefile: Use BSD signal defines only.
+
+	* adventure/Makefile: Don't use BSD includes, defines or library
+	(works with SYSV signal semantics as well).
+
+	* configure: Ask for libc version; configure defines for BSD
+	signal semantics (-D__USE_BSD_SIGNAL, etc.).
+	* Makeconfig.in (BSD_SIGNAL_DEFS): New variable.
+
+	* backgammon/common_source/Makefile (clean): Remove sbackgammon.
+
+	* backgammon/common_source/fancy.c: Include <unistd.h>.
+
+	* backgammon/common_source/subs.c: Include <unistd.h>.
+
+	* backgammon/common_source/save.c: Include <unistd.h>.
+
+	* backgammon/common_source/fancy.c: Include <termcap.h>.
+
+	* backgammon/common_source/allow.c,
+	backgammon/common_source/back.h, backgammon/common_source/board.c,
+	backgammon/common_source/check.c,
+	backgammon/common_source/fancy.c, backgammon/common_source/odds.c,
+	backgammon/common_source/one.c, backgammon/common_source/save.c,
+	backgammon/common_source/subs.c, backgammon/common_source/table.c:
+	Add prototypes and function return types.
+
+Sun Aug 10 10:06:10 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* atc/main.c (main): Include program name in `Unknown option'
+	error message.
+
+	* atc/include.h: Include <sys/wait.h>.
+
+	* atc/extern.h, atc/graphics.c, atc/input.c, atc/list.c,
+	atc/log.c, atc/main.c, atc/update.c: Add prototypes and function
+	return types.
+
+Sat Aug  9 16:36:17 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* atc/extern.h, atc/grammar.y, atc/graphics.c, atc/input/c,
+	atc/update.c: Add prototypes and function return types.
+
+Thu Aug  7 12:01:56 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* atc/include.h: Make inclusion of <unistd.h> unconditional;
+	remove unused defines of bcopy and bzero under SYSV.
+
+	* configure: Escape ` and ' when asking for .so or symlinks.
+
+	* configure, Makeconfig.in, atc/Makefile: Configure yacc and lex
+	programs using configure script.
+
+	* configure: Add note about placing of sockets.
+
+	* dm/README.linux: New file, mentions -DLOG.
+
+	* configure, Makeconfig.in, dm/Makefile: Configure log file for dm.
+
+Sun Jul 27 12:45:18 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* arithmetic/arithmetic.c: Include <stdlib.h> and <unistd.h>; add
+	function return types and prototypes; remove previous function
+	declarations.
+
+Sat Jul 26 20:17:49 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* adventure/crc.c: Add prototypes.
+
+	* adventure/setup.c (main): Add casts so as not to print a long
+	with an int format.
+
+	* adventure/io.c, adventure/setup.c: Add prototypes and function
+	return types.
+
+Fri Jul 25 12:48:04 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* adventure/wizard.c: Include <time.h>; remove declaration of
+	localtime().
+
+	* adventure/setup.c: Include <stdlib.h>.
+
+	* adventure/subr.c, adventure/wizard.c: Add some prototypes.
+
+	* adventure/save.c: Include <stdlib.h>.
+
+	* adventure/crc.c, adventure/io.c, adventure/save.c,
+	adventure/vocab.c, adventure/wizard.c: Add function return types.
+
+	* adventure/hdr.h: More prototypes.
+
+	* adventure/wizard.c (ran): Remove declaration of rand().
+
+	* adventure/hdr.h, adventure/init.c, adventure/wizard.c: Change
+	macro DECR and all uses so as not to need -traditional-cpp
+	* adventure/Makefile: Don't use -traditional-cpp.
+
+Thu Jul 24 19:30:35 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* adventure/init.c: Include <time.h> and <stdlib.h>; remove
+	declaration of time().
+
+	* adventure/init.c: Add argument to trapdel(); add prototype for
+	linkdata().
+
+	* adventure/main.c (main): Remove declaration of trapdel().
+
+	* adventure/main.c: Add prototype for main().
+
+	* adventure/hdr.h, adventure/main.c, adventure/save.c,
+	adventure/vocab.c: Change link to adv_link.
+
+	* adventure/main.c: Include <unistd.h>.
+
+	* adventure/io.c: Include <stdlib.h>.
+
+	* adventure/wizard.c: Include <stdio.h> and <stdlib.h>.
+
+	* adventure/vocab.c: Include <stdio.h> and <stdlib.h>.
+
+	* adventure/subr.c: Include <stdio.h> and <stdlib.h>.
+
+	* adventure/done.c: Include <stdio.h> and <stdlib.h>.
+
+	* adventure/done.c, adventure/init.c, adventure/io.c,
+	adventure/save.c, adventure/subr.c, adventure/vocab.c,
+	adventure/wizard.c: Add function return types.
+
+	* adventure/hdr.h: Add prototypes; remove declaration of malloc().
+
+Sat Jul 19 20:51:49 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* configure: Set empty man5dir if not building in dm.
+
 Thu Jul 17 16:41:29 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
 
 	* Version 1.5.

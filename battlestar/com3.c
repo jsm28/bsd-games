@@ -43,6 +43,7 @@ static char rcsid[] = "$NetBSD: com3.c,v 1.4 1997/01/07 11:56:35 tls Exp $";
 
 #include "extern.h"
 
+void
 dig()
 {
 	if (testbit(inven,SHOVEL)){
@@ -67,6 +68,7 @@ dig()
 		puts("You don't have a shovel.");
 }
 
+int
 jump()
 {
 	register int n;
@@ -106,6 +108,7 @@ jump()
 	return(0);
 }
 
+void
 bury()
 {
 	int value;
@@ -169,6 +172,7 @@ bury()
 		puts("You aren't holding a shovel.");
 }
 
+void
 drink()
 {
 	register int n;
@@ -189,6 +193,7 @@ drink()
 		puts("I'm not thirsty.");
 }
 
+int
 shoot()
 {
 	int firstnumber, value;

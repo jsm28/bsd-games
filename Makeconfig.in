@@ -57,6 +57,10 @@ NCURSES_INCS = @ncurses_includes@
 BSD_LIB = @bsd_lib@
 BSD_INCS = @bsd_includes@
 BSD_DEFS = @bsd_defs@
+BSD_SIGNAL_DEFS = @bsd_signal_defs@
+YACC = @yacc@
+LEX = @lex@
+LEX_LIB = @lex_lib@
 
 # More paths
 PAGER = @pager@
@@ -66,12 +70,13 @@ ATC_DIR = @atc_dir@
 ATC_SCOREFILE = @atc_scorefile@
 BACKGAMMON_RULES = @backgammon_rules@
 BATTLESTAR_SCOREFILE = @battlestar_scorefile@
-BOG_DIR = @bog_dir@
+BOGGLE_DIR = @boggle_dir@
 CANFIELD_SCOREFILE = @canfield_scorefile@
 CRIBBAGE_INSTRFILE = @cribbage_instrfile@
 CRIBBAGE_SCOREFILE = @cribbage_scorefile@
 DM_CONFIG = @dm_configfile@
 DM_NOGAMESFILE = @dm_nogamesfile@
+DM_LOGFILE = @dm_logfile@
 FISH_INSTRFILE = @fish_instrfile@
 FORTUNE_TYPE = @fortune_type@
 HANGMAN_WORDSFILE = @hangman_wordsfile@

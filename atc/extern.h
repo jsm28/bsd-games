@@ -61,4 +61,31 @@ extern struct termios	tty_start, tty_new;
 
 extern DISPLACEMENT	displacement[MAXDIR];
 
-extern PLANE		*findplane(), *newplane();
+extern PLANE		*findplane __P((int)), *newplane __P((void));
+
+int addplane __P((void));
+void append __P((LIST *, PLANE *));
+char *command __P((PLANE *));
+void delete __P((LIST *, PLANE *));
+int dir_no __P((char));
+void done_screen __P((void));
+void draw_all __P((void));
+void erase_all __P((void));
+int getAChar __P((void));
+int getcommand __P((void));
+void init_gr __P((void));
+void ioaddstr __P((int, char *));
+void ioclrtobot __P((void));
+void ioclrtoeol __P((int));
+void ioerror __P((int, int, char *));
+void iomove __P((int));
+int log_score __P((int));
+void loser __P((PLANE *, char *));
+char name __P((PLANE *));
+int number __P((int));
+void planewin __P((void));
+void quit __P((int));
+void redraw __P((void));
+void setup_screen __P((C_SCREEN *));
+void update __P((void));
+int yyparse __P((void));

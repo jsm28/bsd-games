@@ -80,6 +80,9 @@ struct state	atmata[] = {
 	'\n', 0, -1,	'.', 0, 0
 };
 
+int rsetbrd __P((void));
+
+int
 checkmove (ist)
 
 int	ist;
@@ -204,6 +207,7 @@ dochar:
 	goto dochar;
 }
 
+int
 dotable (c,i)
 char		c;
 register int	i;
@@ -301,6 +305,7 @@ register int	i;
 	return (-5);
 }
 
+int
 rsetbrd ()  {
 	register int	i, j, n;
 

@@ -45,6 +45,7 @@ static char rcsid[] = "$NetBSD: com6.c,v 1.6 1997/01/07 11:56:38 tls Exp $";
 #include "extern.h"
 #include "pathnames.h"
 
+int
 launch()
 {
 	if (testbit(location[position].objects,VIPER) && !notes[CANTLAUNCH]){
@@ -66,6 +67,7 @@ launch()
 	 return(0);
 }
 
+int
 land()
 {
 	if (notes[LAUNCHED] && testbit(location[position].objects,LAND) && location[position].down){
@@ -82,6 +84,7 @@ land()
 	return(0);
 }
 
+void
 die() 		/* endgame */
 {
 	printf("bye.\nYour rating was %s.\n", rate());
@@ -89,6 +92,7 @@ die() 		/* endgame */
 	exit(0);
 }
 
+void
 live()
 {
 	puts("\nYou win!");
@@ -96,12 +100,13 @@ live()
 	exit(0);
 }
 
+void
 post(ch)
 char ch;
 {
 	FILE *fp;
 	time_t tv;
-	char *date, *ctime();
+	char *date;
 	sigset_t sigset, osigset;
 
 	sigemptyset(&sigset);
@@ -160,6 +165,7 @@ rate()
 	}
 }
 
+int
 drive()
 {
 	if (testbit(location[position].objects,CAR)){
@@ -177,6 +183,7 @@ drive()
 	return(-1);
 }
 
+int
 ride()
 {
 	if (testbit(location[position].objects,HORSE)){
@@ -199,6 +206,7 @@ ride()
 	return(-1);
 }
 
+void
 light()		/* synonyms = {strike, smoke} */
 {		/* for matches, cigars */
 	if (testbit(inven,MATCHES) && matchcount){

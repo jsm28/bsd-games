@@ -4,15 +4,15 @@
 Non-free games
 ==============
 
-Three games, bog, paranoia and rogue, are distributed separately
+Three games, boggle, paranoia and rogue, are distributed separately
 because of copyright restrictions.  If you want them, get the
 bsd-games-non-free package, and unpack it in the same directory you
-unpacked this in before proceeding.  If you do, cd to bog and decide
-if you want -DPURE or not -- see bog/README.linux for more
+unpacked this in before proceeding.  If you do, cd to boggle and decide
+if you want -DPURE or not -- see boggle/README.linux for more
 information.  If you are in a hurry, don't worry about it ... it
 really is more of an aesthetic thing.  You can also build
 bsd-games-non-free separately.  (This file is also in
-bsd-games-non-free; if you only have bog, hangman, paranoia and rogue
+bsd-games-non-free; if you only have boggle, hangman, paranoia and rogue
 subdirectories, then you have just this package.)
 
 Building and installation

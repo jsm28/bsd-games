@@ -68,6 +68,9 @@ static char rcsid[] = "$NetBSD: graphics.c,v 1.3 1995/03/21 15:04:04 cgd Exp $";
 
 WINDOW	*radar, *cleanradar, *credit, *input, *planes;
 
+void draw_line __P((WINDOW *, int, int, int, int, char *));
+
+int
 getAChar()
 {
 #if defined(BSD) && !defined(linux)
@@ -81,6 +84,7 @@ getAChar()
 #endif
 }
 
+void
 erase_all()
 {
 	PLANE	*pp;
@@ -95,6 +99,7 @@ erase_all()
 	}
 }
 
+void
 draw_all()
 {
 	PLANE	*pp;
@@ -114,6 +119,7 @@ draw_all()
 	fflush(stdout);
 }
 
+void
 init_gr()
 {
 	static char	buffer[BUFSIZ];
@@ -126,6 +132,7 @@ init_gr()
 	planes = newwin(LINES - INPUT_LINES, PLANE_COLS, 0, COLS - PLANE_COLS);
 }
 
+void
 setup_screen(scp)
 	C_SCREEN	*scp;
 {
@@ -217,8 +224,10 @@ setup_screen(scp)
 	fflush(stdout);
 }
 
+void
 draw_line(w, x, y, lx, ly, s)
 	WINDOW	*w;
+	int x, y, lx, ly;
 	char	*s;
 {
 	int	dx, dy;
@@ -235,7 +244,9 @@ draw_line(w, x, y, lx, ly, s)
 	}
 }
 
+void
 ioclrtoeol(pos)
+	int pos;
 {
 	wmove(input, 0, pos);
 	wclrtoeol(input);
@@ -243,14 +254,18 @@ ioclrtoeol(pos)
 	fflush(stdout);
 }
 
+void
 iomove(pos)
+	int pos;
 {
 	wmove(input, 0, pos);
 	wrefresh(input);
 	fflush(stdout);
 }
 
+void
 ioaddstr(pos, str)
+	int pos;
 	char	*str;
 {
 	wmove(input, 0, pos);
@@ -259,6 +274,7 @@ ioaddstr(pos, str)
 	fflush(stdout);
 }
 
+void
 ioclrtobot()
 {
 	wclrtobot(input);
@@ -266,7 +282,9 @@ ioclrtobot()
 	fflush(stdout);
 }
 
+void
 ioerror(pos, len, str)
+	int pos, len;
 	char	*str;
 {
 	int	i;
@@ -280,7 +298,9 @@ ioerror(pos, len, str)
 	fflush(stdout);
 }
 
-quit()
+void
+quit(signum)
+	int signum;
 {
 	int			c, y, x;
 #ifdef BSD
@@ -320,10 +340,10 @@ quit()
 	return;
 }
 
+void
 planewin()
 {
 	PLANE	*pp;
-	char	*command();
 	int	warning = 0;
 
 #ifdef BSD
@@ -363,6 +383,7 @@ planewin()
 	fflush(stdout);
 }
 
+void
 loser(p, s)
 	PLANE	*p;
 	char	*s;
@@ -397,6 +418,7 @@ loser(p, s)
 	exit(0);
 }
 
+void
 redraw()
 {
 	clear();
@@ -416,6 +438,7 @@ redraw()
 }
 
 
+void
 done_screen()
 {
 	clear();

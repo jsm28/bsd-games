@@ -43,6 +43,7 @@ static char rcsid[] = "$NetBSD: misc.c,v 1.4 1997/01/07 11:56:46 tls Exp $";
 
 #include "extern.h"
 
+int
 card(array, size)		/* for beenthere, injuries */
 	register char *array;
 	int size;
@@ -56,6 +57,7 @@ card(array, size)		/* for beenthere, injuries */
 	return (i);
 }
 
+int
 ucard(array)
 	register unsigned *array;
 {

@@ -43,6 +43,7 @@ static char rcsid[] = "$NetBSD: check.c,v 1.3 1995/03/21 15:05:36 cgd Exp $";
 
 #include "back.h"
 
+void
 getmove ()  {
 	register int	i, c;
 
@@ -106,6 +107,7 @@ getmove ()  {
 	}
 }
 
+int
 movokay (mv)
 register int	mv;
 

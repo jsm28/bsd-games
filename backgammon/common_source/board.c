@@ -46,6 +46,9 @@ static char rcsid[] = "$NetBSD: board.c,v 1.4 1995/04/29 00:44:11 mycroft Exp $"
 static int	i, j, k;
 static char	ln[60];
 
+void wrbsub __P((void));
+
+void
 wrboard ()  {
 	register int	l;
 	static char	bl[] =
@@ -162,6 +165,7 @@ lastline:
 	fixtty(&bg_raw);
 }
 
+void
 wrbsub () {
 	register int	m;
 	register char	d;

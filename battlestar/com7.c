@@ -43,6 +43,7 @@ static char rcsid[] = "$NetBSD: com7.c,v 1.4 1997/01/07 11:56:39 tls Exp $";
 
 #include "extern.h"
 
+int
 fight(enemy,strength)
 int enemy,strength;
 {

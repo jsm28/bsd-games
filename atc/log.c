@@ -56,6 +56,10 @@ static char rcsid[] = "$NetBSD: log.c,v 1.4 1997/01/13 06:50:26 tls Exp $";
 #include "include.h"
 #include "pathnames.h"
 
+int compar __P((SCORE *, SCORE *)); /* Not correct for qsort */
+char *timestr __P((int));
+
+int
 compar(a, b)
 	SCORE	*a, *b;
 {
@@ -77,6 +81,7 @@ compar(a, b)
 
 char	*
 timestr(t)
+	int t;
 {
 	static char	s[80];
 
@@ -94,12 +99,14 @@ timestr(t)
 	return (s);
 }
 
+int
 log_score(list_em)
+	int list_em;
 {
 	register int	i, fd, num_scores = 0, good, changed = 0, found = 0;
 	struct passwd	*pw;
 	FILE		*fp;
-	char		*cp, *index(), *rindex();
+	char		*cp;
 	SCORE		score[100], thisscore;
 #ifdef SYSV
 	struct utsname	name;
@@ -160,7 +167,7 @@ log_score(list_em)
 		strcpy(thisscore.host, name.sysname);
 #endif
 
-		cp = rindex(file, '/');
+		cp = strrchr(file, '/');
 		if (cp == NULL) {
 			fprintf(stderr, "log: where's the '/' in %s?\n", file);
 			return (-1);
@@ -240,7 +247,7 @@ log_score(list_em)
 		"game", "time", "real time", "planes safe");
 	puts("-------------------------------------------------------------------------------");
 	for (i = 0; i < num_scores; i++) {
-		cp = index(score[i].host, '.');
+		cp = strchr(score[i].host, '.');
 		if (cp != NULL)
 			*cp = '\0';
 		printf("%2d:  %-8s  %-8s  %-18s  %4d  %9s  %4d\n", i + 1,
@@ -249,5 +256,5 @@ log_score(list_em)
 			score[i].planes);
 	}
 	putchar('\n');
-	return (0);
+	return(0);
 }

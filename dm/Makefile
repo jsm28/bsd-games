@@ -4,10 +4,10 @@ include ../Makeconfig
 
 PROG = dm
 
-# Logging not enabled so no _PATH_LOG
+# Add -DLOG if you want logging
 
 DEFS = -D_PATH_CONFIG=\"$(DM_CONFIG)\" -D_PATH_HIDE=\"$(LIBEXECDIR)\" \
-	-D_PATH_NOGAMES=\"$(DM_NOGAMESFILE)\"
+	-D_PATH_NOGAMES=\"$(DM_NOGAMESFILE)\" -D_PATH_LOG=\"$(DM_LOGFILE)\"
 
 all:	$(PROG)
 

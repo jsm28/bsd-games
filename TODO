@@ -30,7 +30,4 @@ the order they were added in, not any priority order.
 
 1997-05-01 - Games with scorefiles should lock them when updating them.
 
-1997-07-13 - Merge bog with the boggle in NetBSD (which comes from the
-             same source code base).
-
 1997-07-15 - Get distribution permission for hack and larn.

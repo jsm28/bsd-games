@@ -56,6 +56,9 @@ static char rcsid[] = "$NetBSD: battlestar.c,v 1.4 1997/01/07 11:56:32 tls Exp $
 
 #include "extern.h"
 
+int main __P((int, char **));
+
+int
 main(argc,argv)
 int  argc;
 char **argv;

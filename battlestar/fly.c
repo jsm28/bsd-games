@@ -41,6 +41,7 @@ static char rcsid[] = "$NetBSD: fly.c,v 1.4 1997/01/07 11:56:44 tls Exp $";
 #endif
 #endif /* not lint */
 
+#include <unistd.h>
 #include "extern.h"
 #undef UP
 #include <curses.h>
@@ -56,6 +57,14 @@ int bclock = 120;		/* time for all the flights in the game */
 char cross = 0;
 sig_t oldsig;
 
+void blast __P((void));
+void endfly __P((void));
+void moveenemy __P((void));
+void notarget __P((void));
+void screen __P((void));
+void succumb __P((void));
+void target __P((void));
+
 void
 succumb()
 {
@@ -69,10 +78,9 @@ succumb()
 	}
 }
 
+int
 visual()
 {
-	void moveenemy();
-
 	destroyed = 0;
 	if(initscr() == NULL){
 		puts("Whoops!  No more memory...");
@@ -179,6 +187,7 @@ visual()
 	}
 }
 
+void
 screen()
 {
 	register int r,c,n;
@@ -195,6 +204,7 @@ screen()
 	refresh();
 }
 
+void
 target()
 {
 	register int n;
@@ -207,6 +217,7 @@ target()
 	}
 }
 
+void
 notarget()
 {
 	register int n;
@@ -219,6 +230,7 @@ notarget()
 	}
 }
 
+void
 blast()
 {
 	register int n;
@@ -278,6 +290,7 @@ moveenemy()
 	alarm(1);
 }
 
+void
 endfly()
 {
 	alarm(0);

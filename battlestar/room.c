@@ -43,6 +43,7 @@ static char rcsid[] = "$NetBSD: room.c,v 1.4 1997/01/07 11:56:49 tls Exp $";
 
 #include "extern.h"
 
+void
 writedes()
 {
 	int compass;
@@ -63,6 +64,7 @@ writedes()
 	}
 }
 
+void
 printobjs()
 {
 	register unsigned int *p = location[position].objects;
@@ -74,6 +76,7 @@ printobjs()
 			puts(objdes[n]);
 }
 
+void
 whichway(here)
 struct room here;
 {
@@ -171,6 +174,7 @@ char option;
       }
 }
 
+void
 newway(thisway)
 int thisway;
 {

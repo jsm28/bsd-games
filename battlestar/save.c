@@ -43,9 +43,9 @@ static char rcsid[] = "$NetBSD: save.c,v 1.4 1997/01/07 11:56:50 tls Exp $";
 
 #include "extern.h"
 
+void
 restore()
 {
-	char *getenv();
 	char *home;
 	char home1[100];
 	register int n;
@@ -97,9 +97,9 @@ restore()
 	fclose(fp);
 }
 
+void
 save()
 {
-	char *getenv();
 	char *home;
 	char home1[100];
 	register int n;

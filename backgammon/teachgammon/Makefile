@@ -2,9 +2,9 @@
 
 include ../../Makeconfig
 
-INCS = -I../common_source $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -DV7
-LIBS = $(NCURSES_LIB) $(BSD_LIB)
+INCS = -I../common_source $(NCURSES_INCS)
+DEFS = $(BSD_SIGNAL_DEFS) -DV7
+LIBS = $(NCURSES_LIB)
 
 OBJS= data.o teach.o ttext1.o ttext2.o tutor.o
 COMD= ../common_source

@@ -43,6 +43,7 @@ static char rcsid[] = "$NetBSD: allow.c,v 1.3 1995/03/21 15:05:24 cgd Exp $";
 
 #include "back.h"
 
+int
 movallow ()  {
 
 	register int	i, m, iold;

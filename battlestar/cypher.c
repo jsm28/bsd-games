@@ -43,6 +43,7 @@ static char rcsid[] = "$NetBSD: cypher.c,v 1.4 1997/01/07 11:56:39 tls Exp $";
 
 #include "extern.h"
 
+int
 cypher()
 {
 	register int n;

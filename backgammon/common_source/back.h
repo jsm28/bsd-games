@@ -129,4 +129,47 @@ int	curc;			/* column position of cursor */
 int	begscr;			/* 'beginning' of screen
 				   (not including board) */
 
-int	getout();		/* function to exit backgammon cleanly */
+int	addbuf __P((int));
+void	backone __P((int));
+void	bsect __P((int, int, int, int));
+void	buflush __P((void));
+int	canhit __P((int, int));
+int	checkmove __P((int));
+void	clear __P((void));
+void	clend __P((void));
+void	cline __P((void));
+int	count __P((void));
+void	curmove __P((int, int));
+int	dotable __P((char, int));
+void	errexit __P((char *));
+void	fancyc __P((char));
+void	fboard __P((void));
+void	fixtty __P((struct termios *));
+void	getarg __P((char ***));
+int	getcaps __P((char *));
+void	getmove __P((void));
+void	getout __P((void));	/* function to exit backgammon cleanly */
+void	gwrite __P((void));
+void	init __P((void));
+int	makmove __P((int));
+int	movallow __P((void));
+void	movback __P((int));
+void	moverr __P((int));
+int	movokay __P((int));
+void	newpos __P((void));
+void	nexturn __P((void));
+void	odds __P((int, int, int));
+void	proll __P((void));
+int	quit __P((void));
+int	readc __P((void));
+void	recover __P((char *));
+void	refresh __P((void));
+void	roll __P((void));
+void	save __P((int));
+void	wrboard __P((void));
+void	wrhit __P((int));
+void	wrint __P((int));
+void	writec __P((char));
+void	writel __P((char *));
+void	wrscore __P((void));
+int	yorn __P((char));

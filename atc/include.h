@@ -52,8 +52,11 @@
 #include <string.h>
 #include <ctype.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 #include <pwd.h>
 #include <termios.h>
+#include <unistd.h>
+#include <sys/stat.h>
 
 #ifdef BSD
 #include <sys/time.h>
@@ -62,7 +65,6 @@
 
 #ifdef SYSV
 #include <fcntl.h>
-#include <unistd.h>
 #include <sys/utsname.h>
 #endif
 
@@ -72,10 +74,6 @@
 #include <curses.h>
 
 #ifdef SYSV
-#define	index	strchr
-#define	rindex	strrchr
-#define bcopy(a,b,c)	memcpy((b), (a), (c))
-#define	bzero(a,b)	memset((a), '\0', (b))
 #define	srandom	srand
 #define	random	rand
 #endif

@@ -7,29 +7,29 @@
 
 subst_vars=srcdir
 
-srcdir=`pwd`
+srcdir="`pwd`"
 
 ask () {
-    long_query=$1
-    query_var=$2
-    default=$3
+    long_query="$1"
+    query_var="$2"
+    default="$3"
     echo -n "$long_query [$default] "
     read input
     case "$input" in
 	'')
-	    input=$default
+	    input="$default"
 	    ;;
 	*)
 	    ;;
     esac
-    eval $query_var=\$input
+    eval $query_var=\"\$input\"
     subst_vars="$subst_vars $query_var"
 }
 
 ask_yn () {
     eval $2=
     eval answer=\$$2
-    while test x$answer = x; do
+    while test "x$answer" = x; do
 	ask "$1" $2 $3
 	eval answer=\$$2
 	case "$answer" in
@@ -99,6 +99,9 @@ if building_in hunt; then
     echo
     echo "Hunt includes a daemon for coordinating games with multiple players"
     ask "Daemon directory" sbindir /usr/sbin
+    echo "The default socket directory is /var/run following the FSSTND, but"
+    echo "you may wish to use /tmp if ordinary users are to start the hunt"
+    echo "daemon."
     ask "Directory for Unix domain sockets" socketdir /var/run
 else
     sbindir=
@@ -134,9 +137,15 @@ fi
 ask "Section 6 manpage directory" man6dir /usr/man/man6
 if building_in dm || building_in fortune; then
     ask "Section 8 manpage directory" man8dir /usr/man/man8
+else
+    man8dir=
+    subst_vars="$subst_vars man8dir"
 fi
 if building_in dm; then
     ask "Section 5 manpage directory" man5dir /usr/man/man5
+else
+    man5dir=
+    subst_vars="$subst_vars man5dir"
 fi
 # arch-dependent data is a bad thing, and we should change the games to
 # avoid it where possible, but until then this is needed.
@@ -151,17 +160,17 @@ ask_yn "Set owners/groups on installed files" do_chown y
 
 echo
 echo "For scorefiles there are at least two possible security policies if you"
-echo "want them to work.  You can make the files world-writeable, and then"
+echo "want them to work.  You can make the files world-writable, and then"
 echo "anyone who wants can put anything in them, which may not be desirable if"
 echo "you think people might cheat this way.  Or you can make the games that"
 echo "use them setgid games, and give the files permissions 0664.  Note,"
 echo "however, that the games may well be insecure when this is done and"
-echo "malicious users can probably still overwrite anything writeable by"
+echo "malicious users can probably still overwrite anything writable by"
 echo "group games, since the games were probably not designed with security in"
 echo "mind.  The default is neither of these: it creates scorefiles with"
-echo "permissions 0644 and gives the games no special priviledges, which is"
+echo "permissions 0644 and gives the games no special privileges, which is"
 echo "more secure but means that the games will fail when trying to write"
-echo "to the scorefile."
+echo "to their scorefiles."
 
 askperms "Binary" binary root root 0755
 askperms "Game with scorefile" score_game root root 0755 # or root games 2755?
@@ -188,7 +197,7 @@ while test x$use_dot_so = x; do
     	;;
         *)
     	use_dot_so=
-	echo "Please answer `.so' or `symlinks'"
+	echo "Please answer \`.so\' or \`symlinks\'"
     	;;
     esac
 done
@@ -224,15 +233,42 @@ echo
 echo "If you built ncurses with --disable-overwrite, you may need"
 echo "-I/usr/include/ncurses here"
 ask "Ncurses includes" ncurses_includes ''
-ask "BSD-compat library" bsd_lib -lbsd # *** Different with glibc? ***
-if [ -d /usr/include/bsd ]; then
-    ask "BSD-compat includes" bsd_includes -I/usr/include/bsd
-else
-    ask "BSD-compat includes" bsd_includes ''
-fi
+
+# Should we try to detect the libc version?
+echo
+echo "Libc versions other than 5 or 6 may not work."
+ask "Libc version" libc_version 5
+case "$libc_version" in
+    4*|5*)
+    libc_version=5
+    def_bsd_inc=-I/usr/include/bsd
+    def_bsd_lib=-lbsd
+    def_bsd_sig=-D__USE_BSD_SIGNAL
+    ;;
+    *)
+    libc_version=6
+    def_bsd_inc=
+    def_bsd_lib=-lbsd-compat
+    def_bsd_sig=
+    ;;
+esac
+ask "BSD-compat library" bsd_lib "$def_bsd_lib"
+ask "BSD-compat includes" bsd_includes "$def_bsd_inc"
 ask "BSD-compat defines" bsd_defs -D_BSD_SOURCE
+echo
+echo "With libc5 -D__USE_BSD_SIGNAL is needed for BSD signal semantics if not"
+echo "using libbsd or _BSD_SOURCE, but with libc6 the default signal semantics"
+echo "are BSD and no such define is needed."
+ask "Defines for BSD signal semantics" bsd_signal_defs "$def_bsd_sig"
 ask "Other CFLAGS" other_cflags ''
 ask "Other LDFLAGS" other_ldflags ''
+if building_in atc; then
+    ask "Yacc program" yacc "bison -y"
+fi
+if building_in atc; then
+    ask "Lex program" lex flex
+    ask "Lex library" lex_lib -lfl
+fi
 
 echo
 ask "Pager" pager /usr/bin/less
@@ -259,12 +295,13 @@ game_ask atc "Score file for atc" atc_scorefile "$varlibdir/atc_score"
 game_ask backgammon "File for backgammon rules" backgammon_rules "$sharedir/backrules"
 game_ask battlestar "Score file for battlestar" battlestar_scorefile "$varlibdir/battlestar.log"
 # Bog has some other configuration
-game_ask bog "Directory for bog static data" bog_dir "$sharedir/bog"
+game_ask boggle "Directory for boggle static data" boggle_dir "$sharedir/boggle"
 game_ask canfield "Score file for canfield" canfield_scorefile "$varlibdir/cfscores"
 game_ask cribbage "File for cribbage instructions" cribbage_instrfile "$sharedir/cribbage.instr"
 game_ask cribbage "Score file for cribbage" cribbage_scorefile "$varlibdir/criblog"
 game_ask dm "Configuration file for dm" dm_configfile /etc/dm.conf
 game_ask dm "File to disable games playing" dm_nogamesfile /etc/nogames
+game_ask dm "Log file for dm" dm_logfile "$varlibdir/games.log"
 game_ask fish "File for fish instructions" fish_instrfile "$sharedir/fish.instr"
 game_ask hangman "Words file for hangman" hangman_wordsfile "$sharedir/hangman-words"
 # Hunt has some other configuration
@@ -303,7 +340,7 @@ substitute () {
 }
 
 substitute Makeconfig.in install-man.in install-score.in \
-	backgammon/backgammon/backgammon.6.in bog/bog.6.in caesar/rot13.in \
+	backgammon/backgammon/backgammon.6.in caesar/rot13.in \
 	canfield/canfield/canfield.6.in cribbage/cribbage.6.in dm/dm.8.in \
 	dm/dm.conf.5.in hangman/hangman.6.in hunt/hunt.6.in hunt/huntd.6.in \
 	mille/mille.6.in monop/monop.6.in quiz/datfiles/index.in \

@@ -38,9 +38,7 @@
 #include <signal.h>
 #include <stdio.h>
 #include <string.h>
-#ifdef linux
 #include <stdlib.h>
-#endif
 
 #define BITS (8 * sizeof (int))
 
@@ -250,8 +248,58 @@ int wordvalue[NWORD];
 int wordtype[NWORD];
 int wordcount, wordnumber;
 
-char *truedirec(), *rate();
-char *getcom(), *getword();
+void bury __P((void));
+int card __P((char *, int));
+void chime __P((void));
+void crash __P((void));
+int cypher __P((void));
+void die __P((void));
+void dig __P((void));
+int draw __P((void));
+void drink __P((void));
+int drive __P((void));
+int drop __P((char *));
+int eat __P((void));
+int fight __P((int, int));
+int follow __P((void));
+char *getcom __P((char *, int, char *, char *));
+char *getword __P((char *, char *, int));
+int give __P((void));
+void initialize __P((char));
+int jump __P((void));
+void kiss __P((void));
+int land __P((void));
+int launch __P((void));
+void light __P((void));
+void live __P((void));
+void love __P((void));
+int move __P((int, int));
+void murder __P((void));
+void news __P((void));
+void newway __P((int));
+void parse __P((void));
+void post __P((char));
+void printobjs __P((void));
+int put __P((void));
+int puton __P((void));
+char *rate __P((void));
+void ravage __P((void));
+void restore __P((void));
+int ride __P((void));
+void save __P((void));
+int shoot __P((void));
+int take __P((unsigned int[]));
+int takeoff __P((void));
+int throw __P((char *));
+char *truedirec __P((int, char));
+int ucard __P((unsigned int *));
+int use __P((void));
+int visual __P((void));
+int wearit __P((void));
+void whichway __P((struct room));
+void wordinit __P((void));
+void writedes __P((void));
+int zzz __P((void));
 
 	/* state of the game */
 int btime;

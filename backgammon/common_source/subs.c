@@ -42,6 +42,7 @@ static char rcsid[] = "$NetBSD: subs.c,v 1.5 1995/04/29 00:44:15 mycroft Exp $";
 #endif /* not lint */
 
 #include <stdio.h>
+#include <unistd.h>
 #include "back.h"
 
 int	buffnum = -1;
@@ -64,6 +65,9 @@ char  *descr[] = {
 	0
 };
 
+void strset __P((char *, char *)); /* Not used */
+
+void
 errexit (s)
 register char	*s;
 {
@@ -72,12 +76,14 @@ register char	*s;
 	getout();
 }
 
+void
 strset (s1,s2)
 register char	*s1, *s2;
 {
 	while ( (*s1++ = *s2++) != '\0');
 }
 
+int
 addbuf (c)
 register char	c;
 
@@ -91,6 +97,7 @@ register char	c;
 	outbuff[buffnum] = c;
 }
 
+void
 buflush ()  {
 	if (buffnum < 0)
 		return;
@@ -100,6 +107,7 @@ buflush ()  {
 	buffnum = -1;
 }
 
+int
 readc () {
 	char	c;
 
@@ -125,6 +133,7 @@ readc () {
 	return (c);
 }
 
+void
 writec (c)
 char	c;
 {
@@ -134,6 +143,7 @@ char	c;
 		addbuf (c);
 }
 
+void
 writel (l)
 register char	*l;
 {
@@ -158,6 +168,7 @@ register char	*l;
 		writec (*l++);
 }
 
+void
 proll ()   {
 	if (d0)
 		swap;
@@ -172,6 +183,7 @@ proll ()   {
 		cline();
 }
 
+void
 wrint (n)
 int	n;
 {
@@ -187,6 +199,7 @@ int	n;
 	writec (n%10+'0');
 }
 
+void
 gwrite()  {
 	register int	r, c;
 
@@ -229,6 +242,7 @@ gwrite()  {
 	}
 }
 
+int
 quit ()  {
 	register int	i;
 
@@ -250,6 +264,7 @@ quit ()  {
 	return (0);
 }
 
+int
 yorn (special)
 register char	special;			/* special response */
 {
@@ -280,6 +295,7 @@ register char	special;			/* special response */
 	return (c == 'Y');
 }
 
+void
 wrhit (i)
 register int	i;
 {
@@ -289,6 +305,7 @@ register int	i;
 	writec ('\n');
 }
 
+void
 nexturn ()  {
 	register int	c;
 
@@ -304,6 +321,7 @@ nexturn ()  {
 	colorptr += c;
 }
 
+void
 getarg (arg)
 register char	***arg;
 
@@ -390,6 +408,7 @@ register char	***arg;
 		recover(s[0]);
 }
 
+void
 init ()  {
 	register int	i;
 	for (i = 0; i < 26;)
@@ -406,6 +425,7 @@ init ()  {
 	dlast = 0;
 }
 
+void
 wrscore ()  {
 	writel ("Score:  ");
 	writel (color[1]);
@@ -417,6 +437,7 @@ wrscore ()  {
 	wrint (wscore);
 }
 
+void
 fixtty (t)
 struct termios	*t;
 {
@@ -427,6 +448,7 @@ struct termios	*t;
 		errexit("fixtty");
 }
 
+void
 getout ()  {
 	/* go to bottom of screen */
 	if (tflag)  {
@@ -439,6 +461,7 @@ getout ()  {
 	fixtty (&old);
 	exit(0);
 }
+void
 roll ()  {
 	register char	c;
 	register int	row;

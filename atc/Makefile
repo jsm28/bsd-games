@@ -4,23 +4,18 @@ include ../Makeconfig
 
 PROG		= atc
 
-YACC		= bison
-YFLAGS		= -d -y
-
-LEX		= flex
-
 SRCS=	extern.c grammar.c graphics.c input.c lex.c list.c log.c \
 	main.c tunable.c update.c
 OBJS=	extern.o grammar.o graphics.o input.o lex.o list.o log.o \
 	main.o tunable.o update.o
 
-LIBS=	-lm $(NCURSES_LIB) $(BSD_LIB) -lfl
+LIBS=	-lm $(NCURSES_LIB) $(LEX_LIB)
 
 GAMES = Game_List default easy crossover Killer game_2 Atlantis OHare \
 	Tic-Tac-Toe airports box crosshatch game_3 game_4 novice two-corners
 
-INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -DBSD -D_PATH_GAMES=\"$(ATC_DIR)/\" \
+INCS = $(NCURSES_INCS)
+DEFS = $(BSD_SIGNAL_DEFS) -DBSD -D_PATH_GAMES=\"$(ATC_DIR)/\" \
 	-D_PATH_SCORE=\"$(ATC_SCOREFILE)\"
 
 all:	$(PROG)
@@ -29,7 +24,7 @@ $(PROG):	$(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(PROG)
 
 grammar.c:	grammar.y
-	$(YACC) $(YFLAGS) grammar.y
+	$(YACC) -d grammar.y
 	mv y.tab.c grammar.c
 
 lex.c:	lex.l

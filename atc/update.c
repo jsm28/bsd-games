@@ -55,6 +55,11 @@ static char rcsid[] = "$NetBSD: update.c,v 1.5 1997/01/13 06:50:27 tls Exp $";
 
 #include "include.h"
 
+int dir_deg __P((int));
+int next_plane __P((void));
+int too_close __P((PLANE *, PLANE *, int));
+
+void
 update()
 {
 	int	i, dir_diff, mask, unclean;
@@ -224,7 +229,6 @@ command(pp)
 	PLANE	*pp;
 {
 	static char	buf[50], *bp, *comm_start;
-	char	*index();
 
 	buf[0] = '\0';
 	bp = buf;
@@ -232,7 +236,7 @@ command(pp)
 		(pp->fuel < LOWFUEL) ? '*' : ' ',
 		(pp->dest_type == T_AIRPORT) ? 'A' : 'E', pp->dest_no);
 
-	comm_start = bp = index(buf, '\0');
+	comm_start = bp = strchr(buf, '\0');
 	if (pp->altitude == 0)
 		(void)sprintf(bp, "Holding @ A%d", pp->orig_no);
 	else if (pp->new_dir >= MAXDIR || pp->new_dir < 0)
@@ -240,18 +244,18 @@ command(pp)
 	else if (pp->new_dir != pp->dir)
 		(void)sprintf(bp, "%d", dir_deg(pp->new_dir));
 
-	bp = index(buf, '\0');
+	bp = strchr(buf, '\0');
 	if (pp->delayd)
 		(void)sprintf(bp, " @ B%d", pp->delayd_no);
 
-	bp = index(buf, '\0');
+	bp = strchr(buf, '\0');
 	if (*comm_start == '\0' && 
 	    (pp->status == S_UNMARKED || pp->status == S_IGNORED))
 		strcpy(bp, "---------");
 	return (buf);
 }
 
-/* char */
+char
 name(p)
 	PLANE	*p;
 {
@@ -261,7 +265,9 @@ name(p)
 		return ('a' + p->plane_no);
 }
 
+int
 number(l)
+	int l;
 {
 	if (l < 'a' && l > 'z' && l < 'A' && l > 'Z')
 		return (-1);
@@ -271,6 +277,7 @@ number(l)
 		return (l - 'A');
 }
 
+int
 next_plane()
 {
 	static int	last_plane = -1;
@@ -299,6 +306,7 @@ next_plane()
 	return (last_plane);
 }
 
+int
 addplane()
 {
 	PLANE	p, *pp, *p1;
@@ -371,6 +379,7 @@ addplane()
 
 PLANE	*
 findplane(n)
+	int n;
 {
 	PLANE	*pp;
 
@@ -383,8 +392,10 @@ findplane(n)
 	return (NULL);
 }
 
+int
 too_close(p1, p2, dist)
 	PLANE	*p1, *p2;
+	int dist;
 {
 	if (ABS(p1->altitude - p2->altitude) <= dist &&
 	    ABS(p1->xpos - p2->xpos) <= dist && ABS(p1->ypos - p2->ypos) <= dist)
@@ -393,7 +404,9 @@ too_close(p1, p2, dist)
 		return (0);
 }
 
+int
 dir_deg(d)
+	int d;
 {
 	switch (d) {
 	case 0: return (0);

@@ -5,8 +5,8 @@ include ../../Makeconfig
 EXEC_PATH  = $(GAMESDIR)/backgammon
 TEACH_PATH = $(GAMESDIR)/teachgammon
 
-INCS = $(BSD_INCS)
-DEFS = $(BSD_DEFS) -DEXEC_PATH=\"$(EXEC_PATH)\" -DTEACH_PATH=\"$(TEACH_PATH)\"
+INCS = $(NCURSES_INCS)
+DEFS = $(BSD_SIGNAL_DEFS) -DEXEC_PATH=\"$(EXEC_PATH)\" -DTEACH_PATH=\"$(TEACH_PATH)\"
 
 OBJS = allow.o board.o check.o fancy.o init.o odds.o one.o save.o \
 	subs.o table.o
@@ -23,4 +23,4 @@ simple:	backgammon.c
 	    $(INCS) -o sbackgammon backgammon.c
 
 clean:
-	rm -f *.o core a.out
+	rm -f *.o core a.out sbackgammon

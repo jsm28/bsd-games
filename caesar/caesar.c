@@ -60,6 +60,8 @@ static char rcsid[] = "$NetBSD: caesar.c,v 1.4 1996/02/06 22:47:15 jtc Exp $";
 #include <ctype.h>
 #include <unistd.h>
 #include <errno.h>
+#include <string.h>
+#include <stdlib.h>
 
 #define	LINELENGTH	2048
 #define	ROTATE(ch, perm) \
@@ -76,6 +78,10 @@ double stdf[26] = {
 	2.62, 0.81, 1.88, 0.23,  2.07, 0.06,
 };
 
+int main __P((int, char **));
+void printit __P((char *));
+
+int
 main(argc, argv)
 	int argc;
 	char **argv;
@@ -83,7 +89,6 @@ main(argc, argv)
 	register int ch, dot, i, nread, winnerdot;
 	register char *inbuf;
 	int obs[26], try, winner;
-	char *malloc(), *strerror();
 
 	if (argc > 1)
 		printit(argv[1]);
@@ -145,6 +150,7 @@ main(argc, argv)
 	exit(0);
 }
 
+void
 printit(arg)
 	char *arg;
 {

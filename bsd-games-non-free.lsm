@@ -3,8 +3,8 @@ Title:		bsd-games-non-free
 Version:	1.5
 Entered-date:	17JUL97
 Description:	Games that were in bsd-games, but have restrictive
-	copyrights (cannot be sold for profit).  Includes: bog, paranoia and
-	rogue.
+	copyrights (cannot be sold for profit).  Includes: boggle, paranoia
+	and rogue.
 Keywords:	games
 Maintained-by:	jsm28@cam.ac.uk (Joseph S. Myers)
 Primary-site:	sunsite.unc.edu /pub/Linux/games

@@ -73,7 +73,7 @@ typedef struct {
 	int	token;
 	int	to_state;
 	char	*str;
-	char	*(*func)();
+	char	*(*func) __P((int));
 } RULE;
 
 typedef struct {
@@ -99,10 +99,13 @@ typedef struct {
 
 #define NUMSTATES	NUMELS(st)
 
-char	*setplane(), *circle(), *left(), *right(), *Left(), *Right(), 
-	*beacon(), *ex_it(), *climb(), *descend(), *setalt(), *setrelalt(), 
-	*benum(), *to_dir(), *rel_dir(), *delayb(), *mark(), *unmark(),
-	*airport(), *turn(), *ignore();
+char	*setplane __P((int)), *circle __P((int)), *left __P((int)),
+	*right __P((int)), *Left __P((int)), *Right __P((int)), 
+	*beacon __P((int)), *ex_it __P((int)), *climb __P((int)),
+	*descend __P((int)), *setalt __P((int)), *setrelalt __P((int)), 
+	*benum __P((int)), *to_dir __P((int)), *rel_dir __P((int)),
+	*delayb __P((int)), *mark __P((int)), *unmark __P((int)),
+	*airport __P((int)), *turn __P((int)), *ignore __P((int));
 
 RULE	state0[] = {	{ ALPHATOKEN,	1,	"%c:",		setplane},
 			{ RETTOKEN,	-1,	"",		NULL	},
@@ -196,6 +199,13 @@ int	level;
 int	tval;
 int	dest_type, dest_no, dir;
 
+int gettoken __P((void));
+void noise __P((void));
+int pop __P((void));
+void push __P((int, int));
+void rezero __P((void));
+
+int
 pop()
 {
 	if (level == 0)
@@ -210,6 +220,7 @@ pop()
 	return (0);
 }
 
+void
 rezero()
 {
 	iomove(0);
@@ -222,7 +233,9 @@ rezero()
 	strcpy(T_STR, "");
 }
 
+void
 push(ruleno, ch)
+	int ruleno, ch;
 {
 	int	newstate, newpos;
 
@@ -243,10 +256,11 @@ push(ruleno, ch)
 	strcpy(T_STR, "");
 }
 
+int
 getcommand()
 {
 	int	c, i, done;
-	char	*s, *(*func)();
+	char	*s, *(*func) __P((int));
 	PLANE	*pp;
 
 	rezero();
@@ -301,12 +315,14 @@ getcommand()
 	return (0);
 }
 
+void
 noise()
 {
 	putchar('\07');
 	fflush(stdout);
 }
 
+int
 gettoken()
 {
 	while ((tval = getAChar()) == REDRAWTOKEN || tval == SHELLTOKEN)
@@ -325,7 +341,7 @@ gettoken()
 #endif
 			if (fork() == 0)	/* child */
 			{
-				char *shell, *base, *getenv(), *strrchr();
+				char *shell, *base;
 
 				setuid(getuid()); /* turn off setuid bit */
 				done_screen();
@@ -372,6 +388,7 @@ gettoken()
 
 char	*
 setplane(c)
+	int c;
 {
 	PLANE	*pp;
 
@@ -385,6 +402,7 @@ setplane(c)
 
 char	*
 turn(c)
+	int c;
 {
 	if (p.altitude == 0)
 		return ("Planes at airports may not change direction");
@@ -393,6 +411,7 @@ turn(c)
 
 char	*
 circle(c)
+	int c;
 {
 	if (p.altitude == 0)
 		return ("Planes cannot circle on the ground");
@@ -402,6 +421,7 @@ circle(c)
 
 char	*
 left(c)
+	int c;
 {
 	dir = D_LEFT;
 	p.new_dir = p.dir - 1;
@@ -412,6 +432,7 @@ left(c)
 
 char	*
 right(c)
+	int c;
 {
 	dir = D_RIGHT;
 	p.new_dir = p.dir + 1;
@@ -422,6 +443,7 @@ right(c)
 
 char	*
 Left(c)
+	int c;
 {
 	p.new_dir = p.dir - 2;
 	if (p.new_dir < 0)
@@ -431,6 +453,7 @@ Left(c)
 
 char	*
 Right(c)
+	int c;
 {
 	p.new_dir = p.dir + 2;
 	if (p.new_dir > MAXDIR)
@@ -440,6 +463,7 @@ Right(c)
 
 char	*
 delayb(c)
+	int c;
 {
 	int	xdiff, ydiff;
 
@@ -485,6 +509,7 @@ delayb(c)
 
 char	*
 beacon(c)
+	int c;
 {
 	dest_type = T_BEACON;
 	return (NULL);
@@ -492,6 +517,7 @@ beacon(c)
 
 char	*
 ex_it(c)
+	int c;
 {
 	dest_type = T_EXIT;
 	return (NULL);
@@ -499,6 +525,7 @@ ex_it(c)
 
 char	*
 airport(c)
+	int c;
 {
 	dest_type = T_AIRPORT;
 	return (NULL);
@@ -506,6 +533,7 @@ airport(c)
 
 char	*
 climb(c)
+	int c;
 {
 	dir = D_UP;
 	return (NULL);
@@ -513,6 +541,7 @@ climb(c)
 
 char	*
 descend(c)
+	int c;
 {
 	dir = D_DOWN;
 	return (NULL);
@@ -520,6 +549,7 @@ descend(c)
 
 char	*
 setalt(c)
+	int c;
 {
 	if ((p.altitude == c - '0') && (p.new_altitude == p.altitude))
 		return ("Already at that altitude");
@@ -529,6 +559,7 @@ setalt(c)
 
 char	*
 setrelalt(c)
+	int c;
 {
 	if (c == 0)
 		return ("altitude not changed");
@@ -553,6 +584,7 @@ setrelalt(c)
 
 char	*
 benum(c)
+	int c;
 {
 	dest_no = c -= '0';
 
@@ -584,6 +616,7 @@ benum(c)
 
 char	*
 to_dir(c)
+	int c;
 {
 	p.new_dir = dir_no(c);
 	return (NULL);
@@ -591,6 +624,7 @@ to_dir(c)
 
 char	*
 rel_dir(c)
+	int c;
 {
 	int	angle;
 
@@ -615,6 +649,7 @@ rel_dir(c)
 
 char	*
 mark(c)
+	int c;
 {
 	if (p.altitude == 0)
 		return ("Cannot mark planes on the ground");
@@ -626,6 +661,7 @@ mark(c)
 
 char	*
 unmark(c)
+	int c;
 {
 	if (p.altitude == 0)
 		return ("Cannot unmark planes on the ground");
@@ -637,6 +673,7 @@ unmark(c)
 
 char	*
 ignore(c)
+	int c;
 {
 	if (p.altitude == 0)
 		return ("Cannot ignore planes on the ground");
@@ -646,6 +683,7 @@ ignore(c)
 	return (NULL);
 }
 
+int
 dir_no(ch)
 	char	ch;
 {

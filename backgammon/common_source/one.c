@@ -43,6 +43,10 @@ static char rcsid[] = "$NetBSD: one.c,v 1.3 1995/03/21 15:05:49 cgd Exp $";
 
 #include "back.h"
 
+int checkd __P((int));
+int last __P((void));
+
+int
 makmove (i)
 register int	i;
  
@@ -97,6 +101,7 @@ register int	i;
 	return (0);
 }
 
+void
 moverr (i)
 register int	i;
 
@@ -120,6 +125,7 @@ register int	i;
 }
 
 
+int
 checkd (d)
 register int	d;
 
@@ -129,6 +135,7 @@ register int	d;
 	return (0);
 }
 
+int
 last ()  {
 	register int	i;
 
@@ -137,6 +144,7 @@ last ()  {
 			return (abs(home-i));
 }
 
+void
 movback (i)
 register int	i;
 
@@ -147,6 +155,7 @@ register int	i;
 		backone(j);
 }
 
+void
 backone (i)
 register int	i;
 

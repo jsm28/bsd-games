@@ -61,6 +61,7 @@ newplane()
 	return ((PLANE *) calloc(1, sizeof (PLANE)));
 }
 
+void
 append(l, p)
 	LIST	*l;
 	PLANE	*p;
@@ -99,6 +100,7 @@ append(l, p)
 	}
 }
 
+void
 delete(l, p)
 	LIST	*l;
 	PLANE	*p;

@@ -43,6 +43,11 @@ static char rcsid[] = "$NetBSD: parse.c,v 1.4 1997/01/07 11:56:49 tls Exp $";
 
 #include "extern.h"
 
+int hash __P((char *));
+void install __P((struct wlist *));
+struct wlist *lookup __P((char *));
+
+void
 wordinit()
 {
 	register struct wlist *w;
@@ -51,6 +56,7 @@ wordinit()
 		install(w);
 }
 
+int
 hash(s)
 	register char *s;
 {
@@ -76,6 +82,7 @@ lookup(s)
 	return NULL;
 }
 
+void
 install(wp)
 	register struct wlist *wp;
 {
@@ -89,6 +96,7 @@ install(wp)
 		printf("Multiply defined %s.\n", wp->string);
 }
 
+void
 parse()
 {
 	register struct wlist *wp;

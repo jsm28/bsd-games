@@ -62,7 +62,15 @@ static char rcsid[] = "$NetBSD: main.c,v 1.4 1995/04/27 21:22:25 mycroft Exp $";
 #include "include.h"
 #include "pathnames.h"
 
+char *default_game __P((void));
+char *okay_game __P((char *));
+int list_games __P((void));
+int main __P((int, char *[]));
+int read_file __P((char *));
+
+int
 main(ac, av)
+	int ac;
 	char	*av[];
 {
 	int			seed;
@@ -74,8 +82,6 @@ main(ac, av)
 #ifdef BSD
 	struct itimerval	itv;
 #endif
-	extern char		*default_game(), *okay_game();
-	extern void		log_score(), quit(), update();
 
 	start_time = seed = time(0);
 
@@ -114,8 +120,8 @@ main(ac, av)
 				av++;
 				break;
 			default: 
-				fprintf(stderr, "Unknown option '%c'\n", *ptr,
-					name);
+				fprintf(stderr, "%s: Unknown option '%c'\n",
+					name, *ptr);
 				f_usage++;
 				break;
 			}
@@ -221,6 +227,7 @@ main(ac, av)
 	}
 }
 
+int
 read_file(s)
 	char	*s;
 {
@@ -302,6 +309,7 @@ okay_game(s)
 	return (ret);
 }
 
+int
 list_games()
 {
 	FILE		*fp;

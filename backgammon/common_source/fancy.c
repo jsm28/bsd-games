@@ -41,6 +41,10 @@ static char rcsid[] = "$NetBSD: fancy.c,v 1.4 1995/04/24 12:22:09 cgd Exp $";
 #endif
 #endif /* not lint */
 
+#ifdef linux
+#include <termcap.h>
+#endif
+#include <unistd.h>
 #include "back.h"
 
 char	PC;			/* padding character */
@@ -84,9 +88,15 @@ int	oldw;
 int	realr;
 int	realc;
 
-void	addbuf();
+#ifndef linux
 extern char *tgoto(), *tgetstr();
+#endif
+void fixcol __P((int, int, int, int, int));
+void fixpos __P((int, int, int, int, int));
+void newline __P((void));
+void tos __P((void)); /* Not used */
 
+void
 fboard ()  {
 	register int	i, j, l;
 
@@ -195,6 +205,7 @@ fboard ()  {
  * differently.
  */
 
+void
 bsect (b,rpos,cpos,cnext)
 int	b;					/* contents of position */
 int	rpos;					/* row of position */
@@ -255,6 +266,7 @@ int	cnext;					/* direction of position */
 	}
 }
 
+void
 refresh()  {
 	register int	i, r, c;
 
@@ -312,6 +324,7 @@ refresh()  {
 	buflush();
 }
 
+void
 fixpos (old,new,r,c,inc)
 int	old, new, r, c, inc;
 
@@ -382,6 +395,7 @@ int	old, new, r, c, inc;
 	fixcol (r+inc*new,c+1,abs(old+new),' ',inc);
 }
 
+void
 fixcol (r,c,l,ch,inc)
 register int	l, ch;
 int		r, c, inc;
@@ -397,6 +411,7 @@ int		r, c, inc;
 	}
 }
 
+void
 curmove (r,c)
 register int	r, c;
 
@@ -411,6 +426,7 @@ register int	r, c;
 	curc = c;
 }
 
+void
 newpos ()  {
 	register int	r;		/* destination row */
 	register int	c;		/* destination column */
@@ -578,6 +594,7 @@ newpos ()  {
 	realc = -1;
 }
 
+void
 clear ()  {
 	register int	i;
 
@@ -595,10 +612,12 @@ clear ()  {
 	tputs (CL,CO,addbuf);		/* put CL in buffer */
 }
 
+void
 tos ()  {				/* home cursor */
 	curmove (0,0);
 }
 
+void
 fancyc (c)
 register char	c;			/* character to output */
 {
@@ -655,6 +674,7 @@ register char	c;			/* character to output */
 		curmove (curr,curc+1);
 }
 
+void
 clend()  {
 	register int	i;
 	register char	*s;
@@ -677,6 +697,7 @@ clend()  {
 	curmove (i,0);
 }
 
+void
 cline ()  {
 	register int	i;
 	register int	c;
@@ -699,6 +720,7 @@ cline ()  {
 	}
 }
 
+void
 newline ()  {
 	cline();
 	if (curr == LI-1)
@@ -707,6 +729,7 @@ newline ()  {
 		curmove (curr+1,0);
 }
 
+int
 getcaps (s)
 register char	*s;
 

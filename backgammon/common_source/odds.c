@@ -43,6 +43,7 @@ static char rcsid[] = "$NetBSD: odds.c,v 1.3 1995/03/21 15:05:47 cgd Exp $";
 
 #include "back.h"
 
+void
 odds (r1,r2,val)
 register int	r1;
 int		r2, val;
@@ -68,6 +69,7 @@ int		r2, val;
 	}
 }
 
+int
 count ()  {
 	register int	i;
 	register int	j;
@@ -80,6 +82,7 @@ count ()  {
 	return (total);
 }
 
+int
 canhit (i,c)
 int	i, c;
 

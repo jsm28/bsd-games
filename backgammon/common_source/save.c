@@ -41,6 +41,7 @@ static char rcsid[] = "$NetBSD: save.c,v 1.4 1995/04/29 00:44:13 mycroft Exp $";
 #endif
 #endif /* not lint */
 
+#include <unistd.h>
 #include "back.h"
 
 extern int	errno;
@@ -56,6 +57,9 @@ static char	type[] = "'.\nType \"backgammon ";
 static char	rec[] = "\" to recover your game.\n\n";
 static char	cantrec[] = "Can't recover file:  ";
 
+void norec __P((char *));
+
+void
 save (n)
 register int	n;
 
@@ -147,6 +151,7 @@ register int	n;
 	getout ();
 }
 
+void
 recover (s)
 char	*s;
 
@@ -171,6 +176,7 @@ char	*s;
 	rflag = 1;
 }
 
+void
 norec (s)
 register char	*s;
 

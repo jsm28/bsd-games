@@ -81,6 +81,7 @@ static char sccsid[] = "@(#)bcd.c	8.2 (Berkeley) 3/20/94";
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 u_short holes[256] = {
     0x0,	 0x0,	  0x0,	   0x0,	    0x0,     0x0,     0x0,     0x0,
@@ -122,6 +123,9 @@ u_short holes[256] = {
  */
 #define	bit(w,i)	((w)&(1<<(i)))
 
+int main __P((int, char **));
+void printcard __P((char *));
+
 int
 main(argc, argv)
 	int argc;
@@ -145,16 +149,16 @@ main(argc, argv)
 
 #define	COLUMNS	48
 
+void
 printcard(str)
 	register char *str;
 {
 	static char rowchars[] = "   123456789";
 	register int i, row;
-	register char *p;
-	char *index();
+	register unsigned char *p;
 
 	/* ruthlessly remove newlines and truncate at 48 characters. */
-	if ((p = index(str, '\n')))
+	if ((p = strchr(str, '\n')))
 		*p = '\0';
 
 	if (strlen(str) > COLUMNS)

@@ -42,7 +42,7 @@ clean:
 
 distclean:	clean
 	rm -f subst.sed Makeconfig install-man install-score hide-game
-	rm -f backgammon/backgammon/backgammon.6 bog/bog.6 caesar/rot13
+	rm -f backgammon/backgammon/backgammon.6 caesar/rot13
 	rm -f canfield/canfield/canfield.6 cribbage/cribbage.6 dm/dm.8
 	rm -f dm/dm.conf.5 hangman/hangman.6 hunt/hunt.6 hunt/huntd.6
 	rm -f mille/mille.6 monop/monop.6 quiz/datfiles/index quiz/quiz.6

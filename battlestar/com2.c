@@ -43,6 +43,7 @@ static char rcsid[] = "$NetBSD: com2.c,v 1.4 1997/01/07 11:56:35 tls Exp $";
 
 #include "extern.h"
 
+int
 wearit()		/* synonyms = {sheathe, sheath} */
 {
 	register int n;
@@ -104,6 +105,7 @@ wearit()		/* synonyms = {sheathe, sheath} */
 	return(firstnumber);
 }
 
+int
 put()		/* synonyms = {buckle, strap, tie} */
 {
 	if (wordvalue[wordnumber + 1] == ON){
@@ -119,11 +121,13 @@ put()		/* synonyms = {buckle, strap, tie} */
 
 }
 
+int
 draw() 			/* synonyms = {pull, carry} */
 {
 	return(take(wear));
 }
 
+int
 use()
 {
 	while (wordtype[++wordnumber] == ADJS && wordnumber < wordcount);
@@ -162,6 +166,7 @@ use()
 	return(-1);
 }
 
+void
 murder()
 {
 	register int n;
@@ -228,6 +233,7 @@ murder()
 	}
 }
 
+void
 ravage()
 {
 	while (wordtype[++wordnumber] != NOUNS && wordnumber <= wordcount);
@@ -277,6 +283,7 @@ ravage()
 		puts("Who?");
 }
 
+int
 follow()
 {
 	if (followfight == btime){

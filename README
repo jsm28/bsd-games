@@ -25,7 +25,7 @@ any README.linux files for the games you plan to install. You can make
 each game individually or do a make in the top level directory to make
 everything.  The `Makefile.bsd' files are the original BSD makefiles.
 
-Two games that were in this package up to version 1.3, bog and
+Two games that were in this package up to version 1.3, boggle and
 paranoia, are now distributed separately because of restrictive
 copyrights.  If you want them, get the bsd-games-non-free package,
 which will unpack into a `bsd-games-n.n' directory like this one does,
@@ -34,7 +34,7 @@ actually from BSD.  Rogue is also in bsd-games-non-free.)  This
 probably won't be available from tsx-11, but may be on sunsite.  You
 can also build bsd-games-non-free separately; it contains some of the
 same files, which are all exact duplicates.  If the only
-subdirectories you have are bog, hangman, paranoia and rogue, then you
+subdirectories you have are boggle, hangman, paranoia and rogue, then you
 have just bsd-games-non-free.
 
 Here's what we have so far:

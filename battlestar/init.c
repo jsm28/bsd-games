@@ -41,15 +41,20 @@ static char rcsid[] = "$NetBSD: init.c,v 1.5 1997/01/07 11:56:45 tls Exp $";
 #endif
 #endif /* not lint */
 
+#include <unistd.h>
 #include <sys/types.h>
 #include "extern.h"
 #include <pwd.h>
 
+int checkout __P((char *));
+void getutmp __P((char *));
+int wizard __P((char *));
+
+void
 initialize(startup)
 	char startup;
 {
 	register struct objs *p;
-	void die();
 
 	puts("Version 4.2, fall 1984.");
 	puts("First Adventure game written by His Lordship, the honorable");
@@ -74,6 +79,7 @@ initialize(startup)
 	signal(SIGINT, die);
 }
 
+void
 getutmp(uname)
 	char *uname;
 {
@@ -101,6 +107,7 @@ char *badguys[] = {
 	0
 };
 
+int
 wizard(uname)
 	char *uname;
 {
@@ -111,6 +118,7 @@ wizard(uname)
 	return flag;
 }
 
+int
 checkout(uname)
 	register char *uname;
 {

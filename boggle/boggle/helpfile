@@ -50,7 +50,7 @@ Words consist solely of lower case letters and must be at least 3 letters long.
 
 Command line flags can be given to change the rules of the game.
 The '+' flag allows a cube to be used multiple times, but not in succession.
-The '++' flag allows the same cubes to be considered adjacent to itself.
+The '++' flag makes each cube adjacent to itself.
 The time limit can be changed from the default 3 minutes by using the flag
 '-t#', where # is the duration (in seconds) of each game.
 The minimum word length can be changed from 3 letters by specifying 'w#',
@@ -82,16 +82,11 @@ Permission is given to freely copy and distribute this software providing:
 
 Please notify the author of any bugs or if you have any suggestions.
 
-Copyright (c) 1988:
-Barry Brachman
-Dept. of Computer Science
-Univ. of British Columbia
-Vancouver, B.C. V6T 1W5
-
-.. {ihnp4!alberta, uw-beaver, uunet}!ubc-vision!ubc-csgrads!brachman
-brachman@grads.cs.ubc.cdn
-brachman%ubc.csnet@csnet-relay.arpa
-brachman@ubc.csnet
+Copyright (c) 1988
+Barry Brachman           | UUCP:    {alberta,uw-beaver,uunet}!
+Dept. of Computer Science|           ubc-vision!ubc-csgrads!brachman
+Univ. of British Columbia| Internet: brachman@cs.ubc.ca
+Vancouver, B.C. V6T 1W5  |           brachman%ubc.csnet@csnet-relay.arpa
+(604) 228-5010           | brachman@ubc.csnet
 
 Boggle is a trademark of Parker Brothers.
-

@@ -43,6 +43,7 @@ static char rcsid[] = "$NetBSD: com4.c,v 1.4 1997/01/07 11:56:36 tls Exp $";
 
 #include "extern.h"
 
+int
 take(from)
 unsigned int from[];
 {
@@ -187,10 +188,11 @@ unsigned int from[];
 	return(firstnumber);
 }
 
+int
 throw(name)
 	char *name;
 {
-	int n;
+	unsigned int n;
 	int deposit = 0;
 	int first, value;
 
@@ -267,6 +269,7 @@ throw(name)
 	return(first);
 }
 
+int
 drop(name)
 char *name;
 {
@@ -318,18 +321,21 @@ char *name;
 	return(-1);
 }
 
+int
 takeoff()
 {
 	wordnumber = take(wear);
 	return(drop("Dropped"));
 }
 
+int
 puton()
 {
 	wordnumber = take(location[position].objects);
 	return(wearit());
 }
 
+int
 eat()
 {
 	int firstnumber, value;
