@@ -1,3 +1,8 @@
+2000-09-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* lib/.cvsignore: New file.
+	* morse/.cvsignore: Add morse.
+
 2000-08-22  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* hunt/hunt/.cvsignore, hunt/huntd/.cvsignore, mille/.cvsignore,
