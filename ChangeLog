@@ -1,3 +1,7 @@
+2004-09-04  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* wtf/acronyms: Update from NetBSD CVS.
+
 2004-09-02  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* robots/auto.c, robots/move.c: Update from NetBSD CVS.
