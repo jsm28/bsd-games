@@ -1,5 +1,8 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* wargames/wargames.6: Fix typo.  Patch from Joey Hess
+	<joeyh@debian.org>.
+
 	* hack/hack.options.c (parseoptions): Refer to 'O' rather than 'o'
 	as command to set options.  Bug reported by Christian Garbs
 	<debian@cgarbs.de> in Debian bug 191452.
