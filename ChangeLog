@@ -1,5 +1,11 @@
 2000-09-06  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* tests/battlestar.test, tests/battlestar.in1,
+	tests/battlestar.out1, tests/battlestar.in2,
+	tests/battlestar.out2, tests/battlestar.in3,
+	tests/battlestar.out3, tests/battlestar.in4,
+	tests/battlestar.out4: New files.
+
 	* lib/.cvsignore: New file.
 	* morse/.cvsignore: Add morse.
 
