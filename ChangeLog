@@ -1,5 +1,10 @@
 2000-09-24  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com2.c (ravage), battlestar/com3.c (bury),
+	battlestar/com5.c (kiss, love, give), battlestar/com6.c (ride):
+	Add explicit no-ops to empty loops following the NetBSD style
+	guide.
+
 	* battlestar/extern.h, battlestar/parse.c, battlestar/globals.c:
 	Make hash table static in parse.c.
 

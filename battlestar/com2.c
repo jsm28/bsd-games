@@ -273,7 +273,8 @@ murder()
 void
 ravage()
 {
-	while (wordtype[++wordnumber] != NOUNS && wordnumber <= wordcount);
+	while (wordtype[++wordnumber] != NOUNS && wordnumber <= wordcount)
+		continue;
 	if (wordtype[wordnumber] == NOUNS && (testbit(location[position].objects, wordvalue[wordnumber])
 	    || (wordvalue[wordnumber] == NORMGOD && testbit(location[position].objects, BATHGOD)))) {
 		ourtime++;

@@ -114,7 +114,8 @@ bury()
 	int     value;
 
 	if (testbit(inven, SHOVEL)) {
-		while (wordtype[++wordnumber] != OBJECT && wordtype[wordnumber] != NOUNS && wordnumber < wordcount);
+		while (wordtype[++wordnumber] != OBJECT && wordtype[wordnumber] != NOUNS && wordnumber < wordcount)
+			continue;
 		value = wordvalue[wordnumber];
 		if (wordtype[wordnumber] == NOUNS && (testbit(location[position].objects, value) || value == BODY))
 			switch (value) {
