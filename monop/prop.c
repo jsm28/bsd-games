@@ -1,4 +1,4 @@
-/*	$NetBSD: prop.c,v 1.6 1999/09/09 17:27:59 jsm Exp $	*/
+/*	$NetBSD: prop.c,v 1.7 2001/01/16 02:41:17 cgd Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -38,7 +38,7 @@
 #if 0
 static char sccsid[] = "@(#)prop.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: prop.c,v 1.6 1999/09/09 17:27:59 jsm Exp $");
+__RCSID("$NetBSD: prop.c,v 1.7 2001/01/16 02:41:17 cgd Exp $");
 #endif
 #endif /* not lint */
 

@@ -1,4 +1,4 @@
-/*	$NetBSD: config.h,v 1.5 1997/10/19 16:56:49 christos Exp $	*/
+/*	$NetBSD: config.h,v 1.6 2001/01/16 02:50:28 cgd Exp $	*/
 
 /*
  * Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985.

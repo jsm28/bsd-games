@@ -1,4 +1,4 @@
-/*	$NetBSD: player.h,v 1.8 1999/12/28 18:05:25 jsm Exp $	*/
+/*	$NetBSD: player.h,v 1.10 2001/01/04 05:34:56 jwise Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -34,9 +34,6 @@
  *
  *	@(#)player.h	8.2 (Berkeley) 5/3/95
  */
-
-#include <curses.h>
-#include "extern.h"
 
 /* sizes and coordinates for the screen */
 
@@ -92,21 +89,9 @@
 #define SLOT_B		VIEW_B
 #define SLOT_R		(SLOT_L+SLOT_X-1)
 
-#ifdef SIGTSTP
-#define SCREENTEST()	(initscr() != NULL && signal(SIGTSTP, SIG_DFL) != SIG_ERR && STAT_R < COLS && SCROLL_Y > 0)
-#else
-#define SCREENTEST()	(initscr() != NULL && STAT_R < COLS && SCROLL_Y > 0)
-#endif
-
-extern WINDOW *view_w;
-extern WINDOW *slot_w;
-extern WINDOW *scroll_w;
-extern WINDOW *stat_w;
-extern WINDOW *turn_w;
-
-extern char done_curses;
-extern char loaded, fired, changed, repaired;
-extern char dont_adjust;
+extern int done_curses;
+extern int loaded, fired, changed, repaired;
+extern int dont_adjust;
 extern int viewrow, viewcol;
 extern char movebuf[sizeof SHIP(0)->file->movebuf];
 extern char version[];

@@ -1,4 +1,4 @@
-/*	$NetBSD: dr_3.c,v 1.7 1999/09/30 18:01:33 jsm Exp $	*/
+/*	$NetBSD: dr_3.c,v 1.14 2001/02/05 01:10:09 christos Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -38,15 +38,23 @@
 #if 0
 static char sccsid[] = "@(#)dr_3.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: dr_3.c,v 1.7 1999/09/30 18:01:33 jsm Exp $");
+__RCSID("$NetBSD: dr_3.c,v 1.14 2001/02/05 01:10:09 christos Exp $");
 #endif
 #endif /* not lint */
 
-#include "driver.h"
 #include <stdlib.h>
+#include <string.h>
+#include "extern.h"
+#include "driver.h"
 
+static int	stillmoving(int);
+static int	is_isolated(struct ship *);
+static int	push(struct ship *, struct ship *);
+static void	step(struct ship *, int,  char *);
+
+/* move all comp ships */
 void
-moveall()		/* move all comp ships */
+moveall(void)
 {
 	struct ship *sp, *sq;
 	int n;
@@ -86,10 +94,10 @@ moveall()		/* move all comp ships */
 	n = 0;
 	foreachship(sp) {
 		if (snagged(sp))
-			(void) strcpy(sp->file->movebuf, "d");
+			strcpy(sp->file->movebuf, "d");
 		else
 			if (*sp->file->movebuf != 'd')
-				(void) strcat(sp->file->movebuf, "d");
+				strcat(sp->file->movebuf, "d");
 		row[n] = sp->file->row;
 		col[n] = sp->file->col;
 		dir[n] = sp->file->dir;
@@ -111,7 +119,7 @@ moveall()		/* move all comp ships */
 			if (!sp->file->movebuf[k])
 				sp->file->movebuf[k+1] = '\0';
 			else if (sp->file->dir)
-				step(sp->file->movebuf[k], sp, &moved[n]);
+				step(sp, sp->file->movebuf[k], &moved[n]);
 			n++;
 		}
 		/*
@@ -135,7 +143,7 @@ moveall()		/* move all comp ships */
 					snap++;
 				if (!range(sp, sq) && !fouled2(sp, sq)) {
 					makesignal(sp, "collision with $$", sq);
-					if (die() < 4) {
+					if (dieroll() < 4) {
 						makesignal(sp, "fouled with $$",
 						    sq);
 						Write(W_FOUL, sp, l, 0, 0, 0);
@@ -182,9 +190,8 @@ moveall()		/* move all comp ships */
 	}
 }
 
-int
-stillmoving(k)
-int k;
+static int
+stillmoving(int k)
 {
 	struct ship *sp;
 
@@ -194,9 +201,8 @@ int k;
 	return 0;
 }
 
-int
-is_isolated(ship)
-struct ship *ship;
+static int
+is_isolated(struct ship *ship)
 {
 	struct ship *sp;
 
@@ -207,9 +213,8 @@ struct ship *ship;
 	return 1;
 }
 
-int
-push(from, to)
-struct ship *from, *to;
+static int
+push(struct ship *from, struct ship *to)
 {
 	int bs, sb;
 
@@ -222,11 +227,8 @@ struct ship *from, *to;
 	return from < to;
 }
 
-void
-step(com, sp, moved)
-char com;
-struct ship *sp;
-char *moved;
+static void
+step(struct ship *sp, int com, char *moved)
 {
 	int dist;
 
@@ -266,10 +268,7 @@ char *moved;
 }
 
 void
-sendbp(from, to, sections, isdefense)
-struct ship *from, *to;
-int sections;
-char isdefense;
+sendbp(struct ship *from, struct ship *to, int sections, int isdefense)
 {
 	int n;
 	struct BP *bp;
@@ -288,9 +287,7 @@ char isdefense;
 }
 
 int
-is_toughmelee(ship, to, isdefense, count)
-struct ship *ship, *to;
-int isdefense, count;
+is_toughmelee(struct ship *ship, struct ship *to, int isdefense, int count)
 {
 	struct BP *bp;
 	int obp = 0;
@@ -321,7 +318,7 @@ int isdefense, count;
 }
 
 void
-reload()
+reload(void)
 {
 	struct ship *sp;
 
@@ -331,7 +328,7 @@ reload()
 }
 
 void
-checksails()
+checksails(void)
 {
 	struct ship *sp;
 	int rig, full; 

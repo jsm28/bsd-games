@@ -36,11 +36,12 @@ Most games are under the standard BSD terms:
    OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
    SUCH DAMAGE.
 
-The files "backgammon/backgammon/backlocal.h", "countmail/countmail"
-and "robots/auto.c" have a similar licence, but copyright is held by
-the NetBSD Foundation:
+The files "backgammon/backgammon/backlocal.h", "countmail/countmail",
+"hack/extern.h", "robots/auto.c", "sail/display.h" and
+"sail/restart.h" have a similar licence, but copyright is held by the
+NetBSD Foundation:
 
-   Copyright (c) 1997, 1998, 1999 The NetBSD Foundation, Inc.
+   Copyright (c) 1997, 1998, 1999, 2001 The NetBSD Foundation, Inc.
    All rights reserved.
 
    Redistribution and use in source and binary forms, with or without
@@ -71,8 +72,8 @@ the NetBSD Foundation:
    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
    POSSIBILITY OF SUCH DAMAGE.
 
-In the case of "adventure/extern.h" and "hack/extern.h" the copyright
-is held by Christos Zoulas:
+In the case of "adventure/extern.h" the copyright is held by Christos
+Zoulas:
 
    Copyright (c) 1997 Christos Zoulas.  All rights reserved.
 

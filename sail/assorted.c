@@ -1,4 +1,4 @@
-/*	$NetBSD: assorted.c,v 1.8 1999/09/08 21:17:58 jsm Exp $	*/
+/*	$NetBSD: assorted.c,v 1.14 2001/02/05 01:10:08 christos Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -38,21 +38,18 @@
 #if 0
 static char sccsid[] = "@(#)assorted.c	8.2 (Berkeley) 4/28/95";
 #else
-__RCSID("$NetBSD: assorted.c,v 1.8 1999/09/08 21:17:58 jsm Exp $");
+__RCSID("$NetBSD: assorted.c,v 1.14 2001/02/05 01:10:08 christos Exp $");
 #endif
 #endif /* not lint */
 
-#include "extern.h"
 #include <stdlib.h>
-#include <unistd.h>
 #include <err.h>
+#include "extern.h"
 
-static void strike __P((struct ship *, struct ship *));
+static void	strike (struct ship *, struct ship *);
 
 void
-table(rig, shot, hittable, on, from, roll)
-struct ship *on, *from;
-int rig, shot, hittable, roll;
+table(struct ship *from, struct ship *on, int rig, int shot, int hittable, int roll)
 {
 	int hhits = 0, chits = 0, ghits = 0, rhits = 0;
 	int Ghit = 0, Hhit = 0, Rhit = 0, Chit = 0;
@@ -244,9 +241,7 @@ int rig, shot, hittable, roll;
 }
 
 void
-Cleansnag(from, to, all, flag)
-struct ship *from, *to;
-char all, flag;
+Cleansnag(struct ship *from, struct ship *to, int all, int flag)
 {
 	if (flag & 1) {
 		Write(W_UNGRAP, from, to->file->index, all, 0, 0);
@@ -271,8 +266,7 @@ char all, flag;
 }
 
 static void
-strike(ship, from)
-struct ship *ship, *from;
+strike(struct ship *ship, struct ship *from)
 {
 	int points;
 
@@ -283,7 +277,7 @@ struct ship *ship, *from;
 	Write(W_POINTS, from, points, 0, 0, 0);
 	unboard(ship, ship, 0);		/* all offense */
 	unboard(ship, ship, 1);		/* all defense */
-	switch (die()) {
+	switch (dieroll()) {
 	case 3:
 	case 4:		/* ship may sink */
 		Write(W_SINK, ship, 1, 0, 0, 0);

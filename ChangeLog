@@ -1,5 +1,36 @@
 2001-02-07  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* adventure/hdr.h, adventure/init.c, arithmetic/arithmetic.c,
+	atc/atc.6.in, atc/extern.h, atc/input.c, atc/log.c, atc/main.c,
+	atc/update.c, backgammon/Makefile.bsd,
+	backgammon/Makefile.inc.bsd, backgammon/teachgammon/teach.c,
+	boggle/Makefile.bsd, boggle/boggle/help.c, boggle/boggle/mach.c,
+	boggle/boggle/timer.c, boggle/boggle/word.c, cribbage/crib.c,
+	dm/dm.c, fortune/Makefile.bsd, fortune/datfiles/Makefile.bsd,
+	fortune/datfiles/fortunes, fortune/datfiles/fortunes-o.real,
+	fortune/datfiles/fortunes-o.sp.ok, fortune/datfiles/fortunes2,
+	fortune/datfiles/netbsd, fortune/fortune/fortune.c, patching file
+	fortune/strfile/strfile.8, gomoku/bdisp.c, hack/config.h,
+	hack/def.monst.h, hack/def.rm.h, hack/extern.h, hack/hack.6.in,
+	hack/hack.cmd.c, hack/hack.h, hack/hack.options.c,
+	hack/hack.read.c, hack/hack.tty.c, hack/hack.unix.c,
+	hunt/hunt/hunt.c, hunt/hunt/otto.c, hunt/huntd/driver.c,
+	hunt/huntd/faketalk.c, hunt/huntd/get_names.c, monop/misc.c,
+	monop/monop.6.in, monop/prop.c, phantasia/phantglobs.h,
+	primes/pr_tbl.c, primes/primes.c, quiz/datfiles/midearth,
+	quiz/datfiles/pres, robots/main.c, robots/move_robs.c,
+	robots/play_level.c, rogue/rogue.h, sail/assorted.c,
+	sail/display.h, sail/dr_1.c, sail/dr_2.c, sail/dr_3.c,
+	sail/dr_4.c, sail/dr_5.c, sail/dr_main.c, sail/driver.h,
+	sail/extern.h, sail/game.c, sail/globals.c, sail/lo_main.c,
+	sail/main.c, sail/misc.c, sail/parties.c, sail/pl_1.c,
+	sail/pl_2.c, sail/pl_3.c, sail/pl_4.c, sail/pl_5.c, sail/pl_6.c,
+	sail/pl_7.c, sail/pl_main.c, sail/player.h, sail/restart.h,
+	sail/sync.c, trek/externs.c, trek/lose.c, trek/play.c, trek/win.c,
+	wtf/wtf.in: Update from NetBSD CVS.
+	* sail/main.c: Include <time.h>.
+	* COPYING: Update.
+
 	* wtf/acronyms: Update from NetBSD CVS.
 
 2001-01-11  Joseph S. Myers  <jsm28@cam.ac.uk>

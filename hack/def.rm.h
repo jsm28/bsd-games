@@ -1,4 +1,4 @@
-/*	$NetBSD: def.rm.h,v 1.4 1997/10/19 16:57:21 christos Exp $	*/
+/*	$NetBSD: def.rm.h,v 1.5 2001/01/16 02:50:28 cgd Exp $	*/
 
 /*
  * Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985.

@@ -1,4 +1,4 @@
-/*	$NetBSD: hack.h,v 1.5 2000/07/03 03:57:41 matt Exp $	*/
+/*	$NetBSD: hack.h,v 1.7 2001/02/05 00:37:43 christos Exp $	*/
 
 /*
  * Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985.
@@ -148,7 +148,6 @@ extern char lock[];
 extern char mlarge[];
 extern char morc;
 extern char nul[];
-extern char pl_character[];
 extern char plname[PL_NSIZ], pl_character[PL_CSIZ];
 extern const char quitchars[];
 extern char sdir[]; /* defined in hack.c */
@@ -166,7 +165,6 @@ extern int nroom;
 extern long moves;
 extern long wailmsg;
 extern schar xdir[], ydir[]; /* idem */
-extern struct gold *fgold;
 extern struct monst *mydogs;
 extern struct monst youmonst;
 extern struct obj *billobjs;
@@ -176,7 +174,6 @@ extern struct obj *uball;	/* defined if PUNISHED */
 extern struct obj *uchain;	/* defined iff PUNISHED */
 extern struct obj zeroobj;
 extern const struct permonst li_dog, dog, la_dog;
-extern const struct permonst mons[CMNUM + 2];
 extern const struct permonst pm_eel;
 extern const struct permonst pm_ghost;
 extern const struct permonst pm_mail_daemon;

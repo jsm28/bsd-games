@@ -1,4 +1,4 @@
-/*	$NetBSD: fortune.c,v 1.23 2000/04/14 05:58:02 simonb Exp $	*/
+/*	$NetBSD: fortune.c,v 1.26 2001/02/05 00:29:44 christos Exp $	*/
 
 /*-
  * Copyright (c) 1986, 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1986, 1993\n\
 #if 0
 static char sccsid[] = "@(#)fortune.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: fortune.c,v 1.23 2000/04/14 05:58:02 simonb Exp $");
+__RCSID("$NetBSD: fortune.c,v 1.26 2001/02/05 00:29:44 christos Exp $");
 #endif
 #endif /* not lint */
 
@@ -209,6 +209,8 @@ regex_t *Re_pat = NULL;
 #define		NAMLEN(d)	((d)->d_namlen)
 #endif
 
+extern char *__progname;
+
 int
 main(ac, av)
 	int	ac;
@@ -229,7 +231,7 @@ main(ac, av)
 #endif
 
 	init_prob();
-	srandom((int)(time((time_t *) NULL) + getpid()));
+	srandom((int)(time((time_t *) NULL) ^ getpid()));
 	do {
 		get_fort();
 	} while ((Short_only && fortlen() > SLEN) ||
@@ -1123,7 +1125,8 @@ get_pos(fp)
 	}
 	if ((u_int64_t)++(fp->pos) >= fp->tbl.str_numstr)
 		fp->pos -= fp->tbl.str_numstr;
-	DPRINTF(1, (stderr, "pos for %s is %qd\n", fp->name, fp->pos));
+	DPRINTF(1, (stderr, "pos for %s is %lld\n", fp->name,
+	    (long long)fp->pos));
 }
 
 /*
@@ -1360,8 +1363,7 @@ matches_in_list(list)
 void
 usage()
 {
-	extern char *__progname;
-	(void) fprintf(stderr, "%s [-a", __progname);
+	(void) fprintf(stderr, "Usage: %s [-a", __progname);
 #ifdef	DEBUG
 	(void) fprintf(stderr, "D");
 #endif	/* DEBUG */

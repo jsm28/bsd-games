@@ -1,4 +1,4 @@
-/*	$NetBSD: globals.c,v 1.9 2000/02/09 22:27:56 jsm Exp $	*/
+/*	$NetBSD: globals.c,v 1.12 2001/01/04 05:34:56 jwise Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -38,10 +38,12 @@
 #if 0
 static char sccsid[] = "@(#)globals.c	8.2 (Berkeley) 4/28/95";
 #else
-__RCSID("$NetBSD: globals.c,v 1.9 2000/02/09 22:27:56 jsm Exp $");
+__RCSID("$NetBSD: globals.c,v 1.12 2001/01/04 05:34:56 jwise Exp $");
 #endif
 #endif /* not lint */
 
+#include <sys/types.h>
+#include <setjmp.h>
 #include "extern.h"
 
 struct scenario scene[] = {
@@ -548,10 +550,9 @@ const char dc[] = { 0, 0, -1, -1, -1, 0, 1, 1, 1 };
 int mode;
 jmp_buf restart;
 
-char debug;				/* -D */
-char randomize;				/* -x, give first available ship */
-char longfmt;				/* -l, print score in long format */
-char nobells;				/* -b, don't ring bell before Signal */
+int randomize;				/* -x, give first available ship */
+int longfmt;				/* -l, print score in long format */
+int nobells;				/* -b, don't ring bell before Signal */
 
 gid_t gid;
 gid_t egid;
@@ -565,4 +566,4 @@ int turn;
 int game;
 int alive;
 int people;
-char hasdriver;
+int hasdriver;

@@ -1,4 +1,4 @@
-/*	$NetBSD: game.c,v 1.6 1999/09/17 17:07:11 jsm Exp $	*/
+/*	$NetBSD: game.c,v 1.10 2001/02/05 01:10:09 christos Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -38,16 +38,15 @@
 #if 0
 static char sccsid[] = "@(#)game.c	8.2 (Berkeley) 4/28/95";
 #else
-__RCSID("$NetBSD: game.c,v 1.6 1999/09/17 17:07:11 jsm Exp $");
+__RCSID("$NetBSD: game.c,v 1.10 2001/02/05 01:10:09 christos Exp $");
 #endif
 #endif /* not lint */
 
+#include <sys/types.h>
 #include "extern.h"
 
 int
-maxturns(ship, af)
-struct ship *ship;
-char *af;
+maxturns(struct ship *ship, char *af)
 {
 	int turns;
 
@@ -62,9 +61,7 @@ char *af;
 }
 
 int
-maxmove(ship, dir, fs)
-struct ship *ship;
-int dir, fs;
+maxmove(struct ship *ship, int dir, int fs)
 {
 	int riggone = 0, Move, flank = 0;
 
