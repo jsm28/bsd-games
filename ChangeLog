@@ -1,3 +1,10 @@
+2000-08-04  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* include/signal.h, include/stdio.h, include/stdlib.h,
+	include/termios.h, include/sys/cdefs.h, include/sys/ttydefaults.h:
+	Use #pragma GCC system_header to allow #include_next with
+	-pedantic.
+
 2000-08-03  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* atc/input.c, atc/log.c, atc/update.c, hack/config.h,

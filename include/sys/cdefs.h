@@ -1,6 +1,6 @@
 /* cdefs.h - bsd-games wrapper for <sys/cdefs.h>.
  *
- * Copyright (c) 1997, 1998, 1999 Joseph Samuel Myers.
+ * Copyright (c) 1997, 1998, 1999, 2000 Joseph Samuel Myers.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,10 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
+
+#if __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 96)
+#pragma GCC system_header
+#endif
 
 #include_next <sys/cdefs.h>
 
