@@ -1,5 +1,8 @@
 2004-01-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* fortune/fortune/fortune.6.in: Update substitution for path to
+	fortunes directory.
+
 	* cribbage/crib.c, cribbage/cribbage.h, cribbage/io.c,
 	dab/Makefile.bsd, monop/misc.c, monop/monop.def, monop/monop.ext:
 	Update from NetBSD CVS.
