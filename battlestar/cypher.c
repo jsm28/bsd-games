@@ -168,7 +168,6 @@ cypher()
 			break;
 
 		case DROP:
-
 			if (wordnumber < wordcount && wordvalue[wordnumber + 1] == EVERYTHING) {
 				int things;
 				things = 0;
@@ -185,7 +184,6 @@ cypher()
 			} else
 				drop("Dropped");
 			break;
-
 
 		case KICK:
 		case THROW:
@@ -224,9 +222,7 @@ cypher()
 				takeoff();
 			break;
 
-
 		case DRAW:
-
 			if (wordnumber < wordcount && wordvalue[wordnumber + 1] == EVERYTHING) {
 				int things;
 				things = 0;
@@ -243,9 +239,7 @@ cypher()
 				draw();
 			break;
 
-
 		case PUTON:
-
 			if (wordnumber < wordcount && wordvalue[wordnumber + 1] == EVERYTHING) {
 				int things;
 				things = 0;
@@ -263,7 +257,6 @@ cypher()
 			break;
 
 		case WEARIT:
-
 			if (wordnumber < wordcount && wordvalue[wordnumber + 1] == EVERYTHING) {
 				int things;
 				things = 0;
@@ -280,9 +273,7 @@ cypher()
 				wearit();
 			break;
 
-
 		case EAT:
-
 			if (wordnumber < wordcount && wordvalue[wordnumber + 1] == EVERYTHING) {
 				int things;
 				things = 0;
@@ -299,11 +290,9 @@ cypher()
 				eat();
 			break;
 
-
 		case PUT:
 			put();
 			break;
-
 
 		case INVEN:
 			if (ucard(inven)) {
@@ -549,7 +538,6 @@ cypher()
 			puts("How's that?");
 			return (-1);
 			break;
-
 
 		}
 		if (wordnumber < wordcount && *words[wordnumber++] == ',')

@@ -1,5 +1,8 @@
 2000-09-25  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/cypher.c (cypher): Remove excess blank lines.  From
+	OpenBSD.
+
 	* battlestar/com5.c (love): Fix loving already loved goddess;
 	avoid fallthrough after loving goddess; give error on "love
 	amulet".  From OpenBSD.
