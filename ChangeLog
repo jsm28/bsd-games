@@ -1,3 +1,7 @@
+2000-08-05  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* wtf/acronyms: Update from NetBSD CVS.
+
 2000-08-04  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* include/signal.h, include/stdio.h, include/stdlib.h,
