@@ -1,6 +1,20 @@
-Special Thanks to:  
+For recent work (since 1.3), thanks to:
 
-Andy Tefft (teffta@engr.dnet.ge.com) 
+Joey Hess <joeyh@master.debian.org>
+
+  For the Debian patches, which covered what was needed to make the games
+  compile with current libraries, provided many bug fixes and showed
+  where I needed to do things like parametrise manpages.
+
+David Frey <david@eos.lugs.ch>
+
+  For the ports of tetris and gomoku.
+
+For the original bsd-games (versions up to 1.3):
+
+Special Thanks to:
+
+Andy Tefft (teffta@engr.dnet.ge.com)
 
   For porting backgammon, canfield, fortune, and number.  Andy also was a
   big help in organizing this project, and in getting the ball rolling in
@@ -11,5 +25,3 @@ Thanks also to:
   jyanowit@orixa.mtholyoke.edu - backgammon bug fix.
   Andrew Kuchling (fnord@binkley.cs.mcgill.ca) - bog bug fix.
   Rik Faith (faith@cs.unc.edu) - words file for hangman and bog.
-
-

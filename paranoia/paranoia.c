@@ -737,7 +737,7 @@ page40()
 	printf("You breathe a sigh of relief as Plato-B-PHI picks on the other Troubleshooter.\n");
 	printf("\"You down here in the front,\" says the instructor pointing at the other\n");
 	printf("Troubleshooter, \"you\'ll make a good volunteer.  Please step forward.\"\n");
-	printf("The Troubleshooter looks around with a \`who me?\' expression on his face, but\n");
+	printf("The Troubleshooter looks around with a `who me?\' expression on his face, but\n");
 	printf("since he is the only one visible in the audience he figures his number is up.\n");
 	printf("He walks down to the podium clutching his Action Troubleshooter(tm) doll before\n");
 	printf("him like a weapon.  \"Here,\" says Plato-B-PHI, \"take the mutant detection ray\n");

@@ -69,9 +69,6 @@ static char sccsid[] = "@(#)unstr.c	5.8 (Berkeley) 4/8/91";
 # define	MAXPATHLEN	1024
 # endif	/* MAXPATHLEN */
 
-#ifdef linux
-typedef long off_t;
-#endif
 
 char	*Infile,			/* name of input file */
 	Datafile[MAXPATHLEN],		/* name of data file */

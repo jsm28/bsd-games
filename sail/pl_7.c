@@ -478,7 +478,9 @@ void
 susp()
 {
 	blockalarm();
+#ifndef linux
 	tstp();
+#endif
 	(void) signal(SIGTSTP, susp);
 	unblockalarm();
 }

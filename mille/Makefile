@@ -1,31 +1,30 @@
-#	Linux makefile for mille 
+# Makefile - makefile for mille
 
-PROG=	mille
-
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+include ../Makeconfig
 
 SRCS=	comp.c end.c extern.c init.c mille.c misc.c move.c print.c \
 	roll.c save.c types.c varpush.c
 OBJS=	mille.o comp.o end.o extern.o init.o misc.o move.o print.o \
 	roll.o save.o types.o varpush.o
-LIBS=	-lcurses -ltermcap -lbsd
-INCS=	-I/usr/include/bsd -I/usr/include
 
-all: mille
+LIBS = $(NCURSES_LIB) $(BSD_LIB)
+INCS = $(BSD_INCS) $(NCURSES_INCS)
+DEFS = $(BSD_DEFS)
 
-mille: ${OBJS}
-	${CC} ${OBJS} -o $@ ${LIBS}
+all:	mille
 
-$(OBJS):        mille.h
-	$(CC) $(CFLAGS) -c $(INCS) $*.c -o $@
+mille:	$(OBJS)
+	${CC} $(LDFLAGS) $(OBJS) -o $@ $(LIBS)
+
+.c.o:	
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
+
+$(OBJS):	mille.h unctrl.h
 
 clean:
 	rm -f *.o core mille a.out
 
-install: mille mille.6
-	install -g bin -m 555 -o root mille ${DESTDIR}
-	install -g bin -m 444 -o root mille.6 ${MANDIR}
+install:	mille mille.6
+	$(INSTALL_BINARY) mille $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) mille
+	$(INSTALL_MANUAL) mille.6

@@ -58,12 +58,12 @@ static char sccsid[] = "@(#)pom.c	5.3 (Berkeley) 2/28/91";
 #include <tzfile.h>
 #include <math.h>
 
-#ifdef linux
+#if defined(linux) && !defined(isleap)
   #define isleap(y) (((y) % 4) == 0 && ((y) % 100) != 0 || ((y) % 400) == 0)
 #endif
 
-#ifndef linux
-  #define	PI	  3.141592654
+#ifndef PI
+  #define	PI	  3.14159265358979323846
 #endif
 #define	EPOCH	  85
 #define	EPSILONg  279.611371	/* solar ecliptic long at EPOCH */
@@ -116,6 +116,7 @@ main()
 				    today);
 		}
 	}
+	return 0;
 }
 
 /*

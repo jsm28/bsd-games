@@ -22,7 +22,7 @@ $(OBJS):	back.h
 	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
 simple:	backgammon.c
-	$(CC) $(CFLAGS) $(DEFS) $(INCS) -o sbackgammon backgammon.c
+	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFS) $(INCS) -o sbackgammon backgammon.c
 
 clean:
 	rm -f *.o core a.out

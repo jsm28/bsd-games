@@ -1,28 +1,26 @@
-#	@(#)Makefile	5.3 (Berkeley) 5/11/90
+# Makefile - makefile for snake/snscore
 
-PROG=	snscore
+include ../../Makeconfig
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+PROG = snscore
 
-SCOREDIR=       $(LIBDIR)/snake.log
-RAWSCOREDIR=    $(LIBDIR)/snakerawscores
-_PATH_LOGFILE=          \"$(SCOREDIR)\"
-_PATH_RAWSCORES=        \"$(RAWSCOREDIR)\"
+SCOREFILE    = $(VARLIBDIR)/snake.log
+RAWSCOREFILE = $(VARLIBDIR)/snakerawscores
 
-LIBS=	-lbsd
-INC=	-I../snake
+INCS = -I../snake $(BSD_INCS)
+DEFS = $(BSD_DEFS) -D_PATH_LOGFILE=\"$(SCOREFILE)\" \
+	-D_PATH_RAWSCORES=\"$(RAWSCOREFILE)\"
+LIBS = $(BSD_LIB)
 
-$(PROG):	../snake/pathnames.h
-	$(CC) $(INC) -D_PATH_LOGFILE=$(_PATH_LOGFILE) \
-		-D_PATH_RAWSCORES=$(_PATH_RAWSCORES) -o $(PROG) $(PROG).c \
-		$(LIBS)
+all:	$(PROG)
+
+$(PROG):	$(PROG).c ../snake/pathnames.h
+	$(CC) $(CFLAGS) $(LDFLAGS) $(INCS) $(DEFS) -o $(PROG) $(PROG).c $(LIBS)
 
 install:	$(PROG)
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
+	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
+	$(INSTALL_MANUAL) snake.6 snscore.6
 
 clean:
 	rm -f $(PROG) core *.o

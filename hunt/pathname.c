@@ -12,14 +12,20 @@
 
 # include	<sys/types.h>
 
+#ifdef linux
+/* _PATH_SOCKETS defined in Makefile */
+#else
+#define _PATH_SOCKETS "/tmp"
+#endif
+
 # ifdef DEBUG
 
 char	*Driver =	"/home/socr/a/conrad/games/src/hunt/huntd.dbg";
 #  ifdef INTERNET
 u_short	Test_port =	('h' << 8) | 't';
 #  else
-char	*Sock_name =	"/tmp/hunt";
-char	*Stat_name =	"/tmp/hunt.stats";
+char	*Sock_name =	_PATH_SOCKETS "/hunt";
+char	*Stat_name =	_PATH_SOCKETS "/hunt.stats";
 #  endif
 
 # else
@@ -28,8 +34,8 @@ char	*Driver =	HUNTD;
 #  ifdef INTERNET
 u_short	Test_port =	('h' << 8) | 't';
 #  else
-char	*Sock_name =	"/tmp/hunt";
-char	*Stat_name =	"/tmp/hunt.stats";
+char	*Sock_name =	_PATH_SOCKETS "/hunt";
+char	*Stat_name =	_PATH_SOCKETS "/hunt.stats";
 #  endif
 
 # endif

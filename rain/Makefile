@@ -1,21 +1,22 @@
-#	@(#)Makefile	5.3 (Berkeley) 5/11/90
+# Makefile - makefile for rain
 
-PROG=	rain
+include ../Makeconfig
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
+PROG = rain
 
-override CFLAGS= -O -DUSG
-LIBS=	-lcurses -ltermcap -lbsd
+LIBS = $(NCURSES_LIB) $(BSD_LIB)
+INCS = $(BSD_INCS) $(NCURSES_INCS)
+DEFS = $(BSD_DEFS) -DUSG
 
-$(PROG):
-	$(CC) $(CFLAGS) -o $(PROG) $(PROG).c $(LIBS)
+all:	$(PROG)
+
+$(PROG):	$(PROG).c
+	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFS) $(INCS) -o $(PROG) $(PROG).c $(LIBS)
 
 install:	$(PROG)
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o root -g root -m 444 $(PROG).6 $(MANDIR)
+	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
+	$(INSTALL_MANUAL) $(PROG).6
 
 clean:
 	rm -f $(PROG) core *.o

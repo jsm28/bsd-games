@@ -1,34 +1,22 @@
-9/25/93 - Installation directions
-=================================
+1997-05-01 - Installation directions
+====================================
 
-Installing Source Release:
---------------------------
+(Note, first cd to bog and decide if you want -DPURE or not -- see
+    bog/README.linux for more information.  If you are in a hurry,
+    don't worry about it ... it really is more of an aesthetic thing.)
 
-  (Note, first cd to bog and decide if you want -DPURE or not -- see
-      bog/README.linux for more information.  If you are in a hurry,
-      don't worry about it ... it really is more of an aesthetic thing.)
-
-  1.  cd to the top level directory in the source distribution.  i.e. the
-      directory that contains this file.  (Your probably already here!)
-  2.  Edit GAMESROOT to reflect you personal preferences.
-  3.  type make
-  4.  become root
-  5.  type make install
-
-  If something doesn't install correctly you probably have a non-standard
-  Linux configuration. :) :) :)  Actually, let us know, we probably
-  screwed something up.  (curt@sledge.mn.org or teffta@engr.dnet.ge.com)
+1.  cd to the top level directory in the source distribution.  i.e. the
+    directory that contains this file.  (You're probably already here!)
+2.  Run ./configure and configure the installation to your liking.
+3.  Type make.  Ignore compiler warnings.
+4.  Become root.
+5.  Type make install.
 
   Each subdirectory has a README.linux file.  If you are still having 
   trouble with a program, check this file first -- it may contain some 
   helpful hints.
 
-
-Installing Binary Release:
---------------------------
-
-  1.  become root
-  2.  cd /
-  3.  zcat <bin-tar-file-name> | tar xvf -
-
-  Files will go into /usr/games, /usr/man/man6 and /usr/man/man8
+**************************************************************
+***** Compilation with glibc (libc 6) does not yet work. *****
+***** This will be fixed in a later release.             *****
+**************************************************************

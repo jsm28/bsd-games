@@ -1,25 +1,28 @@
-#
+# Makefile - makefile for fortune
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
+include ../../Makeconfig
 
 FORTDIR=\"$(DESTDIR)\"
 
-all: fortune
+LIBS = $(BSD_LIB)
+INCS = -I../strfile $(BSD_INCS)
+DEFS = $(BSD_DEFS) -DFORTDIR=\"$(LIBDIR)\"
 
-fortune:fortune.c pathnames.h
-	$(CC) -O2 -DFORTDIR=$(FORTDIR) -o fortune -I../strfile \
-		-I/usr/include/bsd fortune.c -lbsd
+all:	fortune
 
-test:fortune.c pathnames.h
-	$(CC) -O2 -DTEST -DFORTDIR=\"..\" -o fortune.test -I../strfile \
-		-I/usr/include/bsd fortune.c -lbsd
+fortune:	fortune.c pathnames.h ../strfile/strfile.h
+	$(CC) $(LDFLAGS) $(CFLAGS) $(DEFS) $(INCS) -o fortune fortune.c $(LIBS)
 
-install: all
-	install -g bin -m 555 -o root fortune ${DESTDIR}
-	install -g bin -m 444 -o root fortune.6 ${MANDIR}
+test:	fortune.test
+
+fortune.test:	fortune.c pathnames.h ../strfile/strfile.h
+	$(CC) $(LDFLAGS) $(CFLAGS) $(BSD_DEFS) -DTEST -DFORTDIR=\"..\" \
+	    $(INCS) -o fortune.test fortune.c $(LIBS)
+
+install:	all
+	$(INSTALL_BINARY) fortune $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) fortune
+	$(INSTALL_MANUAL) fortune.6
 
 clean:
 	rm -f *.o core a.out fortune fortune.test

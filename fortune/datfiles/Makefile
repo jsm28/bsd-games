@@ -1,18 +1,17 @@
-#
+# Makefile - makefile for fortune/datfiles
 
-# DESTDIR should match the directory named in ../fortune/pathnames.h
-DESTDIR=/usr/games
+include ../../Makeconfig
 
-DATFILES=fortunes.dat startrek.dat zippy.dat fortunes-o.dat
-SRCFILES=fortunes startrek zippy fortunes-o
+DATFILES = fortunes.dat startrek.dat zippy.dat fortunes-o.dat
+SRCFILES = fortunes startrek zippy fortunes-o
 
-all: ${DATFILES}
+all:	$(DATFILES)
 
-install: ${DATFILES}
-	install -g bin -m 555 -o root -d ${DESTDIR}/fortunes
-	install -g bin -m 444 -o root ${DATFILES} ${SRCFILES} \
-		${DESTDIR}/fortunes
-	chmod ugo+x ${DESTDIR}/fortunes
+install:	$(DATFILES)
+	test -d $(INSTALL_PREFIX)$(LIBDIR)/fortunes || \
+	    install -d $(INSTALL_PREFIX)$(LIBDIR)/fortunes
+	$(INSTALL_DATA) $(DATFILES) $(SRCFILES) \
+	    $(INSTALL_PREFIX)$(LIBDIR)/fortunes
 
 fortunes-o.dat: fortunes-o
 	../strfile/strfile -rsx fortunes-o fortunes-o.dat
@@ -28,6 +27,3 @@ zippy.dat: zippy
 
 clean:
 	rm -f *.dat
-
-
-

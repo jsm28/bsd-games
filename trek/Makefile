@@ -1,12 +1,8 @@
-#	@(#)Makefile	5.8 (Berkeley) 5/11/90
+# Makefile - makefile for trek
 
-PROG=	trek
+include ../Makeconfig
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+PROG = trek
 
 SRCS=	abandon.c attack.c autover.c capture.c check_out.c checkcond.c \
 	compkl.c computer.c damage.c damaged.c dcrept.c destruct.c \
@@ -24,20 +20,25 @@ OBJS=	abandon.o attack.o autover.o capture.o check_out.o checkcond.o \
 	ranf.o rest.o schedule.o score.o setup.o setwarp.o \
 	shield.o snova.o srscan.o systemname.o torped.o utility.o \
 	visual.o warp.o win.o cgetc.o
-INCS=	-I/usr/include/bsd
-LIBS=	-lm -lbsd
 
-all: ${PROG}
+LIBS = -lm $(BSD_LIB)
+INCS = $(BSD_INCS)
+DEFS = $(BSD_DEFS)
+
+all:	$(PROG)
 
 $(PROG):	$(OBJS)
-	$(CC) $(OBJS) $(LIBS) -o $(PROG)
+	$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(PROG)
+
+.c.o:	
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
 $(OBJS):	getpar.h trek.h
-	$(CC) $(CFLAGS) $(INCS) -c $*.c -o $@
 
-install:	all
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o root -g root -m 444 $(PROG).6 $(MANDIR)
+install:	$(PROG)
+	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
+	$(INSTALL_MANUAL) $(PROG).6
 
 clean:
 	rm -f $(PROG) core *.o

@@ -188,6 +188,7 @@ shoot()
 	int firstnumber, value;
 	register int n;
 
+	firstnumber = wordcount + 2;
 	if (!testbit(inven,LASER))
 		puts("You aren't holding a blaster.");
 	else {

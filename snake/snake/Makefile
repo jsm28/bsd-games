@@ -1,38 +1,41 @@
-#	@(#)Makefile	5.10 (Berkeley) 5/11/90
+# Makefile - makefile for snake/snake
 
-PROG=	snake
+include ../../Makeconfig
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+SCOREFILE    = $(VARLIBDIR)/snake.log
+RAWSCOREFILE = $(VARLIBDIR)/snakerawscores
+
+PROG = snake
 
 SRCS=	move.c snake.c
 OBJS=	move.o snake.o
-INCS=	-I/usr/include/bsd
-LIBS=	-lm -lcurses -ltermcap -lbsd
-SCOREDIR=	$(LIBDIR)/snake.log
-RAWSCOREDIR=	$(LIBDIR)/snakerawscores
-_PATH_LOGFILE=		\"$(SCOREDIR)\"
-_PATH_RAWSCORES=	\"$(RAWSCOREDIR)\"
+
+INCS = $(BSD_INCS) $(NCURSES_INCS)
+DEFS = $(BSD_DEFS) -D_PATH_LOGFILE=\"$(SCOREFILE)\" \
+	-D_PATH_RAWSCORES=\"$(RAWSCOREFILE)\"
+
+LIBS = -lm $(NCURSES_LIB) $(BSD_LIB)
+
+all:	$(PROG)
 
 $(PROG):	$(OBJS)
-	$(CC) $(OBJS) $(LIBS) -o $(PROG)
+	$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(PROG)
 
-$(OBJS):
-	$(CC) -O -c $(CFLAGS) $(INCS) -D_PATH_LOGFILE=$(_PATH_LOGFILE) \
-		-D_PATH_RAWSCORES=$(_PATH_RAWSCORES) $*.c -o $@
+.c.o:	
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
+
+$(OBJS):	snake.h pathnames.h
 
 install:	$(PROG)
-	touch $(SCOREDIR)
-	chmod 666 $(SCOREDIR)
-	chown bin $(SCOREDIR)
-	touch $(RAWSCOREDIR)
-	chmod 666 $(RAWSCOREDIR)
-	chown bin $(RAWSCOREDIR)
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o root -g root -m 444 $(PROG).6 $(MANDIR)
+	$(INSTALL_SCORE_GAME) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
+	touch $(INSTALL_PREFIX)$(SCOREFILE)
+	$(INSTALL_SCORE_FILE2) $(INSTALL_PREFIX)$(SCOREFILE)
+	$(INSTALL_SCORE_FILE3) $(INSTALL_PREFIX)$(SCOREFILE)
+	touch $(INSTALL_PREFIX)$(RAWSCOREFILE)
+	$(INSTALL_SCORE_FILE2) $(INSTALL_PREFIX)$(RAWSCOREFILE)
+	$(INSTALL_SCORE_FILE3) $(INSTALL_PREFIX)$(RAWSCOREFILE)
+	$(INSTALL_MANUAL) $(PROG).6
 
 clean:
 	rm -f $(PROG) core *.o

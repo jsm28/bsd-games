@@ -40,11 +40,7 @@
 static char sccsid[] = "@(#)io.c	5.8 (Berkeley) 2/28/91";
 #endif /* not lint */
 
-# ifdef linux
-  # include	<ncurses.h>
-# else
-  # include	<curses.h>
-# endif
+# include	<curses.h>
 # include	<ctype.h>
 # include	<signal.h>
 # include	<stdarg.h>

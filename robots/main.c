@@ -169,19 +169,18 @@ quit()
 #endif
 
 	mvcur(0, COLS - 1, LINES - 1, 0);
+#ifndef linux
 	if (CE) {
-#ifdef linux
-		tputs(CE, 1, putchar);
-#else
 		tputs(CE, 1, _putchar);
-#endif
 		endwin();
 	}
 	else {
 		endwin();
 		putchar('\n');
 	}
-#ifdef linux
+#else
+	endwin();
+	putchar('\n');
 	ioctl(0, TIOCSETP, &save);
 #endif
 	exit(0);

@@ -33,7 +33,7 @@
  *	@(#)player.h	5.4 (Berkeley) 6/1/90
  */
 
-#include <ncurses.h>
+#include <curses.h>
 #include "externs.h"
 
 /* sizes and coordinates for the screen */
@@ -107,7 +107,7 @@ char loaded, fired, changed, repaired;
 char dont_adjust;
 int viewrow, viewcol;
 char movebuf[sizeof SHIP(0)->file->movebuf];
-char version[];
+extern char version[];
 int player;
 struct ship *ms;		/* memorial structure, &cc->ship[player] */
 struct File *mf;		/* ms->file */

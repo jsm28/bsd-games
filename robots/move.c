@@ -156,7 +156,9 @@ over:
 		  case 'W':
 			Waiting = TRUE;
 			leaveok(stdscr, TRUE);
+#ifndef linux
 			flushok(stdscr, FALSE);
+#endif
 			goto ret;
 		  case 't':
 		  case 'T':
@@ -169,13 +171,13 @@ teleport:
 			refresh();
 			flush_in();
 			goto ret;
-		  case CTRL(L):
+		  case CTRL('L'):
 			wrefresh(curscr);
 			break;
 		  case EOF:
 			break;
 		  default:
-			putchar(CTRL(G));
+			putchar(CTRL('G'));
 			reset_count();
 			fflush(stdout);
 			break;
@@ -240,7 +242,7 @@ int	dy, dx;
 			refresh();
 		}
 		else {
-			putchar(CTRL(G));
+			putchar(CTRL('G'));
 			reset_count();
 		}
 		return FALSE;

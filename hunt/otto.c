@@ -33,13 +33,17 @@
 # ifndef USE_CURSES
 extern	char	screen[SCREEN_HEIGHT][SCREEN_WIDTH2];
 # define	SCREEN(y, x)	screen[y][x]
-# else
+# else /* USE_CURSES */
 # if defined(BSD_RELEASE) && BSD_RELEASE >= 44
 # define	SCREEN(y, x)	stdscr->lines[y]->line[x].ch
-# else
+# else /* !(defined(BSD_RELEASE) && BSD_RELEASE >= 44) */
+# ifndef NCURSES_VERSION
 # define	SCREEN(y, x)	stdscr->_y[y][x]
-# endif
-# endif
+# else /* NCURSES_VERSION */
+# define	SCREEN(y, x)	stdscr->_line[y].text[x]
+# endif /* NCURSES_VERSION */
+# endif /* !(defined(BSD_RELEASE) && BSD_RELEASE >= 44) */
+# endif /* USE_CURSES */
 
 # ifndef DEBUG
 # define	STATIC		static

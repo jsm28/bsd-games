@@ -4,8 +4,7 @@ As usual the Makefiles were done completely from scratch.  The original
 is in Makefile.orig.  Other than that, the source should still compile
 under bsd.
 
-Also as usual, set the DESTDIR and the location of the cards.pck file, etc.
-in the Makefile.
+Also as usual, set the location of the monop-cards.pck file in the Makefile.
 
 If you change any of the default default file placements remember to make
 corresponding changes in the man page.

@@ -1,39 +1,39 @@
-#	@(#)Makefile	5.5 (Berkeley) 5/11/90
+# Makefile - makefile for cribbage
 
-PROG=	cribbage
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+include ../Makeconfig
 
-SCORE=	criblog
-INSTR=	cribbage.instr
-_PATH_LOG=	\"$(LIBDIR)/$(SCORE)\"
-_PATH_INSTR=	\"$(LIBDIR)/$(INSTR)\"
-_PATH_MORE=	\"/usr/bin/less\"
+PROG      = cribbage
+
+SCOREFILE = $(VARLIBDIR)/criblog
+INSTRFILE = $(SHAREDIR)/cribbage.instr
+PAGERFILE = /usr/bin/less
 
 SRCS=	extern.c crib.c cards.c instr.c io.c score.c support.c
 OBJS=	extern.o crib.o cards.o instr.o io.o score.o support.o
-LIBS=	-lncurses -ltermcap -lbsd
+
+LIBS = $(NCURSES_LIB) $(BSD_LIB)
+INCS = $(BSD_INCS) $(NCURSES_INCS)
+DEFS = $(BSD_DEFS) -D_PATH_LOG=\"$(SCOREFILE)\" \
+	-D_PATH_INSTR=\"$(INSTRFILE)\" -D_PATH_MORE=\"$(PAGERFILE)\"
 
 all:	$(PROG)
 
 $(PROG):	$(OBJS)
-	$(CC) $(OBJS) $(LIBS) -o $(PROG)
+	$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(PROG)
+
+.c.o:	
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
 $(OBJS):	cribbage.h cribcur.h deck.h pathnames.h
-	$(CC) $(CFLAGS) -c -D_PATH_LOG=$(_PATH_LOG) \
-		-D_PATH_INSTR=$(_PATH_INSTR) -D_PATH_MORE=$(_PATH_MORE) \
-		$*.c -o $@
 
-install:	all
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o bin -g root -m 755 $(PROG).n $(LIBDIR)/$(INSTR)
-	install -c -o root -g root -m 444 $(PROG).6 $(MANDIR)
-	touch $(LIBDIR)/$(SCORE)
-	chown bin $(LIBDIR)/$(SCORE)
-	chmod 666 $(LIBDIR)/$(SCORE)
+install:	$(PROG)
+	$(INSTALL_SCORE_GAME) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
+	$(INSTALL_DATA) $(PROG).n $(INSTALL_PREFIX)$(INSTRFILE)
+	touch $(INSTALL_PREFIX)$(SCOREFILE)
+	$(INSTALL_SCORE_FILE2) $(INSTALL_PREFIX)$(SCOREFILE)
+	$(INSTALL_SCORE_FILE3) $(INSTALL_PREFIX)$(SCOREFILE)
+	$(INSTALL_MANUAL) $(PROG).6
 
-clean:
+clean:	
 	rm -f $(PROG) core *.o

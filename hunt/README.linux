@@ -5,14 +5,12 @@ It hasn't been extensively tested, and may contain many bugs.  Note,
 any problems would most likely be due to my mangling/porting the code.
 The original authors have done a nice job.
 
-Good luck using ncurses with this game! :)
-
-As usual, set the BINDIR, LIBDIR, and MANDIR in the Makefile.  Also, you
-can go through the Makefile and specify your desired game parameters.  Be
-careful what you change, this Linux version is rather fragile.
+Also, you can go through the Makefile and specify your desired game
+parameters.  Be careful what you change, this Linux version is rather
+fragile.  Any volunteers to sort out running over a network?
 
 One hint for those who have never played hunt before ...
-  1.  Start the hunt driver:  % /usr/games/lib/huntd &
+  1.  Start the hunt driver:  % /usr/sbin/huntd &
   2.  Now start hunt:         % /usr/games/hunt [options]
 In other words, for best results, get the driver running first.
 

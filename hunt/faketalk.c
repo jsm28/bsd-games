@@ -94,7 +94,7 @@ faketalk()
 # ifdef LOG
 		syslog(LOG_ERR, "faketalk: smtp protocol not supported\n");
 # else
-		fprintf(stderr, "faketalk: stmp protocol not supported\n");
+		fprintf(stderr, "faketalk: smtp protocol not supported\n");
 # endif
 		_exit(1);
 	}

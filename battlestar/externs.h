@@ -39,6 +39,10 @@
   #include <sys/signal.h>
 #endif
 #include <stdio.h>
+#ifdef linux
+  #include <stdlib.h>
+  #include <string.h>
+#endif
 
 #define BITS (8 * sizeof (int))
 
@@ -230,16 +234,16 @@ struct room {
 	char *desc;
 	unsigned int objects[NUMOFWORDS];
 };
-struct room dayfile[];
-struct room nightfile[];
+extern struct room dayfile[];
+extern struct room nightfile[];
 struct room *location;
 
 	/* object characteristics */
-char *objdes[NUMOFOBJECTS];
-char *objsht[NUMOFOBJECTS];
-char *ouch[NUMOFINJURIES];
-int objwt[NUMOFOBJECTS];
-int objcumber[NUMOFOBJECTS];
+extern char *objdes[NUMOFOBJECTS];
+extern char *objsht[NUMOFOBJECTS];
+extern char *ouch[NUMOFINJURIES];
+extern int objwt[NUMOFOBJECTS];
+extern int objcumber[NUMOFOBJECTS];
 
 	/* current input line */
 #define NWORD	20			/* words per line */
@@ -259,21 +263,22 @@ int left, right, ahead, back;
 int bclock, fuel, torps;
 int carrying, encumber;
 int rythmn;
-int followfight;
+extern int followfight;
 int ate;
 int snooze;
 int meetgirl;
-int followgod;
+extern int followgod;
 int godready;
-int win;
+extern int win;
 int wintime;
 int wiz;
 int tempwiz;
-int matchlight, matchcount;
+int matchlight;
+extern int matchcount;
 int loved;
 int pleasure, power, ego;
-int WEIGHT;
-int CUMBER;
+extern int WEIGHT;
+extern int CUMBER;
 int notes[NUMOFNOTES];
 unsigned int inven[NUMOFWORDS];
 unsigned int wear[NUMOFWORDS];
@@ -291,11 +296,11 @@ struct wlist {
 #define HASHMUL		81
 #define HASHMASK	(HASHSIZE - 1)
 struct wlist *hashtab[HASHSIZE];
-struct wlist wlist[];
+extern struct wlist wlist[];
 
 struct objs {
 	short room;
 	short obj;
 };
-struct objs dayobjs[];
-struct objs nightobjs[];
+extern struct objs dayobjs[];
+extern struct objs nightobjs[];

@@ -35,18 +35,14 @@
 static char sccsid[] = "@(#)extern.c	5.4 (Berkeley) 6/1/90";
 #endif /* not lint */
 
-# ifdef linux
-  # include	<ncurses.h>
-# else
-  # include	<curses.h>
-# endif
+# include	<curses.h>
 # include	"deck.h"
 # include	"cribbage.h"
 
-bool	explain		= FALSE;	/* player mistakes explained */
-bool	iwon		= FALSE;	/* if comp won last game */
-bool	quiet		= FALSE;	/* if suppress random mess */
-bool	rflag		= FALSE;	/* if all cuts random */
+BOOLEAN	explain		= FALSE;	/* player mistakes explained */
+BOOLEAN	iwon		= FALSE;	/* if comp won last game */
+BOOLEAN	quiet		= FALSE;	/* if suppress random mess */
+BOOLEAN	rflag		= FALSE;	/* if all cuts random */
 
 char	expl[128];			/* explanation */
 

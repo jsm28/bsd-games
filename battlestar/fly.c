@@ -37,7 +37,7 @@ static char sccsid[] = "@(#)fly.c	5.6 (Berkeley) 3/4/91";
 
 #include "externs.h"
 #ifdef linux
-  #include <bsd/signal.h>
+  #include <signal.h>
 #endif
 #undef UP
 #include <curses.h>
@@ -71,8 +71,8 @@ visual()
 	void moveenemy();
 
 	destroyed = 0;
-	savetty();
-	if(initscr() == ERR){
+	/*savetty();*/
+	if(initscr() == NULL){
 		puts("Whoops!  No more memory...");
 		return(0);
 	}
@@ -282,6 +282,7 @@ endfly()
 	signal(SIGALRM, SIG_DFL);
 	mvcur(0,COLS-1,LINES-1,0);
 	endwin();
+	setvbuf(stdout, NULL, _IOLBF, BUFSIZ);
 	signal(SIGTSTP, SIG_DFL);
 	signal(SIGINT, oldsig);
 }

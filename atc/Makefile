@@ -28,7 +28,7 @@ DEFS = $(BSD_DEFS) -DBSD -D_PATH_GAMES=\"$(ATCDIR)\" \
 all:	$(PROG)
 
 $(PROG):	$(OBJS)
-	$(CC) $(OBJS) $(LIBS) -o $(PROG)
+	$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(PROG)
 
 grammar.c:	grammar.y
 	$(YACC) $(YFLAGS) grammar.y
@@ -45,6 +45,7 @@ $(OBJS):	def.h extern.h include.h pathnames.h struct.h tunable.h
 
 install:	$(PROG)
 	$(INSTALL_SCORE_GAME) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
 	test -d $(INSTALL_PREFIX)$(ATCDIR) || \
 	    install -d $(INSTALL_PREFIX)$(ATCDIR)
 	(set -e; cd games; \

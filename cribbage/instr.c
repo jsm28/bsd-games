@@ -49,7 +49,7 @@ instructions()
 {
 	extern int errno;
 	struct stat sb;
-	union wait pstat;
+	int pstat;
 	pid_t pid;
 	char *pager, *path;
 
@@ -75,7 +75,7 @@ instructions()
 		do {
 			pid = waitpid(pid, (int *)&pstat, 0);
 		} while (pid == -1 && errno == EINTR);
-		if (pid == -1 || pstat.w_status)
+		if (pid == -1 || WEXITSTATUS(pstat))
 			exit(1);
 	}
 }

@@ -1,26 +1,27 @@
-PROG=	canfield
+# Makefile - makefile for canfield/canfield
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+include ../../Makeconfig
 
-SCOREDIR=$(LIBDIR)
-_PATH_SCORE=	\"${SCOREDIR}\"
-LIBS=	-lcurses -ltermcap -lbsd
+SCOREFILE = $(VARLIBDIR)/cfscores
 
-all: canfield
+LIBS = $(NCURSES_LIB) $(BSD_LIB)
 
-canfield: canfield.c pathnames.h
-	$(CC) -o canfield ${CFLAGS} -D_PATH_SCORE=${_PATH_SCORE} canfield.c \
-		${LIBS}
+DEFS = -D_PATH_SCORE=\"$(SCOREFILE)\" $(BSD_DEFS)
+INCS = $(BSD_INCS) $(NCURSES_INCS)
+
+all:	canfield
+
+canfield:	canfield.c pathnames.h
+	$(CC) $(LDFLAGS) $(CFLAGS) $(DEFS) $(INCS) \
+	    -o canfield canfield.c $(LIBS)
 
 clean:
 	rm -f canfield a.out core *.o
 
 install: canfield
-	install -g bin -o root -m 555 canfield ${DESTDIR}
-	install -g bin -o root -m 444 canfield.6 ${MANDIR}
-	touch ${SCOREDIR}/cfscores
-	chmod 666 ${SCOREDIR}/cfscores
+	$(INSTALL_SCORE_GAME) canfield $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) canfield
+	$(INSTALL_MANUAL) canfield.6
+	touch $(INSTALL_PREFIX)$(SCOREFILE)
+	$(INSTALL_SCORE_FILE2) $(INSTALL_PREFIX)$(SCOREFILE)
+	$(INSTALL_SCORE_FILE3) $(INSTALL_PREFIX)$(SCOREFILE)

@@ -54,11 +54,6 @@ static char sccsid[] = "@(#)strfile.c	5.12 (Berkeley) 4/8/91";
 # include	<ctype.h>
 # include	"strfile.h"
 
-#ifdef linux
-  typedef long off_t;
-  #undef MAXPATHLEN
-#endif
-
 # ifndef MAXPATHLEN
 # define	MAXPATHLEN	1024
 # endif	/* MAXPATHLEN */

@@ -18,7 +18,7 @@ COBJS= ${COMD}/allow.o ${COMD}/board.o ${COMD}/check.o \
 all:	backgammon
 
 backgammon:	${OBJS} ${COBJS} ${COMD}/back.h
-	$(CC) -o backgammon ${OBJS} ${COBJS} $(LIBS)
+	$(CC) $(LDFLAGS) -o backgammon ${OBJS} ${COBJS} $(LIBS)
 
 ${COBJS}:
 	set -e; cd ${COMD}; make
@@ -30,6 +30,7 @@ $(OBJS):        $(COMD)/back.h
 
 install:	backgammon
 	$(INSTALL_BINARY) backgammon $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) backgammon
 	$(INSTALL_MANUAL) backgammon.6
 
 clean:

@@ -48,7 +48,7 @@ static char sccsid[] = "@(#)snscore.c	5.7 (Berkeley) 2/28/91";
 #include "pathnames.h"
 
 char *recfile = _PATH_RAWSCORES;
-#define MAXPLAYERS 256
+#define MAXPLAYERS 65534
 
 struct	player	{
 	short	uids;
@@ -61,7 +61,7 @@ main()
 	char	buf[80], cp;
 	short	uid, score;
 	FILE	*fd;
-	int	noplayers;
+	int	noplayers = 0;
 	int	i, j, notsorted;
 	short	whoallbest, allbest;
 	char	*q;
@@ -73,14 +73,17 @@ main()
 		exit(1);
 	}
 	printf("Snake players scores to date\n");
-	fread(&whoallbest, sizeof(short), 1, fd);
+	if (fread(&whoallbest, sizeof(short), 1, fd) == 0) {
+		printf("No scores recorded yet!\n");
+		exit(0);
+	}
 	fread(&allbest, sizeof(short), 1, fd);
 	for (uid=2;;uid++) {
 		if(fread(&score, sizeof(short), 1, fd) == 0)
 			break;
 		if (score > 0) {
 			if (noplayers > MAXPLAYERS) {
-				printf("too many players\n");
+				printf("too many players: %i\n", noplayers);
 				exit(2);
 			}
 			players[noplayers].uids = uid;

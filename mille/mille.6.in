@@ -36,7 +36,7 @@
 .SH NAME
 mille \- play Mille Bournes
 .SH SYNOPSIS
-.B /usr/games/mille
+.B @gamesdir@/mille
 [ file ]
 .SH DESCRIPTION
 .I Mille

@@ -1,24 +1,23 @@
-#	@(#)Makefile	5.3 (Berkeley) 5/11/90
+# Makefile - makefile for factor
 
-PROG=	factor
+include ../Makeconfig
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+PROG = factor
 
-INCS=	-I../primes
+INCS = -I../primes
 
-$(PROG):	../primes/pr_tbl.o
-	$(CC) $(CFLAGS) $(INCS) -o $(PROG) $(PROG).c ../primes/pr_tbl.o
+all:	$(PROG)
 
-../primes/pr_tbl.o:	../primes/primes.h
-	$(CC) $(CFLAGS) -c ../primes/pr_tbl.c -o ../primes/pr_tbl.o
+$(PROG):	pr_tbl.o $(PROG).c
+	$(CC) $(CFLAGS) $(LDFLAGS) $(INCS) -o $(PROG) $(PROG).c pr_tbl.o
+
+pr_tbl.o:	../primes/primes.h ../primes/pr_tbl.c
+	$(CC) $(CFLAGS) -c ../primes/pr_tbl.c -o pr_tbl.o
 
 install:	$(PROG)
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o root -g root -m 444 $(PROG).6 $(MANDIR)
+	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
+	$(INSTALL_MANUAL) $(PROG).6
 
 test:	$(PROG)
 	./factor 69300

@@ -1,18 +1,42 @@
-9/25/93 - Hunt needs to worked through to make sure it will run over a
-	  network.
+Let me know if you're interested in doing any of these.  The order is just
+the order they were added in, not any priority order.
 
-9/25/93 - Top level Makefile paramaters are inherited/everything works,
-	  but man pages are not modified .... :(
+1993-09-25 - Hunt needs to worked through to make sure it will run over a
+             network.
 
-9/23/93 - fix up inherited MANDIR, MAN8DIR (fortunes)
-	  Maybe make the following:  MAN6DIR MAN6EXT MAN8DIR MAN8EXT
+1997-04-29 - Move configuration of score file names, etc., to configure
+             script and remove most individual games' README.linux files
+             (which won't then be needed).
 
-8/21/93 - use -I/usr/include/bsd instead of #include <bsd/sgtty.h>
+1997-04-29 - Test glibc and alpha compilation.  (Do this after current
+             NetBSD sources are integrated.)
 
-8/14/93 - Review score file permission scheme.  Someone might appreciate it
-	  being a little bit more secure ... especially in a multi-user
-	  environment.
+1997-04-29 - Test architectures other that i386 and alpha (I can't do this
+             myself).
 
-	  This could be better secured by having a games user or games
-	  group, and letting the scoring programs run set group id or
-	  set user id.
+1997-04-29 - Improve security of games when running setgid.  At present,
+             they do not even drop setgid privileges except for writing
+             scorefiles (sail has checks for being setuid).  The games
+             should only run with setgid privileges when opening scorefiles
+             for writing, and need thorough checking for anything that
+             might cause a security hole.  (This probably needs an expert.
+             Without it, I do not recommend making the games setgid games
+             unless you are prepared for your users _easily_ to be able to
+             get a shell with gid games privileges.)
+
+1997-04-29 - Fix all compilation warnings.  Then fix all warnings with
+             gcc -Wall.
+
+1997-04-29 - Paranoia and wargames have no manpages.  Minimal ones should
+             be written.
+
+1997-04-29 - What are sail/{:file,:scene,:ship,:specs} and do we need them?
+
+1997-04-29 - Merge in changes to games in NetBSD-current.
+
+1997-04-29 - Add all the remaining games from NetBSD.
+
+1997-04-29 - Get changes (at least the bug-fixes) merged back into NetBSD.
+             Or should it be FreeBSD or OpenBSD?
+
+1997-04-30 - Separate bog and paranoia into separate package.

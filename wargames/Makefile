@@ -1,13 +1,18 @@
-#	@(#)Makefile	5.3 (Berkeley) 5/11/90
+# Makefile - makefile for wargames
 
-PROG=	wargames
+include ../Makeconfig
 
-DESTDIR=/usr/games
+PROG = wargames
+
+all:	$(PROG)
 
 $(PROG):
 
 install:	$(PROG)
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
+	@echo Ignore any warning from strip about trying to strip a shell \
+	    script...
+	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
 
 test:	$(PROG)
 	echo "test" | ./$(PROG)

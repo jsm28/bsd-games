@@ -42,11 +42,7 @@ static char sccsid[] = "@(#)crib.c	5.6 (Berkeley) 2/28/91";
 #endif /* not lint */
 
 # include	<sys/signal.h>
-# ifdef linux
-  # include	<ncurses.h>
-# else
-  # include	<curses.h>
-# endif
+# include	<curses.h>
 # include	"deck.h"
 # include	"cribbage.h"
 # include	"cribcur.h"

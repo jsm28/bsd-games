@@ -254,7 +254,11 @@ init()
 	(void) signal(SIGTERM, cleanup);
 # endif
 
+#ifdef linux
+	(void) chdir("/var/tmp");
+#else
 	(void) chdir("/usr/tmp");	/* just in case it core dumps */
+#endif
 	(void) umask(0);		/* No privacy at all! */
 	(void) signal(SIGPIPE, SIG_IGN);
 

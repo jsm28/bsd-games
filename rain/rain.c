@@ -55,6 +55,10 @@ static char sccsid[] = "@(#)rain.c	5.6 (Berkeley) 2/28/91";
 #endif
 #include <signal.h>
 
+#ifdef linux
+#include <sys/ioctl.h>
+#endif
+
 #define	cursor(c, r)	tputs(tgoto(CM, c, r), 1, fputchar)
 
 #ifdef USG

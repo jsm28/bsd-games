@@ -1,6 +1,8 @@
 #!/bin/sh
 # hide-game.in - hide a game (only used if appropriate)
 
-test -d @libexecdir@ || @install_dmdir@ @libexecdir@
-mv -f @gamesdir@/$1 @libexecdir@
-ln -s dm @gamesdir@/$1
+set -e
+
+test -d @install_prefix@@libexecdir@ || @install_dmdir@ @install_prefix@@libexecdir@
+mv -f @install_prefix@@gamesdir@/$1 @install_prefix@@libexecdir@
+ln -s dm @install_prefix@@gamesdir@/$1

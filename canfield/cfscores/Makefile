@@ -1,27 +1,22 @@
-PROG=	cfscores
+# Makefile - makefile for canfield/cfscores
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+include ../../Makeconfig
 
-SCOREDIR=$(LIBDIR)
-_PATH_SCORE=    \"${SCOREDIR}\"
+SCOREFILE = $(VARLIBDIR)/cfscores
 
-LIBS=	-lncurses -ltermcap -lbsd
-INCS= -I../canfield $(CFLAGS)
+DEFS = -D_PATH_SCORE=\"$(SCOREFILE)\" $(BSD_DEFS)
+INCS= -I../canfield $(BSD_INCS) $(NCURSES_INCS)
 
-all: cfscores
+all:	cfscores
 
-cfscores: ../canfield/pathnames.h cfscores.c
-	cc -o cfscores ${CFLAGS} ${INCS} -D_PATH_SCORE=${_PATH_SCORE} \
-		cfscores.c ${LIBS}
+cfscores:	../canfield/pathnames.h cfscores.c
+	$(CC) $(LDFLAGS) $(CFLAGS) $(DEFS) $(INCS) \
+	     -o cfscores cfscores.c
 
 clean:
 	rm -f cfscores a.out core *.o
 
-install: cfscores
-	install -g bin -o root -m 555 cfscores ${DESTDIR}
-
-
+install:	cfscores
+	$(INSTALL_BINARY) cfscores $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) cfscores
+	$(INSTALL_MANUAL) canfield.6 cfscores.6

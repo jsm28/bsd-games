@@ -233,6 +233,7 @@ give()
 {
 	int obj = -1, result = -1, person = 0, firstnumber, last1, last2;
 
+	last1 = last2 = wordcount + 2;
 	firstnumber = wordnumber;
 	while (wordtype[++wordnumber] != OBJECT  && wordvalue[wordnumber] != AMULET && wordvalue[wordnumber] != MEDALION && wordvalue[wordnumber] != TALISMAN && wordnumber <= wordcount);
 	if (wordnumber <= wordcount){

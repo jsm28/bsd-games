@@ -11,7 +11,7 @@
 .SH NAME
 hunt \- a multi-player multi-terminal game
 .SH SYNOPSIS
-\fB/usr/games/hunt\fP [ \fB\-qmcsfbS\fP ] [ \fB\-n\fP name ] [ \fB\-t\fP team ] [ \fB\-p\fP port ] [ \fB\-w\fP message ] [ host ]
+\fB@gamesdir@/hunt\fP [ \fB\-qmcsfbS\fP ] [ \fB\-n\fP name ] [ \fB\-t\fP team ] [ \fB\-p\fP port ] [ \fB\-w\fP message ] [ host ]
 .SH DESCRIPTION
 The object of the game
 .I hunt
@@ -357,8 +357,8 @@ ducked or absorbed it.
 .SH FILES
 .nf
 .ta
-.ta \w'/usr/games/lib/huntd\ \ \ 'u
-/usr/games/lib/huntd	game coordinator
+.ta \w'@sbindir@/huntd\ \ \ 'u
+@sbindir@/huntd	game coordinator
 .DT
 .fi
 .SH "SEE ALSO"

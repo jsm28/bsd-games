@@ -36,7 +36,7 @@
 .SH NAME
 trek \- trekkie game
 .SH SYNOPSIS
-.B /usr/games/trek
+.B @gamesdir@/trek
 [ [
 .B \-a
 ] file ]

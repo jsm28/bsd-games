@@ -51,7 +51,7 @@ restore()
 	strcat(home1, "/Bstar");
 	if ((fp = fopen(home1, "r")) == 0) {
 		perror(home1);
-		return;
+		exit(1);
 	}
 	fread(&WEIGHT, sizeof WEIGHT, 1, fp);
 	fread(&CUMBER, sizeof CUMBER, 1, fp);
@@ -88,6 +88,7 @@ restore()
 	fread(&pleasure, sizeof pleasure, 1, fp);
 	fread(&power, sizeof power, 1, fp);
 	fread(&ego, sizeof ego, 1, fp);
+	fclose(fp);
 }
 
 save()
@@ -142,4 +143,5 @@ save()
 	fwrite(&pleasure, sizeof pleasure, 1, fp);
 	fwrite(&power, sizeof power, 1, fp);
 	fwrite(&ego, sizeof ego, 1, fp);
+	fclose(fp);
 }

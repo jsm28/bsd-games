@@ -104,11 +104,11 @@ flag is specified,
 it prints out the canfield accounts for all users that have
 played the game since the database was set up.
 .SH FILES
-/usr/games/canfield	the game itself
+@gamesdir@/canfield	the game itself
 .br
-/usr/games/cfscores	the database printer
+@gamesdir@/cfscores	the database printer
 .br
-/usr/games/lib/cfscores	the database of scores
+@varlibdir@/cfscores	the database of scores
 .SH BUGS
 It is impossible to cheat.
 .SH AUTHORS

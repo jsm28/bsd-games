@@ -1,30 +1,28 @@
-#	@(#)Makefile	5.7 (Berkeley) 5/11/90
+# Makefile - makefile for wump
 
-PROG=	wump
+include ../Makeconfig
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+PROG = wump
 
-INFO=	wump.info
-INFODIR=$(LIBDIR)
-_PATH_PAGER=	\"/usr/bin/less\"
-_PATH_WUMPINFO=	\"$(INFODIR)/$(INFO)\"
+WUMPINFOFILE = $(SHAREDIR)/wump.info
+PAGERFILE    = /usr/bin/less
 
-LIBS=	-lcurses -ltermcap -lbsd
+LIBS = $(NCURSES_LIB) $(BSD_LIB)
+
+INCS = $(BSD_INCS) $(NCURSES_INCS)
+DEFS = $(BSD_DEFS) -D_PATH_PAGER=\"$(PAGERFILE)\" \
+	-D_PATH_WUMPINFO=\"$(WUMPINFOFILE)\"
 
 all:	$(PROG)
 
-$(PROG):	pathnames.h
-	$(CC) $(CFLAGS) -D_PATH_PAGER=$(_PATH_PAGER) \
-		-D_PATH_WUMPINFO=$(_PATH_WUMPINFO) -o $(PROG) $(PROG).c $(LIBS)
+$(PROG):	$(PROG).c pathnames.h
+	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFS) $(INCS) -o $(PROG) $(PROG).c $(LIBS)
 
-install:	all
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o bin -g root -m 444 $(INFO) $(INFODIR)/$(INFO)
-	install -c -o root -g root -m 444 $(PROG).6 $(MANDIR)
+install:	$(PROG)
+	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
+	$(INSTALL_DATA) wump.info $(INSTALL_PREFIX)$(WUMPINFOFILE)
+	$(INSTALL_MANUAL) $(PROG).6
 
 clean:
 	rm -f $(PROG) core *.o

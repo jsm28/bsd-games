@@ -34,9 +34,6 @@
  */
 
 #include <stdio.h>
-#ifdef linux
-  #include <bsd/signal.h>
-#endif
 #include <signal.h>
 #include <ctype.h>
 #include <setjmp.h>
@@ -231,8 +228,8 @@ struct scenario {
 	char *name;			/* 14 */
 	struct ship ship[NSHIP];	/* 16 */
 };
-struct scenario scene[];
-int nscene;
+extern struct scenario scene[];
+extern int nscene;
 
 struct shipspecs {
 	char bs;
@@ -255,7 +252,7 @@ struct shipspecs {
 	char rig4;
 	short pts;
 };
-struct shipspecs specs[];
+extern struct shipspecs specs[];
 
 struct scenario *cc;		/* the current scenario */
 struct ship *ls;		/* &cc->ship[cc->vessels] */
@@ -266,29 +263,29 @@ struct ship *ls;		/* &cc->ship[cc->vessels] */
 struct windeffects {
 	char A, B, C, D;
 };
-struct windeffects WET[7][6];
+extern struct windeffects WET[7][6];
 
 struct Tables {
 	char H, G, C, R;
 };
-struct Tables RigTable[11][6];
-struct Tables HullTable[11][6];
+extern struct Tables RigTable[11][6];
+extern struct Tables HullTable[11][6];
 
-char AMMO[9][4];
-char HDT[9][10];
-char HDTrake[9][10];
-char QUAL[9][5];
-char MT[9][3];
+extern char AMMO[9][4];
+extern char HDT[9][10];
+extern char HDTrake[9][10];
+extern char QUAL[9][5];
+extern char MT[9][3];
 
-char *countryname[];
-char *classname[];
-char *directionname[];
-char *qualname[];
-char loadname[];
+extern char *countryname[];
+extern char *classname[];
+extern char *directionname[];
+extern char *qualname[];
+extern char loadname[];
 
-char rangeofshot[];
+extern char rangeofshot[];
 
-char dr[], dc[];
+extern char dr[], dc[];
 
 int winddir;
 int windspeed;

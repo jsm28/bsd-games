@@ -1,22 +1,22 @@
-#	@(#)Makefile	5.1 (Berkeley) 5/11/90
+# Makefile - makefile for pom
 
-PROG=	pom
+include ../Makeconfig
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+PROG = pom
 
-INCL=	-I/usr/include/bsd
-LIBS=	-lm -lbsd
+INCS = $(BSD_INCS)
+DEFS = $(BSD_DEFS)
+LIBS = -lm $(BSD_LIB)
 
-$(PROG):
-	$(CC) $(CFLAGS) $(INCL) -o $(PROG) $(PROG).c $(LIBS)
+all:	$(PROG)
+
+$(PROG):	$(PROG).c
+	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFS) $(INCS) -o $(PROG) $(PROG).c $(LIBS)
 
 install:	$(PROG)
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o root -g root -m 444 $(PROG).6 $(MANDIR)
+	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
+	$(INSTALL_MANUAL) $(PROG).6
 
 test:	$(PROG)
 	./pom

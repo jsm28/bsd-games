@@ -1,18 +1,11 @@
 8/18/93
 
-This games is configured to compile with ncurses.  For whatever reason
-ncurses seems to do a better job here, although it is not perfect.
-To use curses, change the #includes in crib.c, extern.c, io.c, and support.c
-to curses.h instead of ncurses.h, and change the LIBS in the Makefle from 
--lncurses to -lcurses.
-
 As usual the Makefiles were done completely from scratch.  The original
 is in Makefile.orig.  Other than that, the source should still compile
 under bsd.
 
-Also as usual, set the DESTDIR in the Makefiles, and edit the location
-of the words file in the Makefile.  Also set the MANDIR and LIBDIR in
-the Makefile.
+As usual, set the SCOREFILE and PAGERFILE in the Makefile; remember to
+update cribbage.6.
 
 If you change any of the predefined paths, remember to make corresponding
 changes in the man page.

@@ -1,14 +1,10 @@
 8/19/93
 
-To use ncurses, change the LIBS in snake/Makefile from -lcurses to 
--lncurses.
-
 As usual the Makefiles were done completely from scratch.  The originals
 are in Makefile.orig.  Other than that, the source should still compile
 under bsd.
 
-Also as usual, set the DESTDIR.  Also set the MANDIR, SCOREDIR, and
-RAWSCOREDIR in snake/Makefile.
+Also as usual SCOREFILE and RAWSCOREFILE in the Makefile.
 
 If you change any of the predefined paths, remember to make corresponding
 changes in the man page.

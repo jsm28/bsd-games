@@ -36,11 +36,7 @@
 # include <stdio.h>
 # include <assert.h>
 # include <sys/types.h>
-# ifdef linux
-  # include <bsd/sgtty.h>
-# else
-  # include <sgtty.h>
-# endif
+# include <sgtty.h>
 # include <signal.h>
 # include <math.h>
 

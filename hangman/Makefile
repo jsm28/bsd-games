@@ -1,36 +1,36 @@
-#	@(#)Makefile	5.7 (Berkeley) 5/11/90
+# Makefile - makefile for hangman
 
-PROG=	hangman
+include ../Makeconfig
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+PROG = hangman
 
 SRCS=	endgame.c extern.c getguess.c getword.c main.c playgame.c \
 	prdata.c prman.c prword.c setup.c
 OBJS=	endgame.o extern.o getguess.o getword.o main.o playgame.o \
 	prdata.o prman.o prword.o setup.o
 
-WORDSDIR=$(LIBDIR)
-WORDS=  words
-_PATH_DICT=	\"$(WORDSDIR)/hangman-$(WORDS)\"
+WORDS     = words
+WORDSFILE = $(SHAREDIR)/hangman-$(WORDS)
 
-LIBS=	-lcurses -ltermcap -lbsd
+LIBS = $(NCURSES_LIB) $(BSD_LIB)
+INCS = $(BSD_INCS) $(NCURSES_INCS)
+DEFS = $(BSD_DEFS) -D_PATH_DICT=\"$(WORDSFILE)\"
 
 all:	$(PROG)
 
 $(PROG):	$(OBJS)
-	$(CC) $(OBJS) $(LIBS) -o $(PROG)
+	$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(PROG)
+
+.c.o:	
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
 $(OBJS):	hangman.h pathnames.h
-	$(CC) $(CFLAGS) -c -D_PATH_DICT=$(_PATH_DICT) $*.c -o $@
 
-install:	all
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o bin -g root -m 444 $(WORDS) $(WORDSDIR)/hangman-$(WORDS)
-	install -c -o root -g root -m 444 $(PROG).6 $(MANDIR)
+install:	$(PROG)
+	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
+	$(INSTALL_DATA) $(WORDS) $(INSTALL_PREFIX)$(WORDSFILE)
+	$(INSTALL_MANUAL) $(PROG).6
 
 clean:
 	rm -f $(PROG) core *.o

@@ -400,8 +400,9 @@ init()
 nrandom(n)
 	int n;
 {
+#ifndef linux
 	long random();
-
+#endif
 	return((int)random() % n);
 }
 

@@ -18,7 +18,7 @@ install:
 	      by hand."
 	@echo "Creating base directories:"
 	@set -e; for i in $(GAMESDIR) $(SBINDIR) $(SOCKETDIR) $(USRBINDIR) \
-	    $(MAN6DIR) $(MAN8DIR) $(LIBDIR) $(SHAREDIR) $(VARLIBDIR); do
+	    $(MAN6DIR) $(MAN8DIR) $(LIBDIR) $(SHAREDIR) $(VARLIBDIR); do \
 	    echo " $(INSTALL_PREFIX)$$i"; \
 	    test -d $(INSTALL_PREFIX)$$i || \
 	    install -d $(INSTALL_PREFIX)$$i; \
@@ -40,7 +40,12 @@ clean:
 	done
 
 distclean:	clean
-	rm -f Makeconfig hide-game subst.sed
+	rm -f subst.sed Makeconfig install-man hide-game
+	rm -f backgammon/backgammon/backgammon.6 bog/bog.6
+	rm -f canfield/canfield/canfield.6 cribbage/cribbage.6
+	rm -f hangman/hangman.6 hunt/hunt.6 hunt/huntd.6 mille/mille.6
+	rm -f monop/monop.6 robots/robots.6 snake/snake/snake.6
+	rm -f tetris/tetris.6 trek/trek.6
 
 test:
 	@set -e; for i in $(TESTDIRS); do \

@@ -95,7 +95,7 @@ cypher()
 			 case SHOOT:
 				if (wordnumber < wordcount && wordvalue[wordnumber+1] == EVERYTHING){
 					for (n=0; n < NUMOFOBJECTS; n++)
-						if (testbit(location[position].objects,n) && *objsht[n]){
+						if (testbit(location[position].objects,n) && objsht[n]){
 							wordvalue[wordnumber+1] = n;
 							wordnumber = shoot();
 						}
@@ -109,8 +109,11 @@ cypher()
 			 case TAKE:
 				if (wordnumber < wordcount && wordvalue[wordnumber+1] == EVERYTHING){
 					for (n=0; n < NUMOFOBJECTS; n++)
-						if (testbit(location[position].objects,n) && *objsht[n]){
+						if (testbit(location[position].objects,n) && objsht[n]){
 							wordvalue[wordnumber+1] = n;
+							wordtype[wordnumber+1] = OBJECT;
+							if ((n == AMULET) || (n == MEDALION) || (n == TALISMAN) || (n == MAN) || (n == TIMER) || (n == NATIVE))
+								wordtype[wordnumber+1] = NOUNS;
 							wordnumber = take(location[position].objects);
 						}
 				wordnumber++;
@@ -141,7 +144,7 @@ cypher()
 				if (wordnumber < wordcount && wordvalue[wordnumber+1] == EVERYTHING){
 					for (n=0; n < NUMOFOBJECTS; n++)
 						if (testbit(inven,n) ||
-						  testbit(location[position].objects, n) && *objsht[n]){
+						  testbit(location[position].objects, n) && objsht[n]){
 							wordvalue[wordnumber+1] = n;
 							wordnumber = throw(wordvalue[wordnumber] == KICK ? "Kicked" : "Thrown");
 						}
@@ -183,7 +186,7 @@ cypher()
 
 				if (wordnumber < wordcount && wordvalue[wordnumber+1] == EVERYTHING){
 					for (n=0; n < NUMOFOBJECTS; n++)
-						if (testbit(location[position].objects,n) && *objsht[n]){
+						if (testbit(location[position].objects,n) && objsht[n]){
 							wordvalue[wordnumber+1] = n;
 							wordnumber = puton();
 						}

@@ -1,28 +1,31 @@
-ALLDIRS=canfield cfscores
+# Makefile - makefile for canfield
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+include ../Makeconfig
+
+ALLDIRS = canfield cfscores
+
+SCOREFILE = $(VARLIBDIR)/cfscores
 
 all:
-	for i in $(ALLDIRS); do \
-		echo "Making all in $$i"; \
-		( cd $$i; make DESTDIR=$(DESTDIR) LIBDIR=$(LIBDIR) \
-		MANDIR=$(MANDIR) CFLAGS=$(CFLAGS) ) ; \
+	@set -e; for i in $(ALLDIRS); do \
+	    echo "Making all in $$i"; \
+	    cd $$i; \
+	    make all SCOREFILE=$(SCOREFILE); \
+	    cd ..; \
 	done
 
 install:
-	for i in $(ALLDIRS); do \
-		echo "Making install in $$i"; \
-		( cd $$i; make install DESTDIR=$(DESTDIR) LIBDIR=$(LIBDIR) \
-		MANDIR=$(MANDIR) CFLAGS=$(CFLAGS) ) ; \
+	@set -e; for i in $(ALLDIRS); do \
+	    echo "Making install in $$i"; \
+	    cd $$i; \
+	    make install SCOREFILE=$(SCOREFILE); \
+	    cd ..; \
 	done
 
 clean:
-	for i in $(ALLDIRS); do \
-		echo "Making clean in $$i"; \
-		( cd $$i; make clean DESTDIR=$(DESTDIR) LIBDIR=$(LIBDIR) \
-		MANDIR=$(MANDIR) CFLAGS=$(CFLAGS) ) ; \
+	@set -e; for i in $(ALLDIRS); do \
+	    echo "Making clean in $$i"; \
+	    cd $$i; \
+	    make clean SCOREFILE=$(SCOREFILE); \
+	    cd ..; \
 	done

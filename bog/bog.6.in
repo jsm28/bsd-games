@@ -82,7 +82,10 @@ to stdout.
 .SH FILES
 .I Bog
 accesses a dictionary file, a dictionary index file, and a helpfile.
-Locations are system dependent.
+Locations are system dependent.  In this configuration, the files are
+located in the
+.I @sharedir@/bog
+directory.
 The dictionary file must have been created by
 .I mkdict
 and the index file by

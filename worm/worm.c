@@ -49,6 +49,9 @@ static char sccsid[] = "@(#)worm.c	5.8 (Berkeley) 2/28/91";
 #include <ctype.h>
 #include <curses.h>
 #include <signal.h>
+#ifdef linux
+#include <termios.h>
+#endif
 
 #define newlink() (struct body *) malloc(sizeof (struct body));
 #define HEAD '@'
@@ -58,7 +61,7 @@ static char sccsid[] = "@(#)worm.c	5.8 (Berkeley) 2/28/91";
 #define when break;case
 #define otherwise break;default
 #define CNTRL(p) (p-'A'+1)
-#ifndef baudrate
+#if !defined(baudrate) && !defined(linux)
 # define	baudrate()	_tty.sg_ospeed
 #endif
 

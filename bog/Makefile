@@ -1,61 +1,62 @@
-
+# Makefile - makefile for bog
 # See bog.h for configuration
 
-PROG=	bog
+include ../Makeconfig
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
+PROG   = bog
 
-BOGDIR=		$(LIBDIR)/bog
-DICT=		\"$(BOGDIR)/dict\"
-DICTINDEX=	\"$(BOGDIR)/dict.ind\"
-HELPFILE=	\"$(BOGDIR)/helpfile\"
+BOGDIR = $(SHAREDIR)/bog
 
-OBJS=	bog.o help.o mach.o prtable.o timer.o word.o
+OBJS   = bog.o help.o mach.o prtable.o timer.o word.o
 #
 # Defining PURE causes this program to be compiled with the default BSD 
 # behavior.  Not defining it will allow any Linux "improvements" to be
 # included.
 #
-override CFLAGS= -O -I/usr/include/bsd # -DPURE
-LIBS=	-lcurses -ltermcap -lbsd
-CLEANFILES=	dict dict.ind
-
+DEFS = $(BSD_DEFS) -DDICT=\"$(BOGDIR)/dict\" \
+	-DDICTINDEX=\"$(BOGDIR)/dict.ind\" \
+	-DHELPFILE=\"$(BOGDIR)/helpfile\" # -DPURE
+LIBS   = $(NCURSES_LIB) $(BSD_LIB)
+INCS   = $(BSD_INCS) $(NCURSES_INCS)
 
 # DICTSRC is the dictionary that will be used to construct the word list used
 # by bog
 DICTSRC=../hangman/words
 
-all: $(PROG) mkdict mkindex dict
+all:	$(PROG) dict dict.ind
 
 $(PROG):	$(OBJS)
-	$(CC) $(CFLAGS) -s -o $(PROG) $(OBJS) $(LIBS)
+	$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(PROG)
 
-mkdict: mkdict.c
-	$(CC) -s $(CFLAGS) -o mkdict mkdict.c
+mkdict: mkdict.c bog.h
+	$(CC) $(LDFLAGS) $(CFLAGS) -o mkdict mkdict.c
 
-mkindex: mkindex.c
-	$(CC) -s $(CFLAGS) -o mkindex mkindex.c
+mkindex: mkindex.c bog.h
+	$(CC) $(LDFLAGS) $(CFLAGS) -o mkindex mkindex.c
 
 showdict: showdict.o word.o
-	$(CC) -s $(CFLAGS) -o showdict showdict.o word.o
-	rm -f showdict.o
+	$(CC) $(LDFLAGS) $(CFLAGS) -o showdict showdict.o word.o
 
-dict: mkdict mkindex
+showdict.o:	bog.h
+
+dict: mkdict
 	./mkdict < $(DICTSRC) > dict
+
+dict.ind:	mkindex dict
 	./mkindex < dict > dict.ind
 
-$(OBJS): bog.h
-	$(CC) $(CFLAGS) -c -DDICT=$(DICT) -DDICTINDEX=$(DICTINDEX) \
-		-DHELPFILE=$(HELPFILE) $*.c -o $@
+.c.o:	
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
-install: all
-	-mkdir $(BOGDIR)
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o bin -g root -m 644 dict dict.ind helpfile $(BOGDIR)
-	install -c -o root -g root -m 444 $(PROG).man $(MANDIR)/$(PROG).6
+$(OBJS):	bog.h
 
-clean:
-	rm -f *.o core $(PROG) $(CLEANFILES) mkdict mkindex
+install:	all
+	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
+	test -d $(INSTALL_PREFIX)$(BOGDIR) || \
+	    install -d $(INSTALL_PREFIX)$(BOGDIR)
+	$(INSTALL_DATA) dict dict.ind helpfile $(INSTALL_PREFIX)$(BOGDIR)
+	$(INSTALL_MANUAL) $(PROG).6
+
+clean:	
+	rm -f *.o core $(PROG) dict dict.ind mkdict mkindex showdict

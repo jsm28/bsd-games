@@ -36,7 +36,7 @@
 .SH NAME
 cribbage \- the card game cribbage
 .SH SYNOPSIS
-.B /usr/games/cribbage
+.B @gamesdir@/cribbage
 [
 .B \-req
 ]
@@ -123,7 +123,11 @@ desired to discard the king of diamonds, any of the following could be typed:
 \*(lqk of diamonds\*(rq, \*(lqking diamonds\*(rq, or \*(lqking of diamonds\*(rq.
 .SH FILES
 .ta 2i
-/usr/games/cribbage
+@gamesdir@/cribbage
+.br
+@varlibdir@/criblog
+.br
+@sharedir@/cribbage.instr
 .SH AUTHORS
 Earl T. Cohen wrote the logic.
 Ken Arnold added the screen oriented interface.

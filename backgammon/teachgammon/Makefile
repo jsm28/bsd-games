@@ -17,7 +17,7 @@ COBJS= ${COMD}/allow.o ${COMD}/board.o ${COMD}/check.o \
 all:	teachgammon
 
 teachgammon:	${OBJS} ${COBJS}
-	$(CC) -o teachgammon ${OBJS} ${COBJS} $(LIBS)
+	$(CC) $(LDFLAGS) -o teachgammon ${OBJS} ${COBJS} $(LIBS)
 
 ${COBJS}:
 	cd ${COMD}; make
@@ -29,6 +29,7 @@ $(OBJS):        $(COMD)/back.h
 
 install:	teachgammon
 	$(INSTALL_BINARY) teachgammon $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) teachgammon
 	$(INSTALL_MANUAL) backgammon.6 teachgammon.6
 
 clean:

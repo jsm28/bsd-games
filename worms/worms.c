@@ -67,6 +67,10 @@ static char sccsid[] = "@(#)worms.c	5.9 (Berkeley) 2/28/91";
 #endif
 #include <signal.h>
 
+#ifdef linux
+#include <sys/ioctl.h>
+#endif
+
 static struct options {
 	int nopts;
 	int opts[3];

@@ -34,9 +34,10 @@ INSTALL_DAEMON = @install_daemon@
 INSTALL_MANUAL = @srcdir@/install-man
 INSTALL_DATA = @install_constdata@
 INSTALL_VARDATA = @install_vardata@
+INSTALL_DM = @install_dm@
 # Is the above actually needed (for games that start with non-empty scorefile?)
 # For games which can start with empty scorefile we do a touch and then:
-INSTALL_SCORE_FILE2 = chown @vardata_owner@.@vardata_group@
+INSTALL_SCORE_FILE2 = @chown_vardata@
 INSTALL_SCORE_FILE3 = chmod @vardata_perms@
 # srcdir/hide-game or :
 HIDE_GAME = @hidegame@

@@ -49,7 +49,7 @@
 .SH NAME
 monop \- Monopoly game
 .SH SYNOPSIS
-.B /usr/games/monop
+.B @gamesdir@/monop
 [ file ]
 .SH DESCRIPTION
 .I Monop
@@ -183,6 +183,6 @@ it is the same as typing
 .SH AUTHOR
 Ken Arnold
 .SH FILES
-/usr/games/lib/cards.pck	Chance and Community Chest cards
+@usrlibdir@/monop-cards.pck	Chance and Community Chest cards
 .SH BUGS
 No command can be given an argument instead of a response to a query.

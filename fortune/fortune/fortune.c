@@ -102,6 +102,10 @@ static char sccsid[] = "@(#)fortune.c	5.13 (Berkeley) 4/8/91";
 # define	NDEBUG	1
 # endif	/* DEBUG */
 
+#ifdef linux
+#define d_namlen d_reclen
+#endif
+
 typedef struct fd {
 	int		percent;
 	int		fd, datfd;

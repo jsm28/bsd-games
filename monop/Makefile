@@ -1,42 +1,45 @@
-#	@(#)Makefile	5.8 (Berkeley) 9/2/92
+# Makefile - makefile for monop
 
-PROG=	monop
+include ../Makeconfig
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+PROG = monop
 
-CARDDIR=$(LIBDIR)
-_PATH_CARDS=	\"$(CARDDIR)/cards.pck\"
+# This file is arch-dependent (as it involves binary structures that
+# depend on word length/endianness), despite where BSD puts it :-(
+CARDSFILE = $(LIBDIR)/monop-cards.pck
 
 SRCS=	monop.c cards.c execute.c getinp.c houses.c jail.c misc.c morg.c \
 	print.c prop.c rent.c roll.c spec.c trade.c
 OBJS=	monop.o cards.o execute.o getinp.o houses.o jail.o misc.o morg.o \
 	print.o prop.o rent.o roll.o spec.o trade.o
 
-LIBS=	-lbsd
-CLEANFILES=	initdeck cards.pck
+LIBS = $(BSD_LIB)
+INCS = $(BSD_INCS)
+DEFS = $(BSD_DEFS) -D_PATH_CARDS=\"$(CARDSFILE)\"
 
 all:	$(PROG) cards.pck
 
 $(PROG):	$(OBJS)
-	$(CC) $(OBJS) $(LIBS) -o $(PROG)
+	$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(PROG)
 
-$(OBJS):	deck.h monop.h pathnames.h
-	$(CC) $(CFLAGS) -c -D_PATH_CARDS=$(_PATH_CARDS) $*.c -o $@
+.c.o:	
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
-cards.pck:	initdeck
+$(OBJS):	deck.h monop.h monop.ext
+cards.o:	pathnames.h
+monop.o:	monop.def mon.dat prop.dat brd.dat
+
+cards.pck:	initdeck cards.inp
 	./initdeck ./cards.inp
 
 initdeck:	initdeck.c
-	$(CC) $(CFLAGS) -o initdeck initdeck.c
+	$(CC) $(CFLAGS) $(LDFLAGS) -o initdeck initdeck.c
 
 install:	all
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o root -g root -m 444 $(PROG).6 $(MANDIR)
-	install -c -o bin -g root -m 444 cards.pck $(CARDDIR)
+	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
+	$(INSTALL_MANUAL) $(PROG).6
+	$(INSTALL_DATA) cards.pck $(INSTALL_PREFIX)$(CARDSFILE)
 
 clean:
-	rm -f $(PROG) $(CLEANFILES) core *.o
+	rm -f $(PROG) initdeck cards.pck core *.o

@@ -1,25 +1,12 @@
 7/31/93
 
-To use ncurses instead of curses, edit canfield/Makefile to use 
--lncurses instead of -lcurses. Also edit canfield/canfield.c and
-change the curses.h after #ifdef linux into an ncurses.h. And if
-your ncurses stuff is installed in a non-standard place, I assume you
-know how to otherwise change the Makefile. 
-
 As usual the Makefiles were done completely from scratch. The original
 is in Makefile.orig. Other than that, the source should still compile
 under bsd. Perhaps later I will enhance the Makefiles but it doesn't
 seem worth the effort.
 
-The binaries are meant to go in /usr/games. and the high score file in
-/usr/games/lib/cfscores/. If you want to change these, set the DESTDIR and 
-SCOREFILE in the Makefiles.  Also set the MANDIR in canfield/Makefile. 
-Make sure the scorefile dir != DESTDIR or else you will overwrite the 
-cfscores program (or not have a score file!).
-
-If you wish your man page to be up to date, edit it to reflect
-the locations if you place your binary in other than /usr/games
-and your score file in other than /usr/games/lib.
+You can change the name of the score file in the Makefile.  If you do
+this, remember to update canfield/canfield.6.
 
 Andy Tefft
 teffta@engr.dnet.ge.com

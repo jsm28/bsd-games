@@ -4,8 +4,5 @@ As usual the Makefiles were done completely from scratch.  The original
 is in Makefile.orig.  Other than that, the source should still compile
 under bsd.
 
-Also as usual, set the DESTDIR in the Makefiles.  Also set the MANDIR in
-the Makefile.
-
 Curt Olson
 curt@sledge.mn.org

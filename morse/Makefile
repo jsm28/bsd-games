@@ -1,18 +1,18 @@
-#	@(#)Makefile	5.3 (Berkeley) 5/11/90
+# Makefile - makefile for morse
 
-PROG=	morse
+include ../Makeconfig
 
-DESTDIR=/usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=     gcc
-CFLAGS= -O
+PROG = morse
 
-$(PROG):
-	$(CC) $(CFLAGS) -o $(PROG) $(PROG).c
+all:	$(PROG)
+
+$(PROG):	$(PROG).c
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(PROG) $(PROG).c
 
 install:	$(PROG)
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
+	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(HIDE_GAME) $(PROG)
+	$(INSTALL_MANUAL) bcd.6 $(PROG).6
 
 test:	$(PROG)
 	echo "Eat at Joe's" | ./morse ; \

@@ -166,6 +166,7 @@ newscore() {
 	register PLAY	*pp;
 	static int	was_full = -1;
 	static int	last_win = -1;
+	int force_counter = 0;
 
 	if (was_full < 0)
 		was_full = (Window != W_FULL);
@@ -196,7 +197,12 @@ newscore() {
 		for (i = 0; i < SCORE_Y; i++)
 			mvaddch(i, 0, '|');
 		move(SCORE_Y - 1, 1);
-		while (addch('_') != ERR)
+		/* I added this force_counter hack because addch doesn't seem
+		 * to return ERR at EOL using ncurses.  There are many better
+		 * ways to do this.  Please send me a patch.
+		 * -- Joey Hess <joeyh@master.debian.org>
+		 */
+		while (addch('_') != ERR && force_counter++ < 80)
 			continue;
 		for (pp = Player; pp <= &Player[COMP]; pp++) {
 			pp->sh_hand_tot = -1;

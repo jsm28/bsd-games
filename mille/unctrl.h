@@ -37,6 +37,8 @@
  * unctrl.h
  */
 
+#ifndef NCURSES_VERSION
 extern char	*_unctrl[];
 
 # define	unctrl(ch)	(_unctrl[ch & 0177])
+#endif
