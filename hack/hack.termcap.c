@@ -1,4 +1,5 @@
-/*	$NetBSD: hack.termcap.c,v 1.9 1999/10/04 23:27:01 lukem Exp $	*/
+/*	$NetBSD: hack.termcap.c,v 1.10 2000/05/20 14:01:42 blymn Exp $	*/
+/* For Linux: still using old termcap interface from version 1.9.  */
 
 /*
  * Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985.
@@ -6,13 +7,14 @@
 
 #include <sys/cdefs.h>
 #ifndef lint
-__RCSID("$NetBSD: hack.termcap.c,v 1.9 1999/10/04 23:27:01 lukem Exp $");
+__RCSID("$NetBSD: hack.termcap.c,v 1.10 2000/05/20 14:01:42 blymn Exp $");
 #endif				/* not lint */
 
 #include <string.h>
 #include <termios.h>
 #include <termcap.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "hack.h"
 #include "extern.h"
 #include "def.flag.h"		/* for flags.nonull */
@@ -269,31 +271,10 @@ bell()
 void
 delay_output()
 {
+
 	/* delay 50 ms - could also use a 'nap'-system call */
-	/*
-	 * BUG: if the padding character is visible, as it is on the 5620
-	 * then this looks terrible.
-	 */
-	if (!flags.nonull)
-		tputs("50", 1, xputc);
-
-	/* cbosgd!cbcephus!pds for SYS V R2 */
-	/* is this terminfo, or what? */
-	/* tputs("$<50>", 1, xputc); */
-
-	else if (ospeed > 0)
-		if (CM) {
-			/*
-			 * delay by sending cm(here) an appropriate number of
-			 * times
-			 */
-			int             cmlen = strlen(tgoto(CM, curx - 1, cury - 1));
-			int             i = (ospeed + (100 * cmlen)) / (200 * cmlen);
-
-			while (i > 0) {
-				cmov(curx, cury);
-			}
-		}
+	  /* or the usleep call like this :-) */
+	usleep(50000);
 }
 
 void

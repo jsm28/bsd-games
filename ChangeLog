@@ -1,3 +1,19 @@
+2000-05-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* adventure/Makefile.bsd, adventure/main.c,
+	arithmetic/arithmetic.c, atc/main.c, backgammon/backgammon/main.c,
+	backgammon/teachgammon/teach.c, battlestar/battlestar.c,
+	bcd/bcd.c, boggle/boggle/bog.c, caesar/caesar.c, caesar/rot13.in,
+	canfield/canfield/canfield.c, canfield/cfscores/cfscores.c,
+	cribbage/crib.c, fish/fish.c, fortune/datfiles/netbsd,
+	gomoku/main.c, hack/hack.termcap.c, hangman/main.c, mille/mille.c,
+	mille/misc.c, mille/print.c, monop/cards.inp, monop/monop.c,
+	morse/morse.c, phantasia/Makefile.bsd, phantasia/fight.c,
+	phantasia/misc.c, ppt/ppt.c, quiz/quiz.c, robots/main.c,
+	robots/score.c, snake/snake/snake.c, snake/snscore/snscore.c,
+	tetris/screen.c, tetris/screen.h, trek/main.c, worm/worm.c,
+	wump/wump.c: Update from NetBSD CVS.
+
 2000-05-27  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.
