@@ -100,8 +100,10 @@ love()
 	int     n;
 
 	while (wordtype[++wordnumber] != NOUNS && wordnumber <= wordcount);
-	if (wordtype[wordnumber] == NOUNS && testbit(location[position].objects, wordvalue[wordnumber])) {
-		if (wordvalue[wordnumber] == NORMGOD && !loved) {
+	if (wordtype[wordnumber] == NOUNS) {
+		if ((testbit(location[position].objects, BATHGOD) ||
+		    testbit(location[position].objects, NORMGOD)) &&
+		    wordvalue[wordnumber] == NORMGOD && !loved) {
 			if (godready >= 2) {
 				puts("She cuddles up to you, and her mouth starts to work:\n'That was my sister's amulet.  The lovely goddess, Purl, was she.  The Empire\ncaptured her just after the Darkness came.  My other sister, Vert, was killed\nby the Dark Lord himself.  He took her amulet and warped its power.\nYour quest was foretold by my father before he died, but to get the Dark Lord's\namulet you must use cunning and skill.  I will leave you my amulet,");
 				puts("which you may use as you wish.  As for me, I am the last goddess of the\nwaters.  My father was the Island King, and the rule is rightfully mine.'\n\nShe pulls the throne out into a large bed.");
@@ -120,21 +122,30 @@ love()
 					setbit(location[position].objects, MEDALION);
 				loved = 1;
 				ourtime += 10;
+				printf("Loved.\n");
 				zzz();
 			} else {
 				puts("You wish!");
 				return;
 			}
 		}
-		if (wordvalue[wordnumber] == NATIVE) {
-			puts("The girl is easy prey.  She peels off her sarong and indulges you.");
-			power++;
-			pleasure += 5;
-			printf("Girl:\n");
-			ourtime += 10;
-			zzz();
-		}
-		printf("Loved.\n");
+		if (testbit(location[position].objects, wordvalue[wordnumber])) {
+			if (wordvalue[wordnumber] == NATIVE) {
+				puts("The girl is easy prey.  She peels off her sarong and indulges you.");
+				power++;
+				pleasure += 5;
+				printf("Girl:\n");
+				ourtime += 10;
+				printf("Loved.\n");
+				zzz();
+			}
+			if (wordvalue[wordnumber] == MAN ||
+			    wordvalue[wordnumber] == BODY ||
+			    wordvalue[wordnumber] == ELF ||
+			    wordvalue[wordnumber] == TIMER)
+				puts("Kinky!");
+		} else
+			puts("Where's your lover?");
 	} else
 		puts("It doesn't seem to work.");
 }
