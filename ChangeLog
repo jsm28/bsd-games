@@ -1,5 +1,10 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* fortune/fortune/fortune.c (fortlen): Return proper fortune
+	length for fortune files without STR_RANDOM or STR_ORDERED rather
+	than comparing it to SLEN.  Bug reported by Simon Williams
+	<simon@no-dns-yet.org.uk>.
+
 	* fortune/fortune/fortune.c (init_prob): Show residual probability
 	rather than non-residual in "No place to put residual probability"
 	error message.  Distribute residual probability correctly rather
