@@ -26,11 +26,11 @@ are not supported in bsd-games-non-free; if you change them, hack may
 well not build or work.)
 
 If you have questions about bsd-games-non-free you can contact me at
-<jsm28@cam.ac.uk>.  Bug reports should state the versions of ncurses
-and libc used.
+<jsm@polyomino.org.uk>.  Bug reports should state the versions of
+ncurses and libc used.
 
 Joseph S. Myers
-jsm28@cam.ac.uk
+jsm@polyomino.org.uk
 
 
 

@@ -9,7 +9,7 @@ Description:	Port of most of the games from NetBSD-current.  Games
 	primes quiz rain random robots sail snake tetris trek wargames worm
 	worms wtf wump.
 Keywords:	games, NetBSD
-Maintained-by:	jsm28@cam.ac.uk (Joseph S. Myers)
+Maintained-by:	jsm@polyomino.org.uk (Joseph S. Myers)
 Primary-site:	ibiblio.org /pub/Linux/games
 		bsd-games-2.13.tar.gz
 Alternate-site:	tsx-11.mit.edu /pub/linux/sources/usr.games

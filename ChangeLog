@@ -1,14 +1,21 @@
-2002-01-26  Joseph S. Myers  <jsm28@cam.ac.uk>
+2002-06-18  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* BUGS, ChangeLog, INSTALL, README, README.non-free, SECURITY,
+	TODO, bsd-games-non-free.lsm, bsd-games.lsm, dm/README.linux,
+	hunt/README.linux, trek/README.linux: Consistently use
+	jsm@polyomino.org.uk as email address.
+
+2002-01-26  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* hangman/extern.c, hangman/getword.c, hangman/hangman.6.in,
 	hangman/hangman.h, hangman/main.c: Update from NetBSD CVS.
 
-2002-01-20  Joseph S. Myers  <jsm28@cam.ac.uk>
+2002-01-20  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* README: Note this collection supports GNU Hurd as well as Linux.
 	* COPYING: Update.
 
-2002-01-19  Joseph S. Myers  <jsm28@cam.ac.uk>
+2002-01-19  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* phantasia/fight.c (encounter): Make firsthit and flockcnt
 	volatile.
@@ -28,7 +35,7 @@
 	set on the command line.  Patch from Joey Hess <joeyh@debian.org>.
 	* COPYING: Update.
 
-2001-12-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-12-29  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* phantasia/Makefrag (phantasia_install): Use $(INSTALL_PREFIX)
 	when copying score files.  Patch from Joey Hess
@@ -36,7 +43,7 @@
 	* AUTHORS, THANKS: Update email address for Joey Hess.  Patch from
 	Joey Hess <joeyh@debian.org>.
 
-2001-12-08  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-12-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/fly.c, cribbage/crib.c, fortune/datfiles/fortunes2,
 	fortune/datfiles/fortunes2-o.real, hangman/setup.c, mille/mille.c,
@@ -44,7 +51,7 @@
 	rogue/init.c, sail/pl_7.c, worm/worm.c, wtf/acronyms: Update from
 	NetBSD CVS.
 
-2001-11-18  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-11-18  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
@@ -69,7 +76,7 @@
 
 	* tetris/screen.c (scr_set): Set VMIN and VTIME.
 
-2001-10-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-10-06  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* backgammon/backgammon/main.c, hack/hack.fix, monop/monop.c,
 	phantasia/phantdefs.h, sail/pl_7.c, wargames/wargames: Update from
@@ -78,14 +85,14 @@
 	* hunt/hunt/hunt.6.in: Correct slime costs.  Bug reported by
 	Britton Leo Kerin <fsblk@aurora.uaf.edu>.
 
-2001-09-02  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-09-02  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/setup.c, atc/include.h, boggle/mkdict/mkdict.c,
 	fortune/datfiles/fortunes, fortune/datfiles/fortunes-o.real,
 	monop/execute.c, sail/main.c, snake/snake/snake.c, worm/worm.6,
 	worm/worm.c, wump/wump.c, wtf/acronyms: Update from NetBSD CVS.
 
-2001-08-30  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-08-30  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 2.13.
 
@@ -120,7 +127,7 @@
 	* phantasia/Makefrag: Use a stamp file for generating score files.
 	* phantasia/.cvsignore: Update.
 
-2001-08-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-08-29  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* worm/worm.c (main): Check for too small a screen size.
 	(newpos): Fix off-by-one error preventing the prize from being
@@ -187,12 +194,12 @@
 	<time.h>.
 	* sail/misc.c: Include <stdlib.h>.
 
-2001-08-02  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-08-02  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* README, PACKAGING: Warn about inclusion of cryptographic
 	software.
 
-2001-03-24  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-03-24  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* hack/hack.cmd.c: Whitespace adjustments for NetBSD alignment.
 
@@ -201,22 +208,22 @@
 	fortune/fortune/fortune.c, wtf/acronyms: Update from NetBSD CVS
 	(but don't apply __progname changes).
 
-2001-03-19  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-03-19  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* bsd-games.lsm (Primary-site), bsd-games-non-free.lsm
 	(Primary-site): Change metalab.unc.edu to ibiblio.org.
 
-2001-03-03  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-03-03  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* install-man.in, install-score.in: Use POSIX "chown user:group"
 	instead of GNU "chown user.group".
 
-2001-02-08  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-02-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* rogue/USD.doc/rogue.me: Fix typo (s/scroll/potion/).  Reported
 	by Lidovski Vladimir <yyterry@chat.ru>.
 
-2001-02-07  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-02-07  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/hdr.h, adventure/init.c, arithmetic/arithmetic.c,
 	atc/atc.6.in, atc/extern.h, atc/input.c, atc/log.c, atc/main.c,
@@ -251,18 +258,18 @@
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
-2001-01-11  Joseph S. Myers  <jsm28@cam.ac.uk>
+2001-01-11  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* mkdep: Update to work with current CVS GCC.
 	* COPYING: Update copyright dates.
 
-2000-12-20  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-12-20  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* rain/rain.c (main): If delay is zero, do tcdrain(STDOUT_FILENO)
 	at the end of each iteration to avoid buffered output preventing
 	Ctrl-C from working within a reasonable time.
 
-2000-10-17  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-10-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* cribbage/cribbage.h: Mark msg() and addmsg() with printf format
 	attributes.
@@ -271,7 +278,7 @@
 	* monop/misc.c (next_play): Fix undefined order of side effects.
 	* monop/prop.c (bid): Likewise.
 
-2000-09-25  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-09-25  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 2.12.
 
@@ -333,7 +340,7 @@
 	* tests/battlestar.in39, tests/battlestar.out39: New test.
 	* tests/battlestar.test: Update.
 
-2000-09-24  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-09-24  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* NEWS, TODO: Update.
 
@@ -358,7 +365,7 @@
 	* battlestar/cypher.c (cypher): For INVEN, give more sensible
 	messages when WEIGHT or CUMBER are zero.
 
-2000-09-23  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-09-23  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/globals.c (objdes, objsht): Use NULL instead of 0;
 	from OpenBSD.  Also add or adjust comments.
@@ -398,7 +405,7 @@
 	tests/battlestar.in37, tests/battlestar.out37: New tests.
 	* tests/battlestar.test: Update.
 
-2000-09-22  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-09-22  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/com5.c (love): Allow for bathing goddess; better
 	message when the lover is not present or for certain choices of
@@ -427,7 +434,7 @@
 	* tests/battlestar.in28, tests/battlestar.out28: New test.
 	* tests/battlestar.test: Update.
 
-2000-09-21  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-09-21  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/cypher.c (cypher): Give appropriate messages for
 	verbs applied to "all" where nothing relevant is present.  From
@@ -486,7 +493,7 @@
 	* battlestar/com2.c (murder): From OpenBSD: shoot with laser if no
 	hand-to-hand weapon available.
 
-2000-09-20  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-09-20  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/getcom.c (getcom): die() on EOF; based on OpenBSD.
 	* tests/battlestar.out15: New test.
@@ -503,7 +510,7 @@
 	* tests/battlestar.in14, tests/battlestar.out14: New tests.
 	* tests/battlestar.test: Update.
 
-2000-09-17  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-09-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/dayfile.c (dayfile), battlestar/nightfile.c
 	(nightfile): Add missing initialisers and comments giving room
@@ -533,7 +540,7 @@
 	* battlestar/words.c (wlist): Add synonyms "papaya" and "coconut"
 	and verbs "open", "unlock", "verbose" and "brief", from OpenBSD.
 
-2000-09-10  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-09-10  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/com2.c, battlestar/com3.c, battlestar/com4.c,
 	battlestar/com5.c, battlestar/com6.c, battlestar/com7.c,
@@ -541,7 +548,7 @@
 	battlestar/room.c, battlestar/words.c: Update from NetBSD CVS
 	after merge.
 
-2000-09-09  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-09-09  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/room.c (writedes): Process '=' in descriptions as
 	meaning a literal '-'; from OpenBSD.
@@ -574,7 +581,7 @@
 	battlestar/init.c, battlestar/nightfile.c, battlestar/room.c:
 	Update from NetBSD CVS after merge.
 
-2000-09-08  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-09-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/battlestar.6: Don't refer to ~.  Suggested by Hubert
 	Feyrer.
@@ -583,7 +590,7 @@
 	Don't restrict length of username, use a string from strdup
 	instead.  Make functions and arrays only used in init.c static.
 
-2000-09-07  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-09-07  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/extern.h: Put prototypes in alphabetical order.
 
@@ -601,7 +608,7 @@
 
 	* tests/battlestar.test: Test for wizard or anti-wizard users.
 
-2000-09-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-09-06  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* tests/battlestar.in5, tests/battlestar.out5,
 	tests/battlestar.in6, tests/battlestar.out6,
@@ -617,7 +624,7 @@
 	* lib/.cvsignore: New file.
 	* morse/.cvsignore: Add morse.
 
-2000-08-22  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-08-22  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* hunt/hunt/.cvsignore, hunt/huntd/.cvsignore, mille/.cvsignore,
 	monop/.cvsignore, morse/.cvsignore, number/.cvsignore,
@@ -629,13 +636,13 @@
 	tetris/.cvsignore, trek/.cvsignore, worm/.cvsignore,
 	worms/.cvsignore, wtf/.cvsignore, wump/.cvsignore: New files.
 
-2000-08-19  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-08-19  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* fortune/datfiles/.cvsignore, fortune/fortune/.cvsignore,
 	fortune/strfile/.cvsignore, fortune/unstr/.cvsignore,
 	gomoku/.cvsignore, hack/.cvsignore, hangman/.cvsignore: New files.
 
-2000-08-18  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-08-18  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* caesar/.cvsignore, canfield/canfield/.cvsignore,
 	canfield/cfscores/.cvsignore, cribbage/.cvsignore, dm/.cvsignore,
@@ -646,7 +653,7 @@
 	fortune/datfiles/netbsd-o.real, wtf/acronyms: Update from NetBSD
 	CVS.
 
-2000-08-05  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-08-05  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* .cvsignore, include/.cvsignore, adventure/.cvsignore,
 	arithmetic/.cvsignore, atc/.cvsignore,
@@ -658,14 +665,14 @@
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
-2000-08-04  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-08-04  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* include/signal.h, include/stdio.h, include/stdlib.h,
 	include/termios.h, include/sys/cdefs.h, include/sys/ttydefaults.h:
 	Use #pragma GCC system_header to allow #include_next with
 	-pedantic.
 
-2000-08-03  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-08-03  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/input.c, atc/log.c, atc/update.c, hack/config.h,
 	hack/def.monst.h, hack/def.rm.h, hack/hack.cmd.c, hack/hack.h,
@@ -683,16 +690,16 @@
 	fortune/strfile/strfile.c, hack/makedefs.c, monop/initdeck.c:
 	Update from NetBSD CVS.
 
-2000-08-02  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-08-02  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* sail/extern.h (abs): Don't define; breaks with glibc 2.2.
 
-2000-07-22  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-07-22  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* hack/hack.tty.c, monop/getinp.c, rogue/message.c, trek/phaser.c:
 	Update from NetBSD CVS.
 
-2000-07-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-07-06  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/done.c, adventure/main.c, adventure/subr.c, bcd/bcd.c,
 	canfield/cfscores/cfscores.c, countmail/countmail.6,
@@ -704,7 +711,7 @@
 	trek/getpar.c, trek/setup.c, trek/torped.c: Update from NetBSD
 	CVS.
 
-2000-05-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-05-28  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/Makefile.bsd, adventure/main.c,
 	arithmetic/arithmetic.c, atc/main.c, backgammon/backgammon/main.c,
@@ -720,11 +727,11 @@
 	tetris/screen.c, tetris/screen.h, trek/main.c, worm/worm.c,
 	wump/wump.c: Update from NetBSD CVS.
 
-2000-05-27  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-05-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
-2000-05-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-05-06  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* bsd-games now under CVS version control.  At present there is no
 	anoncvs access, so this isn't particularly relevant to anyone else
@@ -741,12 +748,12 @@
 	applied where no bsd-games-non-free release corresponded to a
 	particular bsd-games release.
 
-2000-04-26  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-04-26  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* bsd-games.lsm, bsd-games-non-free.lsm: Update to LSM format
 	version 4.
 
-2000-04-19  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-04-19  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 2.11.
 
@@ -770,7 +777,7 @@
 	hack/hack.vault.c, hack/hack.wield.c, hack/hack.wizard.c,
 	hack/hack.zap.c: Use const and fix compiler warnings.
 
-2000-04-18  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-04-18  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* hack/*: New, from NetBSD CVS.
 	* hack/Makefile: Rename to Makefile.bsd.
@@ -798,7 +805,7 @@
 	hack/hack.shknam.c, hack.trap.c, hack.zap.c: Use const and fix
 	compiler warnings.
 
-2000-04-15  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-04-15  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* arithmetic/arithmetic.c, boggle/mkdict/Makefile.bsd,
 	boggle/mkindex/Makefile.bsd, fortune/datfiles/fortunes,
@@ -807,32 +814,32 @@
 	hunt/hunt/hunt.c, hunt/huntd/driver.c, phantasia/fight.c,
 	robots/score.c: Update from NetBSD CVS.
 
-2000-04-14  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-04-14  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* COPYING: Fix spelling error.
 
-2000-04-09  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-04-09  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* quiz/datfiles/asia: Corrections from Robert Vollmert
 	<rvollmert@gmx.net>.
 
-2000-04-05  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-04-05  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* countmail/countmail.6: Fix grammar (bug reported by Thomas
 	Bushnell BSG <tb@MIT.EDU>).
 
-2000-03-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-03-29  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* boggle/boggle/prtable.c, fish/fish.c, fortune/datfiles/fortunes,
 	fortune/datfiles/fortunes2, fortune/datfiles/fortunes2-o.real,
 	fortune/datfiles/netbsd, gomoku/makemove.c, hunt/hunt/hunt.c,
 	rogue/CHANGES, trek/trek.6.in: Update from NetBSD CVS.
 
-2000-02-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-02-28  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
-2000-02-12  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-02-12  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 2.10.
 
@@ -851,7 +858,7 @@
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
-2000-02-09  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-02-09  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
@@ -872,11 +879,11 @@
 	from NetBSD CVS.
 	* fortune/datfiles/netbsd: New, from NetBSD.
 
-2000-02-01  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-02-01  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
-2000-01-24  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-01-24  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* snake/snscore/snscore.c, tetris/scores.c, tetris/tetris.c,
 	wargames/Makefile.bsd, wargames/wargames.6: Update from NetBSD CVS
@@ -886,46 +893,46 @@
 	fortune/datfiles/Makefile.bsd, hunt/hunt/hunt.c,
 	hunt/huntd/hunt.h, phantasia/Makefile.bsd: Update from NetBSD CVS.
 
-2000-01-20  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-01-20  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* robots/main.c, robots/score.c: Update from NetBSD CVS after
 	further merge.
 
-2000-01-19  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-01-19  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* fortune/strfile/strfile.c, random/random.c: Update from NetBSD
 	CVS after further merge.
 
-2000-01-17  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-01-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* random/random.c: Define MAXRANDOM rather than using RAND_MAX.
 
-2000-01-13  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-01-13  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/io.c, adventure/vocab.c, battlestar/save.c,
 	caesar/caesar.c, monop/monop.c, worm/worm.c: Update from NetBSD
 	CVS after further merge.
 
-2000-01-08  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-01-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
-2000-01-02  Joseph S. Myers  <jsm28@cam.ac.uk>
+2000-01-02  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* tetris/screen.h, tetris/tetris.c, tetris/tetris.h: Update from
 	NetBSD CVS after further merge.
 
-1999-12-31  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-12-31  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* fortune/strfile/strfile.c, fortune/strfile/strfile.h,
 	monop/cards.c, monop/initdeck.c: Update from NetBSD CVS.
 
-1999-12-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-12-28  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* sail/extern.h, sail/globals.c, sail/pl_7.c, sail/player.h:
 	Update from NetBSD CVS after further merge.
 
-1999-12-16  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-12-16  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* ppt/ppt.c, quiz/quiz.c: Update from NetBSD CVS (more changes
 	merged into NetBSD).
@@ -940,7 +947,7 @@
 	fortune/strfile/strfile.c, wargames/wargames, wtf/wtf.in: Update
 	from NetBSD CVS.
 
-1999-12-07  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-12-07  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/io.c, adventure/vocab.c, battlestar/save.c,
 	caesar/caesar.c, monop/cards.c, monop/initdeck.c, monop/monop.c,
@@ -950,15 +957,15 @@
 	* fortune/strfile/strfile.c: Remove obsolete NO_VOID conditional,
 	and casts in ALLOC macro.
 
-1999-12-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-12-06  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
-1999-11-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-11-29  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* ChangeLog: Use consistent form of my name and email address.
 
-1999-11-15  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-11-15  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* countmail/countmail: Don't describe messages as new when they
 	may not be (bug report and suggested fix from Malcolm Parsons
@@ -982,7 +989,7 @@
 	message (bug report and suggested fix by Malcolm Parsons
 	<malcolm@bits.bris.ac.uk>).
 
-1999-11-12  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-11-12  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 2.9.
 
@@ -990,7 +997,7 @@
 
 	* NEWS: Update.
 
-1999-11-11  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-11-11  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* boggle/mkindex/mkindex.c (main): Add index entries for letters
 	not found in the dictionary (problem reported by Mike Castle
@@ -1009,11 +1016,11 @@
 	snake/snake/snake.6.in, snake/snake/snake.c, worm/worm.6,
 	worm/worm.c: Update from NetBSD CVS.
 
-1999-11-05  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-11-05  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
-1999-10-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-10-28  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
@@ -1025,22 +1032,22 @@
 	just-built one.  Bug reported by Roman Hodek
 	<Roman.Hodek@informatik.uni-erlangen.de>.
 
-1999-10-21  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-10-21  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* backgammon/common_source/back.h,
 	backgammon/common_source/subs.c, robots/main.c, tetris/screen.c,
 	tetris/screen.h: Update from NetBSD CVS.
 
-1999-10-11  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-10-11  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
-1999-10-01  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-10-01  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* cribbage/cribbage.6.in, mille/move.c: Update from NetBSD CVS
 	after further merge.
 
-1999-09-30  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-30  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/def.h, cribbage/cards.c, cribbage/cribbage.h, cribbage/io.c,
 	mille/comp.c, mille/init.c, mille/mille.h, mille/move.c,
@@ -1051,12 +1058,12 @@
 
 	* cribbage/cribbage.6.in (FILES): Tweak.
 
-1999-09-27  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* quiz/datfiles/europe (Monaco): Change capital to Monaco, bug
 	reported by <capo@writeme.com>.
 
-1999-09-26  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-26  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 2.8.
 
@@ -1074,20 +1081,20 @@
 	* COPYING: Tweak.
 	* NEWS: Add release dates.
 
-1999-09-23  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-23  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* dm/dm.c, fish/fish.c, fortune/fortune/fortune.c: Update from
 	NetBSD CVS after further merge.
 
 	* fortune/datfiles/Makefile.bsd: Update from NetBSD CVS.
 
-1999-09-19  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-19  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* boggle/boggle/bog.c, boggle/mkdict/mkdict.c, cribbage/extern.c,
 	dm/dm.c, phantasia/setup.c: Update from NetBSD CVS after further
 	merge.
 
-1999-09-18  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-18  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* boggle/mkdict/mkdict.c, boggle/mkindex/mkindex.c: Update from
 	NetBSD CVS after further merge.
@@ -1113,7 +1120,7 @@
 	tetris/scores.c, trek/externs.c, trek/trek.h: Update from NetBSD
 	CVS after further merge.
 
-1999-09-17  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.
 
@@ -1124,7 +1131,7 @@
 	* hangman/hangman.6.in: Document this.
 	* NEWS, TODO, INSTALL, PACKAGING: Update.
 
-1999-09-16  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-16  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* hangman/words: Remove.  The copyright status was not clear;
 	assertions in the LSM entry that it is free from copyright seem to
@@ -1152,7 +1159,7 @@
 	* battlestar/battlestar.c (main): Give a sensible error message in
 	the default (should't happen) case.
 
-1999-09-15  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-15  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* COPYING: Update.
 
@@ -1180,7 +1187,7 @@
 	* fortune/fortune/fortune.c: Use macro NAMLEN rather than
 	strlen(dirent->d_name).
 
-1999-09-14  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-14  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* gomoku/main.c: Tweak for NetBSD alignment.
 
@@ -1203,7 +1210,7 @@
 	corrections, and includes vice-presidents).
 	* quiz/datfiles/index.in: Update.
 
-1999-09-13  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-13  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/com6.c, battlestar/extern.h, battlestar/init.c,
 	cribbage/instr.c, gomoku/gomoku.h, gomoku/main.c,
@@ -1240,7 +1247,7 @@
 	* configure, Makeconfig.in: Likewise.
 	* COPYING: Update.
 
-1999-09-12  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-12  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wargames/wargames.6: Add copyright notice and licence terms;
 	convert to use tmac.doc.
@@ -1263,7 +1270,7 @@
 	wump/wump.c: Update from NetBSD CVS after merge of most security
 	changes.
 
-1999-09-11  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-11  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wtf/acronyms: Updatef from NetBSD-current.
 
@@ -1271,7 +1278,7 @@
 	* NEWS: Update.
 	* README: Update.
 
-1999-09-10  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-10  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wump/wump.c: Update from NetBSD CVS.
 
@@ -1295,7 +1302,7 @@
 	fortune/strfile/strfile.c, monop/initdeck.c: Update from NetBSD
 	CVS after further merge.
 
-1999-09-09  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-09  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* monop/initdeck.c (main): Whitespace tweaks.
 
@@ -1353,17 +1360,17 @@
 	worm/worm.c: Update from NetBSD CVS after initial merge of const,
 	attribute and symbolic constant changes.
 
-1999-09-08  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-09-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* README: Update.
 
 	* NEWS: Update.
 
-1999-08-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-08-29  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* INSTALL: Update.
 
-1999-08-22  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-08-22  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* README: Update.
 	* NEWS: Update.
@@ -1377,7 +1384,7 @@
 	* AUTHORS: Update.
 	* BUGS: Update.
 
-1999-08-21  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-08-21  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* include/sys/endian.h: New file (compatibility with changes in
 	NetBSD).
@@ -1397,11 +1404,11 @@
 
 	* NEWS: Update.
 
-1999-08-18  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-08-18  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* fish/fish.6: Update from NetBSD anoncvs.
 
-1999-08-17  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-08-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* NEWS: Update.
 
@@ -1415,13 +1422,13 @@
 	* snake/snake/snake.c, snake/snake/move.c: Minor fixes from
 	OpenBSD.
 
-1999-08-16  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-08-16  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* backgammon/backgammon/main.c, backgammon/teachgammon/teach.c,
 	fortune/datfiles/fortunes2, snake/snake/move.c,
 	snake/snake/snake.h, tetris/screen.c: Update from NetBSD anoncvs.
 
-1999-08-14  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-08-14  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* AUTHORS: Update.
 	* NEWS: Update.
@@ -1430,11 +1437,11 @@
 
 	* wtf/acronyms: Update from NetBSD-current.
 
-1999-08-11  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-08-11  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* worm/worm.c: Update from NetBSD anoncvs.
 
-1999-08-09  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-08-09  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* sail/sync.c: Tweak for NetBSD alignment.
 
@@ -1442,7 +1449,7 @@
 
 	* rain/rain.c, worm/worm.c: Update from NetBSD anoncvs.
 
-1999-08-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-08-06  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* fortunes/datfiles/Makefile.bsd,
 	fortune/datfiles/unamerican.fake,
@@ -1451,7 +1458,7 @@
 	anoncvs.
 	* fortune/datfiles/Makefrag: Update.
 
-1999-07-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-07-29  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/hdr.h, adventure/init.c, atc/graphics.c,
 	backgammon/backgammon/main.c, backgammon/common_source/save.c,
@@ -1460,13 +1467,13 @@
 	battlestar/save.c, bcd/bcd.6, bcd/bcd.c, worm/worm.c, wtf/wtf.in:
 	Update from NetBSD anoncvs.
 
-1999-07-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-07-28  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/grammar.y, backgammon/common_source/back.h,
 	backgammon/common_source/fancy.c, backgammon/common_source/subs.c:
 	Update from NetBSD anoncvs of yesterday.
 
-1999-07-27  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-07-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* TODO, SECURITY, PACKAGING: Add note on security hardening.
 
@@ -1507,20 +1514,20 @@
 	* Makeconfig.in: Add GETLOADAVG_DEFS and FGETLN_DEFS.
 	* battlestar/Makefrag, dm/Makefrag, quiz/Makefrag: Use them.
 
-1999-07-26  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-07-26  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/battlestar.6: Fix mdoc usage (use .Op Ar saved-file
 	instead of .Op saved-file).
 
 	* wtf/wtf.in, wtf/wtf.6.in: Update from NetBSD anoncvs.
 
-1999-07-25  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-07-25  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/grammer.y, atc/graphics.c, atc/input.c, atc/log.c,
 	atc/main.c, atc/update.c, backgammon/teachgammon/ttext1.c: Update
 	from NetBSD anoncvs.
 
-1999-07-24  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-07-24  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/main.c: Change to use getopt.
 
@@ -1528,7 +1535,7 @@
 	* backgammon/common_source/init.c: Whitespace alignment with
 	NetBSD.
 
-1999-07-23  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-07-23  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Makefile.bsd, atc/grammar.y, backgammon/backgammon/main.c,
 	backgammon/teachgammon/teach.c, banner/banner.c,
@@ -1544,7 +1551,7 @@
 	* wtf/acronyms: Acronym collection from NetBSD.
 	* README, bsd-games.lsm, NEWS: Update.
 
-1999-07-18  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-07-18  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/grammar.y (wdef): Check sp->width instead of sp->height.
 
@@ -1561,7 +1568,7 @@
 	* battlestar/com6.c, battlestar/extern.h: Don't include <time.h>
 	in com6.c, include it instead of <sys/time.h> in extern.h.
 
-1999-07-16  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-07-16  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/hdr.h, adventure/main.c, adventure/save.c,
 	adventure/setup.c, adventure/wizard.c,
@@ -1571,12 +1578,12 @@
 	dm/dm.c, fish/fish.c, wump/wump.c: Update from NetBSD-current of
 	1999-07-16 (more of my changes merged back in).
 
-1999-07-15  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-07-15  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/save.c (restore): Check for errors writing the save
 	file.
 
-1999-07-14  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-07-14  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* boggle/boggle/bog.c (checkdict): Use SEEK_SET with dictseek().
 
@@ -1584,7 +1591,7 @@
 	parametrised.
 	* substfiles: Include atc/atc.6.
 
-1999-06-30  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-06-30  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/fly.c, fish/fish.c, hunt/hunt/otto.c,
 	robots/Makefile.bsd, robots/auto.c, robots/extern.c,
@@ -1606,11 +1613,11 @@
 	* random/random.c: Mark `usage' as `noreturn'.
 	* rogue/rogue.h: Mark `killed_by' and `win' as `noreturn'.
 
-1999-04-10  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-04-10  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* BUGS: Update.
 
-1999-04-04  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-04-04  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 2.7.
 
@@ -1619,7 +1626,7 @@
 	* mille/mille.c, mille/misc.c, mille/move.c, mille/save.c: Update
 	from NetBSD-current of 1999-04-02.
 
-1999-03-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-03-28  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* INSTALL: Update.
 
@@ -1636,7 +1643,7 @@
 	* hunt/huntd/driver.c (init): Fork and exit to ensure that
 	setsid() will work.
 
-1999-03-27  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-03-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* backgammon/backgammon/main.c (main): Fix scoring if you bear off
 	all your men and your opponent has borne off at least one man but
@@ -1650,7 +1657,7 @@
 	gomoku/gomoku.6, random/random.6, tetris/tetris.c, worms/worms.6:
 	Update from NetBSD-current of 1999-03-26.
 
-1999-02-20  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-02-20  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/crc.c, adventure/hdr.h, adventure/init.c,
 	adventure/io.c, adventure/main.c, adventure/setup.c,
@@ -1685,23 +1692,23 @@
 	wump/wump.c: Update from NetBSD-current of 1999-02-19.
 	* backgammon/teachgammon/ttext1.c: Add more use of const.
 
-1999-01-21  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-01-21  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* fortune/fortune/fortune.c: Use strlen(d_name) rather than
 	incorrect #define d_namlen d_reclen.  Should be conditionalised in
 	some way.
 
-1999-01-12  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-01-12  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* bcd/bcd.6: Include references to the relevant standards.
 
-1999-01-10  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-01-10  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* worms/worms.c (main): Use leaveok().
 
 	* rain/rain.c (main): Use leaveok().
 
-1999-01-09  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-01-09  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/hdr.h: Add comment saying where to find original
 	source.
@@ -1718,7 +1725,7 @@
 	format.  (Based on Paul Janzen's work in OpenBSD.)
 	* pom/pom.6: Update.
 
-1999-01-08  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-01-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/cypher.c (cypher): Add FALLTHROUGH comment as per
 	NetBSD policy.
@@ -1752,7 +1759,7 @@
 	tetris/tetris.6.in, tetris/tetris.c, tetris/tetris.h: Update from
 	NetBSD-current of 1999-01-07 (adds piece preview option).
 
-1999-01-07  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-01-07  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* fortune/strfile/strfile.c (main): Flush output file and check
 	for write errors before closing it and exiting the program.
@@ -1760,7 +1767,7 @@
 	* include/sys/cdefs.h: Use __unused__ in attribute, for cleanness
 	and NetBSD alignment.
 
-1999-01-01  Joseph S. Myers  <jsm28@cam.ac.uk>
+1999-01-01  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* fortune/strfile/strfile.c: Remove unused ALWAYS macro.
 
@@ -1768,7 +1775,7 @@
 	boggle/mkindex/mkindex.c, monop/initdeck.c: Flush stdout or output
 	file and check for errors on writing before terminating.
 
-1998-12-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-12-28  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* pig/pig.6: Include utility name with .Nm where needed.
 
@@ -1781,7 +1788,7 @@
 	battlestar/nightfile.c: Spelling and punctuation corrections from
 	OpenBSD.
 
-1998-12-23  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-12-23  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* worms/worms.c, worms/worms.6: Convert to use curses; add delay
 	option from OpenBSD; change to use <err.h> functions; fix signal
@@ -1792,7 +1799,7 @@
 	option from OpenBSD; fix signal handling.
 	* TODO: Update.
 
-1998-12-20  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-12-20  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* install-man.in: Use `ln -sf' rather than `ln -s'.  How come this
 	never got noticed before?
@@ -1805,12 +1812,12 @@
 	* bsd-games.lsm: Update.
 	* bsd-games-non-free.lsm: Update.
 
-1998-12-18  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-12-18  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* ppt/ppt.c: Print a space between command line arguments (bugfix
 	from OpenBSD).
 
-1998-12-14  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-12-14  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* configure (warning_flags): Add -Wwrite-strings to defaults.
 	* TODO: Update.
@@ -1826,7 +1833,7 @@
 	* snake/snake/move.c, snake/snake/snake.c, snake/snake/snake.h,
 	snake/snscore/snscore.c: Use const where appropriate.
 
-1998-12-12  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-12-12  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* sail/assorted.c, sail/dr_1.c, sail/dr_2.c, sail/dr_3.c,
 	sail/dr_4.c, sail/dr_5.c, sail/extern.h, sail/parties.c,
@@ -1847,7 +1854,7 @@
 	phantasia/phantstruct.h, phantasia/setup.c: Use const where
 	appropriate.
 
-1998-12-11  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-12-11  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* NEWS: Update.
 
@@ -1870,7 +1877,7 @@
 
 	* number/number.c: Use const where appropriate.
 
-1998-12-10  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-12-10  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* morse/morse.c: Use const where appropriate.
 
@@ -1921,7 +1928,7 @@
 	* monop/cards.c (set_up): Check for allocation failure.
 	* monop/monop.h: Include <err.h>.
 
-1998-12-08  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-12-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/wizard.c (ciao): Avoid buffer overrun when reading
 	save file name.
@@ -1934,7 +1941,7 @@
 	rogue/throw.c, rogue/trap.c, rogue/use.c, rogue/zap.c,
 	wump/Makefile.bsd: Update from NetBSD-current of 1998-12-07.
 
-1998-12-07  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-12-07  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/Makefile.bsd, atc/extern.c, atc/extern.h, atc/graphics.c,
 	atc/input.c, atc/log.c, atc/main.c, atc/update.c,
@@ -1987,7 +1994,7 @@
 
 	* atc/log.c (open_score_file): Die if the score file gets fd < 3.
 
-1998-12-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-12-06  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* TODO: Update.
 
@@ -1998,7 +2005,7 @@
 	* configure: Don't put `#!/bin/sh' and an `autogenerated' comment
 	in quiz/datfiles/index.
 
-1998-09-24  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-24  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 2.5.
 
@@ -2020,7 +2027,7 @@
 	* TODO: Update accordingly.
 	* THANKS: Update accordingly.
 
-1998-09-23  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-23  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* NEWS: Update.
 
@@ -2055,7 +2062,7 @@
 
 	* INSTALL: Minor changes.
 
-1998-09-15  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-15  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/Makefile.bsd, atc/extern.h, atc/input.c, atc/main.c,
 	backgammon/backgammon/backgammon.6.in,
@@ -2077,7 +2084,7 @@
 	sail/:specs, trek/board.x: Removed (unused, and removed in
 	NetBSD-current of 1998-09-14 in response to PR bin/6083).
 
-1998-09-14  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-14  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/done.c, adventure/extern.h, adventure/io.c,
 	adventure/main.c, adventure/setup.c, adventure/subr.c,
@@ -2104,7 +2111,7 @@
 	* hangman/extern.c, hangman/hangman.h, hangman/setup.c: Use const
 	where appropriate.
 
-1998-09-13  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-13  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* gomoku/bdisp.c, gomoku/gomoku.h, gomoku/main.c,
 	gomoku/makemove.c, gomoku/pickmove.c, gomoku/stoc.c: Use const
@@ -2140,7 +2147,7 @@
 	adventure/save.c, adventure/vocab.c: Update from NetBSD-current of
 	1998-09-13 (const changes merged into NetBSD).
 
-1998-09-12  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-12  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* All games now updated from NetBSD-current of 1998-09-12.
 
@@ -2153,7 +2160,7 @@
 	sail/sync.c, snake/snscore/snscore.c, trek/dumpgame.c,
 	trek/warp.c: Update from NetBSD-current of 1998-09-12.
 
-1998-09-11  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-11  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* BUGS: Update.
 
@@ -2165,20 +2172,20 @@
 
 	* TODO: Update.
 
-1998-09-10  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-10  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/io.c (pspeak): Give "Out of memory!" error on
 	allocation failure rather than bug(108).
 
-1998-09-07  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-07  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* boggle/README.linux, boggle/Makefrag: Update.
 
-1998-09-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-06  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* */Makefrag: Further changes for the new build system.
 
-1998-09-05  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-05  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* New configuration/build system, based on a single makefile that
 	includes makefile fragments that together describe all the
@@ -2212,7 +2219,7 @@
 
 	* BUGS: Update.
 
-1998-09-04  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-04  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* backgammon/teachgammon/Makefile (COBJS): No need to include
 	odds.o.
@@ -2227,7 +2234,7 @@
 	to midnight; remove spurious terminal full stop from err() string
 	(patch from Paul Janzen <pjanzen@foatdi.harvard.edu>).
 
-1998-09-02  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-02  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* NEWS: Update.
 
@@ -2247,7 +2254,7 @@
 	* battlestar/dayobjs.c (dayobjs): Add missing initialiser at end.
 	* battlestar/nightbojs.c (nightobjs): Likewise.
 
-1998-09-01  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-09-01  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* backgammon/common_source/fancy.c (getcaps): Check for allocation
 	failure.
@@ -2285,7 +2292,7 @@
 
 	* phantasia/io.c (getanswer): Mark loop, oldx, oldy volatile.
 
-1998-08-31  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-31  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/setup.c (main): String passed to err() shouldn't have
 	full stop at its end.
@@ -2299,7 +2306,7 @@
 	cribbage/io.c, cribbage/score.c, cribbage/support.c: Use const
 	where appropriate.
 
-1998-08-30  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-30  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* NEWS: Update.
 
@@ -2324,11 +2331,11 @@
 	* atc/input.c: Remove CRTOKEN stuff (conditional on SYSV) - no
 	need for it with ICRNL.
 
-1998-08-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-29  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/com5.c (give): Add explanatory comment.
 
-1998-08-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-28  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/com5.c (give): Proper fix this time: reset wordnumber
 	before doing an error return.
@@ -2363,7 +2370,7 @@
 	mille/types.c: Rename issafety to is_safety, isrepair to
 	is_repair.
 
-1998-08-27  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* hunt/huntd/hunt.h, hunt/huntd/draw.c, hunt/huntd/shots.c: Rename
 	isplayer to is_player.
@@ -2396,7 +2403,7 @@
 
 	* BUGS: Update.
 
-1998-08-26  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-26  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/vocab.c (vocab): Exit with status 1 on error.
 
@@ -2439,7 +2446,7 @@
 
 	* rogue/rogue.h: Condition some prototypes on #ifdef CURSES.
 
-1998-08-25  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-25  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/graphics.c (getAChar): Just use SYSV version always rather
 	than conditioning on SYSV || __linux__; the efficiency loss on
@@ -2461,7 +2468,7 @@
 	boggle/boggle/prtable.c, boggle/boggle/mach.c,
 	boggle/boggle/bog.c: Use const where appropriate.
 
-1998-08-24  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-24  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* arithmetic/arithmetic.c: Use const where appropriate.
 
@@ -2532,7 +2539,7 @@
 	* backgammon/common_source/subs.c,
 	backgammon/common_source/back.h: Remove strset() (not used).
 
-1998-08-23  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-23  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* TODO: Update.
 
@@ -2563,7 +2570,7 @@
 	* adventure/init.c, adventure/extern.h, adventure/main.c: Remove
 	unused arg of init().
 
-1998-08-21  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-21  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* sail/extern.h, sail/main.c, sail/dr_main.c: Remove handling of
 	being setuid - nowadays games only run setgid.
@@ -2587,7 +2594,7 @@
 	* backgammon/backgammon/backgammon.6.in: Revert some unnecessary
 	changes.
 
-1998-08-20  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-20  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* hunt/hunt/hunt.c: Include <sys/param.h> for MAXHOSTNAMELEN.
 
@@ -2597,7 +2604,7 @@
 	* robots/robots.h: Include <errno.h> (from Joey Hess
 	<joey@kitenet.net>).
 
-1998-08-19  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-19  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* number/number.c (convert): Decrement len when there's a minus
 	sign.
@@ -2681,7 +2688,7 @@
 
 	* configure: Add more warning flags to the default.
 
-1998-08-18  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-18  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* INSTALL: Minor changes.
 
@@ -2719,7 +2726,7 @@
 
 	* mille/mille.h: Mark die() noreturn.
 
-1998-08-17  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* hunt/huntd/hunt.h: Mark cleanup() noreturn.
 
@@ -2773,7 +2780,7 @@
 
 	* SECURITY: Clarify.
 
-1998-08-15  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-15  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 2.2.
 
@@ -2901,7 +2908,7 @@
 	* canfield/canfield/canfield.c (initall): Revoke setgid privileges
 	after opening the score file.
 
-1998-08-13  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-13  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* boggle/README.linux: Rebuild.
 
@@ -2919,7 +2926,7 @@
 
 	* atc/input.c (gettoken): Remove unnecessary setuid() call.
 
-1998-08-11  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-11  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* AUTHORS (paranoia): Removed entry.
 
@@ -2937,7 +2944,7 @@
 
 	* BUGS: Update.
 
-1998-08-09  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-09  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/extern.h, battlestar/save.c, battlestar/init.c,
 	battlestar/cypher.c, battlestar/battlestar.c: New interface for
@@ -2967,7 +2974,7 @@
 
 	* canfield/canfield/canfield.c (main): Take no arguments.
 
-1998-08-07  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-07  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* README.non-free: Update.
 
@@ -2979,7 +2986,7 @@
 
 	* INSTALL: Update.
 
-1998-08-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-08-06  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* configure: Add facility to specify a list of games not to build.
 
@@ -2991,7 +2998,7 @@
 
 	* Credits: Update.
 
-1998-07-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-07-29  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* NEWS: Update.
 
@@ -3000,7 +3007,7 @@
 	* PACKAGING: New file - information for those packaging bsd-games
 	for a Linux distribution.
 
-1998-07-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-07-28  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* TODO: Update.
 
@@ -3016,7 +3023,7 @@
 	* configure (substitute): Put comments at the top of generated
 	files saying they are automatically generated.
 
-1998-07-27  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-07-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* All games (expect paranoia) now updated from NetBSD-current of
 	1998-07-27 (some of the Linux changes merged back to NetBSD).
@@ -3051,7 +3058,7 @@
 	* configure: Allow defaults to be taken from a config.params file,
 	which can specify non-interactive operation.
 
-1998-07-25  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-07-25  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* configure: Make a /bin/sh script; use printf instead of echo -n
 	so that a POSIX.2 shell suffices.
@@ -3060,7 +3067,7 @@
 
 	* TODO: Update.
 
-1998-07-22  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-07-22  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* NEWS: Update.
 
@@ -3085,7 +3092,7 @@
 
 	* dm/*: Update from NetBSD-current of 1998-07-11.
 
-1998-07-21  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-07-21  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* countmail/countmail.6: Update from NetBSD-current of 1998-07-11.
 
@@ -3119,7 +3126,7 @@
 
 	* Credits: Minor changes.
 
-1998-07-20  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-07-20  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* YEAR2000: New file, year 2000 statement for bsd-games.
 
@@ -3130,15 +3137,15 @@
 	* pom/pom.c (main): Add 1900 to year as argument of isleap()
 	(fixes year 2000 problem).
 
-1998-07-03  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-07-03  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Credits: Add introductory paragraph.
 
-1998-04-11  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-04-11  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Makefile: Add some standard GNU makefile targets.
 
-1998-04-07  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-04-07  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* configure: Update message before selecting pager.
 
@@ -3148,11 +3155,11 @@
 
 	* fish/fish.c (instructions): Use POSIX.2 pager behaviour.
 
-1998-04-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-04-06  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* cribbage/instr.c (instructions): Use POSIX.2 pager behaviour.
 
-1998-04-04  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-04-04  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* BUGS: Update.
 
@@ -3164,7 +3171,7 @@
 	* bsd-games.lsm (Primary-site): Make sunsite, since tsx-11 is
 	somewhat unreliable and laggardly about installing new releases.
 
-1998-03-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-03-29  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 2.1.
 
@@ -3176,7 +3183,7 @@
 
 	* Credits: Update.
 
-1998-03-28  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-03-28  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* boggle/README.linux: Rebuild.
 
@@ -3197,7 +3204,7 @@
 	* include/stdio.h: New file, wrap <stdio.h> and declare fgetln().
 	* quiz/quiz.c: Don't include implementation of fgetln().
 
-1998-03-27  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-03-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* dm/dm.c (load): Use getloadavg().
 	* dm/Makefile: Use getloadavg() from lib/getloadavg.c.
@@ -3304,7 +3311,7 @@
 	phantasia/setup.c, quiz/datfiles/pres: Update from NetBSD-current
 	of 1998-03-21.
 
-1998-03-26  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-03-26  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* monop/monop.c (main): Use SIGINT instead of 2 in signal.
 
@@ -3333,7 +3340,7 @@
 
 	* quiz/datfiles/europe: Added more new countries.
 
-1998-03-25  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-03-25  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* quiz/datfiles/europe: Update for political changes of the 1990s
 	(needs more work).
@@ -3342,13 +3349,13 @@
 	* INSTALL, README: Update (need libc 5.4.5 or later if using
 	libc5).
 
-1998-01-02  Joseph S. Myers  <jsm28@cam.ac.uk>
+1998-01-02  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/battlestar.c, battlestar/init.c, battlestar/save.c,
 	battlestar/extern.h, battlestar/cypher.c,
 	battlestar/battlerstar.6: Let save file name vary.
 
-1997-12-30  Joseph S. Myers  <jsm28@cam.ac.uk>
+1997-12-30  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/com5.c (give): The value 0 used in NetBSD is as good
 	as any for initialising last1 and last2, so use it; check for it
@@ -3357,7 +3364,7 @@
 	* battlestar/com3.c (shoot): Correct initialiser for firstnumber
 	is always wordnumber.
 
-1997-12-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+1997-12-29  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* mille/mille.h, mille/varpush.c: Make previous change conditional
 	on defined(__linux__) && !defined(__GLIBC__), since the X/Open
@@ -3376,12 +3383,12 @@
 	fortune/Makefile, hunt/Makefile, snake/Makefile: Pass DEFS_TO_PASS
 	in install.
 
-1997-12-26  Joseph S. Myers  <jsm28@cam.ac.uk>
+1997-12-26  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* mille/mille.h: prscore's argument is bool, not int (from Joey
 	Hess).
 
-1997-12-25  Joseph S. Myers  <jsm28@cam.ac.uk>
+1997-12-25  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 2.0.
 
@@ -3389,7 +3396,7 @@
 
 	* Credits: Update.
 
-Sun Dec 21 11:59:34 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sun Dec 21 11:59:34 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* configure: Don't ask for file for backgammon rules.
 
@@ -3410,7 +3417,7 @@ Sun Dec 21 11:59:34 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* configure (warning_flags): Default to -Wall -W
 	-Wstrict-prototypes -Wmissing-prototypes.
 
-Sat Dec 20 11:25:48 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sat Dec 20 11:25:48 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* All games (except paranoia) now updated to NetBSD-current of
 	1997-12-12.
@@ -3539,7 +3546,7 @@ Sat Dec 20 11:25:48 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* Makeconfig.in (INSTALL_SCRIPT): Define.
 	* caesar/Makefile, wargames/Makefile: Use $(INSTALL_SCRIPT).
 
-Fri Dec 19 14:37:56 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Fri Dec 19 14:37:56 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* TODO: Update.
 
@@ -3578,7 +3585,7 @@ Fri Dec 19 14:37:56 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	it (I think only hunt), so that libbsd will not be needed at all
 	and games will work fine with libc6.
 
-Thu Dec 18 13:24:54 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Thu Dec 18 13:24:54 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* ppt/*: Update from NetBSD-current of 1997-12-12.
 	* ppt/Makefile: Use -I../include.
@@ -3649,7 +3656,7 @@ Thu Dec 18 13:24:54 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	libbsd.
 	* substfiles: Include hangman/pathnames.h.
 
-Wed Dec 17 16:14:21 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Wed Dec 17 16:14:21 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* gomoku/pickmove.c: Fix signed/unsigned warnings; mark unused
 	parameter.
@@ -3689,7 +3696,7 @@ Wed Dec 17 16:14:21 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* dm/Makefile: Use -I../include; don't define paths.
 	* substfiles: Include dm/pathnames.h.
 
-Tue Dec 16 10:35:32 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Tue Dec 16 10:35:32 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* cribbage/io.c, cribbage/score.c: Avoid signed/unsigned warning;
 	mark unused parameters.
@@ -3745,7 +3752,7 @@ Tue Dec 16 10:35:32 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* substfiles: Include battlestar/pathnames.h.
 	* battlestar/Makefile: Don't define _PATH_SCORE.
 
-Mon Dec 15 10:07:10 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Mon Dec 15 10:07:10 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* banner/Makefile: Use -I../include.
 
@@ -3828,7 +3835,7 @@ Mon Dec 15 10:07:10 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* Makefile.bsd, Makefile.inc.bsd: Update from NetBSD-current of
 	1997-12-12.
 
-Wed Sep 24 13:44:06 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Wed Sep 24 13:44:06 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* caesar/caesar.c: Include <string.h> and <stdlib.h>; add
 	prototypes and function return types; remove old declarations.
@@ -3869,15 +3876,15 @@ Wed Sep 24 13:44:06 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* bcd/bcd.c: Add prototypes and function return types.
 
-Sat Sep 13 21:08:53 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sat Sep 13 21:08:53 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* configure: Fix spelling errors; some cleanup.
 
-Tue Sep  2 17:28:22 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Tue Sep  2 17:28:22 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* configure: Use empty man8dir if not building in dm or fortune.
 
-Sun Aug 24 10:33:08 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sun Aug 24 10:33:08 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/*: Update from NetBSD-current of 1997-08-24.
 	* adventure/Makefile: Add dependency on extern.h.
@@ -3908,7 +3915,7 @@ Sun Aug 24 10:33:08 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* battlestar/extern.h, battlestar/parse.c, battlestar/room.c,
 	battlestar/save.c: Add prototypes and function return types.
 
-Sat Aug 23 21:17:20 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sat Aug 23 21:17:20 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* battlestar/battlestar.c, battlestar/com1.c, battlestar/com2.c,
 	battlestar/com3.c, battlestar/com4.c, battlestar/com5.c,
@@ -3920,7 +3927,7 @@ Sat Aug 23 21:17:20 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* battlestar/extern.h: Don't conditionalise inclusion of
 	<stdlib.h>.
 
-Mon Aug 18 09:14:17 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Mon Aug 18 09:14:17 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* banner/banner.c: Add prototype for main().
 
@@ -3957,7 +3964,7 @@ Mon Aug 18 09:14:17 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	backgammon/common_source/subs.c, backgammon/common_source/table.c:
 	Add prototypes and function return types.
 
-Sun Aug 10 10:06:10 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sun Aug 10 10:06:10 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/main.c (main): Include program name in `Unknown option'
 	error message.
@@ -3968,12 +3975,12 @@ Sun Aug 10 10:06:10 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	atc/log.c, atc/main.c, atc/update.c: Add prototypes and function
 	return types.
 
-Sat Aug  9 16:36:17 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sat Aug  9 16:36:17 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/extern.h, atc/grammar.y, atc/graphics.c, atc/input/c,
 	atc/update.c: Add prototypes and function return types.
 
-Thu Aug  7 12:01:56 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Thu Aug  7 12:01:56 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/include.h: Make inclusion of <unistd.h> unconditional;
 	remove unused defines of bcopy and bzero under SYSV.
@@ -3989,13 +3996,13 @@ Thu Aug  7 12:01:56 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* configure, Makeconfig.in, dm/Makefile: Configure log file for dm.
 
-Sun Jul 27 12:45:18 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sun Jul 27 12:45:18 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* arithmetic/arithmetic.c: Include <stdlib.h> and <unistd.h>; add
 	function return types and prototypes; remove previous function
 	declarations.
 
-Sat Jul 26 20:17:49 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sat Jul 26 20:17:49 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/crc.c: Add prototypes.
 
@@ -4005,7 +4012,7 @@ Sat Jul 26 20:17:49 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* adventure/io.c, adventure/setup.c: Add prototypes and function
 	return types.
 
-Fri Jul 25 12:48:04 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Fri Jul 25 12:48:04 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/wizard.c: Include <time.h>; remove declaration of
 	localtime().
@@ -4027,7 +4034,7 @@ Fri Jul 25 12:48:04 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	macro DECR and all uses so as not to need -traditional-cpp
 	* adventure/Makefile: Don't use -traditional-cpp.
 
-Thu Jul 24 19:30:35 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Thu Jul 24 19:30:35 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/init.c: Include <time.h> and <stdlib.h>; remove
 	declaration of time().
@@ -4060,11 +4067,11 @@ Thu Jul 24 19:30:35 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* adventure/hdr.h: Add prototypes; remove declaration of malloc().
 
-Sat Jul 19 20:51:49 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sat Jul 19 20:51:49 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* configure: Set empty man5dir if not building in dm.
 
-Thu Jul 17 16:41:29 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Thu Jul 17 16:41:29 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 1.5.
 
@@ -4072,7 +4079,7 @@ Thu Jul 17 16:41:29 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* bsd-games.lsm: Update.
 
-Wed Jul 16 12:50:00 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Wed Jul 16 12:50:00 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* bsd-games.lsm: Update.
 
@@ -4086,7 +4093,7 @@ Wed Jul 16 12:50:00 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* bsd-games.lsm: Update.
 
-Tue Jul 15 15:57:06 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Tue Jul 15 15:57:06 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* bsd-games-non-free.lsm: Update.
 
@@ -4117,7 +4124,7 @@ Tue Jul 15 15:57:06 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* rogue/pathnames.h: The path for the score file is in the
 	Makefile.
 
-Mon Jul 14 11:46:56 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Mon Jul 14 11:46:56 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* quiz/Makefile (clean): Add target.
 
@@ -4154,7 +4161,7 @@ Mon Jul 14 11:46:56 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* phantasia/pathnames.h: Paths are defined in Makefile.
 	* phantasia/Makefile: Supply motd to setup.
 
-Sun Jul 13 18:28:52 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sun Jul 13 18:28:52 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* phantasia/*: Added from NetBSD-current.
 	* phantasia/Makefile: Renamed to Makefile.bsd.
@@ -4183,7 +4190,7 @@ Sun Jul 13 18:28:52 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* cribbage/*: Update from NetBSD-current of 1997-07-12.
 
-Fri Jul 11 19:09:24 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Fri Jul 11 19:09:24 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* bog/README.linux: Comply with licence conditions by including
 	patch from original bog.
@@ -4197,13 +4204,13 @@ Fri Jul 11 19:09:24 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	under Linux; change conditional on inclusion of <errno.h> to allow
 	for this.
 
-Thu Jun 12 20:32:57 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Thu Jun 12 20:32:57 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* adventure/*: Added from NetBSD-current.
 	* adventure/Makefile: Renamed to Makefile.bsd.
 	* adventure/Makefile: New file.
 
-Wed Jun 11 12:09:38 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Wed Jun 11 12:09:38 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Now builds with glibc without needing stray <bsd/*> headers.
 
@@ -4218,7 +4225,7 @@ Wed Jun 11 12:09:38 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* configure: Choose default for BSD-compat includes based on
 	whether /usr/include/bsd exists.
 
-Tue Jun 10 17:40:44 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Tue Jun 10 17:40:44 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* All games, with same exceptions as below, now updated from
 	NetBSD-current of 1997-06-07.
@@ -4226,14 +4233,14 @@ Tue Jun 10 17:40:44 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* cribbage/*, hangman/*, mille/*, robots/*, tetris/*: Update from
 	NetBSD-current of 1997-06-07.
 
-Fri Jun  6 22:19:38 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Fri Jun  6 22:19:38 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* README: Update.
 
 	* *.orig, */*.orig, */*/*.orig: Rename to *.bsd instead to avoid
 	conflicts with patch backups.
 
-Thu May 22 00:03:59 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Thu May 22 00:03:59 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* TODO: Update.
 
@@ -4241,7 +4248,7 @@ Thu May 22 00:03:59 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* README: Update.
 
-Wed May 21 00:08:36 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Wed May 21 00:08:36 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* TODO: Update.
 
@@ -4257,7 +4264,7 @@ Wed May 21 00:08:36 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* atc/Makefile: Use -lfl instead of -ll.
 
-Tue May 20 00:26:52 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Tue May 20 00:26:52 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* All games, with same exceptions as below, now updated from
 	NetBSD-current of 1997-05-17.
@@ -4268,7 +4275,7 @@ Tue May 20 00:26:52 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	fortune/strfile/Makefile.orig, wargames/Makefile.orig: Update from
 	NetBSD-current of 1997-05-17.
 
-Mon May 19 00:50:37 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Mon May 19 00:50:37 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* All games, except bog, hunt and paranoia, now updated from
 	NetBSD-current of 1997-04-26.
@@ -4286,7 +4293,7 @@ Mon May 19 00:50:37 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* wargames/*: Update from NetBSD-current of 1997-04-26.
 
-Sun May 18 01:29:05 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sun May 18 01:29:05 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* trek/README.linux: New file, mentions trek manual.
 
@@ -4296,7 +4303,7 @@ Sun May 18 01:29:05 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* tetris/*: Update from NetBSD-current of 1997-04-26.
 
-Sat May 17 12:24:07 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sat May 17 12:24:07 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* snake/snake/snake.c: Define CTRL.
 
@@ -4311,7 +4318,7 @@ Sat May 17 12:24:07 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* sail/*: Update from NetBSD-current of 1997-04-26.
 
-Thu May 15 15:09:59 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Thu May 15 15:09:59 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* robots/move.c: Don't include <sys/ttydefualts.h>; define CTRL.
 
@@ -4329,7 +4336,7 @@ Thu May 15 15:09:59 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* rain/*: Update from NetBSD-current of 1997-04-26.
 
-Wed May 14 23:27:32 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Wed May 14 23:27:32 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* primes/*: Update from NetBSD-current of 1997-04-26.
 
@@ -4343,13 +4350,13 @@ Wed May 14 23:27:32 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* monop/*: Update from NetBSD-current of 1997-04-26.
 
-Mon May 12 02:08:53 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Mon May 12 02:08:53 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* mille/misc.c (CTRL): Define.
 
 	* mille/*: Update from NetBSD-current of 1997-04-26.
 
-Wed May  7 00:15:09 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Wed May  7 00:15:09 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 1.4.
 
@@ -4379,7 +4386,7 @@ Wed May  7 00:15:09 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* fortune/*: Update from NetBSD-current of 1997-04-26.
 
-Tue May  6 00:53:04 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Tue May  6 00:53:04 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* fish/*: Update from NetBSD-current of 1997-04-26.
 
@@ -4402,7 +4409,7 @@ Tue May  6 00:53:04 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* cribbage/*: Update from NetBSD-current of 1997-04-26.
 
-Mon May  5 02:23:05 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Mon May  5 02:23:05 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* canfield/*: Update from NetBSD-current of 1997-04-26.
 
@@ -4439,13 +4446,13 @@ Mon May  5 02:23:05 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* backgammon/*: Update from NetBSD-current of 1997-04-26.
 
-Sun May  4 01:55:22 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sun May  4 01:55:22 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* backgammon/common_source/subs.c: Initialise `buffnum' to -1, to
 	prevent a spurious NUL.
 	* backgammon/common_source/fancy.c: Mark `buffnum' as `extern'.
 
-Sat May  3 00:27:49 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sat May  3 00:27:49 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 1.3.3beta.
 
@@ -4480,7 +4487,7 @@ Sat May  3 00:27:49 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* Makefile (distclean): Remove install-score.
 
-Fri May  2 13:23:28 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Fri May  2 13:23:28 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/*: Update from NetBSD-current of 1997-04-26.
 
@@ -4511,7 +4518,7 @@ Fri May  2 13:23:28 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* bog/README.linux: Update.
 
-Thu May  1 00:45:58 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Thu May  1 00:45:58 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/Makefile, battlestar/Makefile, canfield/canfield/Makefile,
 	cribbage/Makefile, robots/Makefile, sail/Makefile,
@@ -4573,7 +4580,7 @@ Thu May  1 00:45:58 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* bsd-games.lsm: Update.
 
-Wed Apr 30 00:45:55 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Wed Apr 30 00:45:55 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* INSTALL: Update.
 
@@ -4611,7 +4618,7 @@ Wed Apr 30 00:45:55 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* snake/snake/snake.h: Use <sgtty.h> instead of <bsd/sgtty.h>.
 
-Tue Apr 29 10:37:00 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Tue Apr 29 10:37:00 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Makefile (distclean): Delete all substituted-in manpages.
 
@@ -4656,7 +4663,7 @@ Tue Apr 29 10:37:00 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* tetris/*: Added from FreeBSD-current (as a basis to include port
 	from David Frey <david@eos.lugs.ch>).
 
-Mon Apr 28 12:22:57 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Mon Apr 28 12:22:57 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* wump/README.linux: Update.
 
@@ -4718,7 +4725,7 @@ Mon Apr 28 12:22:57 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* snake/Makefile: Rewrite to use config information; use `set -e'
 	in compound commands.
 
-Sun Apr 27 00:02:40 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sun Apr 27 00:02:40 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* sail/pl_7.c (susp): Don't call tstp (from Debian).
 
@@ -4813,7 +4820,7 @@ Sun Apr 27 00:02:40 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* monop/monop.6.in: Parametrise.
 	* configure: Substitute in this file.
 
-Sat Apr 26 19:10:52 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sat Apr 26 19:10:52 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* mille/README.linux: Update.
 
@@ -4861,7 +4868,7 @@ Sat Apr 26 19:10:52 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* hangman/Makefile: Rewrite to use config information; fix
 	dependencies.
 
-Thu Apr 24 00:02:10 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Thu Apr 24 00:02:10 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* fortune/fortune/Makefile: Don't keep rebuilding fortune.test.
 
@@ -4899,7 +4906,7 @@ Thu Apr 24 00:02:10 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* factor/Makefile: Rewrite to use config information; fix
 	dependencies.
 
-Wed Apr 23 00:03:24 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Wed Apr 23 00:03:24 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* cribbage/cribbage.6: Rename to cribbage.6.in.
 	* cribbage/cribbage.6.in: Parametrise; add mention of score file
@@ -4940,7 +4947,7 @@ Wed Apr 23 00:03:24 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* canfield/Makefile: Rewrite to use config information; use `set
 	-e' in compound commands.
 
-Tue Apr 22 00:08:42 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Tue Apr 22 00:08:42 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* caesar/README.linux: Update.
 
@@ -5021,13 +5028,13 @@ Tue Apr 22 00:08:42 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* battlestar/Makefile: Rewrite to use config information; fix
 	dependencies.
 
-Mon Apr 21 22:19:28 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Mon Apr 21 22:19:28 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* configure: New variable `chown_vardata' to set owner/group on
 	variable data only if appropriate.
 	* Makeconfig.in: Use this variable.
 
-Sat Apr 19 20:06:08 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Sat Apr 19 20:06:08 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* backgammon/Makefile: Add missing semi-colon, and `cd ..'s.
 
@@ -5071,7 +5078,7 @@ Sat Apr 19 20:06:08 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* backgammon/teachgammon/Makefile: Install .so link or symlink to
 	backgammon manpage.
 
-Fri Apr 18 11:02:30 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Fri Apr 18 11:02:30 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* install-man.in: New file to handle all the manpage installation
 	complexities.
@@ -5093,7 +5100,7 @@ Fri Apr 18 11:02:30 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* atc/main.c (main): Add CRMOD to terminal flags, since ncurses
 	1.9.9g (3.4) and 4.0 disable CR-NL translation.
 
-Thu Apr 17 12:31:00 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Thu Apr 17 12:31:00 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/Makefile: Rewrite to use config information; fix
 	dependencies; fix libraries and installation of games (from
@@ -5129,7 +5136,7 @@ Thu Apr 17 12:31:00 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 	* configure, Makeconfig.in: Add configuration of socketdir, for
 	hunt to place its Unix domain sockets in.
 
-Wed Apr 16 21:31:18 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+Wed Apr 16 21:31:18 1997  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* BSD-games.src.lsm: Remove.
 	* bsd-games.lsm: New file - new-style LSM entry.
