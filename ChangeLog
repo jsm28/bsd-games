@@ -1,5 +1,8 @@
 2000-09-24  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/cypher.c (cypher): Improve messages when WEIGHT or
+	CUMBER are zero.
+
 	* battlestar/com2.c (ravage), battlestar/com3.c (bury),
 	battlestar/com5.c (kiss, love, give), battlestar/com6.c (ride):
 	Add explicit no-ops to empty loops following the NetBSD style
