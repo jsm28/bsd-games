@@ -1,5 +1,8 @@
 2004-02-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* factor/Makefile.bsd, factor/factor.6, factor/factor.c,
+	primes/Makefile.bsd, primes/primes.6: Update from NetBSD CVS.
+
 	* TODO: Update.
 
 	* substscr: Explicitly set execute permissions from those of
