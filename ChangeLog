@@ -1,5 +1,9 @@
 2001-08-30  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* snake/snake/snake.c (main): Control -d by #ifdef DEBUG; adjust
+	usage message accordingly.  Bug reported by Malcolm Parsons
+	<malcolm@ivywell.screaming.net>.
+
 	* mille/save.c (save): Handle '\r' the same as '\n'.  Bug reported
 	by Nicolas Lichtmaier <nick@technisys.com.ar>.
 
