@@ -1,5 +1,10 @@
 2000-09-06  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* tests/battlestar.in5, tests/battlestar.out5,
+	tests/battlestar.in6, tests/battlestar.out6,
+	tests/battlestar.err6: New files.
+	* tests/battlestar.test: Update.
+
 	* tests/battlestar.test, tests/battlestar.in1,
 	tests/battlestar.out1, tests/battlestar.in2,
 	tests/battlestar.out2, tests/battlestar.in3,

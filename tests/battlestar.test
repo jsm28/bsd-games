@@ -54,3 +54,18 @@ testno 4
 battlestar/battlestar <tests/battlestar.in4 >test.out 2>&1 || failtest
 compare test.out tests/battlestar.out4
 rm -f test.out
+
+testno 5
+battlestar/battlestar <tests/battlestar.in5 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out5
+rm -f test.out
+
+testno 6
+battlestar/battlestar <tests/battlestar.in6 >test.out 2>/dev/null || failtest
+compare test.out tests/battlestar.out6
+rm -f test.out
+
+testno 7
+battlestar/battlestar <tests/battlestar.in6 >/dev/null 2>test.out || failtest
+compare test.out tests/battlestar.err6
+rm -f test.out
