@@ -943,7 +943,7 @@ init_prob()
 		errx(1, "Probabilities sum to %d%%!", percent);
 	else if (percent < 100 && num_noprob == 0)
 		errx(1, "No place to put residual probability (%d%%)",
-		    percent);
+		    100 - percent);
 	else if (percent == 100 && num_noprob != 0)
 		errx(1, "No probability left to put in residual files");
 	percent = 100 - percent;
@@ -952,7 +952,7 @@ init_prob()
 			if (num_noprob > 1) {
 				frac = percent / num_noprob;
 				DPRINTF(1, (stderr, ", frac = %d%%", frac));
-				for (fp = File_list; fp != last; fp = fp->next)
+				for (fp = File_tail; fp != last; fp = fp->prev)
 					if (fp->percent == NO_PROB) {
 						fp->percent = frac;
 						percent -= frac;

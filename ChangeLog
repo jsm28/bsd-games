@@ -1,5 +1,11 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* fortune/fortune/fortune.c (init_prob): Show residual probability
+	rather than non-residual in "No place to put residual probability"
+	error message.  Distribute residual probability correctly rather
+	than all to one file.  Patch from Mike Castle
+	<dalgoda@ix.netcom.com>.
+
 	* configure, Makeconfig.in, fortune/fortune/pathnames.h.in,
 	fortune/datfiles/Makefrag: Make fortune directory configurable;
 	default to NetBSD default.
