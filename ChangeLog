@@ -1,3 +1,12 @@
+2005-02-16  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* atc/input.c, backgammon/backgammon/main.c,
+	backgammon/teachgammon/teach.c, cribbage/instr.c, fish/fish.c,
+	phantasia/gamesupport.c, phantasia/interplayer.c, phantasia/io.c,
+	phantasia/misc.c, phantasia/phantstruct.h, rogue/machdep.c,
+	rogue/rogue.h, trek/getpar.h, trek/trek.h, wump/wump.c: Update
+	from NetBSD CVS.
+
 2005-02-14  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* hack/hack.termcap.c: Remove "static" from some variables.  Fix

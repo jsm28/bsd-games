@@ -1,4 +1,4 @@
-/*	$NetBSD: gamesupport.c,v 1.8 2004/04/11 13:35:06 he Exp $	*/
+/*	$NetBSD: gamesupport.c,v 1.9 2005/02/15 12:58:21 jsm Exp $	*/
 
 /*
  * gamesupport.c - auxiliary routines for support of Phantasia
