@@ -1,3 +1,8 @@
+2000-10-17  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* monop/misc.c (next_play): Fix undefined order of side effects.
+	* monop/prop.c (bid): Likewise.
+
 2000-09-25  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* Version 2.12.

@@ -179,7 +179,7 @@ bid()
 	cur_max = 0;
 	num_in = num_play;
 	while (num_in > 1 || (cur_max == 0 && num_in > 0)) {
-		i = ++i % num_play;
+		i = (i + 1) % num_play;
 		if (in[i]) {
 			do {
 				(void)sprintf(buf, "%s: ", name_list[i]);
@@ -200,7 +200,7 @@ bid()
 	}
 	if (cur_max != 0) {
 		while (!in[i])
-			i = ++i % num_play;
+			i = (i + 1) % num_play;
 		printf("It goes to %s (%d) for $%d\n",play[i].name,i+1,cur_max);
 		buy(i, &board[cur_p->loc]);
 		play[i].money -= cur_max;

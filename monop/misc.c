@@ -85,7 +85,7 @@ notify()
 void
 next_play()
 {
-	player = ++player % num_play;
+	player = (player + 1) % num_play;
 	cur_p = &play[player];
 	num_doub = 0;
 }
