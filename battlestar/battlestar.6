@@ -129,7 +129,8 @@ will print out your current status in the game.
 The command
 .Dq save
 will save your game in a file called
-.Pa ~/.Bstar
+.Pa .Bstar
+in your home directory
 by default.
 You can recover a saved game by using the
 .Fl r
@@ -139,13 +140,15 @@ Save files will be saved to and restored from your home directory unless a
 path is specified \- i.e.,
 .Dq Li battlestar -r savedgame
 will look for
-.Pa ~/savedgame ,
+.Pa savedgame
+in your home directory,
 but
 .Dq Li battlestar -r ./savedgame
 will look in the current directory.
 .Dq Li battlestar -r
 will look for the default file,
-.Pa ~/.Bstar .
+.Pa .Bstar
+in your home directory.
 .Sh DIRECTIONS
 The compass directions N, S, E, and W can be used if you have a compass.
 If you don't have a compass, you'll have to say R, L, A, or B, which

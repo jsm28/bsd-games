@@ -1,5 +1,8 @@
 2000-09-08  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/battlestar.6: Don't refer to ~.  Suggested by Hubert
+	Feyrer.
+
 	* battlestar/extern.h, battlestar/globals.c, battlestar/init.c:
 	Don't restrict length of username, use a string from strdup
 	instead.  Make functions and arrays only used in init.c static.
