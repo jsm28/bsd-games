@@ -15,7 +15,8 @@ Non-free games
 
 These installation instructions apply to both bsd-games and
 bsd-games-non-free.  bsd-games-non-free contains rogue, which it seems
-cannot be sold for profit: the rest of the games are under the
+cannot be sold for profit, and hack, for which porting but not
+gameplay changes may be made: the rest of the games are under the
 standard BSD distribution conditions, or very similar ones (phantasia
 is public domain, i.e. not copyrighted).  As of version 2.2 and later,
 the bsd-games-non-free package unpacks conventionally into a directory

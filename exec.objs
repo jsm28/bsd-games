@@ -1,7 +1,7 @@
 # exec.objs - details of objects that go into bsd-games programs.
 # This file is used for automatic makefile generation.
 #
-# Copyright (c) 1998, 1999 Joseph Samuel Myers.
+# Copyright (c) 1998, 1999, 2000 Joseph Samuel Myers.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -66,6 +66,18 @@ fortune/fortune/fortune	fortune.o
 fortune/strfile/strfile	strfile.o
 fortune/unstr/unstr	unstr.o
 gomoku			bdinit.o bdisp.o main.o makemove.o pickmove.o stoc.o
+hack			alloc.o hack.Decl.o hack.apply.o hack.bones.o hack.o \
+	hack.cmd.o hack.do.o hack.do_name.o hack.do_wear.o hack.dog.o \
+	hack.eat.o hack.end.o hack.engrave.o hack.fight.o hack.invent.o \
+	hack.ioctl.o hack.lev.o hack.main.o hack.makemon.o hack.mhitu.o \
+	hack.mklev.o hack.mkmaze.o hack.mkobj.o hack.mkshop.o hack.mon.o \
+	hack.monst.o hack.o_init.o hack.objnam.o hack.options.o hack.pager.o \
+	hack.potion.o hack.pri.o hack.read.o hack.rip.o hack.rumors.o \
+	hack.save.o hack.search.o hack.shk.o hack.shknam.o hack.steal.o \
+	hack.termcap.o hack.timeout.o hack.topl.o hack.track.o hack.trap.o \
+	hack.tty.o hack.u_init.o hack.unix.o hack.vault.o hack.version.o \
+	hack.wield.o hack.wizard.o hack.worm.o hack.worn.o hack.zap.o rnd.o
+hack/makedefs		makedefs.o
 hangman			endgame.o extern.o getguess.o getword.o main.o \
 	playgame.o prdata.o prman.o prword.o setup.o
 hunt/hunt/hunt		connect.o hunt.o otto.o playit.o \

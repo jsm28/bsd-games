@@ -1,6 +1,6 @@
 # Makeconfig.in - configuration included in Makefiles after substitution.
 #
-# Copyright (c) 1997, 1998, 1999 Joseph Samuel Myers.
+# Copyright (c) 1997, 1998, 1999, 2000 Joseph Samuel Myers.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -64,6 +64,7 @@ INSTALL_DATA := @install_constdata@
 INSTALL_VARDATA := @install_vardata@
 INSTALL_DM := @install_dm@
 INSTALL_SAIL_DIR := @install_sail_dir@
+INSTALL_HACK_DIR := @install_hack_dir@
 # Is INSTALL_VARDATA actually needed (for games that start with non-empty
 # scorefile?)
 # For games which can start with empty scorefile we do:
@@ -110,6 +111,7 @@ CRIBBAGE_INSTRFILE := @cribbage_instrfile@
 CRIBBAGE_SCOREFILE := @cribbage_scorefile@
 FISH_INSTRFILE := @fish_instrfile@
 FORTUNE_TYPE := @fortune_type@
+HACK_DIR := @hack_dir@
 MONOP_CARDSFILE := @monop_cardsfile@
 PHANTASIA_DIR := @phantasia_dir@
 QUIZ_DIR := @quiz_dir@

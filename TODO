@@ -27,8 +27,8 @@ those.  The issues listed there are not included in this list.
 
 1997-05-01 - Games with scorefiles should lock them when updating them.
 
-1997-07-15 - Get distribution permission for hack and larn.  Get
-             licence of rogue clarified.  (See NetBSD PR 5850.)
+1997-07-15 - Get distribution permission for larn.  Get licence of
+             rogue clarified.  (See NetBSD PR 5850.)
 
 1998-07-28 - Support building in a directory other than the source directory.
 
@@ -39,9 +39,9 @@ those.  The issues listed there are not included in this list.
              be compiled with -fwritable-strings.
 
 1998-08-27 - Convert the games that use termcap to use curses.
-             Currently these are backgammon and tetris; rain, snake
-             and worms have been done.  If it becomes possible to
-             distribute hack or larn, this will apply to them as well.
+             Currently these are backgammon, hack and tetris; rain,
+             snake and worms have been done.  If it becomes possible
+             to distribute larn, this will apply to it as well.
 
 1998-08-27 - If we build a game that links to another game's manpage,
              but don't install the other game, then we get a dangling
@@ -64,8 +64,8 @@ those.  The issues listed there are not included in this list.
              fseeko/ftello instead of fseek/ftell, where supported,
              and using -D_FILE_OFFSET_BITS=64 (actually getconf
              LFS_CFLAGS, getconf LFS_LDFLAGS and getconf LFS_LIBS),
-             and could be useful when Linux has the kernel support for
-             32 bit uids, when there could be sparse score files
+             and could be useful with the kernel support for 32 bit
+             uids in Linux 2.4, when there could be sparse score files
              (indexed by uid) over 2Gb.
 
 1998-12-14 - Check for any more constant data that could be marked

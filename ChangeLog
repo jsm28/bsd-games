@@ -1,3 +1,85 @@
+2000-04-19  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* Version 2.11.
+
+	* NEWS: Update.
+	* bsd-games.lsm: Update.
+	* bsd-games-non-free.lsm: Update.
+
+	* hack/date.h, hack/def.monst.h, hack/def.objclass.h,
+	hack/def.objects.h, hack/def.permonst.h, hack/extern.h,
+	hack/hack.Decl.c, hack/hack.cmd.c, hack/hack.dog.c,
+	hack/hack.eat.c, hack/hack.end.c, hack/hack.engrave.c,
+	hack/hack.fight.c, hack/hack.h, hack/hack.invent.c,
+	hack/hack.lev.c, hack/hack.main.c, hack/hack.makemon.c,
+	hack/hack.mhitu.c, hack/hack.mklev.c, hack/hack.mkmaze.c,
+	hack/hack.mkobj.c, hack/hack.mkshop.c, hack/hack.mon.c,
+	hack/hack.monst.c, hack/hack.o_init.c, hack/hack.objnam.c,
+	hack/hack.pager.c, hack/hack.pri.c, hack/hack.read.c,
+	hack/hack.rip.c, hack/hack.save.c, hack/hack.shk.c,
+	hack/hack.termcap.c, hack/hack.timeout.c, hack/hack.topl.c,
+	hack/hack.tty.c, hack/hack.u_init.c, hack/hack.unix.c,
+	hack/hack.vault.c, hack/hack.wield.c, hack/hack.wizard.c,
+	hack/hack.zap.c: Use const and fix compiler warnings.
+
+2000-04-18  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* hack/*: New, from NetBSD CVS.
+	* hack/Makefile: Rename to Makefile.bsd.
+	* AUTHORS, COPYING, INSTALL, README, README.non-free, SECURITY,
+	TODO: Update.
+	* NEWS: Update.
+	* bsd-games-non-free.lsm: Update.
+	* hack/pathnames.h: Rename to pathnames.h.in for substitutions.
+	* hack/hack.6: Rename to hack.6.in for substitutions.
+	* configure, substfiles, substfiles2, Makeconfig.in: Update.
+	* exec.libs, exec.objs: Update.
+	* hack/Makefrag: New file.
+	* hack/hack.main.c: Check for fds 0, 1, 2 being closed; use
+	setregid() for gid revokes.
+	* hack/hack.bones.c, hack/hack.do.c, hacl/hack.main.c,
+	hack/hack.pager.c, hack/hack.save.c, hack/hack.unix.c,
+	hack/makedefs.c: Use symbolic constants.
+	* hack/makedefs.c: Check for write errors on output; use const and
+	fix compiler warnings.
+	* hack/def.func_tab.h, hack/def.objclass.h, hack/def.permonst.h,
+	hack/extern.h, hack/hack.Decl.c, hack/hack.apply.c, hack/hack.c,
+	hack/hack.cmd.c, hack/hack.do_name.c, hack/hack.end.c,
+	hack/hack.invent.c, hack/hack.h, hack/hack.main.c,
+	hack/hack.mon.c, hack/hack.objnam.c, hack.pager.c, hack.potion.c,
+	hack/hack.shknam.c, hack.trap.c, hack.zap.c: Use const and fix
+	compiler warnings.
+
+2000-04-15  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* arithmetic/arithmetic.c, boggle/mkdict/Makefile.bsd,
+	boggle/mkindex/Makefile.bsd, fortune/datfiles/fortunes,
+	fortune/datfiles/fortunes2, fortune/fortune/fortune.c,
+	fortune/strfile/Makefile.bsd, hunt/Makefile.inc.bsd,
+	hunt/hunt/hunt.c, hunt/huntd/driver.c, phantasia/fight.c,
+	robots/score.c: Update from NetBSD CVS.
+
+2000-04-14  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* COPYING: Fix spelling error.
+
+2000-04-09  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* quiz/datfiles/asia: Corrections from Robert Vollmert
+	<rvollmert@gmx.net>.
+
+2000-04-05  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* countmail/countmail.6: Fix grammar (bug reported by Thomas
+	Bushnell BSG <tb@MIT.EDU>).
+
+2000-03-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* boggle/boggle/prtable.c, fish/fish.c, fortune/datfiles/fortunes,
+	fortune/datfiles/fortunes2, fortune/datfiles/fortunes2-o.real,
+	fortune/datfiles/netbsd, gomoku/makemove.c, hunt/hunt/hunt.c,
+	rogue/CHANGES, trek/trek.6.in: Update from NetBSD CVS.
+
 2000-02-28  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* wtf/acronyms: Update from NetBSD CVS.

@@ -18,10 +18,11 @@ drop any setgid privileges completely (including the saved gid).  This
 limits the effect of a cracked game to corruption of its score file.
 It should be somewhat safer now to make games setgid games than in
 versions 2.1 and earlier, but probably not completely safe; phantasia,
-sail, rogue and tetris do not currently handle their score files in
-the above way, and so should be considered the most dangerous to
+sail, rogue, hack and tetris do not currently handle their score files
+in the above way, and so should be considered the most dangerous to
 install setgid.  If you are auditing these games, phantasia, sail,
-rogue and tetris should be considered the most important to audit.
+rogue, hack and tetris should be considered the most important to
+audit.
 
 An effect of this security policy is that in some cases the score
 files need to be world-readable so that they can be opened for reading

@@ -1,7 +1,7 @@
 # substfiles - list of files in which parameters are to be substituted.
 # These ones get substituted in at configure time.
 #
-# Copyright (c) 1997, 1998, 1999 Joseph Samuel Myers.
+# Copyright (c) 1997, 1998, 1999, 2000 Joseph Samuel Myers.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -39,6 +39,7 @@ cribbage/pathnames.h
 dm/pathnames.h
 fish/pathnames.h
 fortune/fortune/pathnames.h
+hack/pathnames.h
 hangman/pathnames.h
 monop/pathnames.h
 phantasia/pathnames.h
