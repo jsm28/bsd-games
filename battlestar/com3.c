@@ -200,7 +200,7 @@ shoot()
 	if (!testbit(inven, LASER))
 		puts("You aren't holding a blaster.");
 	else {
-		while (wordtype[++wordnumber] == ADJS);
+		wordnumber++;
 		while (wordnumber <= wordcount && wordtype[wordnumber] == OBJECT) {
 			value = wordvalue[wordnumber];
 			printf("%s:\n", objsht[value]);

@@ -57,7 +57,7 @@ take(from)
 		wordvalue[wordnumber] = TAKEOFF;
 		return (cypher());
 	} else {
-		while (wordtype[++wordnumber] == ADJS);
+		wordnumber++;
 		while (wordnumber <= wordcount && wordtype[wordnumber] == OBJECT) {
 			value = wordvalue[wordnumber];
 			printf("%s:\n", objsht[value]);
@@ -222,8 +222,7 @@ throw(name)
 			deposit = location[position].down;
 			break;
 		}
-		wordnumber = first;
-		while (wordtype[++wordnumber] == ADJS);
+		wordnumber = first + 1;
 		while (wordnumber <= wordcount) {
 			value = wordvalue[wordnumber];
 			if (deposit && testbit(location[position].objects, value)) {
@@ -275,7 +274,7 @@ drop(name)
 	int     firstnumber, value;
 
 	firstnumber = wordnumber;
-	while (wordtype[++wordnumber] == ADJS);
+	wordnumber++;
 	while (wordnumber <= wordcount && (wordtype[wordnumber] == OBJECT || wordtype[wordnumber] == NOUNS)) {
 		value = wordvalue[wordnumber];
 		printf("%s:\n", objsht[value]);
@@ -337,7 +336,7 @@ eat()
 	int     firstnumber, value;
 
 	firstnumber = wordnumber;
-	while (wordtype[++wordnumber] == ADJS);
+	wordnumber++;
 	while (wordnumber <= wordcount) {
 		value = wordvalue[wordnumber];
 		switch (value) {

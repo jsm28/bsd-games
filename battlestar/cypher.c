@@ -54,8 +54,6 @@ cypher()
 	char   *filename, *rfilename;
 	size_t	filename_len;
 
-	while (wordtype[wordnumber] == ADJS)
-		wordnumber++;
 	while (wordnumber <= wordcount) {
 		switch (wordvalue[wordnumber]) {
 

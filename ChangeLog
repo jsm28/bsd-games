@@ -1,5 +1,14 @@
 2000-09-21  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com2.c (wearit, use, murder), battlestar/com3.c
+	(shoot), battlestar/com4.c (take, throw, drop, eat),
+	battlestar/com6.c (dooropen), battlestar/cypher.c (cypher),
+	battlestar/parse.c (parse): Move all discarding of adjectives to
+	parse().  From Paul Janzen <pjanzen@foatdi.harvard.edu>.  Fixes
+	crash on "carry old all", shown up by fuzz testing.
+	* tests/battlestar.in26, tests/battlestar.out26: New test.
+	* tests/battlestar.test: Update.
+
 	* battlestar/com2.c (murder): Give error rather than crashing on
 	"kill all".  From OpenBSD.
 	* tests/battlestar.in25, tests/battlestar.out25: New test.

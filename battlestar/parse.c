@@ -110,6 +110,17 @@ parse()
 			wordtype[n] = wp->article;
 		}
 	}
+	/* We never use adjectives for anything, so yank them all. */
+	for (n = 1; n < wordcount; n++)
+		if (wordtype[n] == ADJS) {
+			int i;
+			for (i = n + 1; i < wordcount; i++) {
+				wordtype[i - 1] = wordtype[i];
+				wordvalue[i - 1] = wordvalue[i];
+				strcpy(words[i - 1], words[i]);
+			}
+			wordcount--;
+		}
 	/* Don't let a comma mean AND if followed by a verb. */
 	for (n = 0; n < wordcount; n++)
 		if (wordvalue[n] == AND && words[n][0] == ','

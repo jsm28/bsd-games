@@ -242,8 +242,7 @@ light()
 void
 dooropen()
 {				/* synonyms = {open, unlock} */
-	while(wordtype[++wordnumber] == ADJS)
-		;
+	wordnumber++;
 	if (wordnumber <= wordcount && wordtype[wordnumber] == NOUNS
 	    && wordvalue[wordnumber] == DOOR) {
 		switch(position) {
