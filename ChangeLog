@@ -1,5 +1,7 @@
 2001-03-24  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* hack/hack.cmd.c: Whitespace adjustments for NetBSD alignment.
+
 	* arithmetic/arithmetic.c, banner/banner.6,
 	fortune/datfiles/fortunes, fortune/datfiles/fortunes2-o.real,
 	fortune/fortune/fortune.c, wtf/acronyms: Update from NetBSD CVS

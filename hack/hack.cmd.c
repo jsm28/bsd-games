@@ -19,7 +19,7 @@ const struct func_tab cmdlist[] = {
 	{ '\024', dotele },
 #ifdef SUSPEND
 	{ '\032', dosuspend },
-#endif /* SUSPEND */
+#endif	/* SUSPEND */
 	{ 'a', doapply },
 	/* 'A' : UNUSED */
 	/* 'b', 'B' : go sw */
@@ -62,7 +62,7 @@ const struct func_tab cmdlist[] = {
 	{ '?', dohelp },
 #ifdef SHELL
 	{ '!', dosh },
-#endif /* SHELL */
+#endif	/* SHELL */
 	{ '.', donull },
 	{ ' ', donull },
 	{ ',', dopickup },
