@@ -1,5 +1,7 @@
 2004-02-13  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* NEWS, bsd-games.lsm, bsd-games-non-free.lsm: Update.
+
 	* morse/morse.c: Update from NetBSD CVS.
 
 	* morse/morse.c: Encode and decode more characters.  Don't put
