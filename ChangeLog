@@ -1,5 +1,9 @@
 2001-10-06  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* backgammon/backgammon/main.c, hack/hack.fix, monop/monop.c,
+	phantasia/phantdefs.h, sail/pl_7.c, wargames/wargames: Update from
+	NetBSD CVS.
+
 	* hunt/hunt/hunt.6.in: Correct slime costs.  Bug reported by
 	Britton Leo Kerin <fsblk@aurora.uaf.edu>.
 
