@@ -1,4 +1,4 @@
-/*	$NetBSD: io.c,v 1.7 1998/08/29 22:40:07 hubertf Exp $	*/
+/*	$NetBSD: io.c,v 1.10 1998/09/14 09:29:08 hubertf Exp $	*/
 
 /*-
  * Copyright (c) 1991, 1993
@@ -43,7 +43,7 @@
 #if 0
 static char sccsid[] = "@(#)io.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: io.c,v 1.7 1998/08/29 22:40:07 hubertf Exp $");
+__RCSID("$NetBSD: io.c,v 1.10 1998/09/14 09:29:08 hubertf Exp $");
 #endif
 #endif /* not lint */
 
@@ -306,10 +306,8 @@ rdesc(sect)			/* read description-format msgs */
 				ptext[oldloc].txtlen = maystart - seekstart;
 				break;
 			case 6:/* random messages              */
-				if (oldloc > RTXSIZ) {
-					printf("Too many random msgs\n");
-					exit(1);
-				}
+				if (oldloc > RTXSIZ) 
+					errx(1,"Too many random msgs");
 				rtext[oldloc].seekadr = seekhere;
 				rtext[oldloc].txtlen = maystart - seekstart;
 				break;
@@ -319,16 +317,13 @@ rdesc(sect)			/* read description-format msgs */
 				cval[clsses++] = oldloc;
 				break;
 			case 12:	/* magic messages               */
-				if (oldloc > MAGSIZ) {
-					printf("Too many magic msgs\n");
-					exit(1);
-				}
+				if (oldloc > MAGSIZ)
+					errx(1,"Too many magic msgs");
 				mtext[oldloc].seekadr = seekhere;
 				mtext[oldloc].txtlen = maystart - seekstart;
 				break;
 			default:
-				printf("rdesc called with bad section\n");
-				exit(1);
+				errx(1,"rdesc called with bad section");
 			}
 			seekhere += maystart - seekstart;
 		}
@@ -365,7 +360,7 @@ rtrav()
 			return;
 		if (locc != oldloc) {	/* getting a new entry         */
 			t = travel[locc] = (struct travlist *) malloc(sizeof(struct travlist));
-			if (t == NULL)
+			if ( t == NULL)
 				errx(1, "Out of memory!");
 			/* printf("New travel list for %d\n",locc);        */
 			entries = 0;
@@ -563,8 +558,8 @@ pspeak(m, skip)			/* read, decrypt an print a ptext message              */
 	char   *tbuf;
 
 	msg = &ptext[m];
-	if ((tbuf = (char *) malloc(msg->txtlen + 1)) == 0)
-		bug(108);
+	if ((tbuf = (char *) malloc(msg->txtlen + 1)) == NULL)
+		errx(1, "Out of memory!");
 	memcpy(tbuf, msg->seekadr, msg->txtlen + 1);	/* Room to null */
 	s = tbuf;
 

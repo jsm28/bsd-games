@@ -104,12 +104,6 @@ __RCSID("$NetBSD: move.c,v 1.15 1997/10/14 01:02:48 lukem Exp $");
 #endif
 #include <unistd.h> /* For _POSIX_VDISABLE */
 #include "snake.h"
-#ifndef CTRL
-#define CTRL(X) ((X) & 037)
-#endif
-#ifndef OXTABS
-#define OXTABS XTABS
-#endif
 
 int     CMlength;
 int     NDlength;

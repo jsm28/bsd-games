@@ -30,7 +30,7 @@ char	*Stat_name =	"/tmp/hunt.stats";
 
 # else
 
-char	*Driver =	HUNTD;
+const char	*Driver =	HUNTD;
 #  ifdef INTERNET
 u_short	Test_port =	('h' << 8) | 't';
 #  else

@@ -32,7 +32,7 @@ char		*my_machine_name;
  */
 void
 get_local_name(my_name)
-	char	*my_name;
+	const char	*my_name;
 {
 	struct	hostent	*hp;
 	struct	servent	*sp;

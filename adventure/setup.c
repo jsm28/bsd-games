@@ -1,4 +1,4 @@
-/*	$NetBSD: setup.c,v 1.4 1997/10/11 01:55:30 lukem Exp $	*/
+/*	$NetBSD: setup.c,v 1.5 1998/09/13 15:23:40 hubertf Exp $	*/
 
 /*-
  * Copyright (c) 1991, 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1991, 1993\n\
 #if 0
 static char sccsid[] = "@(#)setup.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: setup.c,v 1.4 1997/10/11 01:55:30 lukem Exp $");
+__RCSID("$NetBSD: setup.c,v 1.5 1998/09/13 15:23:40 hubertf Exp $");
 #endif
 #endif				/* not lint */
 
@@ -101,7 +101,7 @@ main(argc, argv)
 
 	while ((c = getc(infile)) != EOF) {
 		if (linestart && c == ' ') {	/* Convert first spaces to tab */
-			printf("0x%02x,", (unsigned int)(('\t' ^ random()) & 0xFF));
+			printf("0x%02x,", (unsigned int)('\t' ^ random()) & 0xFF);
 			while ((c = getc(infile)) == ' ' && c != EOF);
 			/* Drop the non-whitespace character through */
 			linestart = NO;
@@ -117,7 +117,7 @@ main(argc, argv)
 		}
 		if (count++ % LINE == 0)	/* Finished a line? */
 			printf("\n\t");
-		printf("0x%02x,", (unsigned int)((c ^ random()) & 0xFF));
+		printf("0x%02x,", (unsigned int)(c ^ random()) & 0xFF);
 	}
 	puts("\n\t0\n};");
 	fclose(infile);

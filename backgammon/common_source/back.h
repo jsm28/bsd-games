@@ -1,4 +1,4 @@
-/*	$NetBSD: back.h,v 1.8 1997/10/14 00:53:26 lukem Exp $	*/
+/*	$NetBSD: back.h,v 1.9 1998/09/13 15:31:07 hubertf Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -46,10 +46,6 @@
 #include <termios.h>
 #include <termcap.h>
 #include <unistd.h>
-
-#ifndef OXTABS
-#define OXTABS XTABS /* Linux (libc 5) needs this, glibc does it anyway */
-#endif
 
 #define rnum(r)	(random()%r)
 #define D0	dice[0]

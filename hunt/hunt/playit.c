@@ -497,7 +497,7 @@ put_ch(ch)
 
 void
 put_str(s)
-	char	*s;
+	const char	*s;
 {
 	while (*s)
 		put_ch(*s++);

@@ -211,17 +211,15 @@ bdump(fp)
  */
 void
 dislog(str)
-	char *str;
+	const char *str;
 {
 
 	if (++lastline >= SCRNH - 1) {
 		/* move 'em up */
 		lastline = 1;
 	}
-	if (strlen(str) >= SCRNW - 46)
-		str[SCRNW - 46 - 1] = '\0';
 	move(lastline, 46);
-	addstr(str);
+	addnstr(str, SCRNW - 46 - 1);
 	clrtoeol();
 	move(lastline + 1, 46);
 	clrtoeol();
@@ -233,7 +231,7 @@ dislog(str)
 
 void
 ask(str)
-	char *str;
+	const char *str;
 {
 	int len = strlen(str);
 

@@ -53,7 +53,7 @@ __RCSID("$NetBSD: setup.c,v 1.5 1997/10/11 08:01:06 lukem Exp $");
 void
 setup()
 {
-	char **sp;
+	const char *const *sp;
 	static struct stat sbuf;
 
 	noecho();

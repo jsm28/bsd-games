@@ -1,4 +1,4 @@
-/*	$NetBSD: hunt.h,v 1.3 1998/01/09 08:03:41 perry Exp $	*/
+/*	$NetBSD: hunt.h,v 1.5 1998/09/13 15:27:28 hubertf Exp $	*/
 
 /*
  *  Hunt
@@ -8,6 +8,7 @@
 
 # include "bsd.h"
 
+# include	<errno.h>
 # include	<stdio.h>
 # include	<string.h>
 # ifdef LOG
@@ -344,9 +345,10 @@ extern FLAG	Last_player;
 
 extern char	Buf[BUFSIZ], Maze[HEIGHT][WIDTH2], Orig_maze[HEIGHT][WIDTH2];
 
-extern char	*Sock_name, *Driver;
+extern char	*Sock_name;
+extern const char	*Driver;
 
-extern int	errno, Nplayer, Num_fds, Socket, Status;
+extern int	Nplayer, Num_fds, Socket, Status;
 extern fd_set	Fds_mask, Have_inp;
 
 # ifdef INTERNET
@@ -404,7 +406,7 @@ void		clear_the_screen __P((void));
 void		clrscr __P((PLAYER *));
 BULLET	       *create_shot __P((int, int, int, char, int, int, PLAYER *,
 		    IDENT *, int, char));
-void		do_connect __P((char *, char, long));
+void		do_connect __P((const char *, char, long));
 void		do_message __P((void));
 void		drawmaze __P((PLAYER *));
 void		drawplayer __P((PLAYER *, FLAG));
@@ -413,25 +415,27 @@ void		execute __P((PLAYER *));
 void		faketalk __P((void));
 void		find_driver __P((FLAG));
 void		fixshots __P((int, int, char));
-IDENT	       *get_ident __P((u_long, u_long, char *, char));
-void		get_local_name __P((char *));
+IDENT	       *get_ident __P((u_long, u_long, const char *, char));
+void		get_local_name __P((const char *));
 int		get_remote_name __P((char *));
 BULLET	       *is_bullet __P((int, int));
 void		look __P((PLAYER *));
 void		makemaze __P((void));
-void		message __P((PLAYER *, char *));
+void		message __P((PLAYER *, const char *));
 void		mon_execute __P((PLAYER *));
 void		moveshots __P((void));
 void		open_ctl __P((void));
 int		opposite __P((int, char));
 void		otto __P((int, int, char));
 void		outch __P((PLAYER *, int));
-void		outstr __P((PLAYER *, char *, int));
-int		player_sym __P((PLAYER *, int, int));
+void		outstr __P((PLAYER *, const char *, int));
+int		player_sym __P((const PLAYER *, int, int));
 PLAYER	       *play_at __P((int, int));
 void		playit __P((void));
 void		put_ch __P((char));
-void		put_str __P((char *));
+# ifndef USE_CURSES
+void		put_str __P((const char *));
+# endif
 int		quit __P((int));
 int		rand_dir __P((void));
 int		rand_num __P((int));

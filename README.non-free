@@ -1,20 +1,16 @@
 README for bsd-games-non-free
 =============================
 
-The bsd-games-non-free package contains two games from NetBSD with
-restrictive licences, boggle and rogue.  Possibly these games cannot
-be sold for profit; it is not clear whether the restrictive licences
-override the BSD licence also included, or are superseded by it.
+The bsd-games-non-free package contains one game from NetBSD with a
+restrictive licence, rogue.  Possibly this game cannot be sold for
+profit; it is not clear whether the restrictive licence overrides the
+BSD licence also included, or is superseded by it.
 
 Here's what this package has:
 
-boggle:		boggle
 rogue:		exploring the Dungeons of Doom
 
-(The hangman subdirectory in this package is just for a words list.)
-
-Boggle comes from comp.sources.games/volume4, but the version here is
-from NetBSD-current.  Rogue is from NetBSD-current.
+Rogue is from NetBSD-current.
 
 If you have questions about bsd-games-non-free you can contact me at
 <jsm28@cam.ac.uk>.  Bug reports should state the versions of ncurses

@@ -1,4 +1,4 @@
-/*	$NetBSD: extern.h,v 1.7 1998/07/25 10:52:14 hubertf Exp $ */
+/*	$NetBSD: extern.h,v 1.8 1998/09/13 15:27:30 hubertf Exp $ */
 
 /*
  * Copyright (c) 1983, 1993

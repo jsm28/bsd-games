@@ -73,14 +73,9 @@ The following bugs and problems are known to exist:
 .
                            About This Program
 
-Permission is given to freely copy and distribute this software providing:
-
-1) You do not sell it,
-2) You do not use it for commercial advantage,
-3) If you pass the program on you must make the source code available, and
-4) This notice must accompany the distribution
-
-Please notify the author of any bugs or if you have any suggestions.
+Boggle is under the standard BSD licence.  Bugs should be reported to
+your distributor; the original author is no longer supporting the
+program.
 
 Copyright (c) 1988
 Barry Brachman           | UUCP:    {alberta,uw-beaver,uunet}!

@@ -1,4 +1,4 @@
-/*	$NetBSD: crc.c,v 1.5 1997/10/11 01:53:21 lukem Exp $	*/
+/*	$NetBSD: crc.c,v 1.6 1998/09/13 00:07:24 hubertf Exp $	*/
 
 /*-
  * Copyright (c) 1993
@@ -42,13 +42,13 @@
 static char sccsid[] = "@(#)crc.c	8.1 (Berkeley) 5/31/93";
 static char ORIGINAL_sccsid[] = "@(#)crc.c	5.2 (Berkeley) 4/4/91";
 #else
-__RCSID("$NetBSD: crc.c,v 1.5 1997/10/11 01:53:21 lukem Exp $");
+__RCSID("$NetBSD: crc.c,v 1.6 1998/09/13 00:07:24 hubertf Exp $");
 #endif
 #endif /* not lint */
 
 #include "extern.h"
 
-unsigned long crctab[] = {
+const unsigned long crctab[] = {
 	0x7fffffff,
 	0x77073096, 0xee0e612c, 0x990951ba, 0x076dc419, 0x706af48f,
 	0xe963a535, 0x9e6495a3, 0x0edb8832, 0x79dcb8a4, 0xe0d5e91e,

@@ -1,4 +1,4 @@
-/*	$NetBSD: cribbage.h,v 1.3 1995/03/21 15:08:46 cgd Exp $	*/
+/*	$NetBSD: cribbage.h,v 1.4 1998/09/13 15:27:27 hubertf Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993

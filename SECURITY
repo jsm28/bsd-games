@@ -57,5 +57,21 @@ sense for dm to be setgid to some gid other than the one (normally
 *                                                                     *
 ***********************************************************************
 
+If you are compiling these games on an operating system other than
+Linux, be warned that they rely for their security on
+`setregid(getgid(), getgid())' dropping all setgid privileges
+permanently, _including the saved gid_.  On some operating systems
+this may fail to drop the saved gid (and indeed such operating systems
+may provide no way for a process not running as root to revoke
+privileges permanently); in such a case, bugs in a game may provide
+access to the games group rather than merely to to that game's score
+file.
+
 Joseph S. Myers
 jsm28@cam.ac.uk
+
+
+
+Local Variables:
+mode: text
+End:

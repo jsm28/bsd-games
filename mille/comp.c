@@ -408,7 +408,7 @@ play_it:
  */
 int
 onecard(pp)
-	PLAY	*pp;
+	const PLAY	*pp;
 {
 	CARD	bat, spd, card;
 
@@ -441,7 +441,7 @@ onecard(pp)
 
 int
 canplay(pp, op, card)
-	PLAY	*pp, *op;
+	const PLAY	*pp, *op;
 	CARD	card;
 {
 	switch (card) {

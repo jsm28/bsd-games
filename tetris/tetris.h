@@ -1,4 +1,4 @@
-/*	$NetBSD: tetris.h,v 1.2 1995/04/22 07:42:48 cgd Exp $	*/
+/*	$NetBSD: tetris.h,v 1.3 1998/09/13 15:27:30 hubertf Exp $	*/
 
 /*-
  * Copyright (c) 1992, 1993

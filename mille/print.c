@@ -70,7 +70,7 @@ prboard()
 		show_card(14, temp, pp->battle, &pp->sh_battle);
 		show_card(16, temp, pp->speed, &pp->sh_speed);
 		for (i = C_25; i <= C_200; i++) {
-			char	*name;
+			const char	*name;
 			int	end;
 
 			if (pp->nummiles[i] == pp->sh_nummiles[i])

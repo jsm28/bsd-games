@@ -150,7 +150,7 @@ over:
  */
 bool
 rest_f(file)
-	char	*file;
+	const char	*file;
 {
 
 	char	*sp;

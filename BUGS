@@ -9,6 +9,12 @@ General
 =======
 
 Some games may not handle signals (especially resizing) properly.
+Handling signals properly means in a way conforming to ISO C and
+POSIX.1: no async-unsafe functions may be used in a signal handler if
+the signal could have interrupted an async-unsafe function, and any
+variable of static storage duration assigned to must be of type
+volatile sig_atomic_t.  (See adventure for an example of proper
+handling.)
 
 Some games may not check for errors when they should (including
 allocation failure), or may return inappropriate exit statuses.
@@ -33,3 +39,9 @@ by me) as NetBSD PR 3126.)
 
 Joseph S. Myers
 jsm28@cam.ac.uk
+
+
+
+Local Variables:
+mode: text
+End:

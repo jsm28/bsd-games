@@ -456,7 +456,7 @@ checkdam(ouch, gotcha, credit, amt, shot_type)
 	int	amt;
 	char	shot_type;
 {
-	char	*cp;
+	const char	*cp;
 
 	if (ouch->p_death[0] != '\0')
 		return;

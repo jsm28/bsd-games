@@ -1,4 +1,204 @@
+1998-09-24  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* Version 2.5.
+
+	* bsd-games.lsm, bsd-games-non-free.lsm: Update.
+
+	* Paul Janzen has checked with the original author, and it turns
+	out the the BSD licence applies to boggle and obsoletes the old
+	one, so boggle can go in the main bsd-games package.
+	* boggle/README: Update accordingly.
+	* boggle/README.linux, boggle/Makefrag: Update accordingly.  No
+	longer need to include uuencoded patch.
+	* boggle/boggle/helpfile: Update accordingly.
+	* INSTALL: Update accordingly.
+	* NEWS: Update accordingly.
+	* PACKAGING: Update accordingly.
+	* README, README.non-free: Update accordingly.
+	* bsd-games.lsm, bsd-games-non-free.lsm: Update accordingly.
+
+	* TODO: Update accordingly.
+	* THANKS: Update accordingly.
+
+1998-09-23  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* NEWS: Update.
+
+	* trek/main.c: Make Mother uid_t.
+
+	* hunt/hunt/hunt.c: Don't declare errno.
+
+	* hunt/huntd/hunt.h: Don't declare errno - include <errno.h>
+	instead.
+
+	* factor/Makefrag: Define _GNU_SOURCE, for isblank().
+	* number/Makefrag, primes/Makefrag: Likewise.
+
+	* With glibc 2.1, various headers can be included with an
+	__need_foo preprocessor define to make them only define some
+	particular symbols; this interacts badly with multiple inclusion
+	protection on the header wrappers in bsd-games.  Therefore, we
+	must not protect wrapper headers against multiple inclusion, but
+	instead make sure they are safe to be included multiple times and
+	only protect local bits that need it.
+	* include/signal.h: Don't protect against multiple inclusion -
+	only protect the sig_t definition that needs it.
+	* include/stdlib.h: Don't protect against multiple inclusion.
+	* include/stdio.h: Don't protect against multiple inclusion.
+	* include/termios.h: Don't protect against multiple inclusion.
+	* include/sys/cdefs.h: Don't protect against multiple inclusion.
+	* include/sys/ttydefaults.h: Don't protect against multiple
+	inclusion.
+
+	* dm/dm.c: Don't include <nlist.h> - it isn't needed, and doesn't
+	exist with some glibc versions.
+
+	* INSTALL: Minor changes.
+
+1998-09-15  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* atc/Makefile.bsd, atc/extern.h, atc/input.c, atc/main.c,
+	backgammon/backgammon/backgammon.6.in,
+	backgammon/common_source/back.h, backgammon/common_source/fancy.c,
+	backgammon/common_source/save.c, backgammon/common_source/subs.c,
+	backgammon/teachgammon/tutor.h, banner/banner.c,
+	battlestar/extern.h, battlestar/save.c, boggle/boggle/extern.h,
+	caesar/caesar.c, canfield/canfield/canfield.c,
+	cribbage/cribbage.h, dm/dm.c, factor/factor.c, fish/fish.c,
+	fortune/datfiles/fortunes, fortune/fortune/fortune.c,
+	fortune/strfile/strfile.c, gomoku/gomoku.h, hunt/hunt/hunt.c,
+	hunt/huntd/hunt.h, mille/mille.h, number/number.c, pig/pig.c,
+	primes/primes.c, quiz/quiz.c, robots/robots.h, rogue/rogue.h,
+	sail/extern.h, snake/snake/snake.h, tetris/tetris.c,
+	tetris/tetris.h, worm/worm.c, worms/worms.c, wump/wump.c: Update
+	from NetBSD-current of 1998-09-14.
+
+	* atc/games/ATC_Scores, sail/:file, sail/:scene, sail/:ship,
+	sail/:specs, trek/board.x: Removed (unused, and removed in
+	NetBSD-current of 1998-09-14 in response to PR bin/6083).
+
+1998-09-14  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* adventure/done.c, adventure/extern.h, adventure/io.c,
+	adventure/main.c, adventure/setup.c, adventure/subr.c,
+	adventure/vocab.c, arithmetic/arithmetic.c: Update from
+	NetBSD-current of 1998-09-14.
+
+	* mille/move.c: Remove unused Movenames[] array.
+
+	* mille/comp.c, mille/mille.h, mille/extern.c, mille/move.c,
+	mille/save.c, mille/print.c: Use const where appropriate.
+
+	* robots/robots.h: #undef S_BONUS before defining.
+
+	* mille/mille.h: #undef S_* constants before defining.
+
+	* atc/def.h: #undef S_* constants before defining.
+
+	* hunt/hunt/connect.c, hunt/huntd/hunt.h, hunt/hunt/main.c,
+	hunt/hunt/playit.c, hunt/huntd/answer.c, hunt/huntd/draw.c,
+	hunt/huntd/faketalk.c, hunt/huntd/get_names.c,
+	hunt/huntd/pathname.c, hunt/huntd/terminal.c, hunt/huntd/driver.c:
+	Use const where appropriate.
+
+	* hangman/extern.c, hangman/hangman.h, hangman/setup.c: Use const
+	where appropriate.
+
+1998-09-13  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* gomoku/bdisp.c, gomoku/gomoku.h, gomoku/main.c,
+	gomoku/makemove.c, gomoku/pickmove.c, gomoku/stoc.c: Use const
+	where appropriate.
+
+	* configure: Generate GNUmakefile, not Makefile - the makefile and
+	makefile fragments are thoroughly dependent on GNU Make.
+
+	* backgammon/common_source/back.h: No longer any need to define
+	OXTABS.
+	* snake/snake/move.c: No longer any need to define CTRL or OXTABS.
+	* tetris/screen.c: No longer any need to define OXTABS.
+	* mille/misc.c: No longer any need to define CTRL.
+	* snake/snake/snake.c: No longer any need to define CTRL.
+
+	* include/sys/ttydefaults.h: Define OXTABS if not already defined.
+	* include/termios.h: New file, also include <sys/ttydefaults.h>.
+
+	* THANKS: Update.
+
+	* adventure/crc.c: Mark crctab[] const.
+
+	* adventure/vocab.c (vocab): Use errx() for error messages.
+
+	* adventure/main.c (main): Use bug(22) rather than printing "Error
+	22".
+
+	* adventure/io.c (rdesc): Use errx() for error messages.
+
+	* monop/Makefile.bsd: Update from NetBSD-current of 1998-09-13.
+
+	* adventure/crc.c, adventure/extern.h, adventure/io.c,
+	adventure/save.c, adventure/vocab.c: Update from NetBSD-current of
+	1998-09-13 (const changes merged into NetBSD).
+
+1998-09-12  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* All games now updated from NetBSD-current of 1998-09-12.
+
+	* adventure/extern.h, adventure/main.c, atc/def.h, atc/update.c,
+	backgammon/common_source/subs.c, battlestar/battlestar.6,
+	bcd/bcd.6, boggle/mkindex/mkindex.c, canfield/canfield/canfield.c,
+	hangman/hangman.h, hangman/main.c, hunt/huntd/hunt.h,
+	monop/execute.c, monop/monop.c, pom/pom.c, rogue/monster.c,
+	rogue/object.c, rogue/pack.c, rogue/room.c, sail/dr_2.c,
+	sail/sync.c, snake/snscore/snscore.c, trek/dumpgame.c,
+	trek/warp.c: Update from NetBSD-current of 1998-09-12.
+
+1998-09-11  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* BUGS: Update.
+
+	* SECURITY: Update.
+
+	* INSTALL: Update.
+
+	* NEWS: Update.
+
+	* TODO: Update.
+
+1998-09-10  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* adventure/io.c (pspeak): Give "Out of memory!" error on
+	allocation failure rather than bug(108).
+
+1998-09-07  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* boggle/README.linux, boggle/Makefrag: Update.
+
+1998-09-06  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* */Makefrag: Further changes for the new build system.
+
 1998-09-05  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* New configuration/build system, based on a single makefile that
+	includes makefile fragments that together describe all the
+	dependencies (using GNU make's automatic dependency generation).
+	See `Recursive Make Considered Harmful' by Peter Miller
+	<http://www.canb.auug.org.au/~millerp/rmch/recu-make-cons-harm.html>
+	for a discussion of the advantages of this over recursive make.
+	* configure, install-score.in, Makeconfig.in: Changes for the new
+	system.
+	* Makefile: Removed.
+	* mkdep, exec.libs, exec.objs: New files.
+	* */Makefile, */*/Makefile: Renamed to Makefrag and changed for
+	the new system.
+	* hunt/Makeconfig: Adapted to the new system.
+	* backgammon/README.linux: Removed.
+	* TODO: Update.
+	* PACKAGING: Update.
+	* INSTALL: Update.
+	* fortune/fortune/pathnames.in: Remove TEST support.
+	* fortune/README.linux: Update.
 
 	* Version 2.4.
 

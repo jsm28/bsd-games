@@ -71,7 +71,8 @@ faketalk()
 	FILE			*f;
 	int			service;	/* socket of service */
 	struct	sockaddr_in	des;		/* address of destination */
-	char			*a, *b;
+	char			*a;
+	const char		*b;
 	extern	char		**environ;
 
 	(void) signal(SIGCHLD, exorcise);

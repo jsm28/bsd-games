@@ -54,12 +54,13 @@ __RCSID("$NetBSD: main.c,v 1.6 1997/10/13 22:18:32 cjs Exp $");
 #include <unistd.h>
 #include <err.h>
 #include <time.h>
+#include <sys/types.h>
 #include "trek.h"
 #include "getpar.h"
 
 # define	PRIO		00	/* default priority */
 
-int	Mother	= 51 + (51 << 8);
+uid_t	Mother	= 51 + (51 << 8);
 
 /*
 **	 ####  #####    #    ####          #####  ####   #####  #   #

@@ -1,4 +1,4 @@
-/*	$NetBSD: snake.h,v 1.9 1997/10/14 01:02:53 lukem Exp $	*/
+/*	$NetBSD: snake.h,v 1.10 1998/09/13 15:27:30 hubertf Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993

@@ -1,4 +1,4 @@
-/*	$NetBSD: tutor.h,v 1.4 1997/10/10 08:59:55 lukem Exp $	*/
+/*	$NetBSD: tutor.h,v 1.5 1998/09/13 15:27:26 hubertf Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993

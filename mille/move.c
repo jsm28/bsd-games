@@ -60,10 +60,6 @@ __RCSID("$NetBSD: move.c,v 1.7 1997/10/12 00:54:21 lukem Exp $");
 #undef	CTRL
 #define	CTRL(c)		(c - 'A' + 1)
 
-char	*Movenames[] = {
-		"M_DISCARD", "M_DRAW", "M_PLAY", "M_ORDER"
-	};
-
 void
 domove()
 {
@@ -483,7 +479,7 @@ ret:
  */
 int
 haspicked(pp)
-	PLAY	*pp;
+	const PLAY	*pp;
 {
 	int	card;
 
@@ -531,7 +527,7 @@ void
 prompt(promptno)
 	int	promptno;
 {
-	static char	*names[] = {
+	static const char	*const names[] = {
 				">>:Move:",
 				"Really?",
 				"Another hand?",

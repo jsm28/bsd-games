@@ -1,8 +1,5 @@
 /* signal.h - bsd-games wrapper for <signal.h> */
 
-#ifndef LINUX_BSD_GAMES_SIGNAL_H
-#define LINUX_BSD_GAMES_SIGNAL_H	1
-
 #include <features.h>
 
 #ifndef __GLIBC__
@@ -13,7 +10,8 @@
 
 #ifndef __GLIBC__ /* glibc 2 has this; with libc5 we want to avoid
 		   * <bsd/signal.h>.  */
+#ifndef LINUX_BSD_GAMES_DEFINED_SIG_T
 typedef __sighandler_t sig_t;
+#define LINUX_BSD_GAMES_DEFINED_SIG_T	1
 #endif
-
-#endif /* !defined(LINUX_BSD_GAMES_SIGNAL_H) */
+#endif

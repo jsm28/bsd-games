@@ -1,29 +1,22 @@
-1997-05-02
+README.linux for fortune
+========================
 
-Ok, here is fortune for Linux.  Alternatively, you may wish to use the
-enhanced version available from
+Here is one port of fortune for Linux.  Alternatively, you may wish to
+use the enhanced version available from
 <ftp://sunsite.unc.edu/pub/Linux/games/amusements/fortune-mod.tar.gz>.
 
-To make and test in-place:
-
-1) make test in the top-level directory
-2) cd fortune and run fortune.test to test away (will only run if you're 
-	in the fortune subdir)
-
-To make & install:
-
-1) Configuration is now handled by ../configure; the fortunes go in a
-	`fortunes' subdirectory of the (arch-dependent) library directory.
-
-2) make install in the top-level directory
-
-3) If you want to install unstr, do a 'make install' in its directory.
+unstr is not installed by default.  If you want to install it,
+uncomment the relevant lines (installation command and definition of
+fortune_unstr_DIRS) in unstr/Makefrag before doing the top level `make
+install'.
 
 Offensive fortunes:
 
-The "offensive" fortunes (not very offensive) are disabled by default. 
+The "offensive" fortunes (not very offensive) are disabled by default.
 If you want the "offensive" fortunes, answer 'y' to the question when
 running configure.
 
 Have fun!
 Andy
+
+[ This README.linux subsequently extensively modified - JSM ]

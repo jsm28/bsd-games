@@ -4,7 +4,8 @@ set -e
 
 if [ $# = 1 ]; then
     page=$1
-    section=${page##*.}
+    basepage=$(basename "$page")
+    section=${basepage##*.}
     if [ "$section" = 6 ]; then
 	mandir=@install_prefix@@man6dir@
     elif [ "$section" = 8 ]; then
@@ -15,13 +16,14 @@ if [ $# = 1 ]; then
 	echo "Unknown manpage section $section" >&2
 	exit 1
     fi
-    @install_manpage@ "$page" "$mandir"
+    @install_manpage@ "$page" "$mandir/$basepage"
     if [ @gzip_manpages@ = y ]; then
-	rm -f "$mandir/$page.gz"
-	gzip -9 "$mandir/$page"
+	rm -f "$mandir/$basepage.gz"
+	gzip -9 "$mandir/$basepage"
     fi
 elif [ $# = 2 ]; then
-    # Manpage 2 should link to manpage 1
+    # Manpage 2 should link to manpage 1.  No complications of removing
+    # directories from their names.
     page1=$1
     section1=${page1##*.}
     page2=$2

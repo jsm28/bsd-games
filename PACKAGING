@@ -4,8 +4,8 @@ Packaging bsd-games and bsd-games-non-free
 This file contains some information intended for those packaging
 bsd-games or bsd-games-non-free for a Linux distribution.  It is
 presumed that you have read INSTALL first, and that you have the
-minimal competence in the POSIX shell required to read and understand
-the configure script.  This information may also be useful to people
+competence in the POSIX shell required to read and understand the
+configure script.  This information may also be useful to people
 building their own systems, who wish to rebuild the whole system
 automatically or who use a packaging system for locally built
 software.
@@ -57,16 +57,16 @@ trek.me or a formatted version.  As noted below, it is better to
 update trek.6.in (before configure) than trek.6.
 
 Assuming you distribute source for your package (I do not believe any
-of the games in bsd-games have licences requiring this, but boggle in
-bsd-games-non-free may), and separate your patches from the original
-source .tar.gz files (whether in separate files or in a single file
-source package including them as separable components), arranging the
-building of the source so that your patches add a `config.params' as
-described above, and do any other necessary changes to `configure' or
-other source files, and so that the build process runs configure
-non-interactively and then builds the package, makes it easier for
-readers to see how you have packaged it than running configure
-interactively and including the generated files in your patch.
+of the games have licences requiring this), and separate your patches
+from the original source .tar.gz files (whether in separate files or
+in a single file source package including them as separable
+components), arranging the building of the source so that your patches
+add a `config.params' as described above, and do any other necessary
+changes to `configure' or other source files, and so that the build
+process runs configure non-interactively and then builds the package,
+makes it easier for readers to see how you have packaged it than
+running configure interactively and including the generated files in
+your patch.
 
 Andries Brouwer has noted more than once on linux-kernel (and
 elsewhere) that some packagers (for various software and documentation

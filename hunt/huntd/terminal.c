@@ -58,7 +58,7 @@ outch(pp, ch)
 void
 outstr(pp, str, len)
 	PLAYER	*pp;
-	char	*str;
+	const char	*str;
 	int	len;
 {
 	pp->p_curx += len;

@@ -61,10 +61,6 @@ __RCSID("$NetBSD: misc.c,v 1.7 1998/07/26 16:11:40 mycroft Exp $");
 #	include	<term.h>
 # endif	attron
 
-#ifndef CTRL
-#define CTRL(ch) ((ch) - 'A' + 1)
-#endif
-
 /*
  * @(#)misc.c	1.2 (Berkeley) 3/28/83
  */

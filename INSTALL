@@ -14,19 +14,18 @@ Non-free games
 ==============
 
 These installation instructions apply to both bsd-games and
-bsd-games-non-free.  bsd-games-non-free contains boggle and rogue,
-which it seems cannot be sold for profit: the rest of the games are
-under the standard BSD distribution conditions, or very similar ones
-(phantasia is public domain, i.e. not copyrighted).  As of version 2.2
-and later, the bsd-games-non-free package unpacks conventionally into
-a directory of its own.  It can be built separately from bsd-games, or
-in the same source directory: to do the latter, move those files and
-directories that are in bsd-games-non-free but not bsd-games into the
-bsd-games-VERSION directory before building.  If you are building the
-non-free games, cd to boggle and decide if you want -DNEW_STYLE or not
--- see boggle/README.linux for more information.  If you are in a
-hurry, don't worry about it ... it really is more of an aesthetic
-thing.
+bsd-games-non-free.  bsd-games-non-free contains rogue, which it seems
+cannot be sold for profit: the rest of the games are under the
+standard BSD distribution conditions, or very similar ones (phantasia
+is public domain, i.e. not copyrighted).  As of version 2.2 and later,
+the bsd-games-non-free package unpacks conventionally into a directory
+of its own.  It can be built separately from bsd-games, or in the same
+source directory: to do the latter, move those files and directories
+that are in bsd-games-non-free but not bsd-games into the
+bsd-games-VERSION directory before building.  If you are building
+bsd-games, cd to boggle and decide if you want -DNEW_STYLE or not --
+see boggle/README.linux for more information.  If you are in a hurry,
+don't worry about it ... it really is more of an aesthetic thing.
 
 Prerequisites
 =============
@@ -61,7 +60,8 @@ it would be advisable to use gcc 2.7.2.1 or later (or use
 global CSE), and egcs releases 1.1 or later, may produce spurious
 warnings about uninitialized variables because of limitations in the
 code to detect this, but this does not affect the correctness of the
-compiled code.
+compiled code.  Some glibc versions may produce many warnings in the
+system headers; these can be ignored.
 
 Some man pages may look better with the tmac.doc macros from NetBSD,
 rather than the older ones distributed with groff.  If any man pages
@@ -103,6 +103,21 @@ Building and installation
     Some versions of gcc (e.g. egcs 1.1) give many `missing
     initializer' warnings; these are harmless.
 
+    At the start of the build, their will be many `No such file or
+    directory' warnings from make.  Ignore these as long as make does
+    not stop because of them: these refer to dependency files that
+    make can regenerate for itself.  See `Automatic Dependencies' in
+    the GNU Make manual for details.
+
+    In the unlikely event of an internal compiler error, the build
+    system supports generating the files of preprocessor output
+    required for a bug report: if the error occurs while compiling
+    `foo/bar.c', then `make foo/bar.i' will put the preprocessor
+    output in `foo/bar.i', suitable for sending in a bug report along
+    with details of compiler version and options used.  You may,
+    however, wish to minimise the testcase before sending a bug
+    report, if you have the time to do so.
+
 4.  Save copies of any old versions of games you like and their
     datafiles, until you know that the new versions work.
 
@@ -138,6 +153,16 @@ Building and installation
     with `nroff -me' (piped to your pager), or format in PostScript
     for printing with `groff -me -Tps'.
 
+9.  `make distclean' will restore the source directory to the original
+    unpacked state.  The automatically generated dependency files
+    include paths to system headers, including those in gcc's internal
+    header directory: if you have changed your compiler or library
+    headers between building bsd-games and cleaning up, you can use
+    `make distclean nodep=true' to avoid this causing problems.
+
+    `make clean' will restore the sources to the state just after
+    configuration.
+
 Further information
 ===================
 
@@ -153,3 +178,9 @@ produce useful bug reports.
 
 Joseph S. Myers
 jsm28@cam.ac.uk
+
+
+
+Local Variables:
+mode: text
+End:

@@ -16,7 +16,7 @@ __RCSID("$NetBSD: connect.c,v 1.3 1997/10/11 08:13:40 lukem Exp $");
 
 void
 do_connect(name, team, enter_status)
-	char	*name;
+	const char	*name;
 	char	team;
 	long	enter_status;
 {

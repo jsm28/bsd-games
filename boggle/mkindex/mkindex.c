@@ -1,4 +1,4 @@
-/*	$NetBSD: mkindex.c,v 1.3 1997/10/11 02:12:23 lukem Exp $	*/
+/*	$NetBSD: mkindex.c,v 1.4 1998/09/11 13:16:05 hubertf Exp $	*/
 
 /*-
  * Copyright (c) 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1993\n\
 #if 0
 static char sccsid[] = "@(#)mkindex.c	8.1 (Berkeley) 6/11/93";
 #else
-__RCSID("$NetBSD: mkindex.c,v 1.3 1997/10/11 02:12:23 lukem Exp $");
+__RCSID("$NetBSD: mkindex.c,v 1.4 1998/09/11 13:16:05 hubertf Exp $");
 #endif
 #endif /* not lint */
 
@@ -59,7 +59,7 @@ int main __P((void));
 char *nextword __P((FILE *, char *, int *, int *));
 
 int
-main()
+main(void)
 {
 	int clen, rlen, prev;
 	long off, start;

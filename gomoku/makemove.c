@@ -48,11 +48,11 @@ __RCSID("$NetBSD: makemove.c,v 1.4 1997/10/10 13:36:05 lukem Exp $");
 #include "gomoku.h"
 
 		/* direction deltas */
-int     dd[4] = {
+const int     dd[4] = {
 	MRIGHT, MRIGHT+MDOWN, MDOWN, MDOWN+MLEFT
 };
 
-int	weight[5] = { 0, 1, 7, 22, 100 };
+const int	weight[5] = { 0, 1, 7, 22, 100 };
 
 /*
  * Return values:

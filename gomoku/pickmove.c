@@ -175,8 +175,8 @@ pickmove(us)
  */
 int
 better(sp, sp1, us)
-	struct spotstr *sp;
-	struct spotstr *sp1;
+	const struct spotstr *sp;
+	const struct spotstr *sp1;
 	int us;
 {
 	int them, s, s1;

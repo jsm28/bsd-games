@@ -70,10 +70,6 @@ __RCSID("$NetBSD: snake.c,v 1.9 1997/10/12 01:49:28 lukem Exp $");
 #include "snake.h"
 #include "pathnames.h"
 
-#ifndef CTRL
-#define CTRL(X) ((X) & 037)
-#endif
-
 #define PENALTY  10		/* % penalty for invoking spacewarp	 */
 
 #define EOT	'\004'

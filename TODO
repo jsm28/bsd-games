@@ -30,18 +30,9 @@ those.  The issues listed there are not included in this list.
 1997-05-01 - Games with scorefiles should lock them when updating them.
 
 1997-07-15 - Get distribution permission for hack and larn.  Get
-             licences of boggle and rogue clarified.  (See NetBSD PR
-             5850.)
-
-1998-07-28 - Use GNU Make's automatic dependency generation.
+             licence of rogue clarified.  (See NetBSD PR 5850.)
 
 1998-07-28 - Support building in a directory other than the source directory.
-
-1998-08-06 - Maybe use a single project Makefile rather than recursive
-             make; see
-             http://www.canb.auug.org.au/~millerp/rmch/recu-make-cons-harm.html
-             for reasons to do this.  This is being worked on, but not
-             yet present in the released source tree.
 
 1998-08-18 - Fix whatever makes rogue need -fwritable-strings.  This
              seem to be various arrays of struct id being initialised
@@ -66,3 +57,13 @@ those.  The issues listed there are not included in this list.
              exactly once).
 
 1998-09-04 - dm should not access the utmp file directly.
+
+1998-09-11 - Move building of the manpages and headers in which
+             configuration variables are substituted from the
+             configure script into the Makefiles.
+
+
+
+Local Variables:
+mode: text
+End:

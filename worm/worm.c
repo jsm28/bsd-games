@@ -1,4 +1,4 @@
-/*	$NetBSD: worm.c,v 1.8 1997/10/12 02:12:48 lukem Exp $	*/
+/*	$NetBSD: worm.c,v 1.9 1998/09/13 15:27:30 hubertf Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -43,7 +43,7 @@ __COPYRIGHT("@(#) Copyright (c) 1980, 1993\n\
 #if 0
 static char sccsid[] = "@(#)worm.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: worm.c,v 1.8 1997/10/12 02:12:48 lukem Exp $");
+__RCSID("$NetBSD: worm.c,v 1.9 1998/09/13 15:27:30 hubertf Exp $");
 #endif
 #endif /* not lint */
 

@@ -328,7 +328,7 @@ drawplayer(pp, draw)
 void
 message(pp, s)
 	PLAYER	*pp;
-	char	*s;
+	const char	*s;
 {
 	cgoto(pp, HEIGHT, 0);
 	outstr(pp, s, strlen(s));
@@ -363,7 +363,7 @@ translate(ch)
  */
 int
 player_sym(pp, y, x)
-	PLAYER	*pp;
+	const PLAYER	*pp;
 	int	y, x;
 {
 	PLAYER	*npp;

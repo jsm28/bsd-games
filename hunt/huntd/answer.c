@@ -351,7 +351,7 @@ IDENT *
 get_ident(machine, uid, name, team)
 	u_long	machine;
 	u_long	uid;
-	char	*name;
+	const char	*name;
 	char	team;
 {
 	IDENT		*ip;

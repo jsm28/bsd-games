@@ -60,10 +60,6 @@
 #include "screen.h"
 #include "tetris.h"
 
-#ifndef OXTABS
-#define OXTABS XTABS
-#endif
-
 static cell curscreen[B_SIZE];	/* 1 => standout (or otherwise marked) */
 static int curscore;
 static int isset;		/* true => terminal is in game mode */
