@@ -61,7 +61,7 @@ struct you {
 #ifdef QUEST
 	schar di;		/* direction of FF */
 	xchar ux0, uy0;		/* initial position FF */
-#endif QUEST
+#endif /* QUEST */
 	xchar udisx, udisy;	/* last display pos */
 	char usym;		/* usually '@' */
 	schar uluck;
@@ -73,7 +73,7 @@ struct you {
 	unsigned ulevel:4;	/* 1 - 14 */
 #ifdef QUEST
 	unsigned uhorizon:7;
-#endif QUEST
+#endif /* QUEST */
 	unsigned utrap:3;	/* trap timeout */
 	unsigned utraptype:1;	/* defined if utrap nonzero */
 #define	TT_BEARTRAP	0

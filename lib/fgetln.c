@@ -1,6 +1,6 @@
 /* lib/fgetln.c - bsd-games implementation of fgetln.
  *
- * Copyright (c) 1997, 1998, 1999 Joseph Samuel Myers.
+ * Copyright (c) 1997, 1998, 1999, 2000 Joseph Samuel Myers.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #ifndef HAVE_fgetln
 char *

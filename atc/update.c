@@ -52,7 +52,7 @@ static char sccsid[] = "@(#)update.c	8.1 (Berkeley) 5/31/93";
 #else
 __RCSID("$NetBSD: update.c,v 1.10 1999/07/25 00:24:39 hubertf Exp $");
 #endif
-#endif not lint
+#endif /* not lint */
 
 #include "include.h"
 

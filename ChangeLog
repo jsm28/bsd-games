@@ -1,5 +1,15 @@
 2000-08-03  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* atc/input.c, atc/log.c, atc/update.c, hack/config.h,
+	hack/def.monst.h, hack/def.rm.h, hack/hack.cmd.c, hack/hack.h,
+	robots/move_robs.c, robots/play_level.c: Comment out text after
+	#endif.
+	* bcd/bcd.c: Use unsigned char and casts to avoid -pedantic
+	warnings.
+	* pom/pom.c: Likewise.
+	* fortune/unstr/unstr.c, hack/makedefs.c: Include <stdlib.h>.
+	* lib/fgetln.c: Include <string.h>.
+
 	* adventure/setup.c, battlestar/com1.c, battlestar/com7.c,
 	battlestar/cypher.c, battlestar/extern.h, boggle/mkdict/mkdict.c,
 	boggle/mkindex/mkindex.c, fortune/datfiles/netbsd,

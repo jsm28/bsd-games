@@ -52,7 +52,7 @@ static char sccsid[] = "@(#)input.c	8.1 (Berkeley) 5/31/93";
 #else
 __RCSID("$NetBSD: input.c,v 1.13 1999/07/25 00:24:38 hubertf Exp $");
 #endif
-#endif not lint
+#endif /* not lint */
 
 #include "include.h"
 #include "pathnames.h"

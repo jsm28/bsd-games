@@ -10,6 +10,7 @@ static const char rcsid[] __attribute__((__unused__)) =
 #endif				/* not lint */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>

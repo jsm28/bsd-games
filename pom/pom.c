@@ -228,7 +228,7 @@ parsetime(p)
 	time_t tval;
 	unsigned char *t;
 	
-	for (t = p; *t; ++t) {
+	for (t = (unsigned char *)p; *t; ++t) {
 		if (isdigit(*t))
 			continue;
 		badformat();
