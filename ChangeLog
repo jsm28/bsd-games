@@ -1,3 +1,9 @@
+2004-04-12  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* phantasia/fight.c, phantasia/gamesupport.c,
+	phantasia/interplayer.c, phantasia/io.c, phantasia/main.c,
+	phantasia/misc.c: Update from NetBSD CVS.
+
 2004-04-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* mille/move.c, phantasia/fight.c, phantasia/gamesupport.c,
