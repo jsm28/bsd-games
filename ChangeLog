@@ -1,5 +1,7 @@
 2003-04-01  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* NEWS, bsd-games.lsm, bsd-games-non-free.lsm: Update.
+
 	* configure, Makeconfig.in, exec.libs: Support OpenSSL for factor.
 	* INSTALL: Update.
 	* tests/factor.987654321987654,
