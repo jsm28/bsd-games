@@ -1,5 +1,9 @@
 2005-02-18  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* Version 2.17.
+
+	* NEWS, bsd-games.lsm, bsd-games-non-free.lsm: Update.
+
 	* wtf/acronyms, wtf/acronyms.comp: Update from NetBSD CVS.
 
 2005-02-16  Joseph S. Myers  <jsm@polyomino.org.uk>
