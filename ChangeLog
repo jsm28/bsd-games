@@ -1,5 +1,10 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* caesar/caesar.c (main): Make dot and winnerdot of type double.
+	Patch from Jan Vornberger <jan@uos.de> in Debian bug 197816.
+	* tests/caesar.197816in, tests/caesar.197816out: New tests.
+	* tests/caesar.test: Update.
+
 	* worm/worm.6: Score is in upper right corner, not upper left
 	corner.  Patch from Robert Hunter <roh@cryptocracy.hn.org> in
 	Debian bug 209034.

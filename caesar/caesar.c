@@ -84,7 +84,8 @@ main(argc, argv)
 	int argc;
 	char **argv;
 {
-	int ch, dot, i, nread, winnerdot;
+	int ch, i, nread;
+	double dot, winnerdot;
 	char *inbuf;
 	int obs[26], try, winner;
 
