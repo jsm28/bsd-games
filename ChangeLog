@@ -1,3 +1,15 @@
+2000-08-22  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* hunt/hunt/.cvsignore, hunt/huntd/.cvsignore, mille/.cvsignore,
+	monop/.cvsignore, morse/.cvsignore, number/.cvsignore,
+	phantasia/.cvsignore, pig/.cvsignore, pom/.cvsignore,
+	ppt/.cvsignore, primes/.cvsignore, quiz/.cvsignore,
+	quiz/datfiles/.cvsignore, rain/.cvsignore, random/.cvsignore,
+	robots/.cvsignore, rogue/.cvsignore, sail/.cvsignore,
+	snake/snake/.cvsignore, snake/snscore/.cvsignore,
+	tetris/.cvsignore, trek/.cvsignore, worm/.cvsignore,
+	worms/.cvsignore, wtf/.cvsignore, wump/.cvsignore: New files.
+
 2000-08-19  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* fortune/datfiles/.cvsignore, fortune/fortune/.cvsignore,
