@@ -55,7 +55,7 @@ wordinit()
 
 int
 hash(s)
-	char   *s;
+	const char   *s;
 {
 	int     hashval = 0;
 
@@ -69,7 +69,7 @@ hash(s)
 
 struct wlist *
 lookup(s)
-	char   *s;
+	const char   *s;
 {
 	struct wlist *wp;
 

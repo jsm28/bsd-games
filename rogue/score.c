@@ -63,7 +63,7 @@ __RCSID("$NetBSD: score.c,v 1.6 1997/10/12 11:46:01 lukem Exp $");
 
 void
 killed_by(monster, other)
-	object *monster;
+	const object *monster;
 	short other;
 {
 	char buf[128];
@@ -200,7 +200,7 @@ quit(from_intrpt)
 
 void
 put_scores(monster, other)
-	object *monster;
+	const object *monster;
 	short other;
 {
 	short i, n, rank = 10, x, ne = 0, found_player = -1;
@@ -332,9 +332,9 @@ void
 insert_score(scores, n_names, n_name, rank, n, monster, other)
 	char scores[][82];
 	char n_names[][30];
-	char *n_name;
+	const char *n_name;
 	short rank, n;
-	object *monster;
+	const object *monster;
 	int other;
 {
 	short i;
@@ -439,7 +439,7 @@ sell_pack()
 
 int
 get_value(obj)
-	object *obj;
+	const object *obj;
 {
 	short wc;
 	int val;
@@ -510,7 +510,8 @@ id_all()
 
 int
 name_cmp(s1, s2)
-	char *s1, *s2;
+	char *s1;
+	const char *s2;
 {
 	short i = 0;
 	int r;
@@ -561,7 +562,8 @@ xxx(st)
 
 void
 nickize(buf, score, n_name)
-	char *buf, *score, *n_name;
+	char *buf;
+	const char *score, *n_name;
 {
 	short i = 15, j;
 
@@ -588,7 +590,7 @@ nickize(buf, score, n_name)
 void
 center(row, buf)
 	short row;
-	char *buf;
+	const char *buf;
 {
 	short margin;
 

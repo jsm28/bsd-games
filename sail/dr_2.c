@@ -64,7 +64,7 @@ thinkofgrapples()
 				if (range(sp, sq) != 1)
 					continue;
 				if (grappled2(sp, sq))
-					if (toughmelee(sp, sq, 0, 0))
+					if (is_toughmelee(sp, sq, 0, 0))
 						ungrap(sp, sq);
 					else
 						grap(sp, sq);
@@ -129,7 +129,7 @@ prizecheck()
 }
 
 int
-strend(str)
+str_end(str)
 char *str;
 {
 	char *p;
@@ -244,7 +244,7 @@ char command[], temp[];
 	char st[4];
 #define rakeyou (gunsbear(f, t) && !gunsbear(t, f))
 
-	if ((n = strend(temp)) < '1' || n > '9')
+	if ((n = str_end(temp)) < '1' || n > '9')
 		for (n = 1; vma - n >= 0; n++) {
 			(void) sprintf(st, "%d", n);
 			(void) strcat(temp, st);
@@ -257,7 +257,7 @@ char command[], temp[];
 				dir, f, t, high, rakeme);
 			rmend(temp);
 		}
-	if ((ma > 0 && ta > 0 && (n = strend(temp)) != 'l' && n != 'r') || !strlen(temp)) {
+	if ((ma > 0 && ta > 0 && (n = str_end(temp)) != 'l' && n != 'r') || !strlen(temp)) {
 		(void) strcat(temp, "r");
 		new = score(temp, f, t, rakeme);
 		if (new > *high && (!rakeme || (gunsbear(f, t) && !gunsbear(t, f)))) {
@@ -267,7 +267,7 @@ char command[], temp[];
 		try(command, temp, ma-1, ta-1, af, min(ma-1, maxmove(f, (dir == 8 ? 1 : dir+1), 0)), (dir == 8 ? 1 : dir+1),f,t,high,rakeme);
 		rmend(temp);
 	}
-	if ((ma > 0 && ta > 0 && (n = strend(temp)) != 'l' && n != 'r') || !strlen(temp)){
+	if ((ma > 0 && ta > 0 && (n = str_end(temp)) != 'l' && n != 'r') || !strlen(temp)){
 		(void) strcat(temp, "l");
 		new = score(temp, f, t, rakeme);
 		if (new > *high && (!rakeme || (gunsbear(f, t) && !gunsbear(t, f)))){

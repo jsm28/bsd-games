@@ -49,7 +49,7 @@ __RCSID("$NetBSD: types.c,v 1.6 1997/10/12 00:54:40 lukem Exp $");
  */
 
 int
-isrepair(card)
+is_repair(card)
 	CARD	card; 
 {
 

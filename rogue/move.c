@@ -61,7 +61,7 @@ __RCSID("$NetBSD: move.c,v 1.4 1997/10/12 11:45:31 lukem Exp $");
 
 short m_moves = 0;
 boolean jump = 0;
-char *you_can_move_again = "you can move again";
+const char *you_can_move_again = "you can move again";
 
 int
 one_move_rogue(dirch, pickup)

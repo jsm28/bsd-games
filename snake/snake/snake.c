@@ -944,7 +944,7 @@ suspend()
 	ll();
 	cook();
 	kill(getpid(), SIGTSTP);
-	raw();
+	my_raw();
 	setup();
 	winnings(cashvalue);
 }

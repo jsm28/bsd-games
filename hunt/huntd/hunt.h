@@ -156,10 +156,10 @@
 # define	LEFTS	'{'
 # ifdef FLY
 # define	FLYER	'&'
-# define	isplayer(c)	(c == LEFTS || c == RIGHT ||\
+# define	is_player(c)	(c == LEFTS || c == RIGHT ||\
 				c == ABOVE || c == BELOW || c == FLYER)
 # else
-# define	isplayer(c)	(c == LEFTS || c == RIGHT ||\
+# define	is_player(c)	(c == LEFTS || c == RIGHT ||\
 				c == ABOVE || c == BELOW)
 # endif
 

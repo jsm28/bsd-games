@@ -1,4 +1,4 @@
-/*	$NetBSD: wizard.c,v 1.7 1998/07/24 23:18:07 hubertf Exp $	*/
+/*	$NetBSD: wizard.c,v 1.8 1998/08/24 22:07:37 hubertf Exp $	*/
 
 /*-
  * Copyright (c) 1991, 1993
@@ -43,7 +43,7 @@
 #if 0
 static char sccsid[] = "@(#)wizard.c	8.1 (Berkeley) 6/2/93";
 #else
-__RCSID("$NetBSD: wizard.c,v 1.7 1998/07/24 23:18:07 hubertf Exp $");
+__RCSID("$NetBSD: wizard.c,v 1.8 1998/08/24 22:07:37 hubertf Exp $");
 #endif
 #endif				/* not lint */
 
@@ -86,8 +86,7 @@ poof()
 }
 
 int
-Start(n)
-	int n __attribute__((unused));
+Start()
 {
 	int     d, t, delay;
 
@@ -131,16 +130,20 @@ wizard()
 }
 
 void
-ciao(cmdfile)
-	char   *cmdfile __attribute__((unused));
+ciao()
 {
 	char   *c;
 	char    fname[80];
 
 	printf("What would you like to call the saved version?\n");
-	for (c = fname;; c++)
-		if ((*c = getchar()) == '\n')
+	/* XXX - should use fgetln to avoid arbitrary limit */
+	for (c = fname;; c++) {
+		int ch;
+		ch = getchar();
+		if (ch == '\n' || ch == EOF)
 			break;
+		*c = ch;
+	}
 	*c = 0;
 	if (save(fname) != 0)
 		return;		/* Save failed */

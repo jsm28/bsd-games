@@ -65,7 +65,7 @@ int	AM, BW;
 char	tbuf[1024], tcapbuf[128];
 int	Klength;	/* length of KX strings */
 int	chunk;		/* amount of money given at a time */
-#ifndef __linux__
+#ifndef NCURSES_VERSION
 speed_t	ospeed;
 #endif
 #ifdef	debug
@@ -113,7 +113,7 @@ void		pr __P((const char *, ...));
 void		pstring __P((const char *));
 int		pushsnake __P((void));
 void		putpad __P((char *));
-void		raw __P((void));
+void		my_raw __P((void));
 void		right __P((struct point *));
 void		setup __P((void));
 void		snap __P((void));

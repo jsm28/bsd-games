@@ -85,8 +85,8 @@ __RCSID("$NetBSD: factor.c,v 1.7 1997/10/10 12:51:32 lukem Exp $");
  * We are able to sieve 2^32-1 because this byte table yields all primes 
  * up to 65537 and 65537^2 > 2^32-1.
  */
-extern ubig prime[];
-extern ubig *pr_limit;		/* largest prime in the prime array */
+extern const ubig prime[];
+extern const ubig *pr_limit;		/* largest prime in the prime array */
 
 int	main __P((int, char *[]));
 void	pr_fact __P((ubig));	/* print factors of a value */
@@ -167,7 +167,7 @@ void
 pr_fact(val)
 	ubig val;		/* Factor this value. */
 {
-	ubig *fact;		/* The factor found. */
+	const ubig *fact;		/* The factor found. */
 
 	/* Firewall - catch 0 and 1. */
 	if (val == 0)		/* Historical practice; 0 just exits. */

@@ -97,9 +97,9 @@ int	problem __P((void));
 void	showstats __P((void));
 void	usage __P((void)) __attribute__((__noreturn__));
 
-char keylist[] = "+-x/";
-char defaultkeys[] = "+-";
-char *keys = defaultkeys;
+const char keylist[] = "+-x/";
+const char defaultkeys[] = "+-";
+const char *keys = defaultkeys;
 int nkeys = sizeof(defaultkeys) - 1;
 int rangemax = 10;
 int nright, nwrong;
@@ -128,7 +128,7 @@ main(argc, argv)
 	while ((ch = getopt(argc, argv, "r:o:")) != -1)
 		switch(ch) {
 		case 'o': {
-			char *p;
+			const char *p;
 
 			for (p = keys = optarg; *p; ++p)
 				if (!strchr(keylist, *p))

@@ -158,7 +158,7 @@ rest_f(file)
 	char	buf[80];
 	STAT	sbuf;
 
-	if ((inf = open(file, 0)) < 0) {
+	if ((inf = open(file, O_RDONLY)) < 0) {
 		warn("%s", file);
 		exit(1);
 	}

@@ -30,7 +30,7 @@ drawmaze(pp)
 				cgoto(pp, y, x);
 				if (pp->p_x == x && pp->p_y == y)
 					outch(pp, translate(*sp));
-				else if (isplayer(*sp))
+				else if (is_player(*sp))
 					outch(pp, player_sym(pp, y, x));
 				else
 					outch(pp, *sp);
@@ -248,7 +248,7 @@ check(pp, y, x)
 		cgoto(rpp, y, x);
 		if (x == rpp->p_x && y == rpp->p_y)
 			outch(rpp, translate(ch));
-		else if (isplayer(ch))
+		else if (is_player(ch))
 			outch(rpp, player_sym(rpp, y, x));
 		else
 			outch(rpp, ch);

@@ -48,7 +48,7 @@ char   *
 getcom(buf, size, prompt, error)
 	char   *buf;
 	int     size;
-	char   *prompt, *error;
+	const char   *prompt, *error;
 {
 	for (;;) {
 		fputs(prompt, stdout);

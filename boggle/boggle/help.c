@@ -102,6 +102,11 @@ help()
 		inputch();
 	}
 	delwin(win);
+#ifdef NCURSES_VERSION
 	redrawwin(stdscr);
+#else
+	clearok(stdscr, 1);
+	refresh();
+#endif
 	return(0);
 }

@@ -60,7 +60,7 @@ __RCSID("$NetBSD: play.c,v 1.4 1997/10/12 11:45:40 lukem Exp $");
 #include "rogue.h"
 
 boolean interrupted = 0;
-char *unknown_command = "unknown command";
+const char *unknown_command = "unknown command";
 
 void
 play_level()

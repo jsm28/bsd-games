@@ -321,9 +321,10 @@ if building_in sail; then
     echo "to synchronise among multiple players.  Note that with the"
     echo "default permissions given here this will not work: you may want"
     echo "to choose permissions appropriate to the security policy you are"
-    echo "using."
+    echo "using.  It may be more secure if this directory is not world"
+    echo "accessible (e.g. mode 2770)."
     ask "Directory for sail temporary files" sail_dir "$varlibdir/sail"
-    askperms "Sail directory" sail_dir root root 0755
+    askperms "Sail directory" sail_dir root root 0750
     install_sail_dir=`echo "$install_sail_dir" |sed 's/install -c/install -d/'`
 fi
 

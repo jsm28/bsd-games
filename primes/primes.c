@@ -96,16 +96,16 @@ char table[TABSIZE];	 /* Eratosthenes sieve of odd numbers */
  * We are able to sieve 2^32-1 because this byte table yields all primes 
  * up to 65537 and 65537^2 > 2^32-1.
  */
-extern ubig prime[];
-extern ubig *pr_limit;		/* largest prime in the prime array */
+extern const ubig prime[];
+extern const ubig *pr_limit;		/* largest prime in the prime array */
 
 /*
  * To avoid excessive sieves for small factors, we use the table below to 
  * setup our sieve blocks.  Each element represents a odd number starting 
  * with 1.  All non-zero elements are factors of 3, 5, 7, 11 and 13.
  */
-extern char pattern[];
-extern int pattern_size;	/* length of pattern array */
+extern const char pattern[];
+extern const int pattern_size;	/* length of pattern array */
 
 int	main __P((int, char *[]));
 void	primes __P((ubig, ubig));
@@ -230,7 +230,7 @@ primes(start, stop)
 	char *q;		/* sieve spot */
 	ubig factor;		/* index and factor */
 	char *tab_lim;		/* the limit to sieve on the table */
-	ubig *p;		/* prime table pointer */
+	const ubig *p;		/* prime table pointer */
 	ubig fact_lim;		/* highest prime for current block */
 
 	/*

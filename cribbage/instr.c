@@ -65,7 +65,7 @@ instructions()
 	int pstat;
 	int fd;
 	pid_t pid;
-	char *path;
+	const char *path;
 
 	switch (pid = vfork()) {
 	case -1:

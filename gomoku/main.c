@@ -262,7 +262,7 @@ again:
 					ask("save file name? ");
 					(void)getline(buf, sizeof(buf));
 					if ((fp = fopen(buf, "w")) == NULL) {
-						log("cannot create save file");
+						glog("cannot create save file");
 						goto getinput;
 					}
 					for (i = 0; i < movenum - 1; i++)
@@ -273,7 +273,7 @@ again:
 				}
 				if (curmove != RESIGN &&
 				    board[curmove].s_occ != EMPTY) {
-					log("Illegal move");
+					glog("Illegal move");
 					goto getinput;
 				}
 			}
@@ -285,7 +285,7 @@ again:
 		}
 		if (interactive) {
 			sprintf(fmtbuf, fmt[color], movenum, stoc(curmove));
-			log(fmtbuf);
+			glog(fmtbuf);
 		}
 		if ((i = makemove(color, curmove)) != MOVEOK)
 			break;
@@ -322,7 +322,7 @@ again:
 				ask("save file name? ");
 				(void)getline(buf, sizeof(buf));
 				if ((fp = fopen(buf, "w")) == NULL) {
-					log("cannot create save file");
+					glog("cannot create save file");
 					goto replay;
 				}
 				for (i = 0; i < movenum - 1; i++)
@@ -512,7 +512,7 @@ dlog(str)
 }
 
 void
-log(str)
+glog(str)
 	char *str;
 {
 

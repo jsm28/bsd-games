@@ -27,6 +27,13 @@ Bill Lash <lash@tellabs.com>
 
   For tracking down and fixing a bug in rogue.
 
+Paul Janzen <pjanzen@foatdi.harvard.edu>
+
+  For work on the OpenBSD games, including supplying improvements that
+  could be applied to the Linux port, and merging NetBSD changes into
+  OpenBSD so making it easier to extract his and other OpenBSD changes
+  to include in the Linux port.
+
 For the original bsd-games package (versions up to 1.3):
 
 Special Thanks to:

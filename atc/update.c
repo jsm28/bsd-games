@@ -222,9 +222,9 @@ update(dummy)
 #endif
 }
 
-char *
+const char *
 command(pp)
-	PLANE	*pp;
+	const PLANE	*pp;
 {
 	static char	buf[50], *bp, *comm_start;
 
@@ -255,7 +255,7 @@ command(pp)
 
 char
 name(p)
-	PLANE	*p;
+	const PLANE	*p;
 {
 	if (p->plane_type == 0)
 		return ('A' + p->plane_no);
@@ -365,6 +365,8 @@ addplane()
 	p.plane_no = pnum;
 
 	pp = newplane();
+	if (pp == NULL)
+		loser(pp, "Out of memory!");
 	memcpy(pp, &p, sizeof (p));
 
 	if (pp->orig_type == T_AIRPORT)
@@ -392,7 +394,7 @@ findplane(n)
 
 int
 too_close(p1, p2, dist)
-	PLANE	*p1, *p2;
+	const PLANE	*p1, *p2;
 	int	 dist;
 {
 	if (ABS(p1->altitude - p2->altitude) <= dist &&

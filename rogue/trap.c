@@ -63,7 +63,7 @@ trap traps[MAX_TRAPS];
 boolean trap_door = 0;
 short bear_trap = 0;
 
-char *trap_strings[TRAPS * 2] = {
+const char *const trap_strings[TRAPS * 2] = {
 	"trap door",
 			"you fell down a trap",
 	"bear trap",

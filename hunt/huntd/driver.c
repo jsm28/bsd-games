@@ -252,14 +252,8 @@ init()
 # endif
 
 # ifndef DEBUG
-# ifdef TIOCNOTTY
-	(void) ioctl(fileno(stdout), TIOCNOTTY, NULL);
-# endif
-#ifdef __linux__
-	setpgid(getpid(), getpid());
-#else
-	(void) setpgrp(getpid(), getpid());
-#endif
+	if (setsid() == -1)
+		err(1, "setsid");
 	(void) signal(SIGHUP, SIG_IGN);
 	(void) signal(SIGINT, SIG_IGN);
 	(void) signal(SIGQUIT, SIG_IGN);

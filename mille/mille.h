@@ -199,7 +199,7 @@ typedef struct {
 # define	nextplay()	(Play = other(Play))
 # define	nextwin(x)	(1 - x)
 # define	opposite(x)	(Opposite[x])
-# define	issafety(x)	(x >= C_GAS_SAFE)
+# define	is_safety(x)	(x >= C_GAS_SAFE)
 
 /*
  * externals
@@ -241,7 +241,7 @@ void	getmove __P((void));
 int	getyn __P((int));
 int	haspicked __P((PLAY *));
 void	init __P((void));
-int	isrepair __P((CARD));
+int	is_repair __P((CARD));
 int	main __P((int, char **));
 void	newboard __P((void));
 void	newscore __P((void));

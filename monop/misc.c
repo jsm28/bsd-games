@@ -216,7 +216,7 @@ int	pl;
 			if (num == orig->num_in)
 				is_monop(orig, pl);
 			else
-				isnot_monop(orig);
+				is_not_monop(orig);
 			break;
 		}
 	}
@@ -242,7 +242,7 @@ int	pl;
  *	This routine sets things up as if it is no longer a monopoly
  */
 void
-isnot_monop(mp)
+is_not_monop(mp)
 MON	*mp; 
 {
 

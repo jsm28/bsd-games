@@ -71,7 +71,7 @@ main(ac, av)
 	int			seed;
 	int			f_usage = 0, f_list = 0, f_showscore = 0;
 	int			f_printpath = 0;
-	char			*file = NULL;
+	const char		*file = NULL;
 	char			*name, *ptr;
 	struct sigaction	sa;
 #ifdef BSD
@@ -172,8 +172,7 @@ main(ac, av)
 	tcgetattr(fileno(stdin), &tty_start);
 	tty_new = tty_start;
 	tty_new.c_lflag &= ~(ICANON|ECHO);
-	tty_new.c_iflag |= ICRNL; /* Needed with ncurses 1.9.9g (3.4)
-				   * or later */
+	tty_new.c_iflag |= ICRNL;
 	tty_new.c_cc[VMIN] = 1;
 	tty_new.c_cc[VTIME] = 0;
 	tcsetattr(fileno(stdin), TCSADRAIN, &tty_new);
@@ -227,7 +226,7 @@ main(ac, av)
 
 int
 read_file(s)
-	char	*s;
+	const char	*s;
 {
 	extern FILE	*yyin;
 	int		retval;
@@ -247,7 +246,7 @@ read_file(s)
 		return (0);
 }
 
-char	*
+const char	*
 default_game()
 {
 	FILE		*fp;
@@ -272,13 +271,14 @@ default_game()
 	return (file);
 }
 
-char	*
+const char	*
 okay_game(s)
-	char	*s;
+	const char	*s;
 {
 	FILE		*fp;
 	static char	file[256];
-	char		*ret = NULL, line[256], games[256];
+	const char	*ret = NULL;
+	char		line[256], games[256];
 
 	strcpy(games, _PATH_GAMES);
 	strcat(games, GAMES);

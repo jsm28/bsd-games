@@ -1,4 +1,4 @@
-/*	$NetBSD: fortune.c,v 1.12 1998/02/04 10:16:20 christos Exp $	*/
+/*	$NetBSD: fortune.c,v 1.13 1998/08/30 09:19:37 veego Exp $	*/
 
 /*-
  * Copyright (c) 1986, 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1986, 1993\n\
 #if 0
 static char sccsid[] = "@(#)fortune.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: fortune.c,v 1.12 1998/02/04 10:16:20 christos Exp $");
+__RCSID("$NetBSD: fortune.c,v 1.13 1998/08/30 09:19:37 veego Exp $");
 #endif
 #endif /* not lint */
 
@@ -899,8 +899,7 @@ init_prob()
 			num_noprob++;
 			if (Equal_probs)
 				last = fp;
-		}
-		else
+		} else
 			percent += fp->percent;
 	DPRINTF(1, (stderr, "summing probabilities:%d%% with %d NO_PROB's",
 		    percent, num_noprob));
@@ -926,8 +925,7 @@ init_prob()
 			last->percent = percent;
 			DPRINTF(1, (stderr, ", residual = %d%%", percent));
 		}
-	}
-	else {
+	} else {
 		DPRINTF(1, (stderr,
 			    ", %d%% distributed over remaining fortunes\n",
 			    percent));

@@ -69,7 +69,7 @@ init()
 			pp->hand[j] = *--Topcard;
 			if (i == COMP) {
 				account(card = *Topcard);
-				if (issafety(card))
+				if (is_safety(card))
 					pp->safety[card - S_CONV] = S_IN_HAND;
 			}
 		}

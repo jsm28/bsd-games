@@ -44,7 +44,7 @@ __RCSID("$NetBSD: dayobjs.c,v 1.6 1997/10/11 02:07:16 lukem Exp $");
 
 #include "extern.h"
 
-struct objs dayobjs[] = {
+const struct objs dayobjs[] = {
 	{236, HORSE},
 	{237, CAR},
 	{275, POT},
@@ -141,5 +141,5 @@ struct objs dayobjs[] = {
 	{130, BRACELET},
 	{93, GIRL},
 	{268, LAMPON},
-	{0}
+	{0, 0}
 };

@@ -45,7 +45,7 @@ __RCSID("$NetBSD: tutor.c,v 1.4 1997/10/10 08:59:54 lukem Exp $");
 #include "back.h"
 #include "tutor.h"
 
-static char better[] = "That is a legal move, but there is a better one.\n";
+static const char better[] = "That is a legal move, but there is a better one.\n";
 
 void
 tutor()
@@ -148,9 +148,9 @@ clrest()
 
 int
 brdeq(b1, b2)
-	int    *b1, *b2;
+	const int    *b1, *b2;
 {
-	int    *e;
+	const int    *e;
 
 	e = b1 + 26;
 	while (b1 < e)

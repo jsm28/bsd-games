@@ -61,9 +61,6 @@ __RCSID("$NetBSD: input.c,v 1.9 1998/07/28 03:00:09 briggs Exp $");
 #define MAXDEPTH	15
 
 #define RETTOKEN	'\n'
-#ifdef SYSV
-#define CRTOKEN		'\r'
-#endif
 #define REDRAWTOKEN	'\014'	/* CTRL(L) */
 #define	SHELLTOKEN	'!'
 #define HELPTOKEN	'?'
@@ -73,8 +70,8 @@ __RCSID("$NetBSD: input.c,v 1.9 1998/07/28 03:00:09 briggs Exp $");
 typedef struct {
 	int	token;
 	int	to_state;
-	char	*str;
-	char	*(*func) __P((char));
+	const char	*str;
+	const char	*(*func) __P((char));
 } RULE;
 
 typedef struct {
@@ -103,9 +100,6 @@ typedef struct {
 
 RULE	state0[] = {	{ ALPHATOKEN,	1,	"%c:",		setplane},
 			{ RETTOKEN,	-1,	"",		NULL	},
-#ifdef SYSV
-			{ CRTOKEN,	-1,	"",		NULL	},
-#endif
 			{ HELPTOKEN,	12,	" [a-z]<ret>",	NULL	}},
 	state1[] = {	{ 't',		2,	" turn",	turn	},	
 			{ 'a',		3,	" altitude:",	NULL	},	
@@ -137,9 +131,6 @@ RULE	state0[] = {	{ ALPHATOKEN,	1,	"%c:",		setplane},
 	state4[] = {	{ '@',		9,	" at",		NULL	},	
 			{ 'a',		9,	" at",		NULL	},	
 			{ RETTOKEN,	-1,	"",		NULL	},
-#ifdef SYSV
-			{ CRTOKEN,	-1,	"",		NULL	},
-#endif
 			{ HELPTOKEN,	12,	" @a<ret>",	NULL	}},
 	state5[] = {	{ NUMTOKEN,	7,	"%c",		delayb	},
 			{ HELPTOKEN,	12,	" [0-9]",	NULL	}},
@@ -154,14 +145,8 @@ RULE	state0[] = {	{ ALPHATOKEN,	1,	"%c:",		setplane},
 			{ 'a',		4,	" 270",		rel_dir	},
 			{ 'q',		4,	" 315",		rel_dir	},
 			{ RETTOKEN,	-1,	"",		NULL	},	
-#ifdef SYSV
-			{ CRTOKEN,	-1,	"",		NULL	},	
-#endif
 			{ HELPTOKEN,	12,	" @a<dir><ret>",NULL	}},
 	state7[] = {	{ RETTOKEN,	-1,	"",		NULL	},
-#ifdef SYSV
-	            	{ CRTOKEN,	-1,	"",		NULL	},
-#endif
 			{ HELPTOKEN,	12,	" <ret>",	NULL	}},
 	state8[] = {	{ NUMTOKEN,	4,	"%c",		benum	},
 			{ HELPTOKEN,	12,	" [0-9]",	NULL	}},
@@ -248,7 +233,7 @@ int
 getcommand()
 {
 	int	c, i, done;
-	char	*s, *(*func) __P((char));
+	const char	*s, *(*func) __P((char));
 	PLANE	*pp;
 
 	rezero();
@@ -373,7 +358,7 @@ gettoken()
 		return (tval);
 }
 
-char	*
+const char	*
 setplane(c)
 	char c;
 {
@@ -387,7 +372,7 @@ setplane(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 turn(c)
 	char c;
 {
@@ -396,7 +381,7 @@ turn(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 circle(c)
 	char c;
 {
@@ -406,7 +391,7 @@ circle(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 left(c)
 	char c;
 {
@@ -417,7 +402,7 @@ left(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 right(c)
 	char c;
 {
@@ -428,7 +413,7 @@ right(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 Left(c)
 	char c;
 {
@@ -438,7 +423,7 @@ Left(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 Right(c)
 	char c;
 {
@@ -448,7 +433,7 @@ Right(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 delayb(ch)
 	char ch;
 {
@@ -495,7 +480,7 @@ delayb(ch)
 	return (NULL);
 }
 
-char	*
+const char	*
 beacon(c)
 	char c;
 {
@@ -503,7 +488,7 @@ beacon(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 ex_it(c)
 	char c;
 {
@@ -511,7 +496,7 @@ ex_it(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 airport(c)
 	char c;
 {
@@ -519,7 +504,7 @@ airport(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 climb(c)
 	char c;
 {
@@ -527,7 +512,7 @@ climb(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 descend(c)
 	char c;
 {
@@ -535,7 +520,7 @@ descend(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 setalt(c)
 	char c;
 {
@@ -545,7 +530,7 @@ setalt(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 setrelalt(c)
 	char c;
 {
@@ -570,7 +555,7 @@ setrelalt(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 benum(ch)
 	char ch;
 {
@@ -604,7 +589,7 @@ benum(ch)
 	return (NULL);
 }
 
-char	*
+const char	*
 to_dir(c)
 	char c;
 {
@@ -612,7 +597,7 @@ to_dir(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 rel_dir(c)
 	char c;
 {
@@ -637,7 +622,7 @@ rel_dir(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 mark(c)
 	char c;
 {
@@ -649,7 +634,7 @@ mark(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 unmark(c)
 	char c;
 {
@@ -661,7 +646,7 @@ unmark(c)
 	return (NULL);
 }
 
-char	*
+const char	*
 ignore(c)
 	char c;
 {

@@ -1,4 +1,4 @@
-/*	$NetBSD: bog.c,v 1.8 1997/10/11 02:12:11 lukem Exp $	*/
+/*	$NetBSD: bog.c,v 1.9 1998/08/30 09:19:36 veego Exp $	*/
 
 /*-
  * Copyright (c) 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1993\n\
 #if 0
 static char sccsid[] = "@(#)bog.c	8.2 (Berkeley) 5/4/95";
 #else
-__RCSID("$NetBSD: bog.c,v 1.8 1997/10/11 02:12:11 lukem Exp $");
+__RCSID("$NetBSD: bog.c,v 1.9 1998/08/30 09:19:36 veego Exp $");
 #endif
 #endif /* not lint */
 
@@ -101,10 +101,12 @@ int wordpath[MAXWORDLEN + 1];
 int wordlen;		/* Length of last word returned by nextword() */
 int usedbits;
 
-char *pword[MAXPWORDS], pwords[MAXPSPACE], *pwordsp;
+const char *pword[MAXPWORDS];
+char pwords[MAXPSPACE], *pwordsp;
 int npwords;
 
-char *mword[MAXMWORDS], mwords[MAXMSPACE], *mwordsp;
+const char *mword[MAXMWORDS];
+char mwords[MAXMSPACE], *mwordsp;
 int nmwords;
 
 int ngames = 0;
@@ -236,7 +238,7 @@ main(argc, argv)
 		newgame(bspec);
 		bspec = NULL;	/* reset for subsequent games */
 		playgame();
-#if defined(__linux__) && !defined(PURE)
+#ifdef NEW_STYLE
 		prompt("Type <q>uit, <esc> locate, any other key to continue...");
 #else
 		prompt("Type <space> to continue, any cap to quit...");
@@ -245,7 +247,7 @@ main(argc, argv)
 		flushin(stdin);
 		for (;;) {
 			ch = inputch();
-#if defined(__linux__) && !defined(PURE)
+#ifdef NEW_STYLE
 			if (ch == '\033')
 				findword();
 			else if (ch == '\014' || ch == '\022')	/* ^l or ^r */
@@ -434,10 +436,11 @@ timesup: ;
  */
 int
 checkword(word, prev, path)
-	char *word;
+	const char *word;
 	int prev, *path;
 {
-	char *p, *q;
+	const char *p;
+	char *q;
 	int i, *lm;
 
 	if (debug) {
@@ -517,10 +520,10 @@ checkword(word, prev, path)
  */
 int
 validword(word)
-	char *word;
+	const char *word;
 {
 	int j;
-	char *q, *w;
+	const char *q, *w;
 
 	j = word[0] - 'a';
 	if (dictseek(dictfp, dictindex[j].start, 0) < 0) {
@@ -553,7 +556,8 @@ validword(word)
 void
 checkdict()
 {
-	char *p, **pw, *w;
+	char *p, *w;
+	const char **pw;
 	int i;
 	int prevch, previndex, *pi, *qi, st;
 
@@ -631,12 +635,12 @@ checkdict()
  */
 void
 newgame(b)
-	char *b;
+	const char *b;
 {
 	int i, p, q;
-	char *tmp;
+	const char *tmp;
 	int *lm[26];
-	static char *cubes[16] = {
+	static const char *cubes[16] = {
 		"ednosw", "aaciot", "acelrs", "ehinps",
 		"eefhiy", "elpstu", "acdemp", "gilruw",
 		"egkluy", "ahmors", "abilty", "adenvz",
@@ -703,7 +707,7 @@ int
 compar(p, q)
 	const void *p, *q;
 {
-	return (strcmp(*(char *const *)p, *(char *const *)q));
+	return (strcmp(*(const char *const *)p, *(const char *const *)q));
 }
 
 void

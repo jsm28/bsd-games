@@ -87,7 +87,7 @@ __RCSID("$NetBSD: bcd.c,v 1.7 1997/10/10 09:54:18 lukem Exp $");
 #include <ctype.h>
 #include <unistd.h>
 
-u_short holes[256] = {
+const u_short holes[256] = {
     0x0,	 0x0,	  0x0,	   0x0,	    0x0,     0x0,     0x0,     0x0,
     0x0,	 0x0,	  0x0,	   0x0,	    0x0,     0x0,     0x0,     0x0,
     0x0,	 0x0,	  0x0,	   0x0,	    0x0,     0x0,     0x0,     0x0,
@@ -160,7 +160,7 @@ void
 printcard(str)
 	char *str;
 {
-	static char rowchars[] = "   123456789";
+	static const char rowchars[] = "   123456789";
 	int i, row;
 	unsigned char *p;
 

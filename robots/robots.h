@@ -39,6 +39,7 @@
 # include	<ctype.h>
 # include	<curses.h>
 # include	<err.h>
+# include	<errno.h>
 # include	<fcntl.h>
 # include	<pwd.h>
 # include	<setjmp.h>

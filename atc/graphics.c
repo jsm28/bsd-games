@@ -69,15 +69,12 @@ WINDOW	*radar, *cleanradar, *credit, *input, *planes;
 int
 getAChar()
 {
-#if defined(BSD) && !defined(__linux__)
-	return (getchar());
-#endif
-#if defined(SYSV) || defined(__linux__)
 	int c;
 
-	while ((c = getchar()) == -1 && errno == EINTR) ;
+	errno = 0;
+	while ((c = getchar()) == EOF && errno == EINTR)
+		clearerr(stdin);
 	return(c);
-#endif
 }
 
 void
@@ -130,10 +127,11 @@ init_gr()
 
 void
 setup_screen(scp)
-	C_SCREEN	*scp;
+	const C_SCREEN	*scp;
 {
 	int	i, j;
-	char	str[3], *airstr;
+	char	str[3];
+	const char *airstr;
 
 	str[2] = '\0';
 
@@ -224,7 +222,7 @@ void
 draw_line(w, x, y, lx, ly, s)
 	WINDOW	*w;
 	int	 x, y, lx, ly;
-	char	*s;
+	const char	*s;
 {
 	int	dx, dy;
 
@@ -262,7 +260,7 @@ iomove(pos)
 void
 ioaddstr(pos, str)
 	int	 pos;
-	char	*str;
+	const char	*str;
 {
 	wmove(input, 0, pos);
 	waddstr(input, str);
@@ -281,7 +279,7 @@ ioclrtobot()
 void
 ioerror(pos, len, str)
 	int	 pos, len;
-	char	*str;
+	const char	*str;
 {
 	int	i;
 
@@ -380,8 +378,8 @@ planewin()
 
 void
 loser(p, s)
-	PLANE	*p;
-	char	*s;
+	const PLANE	*p;
+	const char	*s;
 {
 	int			c;
 #ifdef BSD
@@ -400,8 +398,12 @@ loser(p, s)
 
 	wmove(input, 0, 0);
 	wclrtobot(input);
-	wprintw(input, "Plane '%c' %s\n\nHit space for top players list...",
-		name(p), s);
+	/* p may be NULL if we ran out of memory */
+	if (p == NULL)
+		wprintw(input, "%s\n\nHit space for top players list...", s);
+	else
+		wprintw(input, "Plane '%c' %s\n\nHit space for top players list...",
+			name(p), s);
 	wrefresh(input);
 	fflush(stdout);
 	while ((c = getchar()) != EOF && c != ' ')

@@ -269,7 +269,7 @@ void
 rand_around(i, r, c)
 	short i, *r, *c;
 {
-	static char* pos = "\010\007\001\003\004\005\002\006\0";
+	static char pos[] = "\010\007\001\003\004\005\002\006\0";
 	static short row, col;
 	short j;
 

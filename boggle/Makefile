@@ -43,7 +43,7 @@ clean:
 # This target is for maintainer use to update the patch at the end
 # of README.linux.
 linux-patch:	
-	sed /=====/q README.linux >README.linux.new
+	sed '/=|=|=/q' README.linux >README.linux.new
 	: >patch.tmp
 	@echo "Error 1 (ignored) is just when differences are found."
 	@echo "Error 2 means trouble."

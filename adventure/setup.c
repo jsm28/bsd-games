@@ -68,7 +68,7 @@ __RCSID("$NetBSD: setup.c,v 1.4 1997/10/11 01:55:30 lukem Exp $");
 #include <err.h>
 #include "hdr.h"		/* SEED lives in there; keep them coordinated. */
 
-#define USAGE "Usage: setup file > data.c (file is typically glorkz)\n"
+#define USAGE "Usage: setup file > data.c (file is typically glorkz)"
 
 #define YES 1
 #define NO  0
@@ -89,7 +89,7 @@ main(argc, argv)
 		errx(1, USAGE);
 
 	if ((infile = fopen(argv[1], "r")) == NULL)
-		err(1, "Can't read file %s.\n", argv[1]);
+		err(1, "Can't read file %s", argv[1]);
 	puts("/*\n * data.c: created by setup from the ascii data file.");
 	puts(SIG1);
 	puts(SIG2);

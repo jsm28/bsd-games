@@ -192,7 +192,7 @@ take(from)
 
 int
 throw(name)
-	char   *name;
+	const char   *name;
 {
 	unsigned int	n;
 	int     deposit = 0;
@@ -273,7 +273,7 @@ throw(name)
 
 int
 drop(name)
-	char   *name;
+	const char   *name;
 {
 
 	int     firstnumber, value;

@@ -295,11 +295,11 @@ free_stuff(objlist)
 	}
 }
 
-char *
+const char *
 name_of(obj)
-	object *obj;
+	const object *obj;
 {
-	char *retstring;
+	const char *retstring;
 
 	switch(obj->what_is) {
 	case SCROL:
@@ -624,7 +624,7 @@ put_stairs()
 
 int
 get_armor_class(obj)
-	object *obj;
+	const object *obj;
 {
 	if (obj) {
 		return(obj->class + obj->d_enchant);

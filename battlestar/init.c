@@ -46,16 +46,16 @@ __RCSID("$NetBSD: init.c,v 1.7 1997/10/11 02:07:25 lukem Exp $");
 
 void
 initialize(startup)
-	char   *startup;
+	const char   *startup;
 {
-	struct objs *p;
+	const struct objs *p;
 
 	puts("Version 4.2, fall 1984.");
 	puts("First Adventure game written by His Lordship, the honorable");
 	puts("Admiral D.W. Riggle\n");
 	location = dayfile;
 	srand(getpid());
-	getutmp(uname);
+	getutmp(username);
 	wordinit();
 	if (startup == NULL) {
 		direction = NORTH;
@@ -69,7 +69,7 @@ initialize(startup)
 			setbit(location[p->room].objects, p->obj);
 	} else
 		restore(startup, strlen(startup));
-	wiz = wizard(uname);
+	wiz = wizard(username);
 	signal(SIGINT, diesig);
 }
 
@@ -80,10 +80,10 @@ getutmp(uname)
 	struct passwd *ptr;
 
 	ptr = getpwuid(getuid());
-	strcpy(uname, ptr ? ptr->pw_name : "");
+	strncpy(uname, ptr ? ptr->pw_name : "", 8);
 }
 
-char   *list[] = {		/* hereditary wizards */
+const char   *const list[] = {		/* hereditary wizards */
 	"riggle",
 	"chris",
 	"edward",
@@ -94,7 +94,7 @@ char   *list[] = {		/* hereditary wizards */
 	0
 };
 
-char   *badguys[] = {
+const char   *const badguys[] = {
 	"wnj",
 	"root",
 	"ted",
@@ -103,7 +103,7 @@ char   *badguys[] = {
 
 int
 wizard(uname)
-	char   *uname;
+	const char   *uname;
 {
 	int     flag;
 
@@ -114,9 +114,9 @@ wizard(uname)
 
 int
 checkout(uname)
-	char   *uname;
+	const char   *uname;
 {
-	char  **ptr;
+	const char  *const *ptr;
 
 	for (ptr = list; *ptr; ptr++)
 		if (strcmp(*ptr, uname) == 0)

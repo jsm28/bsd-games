@@ -78,7 +78,7 @@ static	void	stopset __P((int));
  * Capabilities from TERMCAP.
  */
 char	PC, *BC, *UP;		/* tgoto requires globals: ugh! */
-#ifndef __linux__
+#ifndef NCURSES_VERSION
 speed_t	ospeed;
 #endif
 

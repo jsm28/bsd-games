@@ -1,4 +1,4 @@
-/*	$NetBSD: dr_1.c,v 1.6 1997/10/13 21:03:09 christos Exp $	*/
+/*	$NetBSD: dr_1.c,v 1.7 1998/08/30 09:19:40 veego Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -38,7 +38,7 @@
 #if 0
 static char sccsid[] = "@(#)dr_1.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: dr_1.c,v 1.6 1997/10/13 21:03:09 christos Exp $");
+__RCSID("$NetBSD: dr_1.c,v 1.7 1998/08/30 09:19:40 veego Exp $");
 #endif
 #endif /* not lint */
 
@@ -59,7 +59,7 @@ unfoul()
 		nat = capship(sp)->nationality;
 		foreachship(to) {
 			if (nat != capship(to)->nationality &&
-			    !toughmelee(sp, to, 0, 0))
+			    !is_toughmelee(sp, to, 0, 0))
 				continue;
 			for (i = fouled2(sp, to); --i >= 0;)
 				if (die() <= 2)

@@ -47,11 +47,11 @@ __RCSID("$NetBSD: subs.c,v 1.6 1997/10/10 08:59:48 lukem Exp $");
 int     buffnum = -1;
 char    outbuff[BUFSIZ];
 
-static char plred[] = "Player is red, computer is white.";
-static char plwhite[] = "Player is white, computer is red.";
-static char nocomp[] = "(No computer play.)";
+static const char plred[] = "Player is red, computer is white.";
+static const char plwhite[] = "Player is white, computer is red.";
+static const char nocomp[] = "(No computer play.)";
 
-char   *descr[] = {
+const char   *const descr[] = {
 	"Usage:  backgammon [-] [n r w b pr pw pb t3a]\n",
 	"\t-\tgets this list\n\tn\tdon't ask for rules or instructions",
 	"\tr\tplayer is red (implies n)\n\tw\tplayer is white (implies n)",
@@ -71,13 +71,6 @@ errexit(s)
 	write(2, "\n", 1);
 	perror(s);
 	getout(0);
-}
-
-void
-strset(s1, s2)
-	char   *s1, *s2;
-{
-	while ((*s1++ = *s2++) != '\0');
 }
 
 int
@@ -144,10 +137,10 @@ writec(c)
 
 void
 writel(l)
-	char   *l;
+	const char   *l;
 {
 #ifdef DEBUG
-	char   *s;
+	const char   *s;
 
 	if (trace == NULL)
 		trace = fopen("bgtrace", "w");

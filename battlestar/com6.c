@@ -131,7 +131,7 @@ post(ch)
 	date = ctime(&tv);
 	date[24] = '\0';
 	if (score_fp != NULL) {
-		fprintf(score_fp, "%s  %8s  %c%20s", date, uname, ch, rate());
+		fprintf(score_fp, "%s  %8s  %c%20s", date, username, ch, rate());
 		if (wiz)
 			fprintf(score_fp, "   wizard\n");
 		else
@@ -143,7 +143,7 @@ post(ch)
 	sigprocmask(SIG_SETMASK, &osigset, (sigset_t *) 0);
 }
 
-char   *
+const char   *
 rate()
 {
 	int     score;

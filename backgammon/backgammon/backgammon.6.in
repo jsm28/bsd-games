@@ -43,7 +43,7 @@
 .Nm teachgammon
 .Nd learn to play backgammon
 .Sh SYNOPSIS
-.Nm backgammon
+.Nm
 .Op Fl
 .Op Fl nrwb 
 .Op Fl pr
@@ -95,8 +95,6 @@ uses
 .It Fl s Ar file
 recover previously saved game from
 .Ar file .
-(This can also be done by executing the saved file,
-i.e., typing its name in as a command)
 .El
 .Pp
 .\" 
@@ -111,7 +109,7 @@ If
 .Ar term
 has capabilities for direct cursor movement (see
 .Xr termcap 5 )
-.Nm backgammon
+.Nm
 ``fixes'' the board after each move,
 so the board does not need to be reprinted,
 unless the screen suffers some horrendous malady.

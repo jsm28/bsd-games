@@ -4,7 +4,7 @@ include ../Makeconfig
 
 PROG = rogue
 
-OBJS =	curses.o hit.o init.o inventory.o level.o machdep.o main.o \
+OBJS =	hit.o init.o inventory.o level.o machdep.o main.o \
 	message.o monster.o move.o object.o pack.o play.o random.o ring.o \
 	room.o save.o score.o spec_hit.o throw.o trap.o use.o zap.o
 
@@ -18,8 +18,13 @@ all:	$(PROG)
 $(PROG):	$(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(PROG)
 
-.c.o:	
+# object.c (only) needs -fwritable-strings
+
+object.o:	object.c
 	$(CC) $(CFLAGS) -fwritable-strings $(DEFS) $(INCS) -c $< -o $@
+
+.c.o:	
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
 $(OBJS):	rogue.h
 

@@ -139,7 +139,7 @@ done(entry)		/* entry=1 means goto 13000 */	/* game is over */
 }
 
 
-int
+void
 die(entry)			/* label 90 */
 	int     entry;
 {
@@ -171,5 +171,4 @@ die(entry)			/* label 90 */
 	}
 	loc = 3;
 	oldloc = loc;
-	return (2000);
 }

@@ -279,7 +279,7 @@ void	cursfini __P((void));
 void	cursinit __P((void));
 void	bdwho __P((int));
 void	panic __P((char *)) __attribute__((__noreturn__));
-void	log __P((char *));
+void	glog __P((char *));
 void	dlog __P((char *));
 void	quit __P((void)) __attribute__((__noreturn__));
 void	quitsig __P((int)) __attribute__((__noreturn__));

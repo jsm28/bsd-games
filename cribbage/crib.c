@@ -1,4 +1,4 @@
-/*	$NetBSD: crib.c,v 1.9 1997/10/11 02:44:30 lukem Exp $	*/
+/*	$NetBSD: crib.c,v 1.10 1998/08/30 09:19:37 veego Exp $	*/
 
 /*-
  * Copyright (c) 1980, 1993
@@ -43,7 +43,7 @@ __COPYRIGHT("@(#) Copyright (c) 1980, 1993\n\
 #if 0
 static char sccsid[] = "@(#)crib.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: crib.c,v 1.9 1997/10/11 02:44:30 lukem Exp $");
+__RCSID("$NetBSD: crib.c,v 1.10 1998/08/30 09:19:37 veego Exp $");
 #endif
 #endif /* not lint */
 
@@ -362,7 +362,7 @@ void
 discard(mycrib)
 	BOOLEAN mycrib;
 {
-	char *prompt;
+	const char *prompt;
 	CARD crd;
 
 	prcrib(mycrib, TRUE);

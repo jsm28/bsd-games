@@ -1,4 +1,4 @@
-/*	$NetBSD: io.c,v 1.6 1997/10/11 01:53:29 lukem Exp $	*/
+/*	$NetBSD: io.c,v 1.7 1998/08/29 22:40:07 hubertf Exp $	*/
 
 /*-
  * Copyright (c) 1991, 1993
@@ -43,12 +43,13 @@
 #if 0
 static char sccsid[] = "@(#)io.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: io.c,v 1.6 1997/10/11 01:53:29 lukem Exp $");
+__RCSID("$NetBSD: io.c,v 1.7 1998/08/29 22:40:07 hubertf Exp $");
 #endif
 #endif /* not lint */
 
 /*      Re-coding of advent in C: file i/o and user i/o                 */
 
+#include <err.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -88,6 +89,9 @@ getin(wrd1, wrd2)		/* get command from user        */
 				*s = 0;
 				return;
 			}
+		case EOF:
+			printf("user closed input stream, quitting...\n");
+			exit(0);
 		default:
 			if (++numch >= MAXSTR) {	/* string too long */
 				printf("Give me a break!!\n");
@@ -101,32 +105,21 @@ getin(wrd1, wrd2)		/* get command from user        */
 }
 
 int
-confirm(mesg)			/* confirm irreversible action  */
-	char   *mesg;
-{
-	int     result;
-	printf("%s", mesg);	/* tell him what he did         */
-	if (getchar() == 'y')	/* was his first letter a 'y'?  */
-		result = 1;
-	else
-		result = 0;
-	FLUSHLINE;
-	return (result);
-}
-
-int
 yes(x, y, z)			/* confirm with rspeak          */
 	int     x, y, z;
 {
 	int     result = TRUE;	/* pacify gcc */
-	char    ch;
+	int    ch;
 	for (;;) {
 		rspeak(x);	/* tell him what we want */
 		if ((ch = getchar()) == 'y')
 			result = TRUE;
-		else
-			if (ch == 'n')
-				result = FALSE;
+		else if (ch == 'n')
+			result = FALSE;
+		else if (ch == EOF) {
+			printf("user closed input stream, quitting...\n");
+			exit(0);
+		}
 		FLUSHLINE;
 		if (ch == 'y' || ch == 'n')
 			break;
@@ -144,14 +137,17 @@ yesm(x, y, z)			/* confirm with mspeak          */
 	int     x, y, z;
 {
 	int     result = TRUE;	/* pacify gcc */
-	char    ch;
+	int    ch;
 	for (;;) {
 		mspeak(x);	/* tell him what we want */
 		if ((ch = getchar()) == 'y')
 			result = TRUE;
-		else
-			if (ch == 'n')
-				result = FALSE;
+		else if (ch == 'n')
+			result = FALSE;
+		else if (ch == EOF) {
+			printf("user closed input stream, quitting...\n");
+			exit(0);
+		}
 		FLUSHLINE;
 		if (ch == 'y' || ch == 'n')
 			break;
@@ -169,8 +165,8 @@ char   *inptr;			/* Pointer into virtual disk    */
 
 int     outsw = 0;		/* putting stuff to data file?  */
 
-char    iotape[] = "Ax3F'\003tt$8h\315qer*h\017nGKrX\207:!l";
-char   *tape = iotape;		/* pointer to encryption tape   */
+const char    iotape[] = "Ax3F'\003tt$8h\315qer*h\017nGKrX\207:!l";
+const char   *tape = iotape;		/* pointer to encryption tape   */
 
 int
 next()
@@ -312,7 +308,7 @@ rdesc(sect)			/* read description-format msgs */
 			case 6:/* random messages              */
 				if (oldloc > RTXSIZ) {
 					printf("Too many random msgs\n");
-					exit(0);
+					exit(1);
 				}
 				rtext[oldloc].seekadr = seekhere;
 				rtext[oldloc].txtlen = maystart - seekstart;
@@ -325,14 +321,14 @@ rdesc(sect)			/* read description-format msgs */
 			case 12:	/* magic messages               */
 				if (oldloc > MAGSIZ) {
 					printf("Too many magic msgs\n");
-					exit(0);
+					exit(1);
 				}
 				mtext[oldloc].seekadr = seekhere;
 				mtext[oldloc].txtlen = maystart - seekstart;
 				break;
 			default:
 				printf("rdesc called with bad section\n");
-				exit(0);
+				exit(1);
 			}
 			seekhere += maystart - seekstart;
 		}
@@ -369,6 +365,8 @@ rtrav()
 			return;
 		if (locc != oldloc) {	/* getting a new entry         */
 			t = travel[locc] = (struct travlist *) malloc(sizeof(struct travlist));
+			if (t == NULL)
+				errx(1, "Out of memory!");
 			/* printf("New travel list for %d\n",locc);        */
 			entries = 0;
 			oldloc = locc;
@@ -388,8 +386,11 @@ rtrav()
 			m = atoi(buf);
 		}
 		while (breakch != LF) {	/* only do one line at a time   */
-			if (entries++)
+			if (entries++) {
 				t = t->next = (struct travlist *) malloc(sizeof(struct travlist));
+				if (t == NULL)
+					errx(1, "Out of memory!");
+			}
 			t->tverb = rnum();	/* get verb from the file       */
 			t->tloc = n;	/* table entry mod 1000         */
 			t->conditions = m;	/* table entry / 1000           */
@@ -522,7 +523,7 @@ mspeak(msg)
 void
 speak(msg)			/* read, decrypt, and print a message (not
 				 * ptext)      */
-	struct text *msg;	/* msg is a pointer to seek address and length
+	const struct text *msg;	/* msg is a pointer to seek address and length
 				 * of mess */
 {
 	char   *s, nonfirst;

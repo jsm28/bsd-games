@@ -46,10 +46,10 @@ __RCSID("$NetBSD: misc.c,v 1.6 1997/10/11 02:07:27 lukem Exp $");
 
 int
 card(array, size)		/* for beenthere, injuries */
-	char   *array;
+	const char   *array;
 	int     size;
 {
-	char   *end = array + size;
+	const char   *end = array + size;
 	int     i = 0;
 
 	while (array < end)
@@ -60,7 +60,7 @@ card(array, size)		/* for beenthere, injuries */
 
 int
 ucard(array)
-	unsigned int *array;
+	const unsigned int *array;
 {
 	int     j = 0, n;
 

@@ -1,4 +1,4 @@
-/*	$NetBSD: vocab.c,v 1.5 1997/10/11 01:53:38 lukem Exp $	*/
+/*	$NetBSD: vocab.c,v 1.6 1998/08/24 22:26:23 hubertf Exp $	*/
 
 /*-
  * Copyright (c) 1991, 1993
@@ -43,12 +43,13 @@
 #if 0
 static char sccsid[] = "@(#)vocab.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: vocab.c,v 1.5 1997/10/11 01:53:38 lukem Exp $");
+__RCSID("$NetBSD: vocab.c,v 1.6 1998/08/24 22:26:23 hubertf Exp $");
 #endif
 #endif				/* not lint */
 
 /*      Re-coding of advent in C: data structure routines               */
 
+#include <err.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "hdr.h"
@@ -137,13 +138,14 @@ drop(object, where)
 
 int
 vocab(word, type, value)	/* look up or store a word      */
-	char   *word;
+	const char   *word;
 	int     type;		/* -2 for store, -1 for user word, >=0 for
 				 * canned lookup */
 	int     value;		/* used for storing only        */
 {
 	int     adr;
-	char   *s, *t;
+	const char *s;
+	char   *t;
 	int     hash, i;
 	struct hashtab *h;
 
@@ -162,6 +164,8 @@ vocab(word, type, value)	/* look up or store a word      */
 				goto exitloop2;
 			h->val = value;
 			h->atab = malloc(length(word));
+			if (h->atab == NULL)
+				errx(1, "Out of memory!");
 			for (s = word, t = h->atab; *s;)
 				*t++ = *s++ ^ '=';
 			*t = 0 ^ '=';
@@ -182,7 +186,7 @@ vocab(word, type, value)	/* look up or store a word      */
 		default:	/* looking up known word        */
 			if (h->val == 0) {
 				printf("Unable to find %s in vocab\n", word);
-				exit(0);
+				exit(1);
 			}
 			for (s = word, t = h->atab; *t ^ '=';)
 				if ((*s++ ^ '=') != *t++)
@@ -196,47 +200,9 @@ vocab(word, type, value)	/* look up or store a word      */
 exitloop2:			/* hashed entry does not match  */
 		if (adr + 1 == hash || (adr == HTSIZE && hash == 0)) {
 			printf("Hash table overflow\n");
-			exit(0);
+			exit(1);
 		}
 	}
-}
-
-void
-copystr(w1, w2)			/* copy one string to another   */
-	char   *w1, *w2;
-{
-	char   *s, *t;
-	for (s = w1, t = w2; *s;)
-		*t++ = *s++;
-	*t = 0;
-}
-
-int
-weq(w1, w2)			/* compare words                */
-	char   *w1, *w2;	/* w1 is user, w2 is system     */
-{
-	char   *s, *t;
-	int     i;
-	s = w1;
-	t = w2;
-	for (i = 0; i < 5; i++) {	/* compare at most 5 chars      */
-		if (*t == 0 && *s == 0)
-			return (TRUE);
-		if (*s++ != *t++)
-			return (FALSE);
-	}
-	return (TRUE);
-}
-
-int
-length(str)			/* includes 0 at end            */
-	char   *str;
-{
-	char   *s;
-	int     n;
-	for (n = 0, s = str; *s++;)
-		n++;
-	return (n + 1);
 }
 
 void

@@ -2,6 +2,34 @@ This file contains a summary of changes in each version of bsd-games
 and bsd-games-non-free after 1.3.  For fuller details, see ChangeLog
 and ChangeLog.0.
 
+As well as reading this summary, it is a good idea to reread the
+INSTALL file whenever installing a new version, to check for any
+changes in installation instructions.  Packagers should also reread
+the PACKAGING file each version (or do a diff between the old and new
+versions of the package and read that).
+
+Version 2.4
+===========
+
+* Various minor bug fixes and improvements (some from OpenBSD, thanks
+to Paul Janzen <pjanzen@foatdi.harvard.edu>).
+
+* Sail directory can now be non-world-accessible (mode 2770 root.games
+or similar).  This may improve security, since it means users cannot
+tamper with sync files their sail process creates.
+
+* Rogue buffer overrun fix.  An audit is still needed.
+
+* dm now ignores the environment variable TZ when deciding at what
+times games can be played.  (This only affects you if you are using dm
+to control at what times games can be played, and not then if you are
+using libc 5.4.45 or 5.4.46 (which completely ignore TZ in setgid
+programs rather than checking the validity of any filename given as
+glibc does).)
+
+* All games updated from NetBSD-current of 1998-08-30 (minor changes;
+some more of my changes have been merged back into NetBSD).
+
 Version 2.3
 ===========
 

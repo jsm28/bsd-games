@@ -5,10 +5,10 @@ Packaging
 =========
 
 If packaging bsd-games or bsd-games-non-free for a Linux distribution,
-please read the PACKAGING file for further information after this
-one.  Others who wish to install it under a packaging system, or
-rebuild it automatically and without interactive configuration, may
-also find this file useful.
+please read the PACKAGING file for further information after this one.
+Others who wish to install it under a packaging system, or rebuild it
+automatically and without interactive configuration, may also find
+this file useful.
 
 Non-free games
 ==============
@@ -23,9 +23,10 @@ a directory of its own.  It can be built separately from bsd-games, or
 in the same source directory: to do the latter, move those files and
 directories that are in bsd-games-non-free but not bsd-games into the
 bsd-games-VERSION directory before building.  If you are building the
-non-free games, cd to boggle and decide if you want -DPURE or not --
-see boggle/README.linux for more information.  If you are in a hurry,
-don't worry about it ... it really is more of an aesthetic thing.
+non-free games, cd to boggle and decide if you want -DNEW_STYLE or not
+-- see boggle/README.linux for more information.  If you are in a
+hurry, don't worry about it ... it really is more of an aesthetic
+thing.
 
 Prerequisites
 =============
@@ -57,10 +58,16 @@ builtin in bash 2.02) to avoid depending on echo -n.
 I am not aware of any dependence on the version of gcc used, although
 it would be advisable to use gcc 2.7.2.1 or later (or use
 -fno-strength-reduce).  Sufficiently recent egcs snapshots (those with
-global CSE), and probably egcs release 1.1, may produce spurious
+global CSE), and egcs releases 1.1 or later, may produce spurious
 warnings about uninitialized variables because of limitations in the
 code to detect this, but this does not affect the correctness of the
 compiled code.
+
+Some man pages may look better with the tmac.doc macros from NetBSD,
+rather than the older ones distributed with groff.  If any man pages
+look funny or appear to have words missing (especially the program
+name or a reference to NetBSD), having older tmac.doc may be the
+cause.
 
 Security
 ========
@@ -72,14 +79,14 @@ Building and installation
 =========================
 
 1.  cd to the top level directory in the source distribution, i.e. the
-    directory that contains this file.  There is not yet any support for
-    building in a directory other than the source directory.
+    directory that contains this file.  There is not yet any support
+    for building in a directory other than the source directory.
 
 2.  Run `./configure' and configure the installation to your liking.
-    There may be some games you don't want to build because you have them
-    from elsewhere; for example, there is another fortune package
-    (fortune-mod) available, and factor is included in GNU sh-utils as of
-    version 1.12q.  Also banner is in util-linux.  You can specify
+    There may be some games you don't want to build because you have
+    them from elsewhere; for example, there is another fortune package
+    (fortune-mod) available, and factor is included in GNU sh-utils as
+    of version 1.12q.  Also banner is in util-linux.  You can specify
     particular games you do not want built before specifying the list
     of games to build (which will default to all those available,
     except those you have excluded).
@@ -89,26 +96,29 @@ Building and installation
     FSSTND 1.2, or a newer FHS, or wish to install into /usr/local,
     check the paths given and make changes as appropriate.
 
-3.  Type `make'.  You can probably ignore compiler warnings, although most
-    should be fixed in this release.  If you are building on a 64 bit
-    architecture, you might want to look over the warnings and let me
-    know about any that are normally significant in such cases.
+3.  Type `make'.  You can probably ignore compiler warnings, although
+    most should be fixed in this release.  If you are building on a 64
+    bit architecture, you might want to look over the warnings and let
+    me know about any that are normally significant in such cases.
+    Some versions of gcc (e.g. egcs 1.1) give many `missing
+    initializer' warnings; these are harmless.
 
 4.  Save copies of any old versions of games you like and their
     datafiles, until you know that the new versions work.
 
 5.  Become root.  (If, as an ordinary user, you are installing under
-    your home directory, there is of course no need to do this.)
+    your home directory, and have chosen not to set owners and groups
+    on the installed files, there is of course no need to do this.)
 
-6.  Type `make install'.  If you want the installed binaries to be stripped,
-    use `make install-strip' instead.  This saves disk space, but means that
-    you cannot debug the installed binaries.
+6.  Type `make install'.  If you want the installed binaries to be
+    stripped, use `make install-strip' instead.  This saves disk
+    space, but means that you cannot debug the installed binaries.
 
-7.  If you had an old installation of bsd-games, check for file locations
-    that have changed.  You will probably want to remove old executables
-    and static data (formerly defaulting to installation in /usr/games/lib),
-    and replace any empty score files that have been installed with your old
-    ones (checking the permissions).
+7.  If you had an old installation of bsd-games, check for file
+    locations that have changed.  You will probably want to remove old
+    executables and static data (formerly defaulting to installation
+    in /usr/games/lib), and replace any empty score files that have
+    been installed with your old ones (checking the permissions).
 
     The default locations changed again in 2.2, to those mandated by
     the new FHS 2.0 - manpages in /usr/share/man, variable data in
@@ -117,11 +127,16 @@ Building and installation
     hidden games has changed from /usr/libexec/dm to
     /usr/lib/games/dm.
 
-8.  You may wish to do something with the BSD Users' Supplementary Documents
-    for trek and rogue, in trek/USD.doc/trek.me and rogue/USD.doc/rogue.me.
-    You can look at them on a text terminal with `nroff -me' (piped to your
-    pager), or format in PostScript for printing with `groff -me
-    -Tps'.
+    In version 2.4, the recommended permissions on the directory for
+    sail, if you installed it setgid, changed from 0775 to 2770; you
+    may need to adjust the permissions manually if you had a previous
+    installation of version 2.3.
+
+8.  You may wish to do something with the BSD Users' Supplementary
+    Documents for trek and rogue, in trek/USD.doc/trek.me and
+    rogue/USD.doc/rogue.me.  You can look at them on a text terminal
+    with `nroff -me' (piped to your pager), or format in PostScript
+    for printing with `groff -me -Tps'.
 
 Further information
 ===================

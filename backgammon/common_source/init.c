@@ -49,8 +49,8 @@ __RCSID("$NetBSD: init.c,v 1.6 1997/10/14 00:53:31 lukem Exp $");
  */
 
  /* name of executable object programs */
-char    EXEC[] = EXEC_PATH;
-char    TEACH[] = TEACH_PATH;
+const char    EXEC[] = EXEC_PATH;
+const char    TEACH[] = TEACH_PATH;
 
 int     pnum = 2;		/* color of player: -1 = white 1 = red 0 =
 				 * both 2 = not yet init'ed */
@@ -67,11 +67,11 @@ int     tflag = 0;		/* cursor addressing flag */
 int     iroll = 0;		/* special flag for inputting rolls */
 int     rfl = 0;
 
-char   *color[] = {"White", "Red", "white", "red"};
+const char *const color[] = {"White", "Red", "white", "red"};
 
 
-char	**Colorptr;
-char	**colorptr;
+const char	*const *Colorptr;
+const char	*const *colorptr;
 int	*inopp;
 int	*inptr;
 int	*offopp;

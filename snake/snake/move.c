@@ -115,7 +115,7 @@ int     CMlength;
 int     NDlength;
 int     BSlength;
 int     delaystr[10];
-#ifndef __linux__
+#ifndef NCURSES_VERSION
 speed_t ospeed;
 #endif
 
@@ -591,7 +591,7 @@ cook()
 }
 
 void
-raw()
+my_raw()
 {
 	tcsetattr(0, TCSADRAIN, &new);
 }
@@ -713,7 +713,7 @@ getcap()
 #ifdef VDSUSP
 	new.c_cc[VDSUSP] = _POSIX_VDISABLE;
 #endif
-	raw();
+	my_raw();
 
 	if (orig.c_oflag & OXTABS)
 		TA = 0;

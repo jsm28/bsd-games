@@ -127,7 +127,7 @@ dictseek(fp, offset, ptrname)
 
 FILE *
 opendict(dict)
-	char *dict;
+	const char *dict;
 {
 	FILE *fp;
 
@@ -188,7 +188,7 @@ loaddict(fp)
  */
 int
 loadindex(indexfile)
-	char *indexfile;
+	const char *indexfile;
 {
 	int i, j;
 	char buf[BUFSIZ];

@@ -1,4 +1,4 @@
-/*	$NetBSD: hunt.c,v 1.6 1998/07/06 07:00:15 mrg Exp $	*/
+/*	$NetBSD: hunt.c,v 1.7 1998/08/30 09:19:37 veego Exp $	*/
 /*
  *  Hunt
  *  Copyright (c) 1985 Conrad C. Huang, Gregory S. Couch, Kenneth C.R.C. Arnold
@@ -7,7 +7,7 @@
 
 #include <sys/cdefs.h>
 #ifndef lint
-__RCSID("$NetBSD: hunt.c,v 1.6 1998/07/06 07:00:15 mrg Exp $");
+__RCSID("$NetBSD: hunt.c,v 1.7 1998/08/30 09:19:37 veego Exp $");
 #endif /* not lint */
 
 # include	<sys/stat.h>
@@ -23,6 +23,7 @@ __RCSID("$NetBSD: hunt.c,v 1.6 1998/07/06 07:00:15 mrg Exp $");
 # include	<termios.h>
 static struct termios saved_tty;
 # endif
+# include	<sys/param.h>
 # include	<unistd.h>
 
 # include	"hunt.h"
@@ -376,6 +377,8 @@ broadcast_vec(s, vector)
 	vec_cnt = 0;
 	n = ifc.ifc_len / sizeof (struct ifreq);
 	*vector = (struct sockaddr *) malloc(n * sizeof (struct sockaddr));
+	if (*vector == NULL)
+		leave(1, "Out of memory!");
 	for (ifr = ifc.ifc_req; n != 0; n--, ifr++)
 		if (ioctl(s, SIOCGIFBRDADDR, ifr) >= 0)
 			memcpy(&(*vector)[vec_cnt++], &ifr->ifr_addr,
@@ -428,6 +431,8 @@ list_drivers()
 
 		listmax = 20;
 		listv = (SOCKET *) malloc(listmax * sizeof (SOCKET));
+		if (listv == NULL)
+			leave(1, "Out of memory!");
 	} else if (Sock_host != NULL)
 		return listv;		/* address already valid */
 
@@ -514,6 +519,8 @@ get_response:
 			listmax += 20;
 			listv = (SOCKET *) realloc((char *) listv,
 						listmax * sizeof(SOCKET));
+			if (listv == NULL)
+				leave(1, "Out of memory!");
 		}
 
 		FD_ZERO(&mask);

@@ -9,7 +9,7 @@ LIBS = $(NCURSES_LIB)
 OBJS = data.o teach.o ttext1.o ttext2.o tutor.o
 COMD = ../common_source
 COBJS = ${COMD}/allow.o ${COMD}/board.o ${COMD}/check.o \
-	${COMD}/fancy.o ${COMD}/init.o ${COMD}/odds.o \
+	${COMD}/fancy.o ${COMD}/init.o \
 	${COMD}/one.o ${COMD}/save.o ${COMD}/subs.o ${COMD}/table.o
 
 all:	teachgammon
@@ -23,7 +23,7 @@ $(COBJS):
 .c.o:	
 	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
-$(OBJS):        $(COMD)/back.h
+$(OBJS):        $(COMD)/back.h tutor.h
 
 install:	teachgammon
 	$(INSTALL_BINARY) teachgammon $(INSTALL_PREFIX)$(GAMESDIR)

@@ -1,4 +1,4 @@
-/*	$NetBSD: main.c,v 1.6 1998/03/29 04:46:40 mrg Exp $	*/
+/*	$NetBSD: main.c,v 1.7 1998/08/29 22:53:03 hubertf Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -43,7 +43,7 @@ __COPYRIGHT("@(#) Copyright (c) 1980, 1993\n\
 #if 0
 static char sccsid[] = "@(#)main.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: main.c,v 1.6 1998/03/29 04:46:40 mrg Exp $");
+__RCSID("$NetBSD: main.c,v 1.7 1998/08/29 22:53:03 hubertf Exp $");
 #endif
 #endif				/* not lint */
 
@@ -55,20 +55,20 @@ __RCSID("$NetBSD: main.c,v 1.6 1998/03/29 04:46:40 mrg Exp $");
 #define MVPAUSE	5		/* time to sleep when stuck */
 #define MAXUSERS 35		/* maximum number of users */
 
-extern char   *instr[];		/* text of instructions */
-extern char   *message[];		/* update message */
-#ifndef __linux__ /* Linux has ospeed declared, but ncurses makes it a short */
+extern const char   *const instr[];		/* text of instructions */
+extern const char   *const message[];		/* update message */
+#ifndef NCURSES_VERSION
 speed_t ospeed;			/* tty output speed */
 #endif
 
-char   *helpm[] = {		/* help message */
+const char   *const helpm[] = {		/* help message */
 	"Enter a space or newline to roll, or",
 	"     R   to reprint the board\tD   to double",
 	"     S   to save the game\tQ   to quit",
 	0
 };
 
-char   *contin[] = {		/* pause message */
+const char   *const contin[] = {		/* pause message */
 	"(Type a newline to continue.)",
 	"",
 	0
@@ -83,25 +83,25 @@ static char user2a[] =
 static char user2b[] =
 " users on the system, so you cannot play\nanother game.  ";
 #endif
-static char rules[] = "\nDo you want the rules of the game?";
-static char noteach[] = "Teachgammon not available!\n\007";
-static char need[] = "Do you need instructions for this program?";
-static char askcol[] =
+static const char rules[] = "\nDo you want the rules of the game?";
+static const char noteach[] = "Teachgammon not available!\n\007";
+static const char need[] = "Do you need instructions for this program?";
+static const char askcol[] =
 "Enter 'r' to play red, 'w' to play white, 'b' to play both:";
-static char rollr[] = "Red rolls a ";
-static char rollw[] = ".  White rolls a ";
-static char rstart[] = ".  Red starts.\n";
-static char wstart[] = ".  White starts.\n";
-static char toobad1[] = "Too bad, ";
-static char unable[] = " is unable to use that roll.\n";
-static char toobad2[] = ".  Too bad, ";
-static char cantmv[] = " can't move.\n";
-static char bgammon[] = "Backgammon!  ";
-static char gammon[] = "Gammon!  ";
-static char again[] = ".\nWould you like to play again?";
-static char svpromt[] = "Would you like to save this game?";
+static const char rollr[] = "Red rolls a ";
+static const char rollw[] = ".  White rolls a ";
+static const char rstart[] = ".  Red starts.\n";
+static const char wstart[] = ".  White starts.\n";
+static const char toobad1[] = "Too bad, ";
+static const char unable[] = " is unable to use that roll.\n";
+static const char toobad2[] = ".  Too bad, ";
+static const char cantmv[] = " can't move.\n";
+static const char bgammon[] = "Backgammon!  ";
+static const char gammon[] = "Gammon!  ";
+static const char again[] = ".\nWould you like to play again?";
+static const char svpromt[] = "Would you like to save this game?";
 
-static char password[] = "losfurng";
+static const char password[] = "losfurng";
 static char pbuf[10];
 
 int

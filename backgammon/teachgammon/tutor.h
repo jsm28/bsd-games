@@ -43,30 +43,30 @@ struct situatn {
 	int	mg[4];
 	int	new1;
 	int	new2;
-	char	*(*com[8]);
+	const char	*const (*com[8]);
 };
 
 
-extern	char	*doubl[];
-extern	char	*endgame[];
-extern	char	*finis[];
-extern	char	*hello[];
-extern	char	*hits[];
-extern	char	*intro1[];
-extern	char	*intro2[];
-extern	char	*lastch[];
-extern	char	*list[];
+extern	const char	*const doubl[];
+extern	const char	*const endgame[];
+extern	const char	*const finis[];
+extern	const char	*const hello[];
+extern	const char	*const hits[];
+extern	const char	*const intro1[];
+extern	const char	*const intro2[];
+extern	const char	*const lastch[];
+extern	const char	*const list[];
 extern	int	 maxmoves;
-extern	char	*moves[];
-extern	char	*opts;
-extern	char	*prog[];
-extern	char	*prompt;
-extern	char	*removepiece[];
-extern	char	*stragy[];
-extern	struct situatn	test[];
+extern	const char	*const moves[];
+extern	const char	*opts;
+extern	const char	*const prog[];
+extern	const char	*prompt;
+extern	const char	*const removepiece[];
+extern	const char	*const stragy[];
+extern	const struct situatn	test[];
 
 
-int	brdeq __P((int *, int *));
+int	brdeq __P((const int *, const int *));
 void	clrest __P((void));
-void	leave __P((void));
-void	tutor __P((void));
+void	leave __P((void)) __attribute__((__noreturn__));
+void	tutor __P((void)) __attribute__((__noreturn__));

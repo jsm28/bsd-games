@@ -48,7 +48,7 @@ is a program used to regulate game playing.
 .Nm
 expects to be invoked with the name of a game that a user wishes to play.
 This is done by creating symbolic links to
-.Nm dm ,
+.Nm "" ,
 in the directory
 .Pa @gamesdir@
 for all of the regulated games.

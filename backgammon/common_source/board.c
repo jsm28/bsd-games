@@ -51,9 +51,9 @@ void
 wrboard()
 {
 	int     l;
-	static char bl[] =
+	static const char bl[] =
 	"|                       |   |                       |\n";
-	static char sv[] =
+	static const char sv[] =
 	"|                       |   |                       |    \n";
 
 	fixtty(&noech);

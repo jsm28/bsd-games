@@ -93,6 +93,24 @@ of README).  Do not assume that old patches should be applied to new
 versions; check that the problem they are supposed to fix is still
 present first.
 
+Warnings
+========
+
+If distributing bsd-games, it is your responsibility to check that the
+licences on the games you distribute permit what you wish to do with
+them, and that you are providing accurate information on the licences
+to your users.  Likewise it is your responsibility to carry out
+whatever audits you deem necessary on the code, and to include such
+warnings or information (about security and otherwise) for the end
+user as you see fit.  Please read the disclaimers in the individual
+source files.
+
+Some of the games may contain material, actions or language that in
+some jurisdictions may be prohibited or considered unsuitable for
+minors; this includes but is not limited to the offensive fortunes.
+It is your responsibility to determine and apply any restriction on
+your distribution of the games that may be necessary in consequence.
+
 Notification of new versions
 ============================
 

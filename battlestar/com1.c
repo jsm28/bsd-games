@@ -75,7 +75,7 @@ convert(tothis)			/* Converts day to night and vice versa. 	    */
 	int     tothis;		/* Day objects are permanent.  Night objects
 				 * are added */
 {				/* at dusk, and subtracted at dawn.		 */
-	struct objs *p;
+	const struct objs *p;
 	unsigned int	i, j;
 
 	if (tothis == TONIGHT) {

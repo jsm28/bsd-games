@@ -62,7 +62,7 @@ __RCSID("$NetBSD: monster.c,v 1.5 1998/07/21 07:01:55 hubertf Exp $");
 object level_monsters;
 boolean mon_disappeared;
 
-char *m_names[] = {
+const char *const m_names[] = {
 	"aquator",
 	"bat",
 	"centaur",
@@ -509,7 +509,7 @@ move_mon_to(monster, row, col)
 
 int
 mon_can_go(monster, row, col)
-	object *monster;
+	const object *monster;
 	short row, col;
 {
 	object *obj;
@@ -595,9 +595,9 @@ wake_room(rn, entering, row, col)
 	}
 }
 
-char *
+const char *
 mon_name(monster)
-	object *monster;
+	const object *monster;
 {
 	short ch;
 
@@ -823,7 +823,7 @@ char
 gr_obj_char()
 {
 	short r;
-	char *rs = "%!?]=/):*";
+	const char *rs = "%!?]=/):*";
 
 	r = get_rand(0, 8);
 
@@ -867,7 +867,7 @@ aggravate()
 
 boolean
 mon_sees(monster, row, col)
-	object *monster;
+	const object *monster;
 	int row, col;
 {
 	short rn, rdif, cdif, retval;

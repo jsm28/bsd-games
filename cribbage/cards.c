@@ -101,11 +101,12 @@ eq(a, b)
 }
 
 /*
- * isone returns TRUE if a is in the set of cards b
+ * is_one returns TRUE if a is in the set of cards b
  */
 int
-isone(a, b, n)
-	CARD a, b[];
+is_one(a, b, n)
+	CARD a;
+	const CARD b[];
 	int n;
 {
 	int i;

@@ -121,11 +121,11 @@ crc_start()
 
 unsigned long
 crc(ptr, nr)		/* Process nr bytes at a time; ptr points to them */
-	char   *ptr;
+	const char   *ptr;
 	int     nr;
 {
 	int     i;
-	char   *p;
+	const char   *p;
 
 	while (nr > 0)
 		for (p = ptr; nr--; ++p) {

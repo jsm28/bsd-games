@@ -65,11 +65,11 @@ char msgs[NMESSAGES][DCOLS] = {"", "", "", "", ""};
 short msg_col = 0, imsg = -1;
 boolean msg_cleared = 1, rmsg = 0;
 char hunger_str[8] = "";
-char *more = "-more-";
+const char *more = "-more-";
 
 void
 message(msg, intrpt)
-	char *msg;
+	const char *msg;
 	boolean intrpt;
 {
 	cant_int = 1;
@@ -137,8 +137,9 @@ check_message()
 
 int
 get_input_line(prompt, insert, buf, if_cancelled, add_blank, do_echo)
-	char *prompt, *buf, *insert;
-	char *if_cancelled;
+	const char *prompt, *insert;
+	char *buf;
+	const char *if_cancelled;
 	boolean add_blank;
 	boolean do_echo;
 {
@@ -316,7 +317,7 @@ print_stats(stat_mask)
 
 void
 pad(s, n)
-	char *s;
+	const char *s;
 	short n;
 {
 	short i;
@@ -371,7 +372,7 @@ is_digit(ch)
 
 int
 r_index(str, ch, last)
-	char *str;
+	const char *str;
 	int ch;
 	boolean last;
 {

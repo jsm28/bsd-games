@@ -44,7 +44,7 @@ __RCSID("$NetBSD: nightobjs.c,v 1.6 1997/10/11 02:07:31 lukem Exp $");
 
 #include "extern.h"
 
-struct objs nightobjs[] = {
+const struct objs nightobjs[] = {
 	{218, PAJAMAS},
 	{235, NATIVE},
 	{92, PAPAYAS},
@@ -103,5 +103,5 @@ struct objs nightobjs[] = {
 	{249, FOOT},
 	{250, FOOT},
 	{93, PAPAYAS},
-	{0}
+	{0, 0}
 };

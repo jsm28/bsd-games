@@ -57,7 +57,6 @@ char longfmt;				/* -l, print score in long format */
 char nobells;				/* -b, don't ring bell before Signal */
 
 	/* other initial modes */
-char issetuid;				/* running setuid */
 gid_t gid;
 gid_t egid;
 
@@ -317,7 +316,7 @@ int next __P((void));
 void thinkofgrapples __P((void));
 void checkup __P((void));
 void prizecheck __P((void));
-int strend __P((char *));
+int str_end __P((char *));
 void closeon __P((struct ship *, struct ship *, char[], int, int, int));
 int score __P((char[], struct ship *, struct ship *, int));
 void move_ship __P((char *, struct ship *, unsigned char *, short *, short *, char *));
@@ -328,11 +327,11 @@ void rmend __P((char *));
 /* dr_3.c */
 void moveall __P((void));
 int stillmoving __P((int));
-int isolated __P((struct ship *));
+int is_isolated __P((struct ship *));
 int push __P((struct ship *, struct ship *));
 void step __P((int, struct ship *, char *));
 void sendbp __P((struct ship *, struct ship *, int, int));
-int toughmelee __P((struct ship *, struct ship *, int, int));
+int is_toughmelee __P((struct ship *, struct ship *, int, int));
 void reload __P((void));
 void checksails __P((void));
 

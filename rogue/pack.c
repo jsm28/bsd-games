@@ -59,7 +59,7 @@ __RCSID("$NetBSD: pack.c,v 1.4 1997/10/12 11:45:37 lukem Exp $");
 
 #include "rogue.h"
 
-char *curse_message = "you can't, it appears to be cursed";
+const char *curse_message = "you can't, it appears to be cursed";
 
 object *
 add_to_pack(obj, pack, condense)
@@ -280,7 +280,7 @@ wait_for_ack()
 
 short
 pack_letter(prompt, mask)
-	char *prompt;
+	const char *prompt;
 	unsigned short mask;
 {
 	short ch;
@@ -479,7 +479,7 @@ call_it()
 
 short
 pack_count(new_obj)
-	object *new_obj;
+	const object *new_obj;
 {
 	object *obj;
 	short count = 0;
@@ -507,7 +507,7 @@ pack_count(new_obj)
 
 boolean
 mask_pack(pack, mask)
-	object *pack;
+	const object *pack;
 	unsigned short mask;
 {
 	while (pack->next_object) {

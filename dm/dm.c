@@ -71,9 +71,9 @@ static int	priority = 0;		/* priority game runs at */
 static char	*game,			/* requested game */
 		*gametty;		/* from tty? */
 
-void	c_day __P((char *, char *, char *));
-void	c_game __P((char *, char  *, char *, char *));
-void	c_tty __P((char *));
+void	c_day __P((const char *, const char *, const char *));
+void	c_game __P((const char *, const char  *, const char *, const char *));
+void	c_tty __P((const char *));
 const char *hour __P((int));
 double	load __P((void));
 int	main __P((int, char *[]));
@@ -96,6 +96,7 @@ main(argc, argv)
 		exit(0);
 
 	gametty = ttyname(0);
+	unsetenv("TZ");
 	(void)time(&now);
 	read_config();
 #ifdef LOG
@@ -167,9 +168,9 @@ read_config()
  */
 void
 c_day(s_day, s_start, s_stop)
-	char *s_day, *s_start, *s_stop;
+	const char *s_day, *s_start, *s_stop;
 {
-	static char *days[] = {
+	static const char *const days[] = {
 		"sunday", "monday", "tuesday", "wednesday",
 		"thursday", "friday", "saturday",
 	};
@@ -184,9 +185,13 @@ c_day(s_day, s_start, s_stop)
 		return;
 	start = atoi(s_start);
 	stop = atoi(s_stop);
-	if (ct->tm_hour >= start && ct->tm_hour < stop)
-		errx(0, "Sorry, games are not available from %s to %s today.",
-		    hour(start), hour(stop));
+	if (ct->tm_hour >= start && ct->tm_hour < stop) {
+		if (start == 0 && stop == 24)
+			errx(0, "Sorry, games are not available today.");
+		else
+			errx(0, "Sorry, games are not available from %s to %s today.",
+			     hour(start), hour(stop));
+	}
 }
 
 /*
@@ -195,7 +200,7 @@ c_day(s_day, s_start, s_stop)
  */
 void
 c_tty(tty)
-	char *tty;
+	const char *tty;
 {
 	static int first = 1;
 	static char *p_tty;
@@ -215,7 +220,7 @@ c_tty(tty)
  */
 void
 c_game(s_game, s_load, s_users, s_priority)
-	char *s_game, *s_load, *s_users, *s_priority;
+	const char *s_game, *s_load, *s_users, *s_priority;
 {
 	static int found;
 
@@ -242,7 +247,7 @@ load()
 	double avenrun[3];
 
 	if (getloadavg(avenrun, sizeof(avenrun)/sizeof(avenrun[0])) < 0)
-		err(1, "getloadavg() failed.");
+		err(1, "getloadavg() failed");
 	return (avenrun[2]);
 }
 
@@ -290,13 +295,13 @@ const char *
 hour(h)
 	int h;
 {
-	static char *hours[] = {
+	static const char *const hours[] = {
 	    "midnight", "1am", "2am", "3am", "4am", "5am",
 	    "6am", "7am", "8am", "9am", "10am", "11am",
 	    "noon", "1pm", "2pm", "3pm", "4pm", "5pm",
-	    "6pm", "7pm", "8pm", "9pm", "10pm", "11pm" };
+	    "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "midnight" };
 
-	if (h < 0 || h > 23)
+	if (h < 0 || h > 24)
 		return ("BAD TIME");
 	else
 		return (hours[h]);

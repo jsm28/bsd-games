@@ -46,7 +46,7 @@ __RCSID("$NetBSD: save.c,v 1.7 1997/10/12 02:06:15 lukem Exp $");
 
 void
 restore(filename, len)
-	char *filename;
+	const char *filename;
 	size_t len;
 {
 	char   *home;
@@ -127,7 +127,7 @@ restore(filename, len)
 
 void
 save(filename, len)
-	char *filename;
+	const char *filename;
 	size_t len;
 {
 	char   *home;

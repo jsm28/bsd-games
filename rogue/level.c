@@ -64,11 +64,11 @@ __RCSID("$NetBSD: level.c,v 1.4 1997/10/12 11:45:16 lukem Exp $");
 short cur_level = 0;
 short max_level = 1;
 short cur_room;
-char *new_level_message = 0;
+const char *new_level_message = 0;
 short party_room = NO_ROOM;
 short r_de;
 
-long level_points[MAX_EXP_LEVEL] = {
+const long level_points[MAX_EXP_LEVEL] = {
 		  10L,
 		  20L,
 		  40L,
@@ -591,7 +591,7 @@ fill_it(rn, do_rec_de)
 void
 recursive_deadend(rn, offsets, srow, scol)
 	short rn;
-	short *offsets;
+	const short *offsets;
 	short srow, scol;
 {
 	short i, de;

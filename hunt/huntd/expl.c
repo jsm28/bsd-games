@@ -33,6 +33,14 @@ showexpl(y, x, type)
 	if (x < 0 || x >= WIDTH)
 		return;
 	ep = (EXPL *) malloc(sizeof (EXPL));	/* NOSTRICT */
+	if (ep == NULL) {
+# ifdef LOG
+		syslog(LOG_ERR, "Out of memory");
+# else
+		warnx("Out of memory");
+# endif
+		cleanup(1);
+	}
 	ep->e_y = y;
 	ep->e_x = x;
 	ep->e_char = type;

@@ -48,7 +48,7 @@ void
 writedes()
 {
 	int     compass;
-	char   *p;
+	const char   *p;
 	int     c;
 
 	printf("\n\t%s\n", location[position].name);
@@ -114,7 +114,7 @@ whichway(here)
 	}
 }
 
-char   *
+const char   *
 truedirec(way, option)
 	int     way;
 	char    option;

@@ -6,11 +6,10 @@ PROG   = boggle
 
 OBJS   = bog.o help.o mach.o prtable.o timer.o word.o
 #
-# Defining PURE causes this program to be compiled with the default BSD 
-# behavior.  Not defining it will allow any Linux "improvements" to be
-# included.
+# Defining NEW_STYLE causes this program to be compiled with the Linux
+# improvements; removing this definition gives the original BSD behaviour.
 #
-DEFS = # -DPURE
+DEFS = -DNEW_STYLE
 LIBS   = $(NCURSES_LIB)
 INCS   = -I../../include $(NCURSES_INCS)
 

@@ -83,7 +83,7 @@ compar(va, vb)
 #define MIN(t)		(((t) % SECAHOUR) / SECAMIN)
 #define SEC(t)		((t) % SECAMIN)
 
-char	*
+const char	*
 timestr(t)
 	int t;
 {

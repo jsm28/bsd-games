@@ -355,19 +355,19 @@ move_drone(bp)
 	/*
 	 * See if we can give someone a blast
 	 */
-	if (isplayer(Maze[bp->b_y][bp->b_x - 1])) {
+	if (is_player(Maze[bp->b_y][bp->b_x - 1])) {
 		dir = WEST;
 		goto drone_move;
 	}
-	if (isplayer(Maze[bp->b_y - 1][bp->b_x])) {
+	if (is_player(Maze[bp->b_y - 1][bp->b_x])) {
 		dir = NORTH;
 		goto drone_move;
 	}
-	if (isplayer(Maze[bp->b_y + 1][bp->b_x])) {
+	if (is_player(Maze[bp->b_y + 1][bp->b_x])) {
 		dir = SOUTH;
 		goto drone_move;
 	}
-	if (isplayer(Maze[bp->b_y][bp->b_x + 1])) {
+	if (is_player(Maze[bp->b_y][bp->b_x + 1])) {
 		dir = EAST;
 		goto drone_move;
 	}
@@ -760,6 +760,14 @@ chkslime(bp, next)
 		break;
 	}
 	nbp = (BULLET *) malloc(sizeof (BULLET));
+	if (nbp == NULL) {
+# ifdef LOG
+		syslog(LOG_ERR, "Out of memory");
+# else
+		warnx("Out of memory");
+# endif
+		cleanup(1);
+	}
 	*nbp = *bp;
 # ifdef VOLCANO
 	move_slime(nbp, nbp->b_type == SLIME ? SLIMESPEED : LAVASPEED, next);

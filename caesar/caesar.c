@@ -81,7 +81,7 @@ double stdf[26] = {
 
 
 int	main __P((int, char *[]));
-void	printit __P((char *)) __attribute__((__noreturn__));
+void	printit __P((const char *)) __attribute__((__noreturn__));
 
 int
 main(argc, argv)
@@ -152,7 +152,7 @@ main(argc, argv)
 
 void
 printit(arg)
-	char *arg;
+	const char *arg;
 {
 	int ch, rot;
 

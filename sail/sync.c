@@ -1,4 +1,4 @@
-/*	$NetBSD: sync.c,v 1.8 1998/03/29 04:56:46 mrg Exp $	*/
+/*	$NetBSD: sync.c,v 1.9 1998/08/30 09:19:40 veego Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -38,7 +38,7 @@
 #if 0
 static char sccsid[] = "@(#)sync.c	8.2 (Berkeley) 4/28/95";
 #else
-__RCSID("$NetBSD: sync.c,v 1.8 1998/03/29 04:56:46 mrg Exp $");
+__RCSID("$NetBSD: sync.c,v 1.9 1998/08/30 09:19:40 veego Exp $");
 #endif
 #endif /* not lint */
 
@@ -149,6 +149,7 @@ makemsg(va_alias)
 	va_end(ap);
 	Write(W_SIGNAL, from, 1, (long)message, 0, 0, 0);
 }
+
 int
 sync_exists(game)
 	int game;
@@ -159,28 +160,33 @@ sync_exists(game)
 
 	(void) sprintf(buf, _PATH_SYNC, game);
 	(void) time(&t);
-	if (stat(buf, &s) < 0)
+	setegid(egid);
+	if (stat(buf, &s) < 0) {
+		setegid(gid);
 		return 0;
+	}
 	if (s.st_mtime < t - 60*60*2) {		/* 2 hours */
-		setegid(egid);
 		(void) unlink(buf);
 		(void) sprintf(buf, _PATH_LOCK, game);
 		(void) unlink(buf);
 		setegid(gid);
 		return 0;
-	} else
+	} else {
+		setegid(gid);
 		return 1;
+	}
 }
 
 int
 sync_open()
 {
+	struct stat tmp;
 	if (sync_fp != NULL)
 		(void) fclose(sync_fp);
 	(void) sprintf(sync_lock, _PATH_LOCK, game);
 	(void) sprintf(sync_file, _PATH_SYNC, game);
 	setegid(egid);
-	if (access(sync_file, F_OK) < 0) {
+	if (stat(sync_file, &tmp) < 0) {
 		mode_t omask = umask(002);
 		sync_fp = fopen(sync_file, "w+");
 		(void) umask(omask);

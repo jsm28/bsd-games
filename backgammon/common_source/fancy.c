@@ -586,13 +586,6 @@ clear()
 }
 
 void
-tos()
-{				/* home cursor */
-	curmove(0, 0);
-}
-
-
-void
 fancyc(c)
 	char    c;		/* character to output */
 {
@@ -698,7 +691,7 @@ newline()
 
 int
 getcaps(s)
-	char   *s;
+	const char   *s;
 {
 	char   *code;		/* two letter code */
 	char ***cap;		/* pointer to cap string */
@@ -740,5 +733,9 @@ getcaps(s)
 	if (LI < 24 || CO < 72 || !(CL && UP && ND))
 		return (0);
 	linect = (int *) calloc(LI + 1, sizeof(int));
+	if (linect == NULL) {
+		write(2, "\r\nOut of memory!\r\n", 18);
+		getout(0);
+	}
 	return (1);
 }

@@ -43,7 +43,7 @@
 .Nm
 .Sh DESCRIPTION
 In
-.Nm hangman ,
+.Nm "" ,
 the computer picks a word from the on-line word list
 and you must try to guess it.
 The computer keeps track of which letters have been guessed

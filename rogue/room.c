@@ -65,7 +65,7 @@ boolean rooms_visited[MAXROOMS];
 #define NOPTS 7
 
 struct option {
-	char *prompt;
+	const char *prompt;
 	boolean is_bool;
 	char **strval;
 	boolean *bval;
@@ -627,7 +627,7 @@ void
 opt_show(i)
 	int i;
 {
-	char *s;
+	const char *s;
 	struct option *opt = &options[i];
 
 	opt_erase(i);
@@ -661,7 +661,7 @@ void
 do_shell()
 {
 #ifdef UNIX
-	char *sh;
+	const char *sh;
 
 	md_ignore_signals();
 	if (!(sh = md_getenv("SHELL"))) {
