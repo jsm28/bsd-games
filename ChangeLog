@@ -1,5 +1,7 @@
 2004-01-26  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* sail/main.c: Reorder includes to match NetBSD.
+
 	* cribbage/cribbage.h, cribbage/crib.c, cribbage/io.c: Rename
 	receive_int to receive_intr.
 
