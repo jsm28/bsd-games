@@ -1,4 +1,4 @@
-/*	$NetBSD: globals.c,v 1.16 2000/09/24 14:11:09 jsm Exp $	*/
+/*	$NetBSD: globals.c,v 1.18 2000/09/25 14:45:01 jsm Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -38,7 +38,7 @@
 #if 0
 static char sccsid[] = "@(#)globals.c	8.2 (Berkeley) 4/28/95";
 #else
-__RCSID("$NetBSD: globals.c,v 1.16 2000/09/24 14:11:09 jsm Exp $");
+__RCSID("$NetBSD: globals.c,v 1.18 2000/09/25 14:45:01 jsm Exp $");
 #endif
 #endif				/* not lint */
 

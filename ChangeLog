@@ -1,5 +1,9 @@
 2000-09-25  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com2.c, battlestar/com4.c, battlestar/com5.c,
+	battlestar/cypher.c, battlestar/extern.h, battlestar/globals.c,
+	battlestar/words.c: Update from NetBSD CVS after merge.
+
 	* battlestar/extern.h: Add AUXVERB.
 	* battlestar/words.c (wlist): Use AUXVERB for "climb", "move" and
 	"make".

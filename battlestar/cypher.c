@@ -1,4 +1,4 @@
-/*	$NetBSD: cypher.c,v 1.19 2000/09/24 14:42:18 jsm Exp $	*/
+/*	$NetBSD: cypher.c,v 1.21 2000/09/25 19:37:58 jsm Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993
@@ -38,7 +38,7 @@
 #if 0
 static char sccsid[] = "@(#)cypher.c	8.2 (Berkeley) 4/28/95";
 #else
-__RCSID("$NetBSD: cypher.c,v 1.19 2000/09/24 14:42:18 jsm Exp $");
+__RCSID("$NetBSD: cypher.c,v 1.21 2000/09/25 19:37:58 jsm Exp $");
 #endif
 #endif				/* not lint */
 
