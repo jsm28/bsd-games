@@ -274,12 +274,16 @@ void
 ravage()
 {
 	while (wordtype[++wordnumber] != NOUNS && wordnumber <= wordcount);
-	if (wordtype[wordnumber] == NOUNS && testbit(location[position].objects, wordvalue[wordnumber])) {
+	if (wordtype[wordnumber] == NOUNS && (testbit(location[position].objects, wordvalue[wordnumber])
+	    || (wordvalue[wordnumber] == NORMGOD && testbit(location[position].objects, BATHGOD)))) {
 		ourtime++;
 		switch (wordvalue[wordnumber]) {
 		case NORMGOD:
 			puts("You attack the goddess, and she screams as you beat her.  She falls down");
-			puts("crying and tries to hold her torn and bloodied dress around her.");
+			if (testbit(location[position].objects, BATHGOD))
+				puts("crying and tries to cover her nakedness.");
+			else
+				puts("crying and tries to hold her torn and bloodied dress around her.");
 			power += 5;
 			pleasure += 8;
 			ego -= 10;

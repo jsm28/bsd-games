@@ -1,5 +1,8 @@
 2000-09-22  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com2.c (ravage): Allow for the bathing goddess.  From
+	OpenBSD.
+
 	* battlestar/extern.h: Add OBJ_PLURAL, objflags and
 	is_plural_object.
 	* battlestar/globals.c: Add objflags.
