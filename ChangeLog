@@ -1,5 +1,12 @@
 2000-09-17  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* tests/battlestar.in9, tests/battlestar.out9,
+	tests/battlestar.in10, tests/battlestar.out10,
+	tests/battlestar.in11, tests/battlestar.out11,
+	tests/battlestar.in12, tests/battlestar.out12,
+	tests/battlestar.in13, tests/battlestar.out13: New tests.
+	* tests/battlestar.test: Update.
+
 	* battlestar/com6.c (dooropen): New function, from OpenBSD.
 	* battlestar/cypher.c (cypher): Support new verbs OPEN, VERBOSE
 	and BRIEF, from OpenBSD.

@@ -76,6 +76,31 @@ compare test.out tests/battlestar.err6
 rm -f test.out
 
 testno 8
-battlestar/battlestar <tests/battlestar.in8 >test.out 2>/dev/null || failtest
+battlestar/battlestar <tests/battlestar.in8 >test.out 2>&1 || failtest
 compare test.out tests/battlestar.out8
+rm -f test.out
+
+testno 9
+battlestar/battlestar <tests/battlestar.in9 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out9
+rm -f test.out
+
+testno 10
+battlestar/battlestar <tests/battlestar.in10 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out10
+rm -f test.out
+
+testno 11
+battlestar/battlestar <tests/battlestar.in11 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out11
+rm -f test.out
+
+testno 12
+battlestar/battlestar <tests/battlestar.in12 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out12
+rm -f test.out
+
+testno 13
+battlestar/battlestar <tests/battlestar.in13 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out13
 rm -f test.out
