@@ -4,11 +4,9 @@ the order they were added in, not any priority order.
 1993-09-25 - Hunt needs to worked through to make sure it will run over a
              network.
 
-1997-04-29 - Test glibc and alpha compilation.  (Do this after current
-             NetBSD sources are integrated.)
-
 1997-04-29 - Test architectures other that i386 and alpha (I can't do this
-             myself).  The Debian version builds on m68k.
+             myself).  The Debian version builds on m68k, or at least has
+             done so in the past.
 
 1997-04-29 - Improve security of games when running setgid.  At present,
              they do not even drop setgid privileges except for writing
@@ -26,11 +24,12 @@ the order they were added in, not any priority order.
 1997-04-29 - Paranoia and wargames have no manpages.  Minimal ones should
              be written.
 
-1997-04-29 - Merge in changes to games in NetBSD-current.  (In progress.)
-
 1997-04-29 - Add all the remaining games from NetBSD.
 
 1997-04-29 - Get changes (at least the bug-fixes) merged back into NetBSD.
              Or should it be FreeBSD or OpenBSD?
 
 1997-05-01 - Games with scorefiles should lock them when updating them.
+
+1997-05-22 - Comply properly with bog license, by distributing a diff
+             along with the changed source files.

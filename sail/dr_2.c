@@ -1,6 +1,8 @@
+/*	$NetBSD: dr_2.c,v 1.4 1995/04/24 12:25:12 cgd Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)dr_2.c	5.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)dr_2.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: dr_2.c,v 1.4 1995/04/24 12:25:12 cgd Exp $";
+#endif
 #endif /* not lint */
 
 #include "driver.h"
@@ -110,7 +116,7 @@ prizecheck()
 			continue;
 		if (sp->specs->crew1 + sp->specs->crew2 + sp->specs->crew3 > sp->file->pcrew * 6) {
 			Write(W_SIGNAL, sp, 1,
-				(int)"prize crew overthrown", 0, 0, 0);
+				(long)"prize crew overthrown", 0, 0, 0);
 			Write(W_POINTS, sp->file->captured, 0, sp->file->captured->file->points - 2 * sp->specs->pts, 0, 0, 0);
 			Write(W_CAPTURED, sp, 0, -1, 0, 0, 0);
 		}

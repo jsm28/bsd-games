@@ -1,6 +1,8 @@
+/*	$NetBSD: init.c,v 1.6 1997/05/23 23:09:37 jtc Exp $	*/
+
 /*
- * Copyright (c) 1982 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1982, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)init.c	5.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)init.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: init.c,v 1.6 1997/05/23 23:09:37 jtc Exp $";
+#endif
 #endif /* not lint */
 
 # include	"mille.h"
@@ -43,9 +49,9 @@ static char sccsid[] = "@(#)init.c	5.4 (Berkeley) 6/1/90";
 
 init() {
 
-	reg PLAY	*pp;
-	reg int		i, j;
-	reg CARD	card;
+	register PLAY	*pp;
+	register int		i, j;
+	register CARD	card;
 
 	bzero(Numseen, sizeof Numseen);
 	Numgos = 0;
@@ -86,14 +92,14 @@ init() {
 
 shuffle() {
 
-	reg int		i, r;
-	reg CARD	temp;
+	register int		i, r;
+	register CARD	temp;
 
 	for (i = 0; i < DECK_SZ; i++) {
 		r = roll(1, DECK_SZ) - 1;
 		if (r < 0 || r > DECK_SZ - 1) {
 			fprintf(stderr, "shuffle: card no. error: %d\n", r);
-			die();
+			die(1);
 		}
 		temp = Deck[r];
 		Deck[r] = Deck[i];
@@ -162,11 +168,10 @@ newboard() {
 
 newscore() {
 
-	reg int		i, new;
+	register int	i, new;
 	register PLAY	*pp;
 	static int	was_full = -1;
 	static int	last_win = -1;
-	int force_counter = 0;
 
 	if (was_full < 0)
 		was_full = (Window != W_FULL);
@@ -185,8 +190,7 @@ newscore() {
 		mvaddstr(4, 37, "300");
 		new = TRUE;
 	}
-	else if (((Window == W_FULL || Finished) ^ was_full) ||
-		 pp->was_finished != Finished) {
+	else if ((Window == W_FULL || Finished) ^ was_full) {
 		move(5, 1);
 		clrtobot();
 		new = TRUE;
@@ -197,13 +201,8 @@ newscore() {
 		for (i = 0; i < SCORE_Y; i++)
 			mvaddch(i, 0, '|');
 		move(SCORE_Y - 1, 1);
-		/* I added this force_counter hack because addch doesn't seem
-		 * to return ERR at EOL using ncurses.  There are many better
-		 * ways to do this.  Please send me a patch.
-		 * -- Joey Hess <joeyh@master.debian.org>
-		 */
-		while (addch('_') != ERR && force_counter++ < 80)
-			continue;
+		for (i = 0; i < SCORE_X; i++)
+			addch('_');
 		for (pp = Player; pp <= &Player[COMP]; pp++) {
 			pp->sh_hand_tot = -1;
 			pp->sh_total = -1;

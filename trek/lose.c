@@ -1,6 +1,8 @@
+/*	$NetBSD: lose.c,v 1.3 1995/04/22 10:59:08 cgd Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)lose.c	5.6 (Berkeley) 6/26/90";
+#if 0
+static char sccsid[] = "@(#)lose.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: lose.c,v 1.3 1995/04/22 10:59:08 cgd Exp $";
+#endif
 #endif /* not lint */
 
 # include	"trek.h"

@@ -219,7 +219,11 @@ echo "If you built ncurses with --disable-overwrite, you may need"
 echo "-I/usr/include/ncurses here"
 ask "Ncurses includes" ncurses_includes ''
 ask "BSD-compat library" bsd_lib -lbsd # *** Different with glibc? ***
-ask "BSD-compat includes" bsd_includes -I/usr/include/bsd
+if [ -d /usr/include/bsd ]; then
+    ask "BSD-compat includes" bsd_includes -I/usr/include/bsd
+else
+    ask "BSD-compat includes" bsd_includes ''
+fi
 ask "BSD-compat defines" bsd_defs -D_BSD_SOURCE
 ask "Other CFLAGS" other_cflags ''
 ask "Other LDFLAGS" other_ldflags ''
@@ -291,8 +295,8 @@ substitute Makeconfig.in install-man.in install-score.in \
 	backgammon/backgammon/backgammon.6.in bog/bog.6.in caesar/rot13.in \
 	canfield/canfield/canfield.6.in cribbage/cribbage.6.in \
 	hangman/hangman.6.in hunt/hunt.6.in hunt/huntd.6.in mille/mille.6.in \
-	monop/monop.6.in robots/robots.6.in snake/snake/snake.6.in \
-	tetris/tetris.6.in trek/trek.6.in
+	monop/monop.6.in rain/rain.6.in robots/robots.6.in \
+	snake/snake/snake.6.in tetris/tetris.6.in trek/trek.6.in
 if [ x"$use_dm" = xy ]; then
     substitute hide-game.in
 fi

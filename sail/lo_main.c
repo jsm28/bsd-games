@@ -1,6 +1,8 @@
+/*	$NetBSD: lo_main.c,v 1.4 1997/01/07 12:42:21 tls Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)lo_main.c	5.7 (Berkeley) 2/28/91";
+#if 0
+static char sccsid[] = "@(#)lo_main.c	8.2 (Berkeley) 4/28/95";
+#else
+static char rcsid[] = "$NetBSD: lo_main.c,v 1.4 1997/01/07 12:42:21 tls Exp $";
+#endif
 #endif /* not lint */
 
 /*
@@ -42,7 +48,7 @@ static char sccsid[] = "@(#)lo_main.c	5.7 (Berkeley) 2/28/91";
  */
 #include <sys/types.h>
 #include <pwd.h>
-#include "externs.h"
+#include "extern.h"
 #include "pathnames.h"
 
 char *title[] = {

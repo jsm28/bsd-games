@@ -204,7 +204,7 @@ inputch()
 	return(getch() & 0177);
 }
 
-#ifdef XXX
+#ifdef linux
 /*
  * Flush all pending input
  */
@@ -214,7 +214,7 @@ FILE *fp;
 
 	flushinp();
 }
-#endif XXX
+#else /* !linux */
 
 #ifdef TIOCFLUSH
 #include <sys/file.h>
@@ -230,6 +230,7 @@ FILE *fp;
 	(void) ioctl(fileno(fp), TIOCFLUSH, &arg);
 }
 #endif TIOCFLUSH
+#endif /* !linux */
 
 #ifdef ATARI
 #include <osbind.h>

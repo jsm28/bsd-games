@@ -6,7 +6,7 @@ PROG = rain
 
 LIBS = $(NCURSES_LIB) $(BSD_LIB)
 INCS = $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -DUSG
+DEFS = $(BSD_DEFS)
 
 all:	$(PROG)
 

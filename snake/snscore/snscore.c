@@ -1,6 +1,8 @@
+/*	$NetBSD: snscore.c,v 1.5 1995/04/24 12:25:43 cgd Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,19 +34,24 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1980 Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1980, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)snscore.c	5.7 (Berkeley) 2/28/91";
+#if 0
+static char sccsid[] = "@(#)snscore.c	8.1 (Berkeley) 7/19/93";
+#else
+static char rcsid[] = "$NetBSD: snscore.c,v 1.5 1995/04/24 12:25:43 cgd Exp $";
+#endif
 #endif /* not lint */
 
 #include <sys/types.h>
 #include <pwd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "pathnames.h"
 
 char *recfile = _PATH_RAWSCORES;
@@ -56,12 +63,12 @@ struct	player	{
 	char	*name;
 } players[MAXPLAYERS], temp;
 
+int
 main()
 {
-	char	buf[80], cp;
 	short	uid, score;
 	FILE	*fd;
-	int	noplayers = 0;
+	int	noplayers;
 	int	i, j, notsorted;
 	short	whoallbest, allbest;
 	char	*q;
@@ -78,7 +85,8 @@ main()
 		exit(0);
 	}
 	fread(&allbest, sizeof(short), 1, fd);
-	for (uid=2;;uid++) {
+	noplayers = 0;
+	for (uid = 2; ;uid++) {
 		if(fread(&score, sizeof(short), 1, fd) == 0)
 			break;
 		if (score > 0) {
@@ -92,29 +100,29 @@ main()
 			if (p == NULL)
 				continue;
 			q = p -> pw_name;
-			players[noplayers].name = malloc(strlen(q)+1);
+			players[noplayers].name = malloc(strlen(q) + 1);
 			strcpy(players[noplayers].name, q);
 			noplayers++;
 		}
 	}
 
 	/* bubble sort scores */
-	for (notsorted=1; notsorted; ) {
+	for (notsorted = 1; notsorted; ) {
 		notsorted = 0;
-		for (i=0; i<noplayers-1; i++)
-			if (players[i].scores < players[i+1].scores) {
+		for (i = 0; i < noplayers - 1; i++)
+			if (players[i].scores < players[i + 1].scores) {
 				temp = players[i];
-				players[i] = players[i+1];
-				players[i+1] = temp;
+				players[i] = players[i + 1];
+				players[i + 1] = temp;
 				notsorted++;
 			}
 	}
 
 	j = 1;
-	for (i=0; i<noplayers; i++) {
+	for (i = 0; i < noplayers; i++) {
 		printf("%d:\t$%d\t%s\n", j, players[i].scores, players[i].name);
-		if (players[i].scores > players[i+1].scores)
-			j = i+2;
+		if (players[i].scores > players[i + 1].scores)
+			j = i + 2;
 	}
 	exit(0);
 }

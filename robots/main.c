@@ -1,6 +1,8 @@
+/*	$NetBSD: main.c,v 1.5 1995/04/22 10:08:54 cgd Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,25 +34,22 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1980 Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1980, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)main.c	5.5 (Berkeley) 2/28/91";
+#if 0
+static char sccsid[] = "@(#)main.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: main.c,v 1.5 1995/04/22 10:08:54 cgd Exp $";
+#endif
 #endif /* not lint */
 
 # include	"robots.h"
 # include	<signal.h>
 # include	<ctype.h>
-# ifdef linux
-  # include 	<sgtty.h>
-# endif
-
-#ifdef linux
-  struct sgttyb 	save;
-#endif
 
 main(ac, av)
 int	ac;
@@ -63,9 +62,6 @@ char	**av;
 	extern int	Max_per_uid;
 	void quit();
 
-#ifdef linux
-	ioctl(0, TIOCGETP, &save);
-#endif
 	show_only = FALSE;
 	if (ac > 1) {
 		bad_arg = FALSE;
@@ -157,6 +153,13 @@ char	**av;
 	quit();
 }
 
+void
+__cputchar(ch)
+	int ch;
+{
+	(void)putchar(ch);
+}
+
 /*
  * quit:
  *	Leave the program elegantly.
@@ -164,25 +167,7 @@ char	**av;
 void
 quit()
 {
-#ifndef linux
-	extern int	_putchar();
-#endif
-
-	mvcur(0, COLS - 1, LINES - 1, 0);
-#ifndef linux
-	if (CE) {
-		tputs(CE, 1, _putchar);
-		endwin();
-	}
-	else {
-		endwin();
-		putchar('\n');
-	}
-#else
 	endwin();
-	putchar('\n');
-	ioctl(0, TIOCSETP, &save);
-#endif
 	exit(0);
 	/* NOTREACHED */
 }

@@ -1,3 +1,5 @@
+/*	$NetBSD: pathnames.h,v 1.2 1995/04/22 07:42:37 cgd Exp $	*/
+
 /*-
  * Copyright (c) 1992, 1993
  *	The Regents of the University of California.  All rights reserved.
@@ -37,7 +39,7 @@
  */
 
 #ifdef linux
-  /* For Linux, this is defined in the Makefile */
+/* For Linux, this is defined in the Makefile */
 #else
-  #define _PATH_SCOREFILE	"/var/games/tetris.scores"
+#define _PATH_SCOREFILE	"/var/games/tetris.scores"
 #endif

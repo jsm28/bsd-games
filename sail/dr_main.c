@@ -1,6 +1,8 @@
+/*	$NetBSD: dr_main.c,v 1.4 1995/04/22 10:36:52 cgd Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)dr_main.c	5.5 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)dr_main.c	8.2 (Berkeley) 4/16/94";
+#else
+static char rcsid[] = "$NetBSD: dr_main.c,v 1.4 1995/04/22 10:36:52 cgd Exp $";
+#endif
 #endif /* not lint */
 
 #include "driver.h"
@@ -48,11 +54,7 @@ dr_main()
 	(void) signal(SIGQUIT, SIG_IGN);
 	(void) signal(SIGTSTP, SIG_IGN);
 	if (issetuid)
-#ifdef linux
 		(void) setuid(geteuid());
-#else
-		(void) setruid(geteuid());
-#endif
 	if (game < 0 || game >= NSCENE) {
 		fprintf(stderr, "DRIVER: Bad game number %d\n", game);
 		exit(1);

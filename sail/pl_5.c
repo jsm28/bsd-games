@@ -1,6 +1,8 @@
+/*	$NetBSD: pl_5.c,v 1.4 1995/04/24 12:25:21 cgd Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)pl_5.c	5.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)pl_5.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: pl_5.c,v 1.4 1995/04/24 12:25:21 cgd Exp $";
+#endif
 #endif /* not lint */
 
 #include "player.h"
@@ -139,7 +145,7 @@ acceptmove()
 		(void) strcpy(movebuf, buf);
 	else
 		(void) strcpy(movebuf, "d");
-	Write(W_MOVE, ms, 1, (int)movebuf, 0, 0, 0);
+	Write(W_MOVE, ms, 1, (long)movebuf, 0, 0, 0);
 	Signal("Helm: %s.", (struct ship *)0, movebuf);
 }
 

@@ -1,6 +1,8 @@
+/*	$NetBSD: wump.c,v 1.4 1995/04/24 12:26:22 cgd Exp $	*/
+
 /*
- * Copyright (c) 1989 The Regents of the University of California.
- * Copyright (c) 1989 Dave Taylor, Intuitive Systems.
+ * Copyright (c) 1989, 1993
+ *	The Regents of the University of California.  All rights reserved.
  * All rights reserved.
  *
  * This code is derived from software contributed to Berkeley by
@@ -36,13 +38,17 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1989 The Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1989, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)wump.c	4.3 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)wump.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: wump.c,v 1.4 1995/04/24 12:26:22 cgd Exp $";
+#endif
 #endif /* not lint */
 
 /*
@@ -54,8 +60,9 @@ static char sccsid[] = "@(#)wump.c	4.3 (Berkeley) 6/1/90";
 #include <sys/types.h>
 #include <sys/file.h>
 #include <stdio.h>
+#include <string.h>
 #ifdef linux
-  #include <unistd.h>
+#include <unistd.h>
 #endif
 #include "pathnames.h"
 

@@ -1,6 +1,8 @@
+/*	$NetBSD: mille.h,v 1.6 1997/05/23 23:09:39 jtc Exp $	*/
+
 /*
- * Copyright (c) 1982 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1982, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -30,20 +32,14 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- *	@(#)mille.h	5.5 (Berkeley) 6/1/90
+ *	@(#)mille.h	8.1 (Berkeley) 5/31/93
  */
 
 # include	<sys/types.h>
 # include	<ctype.h>
-#ifndef linux
 # include	<curses.h>
-#else
-# include <curses.h>
-# include <sgtty.h>
-# define reg register
-#endif
+# include	<termios.h>
 # include	<string.h>
-
 
 /*
  * @(#)mille.h	1.1 (Berkeley) 4/1/82
@@ -157,19 +153,7 @@
 # ifdef	SYSV
 # define	srandom(x)	srand(x)
 # define	random()	rand()
-
-# ifndef	attron
-#	define	erasechar()	_tty.c_cc[VERASE]
-#	define	killchar()	_tty.c_cc[VKILL]
-# endif
-# else
-# ifndef	erasechar
-#ifndef linux
-#	define	erasechar()	_tty.sg_erase
-#	define	killchar()	_tty.sg_kill
-#endif 
-# endif
-# endif	SYSV
+# endif	/* SYSV */
 
 typedef struct {
 	bool	coups[NUM_SAFE];
@@ -235,5 +219,3 @@ extern WINDOW	*Board, *Miles, *Score;
  */
 
 CARD	getcard();
-
-

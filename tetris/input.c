@@ -1,3 +1,5 @@
+/*	$NetBSD: input.c,v 1.3 1996/02/06 22:47:33 jtc Exp $	*/
+
 /*-
  * Copyright (c) 1992, 1993
  *	The Regents of the University of California.  All rights reserved.
@@ -78,7 +80,6 @@ rwait(tvp)
 {
 	int i;
 	struct timeval starttv, endtv, *s;
-	extern int errno;
 #define	NILTZ ((struct timezone *)0)
 
 	/*

@@ -1,3 +1,155 @@
+Thu Jun 12 20:32:57 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* adventure/*: Added from NetBSD-current.
+	* adventure/Makefile: Renamed to Makefile.bsd.
+	* adventure/Makefile: New file.
+
+Wed Jun 11 12:09:38 1997  Joseph S. Myers  <jsm28@inch.demon.co.uk>
+
+	* Now builds with glibc without needing stray <bsd/*> headers.
+
+	* snake/snake/snake.c: Define MIN instead of including
+	<bsd/bsd.h>.
+
+	* pom/pom.c: With glibc, define isleap instead of including
+	<tzfile.h>.
+
+	* mille/Makefile: Remove dependency on unctrl.h.
+
+	* configure: Choose default for BSD-compat includes based on
+	whether /usr/include/bsd exists.
+
+Tue Jun 10 17:40:44 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* All games, with same exceptions as below, now updated from
+	NetBSD-current of 1997-06-07.
+
+	* cribbage/*, hangman/*, mille/*, robots/*, tetris/*: Update from
+	NetBSD-current of 1997-06-07.
+
+Fri Jun  6 22:19:38 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* README: Update.
+
+	* *.orig, */*.orig, */*/*.orig: Rename to *.bsd instead to avoid
+	conflicts with patch backups.
+
+Thu May 22 00:03:59 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* TODO: Update.
+
+	* README.non-free: Update.
+
+	* README: Update.
+
+Wed May 21 00:08:36 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* TODO: Update.
+
+	* README: Update.
+
+	* INSTALL: Update.
+
+	* Now builds with glibc.
+
+	* bog/mach.c (flushin): Use the flushinp() version.
+
+	* cribbage/extern.c: Change `bool' to `BOOLEAN'.
+
+	* atc/Makefile: Use -lfl instead of -ll.
+
+Tue May 20 00:26:52 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* All games, with same exceptions as below, now updated from
+	NetBSD-current of 1997-05-17.
+
+	* backgammon/backgammon/Makefile.orig,
+	backgammon/teachgammon/Makefile.orig, factor/Makefile.orig,
+	fortune/Makefile.orig, fortune/datfiles/Makefile.orig,
+	fortune/strfile/Makefile.orig, wargames/Makefile.orig: Update from
+	NetBSD-current of 1997-05-17.
+
+Mon May 19 00:50:37 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* All games, except bog, hunt and paranoia, now updated from
+	NetBSD-current of 1997-04-26.
+
+	* wump/*: Update from NetBSD-current of 1997-04-26.
+
+	* worms/Makefile (DEFS): Remove -DUSG which is no longer needed.
+
+	* worms/*: Update from NetBSD-current of 1997-04-26.
+
+	* worm/worm.c (process): Move the move to highlight head of worm
+	here from main().
+
+	* worm/*: Update from NetBSD-current of 1997-04-26.
+
+	* wargames/*: Update from NetBSD-current of 1997-04-26.
+
+Sun May 18 01:29:05 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* trek/README.linux: New file, mentions trek manual.
+
+	* trek/*: Update from NetBSD-current of 1997-04-26.
+
+	* tetris/screen.c (OXTABS): Define to XTABS.
+
+	* tetris/*: Update from NetBSD-current of 1997-04-26.
+
+Sat May 17 12:24:07 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* snake/snake/snake.c: Define CTRL.
+
+	* snake/snake/move.c: Include <unistd.h>; condition use of VDSUSP
+	on its being defined; define CTRL; define OXTABS.
+
+	* snake/*: Update from NetBSD-current of 1997-04-26.
+
+	* sail/pl_7.c: Don't include <sys/ttydefaults.h>.
+
+	* sail/Makefile: Change dependency on externs.h to extern.h.
+
+	* sail/*: Update from NetBSD-current of 1997-04-26.
+
+Thu May 15 15:09:59 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* robots/move.c: Don't include <sys/ttydefualts.h>; define CTRL.
+
+	* robots/*: Update from NetBSD-current of 1997-04-26.
+
+	* hangman/getguess.c: Fix sense of glibc test for
+	<sys/ttydefaults.h>.
+
+	* rain/rain.6: Rename to rain.6.in.
+	* rain/rain.6.in: Parametrise.
+	* configure: Substitute in this file.
+	* Makefile: Remove rain/rain.6 in distclean.
+
+	* rain/Makefile (DEFS): Remove -DUSG, as it's no longer needed.
+
+	* rain/*: Update from NetBSD-current of 1997-04-26.
+
+Wed May 14 23:27:32 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* primes/*: Update from NetBSD-current of 1997-04-26.
+
+	* ppt/*: Update from NetBSD-current of 1997-04-26.
+
+	* pom/*: Update from NetBSD-current of 1997-04-26.
+
+	* number/*: Update from NetBSD-current of 1997-04-26.
+
+	* morse/*: Update from NetBSD-current of 1997-04-26.
+
+	* monop/*: Update from NetBSD-current of 1997-04-26.
+
+Mon May 12 02:08:53 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* mille/misc.c (CTRL): Define.
+
+	* mille/*: Update from NetBSD-current of 1997-04-26.
+
 Wed May  7 00:15:09 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* Version 1.4.

@@ -1,6 +1,8 @@
+/*	$NetBSD: sync.c,v 1.5 1997/01/07 12:42:27 tls Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,12 +34,16 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)sync.c	5.6 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)sync.c	8.2 (Berkeley) 4/28/95";
+#else
+static char rcsid[] = "$NetBSD: sync.c,v 1.5 1997/01/07 12:42:27 tls Exp $";
+#endif
 #endif /* not lint */
 
-#include "externs.h"
 #include <sys/file.h>
-#include <sys/errno.h>
+#include <errno.h>
+#include "extern.h"
 
 #define BUFSIZE 4096
 
@@ -55,6 +61,7 @@ makesignal(from, fmt, ship, a, b, c)
 	struct ship *from;
 	char *fmt;
 	register struct ship *ship;
+	long a, b, c;
 {
 	char message[80];
 
@@ -64,7 +71,7 @@ makesignal(from, fmt, ship, a, b, c)
 		(void) sprintf(message, fmt,
 			ship->shipname, colours(ship),
 			sterncolour(ship), a, b, c);
-	Write(W_SIGNAL, from, 1, (int)message, 0, 0, 0);
+	Write(W_SIGNAL, from, 1, (long)message, 0, 0, 0);
 }
 
 #include <sys/types.h>
@@ -119,7 +126,7 @@ Write(type, ship, isstr, a, b, c, d)
 	int type;
 	struct ship *ship;
 	char isstr;
-	int a, b, c, d;
+	long a, b, c, d;
 {
 	if (isstr)
 		(void) sprintf(sync_bp, "%d %d %d %s\n",
@@ -139,7 +146,8 @@ Sync()
 {
 	sig_t sighup, sigint;
 	register n;
-	int type, shipnum, isstr, a, b, c, d;
+	int type, shipnum, isstr;
+	long a, b, c, d;
 	char buf[80];
 	char erred = 0;
 	extern errno;
@@ -194,7 +202,7 @@ Sync()
 			*p = 0;
 			for (p = buf; *p == ' '; p++)
 				;
-			a = (int)p;
+			a = (long)p;
 			b = c = d = 0;
 		} else
 			if (fscanf(sync_fp, "%d%d%d%d", &a, &b, &c, &d) != 4)
@@ -226,7 +234,7 @@ out:
 sync_update(type, ship, a, b, c, d)
 	int type;
 	register struct ship *ship;
-	int a, b, c, d;
+	long a, b, c, d;
 {
 	switch (type) {
 	case W_DBP: {

@@ -1,6 +1,8 @@
+/*	$NetBSD: pom.c,v 1.6 1996/02/06 22:47:29 jtc Exp $	*/
+
 /*
- * Copyright (c) 1989 The Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1989, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * This code is derived from software posted to USENET.
  *
@@ -34,13 +36,17 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1989 The Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1989, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)pom.c	5.3 (Berkeley) 2/28/91";
+#if 0
+static char sccsid[] = "@(#)pom.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: pom.c,v 1.6 1996/02/06 22:47:29 jtc Exp $";
+#endif
 #endif /* not lint */
 
 /*
@@ -55,15 +61,17 @@ static char sccsid[] = "@(#)pom.c	5.3 (Berkeley) 2/28/91";
 
 #include <sys/time.h>
 #include <stdio.h>
+#include <string.h>
+#ifdef __GLIBC__
+#define isleap(y) (((y) % 4) == 0 && ((y) % 100) != 0 || ((y) % 400) == 0)
+#else
 #include <tzfile.h>
-#include <math.h>
-
-#if defined(linux) && !defined(isleap)
-  #define isleap(y) (((y) % 4) == 0 && ((y) % 100) != 0 || ((y) % 400) == 0)
 #endif
+#include <math.h>
+#include <errno.h>
 
 #ifndef PI
-  #define	PI	  3.14159265358979323846
+#define	PI	  3.14159265358979323846
 #endif
 #define	EPOCH	  85
 #define	EPSILONg  279.611371	/* solar ecliptic long at EPOCH */
@@ -77,19 +85,19 @@ double dtor(), potm(), adj360();
 
 main()
 {
-	extern int errno;
 	struct timeval tp;
 	struct timezone tzp;
 	struct tm *GMT, *gmtime();
+	time_t tmpt;
 	double days, today, tomorrow;
 	int cnt;
-	char *strerror();
 
 	if (gettimeofday(&tp,&tzp)) {
 		(void)fprintf(stderr, "pom: %s\n", strerror(errno));
 		exit(1);
 	}
-	GMT = gmtime(&tp.tv_sec);
+	tmpt = tp.tv_sec;
+	GMT = gmtime(&tmpt);
 	days = (GMT->tm_yday + 1) + ((GMT->tm_hour +
 	    (GMT->tm_min / 60.0) + (GMT->tm_sec / 3600.0)) / 24.0);
 	for (cnt = EPOCH; cnt < GMT->tm_year; ++cnt)
@@ -116,7 +124,7 @@ main()
 				    today);
 		}
 	}
-	return 0;
+	exit(0);
 }
 
 /*

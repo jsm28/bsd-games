@@ -1,6 +1,8 @@
+/*	$NetBSD: player.h,v 1.5 1997/01/07 12:42:24 tls Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -30,11 +32,11 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- *	@(#)player.h	5.4 (Berkeley) 6/1/90
+ *	@(#)player.h	8.2 (Berkeley) 5/3/95
  */
 
 #include <curses.h>
-#include "externs.h"
+#include "extern.h"
 
 /* sizes and coordinates for the screen */
 
@@ -91,7 +93,7 @@
 #define SLOT_R		(SLOT_L+SLOT_X-1)
 
 #ifdef SIGTSTP
-#define SCREENTEST()	(initscr() != ERR && echo() != ERR && signal(SIGTSTP, SIG_DFL) != BADSIG && STAT_R < COLS && SCROLL_Y > 0)
+#define SCREENTEST()	(initscr() != ERR && echo() != ERR && signal(SIGTSTP, SIG_DFL) != SIG_ERR && STAT_R < COLS && SCROLL_Y > 0)
 #else
 #define SCREENTEST()	(initscr() != ERR && echo() != ERR && STAT_R < COLS && SCROLL_Y > 0)
 #endif

@@ -1,6 +1,8 @@
+/*	$NetBSD: machdep.h,v 1.4 1995/04/28 21:30:16 mycroft Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -30,17 +32,23 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- *	@(#)machdep.h	5.5 (Berkeley) 6/1/90
+ *	@(#)machdep.h	8.1 (Berkeley) 5/31/93
  */
 
 #define TIMEOUT 300				/* Sync() timeout in seconds */
 
-/* for 4.2bsd machines */
-#define blockalarm()	((void) sigblock(1 << SIGALRM-1))
-#define unblockalarm()	((void) sigsetmask(sigblock(0) & ~(1 << SIGALRM-1)))
-
-/* for 2.9bsd machines (onyx)
-typedef int void;
-#define blockalarm()	((void) sighold(SIGALRM))
-#define unblockalarm()	((void) sigrelse(SIGALRM))
-*/
+/* for POSIX systems */
+#define	blockalarm() \
+	do {								\
+		sigset_t sigset;					\
+		sigemptyset(&sigset);					\
+		sigaddset(&sigset, SIGALRM);				\
+		sigprocmask(SIG_BLOCK, &sigset, (sigset_t *)0);		\
+	} while (0)
+#define	unblockalarm() \
+	do {								\
+		sigset_t sigset;					\
+		sigemptyset(&sigset);					\
+		sigaddset(&sigset, SIGALRM);				\
+		sigprocmask(SIG_UNBLOCK, &sigset, (sigset_t *)0);	\
+	} while (0)

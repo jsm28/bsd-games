@@ -1,6 +1,8 @@
+/*	$NetBSD: snake.h,v 1.7 1996/07/03 04:17:25 chopps Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -30,14 +32,15 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- *	@(#)snake.h	5.5 (Berkeley) 6/1/90
+ *	@(#)snake.h	8.1 (Berkeley) 5/31/93
  */
 
 # include <stdio.h>
+# include <string.h>
 # include <assert.h>
 # include <sys/types.h>
-# include <sgtty.h>
 # include <signal.h>
+# include <termios.h>
 # include <math.h>
 
 #define ESC	'\033'
@@ -53,12 +56,13 @@ char	*CL, *UP, *DO, *ND, *BS,
 	*TI, *TE, *KS, *KE;
 int	LINES, COLUMNS;	/* physical screen size. */
 int	lcnt, ccnt;	/* user's idea of screen size */
-char	xBC, PC;
+char	PC;
 int	AM, BW;
 char	tbuf[1024], tcapbuf[128];
 char	*tgetstr(), *tgoto();
 int	Klength;	/* length of KX strings */
 int	chunk;		/* amount of money given at a time */
+speed_t	ospeed;
 #ifdef	debug
 #define	cashvalue	(loot-penalty)/25
 #else
@@ -69,11 +73,14 @@ struct point {
 	int col, line;
 };
 struct point cursor;
-struct sgttyb orig, new;
-#ifdef TIOCLGET
-struct ltchars olttyc, nlttyc;
-#endif
+struct termios orig, new;
 struct point *point();
+#if __STDC__
+void	apr(struct point *, const char *, ...);
+void	pr(const char *, ...);
+#else
+void	apr();
+void	pr();
+#endif
 
 #define	same(s1, s2)	((s1)->line == (s2)->line && (s1)->col == (s2)->col)
-

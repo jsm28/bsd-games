@@ -1,6 +1,8 @@
+/*	$NetBSD: move.c,v 1.6 1997/05/23 23:09:41 jtc Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,8 +34,14 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)move.c	5.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)move.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: move.c,v 1.6 1997/05/23 23:09:41 jtc Exp $";
+#endif
 #endif /* not lint */
+
+#include <termios.h>
 
 #include	"mille.h"
 #ifndef	unctrl
@@ -42,7 +50,6 @@ static char sccsid[] = "@(#)move.c	5.4 (Berkeley) 6/1/90";
 
 # ifdef	attron
 #	include	<term.h>
-#	define	_tty	cur_term->Nttyb
 # endif	attron
 
 /*
@@ -58,9 +65,9 @@ char	*Movenames[] = {
 
 domove()
 {
-	reg PLAY	*pp;
-	reg int		i, j;
-	reg bool	goodplay;
+	register PLAY	*pp;
+	register int	i, j;
+	register bool	goodplay;
 
 	pp = &Player[Play];
 	if (Play == PLAYER)
@@ -161,9 +168,9 @@ acc:
  */
 check_go() {
 
-	reg CARD	card;
-	reg PLAY	*pp, *op;
-	reg int		i;
+	register CARD	card;
+	register PLAY	*pp, *op;
+	register int	i;
 
 	for (pp = Player; pp < &Player[2]; pp++) {
 		op = (pp == &Player[COMP] ? &Player[PLAYER] : &Player[COMP]);
@@ -190,10 +197,10 @@ check_go() {
 }
 
 playcard(pp)
-reg PLAY	*pp;
+register PLAY	*pp;
 {
-	reg int		v;
-	reg CARD	card;
+	register int	v;
+	register CARD	card;
 
 	/*
 	 * check and see if player has picked
@@ -334,13 +341,13 @@ protected:
 	if (pp == &Player[PLAYER])
 		account(card);
 	pp->hand[Card_no] = C_INIT;
-	Next = (Next == -1 ? FALSE : TRUE);
+	Next = (Next == (bool)-1 ? FALSE : TRUE);
 	return TRUE;
 }
 
 getmove()
 {
-	reg char	c, *sp;
+	register char	c, *sp;
 #ifdef EXTRAP
 	static bool	last_ex = FALSE;	/* set if last command was E */
 
@@ -469,9 +476,9 @@ ret:
  * return whether or not the player has picked
  */
 haspicked(pp)
-reg PLAY	*pp; {
-
-	reg int	card;
+register PLAY	*pp;
+{
+	register int	card;
 
 	if (Topcard <= Deck)
 		return TRUE;
@@ -488,9 +495,9 @@ reg PLAY	*pp; {
 }
 
 account(card)
-reg CARD	card; {
-
-	reg CARD	oppos;
+register CARD	card; 
+{
+	register CARD	oppos;
 
 	if (card == C_INIT)
 		return;
@@ -544,10 +551,10 @@ int	promptno;
 }
 
 sort(hand)
-reg CARD	*hand;
+register CARD	*hand;
 {
-	reg CARD	*cp, *tp;
-	reg CARD	temp;
+	register CARD	*cp, *tp;
+	register CARD	temp;
 
 	cp = hand;
 	hand += HAND_SZ;

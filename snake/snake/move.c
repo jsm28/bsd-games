@@ -1,6 +1,8 @@
+/*	$NetBSD: move.c,v 1.13 1996/07/03 04:17:24 chopps Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)move.c	5.8 (Berkeley) 2/28/91";
+#if 0
+static char sccsid[] = "@(#)move.c	8.1 (Berkeley) 7/19/93";
+#else
+static char rcsid[] = "$NetBSD: move.c,v 1.13 1996/07/03 04:17:24 chopps Exp $";
+#endif
 #endif /* not lint */
 
 /*************************************************************************
@@ -84,28 +90,33 @@ static char sccsid[] = "@(#)move.c	5.8 (Berkeley) 2/28/91";
  *
  *		point(&p,x,y)	return point set to x,y.
  *
- *		baudrate(x)	returns the baudrate of the terminal.
  *		delay(t)	causes an approximately constant delay
  *					independent of baudrate.
  *					Duration is ~ t/20 seconds.
  *
  ******************************************************************************/
 
-#ifdef linux
-  #include <bsd/bsd.h>
-#endif
+#if __STDC__
 #include <stdarg.h>
-#include "snake.h"
-
-#ifdef linux
-  void apr(struct point *ps, char *fmt, ...);
-  void pr(char *fmt, ...);
+#else
+#include <varargs.h>
 #endif
+#ifdef linux
+#include <unistd.h> /* For _POSIX_VDISABLE */
+#endif
+#include "snake.h"
+#ifndef CTRL
+#define CTRL(X) ((X) & 037)
+#endif
+#ifndef OXTABS
+#define OXTABS XTABS
+#endif
+
 int CMlength;
 int NDlength;
 int BSlength;
 int delaystr[10];
-short ospeed;
+speed_t ospeed;
 
 static char str[80];
 
@@ -393,12 +404,14 @@ pch(c)
 	}
 }
 
-#ifdef linux
-  void apr(struct point *ps, char *fmt, ...)
+void
+#if __STDC__
+apr(struct point *ps, const char *fmt, ...)
 #else
-  apr(ps, fmt)
+apr(ps, fmt, va_alist)
 	struct point *ps;
 	char *fmt;
+	va_dcl
 #endif
 {
 	struct point p;
@@ -406,22 +419,32 @@ pch(c)
 
 	p.line = ps->line+1; p.col = ps->col+1;
 	move(&p);
+#if __STDC__
 	va_start(ap, fmt);
+#else
+	va_start(ap);
+#endif
 	(void)vsprintf(str, fmt, ap);
 	va_end(ap);
 	pstring(str);
 }
 
-#ifdef linux
-  void pr(char *fmt, ...)
+void
+#if __STDC__
+pr(const char *fmt, ...)
 #else
-  pr(fmt)
+pr(fmt, va_alist)
 	char *fmt;
+	va_dcl
 #endif
 {
 	va_list ap;
 
+#if __STDC__
 	va_start(ap, fmt);
+#else
+	va_start(ap);
+#endif
 	(void)vsprintf(str, fmt, ap);
 	va_end(ap);
 	pstring(str);
@@ -449,13 +472,8 @@ char *s;{
 		case '\b':
 			bs();
 			break;
-#ifdef linux
-		case 7:
-			outch(7);
-#else
 		case CTRL('g'):
 			outch(CTRL('g'));
-#endif
 			break;
 		default:
 			if (s[0] < ' ')break;
@@ -501,28 +519,12 @@ char *str;
 	if (str)
 		tputs(str, 1, outch);
 }
-baudrate()
-{
-
-	switch (orig.sg_ospeed){
-	case B300:
-		return(300);
-	case B1200:
-		return(1200);
-	case B4800:
-		return(4800);
-	case B9600:
-		return(9600);
-	default:
-		return(0);
-	}
-}
 delay(t)
 int t;
 {
 	int k,j;
 
-	k = baudrate() * t / 300;
+	k = (ospeed * t + 100) / 200;
 	for(j=0;j<k;j++){
 		putchar(PC);
 	}
@@ -540,26 +542,12 @@ cook()
 	putpad(TE);
 	putpad(KE);
 	fflush(stdout);
-#ifdef linux
-	ioctl(0, TIOCSETP, &orig);
-#else
-	stty(0, &orig);
-#endif
-#ifdef TIOCSLTC
-	ioctl(0, TIOCSLTC, &olttyc);
-#endif
+	tcsetattr(0, TCSADRAIN, &orig);
 }
 
 raw()
 {
-#ifdef linux
-	ioctl(0, TIOCSETP, &new);
-#else
-	stty(0, &new);
-#endif
-#ifdef TIOCSLTC
-	ioctl(0, TIOCSLTC, &nlttyc);
-#endif
+	tcsetattr(0, TCSADRAIN, &new);
 }
 
 struct point *point(ps,x,y)
@@ -580,6 +568,9 @@ getcap()
 	char *xPC;
 	struct point z;
 	void stop();
+#ifdef TIOCGWINSZ
+	struct winsize win;
+#endif
 
 	term = getenv("TERM");
 	if (term==0) {
@@ -598,8 +589,15 @@ getcap()
 
 	ap = tcapbuf;
 
-	LINES = tgetnum("li");
-	COLUMNS = tgetnum("co");
+#ifdef TIOCGWINSZ
+	if (ioctl(0, TIOCGWINSZ, (char *) &win) < 0 ||
+	    (LINES = win.ws_row) == 0 || (COLUMNS = win.ws_col) == 0) {
+#endif
+		LINES = tgetnum("li");
+		COLUMNS = tgetnum("co");
+#ifdef TIOCGWINSZ
+	}
+#endif
 	if (!lcnt)
 		lcnt = LINES - 2;
 	if (!ccnt)
@@ -615,11 +613,13 @@ getcap()
 	if (DO == 0)
 		DO = "\n";
 
-	BS = tgetstr("bc", &ap);
-	if (BS == 0 && tgetflag("bs"))
-		BS = "\b";
-	if (BS)
-		xBC = *BS;
+	BS = tgetstr("le", &ap);
+	if (BS == 0) {
+		/* try using obsolete capabilities */
+		BS = tgetstr("bc", &ap);
+		if (BS == 0 && tgetflag("bs"))
+			BS = "\b";
+	}
 
 	TA = tgetstr("ta", &ap);
 	if (TA == 0 && tgetflag("pt"))
@@ -634,7 +634,10 @@ getcap()
 	KR = tgetstr("kr", &ap);
 	KU = tgetstr("ku", &ap);
 	KD = tgetstr("kd", &ap);
-	Klength = strlen(KL);
+	if (KL && KR && KU && KD)
+		Klength = strlen(KL);
+	else
+		Klength = 0;
 		/*	NOTE:   If KL, KR, KU, and KD are not
 		 *		all the same length, some problems
 		 *		may arise, since tests are made on
@@ -650,14 +653,24 @@ getcap()
 	if (xPC)
 		PC = *xPC;
 
-	NDlength = strlen(ND);
-	BSlength = strlen(BS);
 	if ((CM == 0) &&
-		(HO == 0 | UP==0 || BS==0 || ND==0)) {
+		(HO == 0 || UP == 0 || BS == 0 || ND == 0)) {
 		fprintf(stderr, "Terminal must have addressible ");
 		fprintf(stderr, "cursor or home + 4 local motions\n");
 		exit(5);
 	}
+	if (ND == 0) {
+		fprintf(stderr, "Terminal must have `nd' capability\n");
+		exit(5);
+	}
+	NDlength = strlen(ND);
+	if (BS == 0) {
+		fprintf(stderr,
+		    "Terminal must have 'le' or `bs' or `bc' capability\n");
+		exit(5);
+	}
+	BSlength = strlen(BS);
+
 	if (tgetflag("os")) {
 		fprintf(stderr, "Terminal must not overstrike\n");
 		exit(5);
@@ -667,29 +680,19 @@ getcap()
 		exit(5);
 	}
 
-#ifdef linux
-	ioctl(0, TIOCGETP, &orig);
-#else
-	gtty(0, &orig);
-#endif
-	new=orig;
-#ifdef linux
-	new.sg_flags &= ~(ECHO|CRMOD|XTABS);
-#else
-	new.sg_flags &= ~(ECHO|CRMOD|ALLDELAY|XTABS);
-#endif
-	new.sg_flags |= CBREAK;
+	tcgetattr(0, &orig);
+	new = orig;
+	new.c_lflag &= ~(ECHO|ICANON);
+	new.c_oflag &= ~(ONLCR|OXTABS);
 	signal(SIGINT,stop);
-	ospeed = orig.sg_ospeed;
-#ifdef TIOCGLTC
-	ioctl(0, TIOCGLTC, &olttyc);
-	nlttyc = olttyc;
-	nlttyc.t_suspc = '\377';
-	nlttyc.t_dsuspc = '\377';
+	ospeed = cfgetospeed(&orig);
+	new.c_cc[VSUSP] = _POSIX_VDISABLE;
+#ifdef VDSUSP
+	new.c_cc[VDSUSP] = _POSIX_VDISABLE;
 #endif
 	raw();
 
-	if ((orig.sg_flags & XTABS) == XTABS) TA=0;
+	if (orig.c_oflag & OXTABS) TA=0;
 	putpad(KS);
 	putpad(TI);
 	point(&cursor,0,LINES-1);

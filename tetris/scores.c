@@ -1,3 +1,5 @@
+/*	$NetBSD: scores.c,v 1.3 1997/01/13 06:51:57 tls Exp $	*/
+
 /*-
  * Copyright (c) 1992, 1993
  *	The Regents of the University of California.  All rights reserved.
@@ -238,7 +240,7 @@ thisuser()
 	l = strlen(p);
 	if (l >= sizeof(u))
 		l = sizeof(u) - 1;
-	bcopy(p, u, l);
+	memcpy(u, p, l);
 	u[l] = '\0';
 	return (u);
 }

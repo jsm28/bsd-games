@@ -1,6 +1,8 @@
+/*	$NetBSD: main.c,v 1.4 1995/04/22 10:59:10 cgd Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,19 +34,23 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1980 Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1980, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)main.c	5.7 (Berkeley) 2/28/91";
+#if 0
+static char sccsid[] = "@(#)main.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: main.c,v 1.4 1995/04/22 10:59:10 cgd Exp $";
+#endif
 #endif /* not lint */
 
 # include	"trek.h"
 # include	<stdio.h>
-# include	<sgtty.h>
 # include	<setjmp.h>
+# include	<termios.h>
 
 # define	PRIO		00	/* default priority */
 
@@ -159,7 +165,7 @@ char	**argv;
 	int			prio;
 	register int		ac;
 	register char		**av;
-	struct	sgttyb		argp;
+	struct	termios		argp;
 
 	av = argv;
 	ac = argc;
@@ -168,15 +174,13 @@ char	**argv;
 	srand(vect);
 	opencode = 'w';
 	prio = PRIO;
-#ifdef linux
-	if (ioctl(1, TIOCGETP, &argp) == 0)
-#else
-	if (gtty(1, &argp) == 0)
-#endif
+
+	if (tcgetattr(1, &argp) == 0)
 	{
-		if ((argp.sg_ispeed ) < B1200)
+		if (cfgetispeed(&argp) < B1200)
 			Etc.fast++;
 	}
+
 	while (ac > 1 && av[0][0] == '-')
 	{
 		switch (av[0][1])

@@ -1,6 +1,8 @@
+/*	$NetBSD: dr_1.c,v 1.4 1995/04/24 12:25:10 cgd Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)dr_1.c	5.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)dr_1.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: dr_1.c,v 1.4 1995/04/24 12:25:10 cgd Exp $";
+#endif
 #endif /* not lint */
 
 #include "driver.h"
@@ -181,7 +187,7 @@ int key;
 		makesignal(from, "boarders from %s repelled", to);
 		(void) sprintf(message, "killed in melee: %d.  %s: %d",
 			totalto, from->shipname, totalfrom);
-		Write(W_SIGNAL, to, 1, (int) message, 0, 0, 0);
+		Write(W_SIGNAL, to, 1, (long) message, 0, 0, 0);
 		if (key)
 			return 1;
 	} else if (strengthto >= fromstrength * 3) {
@@ -213,10 +219,10 @@ int key;
 			}
 			(void) sprintf(message, "captured by the %s!",
 				to->shipname);
-			Write(W_SIGNAL, from, 1, (int) message, 0, 0, 0);
+			Write(W_SIGNAL, from, 1, (long) message, 0, 0, 0);
 			(void) sprintf(message, "killed in melee: %d.  %s: %d",
 				totalto, from->shipname, totalfrom);
-			Write(W_SIGNAL, to, 1, (int) message, 0, 0, 0);
+			Write(W_SIGNAL, to, 1, (long) message, 0, 0, 0);
 			mento = 0;
 			return 0;
 		}

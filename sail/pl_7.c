@@ -1,6 +1,8 @@
+/*	$NetBSD: pl_7.c,v 1.6 1995/04/22 10:37:17 cgd Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,10 +34,18 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)pl_7.c	5.7 (Berkeley) 2/28/91";
+#if 0
+static char sccsid[] = "@(#)pl_7.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: pl_7.c,v 1.6 1995/04/22 10:37:17 cgd Exp $";
+#endif
 #endif /* not lint */
 
+#if !defined(linux) || defined(__GLIBC__)
+#include <sys/ttydefaults.h>
+#endif
 #include "player.h"
+
 
 /*
  * Display interface
@@ -59,12 +69,6 @@ initscreen()
 	(void) leaveok(slot_w, 1);
 	(void) leaveok(stat_w, 1);
 	(void) leaveok(turn_w, 1);
-#ifdef SIGTSTP
-	{
-		void susp();
-		(void) signal(SIGTSTP, susp);
-	}
-#endif
 	noecho();
 	crmode();
 }
@@ -235,11 +239,7 @@ register n;
 				*p++ = c;
 				(void) waddch(scroll_w, c);
 			} else
-#ifdef linux
-				(void) putchar(7);
-#else
-				(void) putchar(CTRL('g'));
-#endif
+				(void) putchar('\a');
 		}
 	}
 }
@@ -472,16 +472,3 @@ adjustview()
 	else if (mf->col > viewcol + (VIEW_X - VIEW_X/8))
 		viewcol = mf->col - VIEW_X/8;
 }
-
-#ifdef SIGTSTP
-void
-susp()
-{
-	blockalarm();
-#ifndef linux
-	tstp();
-#endif
-	(void) signal(SIGTSTP, susp);
-	unblockalarm();
-}
-#endif

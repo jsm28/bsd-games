@@ -23,7 +23,7 @@ $(PROG):	$(OBJS)
 .c.o:	
 	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
-$(OBJS):	driver.h externs.h machdep.h pathnames.h player.h
+$(OBJS):	driver.h extern.h machdep.h pathnames.h player.h
 
 install:	$(PROG)
 	$(INSTALL_SCORE_GAME) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)

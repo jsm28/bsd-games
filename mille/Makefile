@@ -19,7 +19,7 @@ mille:	$(OBJS)
 .c.o:	
 	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
-$(OBJS):	mille.h unctrl.h
+$(OBJS):	mille.h
 
 clean:
 	rm -f *.o core mille a.out

@@ -1,6 +1,8 @@
+/*	$NetBSD: snake.c,v 1.8 1995/04/29 00:06:41 mycroft Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,13 +34,17 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1980 Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1980, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)snake.c	5.10 (Berkeley) 2/28/91";
+#if 0
+static char sccsid[] = "@(#)snake.c	8.2 (Berkeley) 1/7/94";
+#else
+static char rcsid[] = "$NetBSD: snake.c,v 1.8 1995/04/29 00:06:41 mycroft Exp $";
+#endif
 #endif /* not lint */
 
 /*
@@ -52,15 +58,20 @@ static char sccsid[] = "@(#)snake.c	5.10 (Berkeley) 2/28/91";
  *	cc -O snake.c move.c -o snake -lm -ltermlib
  */
 
-#ifdef linux
-  #include <bsd/bsd.h>
-#endif
 #include <sys/param.h>
+
+#include <errno.h>
 #include <fcntl.h>
 #include <pwd.h>
-#include <errno.h>
+#include <stdlib.h>
+#include <time.h>
+
 #include "snake.h"
 #include "pathnames.h"
+
+#ifndef CTRL
+#define CTRL(X) ((X) & 037)
+#endif
 
 #define PENALTY  10	/* % penalty for invoking spacewarp	*/
 
@@ -76,6 +87,10 @@ static char sccsid[] = "@(#)snake.c	5.10 (Berkeley) 2/28/91";
 
 #define BSIZE	80
 
+#ifndef MIN
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#endif
+
 struct point you;
 struct point money;
 struct point finish;
@@ -90,7 +105,7 @@ char ch, savec;
 char *kl, *kr, *ku, *kd;
 int fast=1;
 int repeat=1;
-long tv;
+time_t tv;
 char *tn;
 
 main(argc,argv)
@@ -100,8 +115,6 @@ char **argv;
 	extern char *optarg;
 	extern int optind;
 	int ch, i, j, k;
-	time_t time();
-	long atol();
 	void stop();
 
 	(void)time(&tv);
@@ -168,8 +181,7 @@ char **argv;
 	snrand(&money);
 	snrand(&snake[0]);
 
-	if ((orig.sg_ospeed < B9600) ||
-	    ((! CM) && (! TA))) fast=0;
+	if (ospeed < 9600 || ((! CM) && (! TA))) fast=0;
 	for(i=1;i<6;i++)
 		chase (&snake[i], &snake[i-1]);
 	setup();
@@ -243,11 +255,7 @@ mainloop()
 		if (!fast) flushi();
 		lastc = c;
 		switch (c){
-#ifdef linux
-		case 26:
-#else
 		case CTRL('z'):
-#endif
 			suspend();
 			continue;
 		case EOT:
@@ -257,11 +265,7 @@ mainloop()
 			length(moves);
 			logit("quit");
 			done();
-#ifdef linux
-		case 12:
-#else
 		case CTRL('l'):
-#endif
 			setup();
 			winnings(cashvalue);
 			continue;
@@ -336,11 +340,7 @@ mainloop()
 						pchar(&you,ME);
 				}
 				break;
-#ifdef linux
-			case 16:
-#else
 			case CTRL('p'):
-#endif
 			case 'e':
 			case 'k':
 			case 'i':
@@ -353,11 +353,7 @@ mainloop()
 						pchar(&you,ME);
 				}
 				break;
-#ifdef linux
-			case 14:
-#else
 			case CTRL('n'):
-#endif
 			case 'c':
 			case 'j':
 			case LF:
@@ -505,14 +501,14 @@ int	iscore, flag;
 	/* Figure out what happened in the past */
 	read(rawscores, &allbscore, sizeof(short));
 	read(rawscores, &allbwho, sizeof(short));
-	lseek(rawscores, ((long)uid)*sizeof(short), 0);
+	lseek(rawscores, uid*sizeof(short), 0);
 	read(rawscores, &oldbest, sizeof(short));
 	if (!flag)
 		return (score > oldbest ? 1 : 0);
 
 	/* Update this jokers best */
 	if (score > oldbest) {
-		lseek(rawscores, ((long)uid)*sizeof(short), 0);
+		lseek(rawscores, uid*sizeof(short), 0);
 		write(rawscores, &score, sizeof(short));
 		pr("You bettered your previous best of $%d\n", oldbest);
 	} else
@@ -521,7 +517,7 @@ int	iscore, flag;
 	/* See if we have a new champ */
 	p = getpwuid(allbwho);
 	if (p == NULL || score > allbscore) {
-		lseek(rawscores, (long)0, 0);
+		lseek(rawscores, 0, 0);
 		write(rawscores, &score, sizeof(short));
 		write(rawscores, &uid, sizeof(short));
 		if (allbwho)
@@ -542,11 +538,7 @@ int	iscore, flag;
  */
 flushi()
 {
-#ifdef linux
-	ioctl(0, TIOCSETP, &new);
-#else
-	stty(0, &new);
-#endif
+	tcflush(0, TCIFLUSH);
 }
 int mx [8] = { 
 	0, 1, 1, 1, 0,-1,-1,-1};
@@ -563,7 +555,7 @@ struct point *sp, *np;
 	   snake would get too good */
 	struct point d;
 	int w, i, wt[8];
-	double sqrt(), v1, v2, vp, max;
+	double v1, v2, vp, max;
 	point(&d,you.col-sp->col,you.line-sp->line);
 	v1 = sqrt( (double) (d.col*d.col + d.line*d.line) );
 	w=0; 
@@ -905,7 +897,7 @@ logit(msg)
 char *msg;
 {
 	FILE *logfile;
-	long t;
+	time_t t;
 
 	if ((logfile=fopen(_PATH_LOGFILE, "a")) != NULL) {
 		time(&t);

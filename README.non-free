@@ -1,4 +1,4 @@
-1995-05-03
+1995-05-22
 
 These games were in the BSD games package up to version 1.3, but have
 been separated into a separate bsd-games-non-free package since they
@@ -18,6 +18,9 @@ bog:		boggle
 paranoia:	you, the trouble shooter must foil the insidious Christmas plot
 
 (The hangman subdirectory in this package is just for a words list.)
+
+Paranoia comes from comp.sources.games/volume1; bog comes from
+comp.sources.games/volume4 .
 
 If you have questions you can contact me at:
 

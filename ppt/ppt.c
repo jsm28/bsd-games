@@ -1,6 +1,8 @@
+/*	$NetBSD: ppt.c,v 1.4 1995/03/23 08:35:40 cgd Exp $	*/
+
 /*
- * Copyright (c) 1988 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1988, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,18 +34,22 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1988 Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1988, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)ppt.c	5.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)ppt.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: ppt.c,v 1.4 1995/03/23 08:35:40 cgd Exp $";
+#endif
 #endif /* not lint */
 
 #include <stdio.h>
 
-void	putppt();
+static void	putppt();
 
 main(argc, argv)
 	int argc;

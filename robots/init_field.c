@@ -1,6 +1,8 @@
+/*	$NetBSD: init_field.c,v 1.4 1997/05/23 23:40:16 jtc Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)init_field.c	5.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)init_field.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: init_field.c,v 1.4 1997/05/23 23:40:16 jtc Exp $";
+#endif
 #endif /* not lint */
 
 # include	"robots.h"
@@ -76,9 +82,6 @@ init_field()
 
 	Dead = FALSE;
 	Waiting = FALSE;
-#ifndef linux
-	flushok(stdscr, TRUE);
-#endif
 	Score = 0;
 
 	erase();

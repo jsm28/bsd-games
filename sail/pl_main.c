@@ -1,6 +1,8 @@
+/*	$NetBSD: pl_main.c,v 1.5 1995/04/24 12:25:25 cgd Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)pl_main.c	5.5 (Berkeley) 2/28/91";
+#if 0
+static char sccsid[] = "@(#)pl_main.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: pl_main.c,v 1.5 1995/04/24 12:25:25 cgd Exp $";
+#endif
 #endif /* not lint */
 
 #include "player.h"
@@ -198,12 +204,14 @@ reprint:
 	else {
 		(void) printf("Your name, Captain? ");
 		(void) fflush(stdout);
-		(void) gets(captain);
+		(void) fgets(captain, sizeof captain, stdin);
 		if (!*captain)
 			(void) strcpy(captain, "no name");
+		else
+		    captain[strlen(captain) - 1] = '\0';
 	}
 	captain[sizeof captain - 1] = '\0';
-	Write(W_CAPTAIN, ms, 1, (int)captain, 0, 0, 0);
+	Write(W_CAPTAIN, ms, 1, (long)captain, 0, 0, 0);
 	for (n = 0; n < 2; n++) {
 		char buf[10];
 
@@ -239,6 +247,6 @@ reprint:
 	initscreen();
 	draw_board();
 	(void) sprintf(message, "Captain %s assuming command", captain);
-	Write(W_SIGNAL, ms, 1, (int)message, 0, 0, 0);
+	Write(W_SIGNAL, ms, 1, (long)message, 0, 0, 0);
 	newturn();
 }

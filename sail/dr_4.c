@@ -1,6 +1,8 @@
+/*	$NetBSD: dr_4.c,v 1.4 1997/01/07 12:42:15 tls Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,10 +34,14 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)dr_4.c	5.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)dr_4.c	8.2 (Berkeley) 4/28/95";
+#else
+static char rcsid[] = "$NetBSD: dr_4.c,v 1.4 1997/01/07 12:42:15 tls Exp $";
+#endif
 #endif /* not lint */
 
-#include "externs.h"
+#include "extern.h"
 
 ungrap(from, to)
 register struct ship *from, *to;

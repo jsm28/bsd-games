@@ -14,7 +14,7 @@ SRCS=	extern.c grammar.c graphics.c input.c lex.c list.c log.c \
 OBJS=	extern.o grammar.o graphics.o input.o lex.o list.o log.o \
 	main.o tunable.o update.o
 
-LIBS=	-lm $(NCURSES_LIB) $(BSD_LIB) -ll
+LIBS=	-lm $(NCURSES_LIB) $(BSD_LIB) -lfl
 
 GAMES = Game_List default easy crossover Killer game_2 Atlantis OHare \
 	Tic-Tac-Toe airports box crosshatch game_3 game_4 novice two-corners

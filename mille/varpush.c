@@ -1,6 +1,8 @@
+/*	$NetBSD: varpush.c,v 1.5 1997/05/23 23:09:45 jtc Exp $	*/
+
 /*
- * Copyright (c) 1982 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1982, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)varpush.c	5.6 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)varpush.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: varpush.c,v 1.5 1997/05/23 23:09:45 jtc Exp $";
+#endif
 #endif /* not lint */
 
 # include	<paths.h>
@@ -49,8 +55,9 @@ int	read(), write();
  * channel file.  func() is either read or write.
  */
 varpush(file, func)
-reg int	file;
-reg int	(*func)(); {
+register int	file;
+register int	(*func)(); 
+{
 
 	int	temp;
 

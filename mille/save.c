@@ -1,6 +1,8 @@
+/*	$NetBSD: save.c,v 1.5 1997/05/23 23:09:43 jtc Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,20 +34,25 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)save.c	5.6 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)save.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: save.c,v 1.5 1997/05/23 23:09:43 jtc Exp $";
+#endif
 #endif /* not lint */
 
-#include	"mille.h"
-#include	<sys/types.h>
-#include	<sys/stat.h>
-#include	<string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <string.h>
+#include <termios.h>
+#include "mille.h"
+
 #ifndef	unctrl
-#include	"unctrl.h"
+#include "unctrl.h"
 #endif
 
 # ifdef	attron
 #	include	<term.h>
-#	define	_tty	cur_term->Nttyb
 # endif	attron
 
 /*
@@ -65,9 +72,9 @@ int	read(), write();
 save() {
 
 	extern int	errno;
-	reg char	*sp;
-	reg int		outf;
-	reg time_t	*tp;
+	register char	*sp;
+	register int	outf;
+	register time_t	*tp;
 	char		buf[80];
 	time_t		tme;
 	STAT		junk;
@@ -141,10 +148,11 @@ over:
  * be cleaned up before the game starts.
  */
 rest_f(file)
-reg char	*file; {
+register char	*file;
+{
 
-	reg char	*sp;
-	reg int		inf;
+	register char	*sp;
+	register int	inf;
 	char		buf[80];
 	STAT		sbuf;
 

@@ -1,4 +1,4 @@
-1997-05-06 - Installation directions
+1997-05-21 - Installation directions
 ====================================
 
 Non-free games
@@ -46,8 +46,3 @@ helpful hints, or information about further configuaration options.
 
 See TODO for information on what needs to be improved in this package;
 you may want to volunteer for some of the things in there.
-
-**************************************************************
-***** Compilation with glibc (libc 6) does not yet work. *****
-***** This will be fixed in a later release.             *****
-**************************************************************

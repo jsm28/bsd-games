@@ -1,6 +1,8 @@
+/*	$NetBSD: getinp.c,v 1.5 1997/03/29 20:42:22 thorpej Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,10 +34,15 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)getinp.c	5.4 (Berkeley) 2/28/91";
+#if 0
+static char sccsid[] = "@(#)getinp.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: getinp.c,v 1.5 1997/03/29 20:42:22 thorpej Exp $";
+#endif
 #endif /* not lint */
 
 # include	<stdio.h>
+# include	<string.h>
 # include	<ctype.h>
 
 # define	reg	register
@@ -49,17 +56,21 @@ char	*prompt, *list[]; {
 
 	reg int	i, n_match, match;
 	char	*sp;
+	int	c;
 	int	plen;
 	static int comp();
 
 	for (;;) {
 inter:
 		printf(prompt);
-		for (sp = buf; (*sp=getchar()) != '\n'; )
-			if (*sp == -1)	/* check for interupted system call */
+		for (sp = buf; (c=getchar()) != '\n'; ) {
+			*sp = c;
+			if (c == -1)	/* check for interupted system call */
 				goto inter;
 			else if (sp != buf || *sp != ' ')
 				sp++;
+		}
+		*sp = c;
 		if (buf[0] == '?' && buf[1] == '\n') {
 			printf("Valid inputs are: ");
 			for (i = 0, match = 18; list[i]; i++) {

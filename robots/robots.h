@@ -1,6 +1,8 @@
+/*	$NetBSD: robots.h,v 1.5 1995/04/24 12:24:54 cgd Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -30,11 +32,12 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- *	@(#)robots.h	5.6 (Berkeley) 2/28/91
+ *	@(#)robots.h	8.1 (Berkeley) 5/31/93
  */
 
 # include	<curses.h>
 # include	<setjmp.h>
+# include	<string.h>
 
 /*
  * miscellaneous constants
@@ -63,13 +66,6 @@
 # define	ROBOT	'+'
 # define	HEAP	'*'
 # define	PLAYER	'@'
-
-/*
- * pseudo functions
- */
-
-# undef		CTRL
-# define	CTRL(X)	(X - 'A' + 1)
 
 /*
  * type definitions
@@ -108,3 +104,7 @@ int	cmp_sc();
 void	move_robots();
 
 COORD	*rnd_pos();
+
+
+
+

@@ -1,6 +1,8 @@
+/*	$NetBSD: end.c,v 1.5 1997/05/23 23:09:36 jtc Exp $	*/
+
 /*
- * Copyright (c) 1982 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1982, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)end.c	5.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)end.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: end.c,v 1.5 1997/05/23 23:09:36 jtc Exp $";
+#endif
 #endif /* not lint */
 
 # include	"mille.h"
@@ -46,8 +52,9 @@ static char sccsid[] = "@(#)end.c	5.4 (Berkeley) 6/1/90";
  * the end-of-games points to the user who deserves it (if any).
  */
 finalscore(pp)
-reg PLAY	*pp; {
-	reg int		temp, tot, num;
+register PLAY	*pp;
+{
+	register int	temp, tot, num;
 
 	if (pp->was_finished == Finished)
 		return;
