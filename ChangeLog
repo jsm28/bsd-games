@@ -1,5 +1,8 @@
 2002-01-19  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* phantasia/fight.c (encounter): Make firsthit and flockcnt
+	volatile.
+
 	* backgammon/common_source/Makefile.bsd,
 	backgammon/teachgammon/Makefile.bsd, boggle/mkdict/Makefile.bsd,
 	boggle/mkindex/Makefile.bsd, canfield/cfscores/Makefile.bsd,

@@ -10,17 +10,13 @@ void
 encounter(particular)
 	int     particular;
 {
-	bool    firsthit = Player.p_blessing;	/* set if player gets the
-						 * first hit */
-	int     flockcnt = 1;	/* how many time flocked */
+	volatile bool    firsthit = Player.p_blessing;	/* set if player gets
+							 * the first hit */
+	volatile int     flockcnt = 1;	/* how many time flocked */
 
 	/* let others know what we are doing */
 	Player.p_status = S_MONSTER;
 	writerecord(&Player, Fileloc);
-
-#if __GNUC__
-	(void)&firsthit;	/* XXX shut up gcc */
-#endif
 
 #ifdef SYS5
 	flushinp();
