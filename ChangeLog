@@ -1,3 +1,10 @@
+2000-09-25  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* battlestar/com2.c (murder): Fix logic of use of n and wordnumber
+	when using laser.  From OpenBSD.
+	* tests/battlestar.in39, tests/battlestar.out39: New test.
+	* tests/battlestar.test: Update.
+
 2000-09-24  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* NEWS, TODO: Update.

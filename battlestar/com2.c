@@ -182,25 +182,25 @@ murder()
 	if (n == NUMOFOBJECTS) {
 		if (testbit(inven, LASER)) {
 			printf("Your laser should do the trick.\n");
-			n = wordnumber + 1;
-			switch(wordvalue[n]) {
+			wordnumber++;
+			switch(wordvalue[wordnumber]) {
 			case NORMGOD:
 			case TIMER:
 			case NATIVE:
 			case MAN:
-				wordvalue[wordnumber] = SHOOT;
+				wordvalue[--wordnumber] = SHOOT;
 				cypher();
 				break;
 			case -1:
 				puts("Kill what?");
 				break;
 			default:
-				if (wordtype[n] != OBJECT ||
+				if (wordtype[wordnumber] != OBJECT ||
 				    wordvalue[wordnumber] == EVERYTHING)
 					puts("You can't kill that!");
 				else
 					printf("You can't kill the %s!\n",
-					    objsht[wordvalue[n]]);
+					    objsht[wordvalue[wordnumber]]);
 				break;
 			}
 		} else
