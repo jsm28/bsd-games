@@ -426,11 +426,10 @@ qualify for copyright; but if not, then the terms given above apply
 (and, of course, running the test command gives an identical output
 file to which you could apply your own copyright).
 
-The files "bsd-games.lsm", "ChangeLog.0", "THANKS", "INSTALL",
-"README", "boggle/README.linux", "fortune/README.linux", and
-"hunt/README.linux" are still significantly derived from files in the
-original bsd-games package for Linux by Curt Olson and Andy Tefft.  It
-is expected that the following terms will apply to these files, and to
+The files "bsd-games.lsm", "ChangeLog.0", "THANKS", "INSTALL" and
+"README" are still significantly derived from files in the original
+bsd-games package for Linux by Curt Olson and Andy Tefft.  It is
+expected that the following terms will apply to these files, and to
 the compilation copyright on the package as a whole; ***this has yet
 to be confirmed with Andy Tefft***:
 

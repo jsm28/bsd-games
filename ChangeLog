@@ -1,5 +1,11 @@
 2004-02-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* boggle/README.linux, dm/README.linux, fortune/README.linux,
+	hunt/README.linux, trek/README.linux: Remove.
+	* README: Move information from those files to here.
+	* INSTALL: Update.
+	* COPYING: Update.
+
 	* factor/Makefile.bsd, factor/factor.6, factor/factor.c,
 	primes/Makefile.bsd, primes/primes.6: Update from NetBSD CVS.
 

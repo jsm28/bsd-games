@@ -23,10 +23,7 @@ the bsd-games-non-free package unpacks conventionally into a directory
 of its own.  It can be built separately from bsd-games, or in the same
 source directory: to do the latter, move those files and directories
 that are in bsd-games-non-free but not bsd-games into the
-bsd-games-VERSION directory before building.  If you are building
-bsd-games, cd to boggle and decide if you want -DNEW_STYLE or not --
-see boggle/README.linux for more information.  If you are in a hurry,
-don't worry about it ... it really is more of an aesthetic thing.
+bsd-games-VERSION directory before building.
 
 Prerequisites
 =============
@@ -180,10 +177,6 @@ Building and installation
 
 Further information
 ===================
-
-Some subdirectories have README.linux files.  If you are still having
-trouble with a program, check this file first -- it may contain some
-helpful hints, or information about further configuration options.
 
 See TODO for information on what needs to be improved in this package;
 you may want to volunteer for some of the things in there.
