@@ -1,3 +1,7 @@
+2004-01-14  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* wtf/acronyms, wtf/acronyms.comp: Update from NetBSD CVS.
+
 2004-01-04  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* COPYING: Note that TODO no longer contains anything from the
