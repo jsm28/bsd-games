@@ -23,6 +23,13 @@ the above way, and so should be considered the most dangerous to
 install setgid.  If you are auditing these games, phantasia, sail,
 rogue and tetris should be considered the most important to audit.
 
+An effect of this security policy is that in some cases the score
+files need to be world-readable so that they can be opened for reading
+after the game has dropped privileges, or by a score file reading
+program that was never privileged.  In versions before 2.10, the
+phantasia `characs' file (containing passwords for phantasia
+characters) was mistakenly made world readable.
+
 You should, of course, only install the games setgid if this is in
 line with system security policy.  Games should not be installed
 setuid, since if a setuid game is cracked this allows games to be

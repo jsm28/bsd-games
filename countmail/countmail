@@ -180,6 +180,6 @@ set -- $result
 
 echo "$*!
 
-$* NEW MAIL MESSAGE$plural!
+$* MAIL MESSAGE$plural!
 
 HAHAHAHAHA!"

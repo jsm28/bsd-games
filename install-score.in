@@ -1,6 +1,6 @@
 # install-score.in - install a score file
 #
-# Copyright (c) 1997, 1998 Joseph Samuel Myers.
+# Copyright (c) 1997, 1998, 1999 Joseph Samuel Myers.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,13 @@
 
 set -e
 
-scorefile="@install_prefix@$1"
+if [ "$1" = "-p" ]; then
+    scorefile="@install_prefix@$2"
+    perms=@vardata_perms_priv@
+else
+    scorefile="@install_prefix@$1"
+    perms=@vardata_perms@
+fi
 
 mkdir -p "$(dirname "$scorefile")"
 
@@ -36,4 +42,4 @@ test -e "$scorefile" || touch "$scorefile"
 if [ @do_chown@ = y ]; then
     chown @vardata_owner@.@vardata_group@ "$scorefile"
 fi
-chmod @vardata_perms@ "$scorefile"
+chmod "$perms" "$scorefile"

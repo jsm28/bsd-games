@@ -171,7 +171,7 @@ save_file_name(filename, len)
 	if (memchr(filename, '/', len)) {
 		newname = malloc(len + 1);
 		if (newname == NULL) {
-			warnx("out of memory");
+			warn(NULL);
 			return NULL;
 		}
 		memcpy(newname, filename, len);
@@ -182,7 +182,7 @@ save_file_name(filename, len)
 			tmpl = strlen(home);
 			newname = malloc(tmpl + len + 2);
 			if (newname == NULL) {
-				warnx("out of memory");
+				warn(NULL);
 				return NULL;
 			}
 			memcpy(newname, home, tmpl);
@@ -192,7 +192,7 @@ save_file_name(filename, len)
 		} else {
 			newname = malloc(len + 1);
 			if (newname == NULL) {
-				warnx("out of memory");
+				warn(NULL);
 				return NULL;
 			}
 			memcpy(newname, filename, len);

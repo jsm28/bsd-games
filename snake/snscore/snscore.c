@@ -107,7 +107,7 @@ main()
 			q = p -> pw_name;
 			players[noplayers].name = strdup(q);
 			if (players[noplayers].name == NULL)
-				errx(1, "out of memory");
+				err(1, NULL);
 			noplayers++;
 		}
 	}

@@ -103,7 +103,7 @@ main(ac, av)
 	CC_D.offsets = (u_int64_t *)calloc(CC_D.num_cards + 1, sizeof (u_int64_t));
 	CH_D.offsets = (u_int64_t *)calloc(CH_D.num_cards + 1, sizeof (u_int64_t));
 	if (CC_D.offsets == NULL || CH_D.offsets == NULL)
-		errx(1, "out of memory");
+		err(1, NULL);
 	fseek(inf, 0L, SEEK_SET);
 	if ((outf = fopen(outfile, "w")) == NULL)
 		err(1, "fopen %s", outfile);

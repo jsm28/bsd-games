@@ -165,7 +165,7 @@ vocab(word, type, value)	/* look up or store a word      */
 			h->val = value;
 			h->atab = malloc(length(word));
 			if (h->atab == NULL)
-				errx(1, "Out of memory!");
+				err(1, NULL);
 			for (s = word, t = h->atab; *s;)
 				*t++ = *s++ ^ '=';
 			*t = 0 ^ '=';

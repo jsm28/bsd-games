@@ -157,7 +157,7 @@ life()
 	np = NULL;
 	head = newlink();
 	if (head == NULL)
-		errx(1, "out of memory");
+		err(1, NULL);
 	head->x = start_len+2;
 	head->y = 12;
 	head->next = NULL;
@@ -165,7 +165,7 @@ life()
 	for (i = 0, bp = head; i < start_len; i++, bp = np) {
 		np = newlink();
 		if (np == NULL)
-			errx(1, "out of memory");
+			err(1, NULL);
 		np->next = bp;
 		bp->prev = np;
 		np->x = bp->x - 1;
@@ -312,7 +312,7 @@ process(ch)
 	else if(ch != ' ') crash();
 	nh = newlink();
 	if (nh == NULL)
-		errx(1, "out of memory");
+		err(1, NULL);
 	nh->next = NULL;
 	nh->prev = head;
 	head->next = nh;

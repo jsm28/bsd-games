@@ -103,7 +103,7 @@ set_up(dp)
 
 	dp->offsets = (u_int64_t *) calloc(sizeof (u_int64_t), dp->num_cards);
 	if (dp->offsets == NULL)
-		errx(1, "out of memory");
+		err(1, NULL);
 	if (fread(dp->offsets, sizeof(u_int64_t), dp->num_cards, deckf) !=
 	    (size_t)dp->num_cards) {
 		perror(cardfile);

@@ -1,10 +1,11 @@
-$NetBSD: acronyms,v 1.48 1999/11/05 08:59:17 lukem Exp $
+$NetBSD: acronyms,v 1.51 1999/11/17 20:02:07 sommerfeld Exp $
 
 AFAICR	as far as I can recall
 AFAICT	as far as I can tell
 AFAIK	as far as I know
 AFAIR	as far as I recall
 AFK	away from keyboard
+AKA	also known as
 ASAP	as soon as possible
 BBL	[I'll] be back later
 BBS	be back soon
@@ -65,11 +66,13 @@ NFC	no fucking clue
 NFI	no fucking idea
 NIH	not invented here
 NP	no problem
+NRFPT	not ready for prime time
 NRN	no reply necessary
 OIC	oh, I see
 OTOH	on the other hand
 OTTOMH	off the top of my head
 PITA	pain in the ass
+POLA	principle of least astonishment
 PPL	pretty please
 RL	real life
 ROTFL	rolling on the floor laughing

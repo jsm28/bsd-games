@@ -96,16 +96,12 @@ __RCSID("$NetBSD: strfile.c,v 1.14 1999/09/18 19:38:50 jsm Exp $");
 
 # define	ALLOC(ptr,sz)	do { \
 			if (ptr == NULL) \
-				ptr = malloc((unsigned int) (CHUNKSIZE * sizeof *ptr)); \
+				ptr = malloc(CHUNKSIZE * sizeof *ptr); \
 			else if (((sz) + 1) % CHUNKSIZE == 0) \
-				ptr = realloc((void *) ptr, ((unsigned int) ((sz) + CHUNKSIZE) * sizeof *ptr)); \
+				ptr = realloc(ptr, ((sz) + CHUNKSIZE) * sizeof *ptr); \
 			if (ptr == NULL) \
 				errx(1, "out of space"); \
 		} while (0)
-
-#ifdef NO_VOID
-# define	void	char
-#endif
 
 typedef struct {
 	char	first;

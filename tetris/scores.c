@@ -436,10 +436,9 @@ printem(level, offset, hs, n, me)
 				(void)putchar('\n');
 				continue;
 			}
-			(void)printf(item + offset < 10 ? "  " : " ");
 			sp = &hs[item];
 			(void)sprintf(buf,
-			    "%d%c %6d  %-11s (%d on %d)",
+			    "%3d%c %6d  %-11s (%6d on %d)",
 			    item + offset, sp->hs_time ? '*' : ' ',
 			    sp->hs_score * sp->hs_level,
 			    sp->hs_name, sp->hs_score, sp->hs_level);

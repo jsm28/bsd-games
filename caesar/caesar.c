@@ -100,7 +100,7 @@ main(argc, argv)
 		printit(argv[1]);
 
 	if (!(inbuf = malloc(LINELENGTH)))
-		errx(1, "out of memory");
+		err(1, NULL);
 
 	/* adjust frequency table to weight low probs REAL low */
 	for (i = 0; i < 26; ++i)
