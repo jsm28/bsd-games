@@ -212,9 +212,9 @@ struct wlist wlist[] = {
 	{ "purple",	0,		ADJS, NULL },
 	{ "kingly",	0,		ADJS, NULL },
 	{ "the",	0,		ADJS, NULL },
-	{ "climb",	0,		ADJS, NULL },
-	{ "move",	0,		ADJS, NULL },
-	{ "make",	0,		ADJS, NULL },
+	{ "climb",	AUXVERB,	VERB, NULL },
+	{ "move",	AUXVERB,	VERB, NULL },
+	{ "make",	AUXVERB,	VERB, NULL },
 	{ "to",		0,		ADJS, NULL },
 	{ NULL,		0,		0, NULL }
 };

@@ -55,7 +55,22 @@ cypher()
 	size_t	filename_len;
 
 	while (wordnumber <= wordcount) {
+		if (wordtype[wordnumber] != VERB &&
+		    !(wordtype[wordnumber] == OBJECT && wordvalue[wordnumber] == KNIFE)) {
+			printf("%s: How's that?\n",
+			    (wordnumber == wordcount) ? words[0] : words[wordnumber]);
+			return (-1);
+		}
+
 		switch (wordvalue[wordnumber]) {
+
+		case AUXVERB:
+			/*
+			 * Take the following word as the verb (e.g.
+			 * "make love", "climb up").
+			 */
+			wordnumber++;
+			continue;
 
 		case UP:
 			if (location[position].access || wiz || tempwiz) {

@@ -1,5 +1,19 @@
 2000-09-25  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/extern.h: Add AUXVERB.
+	* battlestar/words.c (wlist): Use AUXVERB for "climb", "move" and
+	"make".
+	* battlestar/cypher.c (cypher): Object to words in the place for a
+	verb that aren't a VERB or KNIFE.  Allow for AUXVERBs.
+	* battlestar/com2.c (put), battlestar/com4.c (take): When creating
+	new verbs from "put on", "put down" and "take off", make their
+	type be VERB.
+	Partly from Paul Janzen <pjanzen@foatdi.harvard.edu>.
+	* tests/battlestar.out3: Update.
+	* tests/battlestar.in42, tests/battlestar.out42,
+	tests/battlestar.in43, tests/battlestar.out43: New tests.
+	* tests/battlestar.test: Update.
+
 	* battlestar/extern.h: Add flags OBJ_PERSON and OBJ_NONOBJ.
 	* battlestar/globals.c (objflags): Use them.
 

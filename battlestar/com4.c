@@ -54,6 +54,7 @@ take(from)
 	if (wordnumber < wordcount && wordvalue[wordnumber + 1] == OFF) {
 		wordnumber++;
 		wordvalue[wordnumber] = TAKEOFF;
+		wordtype[wordnumber] = VERB;
 		return (cypher());
 	} else {
 		wordnumber++;

@@ -117,10 +117,12 @@ put()
 {				/* synonyms = {buckle, strap, tie} */
 	if (wordvalue[wordnumber + 1] == ON) {
 		wordvalue[++wordnumber] = PUTON;
+		wordtype[wordnumber] = VERB;
 		return (cypher());
 	}
 	if (wordvalue[wordnumber + 1] == DOWN) {
 		wordvalue[++wordnumber] = DROP;
+		wordtype[wordnumber] = VERB;
 		return (cypher());
 	}
 	puts("I don't understand what you want to put.");

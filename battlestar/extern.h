@@ -190,6 +190,7 @@
 #define OPEN	1053
 #define VERBOSE	1054
 #define BRIEF	1055
+#define AUXVERB	1056
 
  /* injuries */
 #define ARM	6		/* broken arm */
