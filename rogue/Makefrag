@@ -27,12 +27,13 @@
 # SUCH DAMAGE.
 
 rogue_DEFS := $(STRLCPY_DEFS) -DUNIX -DUNIX_SYSV
-rogue_DIRS := $(GAMESDIR) $(MAN6DIR)
+rogue_DIRS := $(GAMESDIR) $(MAN6DIR) $(DOCDIR)
 
-rogue_all:	rogue/rogue rogue/rogue.6
+rogue_all:	rogue/rogue rogue/rogue.6 rogue/USD.doc/rogue.me
 
 rogue_install:	rogue_all
 	$(INSTALL_SCORE_GAME) rogue/rogue $(INSTALL_PREFIX)$(GAMESDIR)/rogue
 	$(HIDE_GAME) rogue
 	$(INSTALL_SCORE_FILE) $(ROGUE_SCOREFILE)
 	$(INSTALL_MANUAL) rogue/rogue.6
+	$(INSTALL_DATA) rogue/USD.doc/rogue.me $(INSTALL_PREFIX)$(DOCDIR)/rogue.me

@@ -159,13 +159,7 @@ Building and installation
     this or a later version, and a new one created with the correct
     permissions.
 
-10. You may wish to do something with the BSD Users' Supplementary
-    Documents for trek and rogue, in trek/USD.doc/trek.me and
-    rogue/USD.doc/rogue.me.  You can look at them on a text terminal
-    with "nroff -me" (piped to your pager), or format in PostScript
-    for printing with "groff -me -Tps".
-
-11. "make distclean" will restore the source directory to the original
+10. "make distclean" will restore the source directory to the original
     unpacked state.  The automatically generated dependency files
     include paths to system headers, including those in gcc's internal
     header directory: if you have changed your compiler or library

@@ -242,6 +242,13 @@ else
     subst_vars="$subst_vars man5dir"
 fi
 
+if building_in trek || building_in rogue; then
+    ask "Directory for miscellaneous documentation" docdir /usr/share/doc/bsd-games
+else
+    docdir=
+    subst_vars="$subst_vars docdir"
+fi
+
 # The paths for data are as per the FHS.  If a future version removes the
 # games ghettoes of /usr/games, /var/games, etc., then a subdirectory for
 # this package (/usr/share/bsdgames, /var/state/bsdgames, etc.) would be

@@ -129,11 +129,6 @@ hunt: may well be unreliable or broken in various ways.  There is some
 local configuration possible in hunt/Makeconfig but changing this may
 well break things.
 
-trek: The full trek manual is in trek/USD.doc/trek.me; this is not
-installed by the Makefile.  You may wish to install it somewhere; if
-you do, remember to update the reference to /usr/doc/trek in the man
-page.
-
 Joseph S. Myers
 jsm@polyomino.org.uk
 

@@ -1,3 +1,14 @@
+2004-02-09  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* configure: Ask for a documentation directory if building trek or
+	rogue.
+	* Makeconfig.in (DOCDIR): Define.
+	* substfiles2: Add trek/trek.6.
+	* trek/trek.6: Rename to trek/trek.6.in.
+	* trek/trek.6.in: Mark documentation directory for substitution.
+	* rogue/Makefrag, trek/Makefrag: Install USD documents.
+	* INSTALL, PACKAGING, README: Update.
+
 2004-02-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* backgammon/backgammon/main.c, backgammon/teachgammon/teach.c,

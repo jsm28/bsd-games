@@ -50,6 +50,8 @@ MAN8DIR := @man8dir@
 MAN5DIR := @man5dir@
 # Constant data (arch-independent)
 SHAREDIR := @sharedir@
+# Miscellaneous documentation
+DOCDIR := @docdir@
 # Variable data
 VARLIBDIR := @varlibdir@
 # Directory for hidden games (dm)
