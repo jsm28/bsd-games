@@ -178,9 +178,35 @@ murder()
 	int     n;
 
 	for (n = 0; !((n == SWORD || n == KNIFE || n == TWO_HANDED || n == MACE || n == CLEAVER || n == BROAD || n == CHAIN || n == SHOVEL || n == HALBERD) && testbit(inven, n)) && n < NUMOFOBJECTS; n++);
-	if (n == NUMOFOBJECTS)
-		puts("You don't have suitable weapons to kill.");
-	else {
+	if (n == NUMOFOBJECTS) {
+		if (testbit(inven, LASER)) {
+			printf("Your laser should do the trick.\n");
+			n = wordnumber;
+			while (wordtype[++n] == ADJS)
+				;
+			switch(wordvalue[n]) {
+			case NORMGOD:
+			case TIMER:
+			case NATIVE:
+			case MAN:
+				wordvalue[wordnumber] = SHOOT;
+				cypher();
+				break;
+			case -1:
+				puts("Kill what?");
+				break;
+			default:
+				if (wordtype[n] != OBJECT ||
+				    wordvalue[wordnumber] == EVERYTHING)
+					puts("You can't kill that!");
+				else
+					printf("You can't kill the %s!\n",
+					    objsht[wordvalue[n]]);
+				break;
+			}
+		} else
+			puts("You don't have suitable weapons to kill.");
+	} else {
 		printf("Your %s should do the trick.\n", objsht[n]);
 		while (wordtype[++wordnumber] == ADJS);
 		switch (wordvalue[wordnumber]) {

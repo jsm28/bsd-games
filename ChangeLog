@@ -1,3 +1,8 @@
+2000-09-21  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* battlestar/com2.c (murder): From OpenBSD: shoot with laser if no
+	hand-to-hand weapon available.
+
 2000-09-20  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* battlestar/getcom.c (getcom): die() on EOF; based on OpenBSD.
