@@ -63,10 +63,10 @@ int
 compar(va, vb)
 	const void *va, *vb;
 {
-	SCORE	*a, *b;
+	const SCORE	*a, *b;
 
-	a = (SCORE *)va;
-	b = (SCORE *)vb;
+	a = (const SCORE *)va;
+	b = (const SCORE *)vb;
 	if (b->planes == a->planes)
 		return (b->time - a->time);
 	else
@@ -145,6 +145,7 @@ log_score(list_em)
 	char		*cp;
 	SCORE		score[100], thisscore;
 	struct utsname	name;
+	long		offset;
 
 	if (score_fp == NULL) {
 		warnx("no score file available");
@@ -250,10 +251,12 @@ log_score(list_em)
 				warn("error writing %s", _PATH_SCORE);
 			/* It is just possible that updating an entry could
 			 * have reduced the length of the file, so we
-			 * truncate it.  The lseek is required for stream/fd
+			 * truncate it.  The seeks are required for stream/fd
 			 * synchronisation by POSIX.1.  */
-			lseek(fileno(score_fp), 0, SEEK_END);
-			ftruncate(fileno(score_fp), ftell(score_fp));
+			offset = ftell(score_fp);
+			lseek(fileno(score_fp), 0, SEEK_SET);
+			ftruncate(fileno(score_fp), offset);
+			rewind(score_fp);
 		} else {
 			if (found)
 				puts("You didn't beat your previous score.");

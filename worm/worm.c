@@ -82,10 +82,10 @@ int start_len = LENGTH;
 char lastch;
 char outbuf[BUFSIZ];
 
-void	crash __P((void));
+void	crash __P((void)) __attribute__((__noreturn__));
 void	display __P((struct body *, char));
 int	main __P((int, char **));
-void	leave __P((int));
+void	leave __P((int)) __attribute__((__noreturn__));
 void	life __P((void));
 void	newpos __P((struct body *));
 void	process __P((char));

@@ -18,10 +18,10 @@ drop any setgid privileges completely (including the saved gid).  This
 limits the effect of a cracked game to corruption of its score file.
 It should be somewhat safer now to make games setgid games than in
 versions 2.1 and earlier, but probably not completely safe; phantasia,
-rogue and tetris do not currently handle their score files in the
-above way, and so should be considered the most dangerous to install
-setgid.  If you are auditing these games, phantasia, rogue and tetris
-should be considered the most important to audit.
+sail, rogue and tetris do not currently handle their score files in
+the above way, and so should be considered the most dangerous to
+install setgid.  If you are auditing these games, phantasia, sail,
+rogue and tetris should be considered the most important to audit.
 
 You should, of course, only install the games setgid if this is in
 line with system security policy.  Games should not be installed
@@ -33,9 +33,11 @@ privileges, but to put trusted users in the games group.
 
 An option is to use the `dungeon master' dm to regulate games playing.
 I believe this is safe; games that do not need to run setgid drop the
-setgid privileges they get from dm on startup.  Note that it does not
-make sense for dm to be setgid to some gid other than the one
-(normally `games') with write access to the score files.
+setgid privileges they get from dm on startup.  If dm is setgid, but
+the games that access score files are not, then they will keep their
+setgid privileges from dm; note that in this case it does not make
+sense for dm to be setgid to some gid other than the one (normally
+`games') with write access to the score files.
 
 ***********************************************************************
 *                                                                     *

@@ -136,7 +136,7 @@ void	pit_survive __P((void));
 int	shoot __P((char *));
 void	shoot_self __P((void));
 int	take_action __P((void));
-void	usage __P((void));
+void	usage __P((void)) __attribute__((__noreturn__));
 void	wump_kill __P((void));
 int	wump_nearby __P((void));
 
@@ -724,7 +724,7 @@ int
 int_compare(a, b)
 	const void *a, *b;
 {
-	return(*(int *)a < *(int *)b ? -1 : 1);
+	return(*(const int *)a < *(const int *)b ? -1 : 1);
 }
 
 void

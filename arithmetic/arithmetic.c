@@ -89,13 +89,13 @@ __RCSID("$NetBSD: arithmetic.c,v 1.10 1998/02/03 05:33:32 perry Exp $");
 #include <unistd.h>
 
 int	getrandom __P((int, int, int));
-void	intr __P((int));
+void	intr __P((int)) __attribute__((__noreturn__));
 int	main __P((int, char *[]));
 int	opnum __P((int));
 void	penalise __P((int, int, int));
 int	problem __P((void));
 void	showstats __P((void));
-void	usage __P((void));
+void	usage __P((void)) __attribute__((__noreturn__));
 
 char keylist[] = "+-x/";
 char defaultkeys[] = "+-";

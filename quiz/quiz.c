@@ -78,7 +78,7 @@ char	*next_cat __P((char *));
 void	 quiz __P((void));
 void	 score __P((u_int, u_int, u_int));
 void	 show_index __P((void));
-void	 usage __P((void));
+void	 usage __P((void)) __attribute__((__noreturn__));
 
 int
 main(argc, argv)

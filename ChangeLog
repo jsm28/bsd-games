@@ -1,3 +1,176 @@
+1998-08-19  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* Version 2.3.
+
+	* sail/Makefile (install): Use install prefix.
+
+	* NEWS: Update.
+
+	* All games now updated from NetBSD-current of 1998-08-19.
+
+	* tetris/tetris.c: Update from NetBSD-current of 1998-08-19.
+
+	* tetris/screen.c: Update from NetBSD-current of 1998-08-19.
+
+	* TODO: Update.
+
+	* NEWS: Update.
+
+	* bsd-games.lsm: Update.
+
+	* AUTHORS (countmail): Restore.
+
+	* README: Update.
+
+	* countmail/*: Restore, updated from NetBSD-current of 1998-08-19
+	(which has a licence for it).
+
+	* atc/input.c: Update from NetBSD-current of 1998-08-19.
+
+	* adventure/Makefile.bsd: Update from NetBSD-current of
+	1998-08-19.
+
+	* SECURITY: Update.
+
+	* bsd-games-non-free.lsm: Update.
+
+	* bsd-games.lsm: Update.
+
+	* boggle/README.linux: Regenerate.
+
+	* NEWS: Update.
+
+	* sail/sync.c: Restore privileges when appropriate.
+
+	* sail/misc.c (logger): Restore privileges for file open.
+
+	* sail/main.c (main): Initialise gid and egid; drop egid leaving
+	saved gid.
+
+	* sail/extern.h: Add gid and egid.
+
+	* sail/Makefile (install): Install sail directory.
+
+	* sail/sync.c: Use defines from pathnames.h.
+
+	* sail/pathnames.h.in: Put definitions here.
+
+	* Makeconfig.in: Add appropriate macros.
+
+	* configure: Configure a directory for sail temporary files.
+
+	* sail/*: Revert previous changes.  Sail needs to keep privileges
+	for sync file handling.
+
+	* atc/log.c (log_score): Fix truncate logic.
+
+	* configure: Remove some of the less useful warning flags just
+	added.
+
+	* wump/wump.c (int_compare): Use const.
+
+	* robots/score.c (cmp_sc): Use const.
+
+	* fortune/strfile/strfile.c (cmp_str): Use const.
+
+	* boggle/boggle/bog.c (compar): Use const.
+
+	* atc/log.c (compar): Use const.
+
+	* configure: Add more warning flags to the default.
+
+1998-08-18  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* INSTALL: Minor changes.
+
+	* wump/wump.c: Mark usage() noreturn.
+
+	* worms/worms.c: Mark nomem() and onsig() noreturn.
+
+	* worm/worm.c: Mark leave() and crash() noreturn.
+
+	* tetris/tetris.c: Mark usage() and onintr() noreturn.
+
+	* tetris/tetris.h: Mark stop() noreturn.
+
+	* snake/snake/snake.h: Mark done() and stop() noreturn.
+
+	* sail/extern.h: Mark leave() and choke() noreturn.
+
+	* TODO: Update.
+
+	* rogue/rogue.h: Mark clean_up(), error_save(), md_exit(),
+	put_scores() and sf_error() noreturn.
+
+	* robots/robots.h: Mark quit() noreturn.
+
+	* gomoku/gomoku.h: Mark quit(), quitsig() and panic() noreturn.
+
+	* quiz/quiz.c: Mark usage() noreturn.
+
+	* primes/primes.c: Mark usage() noreturn.
+
+	* pig/pig.c: Mark usage() noreturn.
+
+	* number/number.c: Mark usage() noreturn; remove spurious toobig()
+	prototype (no such function defined or used).
+
+	* mille/mille.h: Mark die() noreturn.
+
+1998-08-17  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* hunt/huntd/hunt.h: Mark cleanup() noreturn.
+
+	* hunt/hunt/hunt.c: Mark leave() noreturn.
+
+	* fortune/strfile/strfile.c: Mark usage() noreturn.
+
+	* fortune/fortune/fortune.c: Mark usage() noreturn.
+
+	* fish/fish.c: Mark usage() noreturn; actually use it.
+
+	* cribbage/cribbage.h: Mark rint() noreturn.
+
+	* factor/factor.c: Mark usage() noreturn.
+
+	* dm/dm.c: Mark play() noreturn.
+
+	* canfield/canfield/canfield.c: Mark cleanup() noreturn.
+
+	* caesar/caesar.c: Mark printit() noreturn.
+
+	* boggle/boggle/extern.h: Mark usage() noreturn.
+	* boggle/README.linux: Rebuild.
+
+	* battlestar/extern.h: Mark die(), diesig() and live() noreturn.
+
+	* backgammon/common_source/back.h: Mark getout() noreturn.
+
+	* atc/extern.h: Make loser() and log_score_quit() noreturn.
+
+	* arithmetic/arithmetic.c: Mark intr() and usage() noreturn.
+
+	* adventure/extern.h: Mark done() noreturn.
+
+	* adventure/subr.c (bug): Use exit status 1 for a fatal error.
+
+	* snake/snake/snake.c (post): Use SEEK_SET rather than 0 in
+	lseek().
+
+	* robots/score.c (score): Use SEEK_SET rather than 0 in lseek().
+
+	* fortune/fortune/fortune.c (get_fort): Use SEEK_SET rather than 0
+	in lseek().
+
+	* canfield/cfscores/cfscores.c (printuser): Use SEEK_SET rather
+	than 0 in lseek().
+
+	* canfield/canfield/canfield.c (suspend): Use SEEK_SET rather than
+	0 in lseek().
+	(cleanup): Same.
+
+	* SECURITY: Clarify.
+
 1998-08-15  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
 
 	* Version 2.2.

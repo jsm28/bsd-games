@@ -81,7 +81,7 @@ double stdf[26] = {
 
 
 int	main __P((int, char *[]));
-void	printit __P((char *));
+void	printit __P((char *)) __attribute__((__noreturn__));
 
 int
 main(argc, argv)

@@ -231,7 +231,7 @@ int	canplay __P((PLAY *, PLAY *, CARD));
 int	check_ext __P((bool));
 void	check_go __P((void));
 void	check_more __P((void));
-void	die __P((int));
+void	die __P((int)) __attribute__((__noreturn__));
 void	domove __P((void));
 bool	error __P((const char *, ...));
 void	extrapolate __P((PLAY *));

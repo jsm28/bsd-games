@@ -164,7 +164,7 @@ void	 print_file_list __P((void));
 void	 print_list __P((FILEDESC *, int));
 void	 sum_noprobs __P((FILEDESC *));
 void	 sum_tbl __P((STRFILE *, STRFILE *));
-void	 usage __P((void));
+void	 usage __P((void)) __attribute__((__noreturn__));
 void	 zero_tbl __P((STRFILE *));
 
 #ifndef	NO_REGEX
@@ -997,7 +997,7 @@ get_fort()
 	get_pos(fp);
 	open_dat(fp);
 	(void) lseek(fp->datfd,
-		     (off_t) (sizeof fp->tbl + fp->pos * sizeof Seekpts[0]), 0);
+		     (off_t) (sizeof fp->tbl + fp->pos * sizeof Seekpts[0]), SEEK_SET);
 	read(fp->datfd, Seekpts, sizeof Seekpts);
 	Seekpts[0] = ntohl(Seekpts[0]);
 	Seekpts[1] = ntohl(Seekpts[1]);

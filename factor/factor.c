@@ -90,7 +90,7 @@ extern ubig *pr_limit;		/* largest prime in the prime array */
 
 int	main __P((int, char *[]));
 void	pr_fact __P((ubig));	/* print factors of a value */
-void	usage __P((void));
+void	usage __P((void)) __attribute__((__noreturn__));
 
 int
 main(argc, argv)

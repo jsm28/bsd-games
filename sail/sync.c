@@ -56,6 +56,7 @@ __RCSID("$NetBSD: sync.c,v 1.8 1998/03/29 04:56:46 mrg Exp $");
 #include <sys/stat.h>
 #include <time.h>
 #include "extern.h"
+#include "pathnames.h"
 
 #define BUFSIZE 4096
 
@@ -65,8 +66,6 @@ static char sync_lock[25];
 static char sync_file[25];
 static long sync_seek;
 static FILE *sync_fp;
-#define SF "/tmp/#sailsink.%d"
-#define LF "/tmp/#saillock.%d"
 
 void
 fmtship(buf, len, fmt, ship)
@@ -158,14 +157,16 @@ sync_exists(game)
 	struct stat s;
 	time_t t;
 
-	(void) sprintf(buf, SF, game);
+	(void) sprintf(buf, _PATH_SYNC, game);
 	(void) time(&t);
 	if (stat(buf, &s) < 0)
 		return 0;
 	if (s.st_mtime < t - 60*60*2) {		/* 2 hours */
+		setegid(egid);
 		(void) unlink(buf);
-		(void) sprintf(buf, LF, game);
+		(void) sprintf(buf, _PATH_LOCK, game);
 		(void) unlink(buf);
+		setegid(gid);
 		return 0;
 	} else
 		return 1;
@@ -176,14 +177,16 @@ sync_open()
 {
 	if (sync_fp != NULL)
 		(void) fclose(sync_fp);
-	(void) sprintf(sync_lock, LF, game);
-	(void) sprintf(sync_file, SF, game);
-	if (access(sync_file, 0) < 0) {
-		int omask = umask(issetuid ? 077 : 011);
+	(void) sprintf(sync_lock, _PATH_LOCK, game);
+	(void) sprintf(sync_file, _PATH_SYNC, game);
+	setegid(egid);
+	if (access(sync_file, F_OK) < 0) {
+		mode_t omask = umask(002);
 		sync_fp = fopen(sync_file, "w+");
 		(void) umask(omask);
 	} else
 		sync_fp = fopen(sync_file, "r+");
+	setegid(gid);
 	if (sync_fp == NULL)
 		return -1;
 	sync_seek = 0;
@@ -196,8 +199,11 @@ sync_close(remove)
 {
 	if (sync_fp != 0)
 		(void) fclose(sync_fp);
-	if (remove)
+	if (remove) {
+		setegid(egid);
 		(void) unlink(sync_file);
+		setegid(gid);
+	}
 }
 
 void
@@ -241,8 +247,12 @@ Sync()
 		if (errno != EWOULDBLOCK)
 			return -1;
 #else
-		if (link(sync_file, sync_lock) >= 0)
+		setegid(egid);
+		if (link(sync_file, sync_lock) >= 0) {
+			setegid(gid);
 			break;
+		}
+		setegid(gid);
 		if (errno != EEXIST)
 			return -1;
 #endif
@@ -304,7 +314,9 @@ out:
 #ifdef LOCK_EX
 	(void) flock(fileno(sync_fp), LOCK_UN);
 #else
+	setegid(egid);
 	(void) unlink(sync_lock);
+	setegid(gid);
 #endif
 	(void) signal(SIGHUP, sighup);
 	(void) signal(SIGINT, sigint);

@@ -71,5 +71,5 @@ void	 starttime __P((void));
 void	 startwords __P((void));
 void	 stoptime __P((void));
 int	 timerch __P((void));
-void	 usage __P((void));
+void	 usage __P((void)) __attribute__((__noreturn__));
 int	 validword __P((char *));

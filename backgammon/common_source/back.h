@@ -159,7 +159,7 @@ void	fixtty __P((struct termios *));
 void	getarg __P((char ***));
 int	getcaps __P((char *));
 void	getmove __P((void));
-void	getout __P((int));
+void	getout __P((int)) __attribute__((__noreturn__));
 void	gwrite __P((void));
 void	init __P((void));
 int	last __P((void));

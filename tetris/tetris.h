@@ -171,4 +171,4 @@ char	key_msg[100];
 
 int	fits_in __P((struct shape *, int));
 void	place __P((struct shape *, int, int));
-void	stop __P((char *));
+void	stop __P((char *)) __attribute__((__noreturn__));

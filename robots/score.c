@@ -126,7 +126,7 @@ score(score_wfd)
 	refresh();
 
 	if (Newscore) {
-		lseek(inf, 0L, 0);
+		lseek(inf, 0L, SEEK_SET);
 		write(inf, &max_uid, sizeof max_uid);
 		write(inf, Top, sizeof Top);
 	}
@@ -152,7 +152,7 @@ int
 cmp_sc(s1, s2)
 	const void *s1, *s2;
 {
-	return ((SCORE *)s2)->s_score - ((SCORE *)s1)->s_score;
+	return ((const SCORE *)s2)->s_score - ((const SCORE *)s1)->s_score;
 }
 
 /*

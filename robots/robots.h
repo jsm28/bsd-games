@@ -131,7 +131,7 @@ void	move_robots __P((int));
 bool	must_telep __P((void));
 void	play_level __P((void));
 int	query __P((char *));
-void	quit __P((int));
+void	quit __P((int)) __attribute__((__noreturn__));
 void	reset_count __P((void));
 int	rnd __P((int));
 COORD  *rnd_pos __P((void));

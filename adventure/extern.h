@@ -35,7 +35,7 @@ unsigned long crc __P((char *, int));
 
 /* done.c */
 int score __P((void));
-void done __P((int));
+void done __P((int)) __attribute__((__noreturn__));
 int die __P((int));
 
 /* init.c */

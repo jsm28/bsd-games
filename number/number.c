@@ -84,9 +84,8 @@ void	convert __P((char *));
 int	main __P((int, char *[]));
 int	number __P((char *, int));
 void	pfract __P((int));
-void	toobig __P((void));
 int	unit __P((int, char *));
-void	usage __P((void));
+void	usage __P((void)) __attribute__((__noreturn__));
 
 int lflag;
 

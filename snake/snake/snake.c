@@ -531,14 +531,14 @@ post(iscore, flag)
 	/* Figure out what happened in the past */
 	read(rawscores, &allbscore, sizeof(short));
 	read(rawscores, &allbwho, sizeof(short));
-	lseek(rawscores, uid * sizeof(short), 0);
+	lseek(rawscores, uid * sizeof(short), SEEK_SET);
 	read(rawscores, &oldbest, sizeof(short));
 	if (!flag)
 		return (score > oldbest ? 1 : 0);
 
 	/* Update this jokers best */
 	if (score > oldbest) {
-		lseek(rawscores, uid * sizeof(short), 0);
+		lseek(rawscores, uid * sizeof(short), SEEK_SET);
 		write(rawscores, &score, sizeof(short));
 		pr("You bettered your previous best of $%d\n", oldbest);
 	} else
@@ -547,7 +547,7 @@ post(iscore, flag)
 	/* See if we have a new champ */
 	p = getpwuid(allbwho);
 	if (p == NULL || score > allbscore) {
-		lseek(rawscores, 0, 0);
+		lseek(rawscores, 0, SEEK_SET);
 		write(rawscores, &score, sizeof(short));
 		write(rawscores, &uid, sizeof(short));
 		if (allbwho)

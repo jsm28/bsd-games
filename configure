@@ -265,7 +265,11 @@ ask "Compiler" cc gcc
 ask "Optimize flags" optimize_flags "-g -O2"
 echo
 echo "The default warning flags should give a compile with few warnings."
-ask "Compiler warning flags" warning_flags "-Wall -W -Wstrict-prototypes -Wmissing-prototypes"
+# -Wbad-function-cast and -Wshadow give lots of warnings that are basically
+# harmless.
+# -Wwrite-strings probably needs a lot of work on the games to get const in
+# where needed, but would be a good idea.
+ask "Compiler warning flags" warning_flags "-Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wpointer-arith -Wcast-align -Wcast-qual"
 echo
 echo "You probably want the default here, or could use -lncurses_g for"
 echo "debugging ncurses.  Use -lcurses -ltermcap if you want to try that,"
@@ -309,6 +313,18 @@ if building_in fortune; then
 	fortune_type=fake
     fi
     subst_vars="$subst_vars fortune_type"
+fi
+
+if building_in sail; then
+    echo
+    echo "Sail needs its own directory it can write to for temporary files"
+    echo "to synchronise among multiple players.  Note that with the"
+    echo "default permissions given here this will not work: you may want"
+    echo "to choose permissions appropriate to the security policy you are"
+    echo "using."
+    ask "Directory for sail temporary files" sail_dir "$varlibdir/sail"
+    askperms "Sail directory" sail_dir root root 0755
+    install_sail_dir=`echo "$install_sail_dir" |sed 's/install -c/install -d/'`
 fi
 
 echo

@@ -503,7 +503,7 @@ bug(n)
 	int     n;
 {
 	printf("Please tell jim@rand.org that fatal bug %d happened.\n", n);
-	exit(0);
+	exit(1);
 }
 
 

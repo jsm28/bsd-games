@@ -144,7 +144,7 @@ void	getargs __P((int, char *[]));
 int	main __P((int, char *[]));
 void	randomize __P((void));
 char   *unctrl __P((char));
-void	usage __P((void));
+void	usage __P((void)) __attribute__((__noreturn__));
 
 
 /*
@@ -398,12 +398,12 @@ int
 cmp_str(vp1, vp2)
 	const void *vp1, *vp2;
 {
-	STR	*p1, *p2;
+	const STR	*p1, *p2;
 	int	c1, c2;
 	int	n1, n2;
 
-	p1 = (STR *)vp1;
-	p2 = (STR *)vp2;
+	p1 = (const STR *)vp1;
+	p2 = (const STR *)vp2;
 
 # define	SET_N(nf,ch)	(nf = (ch == '\n'))
 # define	IS_END(ch,nf)	(ch == Delimch && nf)

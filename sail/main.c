@@ -63,9 +63,9 @@ main(argc, argv)
 	char *p;
 	int i;
 
-	/* Open log file then revoke setgid privileges */
-	open_log();
-	setregid(getgid(), getgid());
+	gid = getgid();
+	egid = getegid();
+	setegid(gid);
 
 	(void) srand(getpid());
 	issetuid = getuid() != geteuid();

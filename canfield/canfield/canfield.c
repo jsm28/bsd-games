@@ -203,7 +203,7 @@ time_t acctstart;
 int dbfd = -1;
 
 void	askquit __P((int));
-void	cleanup __P((int));
+void	cleanup __P((int)) __attribute__((__noreturn__));
 void	cleanupboard __P((void));
 void	clearabovemovebox __P((void));
 void	clearbelowmovebox __P((void));
@@ -1427,7 +1427,7 @@ suspend()
 	move(21, 0);
 	refresh();
 	if (dbfd != -1) {
-		lseek(dbfd, uid * sizeof(struct betinfo), 0);
+		lseek(dbfd, uid * sizeof(struct betinfo), SEEK_SET);
 		write(dbfd, (char *)&total, sizeof(total));
 	}
 	kill(getpid(), SIGTSTP);
@@ -1753,7 +1753,7 @@ cleanup(dummy)
 	status = NOBOX;
 	updatebettinginfo();
 	if (dbfd != -1) {
-		lseek(dbfd, uid * sizeof(struct betinfo), 0);
+		lseek(dbfd, uid * sizeof(struct betinfo), SEEK_SET);
 		write(dbfd, (char *)&total, sizeof(total));
 		close(dbfd);
 	}

@@ -129,7 +129,7 @@ printuser(pw, printfail)
 		printf("Bad uid %d\n", pw->pw_uid);
 		return;
 	}
-	i = lseek(dbfd, pw->pw_uid * sizeof(struct betinfo), 0);
+	i = lseek(dbfd, pw->pw_uid * sizeof(struct betinfo), SEEK_SET);
 	if (i < 0)
 		warn("lseek %s", _PATH_SCORE);
 	i = read(dbfd, (char *)&total, sizeof(total));

@@ -94,7 +94,7 @@ int	nrandom __P((int));
 void	printhand __P((int *));
 void	printplayer __P((int));
 int	promove __P((void));
-void	usage __P((void));
+void	usage __P((void)) __attribute__((__noreturn__));
 int	usermove __P((void));
 
 int
@@ -114,8 +114,7 @@ main(argc, argv)
 			break;
 		case '?':
 		default:
-			(void)fprintf(stderr, "usage: fish [-p]\n");
-			exit(1);
+			usage();
 		}
 
 	srandom(time((time_t *)NULL));

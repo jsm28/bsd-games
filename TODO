@@ -26,9 +26,9 @@ The file BUGS lists known bugs; you may wish to work on some of those.
 
 1997-05-01 - Games with scorefiles should lock them when updating them.
 
-1997-07-15 - Get distribution permission for countmail, hack and larn.
-             Get licences of boggle and rogue clarified.  (See NetBSD
-             PR 5850.)
+1997-07-15 - Get distribution permission for hack and larn.  Get
+             licences of boggle and rogue clarified.  (See NetBSD PR
+             5850.)
 
 1997-12-15 - Backgammon should return sensible exit statuses on error.
 
@@ -42,3 +42,5 @@ The file BUGS lists known bugs; you may wish to work on some of those.
              make; see
              http://www.canb.auug.org.au/~millerp/rmch/recu-make-cons-harm.html
              for reasons to do this.
+
+1998-08-18 - Fix whatever makes rogue need -fwritable-strings.

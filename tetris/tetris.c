@@ -1,4 +1,4 @@
-/*	$NetBSD: tetris.c,v 1.3 1997/10/12 02:03:48 lukem Exp $	*/
+/*	$NetBSD: tetris.c,v 1.4 1997/08/10 02:25:45 perry Exp $	*/
 
 /*-
  * Copyright (c) 1992, 1993
@@ -64,8 +64,8 @@ __COPYRIGHT("@(#) Copyright (c) 1992, 1993\n\
 static	void	elide __P((void));
 static	void	setup_board __P((void));
 	int	main __P((int, char **));
-	void	onintr __P((int));
-	void	usage __P((void));
+	void	onintr __P((int)) __attribute__((__noreturn__));
+	void	usage __P((void)) __attribute__((__noreturn__));
 
 /*
  * Set up the initial board.  The bottom display row is completely set,
@@ -102,7 +102,7 @@ elide()
 		for (j = B_COLS - 2; *p++ != 0;) {
 			if (--j <= 0) {
 				/* this row is to be elided */
-				bzero(&board[base], B_COLS - 2);
+				memset(&board[base], 0, B_COLS - 2);
 				scr_update();
 				tsleep();
 				while (--base != 0)

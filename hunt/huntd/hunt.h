@@ -446,7 +446,7 @@ void		start_driver __P((void));
 void		stmonitor __P((PLAYER *));
 void		stplayer __P((PLAYER *, int));
 char		translate __P((char));
-SIGNAL_TYPE	cleanup __P((int));
+SIGNAL_TYPE	cleanup __P((int)) __attribute__((__noreturn__));
 SIGNAL_TYPE	intr __P((int));
 SIGNAL_TYPE	sigalrm __P((int));
 SIGNAL_TYPE	sigemt __P((int));

@@ -40,6 +40,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <setjmp.h>
+#include <sys/types.h>
 #include "machdep.h"
 
 	/* program mode */
@@ -57,6 +58,8 @@ char nobells;				/* -b, don't ring bell before Signal */
 
 	/* other initial modes */
 char issetuid;				/* running setuid */
+gid_t gid;
+gid_t egid;
 
 #define die()		((rand() >> 3) % 6 + 1)
 #define sqr(a)		((a) * (a))
@@ -359,7 +362,6 @@ int angle __P((int, int));
 int gunsbear __P((struct ship *, struct ship *));
 int portside __P((struct ship *, struct ship *, int));
 int colours __P((struct ship *));
-void open_log __P((void));
 void logger __P((struct ship *));
 
 /* parties.c */
@@ -368,8 +370,8 @@ int boarding __P((struct ship *, int));
 void unboard __P((struct ship *, struct ship *, int));
 
 /* pl_1.c */
-void leave __P((int));
-void choke __P((int));
+void leave __P((int)) __attribute__((__noreturn__));
+void choke __P((int)) __attribute__((__noreturn__));
 void child __P((int));
 
 /* pl_2.c */

@@ -36,3 +36,5 @@
  */
 
 #define	_PATH_LOGFILE	"@sail_scorefile@"
+#define _PATH_SYNC	"@sail_dir@/#sailsink.%d"
+#define _PATH_LOCK	"@sail_dir@/#saillock.%d"

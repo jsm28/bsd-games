@@ -128,12 +128,13 @@ Further information
 
 Some subdirectories have README.linux files.  If you are still having
 trouble with a program, check this file first -- it may contain some
-helpful hints, or information about further configuaration options.
+helpful hints, or information about further configuration options.
 
 See TODO for information on what needs to be improved in this package;
 you may want to volunteer for some of the things in there.
 
-The file BUGS lists known bugs.
+The file BUGS lists known bugs.  The README file discusses how to
+produce useful bug reports.
 
 Joseph S. Myers
 jsm28@cam.ac.uk

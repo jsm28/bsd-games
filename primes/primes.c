@@ -110,7 +110,7 @@ extern int pattern_size;	/* length of pattern array */
 int	main __P((int, char *[]));
 void	primes __P((ubig, ubig));
 ubig	read_num_buf __P((void));
-void	usage __P((void));
+void	usage __P((void)) __attribute__((__noreturn__));
 
 int
 main(argc, argv)

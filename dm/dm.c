@@ -78,7 +78,7 @@ const char *hour __P((int));
 double	load __P((void));
 int	main __P((int, char *[]));
 void	nogamefile __P((void));
-void	play __P((char **));
+void	play __P((char **)) __attribute__((__noreturn__));
 void	read_config __P((void));
 int	users __P((void));
 

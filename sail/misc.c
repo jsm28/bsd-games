@@ -42,7 +42,6 @@ __RCSID("$NetBSD: misc.c,v 1.5 1997/10/13 19:44:38 christos Exp $");
 #endif
 #endif /* not lint */
 
-#include <err.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <sys/file.h>
@@ -199,62 +198,56 @@ struct ship *sp;
 	return sp->file->FS ? flag : tolower(flag);
 }
 
-static FILE *log_fp;
-
-void
-open_log()
-{
-	log_fp = fopen(_PATH_LOGFILE, "r+");
-	if (log_fp == NULL)
-		warn("open %s", _PATH_LOGFILE);
-}
-
 void
 logger(s)
 struct ship *s;
 {
+	FILE *fp;
 	int persons;
 	int n;
 	struct logs log[NLOG];
 	float net;
 	struct logs *lp;
 
-	if (log_fp == NULL)
+	setegid(egid);
+	if ((fp = fopen(_PATH_LOGFILE, "r+")) == NULL) {
+		setegid(gid);
 		return;
+	}
+	setegid(gid);
 #ifdef LOCK_EX
-	if (flock(fileno(log_fp), LOCK_EX) < 0)
+	if (flock(fileno(fp), LOCK_EX) < 0)
 		return;
 #endif
 	net = (float)s->file->points / s->specs->pts;
-	persons = getw(log_fp);
-	n = fread((char *)log, sizeof(struct logs), NLOG, log_fp);
+	persons = getw(fp);
+	n = fread((char *)log, sizeof(struct logs), NLOG, fp);
 	for (lp = &log[n]; lp < &log[NLOG]; lp++)
 		lp->l_name[0] = lp->l_uid = lp->l_shipnum
 			= lp->l_gamenum = lp->l_netpoints = 0;
-	rewind(log_fp);
+	rewind(fp);
 	if (persons < 0)
-		(void) putw(1, log_fp);
+		(void) putw(1, fp);
 	else
-		(void) putw(persons + 1, log_fp);
+		(void) putw(persons + 1, fp);
 	for (lp = log; lp < &log[NLOG]; lp++)
 		if (net > (float)lp->l_netpoints
 		    / scene[lp->l_gamenum].ship[lp->l_shipnum].specs->pts) {
 			(void) fwrite((char *)log,
-				sizeof (struct logs), lp - log, log_fp);
+				sizeof (struct logs), lp - log, fp);
 			(void) strcpy(log[NLOG-1].l_name, s->file->captain);
 			log[NLOG-1].l_uid = getuid();
 			log[NLOG-1].l_shipnum = s->file->index;
 			log[NLOG-1].l_gamenum = game;
 			log[NLOG-1].l_netpoints = s->file->points;
 			(void) fwrite((char *)&log[NLOG-1],
-				sizeof (struct logs), 1, log_fp);
+				sizeof (struct logs), 1, fp);
 			(void) fwrite((char *)lp,
-				sizeof (struct logs), &log[NLOG-1] - lp, log_fp);
+				sizeof (struct logs), &log[NLOG-1] - lp, fp);
 			break;
 		}
-	fflush(log_fp);
-	rewind(log_fp);
 #ifdef LOCK_EX
-	(void) flock(fileno(log_fp), LOCK_UN);
+	(void) flock(fileno(fp), LOCK_UN);
 #endif
+	(void) fclose(fp);
 }

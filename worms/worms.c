@@ -185,8 +185,8 @@ static struct	worm {
 
 void	 fputchar __P((int));
 int	 main __P((int, char **));
-void	 nomem __P((void));
-void	 onsig __P((int));
+void	 nomem __P((void)) __attribute__((__noreturn__));
+void	 onsig __P((int)) __attribute__((__noreturn__));
 int	 tgetent __P((char *, char *));
 int	 tgetflag __P((char *));
 int	 tgetnum __P((char *));

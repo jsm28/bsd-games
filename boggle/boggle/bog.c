@@ -703,7 +703,7 @@ int
 compar(p, q)
 	const void *p, *q;
 {
-	return (strcmp(*(char **)p, *(char **)q));
+	return (strcmp(*(char *const *)p, *(char *const *)q));
 }
 
 void
