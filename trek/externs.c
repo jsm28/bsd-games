@@ -48,7 +48,7 @@ __RCSID("$NetBSD: externs.c,v 1.4 1997/10/12 21:24:48 christos Exp $");
 **	global variable definitions
 */
 
-struct device	Device[NDEV] =
+const struct device	Device[NDEV] =
 {
 	{ "warp drive",		"Scotty" },
 	{ "S.R. scanners",	"Scotty" },
@@ -68,7 +68,7 @@ struct device	Device[NDEV] =
 	{ "*ERR 15*",		"Nobody" }
 };
 
-char	*Systemname[NINHAB] =
+const char	*const Systemname[NINHAB] =
 {
 	"ERROR",
 	"Talos IV",

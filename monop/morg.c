@@ -48,8 +48,8 @@ __RCSID("$NetBSD: morg.c,v 1.6 1998/08/30 09:19:39 veego Exp $");
  *	These routines deal with mortgaging.
  */
 
-static char	*names[MAX_PRP+2],
-		*morg_coms[]	= {
+static const char	*names[MAX_PRP+2],
+		*const morg_coms[]	= {
 			"quit",		/*  0 */
 			"print",	/*  1 */
 			"where",	/*  2 */

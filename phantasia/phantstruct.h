@@ -121,6 +121,6 @@ struct	charstats			/* character type statistics */
 
 struct menuitem				/* menu item for purchase */
     {
-    char	*item;		/* menu item name */
+    const char	*item;		/* menu item name */
     double	cost;		/* cost of item */
     };

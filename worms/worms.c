@@ -70,10 +70,11 @@ __RCSID("$NetBSD: worms.c,v 1.10 1998/09/13 15:27:31 hubertf Exp $");
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <termcap.h>
 #include <termios.h>
 #include <unistd.h>
 
-static struct options {
+static const struct options {
 	int nopts;
 	int opts[3];
 }
@@ -170,10 +171,10 @@ static struct options {
 #define	cursor(c, r)	tputs(tgoto(CM, c, r), 1, fputchar)
 
 char *tcp;
-static char	flavor[] = {
+static const char	flavor[] = {
 	'O', '*', '#', '$', '%', '0', '@', '~'
 };
-static short	xinc[] = {
+static const short	xinc[] = {
 	1,  1,  1,  0, -1, -1, -1,  0
 }, yinc[] = {
 	-1,  0,  1,  1,  1,  0, -1, -1
@@ -183,16 +184,10 @@ static struct	worm {
 	short *xpos, *ypos;
 } *worm;
 
-void	 fputchar __P((int));
+int	 fputchar __P((int));
 int	 main __P((int, char **));
 void	 nomem __P((void)) __attribute__((__noreturn__));
 void	 onsig __P((int)) __attribute__((__noreturn__));
-int	 tgetent __P((char *, char *));
-int	 tgetflag __P((char *));
-int	 tgetnum __P((char *));
-char	*tgetstr __P((char *, char **));
-char	*tgoto __P((char *, int, int));
-int	 tputs __P((char *, int, void (*)(int)));
 
 int
 main(argc, argv)
@@ -202,13 +197,14 @@ main(argc, argv)
 	extern char *UP;
 	int x, y, h, n;
 	struct worm *w;
-	struct options *op;
+	const struct options *op;
 	short *ip;
 	char *term;
 	int CO, IN, LI, last, bottom, ch, length, number, trail, Wrap;
 	short **ref;
-	char *AL, *BC, *CM, *EI, *HO, *IC, *IM, *IP, *SR;
-	char *field, tcb[100], *mp;
+	const char *AL, *BC, *CM, *EI, *HO, *IC, *IM, *IP, *SR;
+	const char *field;
+	char tcb[100], *mp;
 	struct termios ti;
 #ifdef TIOCGWINSZ
 	struct winsize ws;
@@ -333,7 +329,7 @@ main(argc, argv)
 	tputs(tgetstr("ti", &tcp), 1, fputchar);
 	tputs(tgetstr("cl", &tcp), 1, fputchar);
 	if (field) {
-		char *p = field;
+		const char *p = field;
 
 		for (y = bottom; --y >= 0;) {
 			for (x = CO; --x >= 0;) {
@@ -450,11 +446,11 @@ onsig(signo)
 	exit(0);
 }
 
-void
+int
 fputchar(c)
 	int c;
 {
-	(void)putchar(c);
+	return putchar(c);
 }
 
 void

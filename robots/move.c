@@ -271,7 +271,7 @@ do_move(dy, dx)
  */
 bool
 eaten(pos)
-	COORD	*pos;
+	const COORD	*pos;
 {
 	int	x, y;
 

@@ -76,6 +76,8 @@ int	op_sqr;
 	OWN	*op;
 
 	op = (OWN *)calloc(1, sizeof (OWN));
+	if (op == NULL)
+		errx(1, "out of memory");
 	op->sqr = &board[op_sqr];
 	val = value(op->sqr);
 	last_tp = NULL;

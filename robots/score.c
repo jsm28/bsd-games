@@ -45,7 +45,7 @@ __RCSID("$NetBSD: score.c,v 1.5 1997/10/12 14:16:28 lukem Exp $");
 # include	"robots.h"
 # include	"pathnames.h"
 
-char	*Scorefile = _PATH_SCORE;
+const char	*Scorefile = _PATH_SCORE;
 
 int	Max_per_uid = MAX_PER_UID;
 
@@ -138,9 +138,10 @@ set_name(scp)
 	SCORE	*scp;
 {
 	PASSWD	*pp;
+	static char unknown[] = "???";
 
 	if ((pp = getpwuid(scp->s_uid)) == NULL)
-		pp->pw_name = "???";
+		pp->pw_name = unknown;
 	strncpy(scp->s_name, pp->pw_name, MAXNAME);
 }
 

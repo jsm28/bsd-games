@@ -61,7 +61,7 @@ __RCSID("$NetBSD: srscan.c,v 1.4 1997/10/12 21:25:19 christos Exp $");
 **	The current quadrant is filled in on the computer chart.
 */
 
-char	*Color[4] =
+const char	*const Color[4] =
 {
 	"GREEN",
 	"DOCKED",
@@ -75,10 +75,10 @@ int	f;
 {
 	int		i, j;
 	int		statinfo;
-	char		*s;
+	const char	*s;
 	int		percent;
 	struct quad	*q = NULL;
-	struct cvntab		*p;
+	const struct cvntab	*p;
 
 	if (f >= 0 && check_out(SRSCAN))
 	{

@@ -52,9 +52,9 @@ __RCSID("$NetBSD: cards.c,v 1.5 1998/08/30 09:19:39 veego Exp $");
 # define	GOJF	'F'	/* char for get-out-of-jail-free cards	*/
 
 # ifndef DEV
-static char	*cardfile	= _PATH_CARDS;
+static const char	*cardfile	= _PATH_CARDS;
 # else
-static char	*cardfile	= "cards.pck";
+static const char	*cardfile	= "cards.pck";
 # endif
 
 static FILE	*deckf;
@@ -91,6 +91,8 @@ DECK	*dp; {
 	int	i;
 
 	dp->offsets = (long *) calloc(sizeof (long), dp->num_cards);
+	if (dp->offsets == NULL)
+		errx(1, "out of memory");
 	if (fread(dp->offsets, sizeof(long), dp->num_cards, deckf) != (size_t)dp->num_cards) {
 		perror(cardfile);
 		exit(1);
@@ -121,7 +123,7 @@ DECK	*dp;
 	OWN		*op;
 
 	do {
-		fseek(deckf, dp->offsets[dp->last_card], 0);
+		fseek(deckf, dp->offsets[dp->last_card], SEEK_SET);
 		dp->last_card = ++(dp->last_card) % dp->num_cards;
 		type_maj = getc(deckf);
 	} while (dp->gojf_used && type_maj == GOJF);

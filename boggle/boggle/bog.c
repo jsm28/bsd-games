@@ -526,7 +526,7 @@ validword(word)
 	const char *q, *w;
 
 	j = word[0] - 'a';
-	if (dictseek(dictfp, dictindex[j].start, 0) < 0) {
+	if (dictseek(dictfp, dictindex[j].start, SEEK_SET) < 0) {
 		(void) fprintf(stderr, "Seek error\n");
 		cleanup();
 		exit(1);
@@ -567,7 +567,7 @@ checkdict()
 	prevch ='a';
 	qi = &wordpath[MAXWORDLEN + 1];
 
-	(void) dictseek(dictfp, 0L, 0);
+	(void) dictseek(dictfp, 0L, SEEK_SET);
 	while ((w = nextword(dictfp)) != NULL) {
 		if (wordlen < minlength)
 			continue;

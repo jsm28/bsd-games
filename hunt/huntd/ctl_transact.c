@@ -54,10 +54,10 @@ ctl_transact(target, msg, type, rp)
 	 * the proper type is obtained.
 	 */
 	do {
-		wait.tv_sec = CTL_WAIT;
-		wait.tv_usec = 0;
 		/* resend message until a response is obtained */
 		for (retries = MAX_RETRY; retries > 0; retries -= 1) {
+			wait.tv_sec = CTL_WAIT;
+			wait.tv_usec = 0;
 			cc = sendto(ctl_sockt, (char *)&msg, sizeof (msg), 0,
 			    (struct sockaddr *)&daemon_addr, sizeof (daemon_addr));
 			if (cc != sizeof (msg)) {

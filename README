@@ -80,11 +80,13 @@ worms:		random worms scurrying across your screen
 wump:		hunt the wumpus
 
 If you have questions about bsd-games or bsd-games-non-free you can
-contact me at <jsm28@cam.ac.uk>.  Bug reports should state the
-versions of ncurses and libc used, unless clearly not relevant (e.g.,
-bugs in data files, or where you have an analysis and patch).  If you
-want to be informed by email of new releases when they come out,
-please let me know.
+contact me at <jsm28@cam.ac.uk> (this is the preferred address for
+mail about bsd-games; but if you find it is no longer valid you could
+try <J.S.Myers@dpmms.cam.ac.uk> or <jsm@octomino.demon.co.uk>).  Bug
+reports should state the versions of ncurses and libc used, unless
+clearly not relevant (e.g., bugs in data files, or where you have an
+analysis and patch).  If you want to be informed by email of new
+releases when they come out, please let me know.
 
 Known bugs are listed in the file BUGS; please do not send bug reports
 for bugs listed there, but patches that fix them are welcome.
@@ -100,3 +102,9 @@ a discussion of how to produce good bug reports.
 
 Joseph S. Myers
 jsm28@cam.ac.uk
+
+
+
+Local Variables:
+mode: text
+End:

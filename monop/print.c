@@ -44,9 +44,9 @@ __RCSID("$NetBSD: print.c,v 1.4 1997/10/12 17:45:22 christos Exp $");
 
 # include	"monop.ext"
 
-static char *header = "Name      Own      Price Mg # Rent";
+static const char *header = "Name      Own      Price Mg # Rent";
 
-static void printmorg __P((SQUARE *));
+static void printmorg __P((const SQUARE *));
 
 /*
  *	This routine prints out the current board
@@ -167,7 +167,7 @@ bool	eoln;
  */
 static void
 printmorg(sqp)
-SQUARE	*sqp;
+	const SQUARE	*sqp;
 {
 
 	if (sqp->desc->morg)

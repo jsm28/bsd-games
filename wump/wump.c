@@ -730,7 +730,7 @@ int_compare(a, b)
 void
 instructions()
 {
-	char *pager;
+	const char *pager;
 	pid_t pid;
 	int status;
 	int fd;

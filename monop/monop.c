@@ -119,6 +119,8 @@ blew_it:
 			break;
 	}
 	cur_p = play = (PLAY *) calloc(num_play, sizeof (PLAY));
+	if (play == NULL)
+		errx(1, "out of memory");
 	for (i = 0; i < num_play; i++) {
 over:
 		printf("Player %d's name: ", i + 1);
@@ -127,7 +129,10 @@ over:
 		if (sp == buf)
 			goto over;
 		*sp++ = '\0';
-		strcpy(name_list[i]=play[i].name=(char *)calloc(1,sp-buf),buf);
+		name_list[i] = play[i].name = (char *)calloc(1, sp - buf);
+		if (name_list[i] == NULL)
+			errx(1, "out of memory");
+		strcpy(play[i].name, buf);
 		play[i].money = 1500;
 	}
 	name_list[i++] = "done";

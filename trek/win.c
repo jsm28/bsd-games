@@ -65,7 +65,7 @@ void
 win()
 {
 	long		s;
-	struct cvntab	*p = NULL;
+	const struct cvntab	*p = NULL;
 	extern jmp_buf env;
 
 	sleep(1);

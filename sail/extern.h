@@ -216,7 +216,7 @@ struct File {
 };
 
 struct ship {
-	char *shipname;			/* 0 */
+	const char *shipname;		/* 0 */
 	struct shipspecs *specs;	/* 2 */
 	unsigned char nationality;	/* 4 */
 	short shiprow;			/* 6 */
@@ -230,7 +230,7 @@ struct scenario {
 	char windspeed;			/* 2 */
 	char windchange;		/* 4 */
 	unsigned char vessels;		/* 12 */
-	char *name;			/* 14 */
+	const char *name;		/* 14 */
 	struct ship ship[NSHIP];	/* 16 */
 };
 extern struct scenario scene[];
@@ -268,29 +268,29 @@ struct ship *ls;		/* &cc->ship[cc->vessels] */
 struct windeffects {
 	char A, B, C, D;
 };
-extern struct windeffects WET[7][6];
+extern const struct windeffects WET[7][6];
 
 struct Tables {
 	char H, G, C, R;
 };
-extern struct Tables RigTable[11][6];
-extern struct Tables HullTable[11][6];
+extern const struct Tables RigTable[11][6];
+extern const struct Tables HullTable[11][6];
 
-extern char AMMO[9][4];
-extern char HDT[9][10];
-extern char HDTrake[9][10];
-extern char QUAL[9][5];
-extern char MT[9][3];
+extern const char AMMO[9][4];
+extern const char HDT[9][10];
+extern const char HDTrake[9][10];
+extern const char QUAL[9][5];
+extern const char MT[9][3];
 
-extern char *countryname[];
-extern char *classname[];
-extern char *directionname[];
-extern char *qualname[];
-extern char loadname[];
+extern const char *const countryname[];
+extern const char *const classname[];
+extern const char *const directionname[];
+extern const char *const qualname[];
+extern const char loadname[];
 
-extern char rangeofshot[];
+extern const char rangeofshot[];
 
-extern char dr[], dc[];
+extern const char dr[], dc[];
 
 int winddir;
 int windspeed;
@@ -316,10 +316,10 @@ int next __P((void));
 void thinkofgrapples __P((void));
 void checkup __P((void));
 void prizecheck __P((void));
-int str_end __P((char *));
+int str_end __P((const char *));
 void closeon __P((struct ship *, struct ship *, char[], int, int, int));
 int score __P((char[], struct ship *, struct ship *, int));
-void move_ship __P((char *, struct ship *, unsigned char *, short *, short *, char *));
+void move_ship __P((const char *, struct ship *, unsigned char *, short *, short *, char *));
 void try __P((char[], char [], int, int, int, int, int, struct ship *,
     struct ship *, int *, int));
 void rmend __P((char *));
@@ -385,7 +385,7 @@ void unfoulplayer __P((void));
 void changesail __P((void));
 void acceptsignal __P((void));
 void lookout __P((void));
-char *saywhat __P((struct ship *, int));
+const char *saywhat __P((struct ship *, int));
 void eyeball __P((struct ship *));
 
 /* pl_5.c */
@@ -407,10 +407,10 @@ void Signal __P((const char *, struct ship *, ...))
 void Msg __P((const char *, ...))
 	 __attribute__((__format__(__printf__,1,2)));
 void Scroll __P((void));
-void prompt __P((char *, struct ship *));
+void prompt __P((const char *, struct ship *));
 void endprompt __P((int));
-int sgetch __P((char *, struct ship *, int));
-void sgetstr __P((char *, char *, int));
+int sgetch __P((const char *, struct ship *, int));
+void sgetstr __P((const char *, char *, int));
 void draw_screen __P((void));
 void draw_view __P((void));
 void draw_turn __P((void));
@@ -437,6 +437,7 @@ void makemsg __P((struct ship *, const char *, ...))
 int sync_exists __P((int));
 int sync_open __P((void));
 void sync_close __P((int));
-void Write __P((int, struct ship *, int, long, long, long, long));
+void Write __P((int, struct ship *, long, long, long, long));
+void Writestr __P((int, struct ship *, const char *));
 int Sync __P((void));
-int sync_update __P((int, struct ship *, long, long, long, long));
+int sync_update __P((int, struct ship *, const char *, long, long, long, long));

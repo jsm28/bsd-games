@@ -1,4 +1,4 @@
-/*	$NetBSD: rogue.h,v 1.7 1998/09/13 15:27:30 hubertf Exp $	*/
+/*	$NetBSD: rogue.h,v 1.8 1998/11/10 13:01:32 hubertf Exp $	*/
 
 /*
  * Copyright (c) 1988, 1993

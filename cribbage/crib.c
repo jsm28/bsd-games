@@ -76,6 +76,8 @@ main(argc, argv)
 	f = fopen(_PATH_LOG, "a");
 	if (f == NULL)
 		warn("fopen %s", _PATH_LOG);
+	if (f != NULL && fileno(f) < 3)
+		exit(1);
 
 	/* Revoke setgid privileges */
 	setregid(getgid(), getgid());

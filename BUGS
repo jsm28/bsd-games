@@ -16,8 +16,8 @@ variable of static storage duration assigned to must be of type
 volatile sig_atomic_t.  (See adventure for an example of proper
 handling.)
 
-Some games may not check for errors when they should (including
-allocation failure), or may return inappropriate exit statuses.
+Some games may not check for errors when they should, or may return
+inappropriate exit statuses.
 
 Some games may have arbitrary limits that they should not have.
 

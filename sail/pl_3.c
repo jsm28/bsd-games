@@ -181,7 +181,7 @@ acceptcombat()
 			if (load == L_GRAPE)
 				chits = hit;
 			else {
-				struct Tables *t;
+				const struct Tables *t;
 				if (hit > 10)
 					hit = 10;
 				t = &(shootat == RIGGING ? RigTable : HullTable)
@@ -234,8 +234,8 @@ grapungrap()
 		case 'g':
 			if (die() < 3
 			    || ms->nationality == capship(sp)->nationality) {
-				Write(W_GRAP, ms, 0, sp->file->index, 0, 0, 0);
-				Write(W_GRAP, sp, 0, player, 0, 0, 0);
+				Write(W_GRAP, ms, sp->file->index, 0, 0, 0);
+				Write(W_GRAP, sp, player, 0, 0, 0);
 				Msg("Attempt succeeds!");
 				makesignal(ms, "grappled with $$", sp);
 			} else

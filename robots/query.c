@@ -50,7 +50,7 @@ __RCSID("$NetBSD: query.c,v 1.4 1997/10/12 14:10:01 lukem Exp $");
  */
 int
 query(prompt)
-	char	*prompt;
+	const char	*prompt;
 {
 	int	c, retval;
 	int	y, x;

@@ -99,7 +99,7 @@ getscores(fpp)
 {
 	int sd, mint, lck;
 	mode_t mask;
-	char *mstr, *human;
+	const char *mstr, *human;
 	FILE *sf;
 
 	if (fpp != NULL) {

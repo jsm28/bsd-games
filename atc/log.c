@@ -1,4 +1,4 @@
-/*	$NetBSD: log.c,v 1.7 1998/07/24 23:22:26 hubertf Exp $	*/
+/*	$NetBSD: log.c,v 1.8 1998/11/10 13:43:31 hubertf Exp $	*/
 
 /*-
  * Copyright (c) 1990, 1993
@@ -50,7 +50,7 @@
 #if 0
 static char sccsid[] = "@(#)log.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: log.c,v 1.7 1998/07/24 23:22:26 hubertf Exp $");
+__RCSID("$NetBSD: log.c,v 1.8 1998/11/10 13:43:31 hubertf Exp $");
 #endif
 #endif not lint
 
@@ -117,6 +117,8 @@ open_score_file()
 		warn("open %s", _PATH_SCORE);
 		return;
 	}
+	if (score_fd < 3)
+		exit(1);
 	/* Set the close-on-exec flag.  If this fails for any reason, quit
 	 * rather than leave the score file open to tampering.  */
 	flags = fcntl(score_fd, F_GETFD);

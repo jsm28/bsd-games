@@ -66,9 +66,12 @@ main(argc, argv)
 
 	(void) puts("___________");
 	if (argc > 1)
-		while ((p = *++argv) != NULL)
+		while ((p = *++argv) != NULL) {
 			for (; *p; ++p)
 				putppt((int)*p);
+			if ((*(argv + 1)))
+				putppt((int)' ');
+		}
 	else while ((c = getchar()) != EOF)
 		putppt(c);
 	(void) puts("___________");

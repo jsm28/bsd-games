@@ -74,6 +74,7 @@ static	void	stopset __P((int));
  * Capabilities from TERMCAP.
  */
 char	PC, *BC, *UP;		/* tgoto requires globals: ugh! */
+static char BCdefault[] = "\b";
 #ifndef NCURSES_VERSION
 speed_t	ospeed;
 #endif
@@ -194,7 +195,7 @@ scr_init()
 			*p->tcaddr = tgetnum(p->tcname);
 	}
 	if (bsflag)
-		BC = "\b";
+		BC = BCdefault;
 	else if (BC == NULL && bcstr != NULL)
 		BC = bcstr;
 	if (CLstr == NULL)
@@ -341,7 +342,7 @@ scr_end()
 
 void
 stop(why)
-	char *why;
+	const char *why;
 {
 
 	if (isset)

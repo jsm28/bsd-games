@@ -67,7 +67,7 @@ __RCSID("$NetBSD: help.c,v 1.4 1997/10/12 21:24:53 christos Exp $");
 **	to drop you.  After that, it's your problem.
 */
 
-char	*Cntvect[3] =
+const char	*const Cntvect[3] =
 {"first", "second", "third"};
 
 /*ARGSUSED*/

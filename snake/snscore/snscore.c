@@ -56,7 +56,7 @@ __RCSID("$NetBSD: snscore.c,v 1.8 1998/09/11 14:25:22 hubertf Exp $");
 #include <unistd.h>
 #include "pathnames.h"
 
-char *recfile = _PATH_RAWSCORES;
+const char *recfile = _PATH_RAWSCORES;
 #define MAXPLAYERS 65534
 
 struct	player	{
@@ -105,8 +105,9 @@ main()
 			if (p == NULL)
 				continue;
 			q = p -> pw_name;
-			players[noplayers].name = malloc(strlen(q) + 1);
-			strcpy(players[noplayers].name, q);
+			players[noplayers].name = strdup(q);
+			if (players[noplayers].name == NULL)
+				errx(1, "out of memory");
 			noplayers++;
 		}
 	}

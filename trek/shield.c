@@ -63,7 +63,7 @@ __RCSID("$NetBSD: shield.c,v 1.6 1998/08/30 09:19:40 veego Exp $");
 **	so you get partial hits.
 */
 
-struct cvntab Udtab[] =
+const struct cvntab Udtab[] =
 {
 	{ "u",		"p",		(cmdfun)1,	0 },
 	{ "d",		"own",		(cmdfun)0,	0 },
@@ -75,9 +75,9 @@ shield(f)
 int	f;
 {
 	int		i;
-	struct cvntab	*r;
+	const struct cvntab	*r;
 	char		s[100];
-	char		*device, *dev2, *dev3;
+	const char	*device, *dev2, *dev3;
 	int		ind;
 	char		*stat;
 

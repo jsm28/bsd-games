@@ -52,7 +52,7 @@ __RCSID("$NetBSD: misc.c,v 1.6 1997/10/12 17:45:15 christos Exp $");
  */
 int
 getyn(prompt)
-char	*prompt;
+	const char	*prompt;
 {
 
 	int	com;
@@ -96,7 +96,7 @@ next_play()
  */
 int
 get_int(prompt)
-char	*prompt;
+	const char	*prompt;
 {
 
 	int		num;

@@ -40,11 +40,11 @@
 
 extern bool	trading, spec, fixing, told_em;
 
-extern char	*yn[], *comlist[], *name_list[], *lucky_mes[];
+extern const char	*const yn[], *const comlist[], *name_list[], *const lucky_mes[];
 
 extern int	num_play, player, num_doub, num_luck;
 
-extern void (*func[]) __P((void));
+extern void (*const func[]) __P((void));
 
 extern DECK	deck[2];
 

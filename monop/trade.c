@@ -53,7 +53,7 @@ struct trd_st {			/* how much to give to other player	*/
 
 typedef	struct trd_st	TRADE;
 
-static char	*plist[MAX_PRP+2];
+static const char	*plist[MAX_PRP+2];
 
 static int	used[MAX_PRP];
 

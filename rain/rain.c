@@ -81,7 +81,7 @@ main(argc, argv)
 {
 	extern char *UP;
 	int x, y, j;
-	char *CM, *BC, *DN, *ND, *term;
+	const char *CM, *BC, *DN, *ND, *term;
 	char *TI, *tcp, *mp, tcb[100];
 	long cols, lines;
 	int xpos[5], ypos[5];

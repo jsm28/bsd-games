@@ -62,11 +62,11 @@ int  totalfrom, crewfrom[3];
 				totalfrom = 0;
 			}
 		}
-		Write(W_CREW, from, 0, crewfrom[0], crewfrom[1], crewfrom[2], 0);
+		Write(W_CREW, from, crewfrom[0], crewfrom[1], crewfrom[2], 0);
 	} else if (totalfrom) {
 		pcfrom -= totalfrom;
 		pcfrom = pcfrom < 0 ? 0 : pcfrom;
-		Write(W_PCREW, from, 0, pcfrom, 0, 0, 0);
+		Write(W_PCREW, from, pcfrom, 0, 0, 0);
 	}
 }
 

@@ -1,4 +1,4 @@
-/*	$NetBSD: init.c,v 1.6 1998/07/27 01:12:35 mycroft Exp $	*/
+/*	$NetBSD: init.c,v 1.7 1998/11/10 13:01:32 hubertf Exp $	*/
 
 /*
  * Copyright (c) 1988, 1993
@@ -41,7 +41,7 @@
 #if 0
 static char sccsid[] = "@(#)init.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: init.c,v 1.6 1998/07/27 01:12:35 mycroft Exp $");
+__RCSID("$NetBSD: init.c,v 1.7 1998/11/10 13:01:32 hubertf Exp $");
 #endif
 #endif /* not lint */
 
@@ -57,6 +57,7 @@ __RCSID("$NetBSD: init.c,v 1.6 1998/07/27 01:12:35 mycroft Exp $");
  *
  */
 
+#include <fcntl.h>
 #include "rogue.h"
 
 char login_name[MAX_OPT_LEN];
@@ -81,10 +82,17 @@ init(argc, argv)
 {
 	const char *pn;
 	int seed;
+	int fd;
 
 	gid = getgid();
 	egid = getegid();
 	setegid(gid);
+	/* Check for dirty tricks with closed fds 0, 1, 2 */
+	fd = open("/dev/null", O_RDONLY);
+	if (fd < 3)
+		exit(1);
+	close(fd);
+
 	seed = 0;
 	pn = md_gln();
 	if ((!pn) || (strlen(pn) >= MAX_OPT_LEN)) {
@@ -336,6 +344,8 @@ env_get_value(s, e, add_blank)
 		}
 	}
 	*s = md_malloc(MAX_OPT_LEN + 2);
+	if (*s == NULL)
+		clean_up("out of memory");
 	(void) strncpy(*s, t, i);
 	if (add_blank) {
 		(*s)[i++] = ' ';
@@ -350,6 +360,8 @@ init_str(str, dflt)
 {
 	if (!(*str)) {
 		*str = md_malloc(MAX_OPT_LEN + 2);
+		if (*str == NULL)
+			clean_up("out of memory");
 		(void) strcpy(*str, dflt);
 	}
 }

@@ -131,7 +131,7 @@ struct shape {
 	int	off[3];	/* offsets to other blots if center is at (0,0) */
 };
 
-extern struct shape shapes[];
+extern const struct shape shapes[];
 #define	randshape() (&shapes[random() % 7])
 
 /*
@@ -169,6 +169,6 @@ gid_t	gid, egid;
 
 char	key_msg[100];
 
-int	fits_in __P((struct shape *, int));
-void	place __P((struct shape *, int, int));
-void	stop __P((char *)) __attribute__((__noreturn__));
+int	fits_in __P((const struct shape *, int));
+void	place __P((const struct shape *, int, int));
+void	stop __P((const char *)) __attribute__((__noreturn__));

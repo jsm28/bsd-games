@@ -143,7 +143,7 @@ order_unstr(tbl)
 
 	for (i = 0; i < tbl->str_numstr; i++) {
 		(void) fread((char *) &pos, 1, sizeof pos, Dataf);
-		(void) fseek(Inf, ntohl(pos), 0);
+		(void) fseek(Inf, ntohl(pos), SEEK_SET);
 		if (i != 0)
 			(void) printf("%c\n", Delimch);
 		for (;;) {

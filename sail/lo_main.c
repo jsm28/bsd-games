@@ -52,7 +52,7 @@ __RCSID("$NetBSD: lo_main.c,v 1.5 1997/10/13 19:44:24 christos Exp $");
 #include "extern.h"
 #include "pathnames.h"
 
-char *title[] = {
+const char *const title[] = {
 	"Admiral", "Commodore", "Captain", "Captain",
 	"Captain", "Captain", "Captain", "Commander",
 	"Commander", "Lieutenant"

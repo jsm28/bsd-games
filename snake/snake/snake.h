@@ -53,11 +53,12 @@ struct tbuffer {
 	long t[4];
 } tbuffer;
 
-char	*CL, *UP, *DO, *ND, *BS,
+char	*CL, *UP, *ND,
 	*HO, *CM,
-	*TA, *LL,
+	*LL,
 	*KL, *KR, *KU, *KD,
 	*TI, *TE, *KS, *KE;
+const char *DO, *BS, *TA;
 int	LINES, COLUMNS;	/* physical screen size. */
 int	lcnt, ccnt;	/* user's idea of screen size */
 char	PC;
@@ -83,10 +84,10 @@ struct termios orig, new;
 #define	same(s1, s2)	((s1)->line == (s2)->line && (s1)->col == (s2)->col)
 
 
-void		apr __P((struct point *, const char *, ...));
+void		apr __P((const struct point *, const char *, ...));
 void		bs __P((void));
 void		chase __P((struct point *, struct point *));
-int		chk __P((struct point *));
+int		chk __P((const struct point *));
 void		clear __P((void));
 void		cook __P((void));
 void		cr __P((void));
@@ -96,7 +97,7 @@ void		down __P((void));
 void		drawbox __P((void));
 void		flushi __P((void));
 void		getcap __P((void));
-void		gto __P((struct point *));
+void		gto __P((const struct point *));
 void		home __P((void));
 void		length __P((int));
 void		ll __P((void));
@@ -106,25 +107,23 @@ void		move __P((struct point *));
 void		nd __P((void));
 int		outch __P((int));
 void		pch __P((int));
-void		pchar __P((struct point *, char));
+void		pchar __P((const struct point *, char));
 struct point   *point __P((struct point *, int, int));
 int		post __P((int, int));
 void		pr __P((const char *, ...));
 void		pstring __P((const char *));
 int		pushsnake __P((void));
-void		putpad __P((char *));
+void		putpad __P((const char *));
 void		my_raw __P((void));
-void		right __P((struct point *));
+void		right __P((const struct point *));
 void		setup __P((void));
-void		snap __P((void));
 void		snap __P((void));
 void		snrand __P((struct point *));
 void		spacewarp __P((int));
 void		stop __P((int)) __attribute__((__noreturn__));
-int		stretch __P((struct point *));
-int		stretch __P((struct point *));
+int		stretch __P((const struct point *));
 void		surround __P((struct point *));
 void		suspend __P((void));
 void		up __P((void));
-void		win __P((struct point *));
+void		win __P((const struct point *));
 void		winnings __P((int));

@@ -137,7 +137,7 @@ ciao()
 
 	printf("What would you like to call the saved version?\n");
 	/* XXX - should use fgetln to avoid arbitrary limit */
-	for (c = fname;; c++) {
+	for (c = fname; c < fname + sizeof fname - 1; c++) {
 		int ch;
 		ch = getchar();
 		if (ch == '\n' || ch == EOF)

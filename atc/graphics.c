@@ -1,4 +1,4 @@
-/*	$NetBSD: graphics.c,v 1.4 1997/10/10 02:07:11 lukem Exp $	*/
+/*	$NetBSD: graphics.c,v 1.5 1998/11/10 13:43:30 hubertf Exp $	*/
 
 /*-
  * Copyright (c) 1990, 1993
@@ -50,7 +50,7 @@
 #if 0
 static char sccsid[] = "@(#)graphics.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: graphics.c,v 1.4 1997/10/10 02:07:11 lukem Exp $");
+__RCSID("$NetBSD: graphics.c,v 1.5 1998/11/10 13:43:30 hubertf Exp $");
 #endif
 #endif /* not lint */
 

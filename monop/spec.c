@@ -44,7 +44,7 @@ __RCSID("$NetBSD: spec.c,v 1.4 1997/10/12 17:45:26 christos Exp $");
 
 # include	"monop.ext"
 
-static char	*perc[]	= {
+static const char	*const perc[]	= {
 	"10%", "ten percent", "%", "$200", "200", 0
 	};
 

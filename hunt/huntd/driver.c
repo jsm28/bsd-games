@@ -75,7 +75,7 @@ main(ac, av, ep)
 	extern int	optind;
 	extern char	*optarg;
 	int		c;
-	static struct timeval	linger = {	90, 0	};
+	struct timeval	linger;
 
 	First_arg = av[0];
 	if (ep == NULL || *ep == NULL)
@@ -214,6 +214,8 @@ again:
 	} while (Nplayer > 0);
 
 	read_fds = Fds_mask;
+	linger.tv_sec = 90;
+	linger.tv_usec = 0;
 	if (select(Num_fds, &read_fds, NULL, NULL, &linger) > 0) {
 		goto again;
 	}

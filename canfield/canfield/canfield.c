@@ -1689,6 +1689,8 @@ initall()
 
 	if (dbfd < 0)
 		return;
+	if (dbfd < 3)
+		exit(1);
 	i = lseek(dbfd, uid * sizeof(struct betinfo), SEEK_SET);
 	if (i < 0) {
 		close(dbfd);

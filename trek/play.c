@@ -58,7 +58,7 @@ __RCSID("$NetBSD: play.c,v 1.4 1997/10/12 21:25:07 christos Exp $");
 **	on how we are doing after the move.
 */
 
-struct cvntab	Comtab[] =
+const struct cvntab	Comtab[] =
 {
 	{ "abandon",		"",		abandon,	0 },
 	{ "ca",			"pture",	capture,	0 },
@@ -99,7 +99,7 @@ myreset(v)
 void
 play()
 {
-	struct cvntab		*r;
+	const struct cvntab		*r;
 
 	while (1)
 	{

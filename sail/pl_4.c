@@ -58,12 +58,12 @@ changesail()
 			if (sgetch("Increase to Full sails? ",
 				(struct ship *)0, 1) == 'y') {
 				changed = 1;
-				Write(W_FS, ms, 0, 1, 0, 0, 0);
+				Write(W_FS, ms, 1, 0, 0, 0);
 			}
 		} else {
 			if (sgetch("Reduce to Battle sails? ",
 				(struct ship *)0, 1) == 'y') {
-				Write(W_FS, ms, 0, 0, 0, 0, 0);
+				Write(W_FS, ms, 0, 0, 0, 0);
 				changed = 1;
 			}
 		}
@@ -83,7 +83,7 @@ acceptsignal()
 		;
 	p[-1] = '"';
 	*p = 0;
-	Write(W_SIGNAL, ms, 1, (long)buf, 0, 0, 0);
+	Writestr(W_SIGNAL, ms, buf);
 }
 
 void
@@ -104,7 +104,7 @@ lookout()
 	}
 }
 
-char *
+const char *
 saywhat(sp, flag)
 struct ship *sp;
 char flag;

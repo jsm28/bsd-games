@@ -109,7 +109,7 @@ int conditions;
 		if (conditions != LEAVE_SYNC) {
 			makemsg(ms, "Captain %s relinquishing.",
 				mf->captain);
-			Write(W_END, ms, 0, 0, 0, 0, 0);
+			Write(W_END, ms, 0, 0, 0, 0);
 			(void) Sync();
 		}
 	}

@@ -158,7 +158,7 @@ int	f;	/* f != 0 -- this quad;  f < 0 -- Enterprise's fault */
 {
 	struct quad	*q;
 	struct event	*e;
-	char		*name;
+	const char	*name;
 
 	if (f)
 	{

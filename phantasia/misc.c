@@ -10,7 +10,7 @@
 void
 movelevel()
 {
-	struct charstats *statptr;	/* for pointing into Stattable */
+	const struct charstats *statptr; /* for pointing into Stattable */
 	double  new;		/* new level */
 	double  inc;		/* increment between new and old levels */
 
@@ -60,15 +60,15 @@ movelevel()
 		death("Old age");
 }
 
-char   *
+const char   *
 descrlocation(playerp, shortflag)
 	struct player *playerp;
 	bool    shortflag;
 {
 	double  circle;		/* corresponding circle for coordinates */
 	int     quadrant;	/* quandrant of grid */
-	char   *label;		/* pointer to place name */
-	static char *nametable[4][4] =	/* names of places */
+	const char   *label;	/* pointer to place name */
+	static const char *const nametable[4][4] =	/* names of places */
 	{
 		{"Anorien", "Ithilien", "Rohan", "Lorien"},
 		{"Gondor", "Mordor", "Dunland", "Rovanion"},
@@ -412,7 +412,7 @@ displaystats()
 void
 allstatslist()
 {
-	static char *flags[] =	/* to print value of some bools */
+	static const char *const flags[] = /* to print value of some bools */
 	{
 		"False",
 		" True"
@@ -442,13 +442,13 @@ allstatslist()
 	    flags[(int)Player.p_palantir]);
 }
 
-char   *
+const char   *
 descrtype(playerp, shortflag)
 	struct player *playerp;
 	bool    shortflag;
 {
 	int     type;		/* for caluculating result subscript */
-	static char *results[] =/* description table */
+	static const char *const results[] =/* description table */
 	{
 		" Magic User", " MU",
 		" Fighter", " F ",
@@ -508,12 +508,12 @@ descrtype(playerp, shortflag)
 
 long
 findname(name, playerp)
-	char   *name;
+	const char   *name;
 	struct player *playerp;
 {
 	long    loc = 0;	/* location in the file */
 
-	fseek(Playersfp, 0L, 0);
+	fseek(Playersfp, 0L, SEEK_SET);
 	while (fread((char *) playerp, SZ_PLAYERSTRUCT, 1, Playersfp) == 1) {
 		if (strcmp(playerp->p_name, name) == 0) {
 			if (playerp->p_status != S_NOTUSED || Wizard)
@@ -531,7 +531,7 @@ allocrecord()
 {
 	long    loc = 0L;	/* location in file */
 
-	fseek(Playersfp, 0L, 0);
+	fseek(Playersfp, 0L, SEEK_SET);
 	while (fread((char *) &Other, SZ_PLAYERSTRUCT, 1, Playersfp) == 1) {
 		if (Other.p_status == S_NOTUSED)
 			/* found an empty record */
@@ -576,11 +576,11 @@ leavegame()
 
 void
 death(how)
-	char   *how;
+	const char   *how;
 {
 	FILE   *fp;		/* for updating various files */
 	int     ch;		/* input */
-	static char *deathmesg[] =
+	static const char *const deathmesg[] =
 	/* add more messages here, if desired */
 	{
 		"You have been wounded beyond repair.  ",
@@ -638,10 +638,10 @@ death(how)
 						{
 							mvaddstr(4, 0,
 							    "Your ring has taken control of you and turned you into a monster!\n");
-							fseek(Monstfp, 13L * SZ_MONSTERSTRUCT, 0);
+							fseek(Monstfp, 13L * SZ_MONSTERSTRUCT, SEEK_SET);
 							fread((char *) &Curmonster, SZ_MONSTERSTRUCT, 1, Monstfp);
 							strcpy(Curmonster.m_name, Player.p_name);
-							fseek(Monstfp, 13L * SZ_MONSTERSTRUCT, 0);
+							fseek(Monstfp, 13L * SZ_MONSTERSTRUCT, SEEK_SET);
 							fwrite((char *) &Curmonster, SZ_MONSTERSTRUCT, 1, Monstfp);
 							fflush(Monstfp);
 						}
@@ -684,7 +684,7 @@ writerecord(playerp, place)
 	struct player *playerp;
 	long    place;
 {
-	fseek(Playersfp, place, 0);
+	fseek(Playersfp, place, SEEK_SET);
 	fwrite((char *) playerp, SZ_PLAYERSTRUCT, 1, Playersfp);
 	fflush(Playersfp);
 }
@@ -768,7 +768,7 @@ readrecord(playerp, loc)
 	struct player *playerp;
 	long    loc;
 {
-	fseek(Playersfp, loc, 0);
+	fseek(Playersfp, loc, SEEK_SET);
 	fread((char *) playerp, SZ_PLAYERSTRUCT, 1, Playersfp);
 }
 
@@ -928,14 +928,14 @@ readmessage()
 {
 	move(3, 0);
 	clrtoeol();
-	fseek(Messagefp, 0L, 0);
+	fseek(Messagefp, 0L, SEEK_SET);
 	if (fgets(Databuf, SZ_DATABUF, Messagefp) != NULL)
 		addstr(Databuf);
 }
 
 void
 error(whichfile)
-	char   *whichfile;
+	const char   *whichfile;
 {
 	int     (*funcp) __P((const char *,...));
 
@@ -973,7 +973,7 @@ ill_sig(whichsig)
 	/* NOTREACHED */
 }
 
-char *
+const char *
 descrstatus(playerp)
 	struct player *playerp;
 {
@@ -1064,7 +1064,7 @@ collecttaxes(gold, gems)
 		dtemp = 0.0;
 		fread((char *) &dtemp, sizeof(double), 1, fp);
 		dtemp += floor(taxes);
-		fseek(fp, 0L, 0);
+		fseek(fp, 0L, SEEK_SET);
 		fwrite((char *) &dtemp, sizeof(double), 1, fp);
 		fclose(fp);
 	}

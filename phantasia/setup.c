@@ -9,7 +9,7 @@
 #include "include.h"
 
 int main __P((int, char *[]));
-void Error __P((char *, char *));
+void Error __P((const char *, const char *));
 double drandom __P((void));
 
 /**/
@@ -44,7 +44,7 @@ double drandom __P((void));
 /
 / ************************************************************************/
 
-static char *files[] = {		/* all files to create */
+static const char *const files[] = {		/* all files to create */
 	_PATH_MONST,
 	_PATH_PEOPLE,
 	_PATH_MESS,
@@ -56,14 +56,14 @@ static char *files[] = {		/* all files to create */
 	NULL,
 };
 
-char *monsterfile="monsters.asc";
+const char *monsterfile = "monsters.asc";
 
 int
 main(argc, argv)
 	int argc;
 	char *argv[];
 {
-	register char	**filename;	/* for pointing to file names */
+	register const char *const *filename; /* for pointing to file names */
 	register int	fd;		/* file descriptor */
 	FILE	*fp;			/* for opening files */
 	struct stat	fbuf;		/* for getting files statistics */
@@ -242,7 +242,7 @@ main(argc, argv)
 
 void
 Error(str, file)
-char	*str, *file;
+	const char	*str, *file;
 {
     fprintf(stderr, "Error: ");
     fprintf(stderr, str, file);

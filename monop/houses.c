@@ -44,8 +44,8 @@ __RCSID("$NetBSD: houses.c,v 1.4 1997/10/12 17:45:11 christos Exp $");
 
 #include "monop.ext"
 
-static char	*names[N_MON+2],
-		cur_prop[80];
+static const char	*names[N_MON+2];
+static char	cur_prop[80];
 
 static MON	*monops[N_MON];
 

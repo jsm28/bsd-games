@@ -58,7 +58,7 @@ getword()
 	inf = Dict;
 	for (;;) {
 		pos = (double) rand() / (RAND_MAX + 1.0) * (double) Dict_size;
-		fseek(inf, pos, 0);
+		fseek(inf, pos, SEEK_SET);
 		if (fgets(Word, BUFSIZ, inf) == NULL)
 			continue;
 		if (fgets(Word, BUFSIZ, inf) == NULL)

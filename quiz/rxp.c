@@ -85,24 +85,24 @@ typedef short Rxp_t;			/* type for regexp tokens */
 static Rxp_t rxpbuf[RXP_LINE_SZ];	/* compiled regular expression buffer */
 char rxperr[128];			/* parser error message */
 
-static int	 rxp__compile __P((char *, int));
+static int	 rxp__compile __P((const char *, int));
 static char	*rxp__expand __P((int));
-static int	 rxp__match __P((char *, int, Rxp_t *, Rxp_t *, char *));
+static int	 rxp__match __P((const char *, int, Rxp_t *, Rxp_t *, const char *));
 
 int
 rxp_compile(s)
-	char *	s;
+	const char *	s;
 {
 	return (rxp__compile(s, TRUE));
 }
 
 static int
 rxp__compile(s, first)
-	char *s;
+	const char *s;
 	int first;
 {
 	static Rxp_t *rp;
-	static char *sp;
+	static const char *sp;
 	Rxp_t *grp_ptr;
 	Rxp_t *alt_ptr;
 	int esc, err;
@@ -196,21 +196,21 @@ rxp__compile(s, first)
  */
 int
 rxp_match(s)
-	char *	s;
+	const char *	s;
 {
 	return (rxp__match(s, TRUE, NULL, NULL, NULL));
 }
 
 static int
 rxp__match(s, first, j_succ, j_fail, sp_fail)
-	char *s;
+	const char *s;
 	int first;
 	Rxp_t *j_succ;		/* jump here on successful alt match */
 	Rxp_t *j_fail;		/* jump here on failed match */
-	char *sp_fail;		/* reset sp to here on failed match */
+	const char *sp_fail;		/* reset sp to here on failed match */
 {
 	static Rxp_t *rp;
-	static char *sp;
+	static const char *sp;
 	int ch;
 	Rxp_t *grp_end = NULL;
 	int err;

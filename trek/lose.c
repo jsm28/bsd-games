@@ -56,7 +56,7 @@ __RCSID("$NetBSD: lose.c,v 1.4 1997/10/12 21:24:58 christos Exp $");
 **	actions which need be taken are taken.
 */
 
-char	*Losemsg[] =
+const char	*const Losemsg[] =
 {
 	"You ran out of time",
 	"You ran out of energy",

@@ -124,7 +124,8 @@ main(argc, argv)
 	if (rawscores < 0) {
 		warn("open %s", _PATH_RAWSCORES);
 		sleep(2);
-	}
+	} else if (rawscores < 3)
+		exit(1);
 	logfile = fopen(_PATH_LOGFILE, "a");
 	if (logfile == NULL) {
 		warn("fopen %s", _PATH_LOGFILE);
@@ -568,13 +569,13 @@ flushi()
 	tcflush(0, TCIFLUSH);
 }
 
-int     mx[8] = {
+const int     mx[8] = {
 	0, 1, 1, 1, 0, -1, -1, -1
 };
-int     my[8] = {
+const int     my[8] = {
 	-1, -1, 0, 1, 1, 1, 0, -1
 };
-float   absv[8] = {
+const float   absv[8] = {
 	1, 1.4, 1, 1.4, 1, 1.4, 1, 1.4
 };
 int     oldw = 0;
@@ -647,7 +648,7 @@ spacewarp(w)
 {
 	struct point p;
 	int     j;
-	char   *str;
+	const char   *str;
 
 	snrand(&you);
 	point(&p, COLUMNS / 2 - 8, LINES / 2 - 1);
@@ -714,7 +715,7 @@ snap()
 
 int
 stretch(ps)
-	struct point *ps;
+	const struct point *ps;
 {
 	struct point p;
 
@@ -792,7 +793,7 @@ surround(ps)
 
 void
 win(ps)
-	struct point *ps;
+	const struct point *ps;
 {
 	struct point x;
 	int     j, k;
@@ -875,7 +876,7 @@ pushsnake()
 
 int
 chk(sp)
-	struct point *sp;
+	const struct point *sp;
 {
 	int     j;
 

@@ -12,15 +12,14 @@ those.  The issues listed there are not included in this list.
 1997-04-29 - Improve security of games when running setgid.  Most of
              this has been done, through adopting changes from
              OpenBSD, but a thorough audit is needed - see SECURITY.
-             There are rumours of the games having been audited by the
-             Linux Security Audit Project (see linux-kernel archives
-             and Alan Cox's diary at
-             <URL:http://roadrunner.swansea.uk.linux.org/alan.shtml>)
-             but I have received no patches.
+	     The Linux Security Audit Project looked at the games but
+             never bothered to send me their fixes; I think they are
+             now included.
 
 1997-04-29 - Fix compilation warnings with increasingly strict warning
-             options.  -Wwrite-strings (and general use of const) is
-             currently being worked on.
+             options.  The main reasonable ones have now been done,
+             but maybe some bits are left, and new warnings get added
+             to new versions of egcs.
 
 1997-04-29 - Get changes (at least the bug-fixes) merged back into NetBSD.
              Various patches for specific bugs have been sent in and
@@ -61,6 +60,20 @@ those.  The issues listed there are not included in this list.
 1998-09-11 - Move building of the manpages and headers in which
              configuration variables are substituted from the
              configure script into the Makefiles.
+
+1998-12-06 - Allow alternative dictionaries to be specified at runtime
+             for boggle and hangman.
+
+1998-12-11 - Support LFS (large files) - this requires using
+             fseeko/ftello instead of fseek/ftell, where supported,
+             and using -D_FILE_OFFSET_BITS=64 (actually getconf
+             LFS_CFLAGS, getconf LFS_LDFLAGS and getconf LFS_LIBS),
+             and could be useful when Linux has the kernel support for
+             32 bit uids, when there could be sparse score files
+             (indexed by uid) over 2Gb.
+
+1998-12-14 - Check for any more constant data that could be marked
+             const.
 
 
 

@@ -62,8 +62,8 @@ bool	Was_bonus = FALSE;	/* Was a bonus last level */
 
 char	Cnt_move;		/* Command which has preceded the count */
 char	Field[Y_FIELDSIZE][X_FIELDSIZE];	/* the playing field itslef */
-char	*Next_move;		/* Next move to be used in the pattern */
-char	*Move_list = "YHBJNLUK";/* List of moves in the pattern */
+const char	*Next_move;	/* Next move to be used in the pattern */
+const char	*Move_list = "YHBJNLUK";/* List of moves in the pattern */
 char	Run_ch;			/* Character for the direction we are running */
 
 int	Count = 0;		/* Command count */

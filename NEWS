@@ -11,6 +11,29 @@ changes in installation instructions.  Packagers should also reread
 the PACKAGING file each version (or do a diff between the old and new
 versions of the package and read that).
 
+Version 2.6
+===========
+
+* Buffer overrun fixes in sail (not thought exploitable).
+
+* Fixes possible score file corruption if fds 0, 1, 2 aren't open at
+game startup.
+
+* Updated from NetBSD-current of 1998-12-07 (morse now has a decoding
+option).
+
+* Now builds cleanly with -Wwrite-strings.
+
+* Other minor changes.
+
+* Some users of this package may be interested in my `nppt' package,
+which provides an alternative implementation of ppt(6) with additional
+features such as Encapsulated PostScript output.  (This package
+installs the binary as `nppt', so can be installed simultaneously with
+this one.  Look for nppt-0.1.tar.gz (or a later version) on
+metalab.unc.edu (formerly sunsite) in /pub/Linux/Incoming/ or under
+/pub/Linux/games/.)
+
 Version 2.5
 ===========
 

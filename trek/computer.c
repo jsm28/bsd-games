@@ -118,7 +118,7 @@ computer(v)
 	int		ix, iy;
 	int		i, j;
 	int		tqx, tqy;
-	struct cvntab	*r;
+	const struct cvntab	*r;
 	int		cost;
 	int		course;
 	double		dist, time;

@@ -1,4 +1,4 @@
-/*	$NetBSD: teach.c,v 1.6 1998/08/29 22:53:04 hubertf Exp $	*/
+/*	$NetBSD: teach.c,v 1.7 1998/09/15 13:43:35 frueauf Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -43,7 +43,7 @@ __COPYRIGHT("@(#) Copyright (c) 1980, 1993\n\
 #if 0
 static char sccsid[] = "@(#)teach.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: teach.c,v 1.6 1998/08/29 22:53:04 hubertf Exp $");
+__RCSID("$NetBSD: teach.c,v 1.7 1998/09/15 13:43:35 frueauf Exp $");
 #endif
 #endif				/* not lint */
 
@@ -160,7 +160,7 @@ leave()
 	else
 		writec('\n');
 	fixtty(&old);
-	execl(EXEC, "backgammon", args, "-n", 0);
+	execl(EXEC, "backgammon", "-n", args[1]?args:0, 0);
 	writel("Help! Backgammon program is missing\007!!\n");
 	exit(-1);
 }

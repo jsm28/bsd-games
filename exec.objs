@@ -40,10 +40,10 @@ gomoku			bdinit.o bdisp.o main.o makemove.o pickmove.o stoc.o
 hangman			endgame.o extern.o getguess.o getword.o main.o \
 	playgame.o prdata.o prman.o prword.o setup.o
 hunt/hunt/hunt		connect.o hunt.o otto.o playit.o \
-	hunt/huntd/pathname.o lib/select.o
+	hunt/huntd/pathname.o
 hunt/huntd/huntd	answer.o ctl.o ctl_transact.o draw.o driver.o \
 	execute.o expl.o extern.o faketalk.o get_names.o makemaze.o \
-	pathname.o shots.o terminal.o lib/select.o
+	pathname.o shots.o terminal.o
 mille			comp.o end.o extern.o init.o mille.o misc.o move.o \
 	print.o roll.o save.o types.o varpush.o
 monop			cards.o execute.o getinp.o houses.o jail.o misc.o \

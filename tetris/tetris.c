@@ -50,6 +50,7 @@ __COPYRIGHT("@(#) Copyright (c) 1992, 1993\n\
 
 #include <sys/time.h>
 
+#include <fcntl.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -121,15 +122,21 @@ main(argc, argv)
 	char *argv[];
 {
 	register int pos, c;
-	register struct shape *curshape;
-	register char *keys;
+	register const struct shape *curshape;
+	register const char *keys;
 	register int level = 2;
 	char key_write[6][10];
 	int ch, i, j;
+	int fd;
 
 	gid = getgid();
 	egid = getegid();
 	setegid(gid);
+
+	fd = open("/dev/null", O_RDONLY);
+	if (fd < 3)
+		exit(1);
+	close(fd);
 
 	keys = "jkl pq";
 
@@ -262,7 +269,7 @@ main(argc, argv)
 		}
 		if (c == keys[1]) {
 			/* turn */
-			struct shape *new = &shapes[curshape->rot];
+			const struct shape *new = &shapes[curshape->rot];
 
 			if (fits_in(new, pos))
 				curshape = new;

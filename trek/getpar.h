@@ -38,17 +38,17 @@
 typedef void (*cmdfun) __P((int));
 struct cvntab		/* used for getcodpar() paramater list */
 {
-	char	*abrev;
-	char	*full;
+	const char	*abrev;
+	const char	*full;
 	cmdfun	value;
 	int	value2;
 };
 
-int getintpar __P((char *));
-double getfltpar __P((char *));
-int getynpar __P((char *));
-struct cvntab *getcodpar __P((char *, struct cvntab[]));
-void getstrpar __P((char *, char *, int, char *));
+int getintpar __P((const char *));
+double getfltpar __P((const char *));
+int getynpar __P((const char *));
+const struct cvntab *getcodpar __P((const char *, const struct cvntab[]));
+void getstrpar __P((const char *, char *, int, const char *));
 int testnl __P((void));
 void skiptonl __P((int));
 int readdelim __P((int));

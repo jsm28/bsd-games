@@ -153,7 +153,7 @@ interrupt()
 
 int
 getanswer(choices, def)
-	char   *choices;
+	const char   *choices;
 	bool    def;
 {
 	int     ch;		/* input */

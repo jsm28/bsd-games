@@ -47,6 +47,7 @@ __RCSID("$NetBSD: initdeck.c,v 1.5 1997/10/12 17:45:12 christos Exp $");
 #endif
 #endif /* not lint */
 
+#include <err.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "deck.h"
@@ -68,8 +69,8 @@ __RCSID("$NetBSD: initdeck.c,v 1.5 1997/10/12 17:45:12 christos Exp $");
 # define	bool	char
 # define	reg	register
 
-char	*infile		= "cards.inp",		/* input file		*/
-	*outfile	= "cards.pck";		/* "packed" file	*/
+const char	*infile		= "cards.inp",	/* input file		*/
+		*outfile	= "cards.pck";	/* "packed" file	*/
 
 DECK	deck[2];
 
@@ -97,11 +98,11 @@ char	*av[]; {
 	 */
 	CC_D.offsets = (long *)calloc(CC_D.num_cards + 1, sizeof (long));
 	CH_D.offsets = (long *)calloc(CH_D.num_cards + 1, sizeof (long));
-	fseek(inf, 0L, 0);
-	if ((outf = fopen(outfile, "w")) == NULL) {
-		perror(outfile);
-		exit(0);
-	}
+	if (CC_D.offsets == NULL || CH_D.offsets == NULL)
+		errx(1, "out of memory");
+	fseek(inf, 0L, SEEK_SET);
+	if ((outf = fopen(outfile, "w")) == NULL)
+		err(1, "fopen %s", outfile);
 
 	fwrite(deck, sizeof (DECK), 2, outf);
 	fwrite(CC_D.offsets, sizeof (long), CC_D.num_cards, outf);
@@ -109,7 +110,7 @@ char	*av[]; {
 	putem();
 
 	fclose(inf);
-	fseek(outf, 0, 0L);
+	fseek(outf, 0, SEEK_SET);
 	fwrite(deck, sizeof (DECK), 2, outf);
 	fwrite(CC_D.offsets, sizeof (long), CC_D.num_cards, outf);
 	fwrite(CH_D.offsets, sizeof (long), CH_D.num_cards, outf);

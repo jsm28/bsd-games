@@ -55,10 +55,10 @@ __RCSID("$NetBSD: systemname.c,v 1.4 1997/10/12 21:25:21 christos Exp $");
 **	starsystems, etc.
 */
 
-char *systemname(q1)
-struct quad	*q1;
+const char *systemname(q1)
+	const struct quad	*q1;
 {
-	struct quad	*q;
+	const struct quad	*q;
 	int		i;
 
 	q = q1;

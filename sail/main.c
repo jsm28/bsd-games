@@ -48,6 +48,7 @@ __RCSID("$NetBSD: main.c,v 1.6 1997/10/13 21:03:55 christos Exp $");
 #endif /* not lint */
 
 #include "extern.h"
+#include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
@@ -62,10 +63,16 @@ main(argc, argv)
 {
 	char *p;
 	int i;
+	int fd;
 
 	gid = getgid();
 	egid = getegid();
 	setegid(gid);
+
+	fd = open("/dev/null", O_RDONLY);
+	if (fd < 3)
+		exit(1);
+	close(fd);
 
 	(void) srand(getpid());
 	if ((p = strrchr(*argv, '/')) != NULL)

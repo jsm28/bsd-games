@@ -51,11 +51,11 @@ __RCSID("$NetBSD: getinp.c,v 1.6 1997/10/12 17:45:10 christos Exp $");
 
 static char	buf[257];
 
-static int comp __P((char *));
+static int comp __P((const char *));
 
 int
 getinp(prompt, list)
-char	*prompt, *list[]; 
+	const char	*prompt, *const list[]; 
 {
 
 	int	i, n_match, match = 0;
@@ -112,10 +112,11 @@ inter:
 
 static int
 comp(s1)
-char	*s1;
+	const char	*s1;
 {
 
-	char	*sp, *tsp, c;
+	const char	*sp, *tsp;
+	char c;
 
 	if (buf[0] != '\0')
 		for (sp = buf, tsp = s1; *sp; ) {

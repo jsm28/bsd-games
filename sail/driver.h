@@ -37,4 +37,4 @@
 
 #include "extern.h"
 
-extern int dtab[];
+extern const int dtab[];

@@ -54,6 +54,7 @@ __RCSID("$NetBSD: worm.c,v 1.9 1998/09/13 15:27:30 hubertf Exp $");
 
 #include <ctype.h>
 #include <curses.h>
+#include <err.h>
 #include <signal.h>
 #include <stdlib.h>
 #include <termios.h>
@@ -83,7 +84,7 @@ char lastch;
 char outbuf[BUFSIZ];
 
 void	crash __P((void)) __attribute__((__noreturn__));
-void	display __P((struct body *, char));
+void	display __P((const struct body *, char));
 int	main __P((int, char **));
 void	leave __P((int)) __attribute__((__noreturn__));
 void	life __P((void));
@@ -156,12 +157,16 @@ life()
 
 	np = NULL;
 	head = newlink();
+	if (head == NULL)
+		errx(1, "out of memory");
 	head->x = start_len+2;
 	head->y = 12;
 	head->next = NULL;
 	display(head, HEAD);
 	for (i = 0, bp = head; i < start_len; i++, bp = np) {
 		np = newlink();
+		if (np == NULL)
+			errx(1, "out of memory");
 		np->next = bp;
 		bp->prev = np;
 		np->x = bp->x - 1;
@@ -174,7 +179,7 @@ life()
 
 void
 display(pos, chr)
-	struct body *pos;
+	const struct body *pos;
 	char chr;
 {
 	wmove(tv, pos->y, pos->x);
@@ -278,6 +283,8 @@ process(ch)
 	}
 	else if(ch != ' ') crash();
 	nh = newlink();
+	if (nh == NULL)
+		errx(1, "out of memory");
 	nh->next = NULL;
 	nh->prev = head;
 	head->next = nh;

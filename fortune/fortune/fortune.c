@@ -95,8 +95,8 @@ typedef struct fd {
 	int		fd, datfd;
 	off_t		pos;
 	FILE		*inf;
-	char		*name;
-	char		*path;
+	const char	*name;
+	const char	*path;
 	char		*datfile, *posfile;
 	bool		read_tbl;
 	bool		was_pos_file;
@@ -135,9 +135,9 @@ STRFILE		Noprob_tbl;		/* sum of data for all no prob files */
 
 int	 add_dir __P((FILEDESC *));
 int	 add_file __P((int,
-	    char *, char *, FILEDESC **, FILEDESC **, FILEDESC *));
-void	 all_forts __P((FILEDESC *, char *));
-char	*copy __P((char *, u_int));
+	    const char *, const char *, FILEDESC **, FILEDESC **, FILEDESC *));
+void	 all_forts __P((FILEDESC *, const char *));
+char	*copy __P((const char *, u_int));
 void	 display __P((FILEDESC *));
 void	 do_free __P((void *));
 void	*do_malloc __P((u_int));
@@ -148,14 +148,14 @@ void	 get_pos __P((FILEDESC *));
 void	 get_tbl __P((FILEDESC *));
 void	 getargs __P((int, char *[]));
 void	 init_prob __P((void));
-int	 is_dir __P((char *));
-int	 is_fortfile __P((char *, char **, char **, int));
-int	 is_off_name __P((char *));
+int	 is_dir __P((const char *));
+int	 is_fortfile __P((const char *, char **, char **, int));
+int	 is_off_name __P((const char *));
 int	 main __P((int, char *[]));
 int	 max __P((int, int));
 FILEDESC *
 	 new_fp __P((void));
-char	*off_name __P((char *));
+char	*off_name __P((const char *));
 void	 open_dat __P((FILEDESC *));
 void	 open_fp __P((FILEDESC *));
 FILEDESC *
@@ -269,7 +269,7 @@ display(fp)
 	char	line[BUFSIZ];
 
 	open_fp(fp);
-	(void) fseek(fp->inf, (long)Seekpts[0], 0);
+	(void) fseek(fp->inf, (long)Seekpts[0], SEEK_SET);
 	for (Fort_len = 0; fgets(line, sizeof line, fp->inf) != NULL &&
 	    !STR_ENDSTRING(line, fp->tbl); Fort_len++) {
 		if (fp->tbl.str_flags & STR_ROTATED) {
@@ -298,7 +298,7 @@ fortlen()
 		nchar = (Seekpts[1] - Seekpts[0] <= SLEN);
 	else {
 		open_fp(Fortfile);
-		(void) fseek(Fortfile->inf, (long)Seekpts[0], 0);
+		(void) fseek(Fortfile->inf, (long)Seekpts[0], SEEK_SET);
 		nchar = 0;
 		while (fgets(line, sizeof line, Fortfile->inf) != NULL &&
 		       !STR_ENDSTRING(line, Fortfile->tbl))
@@ -418,7 +418,7 @@ form_file_list(files, file_cnt)
 	int	file_cnt;
 {
 	int	i, percent;
-	char	*sp;
+	const char	*sp;
 
 	if (file_cnt == 0) {
 		if (Find_files)
@@ -476,29 +476,32 @@ form_file_list(files, file_cnt)
 int
 add_file(percent, file, dir, head, tail, parent)
 	int		 percent;
-	char		*file;
-	char		*dir;
+	const char	*file;
+	const char	*dir;
 	FILEDESC	**head, **tail;
 	FILEDESC	*parent;
 {
 	FILEDESC	*fp;
 	int		fd;
-	char		*path, *offensive;
+	const char	*path;
+	char		*tpath, *offensive;
 	bool		was_malloc;
 	bool		isdir;
 
 	if (dir == NULL) {
 		path = file;
+		tpath = NULL;
 		was_malloc = FALSE;
 	}
 	else {
-		path = do_malloc((unsigned int) (strlen(dir) + strlen(file) + 2));
-		(void) strcat(strcat(strcpy(path, dir), "/"), file);
+		tpath = do_malloc((unsigned int) (strlen(dir) + strlen(file) + 2));
+		(void) strcat(strcat(strcpy(tpath, dir), "/"), file);
+		path = tpath;
 		was_malloc = TRUE;
 	}
 	if ((isdir = is_dir(path)) && parent != NULL) {
 		if (was_malloc)
-			free(path);
+			free(tpath);
 		return FALSE;	/* don't recurse */
 	}
 	offensive = NULL;
@@ -508,7 +511,7 @@ add_file(percent, file, dir, head, tail, parent)
 		was_malloc = TRUE;
 		if (Offend) {
 			if (was_malloc)
-				free(path);
+				free(tpath);
 			path = offensive;
 			file = off_name(file);
 		}
@@ -528,7 +531,7 @@ over:
 		if (All_forts && offensive != NULL) {
 			path = offensive;
 			if (was_malloc)
-				free(path);
+				free(tpath);
 			offensive = NULL;
 			was_malloc = TRUE;
 			DPRINTF(1, (stderr, "\ttrying \"%s\"\n", path));
@@ -541,7 +544,7 @@ over:
 		if (parent == NULL)
 			warn("Cannot open `%s'", path);
 		if (was_malloc)
-			free(path);
+			free(tpath);
 		return FALSE;
 	}
 
@@ -562,7 +565,7 @@ over:
 			warnx("`%s' not a fortune file or directory", path);
 		free((char *) fp);
 		if (was_malloc)
-			free(path);
+			free(tpath);
 		do_free(fp->datfile);
 		do_free(fp->posfile);
 		do_free(offensive);
@@ -626,7 +629,7 @@ new_fp()
  */
 char *
 off_name(file)
-	char	*file;
+	const char	*file;
 {
 	char	*new;
 
@@ -640,7 +643,7 @@ off_name(file)
  */
 int
 is_off_name(file)
-	char	*file;
+	const char	*file;
 {
 	int	len;
 
@@ -656,7 +659,7 @@ is_off_name(file)
 void
 all_forts(fp, offensive)
 	FILEDESC	*fp;
-	char		*offensive;
+	const char	*offensive;
 {
 	char		*sp;
 	FILEDESC	*scene, *obscene;
@@ -743,7 +746,7 @@ add_dir(fp)
  */
 int
 is_dir(file)
-	char	*file;
+	const char	*file;
 {
 	struct stat	sbuf;
 
@@ -762,7 +765,8 @@ is_dir(file)
 /* ARGSUSED */
 int
 is_fortfile(file, datp, posp, check_for_offend)
-	char	*file, **datp, **posp
+	const char	*file;
+	char		**datp, **posp
 # ifndef OK_TO_WRITE_DISK
 	__attribute__((unused))
 # endif
@@ -770,9 +774,9 @@ is_fortfile(file, datp, posp, check_for_offend)
 	int	check_for_offend;
 {
 	int	i;
-	char	*sp;
+	const char	*sp;
 	char	*datfile;
-	static char	*suflist[] = {	/* list of "illegal" suffixes" */
+	static const char	*const suflist[] = {	/* list of "illegal" suffixes" */
 				"dat", "pos", "c", "h", "p", "i", "f",
 				"pas", "ftn", "ins.c", "ins,pas",
 				"ins.ftn", "sml",
@@ -835,7 +839,7 @@ is_fortfile(file, datp, posp, check_for_offend)
  */
 char *
 copy(str, len)
-	char		*str;
+	const char	*str;
 	unsigned int	len;
 {
 	char	*new, *sp;
