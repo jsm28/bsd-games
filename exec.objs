@@ -1,7 +1,7 @@
 # exec.objs - details of objects that go into bsd-games programs.
 # This file is used for automatic makefile generation.
 #
-# Copyright (c) 1998, 1999, 2000, 2001, 2003 Joseph Samuel Myers.
+# Copyright (c) 1998, 1999, 2000, 2001, 2003, 2004 Joseph Samuel Myers.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -59,6 +59,8 @@ caesar			caesar.o
 canfield/canfield/canfield	canfield.o
 canfield/cfscores/cfscores	cfscores.o
 cribbage		cards.o crib.o extern.o instr.o io.o score.o support.o
+dab			algor.o board.o box.o gamescreen.o human.o main.o \
+	player.o random.o ttyscrn.o
 dm			dm.o lib/getloadavg.o
 factor			factor.o primes/pr_tbl.o
 fish			fish.o

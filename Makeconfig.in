@@ -1,6 +1,6 @@
 # Makeconfig.in - configuration included in Makefiles after substitution.
 #
-# Copyright (c) 1997, 1998, 1999, 2000, 2003 Joseph Samuel Myers.
+# Copyright (c) 1997, 1998, 1999, 2000, 2003, 2004 Joseph Samuel Myers.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -83,9 +83,12 @@ HIDE_GAME := @hidegame@
 
 # Compilation details
 CC := @cc@
+CXX := @cxx@
 OPTIMIZE := @optimize_flags@
 WARNING := @warning_flags@
+CXX_WARNING := @cxx_warning_flags@
 CFLAGS := $(OPTIMIZE) $(WARNING) @other_cflags@
+CXXFLAGS := $(OPTIMIZE) $(CXX_WARNING) @other_cflags@
 LDFLAGS := @other_ldflags@
 FGETLN_DEFS := @fgetln_defs@
 GETLOADAVG_DEFS := @getloadavg_defs@

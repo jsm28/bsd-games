@@ -1,3 +1,17 @@
+2004-01-02  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* atc/atc.6.in, backgammon/backgammon/main.c,
+	backgammon/teachgammon/data.c, caesar/caesar.c,
+	fortune/datfiles/fortunes, fortune/datfiles/fortunes2,
+	fortune/fortune/fortune.c, hack/hack.options.c, phantasia/main.c,
+	phantasia/misc.c, rogue/Makefile.bsd, rogue/rogue.h,
+	wargames/wargames.6, worm/worm.6, wtf/acronyms: Update from NetBSD
+	CVS.
+	* dab: New directory from NetBSD CVS.
+	* COPYING, INSTALL, README, bsd-games.lsm, Makeconfig.in,
+	configure, exec.libs, exec.objs: Update.
+	* dab/Makefrag: New file.
+
 2003-12-18  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 2.15.

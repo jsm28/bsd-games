@@ -50,6 +50,7 @@ caesar:		reads fortunes from the game fortune, also some internet posts
 canfield:	curses-based solitaire
 countmail:	tell you how much new mail you have
 cribbage:	cribbage
+dab:		dots and boxes
 dm:		dungeon master, regulates games playing
 factor:		factor a number
 fish:		go fish

@@ -33,7 +33,8 @@ Prerequisites
 
 You need the following to build this distribution:
 
-* GCC (the C compiler only - other languages not needed).
+* GCC (the C and C++ compilers only - other languages not needed; C++
+  only needed for dab).
 
 * glibc 2.3 or later.  Older versions will not work (at least for
   hunt) since they lack the <ifaddrs.h> header.
