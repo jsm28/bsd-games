@@ -1,3 +1,9 @@
+2004-01-27  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* cribbage/crib.c, cribbage/cribbage.h, cribbage/io.c,
+	dab/Makefile.bsd, monop/misc.c, monop/monop.def, monop/monop.ext:
+	Update from NetBSD CVS.
+
 2004-01-26  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* sail/main.c: Reorder includes to match NetBSD.
