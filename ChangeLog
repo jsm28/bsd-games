@@ -1,5 +1,11 @@
 2004-02-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* backgammon/backgammon/main.c, backgammon/teachgammon/teach.c,
+	cribbage/cribbage.h, dm/dm.c, fortune/unstr/unstr.c,
+	hunt/hunt/hunt.c, hunt/hunt/otto.c, hunt/huntd/faketalk.c,
+	hunt/huntd/hunt.h, phantasia/Makefile.bsd, rain/rain.c,
+	worms/worms.c: Update from NetBSD CVS.
+
 	* rain/rain.c, worms/worms.c: Hide the cursor with curs_set(0).
 	From OpenBSD.
 
