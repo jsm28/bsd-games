@@ -1,4 +1,4 @@
-/*	$NetBSD: crib.c,v 1.14 2001/02/05 00:28:30 christos Exp $	*/
+/*	$NetBSD: crib.c,v 1.16 2001/12/06 11:59:45 blymn Exp $	*/
 
 /*-
  * Copyright (c) 1980, 1993
@@ -43,7 +43,7 @@ __COPYRIGHT("@(#) Copyright (c) 1980, 1993\n\
 #if 0
 static char sccsid[] = "@(#)crib.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: crib.c,v 1.14 2001/02/05 00:28:30 christos Exp $");
+__RCSID("$NetBSD: crib.c,v 1.16 2001/12/06 11:59:45 blymn Exp $");
 #endif
 #endif /* not lint */
 
@@ -112,7 +112,7 @@ main(argc, argv)
 
 	initscr();
 	(void)signal(SIGINT, rint);
-	crmode();
+	cbreak();
 	noecho();
 
 	Playwin = subwin(stdscr, PLAY_Y, PLAY_X, 0, 0);
@@ -132,7 +132,7 @@ main(argc, argv)
 			mvcur(0, COLS - 1, LINES - 1, 0);
 			fflush(stdout);
 			instructions();
-			crmode();
+			cbreak();
 			noecho();
 			clear();
 			refresh();

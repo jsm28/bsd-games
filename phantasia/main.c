@@ -1,4 +1,4 @@
-/*	$NetBSD: main.c,v 1.9 1999/09/13 17:15:43 jsm Exp $	*/
+/*	$NetBSD: main.c,v 1.10 2001/12/06 12:15:37 blymn Exp $	*/
 
 /*
  * Phantasia 3.3.2 -- Interterminal fantasy game
@@ -985,7 +985,7 @@ playinit()
 
 	initscr();		/* turn on curses */
 	noecho();		/* do not echo input */
-	crmode();		/* do not process erase, kill */
+	cbreak();		/* do not process erase, kill */
 #ifdef NCURSES_VERSION /* Ncurses needs some terminal mode fiddling */
 	tcgetattr(0, &tty);
 	tty.c_iflag |= ICRNL;
@@ -1003,7 +1003,7 @@ cleanup(doexit)
 	if (Windows) {
 		move(LINES - 2, 0);
 		refresh();
-		nocrmode();
+		nocbreak();
 		endwin();
 	}
 	fclose(Playersfp);
