@@ -1,17 +1,28 @@
+ALLDIRS=canfield cfscores
+
+DESTDIR=/usr/games
+LIBDIR= $(DESTDIR)/lib
+MANDIR= /usr/man/man6
+CC=     gcc
+CFLAGS= -O
+
 all:
-	cd canfield && make all
-	cd cfscores && make all
+	for i in $(ALLDIRS); do \
+		echo "Making all in $$i"; \
+		( cd $$i; make DESTDIR=$(DESTDIR) LIBDIR=$(LIBDIR) \
+		MANDIR=$(MANDIR) CFLAGS=$(CFLAGS) ) ; \
+	done
 
 install:
-	cd canfield && make install
-	cd cfscores && make install
+	for i in $(ALLDIRS); do \
+		echo "Making install in $$i"; \
+		( cd $$i; make install DESTDIR=$(DESTDIR) LIBDIR=$(LIBDIR) \
+		MANDIR=$(MANDIR) CFLAGS=$(CFLAGS) ) ; \
+	done
 
 clean:
-	cd canfield && make clean
-	cd cfscores && make clean
-
-canfield:
-	cd canfield && make all
-
-cfscores:
-	cd cfscores && make all
+	for i in $(ALLDIRS); do \
+		echo "Making clean in $$i"; \
+		( cd $$i; make clean DESTDIR=$(DESTDIR) LIBDIR=$(LIBDIR) \
+		MANDIR=$(MANDIR) CFLAGS=$(CFLAGS) ) ; \
+	done

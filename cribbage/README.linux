@@ -11,7 +11,7 @@ is in Makefile.orig.  Other than that, the source should still compile
 under bsd.
 
 Also as usual, set the DESTDIR in the Makefiles, and edit the location
-of the words file in pathnames.h.  Also set the MANDIR and LIBDIR in
+of the words file in the Makefile.  Also set the MANDIR and LIBDIR in
 the Makefile.
 
 If you change any of the predefined paths, remember to make corresponding

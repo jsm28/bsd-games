@@ -1,21 +1,27 @@
 #	Linux makefile for mille 
 
-DESTDIR=/usr/games
-MANDIR=/usr/man/man6
-
-CC=	gcc
 PROG=	mille
+
+DESTDIR=/usr/games
+LIBDIR= $(DESTDIR)/lib
+MANDIR= /usr/man/man6
+CC=     gcc
+CFLAGS= -O
+
 SRCS=	comp.c end.c extern.c init.c mille.c misc.c move.c print.c \
 	roll.c save.c types.c varpush.c
 OBJS=	mille.o comp.o end.o extern.o init.o misc.o move.o print.o \
 	roll.o save.o types.o varpush.o
 LIBS=	-lcurses -ltermcap -lbsd
-CFLAGS= -I/usr/include/bsd -I/usr/include
+INCS=	-I/usr/include/bsd -I/usr/include
 
 all: mille
 
 mille: ${OBJS}
 	${CC} ${OBJS} -o $@ ${LIBS}
+
+$(OBJS):        mille.h
+	$(CC) $(CFLAGS) -c $(INCS) $*.c -o $@
 
 clean:
 	rm -f *.o core mille a.out

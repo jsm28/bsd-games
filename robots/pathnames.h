@@ -34,7 +34,7 @@
  */
 
 #ifdef linux
-  #define	_PATH_SCORE	"/usr/games/lib/robots_roll"
+  /* For Linux, this is defined in the Makefile */
 #else
   #define	_PATH_SCORE	"/var/games/robots_roll"
 #endif

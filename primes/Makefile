@@ -1,13 +1,16 @@
 #	@(#)Makefile	5.1 (Berkeley) 5/11/90
 
 PROG=	primes
+
 DESTDIR=/usr/games
-MAN6=	primes.6
-RMAN=	factor.6
+LIBDIR= $(DESTDIR)/lib
 MANDIR= /usr/man/man6
+CC=     gcc
+CFLAGS= -O
+
+RMAN=	factor.6
 SRCS=	pattern.c pr_tbl.c primes.c
 OBJS=	pattern.o pr_tbl.o primes.o
-CFLAGS=	-O
 LIBS=	-lm
 
 all:	$(PROG)
@@ -20,10 +23,10 @@ $(OBJS):	primes.h
 
 install:	all
 	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	ln -s $(MANDIR)/$(RMAN) $(MANDIR)/$(MAN6)
+	ln -s $(MANDIR)/$(RMAN) $(MANDIR)/$(PROG).6
 
 test:	all
-	./primes 100 200
+	./$(PROG) 100 200
 
 clean:
 	rm -f $(PROG) core *.o

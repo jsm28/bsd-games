@@ -34,9 +34,8 @@
  */
 
 #ifdef linux
-#define	_PATH_INSTR	"/usr/games/lib/fish.instr"
-#define	_PATH_MORE	"/usr/bin/less"
+  /* For Linux, these are defined in the Makefile */
 #else
-#define	_PATH_INSTR	"/usr/share/games/fish.instr"
-#define	_PATH_MORE	"/usr/bin/more"
+  #define	_PATH_INSTR	"/usr/share/games/fish.instr"
+  #define	_PATH_MORE	"/usr/bin/more"
 #endif

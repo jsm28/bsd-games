@@ -1,6 +1,6 @@
-8/25/93
+8/26/93
 
-Here is version 1.2 of our bsd-games package, containing ports of 
+Here is version 1.3 of the bsd-games package, containing ports of 
 your favorite curses-based bsd games (descriptions to follow).
 These games mostly came from ftp.uu.net:/systems/unix/bsd-sources/games 
 with some older versions from the Tahoe release. There's not much to do in
@@ -24,6 +24,7 @@ Here's what we have so far:
 
 arithmetic:	arithmetic quiz/speed test
 atc:		air traffic control
+backgammon:	backgammon
 battlestar:	adventure game on a battlestar
 bcd:		outputs text in an antique form
 caesar:		reads fortunes from the game fortune, also some internet posts
@@ -59,7 +60,7 @@ wump:		hunt the wumpus
 
 Coming soon:
 
-backgammon, chess, dm, larn, quiz, and rogue
+chess, dm, larn, quiz, and rogue, [and any requests?]
 
 
 If you have questions you can contact us at:

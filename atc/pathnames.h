@@ -36,8 +36,7 @@
 #include <paths.h>
 
 #ifdef linux
-  #define	_PATH_GAMES	"/usr/games/lib/atc/"
-  #define	_PATH_SCORE	"/usr/games/lib/atc/atc_score"
+  /* For Linux, these are defined in the Makefile */
 #else
   #define	_PATH_GAMES	"/usr/share/games/atc/"
   #define	_PATH_SCORE	"/var/games/atc_score"

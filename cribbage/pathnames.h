@@ -34,9 +34,7 @@
  */
 
 #ifdef linux
-  #define	_PATH_LOG	"/usr/games/lib/criblog"
-  #define	_PATH_MORE	"/usr/bin/less"
-  #define	_PATH_INSTR	"/usr/games/lib/cribbage.instr"
+  /* For Linux, these are defined in the Makefile */
 #else
   #define	_PATH_LOG	"/var/games/criblog"
   #define	_PATH_MORE	"/usr/bin/more"

@@ -33,4 +33,8 @@
  *	@(#)pathnames.h	5.1 (Berkeley) 6/1/90
  */
 
-#define	_PATH_SCORE	"/usr/games/lib/battlestar.log"
+#ifdef linux
+  /* For Linux, this is defined in the Makefile */
+#else
+  #define	_PATH_SCORE	"/usr/games/lib/battlestar.log"
+#endif

@@ -33,8 +33,12 @@
  *	@(#)pathnames.h	5.2 (Berkeley) 4/8/91
  */
 
-#ifdef TEST
-#define FORTDIR  ".."
+#ifdef linux
+  /* For Linux, these are defined in the Makefile */
 #else
-#define	FORTDIR		"/usr/games"
+  #ifdef TEST
+    #define	FORTDIR	".."
+  #else
+    #define	FORTDIR	"/usr/games"
+  #endif
 #endif

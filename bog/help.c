@@ -48,7 +48,11 @@ help()
 
 	fclose(fp);
 	if (eof) {
+#ifdef linux
+		extern char version[];
+#else
 		extern char *version;
+#endif
 
 		wprintw(win, "%s", version);
 		wmove(win, nlines - 1, 0);

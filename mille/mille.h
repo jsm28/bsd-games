@@ -38,9 +38,9 @@
 #ifndef linux
 # include	<curses.h>
 #else
-#include <curses.h>
-#include <bsd/sgtty.h>
-#define reg register
+# include <curses.h>
+# include <sgtty.h>
+# define reg register
 #endif
 # include	<string.h>
 

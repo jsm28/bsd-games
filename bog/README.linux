@@ -1,15 +1,27 @@
-8/23/93
+9/23/93
 
 I grabbed this game from comp.sources.games/volume4.  The original Makefile 
 is in Makefile.orig.  
 
 As usual, set the DESTDIR in the Makefiles.  Also set the LIBDIR and MANDIR in
-the Makefile.  If you wish to use a different dictionary, you can set DICT
+the Makefile.  If you wish to use a different dictionary, you can set DICTSRC
 in the Makefile as well.
+
+Define PURE in the CFLAGS if you desire "pure/original" BSD behavior.  Not
+defining this will allow certain Linux "improvements" to be compiled in.
+In this case not defining PURE will provide a more intuitive way of
+quiting or playing a new game after time has run out.
+
+NOTE:  You may wish to define PURE if you plan on using the post game
+word lookup feature.  Press <ESC>, type a word, and bog will display where
+it is located.  If PURE is not defined, it might be easy to accidently start 
+typing the word with out pressing <ESC> first.  This would start a new game, 
+and you would never be able to know where that word was located. :(
 
 To use ncurses, replace -lcurses with -lncurses in the Makefile.  Also replace
 the #include <curses.h> line with #include <ncurses.h> in help.c, mach.c,
 prtable.c and timer.c.
 
+Thanks to Andrew Kuchling.  (See ../Credits for his email address.)
 Curt Olson
 curt@sledge.mn.org

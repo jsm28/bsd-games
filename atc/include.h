@@ -51,11 +51,7 @@
 #include <pwd.h>
 
 #ifdef BSD
-  #ifdef linux
-    #include <bsd/sgtty.h>
-  #else
-    #include <sgtty.h>
-  #endif
+#include <sgtty.h>
 #include <sys/time.h>
 #include <sys/file.h>
 #endif

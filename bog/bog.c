@@ -191,12 +191,26 @@ char **argv;
 			newgame(bspec);
 			bspec = (char *) NULL;		/* reset for subsequent games */
 			playgame();
+#if defined(linux) && !defined (PURE)
+			prompt("Type <q>uit, <esc> locate, any other key to continue...");
+#else
 			prompt("Type <space> to continue, any cap to quit...");
+#endif
 			flushin(stdin);
 			while (1) {
 				int ch;
 
 				ch = inputch();
+#if defined(linux) && !defined (PURE)
+				if (ch == '\033') {
+					findword();
+				} else if (ch == 'q') {
+					done = 1;
+					break;
+				} else {
+					break;
+				}
+#else
 				if (ch == '\033')
 					findword();
 				else {
@@ -207,6 +221,7 @@ char **argv;
 					if (ch == ' ')
 						break;
 				}
+#endif
 			}
 		}
 		cleanup();

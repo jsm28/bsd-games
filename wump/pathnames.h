@@ -34,8 +34,7 @@
  */
 
 #ifdef linux
-  #define	_PATH_PAGER	"/usr/bin/less"
-  #define	_PATH_WUMPINFO	"/usr/games/lib/wump.info"
+  /* For Linux, these are defined in the Makefile. */
 #else
   #define	_PATH_PAGER	"/usr/bin/more"
   #define	_PATH_WUMPINFO	"/usr/share/games/wump.info"

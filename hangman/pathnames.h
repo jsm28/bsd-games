@@ -34,7 +34,7 @@
  */
 
 #ifdef linux
-  #define	_PATH_DICT	"/usr/games/lib/hangman-words"
+  /* For Linux, this is defined in the Makefile */
 #else
   #define	_PATH_DICT	"/usr/share/dict/words"
 #endif

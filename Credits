@@ -8,5 +8,8 @@ Andy Tefft (teffta@engr.dnet.ge.com)
 
 Thanks also to:
   Ross Becker (beckerr@pyrite.som.cwru.edu) - working on hunt.
-  jyanowit@orixa.mtholyoke.edu - backgammon advice.
+  jyanowit@orixa.mtholyoke.edu - backgammon bug fix.
+  Andrew Kuchling (fnord@binkley.cs.mcgill.ca) - bog bug fix.
+  Rik Faith (faith@cs.unc.edu) - words file for hangman and bog.
+
 

@@ -1,6 +1,6 @@
 
 DESTDIR=/usr/bin
-MANDIR=/usr/man/man8
+MAN8DIR=/usr/man/man8
 
 all: strfile
 
@@ -9,7 +9,7 @@ strfile: strfile.c strfile.h
 
 install: all
 	install -c -g bin -m 555 -o root strfile ${DESTDIR}
-	install -c -g bin -m 444 -o root strfile.8 ${MANDIR}
+	install -c -g bin -m 444 -o root strfile.8 ${MAN8DIR}
 
 clean:
 	rm -f *.o a.out core strfile

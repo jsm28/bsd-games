@@ -33,5 +33,9 @@
  *	@(#)pathnames.h	5.1 (Berkeley) 4/30/90
  */
 
-#define	_PATH_SCORE	"/usr/games/lib/cfscores"
+#ifdef linux
+  /* For Linux, this is defined in the Makefile */
+#else
+  #define	_PATH_SCORE	"/usr/games/lib/cfscores"
+#endif
 

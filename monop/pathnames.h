@@ -34,7 +34,7 @@
  */
 
 #ifdef linux
-  #define	_PATH_CARDS	"/usr/games/lib/cards.pck"
+  /* For Linux, this is defined in the Makefile. */
 #else
   #define	_PATH_CARDS	"/usr/share/games/cards.pck"
 #endif

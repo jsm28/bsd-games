@@ -1,14 +1,20 @@
-DESTDIR=/usr/games
-MANDIR=/usr/man/man6
-SCOREDIR=/usr/games/lib
 PROG=	canfield
-LIBS=	-lcurses -ltermcap -lbsd
+
+DESTDIR=/usr/games
+LIBDIR= $(DESTDIR)/lib
+MANDIR= /usr/man/man6
+CC=     gcc
 CFLAGS= -O
+
+SCOREDIR=$(LIBDIR)
+_PATH_SCORE=	\"${SCOREDIR}\"
+LIBS=	-lcurses -ltermcap -lbsd
 
 all: canfield
 
 canfield: canfield.c pathnames.h
-	cc -o canfield ${CFLAGS} canfield.c ${LIBS}
+	$(CC) -o canfield ${CFLAGS} -D_PATH_SCORE=${_PATH_SCORE} canfield.c \
+		${LIBS}
 
 clean:
 	rm -f canfield a.out core *.o

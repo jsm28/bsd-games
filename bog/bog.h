@@ -20,9 +20,13 @@
 #define TIMER			1	/* Use tty polling (see timer.c) */
 #define LOADDICT		1	/* Load the dictionary for speed */
 
-#define DICT			"/usr/games/lib/bog/dict"
-#define DICTINDEX		"/usr/games/lib/bog/dict.ind"
-#define HELPFILE		"/usr/games/lib/bog/helpfile"
+#ifdef linux
+  /* For linux, these are defined in the Makefile */
+#else
+  #define DICT			"/usr/games/lib/bog/dict"
+  #define DICTINDEX		"/usr/games/lib/bog/dict.ind"
+  #define HELPFILE		"/usr/games/lib/bog/helpfile"
+#endif
 
 /*
  * The theoretical maximum for MAXWORDLEN is ('a' - 1) == 96

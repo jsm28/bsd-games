@@ -1,8 +1,8 @@
-
 DESTDIR=/usr/bin
+CC=	gcc
 
 unstr: unstr.c ../strfile/strfile.h
-	gcc -O2 -o unstr unstr.c -I../strfile -I/usr/include/bsd -lbsd
+	$(CC) -O2 -o unstr unstr.c -I../strfile -I/usr/include/bsd -lbsd
 
 install: all
 	install -g bin -o root -m 555 unstr ${DESTDIR}

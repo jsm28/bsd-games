@@ -1,10 +1,13 @@
 #	@(#)Makefile	5.3 (Berkeley) 5/11/90
 
 PROG=	caesar
-MAN6=	caesar.6
+
 DESTDIR=/usr/games
+LIBDIR= $(DESTDIR)/lib
 MANDIR= /usr/man/man6
+CC=     gcc
 CFLAGS= -O
+
 LIBS=	-lm
 
 $(PROG):
@@ -12,7 +15,7 @@ $(PROG):
 
 install:	$(PROG)
 	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o root -g root -m 444 $(MAN6) $(MANDIR)
+	install -c -o root -g root -m 444 $(PROG).6 $(MANDIR)
 
 test:	$(PROG)
 	./caesar < ../fortune/datfiles/fortunes-o.fake.rot13

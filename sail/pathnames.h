@@ -34,7 +34,7 @@
  */
 
 #ifdef linux
-  #define	_PATH_LOGFILE	"/usr/games/lib/saillog"
+  /* For Linux, this is defined in the Makefile. */
 #else
   #define	_PATH_LOGFILE	"/var/games/saillog"
 #endif

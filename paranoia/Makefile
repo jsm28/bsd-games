@@ -1,5 +1,9 @@
 PROG=	paranoia
+
 DESTDIR=/usr/games
+LIBDIR= $(DESTDIR)/lib
+MANDIR= /usr/man/man6
+CC=     gcc
 CFLAGS= -O
 
 $(PROG):

@@ -174,6 +174,7 @@ char *indexfile;
     while (fgets(buf, sizeof(buf), fp) != (char *) NULL) {
         j = *buf - 'a';
         if (i != j) {
+            (void) fprintf(stderr, "%d != %d\n", i, j);
             (void) fprintf(stderr, "Bad index order\n");
             return(-1);
         }

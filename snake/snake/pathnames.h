@@ -34,8 +34,7 @@
  */
 
 #ifdef linux
-  #define	_PATH_RAWSCORES	"/usr/games/lib/snakerawscores"
-  #define	_PATH_LOGFILE	"/usr/games/lib/snake.log"
+  /* For Linux, these are defined in the Makefile */
 #else
   #define	_PATH_RAWSCORES	"/var/games/snakerawscores"
   #define	_PATH_LOGFILE	"/var/games/snake.log"

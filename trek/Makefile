@@ -1,7 +1,13 @@
 #	@(#)Makefile	5.8 (Berkeley) 5/11/90
 
 PROG=	trek
+
 DESTDIR=/usr/games
+LIBDIR= $(DESTDIR)/lib
+MANDIR= /usr/man/man6
+CC=     gcc
+CFLAGS= -O
+
 SRCS=	abandon.c attack.c autover.c capture.c check_out.c checkcond.c \
 	compkl.c computer.c damage.c damaged.c dcrept.c destruct.c \
 	dock.c dumpgame.c dumpme.c dumpssradio.c events.c externs.c \
@@ -18,9 +24,6 @@ OBJS=	abandon.o attack.o autover.o capture.o check_out.o checkcond.o \
 	ranf.o rest.o schedule.o score.o setup.o setwarp.o \
 	shield.o snova.o srscan.o systemname.o torped.o utility.o \
 	visual.o warp.o win.o cgetc.o
-CFLAGS=	-O
-MAN6=	trek.6
-MANDIR= /usr/man/man6
 INCS=	-I/usr/include/bsd
 LIBS=	-lm -lbsd
 
@@ -34,7 +37,7 @@ $(OBJS):	getpar.h trek.h
 
 install:	all
 	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o root -g root -m 444 $(MAN6) $(MANDIR)
+	install -c -o root -g root -m 444 $(PROG).6 $(MANDIR)
 
 clean:
 	rm -f $(PROG) core *.o

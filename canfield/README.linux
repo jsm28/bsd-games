@@ -12,11 +12,10 @@ under bsd. Perhaps later I will enhance the Makefiles but it doesn't
 seem worth the effort.
 
 The binaries are meant to go in /usr/games. and the high score file in
-/usr/games/lib/cfscores/. If you want to change these, set the DESTDIR in
-the Makefiles, and edit the location of the score file in pathnames.h.
-Also set the MANDIR in canfield/Makefile. Make sure the scorefile dir
-!= DESTDIR or else you will overwrite the cfscores program (or not
-have a score file!).
+/usr/games/lib/cfscores/. If you want to change these, set the DESTDIR and 
+SCOREFILE in the Makefiles.  Also set the MANDIR in canfield/Makefile. 
+Make sure the scorefile dir != DESTDIR or else you will overwrite the 
+cfscores program (or not have a score file!).
 
 If you wish your man page to be up to date, edit it to reflect
 the locations if you place your binary in other than /usr/games

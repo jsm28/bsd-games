@@ -1,9 +1,9 @@
 #	@(#)Makefile	5.2 (Berkeley) 5/11/90
 
 DESTDIR=/usr/games
-MANDIR=	/usr/man/ma6
+MANDIR=	/usr/man/man6
 PROG=	arithmetic
-MAN6=	arithmetic.6
+CC=	gcc
 CFLAGS= -O
 
 $(PROG):
@@ -11,7 +11,7 @@ $(PROG):
 
 install:	$(PROG)
 	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o root -g root -m 444 $(MAN6) $(MANDIR)
+	install -c -o root -g root -m 444 $(PROG).6 $(MANDIR)
 
 clean:
 	rm -f $(PROG) core *.o

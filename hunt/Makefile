@@ -17,8 +17,9 @@ POBJ=		hunt.o connect.o playit.o otto.o
 
 #
 # Installation destinations
-BINDIR=		/usr/games
-LIBDIR=		/usr/games/lib
+DESTDIR=/usr/games
+BINDIR=		$(DESTDIR)
+LIBDIR= $(DESTDIR)/lib
 MANDIR=		/usr/man/man6
 
 #
@@ -82,7 +83,8 @@ SYSLIBS=	-lbsd /usr/lib/libcurses.a
 # Generic definitions
 #
 DEFS=		$(GAME_PARAM) $(DEFS_LINUX)
-CFLAGS=		-O2 $(SYSCFLAGS) $(DEFS)
+override CFLAGS = -O2 $(SYSCFLAGS) $(DEFS)
+CC=     gcc
 
 #
 # Normal targets

@@ -45,7 +45,7 @@ static char sccsid[] = "@(#)main.c	5.5 (Berkeley) 2/28/91";
 # include	<signal.h>
 # include	<ctype.h>
 # ifdef linux
-  # include 	<bsd/sgtty.h>
+  # include 	<sgtty.h>
 # endif
 
 #ifdef linux

@@ -1,35 +1,64 @@
-ALLDIRS=arithmetic atc battlestar bcd bog caesar canfield cribbage factor \
-	fish fortune hangman hunt mille monop morse number paranoia pom ppt \
-	primes rain robots sail snake trek wargames worm worms wump
+ALLDIRS=arithmetic atc backgammon battlestar bcd bog caesar canfield cribbage \
+	factor fish fortune hangman hunt mille monop morse number paranoia \
+	pom ppt primes rain robots sail snake trek wargames worm worms wump
 
 TESTDIRS=bcd caesar factor morse primes number pom ppt wargames
 
-SRCROOT=/usr1/local/src/bsd-games
-SRCTAR=	bsd-games.src-1.2.tar
-BINTAR=	bsd-games.bin-1.2.tar
+SRCROOT=/usr1/src/bsd-games
+SRCTAR=	bsd-games.src-1.3.tar
+BINTAR=	bsd-games.bin-1.3.tar
+
+# Edit this to define where things should be installed
+GAMESROOT=	/usr
+
+# The following are inherited by the sub-Makefiles
+DESTDIR=$(GAMESROOT)/games
+LIBDIR=	$(DESTDIR)/lib
+MANDIR=	$(GAMESROOT)/man/man6
+CC=	gcc
+CFLAGS=	-O
 
 all:
-	-for i in $(ALLDIRS); do \
+	for i in $(ALLDIRS); do \
 		echo "Making all in $$i"; \
-		(cd $$i; make) ; \
+		( cd $$i; make DESTDIR=$(DESTDIR) LIBDIR=$(LIBDIR) \
+		  MANDIR=$(MANDIR) CFLAGS=$(CFLAGS) ) ; \
 	done
 
 install:
-	-for i in $(ALLDIRS); do \
+	@echo "Creating base directories:"
+	@echo "	$(DESTDIR)"
+	@echo "	$(LIBDIR)"
+	@echo "	$(MANDIR)"
+	@echo "If directory creation fails, you can create the directories \
+	      by hand."
+	@echo ""
+	if [ ! -d $(DESTDIR) ] ; then \
+		mkdir -p $(DESTDIR) ; \
+	fi
+	if [ ! -d $(LIBDIR) ] ; then \
+		mkdir -p $(LIBDIR) ; \
+	fi
+	if [ ! -d $(MANDIR) ] ; then \
+		mkdir -p $(MANDIR) ; \
+	fi
+	for i in $(ALLDIRS); do \
 		echo "Making install in $$i"; \
-		(cd $$i; make install) ; \
+		( cd $$i; make install DESTDIR=$(DESTDIR) LIBDIR=$(LIBDIR) \
+		  MANDIR=$(MANDIR) CFLAGS=$(CFLAGS) ) ; \
 	done
 
 clean:
-	-for i in $(ALLDIRS); do \
+	for i in $(ALLDIRS); do \
 		echo "Making clean in $$i"; \
-		(cd $$i; make clean) ; \
+		( cd $$i; make clean DESTDIR=$(DESTDIR) LIBDIR=$(LIBDIR) \
+		  MANDIR=$(MANDIR) CFLAGS=$(CFLAGS) ) ; \
 	done
 
 test:
-	-for i in $(TESTDIRS); do \
+	for i in $(TESTDIRS); do \
 		echo "Making test in $$i"; \
-		(cd $$i; make test) ; \
+		( cd $$i; make test ) ; \
 	done
 
 tar.src:	clean
@@ -40,49 +69,51 @@ tar.src:	clean
 tar.bin:
 	(cd / ; \
 	rm $(SRCROOT)/$(BINTAR).gz ; \
-	tar cvf - /usr/games/arithmetic /usr/man/man6/arithmetic.6 \
-		  /usr/games/atc /usr/games/lib/atc /usr/man/man6/atc.6 \
-		  /usr/games/battlestar /usr/man/man6/battlestar.6 \
-		  	/usr/games/lib/battlestar.log \
-		  /usr/games/bcd /usr/man/man6/bcd.6 \
-		  /usr/games/bog /usr/man/man6/bog.6 \
-		  	/usr/games/lib/bog \
-		  /usr/games/caesar /usr/man/man6/caesar.6 \
-		  /usr/games/canfield /usr/man/man6/canfield.6 \
-		  	/usr/games/lib/cfscores /usr/games/cfscores \
-		  /usr/games/cribbage /usr/man/man6/cribbage.6 \
-		  	/usr/games/lib/criblog /usr/games/lib/cribbage.instr \
-		  /usr/games/factor /usr/man/man6/factor.6 \
-		  /usr/games/fish /usr/man/man6/fish.6 \
-		  	/usr/games/lib/fish.instr \
-		  /usr/games/fortune /usr/man/man6/fortune.6 \
-		  	/usr/games/fortunes \
-		  /usr/games/hangman /usr/man/man6/hangman.6 \
-		  	/usr/games/lib/hangman-words \
-		  /usr/games/hunt /usr/games/lib/huntd /usr/man/man6/hunt.6 \
-		  	/usr/man/man6/huntd.6 \
-		  /usr/games/mille /usr/man/man6/mille.6 \
-		  /usr/games/monop /usr/man/man6/monop.6 \
-		  	/usr/games/lib/cards.pck \
-		  /usr/games/morse \
-		  /usr/games/number /usr/man/man6/number.6\
-		  /usr/games/paranoia \
-		  /usr/games/pom /usr/man/man6/pom.6 \
-		  /usr/games/ppt /usr/man/man6/ppt.6 \
-		  /usr/games/primes /usr/man/man6/primes.6 \
-		  /usr/games/rain /usr/man/man6/rain.6 \
-		  /usr/games/robots /usr/man/man6/robots.6 \
-		  	/usr/games/lib/robots_roll \
-		  /usr/games/sail /usr/man/man6/sail.6 \
-		  	/usr/games/lib/saillog \
-		  /usr/games/snake /usr/games/snscore \
-		  	/usr/man/man6/snake.6 /usr/games/lib/snakerawscores \
-		  	/usr/games/lib/snake.log \
-		  /usr/games/trek \
-		  /usr/games/wargames \
-		  /usr/games/worm /usr/man/man6/worm.6 \
-		  /usr/games/worms /usr/man/man6/worms.6 \
-		  /usr/games/wump /usr/man/man6/wump.6 \
-		  	/usr/games/lib/wump.info \
+	tar cvf - $(DESTDIR)/arithmetic $(MANDIR)/arithmetic.6 \
+		  $(DESTDIR)/atc $(LIBDIR)/atc $(MANDIR)/atc.6 \
+		  $(DESTDIR)/backgammon $(MANDIR)/backgammon.6 \
+		  	$(DESTDIR)/teachgammon \
+		  $(DESTDIR)/battlestar $(MANDIR)/battlestar.6 \
+		  	$(LIBDIR)/battlestar.log \
+		  $(DESTDIR)/bcd $(MANDIR)/bcd.6 \
+		  $(DESTDIR)/bog $(MANDIR)/bog.6 \
+		  	$(LIBDIR)/bog \
+		  $(DESTDIR)/caesar $(MANDIR)/caesar.6 \
+		  $(DESTDIR)/canfield $(MANDIR)/canfield.6 \
+		  	$(LIBDIR)/cfscores $(DESTDIR)/cfscores \
+		  $(DESTDIR)/cribbage $(MANDIR)/cribbage.6 \
+		  	$(LIBDIR)/criblog $(LIBDIR)/cribbage.instr \
+		  $(DESTDIR)/factor $(MANDIR)/factor.6 \
+		  $(DESTDIR)/fish $(MANDIR)/fish.6 \
+		  	$(LIBDIR)/fish.instr \
+		  $(DESTDIR)/fortune $(MANDIR)/fortune.6 \
+		  	$(DESTDIR)/fortunes \
+		  $(DESTDIR)/hangman $(MANDIR)/hangman.6 \
+		  	$(LIBDIR)/hangman-words \
+		  $(DESTDIR)/hunt $(LIBDIR)/huntd $(MANDIR)/hunt.6 \
+		  	$(MANDIR)/huntd.6 \
+		  $(DESTDIR)/mille $(MANDIR)/mille.6 \
+		  $(DESTDIR)/monop $(MANDIR)/monop.6 \
+		  	$(LIBDIR)/cards.pck \
+		  $(DESTDIR)/morse \
+		  $(DESTDIR)/number $(MANDIR)/number.6\
+		  $(DESTDIR)/paranoia \
+		  $(DESTDIR)/pom $(MANDIR)/pom.6 \
+		  $(DESTDIR)/ppt $(MANDIR)/ppt.6 \
+		  $(DESTDIR)/primes $(MANDIR)/primes.6 \
+		  $(DESTDIR)/rain $(MANDIR)/rain.6 \
+		  $(DESTDIR)/robots $(MANDIR)/robots.6 \
+		  	$(LIBDIR)/robots_roll \
+		  $(DESTDIR)/sail $(MANDIR)/sail.6 \
+		  	$(LIBDIR)/saillog \
+		  $(DESTDIR)/snake $(DESTDIR)/snscore \
+		  	$(MANDIR)/snake.6 $(LIBDIR)/snakerawscores \
+		  	$(LIBDIR)/snake.log \
+		  $(DESTDIR)/trek \
+		  $(DESTDIR)/wargames \
+		  $(DESTDIR)/worm $(MANDIR)/worm.6 \
+		  $(DESTDIR)/worms $(MANDIR)/worms.6 \
+		  $(DESTDIR)/wump $(MANDIR)/wump.6 \
+		  	$(LIBDIR)/wump.info \
 	    | gzip -c > $(SRCROOT)/$(BINTAR).gz)
 
