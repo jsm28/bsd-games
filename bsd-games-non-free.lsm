@@ -3,7 +3,7 @@ Title:		bsd-games-non-free
 Version:	2.13
 Entered-date:	2001-08-30
 Description:	Games from NetBSD with restrictive licences
-	(not DFSG/OSD-free).  Includes: hack, rogue.
+	(not DFSG/OSD-free).  Includes: rogue.
 Keywords:	games, NetBSD
 Maintained-by:	jsm@polyomino.org.uk (Joseph S. Myers)
 Primary-site:	ibiblio.org /pub/Linux/games

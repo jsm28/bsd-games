@@ -238,50 +238,69 @@ notices, and then the following:
       3.)  This code is not to be traded, sold, or used for personal
            gain or profit.
 
-The following applies to the game "hack" (in bsd-games-non-free):
+The game "hack" has the following notices:
 
-   Hack 1.0.3 is copyright (c) Andries Brouwer, Stichting Mathematich Centrum,
-   Amsterdam, 1985.
-   Unchanged source and source changed to adapt it to a changing environment
-   (operating system, libraries, compiler) may be freely distributed.
+   Copyright (c) 1985, Stichting Centrum voor Wiskunde en Informatica,
+   Amsterdam
+   All rights reserved.
 
-This has been clarified by Andries Brouwer:
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are
+   met:
 
-   Clearly the idea was that it is allowed to go from termcap to terminfo,
-   but requires explicit permission to add new monsters.
+   - Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
 
-and, on distribution of binaries:
+   - Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
 
-   The old license does not talk about such things.
-   As far as I am concerned a binary is just a very inconvenient
-   form of source, so would have the same restrictions:
-   you may use a hex editor to patch the default location of the
-   auxiliary files, but not to change the probability of finding
-   a wand of wishing. Binaries compiled straight from the source
-   or modified in an allowed way may be freely distributed :-)
+   - Neither the name of the Stichting Centrum voor Wiskunde en
+   Informatica, nor the names of its contributors may be used to endorse or
+   promote products derived from this software without specific prior
+   written permission.
 
-Some historical information from the permission letter to BSD:
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+   IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+   TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+   PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+   OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-   Concerning the history of this material: Jay Fenlason and some
-   friends from Lincolnsudbury wrote a program called `hack'; this
-   program was included in the lincolnsudbury software distribution.
-   I was game master at our site at the time we received this
-   distribution, and installed it. Players here complained about
-   the many bugs this program had, and came with new suggestions,
-   and following their suggestions (mostly those of my brother), I
-   changed more and more and added more and more. Today the source
-   is several times larger than it was originally, and very few, if
-   any, lines of the original source remain. 
-   I leave it to jour judgement whether this state of affairs means
-   that also Fenlason's permission is required for distribution.
-   Many other people made smaller contributions; usually their names
-   can be found in the sources. All these contributions are in the
-   public domain.
+   Copyright (c) 1982 Jay Fenlason <hack@gnu.org>
+   All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+   1. Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+   2. Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+   3. The name of the author may not be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+   THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+   AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL
+   THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+   OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+   WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+   OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 "hack/pathnames.h" bears a BSD copyright notice and licence;
-"hack/hack.tty.c" bears one in addition to that in the name of the
-Stichting Mathematisch Centrum; "hack/extern.h" bears the notice in
-the name of Christos Zoulas listed above.
+"hack/hack.tty.c" bears one in addition to that in those listed above;
+"hack/extern.h" bears the notice in the name of The NetBSD Foundation
+listed above.
 
 Auxiliary and data files, distributed with the games in NetBSD, but
 not bearing copyright notices, probably fall under the terms of the

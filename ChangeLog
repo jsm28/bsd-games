@@ -1,5 +1,36 @@
 2003-03-29  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* hack/COPYRIGHT, hack/COPYRIGHT-JF, hack/alloc.c, hack/config.h,
+	hack/date.h, hack/def.edog.h, hack/def.eshk.h, hack/def.flag.h,
+	hack/def.func_tab.h, hack/def.gen.h, hack/def.gold.h,
+	hack/def.mkroom.h, hack/def.monst.h, hack/def.obj.h,
+	hack/def.objclass.h, hack/def.objects.h, hack/def.permonst.h,
+	hack/def.rm.h, hack/def.trap.h, hack/def.wseg.h, hack/hack.6.in,
+	hack/hack.Decl.c, hack/hack.apply.c, hack/hack.bones.c,
+	hack/hack.c, hack/hack.cmd.c, hack/hack.do.c, hack/hack.do_name.c,
+	hack/hack.do_wear.c, hack/hack.dog.c, hack/hack.eat.c,
+	hack/hack.end.c, hack/hack.engrave.c, hack/hack.fight.c,
+	hack/hack.h, hack/hack.invent.c, hack/hack.ioctl.c,
+	hack/hack.lev.c, hack/hack.main.c, hack/hack.makemon.c,
+	hack/hack.mfndpos.h, hack/hack.mhitu.c, hack/hack.mklev.c,
+	hack/hack.mkmaze.c, hack/hack.mkobj.c, hack/hack.mkshop.c,
+	hack/hack.mon.c, hack/hack.monst.c, hack/hack.o_init.c,
+	hack/hack.objnam.c, hack/hack.options.c, hack/hack.pager.c,
+	hack/hack.potion.c, hack/hack.pri.c, hack/hack.read.c,
+	hack/hack.rip.c, hack/hack.rumors.c, hack/hack.save.c,
+	hack/hack.search.c, hack/hack.sh, hack/hack.shk.c,
+	hack/hack.shknam.c, hack/hack.steal.c, hack/hack.termcap.c,
+	hack/hack.timeout.c, hack/hack.topl.c, hack/hack.track.c,
+	hack/hack.trap.c, hack/hack.tty.c, hack/hack.u_init.c,
+	hack/hack.unix.c, hack/hack.vault.c, hack/hack.version.c,
+	hack/hack.wield.c, hack/hack.wizard.c, hack/hack.worm.c,
+	hack/hack.worn.c, hack/hack.zap.c, hack/makedefs.c, hack/rnd.c:
+	Hack is now BSD-licensed.  Thanks to Andries Brouwer, Jay Fenlason
+	and CWI <http://www.cwi.nl/~aeb/games/hack/hack.html>.  Via
+	OpenBSD.
+	* COPYING, README, README.non-free, bsd-games.lsm,
+	bsd-games-non-free.lsm: Update.
+
 	* quiz/datfiles/europe: Yugoslavia has changed its name to Serbia
 	and Montenegro.
 

@@ -5,9 +5,9 @@ Entered-date:	2001-08-30
 Description:	Port of most of the games from NetBSD-current.  Games
 	included: adventure arithmetic atc backgammon banner battlestar
 	bcd boggle caesar canfield countmail cribbage dm factor fish fortune
-	gomoku hangman hunt mille monop morse number phantasia pig pom ppt
-	primes quiz rain random robots sail snake tetris trek wargames worm
-	worms wtf wump.
+	gomoku hack hangman hunt mille monop morse number phantasia pig pom
+	ppt primes quiz rain random robots sail snake tetris trek wargames
+	worm worms wtf wump.
 Keywords:	games, NetBSD
 Maintained-by:	jsm@polyomino.org.uk (Joseph S. Myers)
 Primary-site:	ibiblio.org /pub/Linux/games
