@@ -1,4 +1,4 @@
-1997-05-02 - Installation directions
+1997-05-03 - Installation directions
 ====================================
 
 Non-free games
@@ -10,7 +10,9 @@ package, and unpack it in the same directory you unpacked this in
 before proceeding.  If you do, cd to bog and decide if you want -DPURE
 or not -- see bog/README.linux for more information.  If you are in a
 hurry, don't worry about it ... it really is more of an aesthetic
-thing.
+thing.  You can also build bsd-games-non-free separately.  (This file
+is also in bsd-games-non-free; if you only have bog, hangman and
+paranoia subdirectories, then you have just this package.)
 
 Building and installation
 =========================

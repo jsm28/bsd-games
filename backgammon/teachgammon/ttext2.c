@@ -37,7 +37,7 @@ static char sccsid[] = "@(#)ttext2.c	5.4 (Berkeley) 6/1/90";
 
 #include "back.h"
 
-char *prompt, *list, *opts;
+char *prompt, *list[], *opts;
 
 char	*doubl[] = {
     "\nDoubling:",

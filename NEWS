@@ -1,6 +1,15 @@
 This file contains a summary of changes in each version after 1.3.
 For fuller details, see ChangeLog and ChangeLog.0.
 
+Version 1.3.3beta
+=================
+
+* Non-free package now contains all the files required to build on its
+own.  It can now be built on its own, or in the same source tree as
+bsd-games; the files that appear in both are exact duplicates.
+
+* Bug-fixes in backgammon and sail.
+
 Version 1.3.2beta
 =================
 

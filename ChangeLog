@@ -1,5 +1,27 @@
 Sat May  3 00:27:49 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* Version 1.3.3beta.
+
+	* NEWS: Update.
+	* bsd-games.lsm: Update.
+	* bsd-games-non-free.lsm: Update.
+
+	* sail/player.h (SCREENTEST): Do echo(), since ncurses turns off
+	echo in initscr but we want it on for initial questions.
+
+	* backgammon/teachgammon/ttext1.c: Remove \032 from `hello'.
+
+	* backgammon/teachgammon/ttext2.c: Make list `char *list[]'.
+
+	* configure: Default list of directories should only include those
+	with a Makefile.
+
+	* README.non-free: Update.
+
+	* README: Update.
+
+	* INSTALL: Update.
+
 	* Version 1.3.2beta.
 
 	* NEWS: Update.

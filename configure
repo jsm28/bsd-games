@@ -87,7 +87,7 @@ ask "Installation prefix" install_prefix ''
 
 def_build_dirs=
 for file in *; do
-    if [ -d "$file" ]; then
+    if [ -e "$file/Makefile" ]; then
 	def_build_dirs="$def_build_dirs $file"
     fi
 done

@@ -1,4 +1,4 @@
-1995-05-02
+1995-05-03
 
 Here is the bsd-games package, containing ports of your favorite
 (mostly curses-based) BSD games (descriptions to follow).  These games
@@ -25,7 +25,10 @@ copyrights.  If you want them, get the bsd-games-non-free package,
 which will unpack into a `bsd-games-n.n' directory like this one does,
 and read the README.non-free that it contains.  (These games aren't
 actually from BSD.)  This probably won't be available from tsx-11, but
-may be on sunsite.
+may be on sunsite.  You can also build bsd-games-non-free separately;
+it contains some of the same files, which are all exact duplicates.
+If the only subdirectories you have are bog, hangman and paranoia,
+then you have just bsd-games-non-free.
 
 Here's what we have so far:
 

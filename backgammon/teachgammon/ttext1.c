@@ -57,7 +57,7 @@ char *list[] = {
 };
 
 char	*hello[] = {
-    "\n\032   These rules consist of text describing how to play Backgammon",
+    "\n   These rules consist of text describing how to play Backgammon",
     "followed by a tutorial session where you play a practice game",
     "against the computer.  When using this program, think carefuly",
     "before typing, since it reacts as soon as you type something.  In",
