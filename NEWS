@@ -14,7 +14,7 @@ versions of the package and read that).
 Version 2.16 (2004-02-13)
 ============
 
-* Updated from NetBSD CVS of 2004-02-12.  Includes a new game, dab
+* Updated from NetBSD CVS of 2004-02-13.  Includes a new game, dab
 (Dots and Boxes), written in C++.
 
 * Supplementary documentation for trek and rogue now installed

@@ -1,4 +1,13 @@
+2004-02-14  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* fortune/datfiles/fortunes, fortune/datfiles/fortunes.sp.ok,
+	rogue/USD.doc/rogue.me: Update from NetBSD CVS.
+	* NEWS: Fix typo.
+	* ChangeLog: Mark properly for 2.16 release.
+
 2004-02-13  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* Version 2.16.
 
 	* NEWS, bsd-games.lsm, bsd-games-non-free.lsm: Update.
 
