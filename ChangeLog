@@ -1,5 +1,10 @@
 2000-09-20  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com6.c (open_score_file): If BATTLESTAR_QUIET is set
+	in the environment, don't give a warning.
+	* tests/battlestar.test: Set BATTLESTAR_QUIET so tests can be done
+	as a user without write access to the log file.
+
 	* battlestar/com5.c (kiss): From OpenBSD, "take" the bathing
 	goddess if required; give a better message when trying to kiss a
 	person who is not present.

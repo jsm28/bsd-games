@@ -33,6 +33,8 @@ set -e
 
 testexec battlestar battlestar/battlestar
 
+export BATTLESTAR_QUIET=1
+
 if echo quit | battlestar/battlestar |grep wizard >/dev/null; then
     echo "Can't test battlestar as this user."
     exit 0

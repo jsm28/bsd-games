@@ -111,7 +111,7 @@ void
 open_score_file()
 {
 	score_fp = fopen(_PATH_SCORE, "a");
-	if (score_fp == NULL)
+	if (score_fp == NULL && getenv("BATTLESTAR_QUIET") == NULL)
 		warn("open %s for append", _PATH_SCORE);
 	if (score_fp != NULL && fileno(score_fp) < 3)
 		exit(1);
