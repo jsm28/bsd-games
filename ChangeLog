@@ -1,3 +1,7 @@
+2004-04-30  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* wtf/acronyms.comp: Update from NetBSD CVS.
+
 2004-04-24  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* backgammon/common_source/fancy.c, fortune/datfiles/farber:
