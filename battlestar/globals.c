@@ -257,6 +257,6 @@ unsigned int wear[NUMOFWORDS];
 char    beenthere[NUMOFROOMS + 1];
 char    injuries[NUMOFINJURIES];
 
-char    username[9];
+const char *username;
 
 struct wlist *hashtab[HASHSIZE];

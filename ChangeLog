@@ -1,3 +1,9 @@
+2000-09-08  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* battlestar/extern.h, battlestar/globals.c, battlestar/init.c:
+	Don't restrict length of username, use a string from strdup
+	instead.  Make functions and arrays only used in init.c static.
+
 2000-09-07  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* battlestar/extern.h: Put prototypes in alphabetical order.

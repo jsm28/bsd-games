@@ -285,7 +285,7 @@ extern unsigned int wear[NUMOFWORDS];
 extern char    beenthere[NUMOFROOMS + 1];
 extern char    injuries[NUMOFINJURIES];
 
-extern char    username[9];
+extern const char *username;
 
 struct wlist {
 	const char   *string;
@@ -310,7 +310,6 @@ extern const struct objs nightobjs[];
 void blast __P((void));
 void bury __P((void));
 int card __P((const char *, int));
-int checkout __P((const char *));
 void chime __P((void));
 void convert __P((int));
 void crash __P((void));
@@ -327,7 +326,6 @@ void endfly __P((void));
 int fight __P((int, int));
 int follow __P((void));
 char *getcom __P((char *, int, const char *, const char *));
-void getutmp __P((char *));
 char *getword __P((char *, char *, int));
 int give __P((void));
 int hash __P((const char *));
@@ -372,7 +370,6 @@ int use __P((void));
 int visual __P((void));
 int wearit __P((void));
 void whichway __P((struct room));
-int wizard __P((const char *));
 void wordinit __P((void));
 void writedes __P((void));
 int zzz __P((void));
