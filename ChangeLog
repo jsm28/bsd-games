@@ -1,5 +1,9 @@
 2000-09-20  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/getcom.c (getcom): die() on EOF; based on OpenBSD.
+	* tests/battlestar.out15: New test.
+	* tests/battlestar.test: Update.
+
 	* battlestar/com6.c (open_score_file): If BATTLESTAR_QUIET is set
 	in the environment, don't give a warning.
 	* tests/battlestar.test: Set BATTLESTAR_QUIET so tests can be done

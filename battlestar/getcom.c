@@ -53,6 +53,8 @@ getcom(buf, size, prompt, error)
 	for (;;) {
 		fputs(prompt, stdout);
 		if (fgets(buf, size, stdin) == 0) {
+			if (feof(stdin))
+				die();
 			clearerr(stdin);
 			continue;
 		}

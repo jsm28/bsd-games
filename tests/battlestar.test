@@ -111,3 +111,8 @@ testno 14
 battlestar/battlestar <tests/battlestar.in14 >test.out 2>&1 || failtest
 compare test.out tests/battlestar.out14
 rm -f test.out
+
+testno 15
+battlestar/battlestar </dev/null >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out15
+rm -f test.out
