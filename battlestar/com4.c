@@ -304,8 +304,12 @@ drop(name)
 					else if (*name == 'G')
 						puts("Given anyway.");
 				}
-			} else
+			} else if (testbit(location[position].objects, value))
 				puts("Kicked.");
+			else if (testbit(wear, value))
+				puts("Not while it's being worn.");
+			else
+				puts("Not found.");
 		}
 		if (wordnumber < wordcount - 1 && wordvalue[++wordnumber] == AND)
 			wordnumber++;

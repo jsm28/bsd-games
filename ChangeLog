@@ -1,5 +1,11 @@
 2000-09-22  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com4.c (drop): When kicking, check for objects being
+	worn or not present.  From OpenBSD.
+	* tests/battlestar.in29, tests/battlestar.out29,
+	tests/battlestar.in30, tests/battlestar.out30: New tests.
+	* tests/battlestar.test: Update.
+
 	* battlestar/com4.c (take): Check for the object not being present
 	before checking for it being too heavy or bulky.
 	* tests/battlestar.in28, tests/battlestar.out28: New test.
