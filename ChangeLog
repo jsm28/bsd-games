@@ -1,5 +1,8 @@
 2001-08-29  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* wtf/acronyms: Add AIUI.  Suggestion from Adam Olsen
+	<adamolsen@technologist.com>.
+
 	* phantasia/Makefrag: Fix typo.
 
 	* arithmetic/arithmetic.6, atc/atc.6.in, atc/list.c,
