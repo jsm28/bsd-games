@@ -534,7 +534,8 @@ void cmore __P((const char *));
 void clrlin __P((void));
 void pline __P((const char *, ...))
     __attribute__((__format__(__printf__, 1, 2)));
-void vpline __P((const char *, va_list));
+void vpline __P((const char *, va_list))
+    __attribute__((__format__(__printf__, 1, 0)));
 void putsym __P((int));
 void putstr __P((const char *));
 
