@@ -1,3 +1,8 @@
+2000-07-22  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* hack/hack.tty.c, monop/getinp.c, rogue/message.c, trek/phaser.c:
+	Update from NetBSD CVS.
+
 2000-07-06  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* adventure/done.c, adventure/main.c, adventure/subr.c, bcd/bcd.c,
