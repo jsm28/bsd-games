@@ -1,5 +1,7 @@
 2001-08-29  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* worm/worm.c: Whitespace tweak.
+
 	* worm/worm.c, worm/worm.6: Remove documented bug with long worm
 	lengths, and improve handling of non-standard screen sizes.  From
 	OpenBSD.

@@ -158,7 +158,7 @@ life()
 	head = newlink();
 	if (head == NULL)
 		err(1, NULL);
-	head->x = start_len % (COLS-5) +2;
+	head->x = start_len % (COLS-5) + 2;
 	head->y = LINES / 2;
 	head->next = NULL;
 	display(head, HEAD);
