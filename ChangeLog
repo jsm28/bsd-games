@@ -1,5 +1,7 @@
 2004-01-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* dab/.cvsignore: New file.
+
 	* Makeconfig.in: Add STRLCPY_DEFS and GETPROGNAME_DEFS.
 	* arithmetic/Makefrag, fortune/fortune/Makefrag, rogue/Makefrag:
 	Use them.
