@@ -1,3 +1,8 @@
+2002-01-26  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* hangman/extern.c, hangman/getword.c, hangman/hangman.6.in,
+	hangman/hangman.h, hangman/main.c: Update from NetBSD CVS.
+
 2002-01-20  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* README: Note this collection supports GNU Hurd as well as Linux.
