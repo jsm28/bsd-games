@@ -1,5 +1,8 @@
 2000-09-23  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/globals.c (objdes, objsht): Use NULL instead of 0;
+	from OpenBSD.  Also add or adjust comments.
+
 	* battlestar/com2.c (murder), battlestar/com3.c (shoot),
 	battlestar/com4.c (take): Correct "dont" to "don't".  From
 	OpenBSD.
