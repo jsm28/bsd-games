@@ -1,3 +1,11 @@
+2000-09-09  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* battlestar/battlestar.6, battlestar/battlestar.c,
+	battlestar/com1.c, battlestar/com5.c, battlestar/cypher.c,
+	battlestar/dayfile.c, battlestar/extern.h, battlestar/globals.c,
+	battlestar/init.c, battlestar/nightfile.c, battlestar/room.c:
+	Update from NetBSD CVS after merge.
+
 2000-09-08  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* battlestar/battlestar.6: Don't refer to ~.  Suggested by Hubert
