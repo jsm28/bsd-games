@@ -38,9 +38,10 @@ __RCSID("$NetBSD: misc.c,v 1.13 2003/08/07 09:37:43 agc Exp $");
 #endif
 #endif /* not lint */
 
+#include <sys/file.h>
+
 #include <ctype.h>
 #include <stdio.h>
-#include <sys/file.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>

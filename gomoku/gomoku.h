@@ -35,10 +35,8 @@
  */
 
 #include <sys/types.h>
+#include <sys/endian.h>
 #include <stdio.h>
-#ifdef __linux__
-#include <endian.h>
-#endif
 
 /* board dimensions */
 #define BSZ	19

@@ -32,12 +32,12 @@
  */
 
 # include	<sys/ttydefaults.h>
+# include	<sys/endian.h>
 # include	<ctype.h>
 # include	<curses.h>
 # include	<err.h>
 # include	<errno.h>
 # include	<fcntl.h>
-# include	<netinet/in.h>
 # include	<pwd.h>
 # include	<setjmp.h>
 # include	<signal.h>

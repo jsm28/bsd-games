@@ -38,6 +38,9 @@ __RCSID("$NetBSD: sync.c,v 1.21 2003/08/07 09:37:45 agc Exp $");
 #endif
 #endif /* not lint */
 
+#include <sys/file.h>
+#include <sys/stat.h>
+
 #include <fcntl.h>
 #include <errno.h>
 #include <signal.h>
@@ -45,9 +48,6 @@ __RCSID("$NetBSD: sync.c,v 1.21 2003/08/07 09:37:45 agc Exp $");
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/file.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <time.h>
 #include <unistd.h>
 #include "extern.h"

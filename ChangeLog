@@ -1,5 +1,8 @@
 2004-01-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* gomoku/gomoku.h, robots/robots.h, sail/extern.h, sail/misc.c,
+	sail/sync.c: Adjust system header includes.
+
 	* fortune/fortune/fortune.6.in: Update substitution for path to
 	fortunes directory.
 

@@ -32,6 +32,7 @@
  */
 
 #include <sys/types.h>
+
 #include "machdep.h"
 
 	/* program mode */
