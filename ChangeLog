@@ -1,3 +1,8 @@
+2004-09-15  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* fortune/fortune/fortune.6.in, fortune/strfile/strfile.8,
+	worms/worms.c: Update from NetBSD CVS.
+
 2004-09-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/log.c, sail/dr_1.c, sail/sync.c: Update from NetBSD CVS.
