@@ -287,6 +287,7 @@ cypher()
 				printf("\nYou can still carry up to %d kilogram%s\n", WEIGHT, (WEIGHT == 1 ? "." : "s."));
 			} else
 				puts("\nYou are in perfect health.");
+			wordnumber++;
 			break;
 
 		case USE:

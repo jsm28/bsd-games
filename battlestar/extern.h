@@ -253,8 +253,9 @@ extern const int     objwt[NUMOFOBJECTS];
 extern const int     objcumber[NUMOFOBJECTS];
 
  /* current input line */
+#define WORDLEN	15
 #define NWORD	20		/* words per line */
-extern char    words[NWORD][15];
+extern char    words[NWORD][WORDLEN];
 extern int     wordvalue[NWORD];
 extern int     wordtype[NWORD];
 extern int     wordcount, wordnumber;

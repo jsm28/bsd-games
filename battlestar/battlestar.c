@@ -96,7 +96,7 @@ start:
 run:
 	next = getcom(mainbuf, sizeof mainbuf, ">-: ",
 	    "Please type in something.");
-	for (wordcount = 0; next && wordcount < 20; wordcount++)
+	for (wordcount = 0; next && wordcount < NWORD - 1; wordcount++)
 		next = getword(next, words[wordcount], -1);
 	parse();
 	switch (cypher()) {

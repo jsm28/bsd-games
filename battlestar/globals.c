@@ -228,7 +228,7 @@ int     followfight = -1;
 struct room *location;
 
  /* current input line */
-char    words[NWORD][15];
+char    words[NWORD][WORDLEN];
 int     wordvalue[NWORD];
 int     wordtype[NWORD];
 int     wordcount, wordnumber;

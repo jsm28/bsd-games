@@ -150,6 +150,7 @@ struct wlist wlist[] = {
 	{ "everything",	EVERYTHING,	OBJECT, NULL },
 	{ "all",	EVERYTHING,	OBJECT, NULL },
 	{ "and",	AND,		CONJ, NULL },
+	{ ",",		AND,		CONJ, NULL },
 	{ "kill",	KILL,		VERB, NULL },
 	{ "fight",	KILL,		VERB, NULL },
 	{ "ravage",	RAVAGE,		VERB, NULL },

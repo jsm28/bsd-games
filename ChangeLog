@@ -1,5 +1,24 @@
 2000-09-21  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/extern.h: Define and use WORDLEN.  From OpenBSD.
+	* battlestar/globals.c: Also use WORDLEN.  From OpenBSD.
+	* battlestar/battlestar.c (main): Use NWORD rather than 20 (from
+	OpenBSD).  Avoid off-by-one error by using NWORD - 1.
+	* battlestar/cypher.c (cypher): Increment wordnumber after INVEN.
+	* battlestar/getcom.c (getword): Avoid overflowing elements of the
+	words array.  From OpenBSD.
+	* battlestar/words.c (wlist): Parse "," as AND.  From OpenBSD.
+	* battlestar/parse.c (parse): Trim AND AND.  When an OBJECT AND
+	EVERYTHING or NOUNS AND EVERYTHING sequence occurs, move the
+	EVERYTHING to the beginning.  Trim EVERYTHING and EVERYTHING.
+	From OpenBSD.  Also disable parsing of "," as AND if followed by a
+	verb.
+	* tests/battlestar.in21, tests/battlestar.out21,
+	tests/battlestar.in22, tests/battlestar.out22,
+	tests/battlestar.in23, tests/battlestar.out23,
+	tests/battlestar.in24, tests/battlestar.out24: New tests.
+	* tests/battlestar.test: Update.
+
 	* battlestar/com2.c (wearit): Don't attempt to wear anything with
 	no short description.
 	* tests/battlestar.in20, tests/battlestar.out20: New tests.

@@ -141,3 +141,23 @@ testno 20
 battlestar/battlestar <tests/battlestar.in20 >test.out 2>&1 || failtest
 compare test.out tests/battlestar.out20
 rm -f test.out
+
+testno 21
+battlestar/battlestar <tests/battlestar.in21 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out21
+rm -f test.out
+
+testno 22
+battlestar/battlestar <tests/battlestar.in22 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out22
+rm -f test.out
+
+testno 23
+battlestar/battlestar <tests/battlestar.in23 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out23
+rm -f test.out
+
+testno 24
+battlestar/battlestar <tests/battlestar.in24 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out24
+rm -f test.out
