@@ -1,5 +1,9 @@
 2004-01-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* Makeconfig.in: Add STRLCPY_DEFS and GETPROGNAME_DEFS.
+	* arithmetic/Makefrag, fortune/fortune/Makefrag, rogue/Makefrag:
+	Use them.
+
 	* dm/utmpentry.c, dm/utmpentry.h: New from NetBSD CVS of
 	usr.bin/who.
 	* COPYING: Update.
