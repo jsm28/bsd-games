@@ -1,5 +1,7 @@
 2001-11-18  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* wtf/acronyms: Update from NetBSD CVS.
+
 	* battlestar/com1.c: Rename to battlestar/command1.c.
 	* battlestar/com2.c: Rename to battlestar/command2.c.
 	* battlestar/com3.c: Rename to battlestar/command3.c.
