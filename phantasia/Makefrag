@@ -29,12 +29,13 @@
 phantasia_DIRS := $(GAMESDIR) $(MAN6DIR) $(PHANTASIA_DIR)
 phantasia_VFILES1 := gold lastdead mess monsters motd void
 phantasia_VFILES2 := scoreboard characs
-phantasia_CLEANFILES := $(phantasia_VFILES1) $(phantasia_VFILES2)
+phantasia_CLEANFILES := $(phantasia_VFILES1) $(phantasia_VFILES2) scorefiles.stamp
 
-phantasia_all:	phantasia/phantasia phantasia/phantasia.6 phantasia_scorefiles
+phantasia_all:	phantasia/phantasia phantasia/phantasia.6 phantasia/scorefiles.stamp
 
-phantasia_scorefiles: phantasia/setup phantasia/monsters.asc
+phantasia/scorefiles.stamp: phantasia/setup phantasia/monsters.asc
 	cd phantasia && ./setup -m monsters.asc
+	touch phantasia/scorefiles.stamp
 
 phantasia_install:	phantasia_all
 	$(INSTALL_SCORE_GAME) phantasia/phantasia $(INSTALL_PREFIX)$(GAMESDIR)/phantasia
