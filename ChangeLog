@@ -1,5 +1,11 @@
 2000-09-25  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com5.c (love): Fix loving already loved goddess;
+	avoid fallthrough after loving goddess; give error on "love
+	amulet".  From OpenBSD.
+	* tests/battlestar.in40, tests/battlestar.out40: New test.
+	* tests/battlestar.test: Update.
+
 	* atc/atc.6.in, hack/Makefile.bsd: Update from NetBSD CVS.
 	* battlestar/battlestar.c, battlestar/com1.c, battlestar/com2.c,
 	battlestar/com3.c, battlestar/com4.c, battlestar/com5.c,
