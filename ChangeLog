@@ -1,3 +1,8 @@
+2000-04-26  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* bsd-games.lsm, bsd-games-non-free.lsm: Update to LSM format
+	version 4.
+
 2000-04-19  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* Version 2.11.
