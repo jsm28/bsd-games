@@ -1,3 +1,9 @@
+2003-03-29  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* quiz/datfiles/europe: The Hague is not the capital of the
+	Netherlands.  Reported by Hugo van Galen <hugo@Dot.net> (in the
+	Netherlands) and Florian Boehl <flo@namensraumverschmutzung.net>.
+
 2003-03-28  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Makefile.bsd, Makefile.inc.bsd, adventure/Makefile.bsd,
