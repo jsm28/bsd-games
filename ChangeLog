@@ -1,5 +1,7 @@
 2000-09-07  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* fortune/datfiles/Makefile.bsd: Really update from NetBSD CVS.
+
 	* battlestar/battlestar.6: Improvements from OpenBSD.
 	* battlestar/extern.h: Define ROOMDESC.
 	* battlestar/room.c (writedes): Use it.
