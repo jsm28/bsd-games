@@ -79,6 +79,9 @@ main(argc, argv)
 	struct passwd *pw;
 	int uid;
 
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	if (argc > 2) {
 		printf("Usage: cfscores [user]\n");
 		exit(1);

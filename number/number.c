@@ -98,6 +98,9 @@ main(argc, argv)
 	int ch, first;
 	char line[256];
 
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	lflag = 0;
 	while ((ch = getopt(argc, argv, "l")) != -1)
 		switch (ch) {

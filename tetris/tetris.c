@@ -127,6 +127,10 @@ main(argc, argv)
 	char key_write[6][10];
 	int ch, i, j;
 
+	gid = getgid();
+	egid = getegid();
+	setegid(gid);
+
 	keys = "jkl pq";
 
 	while ((ch = getopt(argc, argv, "k:l:s")) != -1)

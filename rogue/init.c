@@ -1,4 +1,4 @@
-/*	$NetBSD: init.c,v 1.5 1997/10/12 11:45:08 lukem Exp $	*/
+/*	$NetBSD: init.c,v 1.6 1998/07/27 01:12:35 mycroft Exp $	*/
 
 /*
  * Copyright (c) 1988, 1993
@@ -41,7 +41,7 @@
 #if 0
 static char sccsid[] = "@(#)init.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: init.c,v 1.5 1997/10/12 11:45:08 lukem Exp $");
+__RCSID("$NetBSD: init.c,v 1.6 1998/07/27 01:12:35 mycroft Exp $");
 #endif
 #endif /* not lint */
 
@@ -72,15 +72,19 @@ boolean no_skull = 0;
 boolean passgo = 0;
 char *error_file = "rogue.esave";
 char *byebye_string = "Okay, bye bye!";
+gid_t gid, egid;
 
 int
 init(argc, argv)
 	int argc;
 	char *argv[];
 {
-	char *pn;
+	const char *pn;
 	int seed;
 
+	gid = getgid();
+	egid = getegid();
+	setegid(gid);
 	seed = 0;
 	pn = md_gln();
 	if ((!pn) || (strlen(pn) >= MAX_OPT_LEN)) {

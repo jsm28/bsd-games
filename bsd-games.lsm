@@ -1,18 +1,18 @@
 Begin3
 Title:		bsd-games
-Version:	2.1
-Entered-date:	28MAR98
+Version:	2.2
+Entered-date:	15AUG98
 Description:	Port of most of the games from NetBSD-current.  Games
 	included: adventure arithmetic atc backgammon banner battlestar
-	bcd caesar canfield countmail cribbage dm factor fish fortune gomoku
+	bcd caesar canfield cribbage dm factor fish fortune gomoku
 	hangman hunt mille monop morse number phantasia pig pom ppt primes
 	quiz rain random robots sail snake tetris trek wargames worm
 	worms wump.
 Keywords:	games, NetBSD
 Maintained-by:	jsm28@cam.ac.uk (Joseph S. Myers)
-Primary-site:	tsx-11.mit.edu /pub/linux/sources/usr.games
-		bsd-games-2.1.tar.gz
-Alternate-site:	sunsite.unc.edu /pub/Linux/games
+Primary-site:	sunsite.unc.edu /pub/Linux/games
+		bsd-games-2.2.tar.gz
+Alternate-site:	tsx-11.mit.edu /pub/linux/sources/usr.games
 Original-site:	ftp.netbsd.org /pub/NetBSD/NetBSD-current/tar_files/src
                 games.tar.gz
 Platforms:	Requires ncurses (curses/termcap may also work but are no

@@ -109,6 +109,9 @@ int     repeat = 1;
 time_t  tv;
 char   *tn;
 
+int rawscores;
+FILE *logfile;
+
 int main __P((int, char **));
 
 int
@@ -119,6 +122,19 @@ main(argc, argv)
 	extern char *optarg;
 	extern int optind;
 	int     ch, i;
+
+	/* Open score files then revoke setgid privileges */
+	rawscores = open(_PATH_RAWSCORES, O_RDWR|O_CREAT, 0664);
+	if (rawscores < 0) {
+		warn("open %s", _PATH_RAWSCORES);
+		sleep(2);
+	}
+	logfile = fopen(_PATH_LOGFILE, "a");
+	if (logfile == NULL) {
+		warn("fopen %s", _PATH_LOGFILE);
+		sleep(2);
+	}
+	setregid(getgid(), getgid());
 
 	(void) time(&tv);
 	srandom((int) tv);
@@ -496,7 +512,6 @@ post(iscore, flag)
 	int     iscore, flag;
 {
 	short   score = iscore;
-	int     rawscores;
 	short   uid;
 	short   oldbest = 0;
 	short   allbwho = 0, allbscore = 0;
@@ -509,9 +524,8 @@ post(iscore, flag)
 		pr("No saved scores for uid %d.\n", uid);
 		return (1);
 	}
-	if ((rawscores = open(_PATH_RAWSCORES, O_RDWR | O_CREAT, 0644)) < 0) {
-		pr("No score file %s: %s.\n", _PATH_RAWSCORES,
-		    strerror(errno));
+	if (rawscores < 0) {
+		/* Error reported earlier */
 		return (1);
 	}
 	/* Figure out what happened in the past */
@@ -543,7 +557,7 @@ post(iscore, flag)
 			pr("You set a new record!\n");
 	} else
 		pr("The highest is %s with $%d\n", p->pw_name, allbscore);
-	close(rawscores);
+	lseek(rawscores, 0, SEEK_SET);
 	return (1);
 }
 
@@ -946,13 +960,12 @@ void
 logit(msg)
 	const char   *msg;
 {
-	FILE   *logfile;
 	time_t  t;
 
-	if ((logfile = fopen(_PATH_LOGFILE, "a")) != NULL) {
+	if (logfile != NULL) {
 		time(&t);
 		fprintf(logfile, "%s $%d %dx%d %s %s",
 		    getlogin(), cashvalue, lcnt, ccnt, msg, ctime(&t));
-		fclose(logfile);
+		fflush(logfile);
 	}
 }

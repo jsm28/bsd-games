@@ -78,6 +78,10 @@ main(ac, av)
 	struct itimerval	itv;
 #endif
 
+	/* Open the score file then revoke setgid privileges */
+	open_score_file();
+	setregid(getgid(), getgid());
+
 	start_time = seed = time(0);
 
 	name = *av++;

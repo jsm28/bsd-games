@@ -1,4 +1,4 @@
-/*	$NetBSD: machdep.c,v 1.6 1997/10/12 11:45:19 lukem Exp $	*/
+/*	$NetBSD: machdep.c,v 1.8 1998/07/27 01:12:35 mycroft Exp $	*/
 
 /*
  * Copyright (c) 1988, 1993
@@ -41,7 +41,7 @@
 #if 0
 static char sccsid[] = "@(#)machdep.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: machdep.c,v 1.6 1997/10/12 11:45:19 lukem Exp $");
+__RCSID("$NetBSD: machdep.c,v 1.8 1998/07/27 01:12:35 mycroft Exp $");
 #endif
 #endif /* not lint */
 
@@ -323,7 +323,7 @@ md_df(fname)
  * function, but then the score file would only have one name in it.
  */
 
-char *
+const char *
 md_gln()
 {
 	struct passwd *p;
@@ -436,7 +436,10 @@ md_malloc(n)
 int
 md_gseed()
 {
-	return(getpid());
+	time_t seconds;
+
+	time(&seconds);
+	return((int) seconds);
 }
 
 /* md_exit():
@@ -472,10 +475,13 @@ md_lock(l)
 	short tries;
 
 	if (l) {
+		setegid(egid);
 		if ((fd = open(_PATH_SCOREFILE, O_RDONLY)) < 1) {
+			setegid(gid);
 			message("cannot lock score file", 0);
 			return;
 		}
+		setegid(gid);
 		for (tries = 0; tries < 5; tries++)
 			if (!flock(fd, LOCK_EX|LOCK_NB))
 				return;

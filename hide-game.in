@@ -1,4 +1,3 @@
-#!/bin/sh
 # hide-game.in - hide a game (only used if appropriate)
 
 set -e

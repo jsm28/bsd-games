@@ -122,6 +122,9 @@ main(argc, argv)
 	int ch;
 	char *p;
 
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	while ((ch = getopt(argc, argv, "")) != -1)
 		switch (ch) {
 		case '?':

@@ -92,6 +92,9 @@ main(argc, argv)
 	char *inbuf;
 	int obs[26], try, winner;
 
+	/* revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	winnerdot = 0;
 	if (argc > 1)
 		printit(argv[1]);

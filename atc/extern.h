@@ -96,6 +96,7 @@ char		name __P((PLANE *));
 int		next_plane __P((void));
 void		noise __P((void));
 int		number __P((char));
+void		open_score_file __P((void));
 void		planewin __P((void));
 int		pop __P((void));
 void		push __P((int, int));

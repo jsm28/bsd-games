@@ -1,27 +1,20 @@
-1997-12-20
+README for bsd-games-non-free
+=============================
 
 The bsd-games-non-free package contains two games from NetBSD with
-restrictive licences, boggle and rogue, plus another game, paranoia,
-which was in bsd-games up to version 1.3 but also has a restrictive
-licence.  These games cannot be sold for profit.
-
-This is can be built as an add-on to the bsd-games package, or on its
-own.  Both unpack into the `bsd-games-n.n' directory (where n.n is the
-current version); the configure script will detect what directories
-are present and have a Makefile and offer to build in them.  Some
-files are in both packages; they are exact duplicates.
+restrictive licences, boggle and rogue.  Possibly these games cannot
+be sold for profit; it is not clear whether the restrictive licences
+override the BSD licence also included, or are superseded by it.
 
 Here's what this package has:
 
 boggle:		boggle
-paranoia:	you, the trouble shooter must foil the insidious Christmas plot
 rogue:		exploring the Dungeons of Doom
 
 (The hangman subdirectory in this package is just for a words list.)
 
-Paranoia comes from comp.sources.games/volume1; boggle comes from
-comp.sources.games/volume4, but the version here is from NetBSD-current.
-Rogue is from NetBSD-current.
+Boggle comes from comp.sources.games/volume4, but the version here is
+from NetBSD-current.  Rogue is from NetBSD-current.
 
 If you have questions about bsd-games-non-free you can contact me at
 <jsm28@cam.ac.uk>.  Bug reports should state the versions of ncurses

@@ -57,8 +57,10 @@ __RCSID("$NetBSD: wump.c,v 1.5 1997/10/12 03:36:42 lukem Exp $");
  * would care to remember.
  */
 
+#include <err.h>
 #include <sys/types.h>
 #include <sys/file.h>
+#include <sys/wait.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -144,6 +146,9 @@ main(argc, argv)
 	char **argv;
 {
 	int c;
+
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
 
 #ifdef DEBUG
 	while ((c = getopt(argc, argv, "a:b:hp:r:t:d")) != -1)
@@ -725,7 +730,10 @@ int_compare(a, b)
 void
 instructions()
 {
-	char buf[120], *p;
+	char *pager;
+	pid_t pid;
+	int status;
+	int fd;
 
 	/*
 	 * read the instructions file, if needed, and show the user how to
@@ -741,12 +749,26 @@ puff of greasy black smoke! (poof)\n");
 		return;
 	}
 
-	if (!(p = getenv("PAGER")) ||
-	    strlen(p) > sizeof(buf) + strlen(_PATH_WUMPINFO) + 5)
-		p = _PATH_PAGER;
-
-	(void)sprintf(buf, "%s %s", p, _PATH_WUMPINFO);
-	(void)system(buf);
+	if (!isatty(1))
+		pager = "cat";
+	else {
+		if (!(pager = getenv("PAGER")) || (*pager == 0))
+			pager = _PATH_PAGER;
+	}
+	switch (pid = fork()) {
+	case 0: /* child */
+		if ((fd = open(_PATH_WUMPINFO, O_RDONLY)) == -1)
+			err(1, "open %s", _PATH_WUMPINFO);
+		if (dup2(fd, 0) == -1)
+			err(1, "dup2");
+		(void)execl("/bin/sh", "sh", "-c", pager, NULL);
+		err(1, "exec sh -c %s", pager);
+	case -1:
+		err(1, "fork");
+	default:
+		(void)waitpid(pid, &status, 0);
+		break;
+	}
 }
 
 void

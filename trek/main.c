@@ -175,6 +175,9 @@ char	**argv;
 	char		**av;
 	struct	termios		argp;
 
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	av = argv;
 	ac = argc;
 	av++;

@@ -83,7 +83,7 @@ extern off_t Dict_size;
 
 void    die __P((int));
 void    endgame __P((void));
-int	main __P((int, char **));
+int	main __P((void));
 void	getguess __P((void));
 void	getword __P((void));
 void	playgame __P((void));

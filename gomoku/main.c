@@ -98,6 +98,9 @@ main(argc, argv)
 		"%3d        %-6s"
 	};
 
+	/* revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	color = curmove = 0;
 
 	prog = strrchr(argv[0], '/');

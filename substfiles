@@ -1,4 +1,5 @@
 Makeconfig
+hide-game
 install-man
 install-score
 atc/pathnames.h

@@ -214,6 +214,9 @@ main(argc, argv)
 	struct winsize ws;
 #endif
 
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	mp = NULL;
 	length = 16;
 	number = 3;

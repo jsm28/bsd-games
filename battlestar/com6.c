@@ -106,11 +106,20 @@ live()
 	exit(0);
 }
 
+static FILE *score_fp;
+
+void
+open_score_file()
+{
+	score_fp = fopen(_PATH_SCORE, "a");
+	if (score_fp == NULL)
+		warn("open %s for append", _PATH_SCORE);
+}
+
 void
 post(ch)
 	char    ch;
 {
-	FILE   *fp;
 	time_t tv;
 	char   *date;
 	sigset_t sigset, osigset;
@@ -121,17 +130,16 @@ post(ch)
 	tv = time(NULL);
 	date = ctime(&tv);
 	date[24] = '\0';
-	if ((fp = fopen(_PATH_SCORE, "a")) != NULL) {
-		fprintf(fp, "%s  %8s  %c%20s", date, uname, ch, rate());
+	if (score_fp != NULL) {
+		fprintf(score_fp, "%s  %8s  %c%20s", date, uname, ch, rate());
 		if (wiz)
-			fprintf(fp, "   wizard\n");
+			fprintf(score_fp, "   wizard\n");
 		else
 			if (tempwiz)
-				fprintf(fp, "   WIZARD!\n");
+				fprintf(score_fp, "   WIZARD!\n");
 			else
-				fprintf(fp, "\n");
-	} else
-		warn("fopen %s", _PATH_SCORE);
+				fprintf(score_fp, "\n");
+	}
 	sigprocmask(SIG_SETMASK, &osigset, (sigset_t *) 0);
 }
 

@@ -1,4 +1,4 @@
-/*	$NetBSD: rogue.h,v 1.5 1997/10/12 11:45:52 lukem Exp $	*/
+/*	$NetBSD: rogue.h,v 1.6 1998/07/27 01:12:36 mycroft Exp $	*/
 
 /*
  * Copyright (c) 1988, 1993
@@ -457,6 +457,8 @@ extern char *CL;
  */
 #include <stdio.h>
 #include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 object	*alloc_object __P((void));
 object	*check_duplicate __P((object *, object *));
@@ -467,7 +469,8 @@ object	*get_zapped_monster __P((short, short *, short *));
 object	*gr_monster __P((object *, int));
 object	*gr_object __P((void));
 char	*md_getenv __P((char *));
-char	*md_gln __P((void));
+const char *
+	md_gln __P((void));
 char	*md_malloc __P((int));
 char	*mon_name __P((object *));
 char	*name_of __P((object *));
@@ -816,3 +819,5 @@ extern	short	r_rings;
 extern	short	regeneration;
 extern	short	ring_exp;
 extern	short	stealthy;
+extern	gid_t	gid;
+extern	gid_t	egid;

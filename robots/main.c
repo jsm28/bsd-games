@@ -61,6 +61,15 @@ main(ac, av)
 	bool	show_only;
 	extern char	*Scorefile;
 	extern int	Max_per_uid;
+	int		score_wfd; /* high score writable file descriptor */
+	int		score_err = 0; /* hold errno from score file open */
+
+	score_wfd = open(Scorefile, O_RDWR);
+	if (score_wfd < 0)
+		score_err = errno;
+
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
 
 	show_only = FALSE;
 	if (ac > 1) {
@@ -70,9 +79,12 @@ main(ac, av)
 				if (isdigit(av[0][0]))
 					Max_per_uid = atoi(av[0]);
 				else {
-					setuid(getuid());
-					setgid(getgid());
 					Scorefile = av[0];
+					if (score_wfd >= 0)
+						close(score_wfd);
+					score_wfd = open(Scorefile, O_RDWR);
+					if (score_wfd < 0)
+						score_err = errno;
 # ifdef	FANCY
 					sp = strrchr(Scorefile, '/');
 					if (sp == NULL)
@@ -120,6 +132,12 @@ main(ac, av)
 		/* NOTREACHED */
 	}
 
+	if (score_wfd < 0) {
+		warn("%s", Scorefile);
+		warnx("High scores will not be recorded!");
+		sleep(2);
+	}
+
 	initscr();
 	signal(SIGINT, quit);
 	crmode();
@@ -148,7 +166,7 @@ main(ac, av)
 		move(My_pos.y, My_pos.x);
 		printw("AARRrrgghhhh....");
 		refresh();
-		score();
+		score(score_wfd);
 	} while (another());
 	quit(0);
 	/* NOTREACHED */

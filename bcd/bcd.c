@@ -85,6 +85,7 @@ __RCSID("$NetBSD: bcd.c,v 1.7 1997/10/10 09:54:18 lukem Exp $");
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <unistd.h>
 
 u_short holes[256] = {
     0x0,	 0x0,	  0x0,	   0x0,	    0x0,     0x0,     0x0,     0x0,
@@ -135,6 +136,9 @@ main(argc, argv)
 	char **argv;
 {
 	char cardline[80];
+
+	/* revoke setgid privileges */
+	setregid(getgid(), getgid());
 
 	/*
 	 * The original bcd prompts with a "%" when reading from stdin,

@@ -132,6 +132,9 @@ main(argc, argv)
 	int ch, done, i, selfuse, sflag;
 	char *bspec, *p;
 
+	/* revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	seed = 0;
 	batch = debug = reuse = selfuse = sflag = 0;
 	bspec = NULL;

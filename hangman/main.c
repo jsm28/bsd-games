@@ -53,10 +53,11 @@ __RCSID("$NetBSD: main.c,v 1.4 1997/10/11 01:16:35 lukem Exp $");
  * This game written by Ken Arnold.
  */
 int
-main(argc, argv)
-	int argc __attribute__((unused));
-	char *argv[] __attribute__((unused));
+main()
 {
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	initscr();
 	signal(SIGINT, die);
 	setup();

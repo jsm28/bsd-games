@@ -51,7 +51,8 @@ cypher()
 	int     junk;
 	int     lflag = -1;
 	char    buffer[10];
-	char	filename[1024];
+	char   *filename;
+	size_t	filename_len;
 
 	while (wordtype[wordnumber] == ADJS)
 		wordnumber++;
@@ -341,13 +342,17 @@ cypher()
 			break;
 
 		case SAVE:
-			printf("\nSave file name (default .Bstar) ");
-			fgets(filename, sizeof(filename), stdin);
-			if (filename[0] == '\n' || filename[0] == 0)
-				save(".Bstar");
+			printf("\nSave file name (default %s) ",
+			       DEFAULT_SAVE_FILE);
+			filename = fgetln(stdin, &filename_len);
+			if (filename_len == 0
+			    || (filename_len == 1 && filename[0] == '\n'))
+				save(DEFAULT_SAVE_FILE,
+				     strlen(DEFAULT_SAVE_FILE));
 			else {
-				filename[strlen(filename) - 1] = 0;
-				save(filename);
+				if (filename[filename_len - 1] == '\n')
+					filename_len--;
+				save(filename, filename_len);
 			}
 			break;
 

@@ -49,6 +49,7 @@ __RCSID("$NetBSD: crib.c,v 1.9 1997/10/11 02:44:30 lukem Exp $");
 
 #include <curses.h>
 #include <err.h>
+#include <fcntl.h>
 #include <signal.h>
 #include <stdlib.h>
 #include <string.h>
@@ -69,6 +70,26 @@ main(argc, argv)
 	BOOLEAN playing;
 	FILE *f;
 	int ch;
+	int fd;
+	int flags;
+
+	f = fopen(_PATH_LOG, "a");
+	if (f == NULL)
+		warn("fopen %s", _PATH_LOG);
+
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
+	/* Set close-on-exec flag on log file */
+	if (f != NULL) {
+		fd = fileno(f);
+		flags = fcntl(fd, F_GETFD);
+		if (flags < 0)
+			err(1, "fcntl F_GETFD");
+		flags |= FD_CLOEXEC;
+		if (fcntl(fd, F_SETFD, flags) == -1)
+			err(1, "fcntl F_SETFD");
+	}
 
 	while ((ch = getopt(argc, argv, "eqr")) != -1)
 		switch (ch) {
@@ -129,14 +150,12 @@ main(argc, argv)
 		playing = (getuchar() == 'Y');
 	} while (playing);
 
-	if ((f = fopen(_PATH_LOG, "a")) != NULL) {
+	if (f != NULL) {
 		(void)fprintf(f, "%s: won %5.5d, lost %5.5d\n",
 		    getlogin(), cgames, pgames);
 		(void) fclose(f);
 	}
 	bye();
-	if (!f)
-		errx(1, "can't open %s", _PATH_LOG);
 	exit(0);
 }
 

@@ -1,4 +1,4 @@
-/*	$NetBSD: move.c,v 1.6 1997/10/12 14:09:59 lukem Exp $	*/
+/*	$NetBSD: move.c,v 1.7 1998/07/24 23:28:02 hubertf Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -38,7 +38,7 @@
 #if 0
 static char sccsid[] = "@(#)move.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: move.c,v 1.6 1997/10/12 14:09:59 lukem Exp $");
+__RCSID("$NetBSD: move.c,v 1.7 1998/07/24 23:28:02 hubertf Exp $");
 #endif
 #endif /* not lint */
 
@@ -54,10 +54,9 @@ void
 get_move()
 {
 	int		c;
-
-#ifdef	FANCY
+#ifdef FANCY
 	int		lastmove;
-#endif
+#endif /*FANCY*/
 
 	if (Waiting)
 		return;

@@ -1,3 +1,394 @@
+1998-08-15  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* Version 2.2.
+
+	* robots/score.c (score): Check for score file not having been
+	successfully opened.
+
+	* README: Update.
+
+	* INSTALL: Update.
+
+	* configure: Fix typo.
+
+	* atc/log.c (log_score): Use it, avoiding possible buffer overrun.
+
+	* atc/struct.h (SCORE_SCANF_FMT): Define to be format for scnaf
+	from score file, with appropriate max field widths.
+
+	* configure: Update.
+
+	* bsd-games.lsm: Update.
+
+	* TODO: Update.
+
+	* AUTHORS (countmail): Remove.
+
+	* NEWS: Update.
+
+	* README: Update.
+
+	* countmail/*: Remove.
+
+	* bsd-games-non-free.lsm: Update.
+
+	* bsd-games.lsm: Update.
+
+	* PACKAGING: Update.
+
+	* BUGS: Update.
+
+	* NEWS: Update.
+
+	* TODO: Update.
+
+	* SECURITY: New file, describing security issues, taken from
+	INSTALL.
+	* INSTALL: Update.
+
+	* wump/wump.c (main): Revoke setgid privileges.
+
+	* worms/worms.c (main): Revoke setgid privileges.
+
+	* worm/worm.c (main): Revoke setgid privileges.
+
+	* trek/main.c (main): Revoke setgid privileges.
+
+	* tetris/tetris.c, tetris/score.c: Only have privileged egid when
+	needed.
+
+	* tetris/tetris.h: New variables gid, egid.
+
+	* snake/snscore/snscore.c (main): Revoke setgid privileges.
+
+	* snake/snake/snake.c: Open score files as early as possible, then
+	drop setgid privileges.
+
+	* sail/misc.c (open_log): New function: opens log file.
+	* sail/extern.h: Declare this.
+	* sail/misc.c (logger): Use already open log file.
+	* sail/main.c: Open log file, then drop privileges.
+
+	* rogue/init.c, rogue/machdep.c, rogue/score.c: Only have
+	privileged egid when needed.
+
+	* rogue/init.c: New variables gid, egid; initialise them.
+	* rogue/rogue.h: Declare them; include <sys/types.h> and
+	<unistd.h>.
+
+	* robots/main.c (main), robots/extern.h, robots/score.c (score):
+	Open score file at start, then drop privileges (from OpenBSD).
+
+	* cribbage/crib.c (main): Set close-on-exec flag on log file.
+
+	* random/random.c (main): Revoke setgid privileges.
+
+	* rain/rain.c (main): Revoke setgid privileges.
+
+	* quiz/quiz.c (main): Revoke setgid privileges.
+
+	* primes/primes.c (main): Revoke setgid privileges.
+
+	* ppt/ppt.c (main): Revoke setgid privileges.
+
+	* pom/pom.c (main): Revoke setgid privileges.
+
+	* pig/pig.c (main): Revoke setgid privileges.
+
+	* number/number.c (main): Revoke setgid privileges.
+
+	* morse/morse.c (main): Revoke setgid privileges.
+
+	* monop/monop.c (main): Revoke setgid privileges.
+
+	* mille/mille.c (main): Revoke setgid privileges.
+
+	* hunt/hunt/hunt.c (main): Revoke setgid privileges.
+
+	* hangman/main.c (main): Revoke setgid privileges.
+
+	* gomoku/main.c (main): Revoke setgid privileges.
+
+	* fortune/fortune/fortune.c (main): Revoke setgid privileges.
+
+	* fish/fish.c (main): Revoke setgid privileges.
+
+	* factor/factor.c (main): Revoke setgid privileges.
+
+	* cribbage/crib.c (main): Open log file then drop privileges as
+	soon as possible.
+
+	* canfield/canfield/canfield.c (initall): Use SEEK_SET instead of
+	0 as argument of lseek().
+
+	* canfield/cfscores/cfscores.c (main): Revoke setgid privileges.
+
+	* canfield/canfield/canfield.c (initall): Revoke setgid privileges
+	after opening the score file.
+
+1998-08-13  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* boggle/README.linux: Rebuild.
+
+	* caesar/caesar.c (main): Revoke setgid privileges.
+
+	* boggle/boggle/bog.c (main): Revoke setgid privileges.
+
+	* bcd/bcd.c (main): Revoke setgid privileges.
+
+	* battlestar/com6.c (open_score_file), battlestar/extern.h: New
+	function.
+	* battlestar/com6.c (post): Use already opened score file.
+	* battlestar/battlestar.c (main): Open score file then revoke
+	setgid privileges.
+
+	* atc/input.c (gettoken): Remove unnecessary setuid() call.
+
+1998-08-11  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* AUTHORS (paranoia): Removed entry.
+
+	* bsd-games-non-free.lsm: Update.
+
+	* INSTALL: Update.
+
+	* atc/log.c (open_score_file): Set close-on-exec flag.
+
+	* TODO: Update.
+
+	* PACKAGING: Update.
+
+	* Credits: Split into AUTHORS and THANKS; update.
+
+	* BUGS: Update.
+
+1998-08-09  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* battlestar/extern.h, battlestar/save.c, battlestar/init.c,
+	battlestar/cypher.c, battlestar/battlestar.c: New interface for
+	saving, passes length and does dynamic allocation rather than
+	using fixed length buffers.
+	* battlerstar/Makefile: Include fgetln.
+
+	* banner/banner.c (main): Revoke setgid privileges.
+
+	* backgammon/backgammon/main.c (main): Revoke setgid privileges.
+
+	* atc/log.c: Cast getuid() return value to int for %d format.
+
+	* atc/log.c (open_score_file), atc/extern.h: New function.
+	* atc/log.c (log_score): Use already opened score file.  Truncate
+	the score file to the length written.
+	* atc/main.c (main): Open the score file and then revoke setgid
+	privileges.
+
+	* arithmetic/arithmetic.c (main): Revoke setgid privileges.
+
+	* adventure/main.c (main): Revoke setgid privileges.
+
+	* snake/snscore/snscore.c (main): Take no arguments.
+
+	* hangman/extern.h, hangman/main.c (main): Take no arguments.
+
+	* canfield/canfield/canfield.c (main): Take no arguments.
+
+1998-08-07  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* README.non-free: Update.
+
+	* README: Update.
+
+	* paranoia/*: Remove.
+
+	* NEWS: Update.
+
+	* INSTALL: Update.
+
+1998-08-06  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* configure: Add facility to specify a list of games not to build.
+
+	* TODO: Update.
+
+	* README: Update.
+
+	* PACKAGING: Update.
+
+	* Credits: Update.
+
+1998-07-29  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* NEWS: Update.
+
+	* INSTALL: Update.
+
+	* PACKAGING: New file - information for those packaging bsd-games
+	for a Linux distribution.
+
+1998-07-28  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* TODO: Update.
+
+	* substfiles: Include hide-game (no need to special case it).
+	* configure, Makefile: Don't special case hide-game.
+
+	* hide-game.in: No longer needs #!/bin/sh, since added by
+	configure.
+	* install-score.in: Likewise.
+	* install-man.in: Likewise.
+	* caesar/rot13.in: Likewise.
+
+	* configure (substitute): Put comments at the top of generated
+	files saying they are automatically generated.
+
+1998-07-27  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* All games (expect paranoia) now updated from NetBSD-current of
+	1998-07-27 (some of the Linux changes merged back to NetBSD).
+
+	* snake/snscore/snscore.c: Update from NetBSD-current of
+	1998-07-27.
+
+	* sail/dr_2.c, sail/extern.h: Update from NetBSD-current of
+	1998-07-27.
+
+	* rogue/init.c, rogue/machdep.c, rogue/monster.c, rogue/rogue.h:
+	Update from NetBSD-current of 1998-07-27.
+
+	* robots/move.c: Update from NetBSD-current of 1998-07-27.
+
+	* pom/pom.c: Update from NetBSD-current of 1998-07-27.
+
+	* phantasia/phantglobs.c, phantasia/phantglobs.h: Update from
+	NetBSD-current of 1998-07-27.
+
+	* mille/mille.h, mille/misc.c: Update from NetBSD-current of
+	1998-07-27.
+
+	* battlestar/dayfile.c, battlestar/nightfile.c: Update from
+	NetBSD-current of 1998-07-27 (changes merged - this changes rcsids
+	only).
+
+	* atc/atc.6, atc/log.c: Update from NetBSD-current of 1998-07-27.
+
+	* adventure/wizard.c: Update from NetBSD-current of 1998-07-27.
+
+	* configure: Allow defaults to be taken from a config.params file,
+	which can specify non-interactive operation.
+
+1998-07-25  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* configure: Make a /bin/sh script; use printf instead of echo -n
+	so that a POSIX.2 shell suffices.
+
+	* INSTALL: Update.
+
+	* TODO: Update.
+
+1998-07-22  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* NEWS: Update.
+
+	* rogue/machdep.c (md_gseed): Use time, not pid, as seed, so you
+	don't get the same game each time if you boot the system up to
+	play rogue (patch from Bill Lash <lash@tellabs.com>).
+	* rogue/monster.c (mv_mons): If a dragon kills a monster on
+	level_monsters, mv_mons can move things in the free_list, so don't
+	move monsters not on level_monsters (patch from Bill Lash
+	<lash@tellabs.com>).
+
+	* All games (except paranoia) now updated from NetBSD-current of
+	1998-07-11.
+
+	* worms/worms.6: Update from NetBSD-current of 1998-07-11.
+
+	* sail/*: Update from NetBSD-current of 1998-07-11.
+
+	* pom/*: Update from NetBSD-current of 1998-07-11.
+
+	* hunt/*/*: Update from NetBSD-current of 1998-07-11.
+
+	* dm/*: Update from NetBSD-current of 1998-07-11.
+
+1998-07-21  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* countmail/countmail.6: Update from NetBSD-current of 1998-07-11.
+
+	* boggle/*/Makefile.bsd: Update from NetBSD-current of 1998-07-11.
+
+	* battlestar/extern.h: Update from NetBSD-current of 1998-07-11.
+
+	* backgammon/backgammon/main.c: Update from NetBSD-current of
+	1998-07-11.
+
+	* atc/*: Update from NetBSD-current of 1998-07-11.
+	* atc/Makefile: Use grammar.h instead of y.tab.h.
+
+	* arithmetic/arithmetic.6: Update from NetBSD-current of
+	1998-07-11.
+
+	* quiz/datfiles/europe: Fix typo (patch from G. Branden Robinson
+	<branden@purdue.edu>).
+
+	* TODO: Update.
+
+	* BUGS: Update.
+
+	* README.non-free: Update.
+
+	* YEAR2000: Minor changes.
+
+	* README: Update.
+
+	* INSTALL: Update.
+
+	* Credits: Minor changes.
+
+1998-07-20  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* YEAR2000: New file, year 2000 statement for bsd-games.
+
+	* adventure/wizard.c (datime): Handle leap years correctly
+	according to the Gregorian calendar (could be perceived as fixing
+	a year 2000 problem, but it was broken wrt leap years anyway).
+
+	* pom/pom.c (main): Add 1900 to year as argument of isleap()
+	(fixes year 2000 problem).
+
+1998-07-03  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* Credits: Add introductory paragraph.
+
+1998-04-11  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* Makefile: Add some standard GNU makefile targets.
+
+1998-04-07  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* configure: Update message before selecting pager.
+
+	* wump/wump.c (instructions): Use POSIX.2 pager behaviour.
+
+	* quiz/quiz.c (show_index): Use POSIX.2 pager behaviour.
+
+	* fish/fish.c (instructions): Use POSIX.2 pager behaviour.
+
+1998-04-06  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* cribbage/instr.c (instructions): Use POSIX.2 pager behaviour.
+
+1998-04-04  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* BUGS: Update.
+
+	* INSTALL: Update for changed paths.
+
+	* configure: Change default paths to FHS ones; change some
+	comments and messages.
+
+	* bsd-games.lsm (Primary-site): Make sunsite, since tsx-11 is
+	somewhat unreliable and laggardly about installing new releases.
+
 1998-03-29  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
 
 	* Version 2.1.

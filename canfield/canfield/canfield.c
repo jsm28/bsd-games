@@ -219,7 +219,7 @@ void	initall __P((void));
 void	initdeck __P((struct cardtype *[]));
 void	initgame __P((void));
 void	instruct __P((void));
-int	main __P((int, char *[]));
+int	main __P((void));
 void	makeboard __P((void));
 void	movebox __P((void));
 void	movecard __P((void));
@@ -1683,9 +1683,13 @@ initall()
 	if (uid < 0)
 		uid = 0;
 	dbfd = open(_PATH_SCORE, O_RDWR);
+
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	if (dbfd < 0)
 		return;
-	i = lseek(dbfd, uid * sizeof(struct betinfo), 0);
+	i = lseek(dbfd, uid * sizeof(struct betinfo), SEEK_SET);
 	if (i < 0) {
 		close(dbfd);
 		dbfd = -1;
@@ -1783,9 +1787,7 @@ askquit(dummy)
  * Can you tell that this used to be a Pascal program?
  */
 int
-main(argc, argv)
-	int argc __attribute__((unused));
-	char *argv[] __attribute__((unused));
+main()
 {
 #ifdef MAXLOAD
 	double vec[3];

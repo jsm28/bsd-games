@@ -45,31 +45,40 @@ __RCSID("$NetBSD: save.c,v 1.7 1997/10/12 02:06:15 lukem Exp $");
 #include "extern.h"
 
 void
-restore(filename)
+restore(filename, len)
 	char *filename;
+	size_t len;
 {
 	char   *home;
-	char    home1[1024];
+	char   *home1;
 	int     n;
 	int     tmp;
+	size_t	tmpl;
 	FILE   *fp;
 
-	if (strchr(filename, '/')) {
-		if (strlen(filename) + 1 > sizeof(home1))
-			errx(1, "save file name too long");
-		strcpy(home1, filename);
+	if (memchr(filename, '/', len)) {
+		home1 = malloc(len + 1);
+		if (home1 == NULL)
+			errx(1, "out of memory");
+		memcpy(home1, filename, len);
+		home1[len] = 0;
 	} else {
 		home = getenv("HOME");
 		if (home != NULL) {
-			if (strlen(home) + strlen(filename) + 2 > sizeof(home1))
-				errx(1, "save file name too long");
-			strcpy(home1, home);
-			strcat(home1, "/");
-			strcat(home1, filename);
+			tmpl = strlen(home);
+			home1 = malloc(tmpl + len + 2);
+			if (home1 == NULL)
+				errx(1, "out of memory");
+			memcpy(home1, home, tmpl);
+			home1[tmpl] = '/';
+			memcpy(home1 + tmpl + 1, filename, len);
+			home1[tmpl + len + 1] = 0;
 		} else {
-			if (strlen(filename) > 1023)
-				errx(1, "save file name too long");
-			strcpy(home1, filename);
+			home1 = malloc(len + 1);
+			if (home1 == NULL)
+				errx(1, "out of memory");
+			memcpy(home1, filename, len);
+			home1[len] = 0;
 		}
 	}
 	if ((fp = fopen(home1, "r")) == 0) {
@@ -113,36 +122,47 @@ restore(filename)
 	if (fread(&ego, sizeof ego, 1, fp) < 1)
 		errx(1, "save file %s too short", home1);
 	fclose(fp);
+	free(home1);
 }
 
 void
-save(filename)
+save(filename, len)
 	char *filename;
+	size_t len;
 {
 	char   *home;
-	char    home1[1024];
+	char   *home1;
 	int     n;
 	int     tmp;
+	size_t	tmpl;
 	FILE   *fp;
 
-	if (strchr(filename, '/')) {
-		if (strlen(filename) + 1 > sizeof(home1))
-			errx(1, "save file name too long");
-		strcpy(home1, filename);
+	if (memchr(filename, '/', len)) {
+		home1 = malloc(len + 1);
+		if (home1 == NULL)
+			errx(1, "out of memory");
+		memcpy(home1, filename, len);
+		home1[len] = 0;
 	} else {
 		home = getenv("HOME");
 		if (home != NULL) {
-			if (strlen(home) + strlen(filename) + 2 > sizeof(home1))
-				errx(1, "save file name too long");
-			strcpy(home1, home);
-			strcat(home1, "/");
-			strcat(home1, filename);
+			tmpl = strlen(home);
+			home1 = malloc(tmpl + len + 2);
+			if (home1 == NULL)
+				errx(1, "out of memory");
+			memcpy(home1, home, tmpl);
+			home1[tmpl] = '/';
+			memcpy(home1 + tmpl + 1, filename, len);
+			home1[tmpl + len + 1] = 0;
 		} else {
-			if (strlen(filename) > 1023)
-				errx(1, "save file name too long");
-			strcpy(home1, filename);
+			home1 = malloc(len + 1);
+			if (home1 == NULL)
+				errx(1, "out of memory");
+			memcpy(home1, filename, len);
+			home1[len] = 0;
 		}
 	}
+
 	if ((fp = fopen(home1, "w")) == NULL) {
 		warn("fopen %s", home1);
 		return;
@@ -187,4 +207,5 @@ save(filename)
 	if (ferror(fp))
 		warn("fwrite %s", home1);
 	fclose(fp);
+	free(home1);
 }

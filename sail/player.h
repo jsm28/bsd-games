@@ -1,4 +1,4 @@
-/*	$NetBSD: player.h,v 1.5 1997/01/07 12:42:24 tls Exp $	*/
+/*	$NetBSD: player.h,v 1.6 1998/03/29 04:57:20 mrg Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993

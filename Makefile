@@ -33,7 +33,7 @@ install:
 install-strip:
 	@$(MAKE) install $(DEFS_TO_PASS_STRIP)
 
-clean:
+clean mostlyclean:
 	@set -e; for i in $(BUILDDIRS); do \
 	    echo "Making clean in $$i"; \
 	    cd $$i; \
@@ -41,14 +41,22 @@ clean:
 	    cd $(SRCDIR); \
 	done
 
-distclean:	clean
-	rm -f subst.sed hide-game
+distclean maintainer-clean:	clean
+	rm -f subst.sed
 	rm -f `cat substfiles`
 
-test:
+check test:
 	@set -e; for i in $(TESTDIRS); do \
 	    echo "Making test in $$i"; \
 	    cd $$i; \
 	    make test; \
 	    cd $(SRCDIR); \
 	done
+
+# Standard GNU targets we don't support
+uninstall TAGS dist:
+	@echo "The GNU target \`$@\' is not supported by this package." >&2; exit 1
+
+# GNU targets that can do nothing
+info dvi:
+	@echo "This package comes with no Texinfo documentation."

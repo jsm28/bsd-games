@@ -101,6 +101,9 @@ main(argc, argv)
 	int ch;
 	char *p, buf[100];		/* > max number of digits. */
 
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	while ((ch = getopt(argc, argv, "")) != -1)
 		switch (ch) {
 		case '?':

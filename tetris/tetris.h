@@ -38,6 +38,8 @@
  *	@(#)tetris.h	8.1 (Berkeley) 5/31/93
  */
 
+#include <sys/types.h>
+
 /*
  * Definitions for Tetris.
  */
@@ -163,6 +165,7 @@ long	fallrate;		/* less than 1 million; smaller => faster */
  * still be moved or rotated).
  */
 int	score;			/* the obvious thing */
+gid_t	gid, egid;
 
 char	key_msg[100];
 

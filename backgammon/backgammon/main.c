@@ -1,4 +1,4 @@
-/*	$NetBSD: main.c,v 1.5 1997/10/10 08:59:37 lukem Exp $	*/
+/*	$NetBSD: main.c,v 1.6 1998/03/29 04:46:40 mrg Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -43,7 +43,7 @@ __COPYRIGHT("@(#) Copyright (c) 1980, 1993\n\
 #if 0
 static char sccsid[] = "@(#)main.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: main.c,v 1.5 1997/10/10 08:59:37 lukem Exp $");
+__RCSID("$NetBSD: main.c,v 1.6 1998/03/29 04:46:40 mrg Exp $");
 #endif
 #endif				/* not lint */
 
@@ -56,7 +56,7 @@ __RCSID("$NetBSD: main.c,v 1.5 1997/10/10 08:59:37 lukem Exp $");
 #define MAXUSERS 35		/* maximum number of users */
 
 extern char   *instr[];		/* text of instructions */
-extern char   *message[];	/* update message */
+extern char   *message[];		/* update message */
 #ifndef __linux__ /* Linux has ospeed declared, but ncurses makes it a short */
 speed_t ospeed;			/* tty output speed */
 #endif
@@ -114,6 +114,9 @@ main(argc, argv)
 	char    c;		/* non-descript character storage */
 	long    t;		/* time for random num generator */
 
+	/* revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	/* initialization */
 	bflag = 2;		/* default no board */
 	signal(SIGINT, getout);	/* trap interrupts */
@@ -155,7 +158,7 @@ main(argc, argv)
 		bg_raw.c_oflag &= ~(ONLCR | OXTABS);
 		clear();
 	}
-	fixtty(&bg_raw);	/* go into raw mode */
+	fixtty(&bg_raw);		/* go into raw mode */
 
 	/* check if restored game and save flag for later */
 	if ((rfl = rflag) != 0) {

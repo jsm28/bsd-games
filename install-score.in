@@ -1,4 +1,3 @@
-#!/bin/sh
 # install-score.in - install a score file
 
 set -e

@@ -122,6 +122,9 @@ main(argc, argv)
 	extern int optind;
 	int ch, cnt;
 
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	while ((ch = getopt(argc, argv, "r:o:")) != -1)
 		switch(ch) {
 		case 'o': {

@@ -1,19 +1,31 @@
-1998-03-29 - Installation instructions
-======================================
+Installation instructions
+=========================
+
+Packaging
+=========
+
+If packaging bsd-games or bsd-games-non-free for a Linux distribution,
+please read the PACKAGING file for further information after this
+one.  Others who wish to install it under a packaging system, or
+rebuild it automatically and without interactive configuration, may
+also find this file useful.
 
 Non-free games
 ==============
 
-Three games, boggle, paranoia and rogue, are distributed separately
-because of copyright restrictions.  If you want them, get the
-bsd-games-non-free package, and unpack it in the same directory you
-unpacked this in before proceeding.  If you do, cd to boggle and
-decide if you want -DPURE or not -- see boggle/README.linux for more
-information.  If you are in a hurry, don't worry about it ... it
-really is more of an aesthetic thing.  You can also build
-bsd-games-non-free separately.  (This file is also in
-bsd-games-non-free; if you only have boggle, hangman, include,
-paranoia and rogue subdirectories, then you have just this package.)
+These installation instructions apply to both bsd-games and
+bsd-games-non-free.  bsd-games-non-free contains boggle and rogue,
+which it seems cannot be sold for profit: the rest of the games are
+under the standard BSD distribution conditions, or very similar ones
+(phantasia is public domain, i.e. not copyrighted).  As of version 2.2
+and later, the bsd-games-non-free package unpacks conventionally into
+a directory of its own.  It can be built separately from bsd-games, or
+in the same source directory: to do the latter, move those files and
+directories that are in bsd-games-non-free but not bsd-games into the
+bsd-games-VERSION directory before building.  If you are building the
+non-free games, cd to boggle and decide if you want -DPURE or not --
+see boggle/README.linux for more information.  If you are in a hurry,
+don't worry about it ... it really is more of an aesthetic thing.
 
 Prerequisites
 =============
@@ -33,49 +45,28 @@ bison, but byacc will probably work as well.  Libc5 versions before
 5.4.5, or libc4, will not work since they don't have the BSD <err.h>
 error reporting functions.
 
-The makefiles assume `make' is GNU make, which it almost certainly
-will be on any Linux system.  Any other make that understands
-`include' directives to include other makefiles would probably work as
-well.  The configure script uses `#!/bin/bash', but you can run it
-with `bash configure' if you keep bash in another place, and it should
-indeed work with any POSIX.2 shell.
+The makefiles require GNU make; if you have a strange system on which
+`make' is not GNU make you can use it under some other name since
+$(MAKE) is used where appropriate.  The configure script assumes that
+/bin/sh is a POSIX.2 shell (bash is known to work; current versions of
+ksh and ash should be OK but I haven't tested them); it can be run
+manually with `bash configure' or similar if /bin/sh is not a POSIX.2
+shell.  It uses the POSIX.2 printf utility (in GNU sh-utils, and a
+builtin in bash 2.02) to avoid depending on echo -n.
+
+I am not aware of any dependence on the version of gcc used, although
+it would be advisable to use gcc 2.7.2.1 or later (or use
+-fno-strength-reduce).  Sufficiently recent egcs snapshots (those with
+global CSE), and probably egcs release 1.1, may produce spurious
+warnings about uninitialized variables because of limitations in the
+code to detect this, but this does not affect the correctness of the
+compiled code.
 
 Security
 ========
 
-Some games maintain system-wide score files or logs, and need
-appropriate privileges to write to these files.  They can get these
-privileges by being installed setgid games, or through the files being
-world writable.  If they do not have these privileges, they will run,
-but fail to update the score files.  Most of the games were written at
-a time when security was not considered important; therefore, making
-games setgid means that users can probably get a shell with gid games.
-(This will also apply to many modern games that are badly written.)
-Thus, you should only install them setgid if this is in line with
-system security policy (for example, on a single-user system).  Games
-should not be installed setuid, since if a setuid game is cracked this
-allows games to be replaced with trojans.  Games should not be
-installed setgid to a system group such as `root' or `daemon'.
-
-An option is to use the `dungeon master' dm to regulate games playing.
-I do not recommend this, since it does not actually have any useful
-preventative effect because users can use their own copies of games.
-I believe that it is safe (but pointless) to have dm installed setgid
-if it is not being used to regulate games playing; if it is being so
-used, games not designed to run setgid may nevertheless run setgid.
-
-***********************************************************************
-*                                                                     *
-* DO NOT INSTALL ANY GAMES SETUID, ONLY SETGID.                       *
-*                                                                     *
-* INSTALLING GAMES SETGID GAMES MAY GIVE USERS SHELLS WITH GID GAMES. *
-*                                                                     *
-* IF IN DOUBT, CHOOSE THE DEFAULT OPTIONS FOR PERMISSIONS AND DO      *
-* WITHOUT SCOREFILES.                                                 *
-*                                                                     *
-* THESE GAMES COME WITH NO WARRANTY.                                  *
-*                                                                     *
-***********************************************************************
+See the SECURITY file for a discussion of security issues about the
+BSD games.
 
 Building and installation
 =========================
@@ -83,32 +74,54 @@ Building and installation
 1.  cd to the top level directory in the source distribution, i.e. the
     directory that contains this file.  There is not yet any support for
     building in a directory other than the source directory.
+
 2.  Run `./configure' and configure the installation to your liking.
     There may be some games you don't want to build because you have them
     from elsewhere; for example, there is another fortune package
     (fortune-mod) available, and factor is included in GNU sh-utils as of
-    version 1.12q.  Also banner is in util-linux.  At present, there's no
-    simple way to say you don't want a particular game - you have to list
-    those you do want.  You can work around this by removing the
-    directories for the games you don't want before running configure, or
-    renaming them to begin with a dot.
+    version 1.12q.  Also banner is in util-linux.  You can specify
+    particular games you do not want built before specifying the list
+    of games to build (which will default to all those available,
+    except those you have excluded).
+
+    The filesystem structure used defaults to that the the Filesystem
+    Hierarchy Standard (FHS), version 2.0.  If you are using the older
+    FSSTND 1.2, or a newer FHS, or wish to install into /usr/local,
+    check the paths given and make changes as appropriate.
+
 3.  Type `make'.  You can probably ignore compiler warnings, although most
-    should be fixed in this release.
+    should be fixed in this release.  If you are building on a 64 bit
+    architecture, you might want to look over the warnings and let me
+    know about any that are normally significant in such cases.
+
 4.  Save copies of any old versions of games you like and their
     datafiles, until you know that the new versions work.
-5.  Become root.
+
+5.  Become root.  (If, as an ordinary user, you are installing under
+    your home directory, there is of course no need to do this.)
+
 6.  Type `make install'.  If you want the installed binaries to be stripped,
     use `make install-strip' instead.  This saves disk space, but means that
     you cannot debug the installed binaries.
+
 7.  If you had an old installation of bsd-games, check for file locations
     that have changed.  You will probably want to remove old executables
     and static data (formerly defaulting to installation in /usr/games/lib),
     and replace any empty score files that have been installed with your old
     ones (checking the permissions).
+
+    The default locations changed again in 2.2, to those mandated by
+    the new FHS 2.0 - manpages in /usr/share/man, variable data in
+    /var/games.  In addition, huntd's default location has changed
+    from /usr/sbin back to /usr/games and the location for dm to keep
+    hidden games has changed from /usr/libexec/dm to
+    /usr/lib/games/dm.
+
 8.  You may wish to do something with the BSD Users' Supplementary Documents
     for trek and rogue, in trek/USD.doc/trek.me and rogue/USD.doc/rogue.me.
     You can look at them on a text terminal with `nroff -me' (piped to your
-    pager), or format in PostScript for printing with `groff -me -Tps'.
+    pager), or format in PostScript for printing with `groff -me
+    -Tps'.
 
 Further information
 ===================

@@ -57,19 +57,18 @@ static SCORE	Top[MAXSCORES];
  *	top list.
  */
 void
-score()
+score(score_wfd)
+	int score_wfd;
 {
-	int		inf;
+	int		inf = score_wfd;
 	SCORE		*scp;
 	int		uid;
 	bool		done_show = FALSE;
 	static int	numscores, max_uid;
 
 	Newscore = FALSE;
-	if ((inf = open(Scorefile, O_RDWR)) < 0) {
-		warn("opening `%s'", Scorefile);
+	if (inf < 0)
 		return;
-	}
 
 	if (read(inf, &max_uid, sizeof max_uid) == sizeof max_uid)
 		read(inf, Top, sizeof Top);
@@ -105,7 +104,7 @@ score()
 
 	if (!Newscore) {
 		Full_clear = FALSE;
-		close(inf);
+		lseek(inf, 0, SEEK_SET);
 		return;
 	}
 	else
@@ -131,7 +130,7 @@ score()
 		write(inf, &max_uid, sizeof max_uid);
 		write(inf, Top, sizeof Top);
 	}
-	close(inf);
+	lseek(inf, 0, SEEK_SET);
 }
 
 void

@@ -64,8 +64,8 @@ main(ac, av)
 {
 	bool	restore;
 
-	/* run as the user */
-	setuid(getuid());
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
 
 	if (strcmp(av[0], "a.out") == 0) {
 		outf = fopen("q", "w");

@@ -68,7 +68,7 @@ initialize(startup)
 		for (p = dayobjs; p->room != 0; p++)
 			setbit(location[p->room].objects, p->obj);
 	} else
-		restore(startup);
+		restore(startup, strlen(startup));
 	wiz = wizard(uname);
 	signal(SIGINT, diesig);
 }

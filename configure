@@ -1,9 +1,16 @@
-#!/bin/bash
+#!/bin/sh
 # configure - home-grown configuration script for bsd-games
+
+# Default paths follow Filesystem Hierarchy Standard version 2.0.
 
 # This will only ask some questions if the previous answers are appropriate.
 # It will substitute values in the directories built in, and the main
 # Makefile.
+
+# Allow defaults to be given by a script
+if [ -e ./config.params ]; then
+    . ./config.params
+fi
 
 subst_vars=srcdir
 
@@ -12,9 +19,16 @@ srcdir="`pwd`"
 ask () {
     long_query="$1"
     query_var="$2"
-    default="$3"
-    echo -n "$long_query [$default] "
-    read input
+    dflt_var="bsd_games_cfg_$query_var"
+    eval default=\"\$\{${dflt_var}-\$3\}\"
+    printf "%s [%s] " "$long_query" "$default"
+    if [ "x$bsd_games_cfg_non_interactive" = xy ]; then
+	# Follow default
+	input=''
+	echo "[ Using default ]"
+    else
+	read input
+    fi
     case "$input" in
 	'')
 	    input="$default"
@@ -71,6 +85,10 @@ building_in () {
     echo "$build_dirs" |grep -w "$1" >/dev/null
 }
 
+not_building_in () {
+    echo "$no_build_dirs" |grep -w "$1" >/dev/null
+}
+
 game_ask () {
     game="$1"
     if building_in "$game"; then
@@ -85,20 +103,41 @@ echo "there) you should name that directory here.  This is most likely to"
 echo "be the case if you are packaging bsd-games for a Linux distribution."
 ask "Installation prefix" install_prefix ''
 
+echo "There may be some programs here you have from another package and so"
+echo "do not want to build and install.  The most likely ones are banner,"
+echo "factor and fortune."
+
+ask "Games not to build" no_build_dirs ''
+
 def_build_dirs=
 for file in *; do
-    if [ -e "$file/Makefile" ]; then
+    if [ -e "$file/Makefile" ] && ! not_building_in "$file"; then
 	def_build_dirs="$def_build_dirs $file"
     fi
 done
 def_build_dirs=${def_build_dirs## }
 
 ask "Games to build" build_dirs "$def_build_dirs"
+
+echo
+echo "*** NOTE - The default directories for installation follow the"
+echo "*** Filesystem Hierarchy Standard version 2.0 (FHS).  If your"
+echo "*** system still uses the older FSSTND 1.2, or if you wish to install"
+echo "*** under /usr/local, you will need to check the paths and make"
+echo "*** changes as appropriate.  If this is your first installation with"
+echo "*** the new FHS paths, you may need to remove some old files after"
+echo "*** installation."
+echo
+
 ask "Games directory" gamesdir /usr/games
+
+# We put huntd in /usr/games by default (instead of /usr/sbin as earlier,
+# or /usr/lib) since it can reasonably be called by users and counts
+# properly more as a game than an ordinary user binary.
 if building_in hunt; then
     echo
     echo "Hunt includes a daemon for coordinating games with multiple players"
-    ask "Daemon directory" sbindir /usr/sbin
+    ask "Daemon directory" sbindir /usr/games
 else
     sbindir=
     subst_vars="$subst_vars sbindir"
@@ -119,50 +158,59 @@ if building_in dm; then
     echo "You may wish to restrict the use of games by user, terminal, load,"
     echo "etc..  This can be done by the use of dm.  If you use this"
     echo "configuration, then games will be kept in a non-world-searchable"
-    echo "directory such as /usr/libexec/dm and replaced by symlinks to dm."
+    echo "directory such as /usr/lib/games/dm and replaced by symlinks to dm."
     echo "Even if you don't choose this option, you will still be asked"
     echo "for the directory name, since you are building dm, and can change"
-    echo "manually later."
+    echo "manually later.  It is strongly recommended that you keep the"
+    echo "default answer of 'n'."
     ask_yn "Use dm and hide games" use_dm n
-    ask "Directory for hidden games" libexecdir /usr/libexec/dm
+    # The default location is now /usr/lib/games/dm to conform to FHS 2.0.
+    ask "Directory for hidden games" libexecdir /usr/lib/games/dm
     if [ "$use_dm" = y ]; then
 	hidegame=$srcdir/hide-game
     fi
 fi
-ask "Section 6 manpage directory" man6dir /usr/man/man6
+ask "Section 6 manpage directory" man6dir /usr/share/man/man6
 if building_in dm || building_in fortune; then
-    ask "Section 8 manpage directory" man8dir /usr/man/man8
+    ask "Section 8 manpage directory" man8dir /usr/share/man/man8
 else
     man8dir=
     subst_vars="$subst_vars man8dir"
 fi
 if building_in dm; then
-    ask "Section 5 manpage directory" man5dir /usr/man/man5
+    ask "Section 5 manpage directory" man5dir /usr/share/man/man5
 else
     man5dir=
     subst_vars="$subst_vars man5dir"
 fi
+
+# The paths for data are as per the FHS.  If a future version removes the
+# games ghettoes of /usr/games, /var/games, etc., then a subdirectory for
+# this package (/usr/share/bsdgames, /var/state/bsdgames, etc.) would be
+# desirable, but I don't feel it necessary at present.
+
 # arch-dependent data is a bad thing, and we should change the games to
 # avoid it where possible, but until then this is needed.
 ask "Library directory for constant data
 	(architecture dependent)" usrlibdir /usr/lib/games
-# We use /usr/share for this by the not-yet-released FHS, at least according
-# to the discussion on debian-devel
 ask "Library directory for constant data
 	(architecture independent)" sharedir /usr/share/games
-ask "Library directory for variable data" varlibdir /var/lib/games
+ask "Library directory for variable data" varlibdir /var/games
+
 ask_yn "Set owners/groups on installed files" do_chown y
 
 echo
-echo "For scorefiles there are at least two possible security policies if you"
-echo "want them to work.  You can make the files world-writable, and then"
-echo "anyone who wants can put anything in them, which may not be desirable if"
-echo "you think people might cheat this way.  Or you can make the games that"
-echo "use them setgid games, and give the files permissions 0664.  Note,"
-echo "however, that the games may well be insecure when this is done and"
-echo "malicious users can probably still overwrite anything writable by"
+echo "See SECURITY for a discussion of security issues related to score files."
+echo "There are at least two possible security policies if you want them to"
+echo "work.  You can make the files world-writable, and then anyone who wants"
+echo "can put anything in them, which may not be desirable if you think people"
+echo "might cheat this way.  Or you can make the games that use them setgid"
+echo "games, and give the files permissions 0664.  Note, however, that some"
+echo "of the games may well be insecure when this is done and"
+echo "malicious users may still be able to overwrite anything writable by"
 echo "group games, since the games were probably not designed with security in"
-echo "mind.  The default is neither of these: it creates scorefiles with"
+echo "mind, although version 2.2 is more secure than earlier versions."
+echo "The default is neither of these: it creates scorefiles with"
 echo "permissions 0644 and gives the games no special privileges, which is"
 echo "more secure but means that the games will fail when trying to write"
 echo "to their scorefiles."
@@ -224,8 +272,12 @@ echo "debugging ncurses.  Use -lcurses -ltermcap if you want to try that,"
 echo "but note that this is no longer supported and may not work."
 ask "Ncurses library" ncurses_lib -lncurses
 echo
-echo "If you built ncurses with --disable-overwrite, you may need"
-echo "-I/usr/include/ncurses here"
+echo "If you have a directory /usr/include/ncurses with the ncurses include"
+echo "files in it, and the <curses.h>, <termcap.h>, etc. in /usr/include"
+echo "are for BSD curses/termcap, you will need to put -I/usr/include/ncurses"
+echo "here.  Otherwise (if the ncurses includes are in /usr/include), leave"
+echo "this blank.  Leave it blank if /usr/include/ncurses is a symbolic link"
+echo "to /usr/include."
 ask "Ncurses includes" ncurses_includes ''
 
 ask "Other CFLAGS" other_cflags ''
@@ -239,6 +291,11 @@ if building_in atc; then
 fi
 
 echo
+echo "You can choose the default pager for those games that use one (for"
+echo "example, for viewing instructions).  This can be an absolute path,"
+echo "or the name of the pager to be searched for via the PATH at runtime."
+echo "All these games will also honour the PAGER environment variable if set,"
+echo "in the correct (POSIX.2) way."
 ask "Pager" pager /usr/bin/less
 
 if building_in fortune; then
@@ -300,15 +357,26 @@ substitute () {
 	    source_file="${file}.in"
 	    echo "Extracting $file from $source_file"
 	    cp "$source_file" "$file" # set permissions
-	    sed -f subst.sed <"$source_file" >"$file"
+	    case "$file" in
+	    (Makeconfig)
+		echo "# Automatically generated by configure from $source_file.  Do not edit." >"$file"
+		;;
+	    (*.[1-9])
+		echo ".\\\" Automatically generated by configure from $source_file.  Do not edit." >"$file"
+		;;
+	    (*.[ch])
+		echo "/* Automatically generated by configure from $source_file.  Do not edit. */" >"$file"
+		;;
+	    (*)
+		echo "#!/bin/sh" >"$file"
+		echo "# Automatically generated by configure from $source_file.  Do not edit." >>"$file"
+		;;
+	    esac
+	    sed -f subst.sed <"$source_file" >>"$file"
 	fi
     done
 }
 
 subst_files="`cat substfiles`"
-
-if [ x"$use_dm" = xy ]; then
-    subst_files="$subst_files hide-game"
-fi
 
 substitute $subst_files

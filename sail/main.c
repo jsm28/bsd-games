@@ -63,6 +63,10 @@ main(argc, argv)
 	char *p;
 	int i;
 
+	/* Open log file then revoke setgid privileges */
+	open_log();
+	setregid(getgid(), getgid());
+
 	(void) srand(getpid());
 	issetuid = getuid() != geteuid();
 	if ((p = strrchr(*argv, '/')) != NULL)

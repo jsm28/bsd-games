@@ -1,4 +1,3 @@
-#!/bin/bash
 # install-man.in - install a manpage
 
 set -e

@@ -1,4 +1,4 @@
-/*	$NetBSD: driver.h,v 1.4 1997/01/07 12:42:16 tls Exp $	*/
+/*	$NetBSD: driver.h,v 1.5 1998/03/29 04:57:19 mrg Exp $	*/
 
 /*
  * Copyright (c) 1983, 1993

@@ -88,6 +88,9 @@ main(argc, argv)
 	int ch;
 	char *indexfile;
 
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	indexfile = _PATH_QUIZIDX;
 	while ((ch = getopt(argc, argv, "i:t")) != -1)
 		switch(ch) {
@@ -166,8 +169,15 @@ show_index()
 	QE *qp;
 	char *p, *s;
 	FILE *pf;
+	char *pager;
 
-	if ((pf = popen(_PATH_PAGER, "w")) == NULL)
+	if (!isatty(1))
+		pager = "cat";
+	else {
+		if (!(pager = getenv("PAGER")) || (*pager == 0))
+			pager = _PATH_PAGER;
+	}
+	if ((pf = popen(pager, "w")) == NULL)
 		err(1, "%s", _PATH_PAGER);
 	(void)fprintf(pf, "Subjects:\n\n");
 	for (qp = qlist.q_next; qp; qp = qp->q_next) {

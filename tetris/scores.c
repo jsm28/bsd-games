@@ -52,6 +52,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/file.h>
+#include <sys/stat.h>
 #include <time.h>
 #include <termcap.h>
 #include <unistd.h>
@@ -97,6 +98,7 @@ getscores(fpp)
 	FILE **fpp;
 {
 	int sd, mint, lck;
+	mode_t mask;
 	char *mstr, *human;
 	FILE *sf;
 
@@ -111,10 +113,14 @@ getscores(fpp)
 		human = "reading";
 		lck = LOCK_SH;
 	}
+	setegid(egid);
+	mask = umask(S_IWOTH);
 	sd = open(_PATH_SCOREFILE, mint, 0666);
+	(void)umask(mask);
 	if (sd < 0) {
 		if (fpp == NULL) {
 			nscores = 0;
+			setegid(gid);
 			return;
 		}
 		(void)fprintf(stderr, "tetris: cannot open %s for %s: %s\n",
@@ -126,6 +132,7 @@ getscores(fpp)
 		    _PATH_SCOREFILE, human, strerror(errno));
 		exit(1);
 	}
+	setegid(gid);
 
 	/*
 	 * Grab a lock.

@@ -135,7 +135,7 @@ void	quit __P((int));
 void	reset_count __P((void));
 int	rnd __P((int));
 COORD  *rnd_pos __P((void));
-void	score __P((void));
+void	score __P((int));
 void	set_name __P((SCORE *));
 void	show_score __P((void));
 int	sign __P((int));

@@ -216,6 +216,9 @@ main(ac, av)
 	int	fd;
 #endif	/* OK_TO_WRITE_DISK */
 
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	getargs(ac, av);
 
 #ifndef NO_REGEX

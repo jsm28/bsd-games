@@ -1,4 +1,4 @@
-/*	$NetBSD: snscore.c,v 1.6 1997/10/12 01:49:33 lukem Exp $	*/
+/*	$NetBSD: snscore.c,v 1.7 1998/07/27 01:12:36 mycroft Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -43,7 +43,7 @@ __COPYRIGHT("@(#) Copyright (c) 1980, 1993\n\
 #if 0
 static char sccsid[] = "@(#)snscore.c	8.1 (Berkeley) 7/19/93";
 #else
-__RCSID("$NetBSD: snscore.c,v 1.6 1997/10/12 01:49:33 lukem Exp $");
+__RCSID("$NetBSD: snscore.c,v 1.7 1998/07/27 01:12:36 mycroft Exp $");
 #endif
 #endif /* not lint */
 
@@ -53,6 +53,7 @@ __RCSID("$NetBSD: snscore.c,v 1.6 1997/10/12 01:49:33 lukem Exp $");
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include "pathnames.h"
 
 char *recfile = _PATH_RAWSCORES;
@@ -64,20 +65,21 @@ struct	player	{
 	char	*name;
 } players[MAXPLAYERS], temp;
 
-int	main __P((int, char **));
+int	main __P((void));
 
 int
-main(argc, argv)
-	int argc __attribute__((unused));
-	char *argv[] __attribute__((unused));
+main()
 {
 	short	uid, score;
 	FILE	*fd;
 	int	noplayers;
 	int	i, j, notsorted;
 	short	whoallbest, allbest;
-	char	*q;
+	const	char *q;
 	struct	passwd	*p;
+
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
 
 	fd = fopen(recfile, "r");
 	if (fd == NULL)

@@ -74,6 +74,9 @@ main(argc, argv)
 	int ch, random_exit, selected, unbuffer_output;
 	char *ep;
 
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	denom = 0;
 	random_exit = unbuffer_output = 0;
 	while ((ch = getopt(argc, argv, "er")) != -1)

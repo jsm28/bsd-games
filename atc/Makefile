@@ -22,9 +22,10 @@ all:	$(PROG)
 $(PROG):	$(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(PROG)
 
-grammar.c:	grammar.y
+grammar.c grammar.h:	grammar.y
 	$(YACC) -d grammar.y
 	mv y.tab.c grammar.c
+	mv y.tab.h grammar.h
 
 lex.c:	lex.l
 	$(LEX) lex.l
@@ -32,6 +33,8 @@ lex.c:	lex.l
 
 .c.o:	
 	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
+
+lex.o:	grammar.h
 
 $(OBJS):	def.h extern.h include.h pathnames.h struct.h tunable.h
 
@@ -46,4 +49,4 @@ install:	$(PROG)
 	$(INSTALL_MANUAL) $(PROG).6
 
 clean:
-	rm -f $(PROG) grammar.c y.tab.h lex.c core *.o
+	rm -f $(PROG) grammar.c grammar.h y.tab.* lex.c lex.yy.c core *.o

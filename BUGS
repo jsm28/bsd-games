@@ -1,8 +1,9 @@
-1998-03-26 - Known bugs
-=======================
+Known bugs in bsd-games and bsd-games-non-free
+==============================================
 
-I know of the following bugs in bsd-games; there is no need to report
-them if you come across them, but fixes are welcome.
+I know of the following bugs in bsd-games and bsd-games-non-free;
+there is no need to report them if you come across them, but fixes are
+welcome.
 
 General
 =======
@@ -23,6 +24,9 @@ is not already running.
 Saving in monop is completely broken.  Since it assumes it can save by
 writing out the whole data space from 0 to sbrk(0) and read it in to
 restore, it may not be easy to fix.
+
+Gomoku can use 16 megabytes or more of memory, and does not check for
+allocation failure.  (This is reported as NetBSD PR 3126.)
 
 
 Joseph S. Myers

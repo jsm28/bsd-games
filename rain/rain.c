@@ -61,6 +61,7 @@ __RCSID("$NetBSD: rain.c,v 1.10 1997/10/13 22:01:54 cjs Exp $");
 #include <string.h>
 #include <termcap.h>
 #include <termios.h>
+#include <unistd.h>
 
 #define	cursor(c, r)	tputs(tgoto(CM, c, r), 1, fputchar)
 
@@ -87,6 +88,9 @@ main(argc, argv)
 #ifdef TIOCGWINSZ
 	struct winsize ws;
 #endif
+
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
 
 	if (!(term = getenv("TERM")))
 		errx(1, "TERM: parameter not set");

@@ -102,6 +102,9 @@ main(argc, argv)
 {
 	char ch;
 
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	if (argc == 2)
 		start_len = atoi(argv[1]);
 	if ((start_len <= 0) || (start_len > 500))

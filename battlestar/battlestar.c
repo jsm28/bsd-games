@@ -66,8 +66,13 @@ main(argc, argv)
 	char    mainbuf[LINELENGTH];
 	char   *next;
 
+	/* Open the score file then revoke setgid privileges */
+	open_score_file();
+	setregid(getgid(), getgid());
+
 	initialize((argc < 2) ? NULL : (strcmp(argv[1], "-r") ? argv[1]
-					: (argv[2] ? argv[2] : ".Bstar")));
+					: (argv[2] ? argv[2]
+					   : DEFAULT_SAVE_FILE)));
 start:
 	news();
 	beenthere[position]++;

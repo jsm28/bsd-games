@@ -48,6 +48,7 @@ __RCSID("$NetBSD: ppt.c,v 1.5 1997/10/10 16:48:39 lukem Exp $");
 #endif /* not lint */
 
 #include <stdio.h>
+#include <unistd.h>
 
 	int	main __P((int, char *[]));
 static void	putppt __P((int));
@@ -59,6 +60,9 @@ main(argc, argv)
 {
 	int c;
 	char *p;
+
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
 
 	(void) puts("___________");
 	if (argc > 1)

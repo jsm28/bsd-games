@@ -104,6 +104,9 @@ main(argc, argv)
 {
 	int ch, move;
 
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	while ((ch = getopt(argc, argv, "p")) != -1)
 		switch(ch) {
 		case 'p':
@@ -450,6 +453,8 @@ instructions()
 {
 	int input;
 	pid_t pid;
+	int fd;
+	char *pager;
 	int status;
 
 	(void)printf("Would you like instructions (y or n)? ");
@@ -462,8 +467,18 @@ instructions()
 	case 0: /* child */
 		(void)setuid(getuid());
 		(void)setgid(getgid());
-		(void)execl(_PATH_MORE, "more", _PATH_INSTR, NULL);
-		err(1, "%s %s", _PATH_MORE, _PATH_INSTR);
+		if (!isatty(1))
+			pager = "cat";
+		else {
+			if (!(pager = getenv("PAGER")) || (*pager == 0))
+				pager = _PATH_MORE;
+		}
+		if ((fd = open(_PATH_INSTR, O_RDONLY)) == -1)
+			err(1, "open %s", _PATH_INSTR);
+		if (dup2(fd, 0) == -1)
+			err(1, "dup2");
+		(void)execl("/bin/sh", "sh", "-c", pager, NULL);
+		err(1, "exec sh -c %s", pager);
 		/*NOTREACHED*/
 	case -1:
 		err(1, "fork");

@@ -55,7 +55,6 @@ __RCSID("$NetBSD: main.c,v 1.8 1997/10/11 01:53:31 lukem Exp $");
 /*      Re-coding of advent in C: main program */
 
 #include <sys/file.h>
-#include <err.h>
 #include <signal.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -71,9 +70,8 @@ main(argc, argv)
 	int     rval, ll;
 	struct text *kk;
 
-	/* adventure doesn't need setuid-ness, so, just get rid of it */
-	if (setuid(getuid()) < 0)
-		warn("setuid");
+	/* revoke setgid privileges */
+	setregid(getgid(), getgid());
 
 	init(NULL);		/* Initialize everything */
 	signal(SIGINT, trapdel);

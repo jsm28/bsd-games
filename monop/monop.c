@@ -67,6 +67,8 @@ main(ac, av)
 int		ac;
 char	*av[]; {
 
+	/* Revoke setgid privileges */
+	setregid(getgid(), getgid());
 
 	srand(getpid());
 	if (ac > 1) {

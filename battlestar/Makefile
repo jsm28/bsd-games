@@ -9,7 +9,7 @@ SRCS=	battlestar.c com1.c com2.c com3.c com4.c com5.c com6.c com7.c \
 	globals.c dayfile.c nightfile.c dayobjs.c nightobjs.c words.c
 OBJS=	battlestar.o com1.o com2.o com3.o com4.o com5.o com6.o com7.o \
 	init.o cypher.o getcom.o parse.o room.o save.o fly.o misc.o \
-	globals.o dayfile.o nightfile.o dayobjs.o nightobjs.o words.o
+	globals.o dayfile.o nightfile.o dayobjs.o nightobjs.o words.o fgetln.o
 
 LIBS = $(NCURSES_LIB)
 
@@ -22,6 +22,9 @@ $(PROG):	$(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $(PROG)
 
 .c.o:	
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
+
+fgetln.o:	../lib/fgetln.c
 	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
 $(OBJS):	extern.h

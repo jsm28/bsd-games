@@ -1039,6 +1039,9 @@ main(argc, argv)
 { 
 	int ch;
 
+	/* revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	while ((ch = getopt(argc, argv, "w:td")) != -1)
 		switch (ch) {
 		case 'd':

@@ -74,6 +74,9 @@ main(argc, argv)
 {
 	int     i;
 
+	/* revoke setgid privileges */
+	setregid(getgid(), getgid());
+
 	signal(SIGINT, getout);
 	if (tcgetattr(0, &old) == -1)	/* get old tty mode */
 		errexit("teachgammon(gtty)");
