@@ -1,3 +1,28 @@
+2005-02-14  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* .cvsignore, adventure/.cvsignore, arithmetic/.cvsignore,
+	atc/.cvsignore, backgammon/backgammon/.cvsignore,
+	backgammon/common_source/.cvsignore,
+	backgammon/teachgammon/.cvsignore, banner/.cvsignore,
+	battlestar/.cvsignore, bcd/.cvsignore, boggle/boggle/.cvsignore,
+	boggle/mkdict/.cvsignore, boggle/mkindex/.cvsignore,
+	caesar/.cvsignore, canfield/canfield/.cvsignore,
+	canfield/cfscores/.cvsignore, cribbage/.cvsignore, dab/.cvsignore,
+	dm/.cvsignore, factor/.cvsignore, fish/.cvsignore,
+	fortune/datfiles/.cvsignore, fortune/fortune/.cvsignore,
+	fortune/strfile/.cvsignore, fortune/unstr/.cvsignore,
+	gomoku/.cvsignore, hack/.cvsignore, hangman/.cvsignore,
+	hunt/hunt/.cvsignore, hunt/huntd/.cvsignore, include/.cvsignore,
+	lib/.cvsignore, mille/.cvsignore, monop/.cvsignore,
+	morse/.cvsignore, number/.cvsignore, phantasia/.cvsignore,
+	pig/.cvsignore, pom/.cvsignore, ppt/.cvsignore, primes/.cvsignore,
+	quiz/.cvsignore, quiz/datfiles/.cvsignore, rain/.cvsignore,
+	random/.cvsignore, robots/.cvsignore, rogue/.cvsignore,
+	sail/.cvsignore, snake/snake/.cvsignore, snake/snscore/.cvsignore,
+	tetris/.cvsignore, trek/.cvsignore, worm/.cvsignore,
+	worms/.cvsignore, wtf/.cvsignore, wump/.cvsignore: Remove as no
+	longer needed after move to Subversion.
+
 2005-01-30  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* fortune/datfiles/fortunes2: Update from NetBSD CVS.
