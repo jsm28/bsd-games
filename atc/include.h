@@ -1,4 +1,4 @@
-/*	$NetBSD: include.h,v 1.6 1997/10/10 02:07:14 lukem Exp $	*/
+/*	$NetBSD: include.h,v 1.7 2001/08/29 18:23:44 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1990, 1993

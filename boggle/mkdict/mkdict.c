@@ -1,4 +1,4 @@
-/* $NetBSD: mkdict.c,v 1.7 2000/07/31 11:28:48 simonb Exp $ */
+/* $NetBSD: mkdict.c,v 1.8 2001/08/29 18:22:56 jsm Exp $ */
 
 /*-
  * Copyright (c) 1993
@@ -44,7 +44,7 @@ static const char copyright[] __attribute__((__unused__)) =
 static char sccsid[] = "@(#)mkdict.c	8.1 (Berkeley) 6/11/93";
 #else
 static const char rcsid[] __attribute__((__unused__)) = 
-    "$NetBSD: mkdict.c,v 1.7 2000/07/31 11:28:48 simonb Exp $";
+    "$NetBSD: mkdict.c,v 1.8 2001/08/29 18:22:56 jsm Exp $";
 #endif
 #endif /* not lint */
 

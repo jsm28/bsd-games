@@ -1,4 +1,4 @@
-/* $NetBSD: setup.c,v 1.8 2000/07/31 11:25:50 simonb Exp $ */
+/* $NetBSD: setup.c,v 1.9 2001/08/29 18:22:56 jsm Exp $ */
 
 /*-
  * Copyright (c) 1991, 1993
@@ -43,7 +43,7 @@ static const char copyright[] __attribute__((__unused__)) = "@(#) Copyright (c) 
 #if 0
 static char sccsid[] = "@(#)setup.c	8.1 (Berkeley) 5/31/93";
 #else
-static const char rcsid[] __attribute__((__unused__)) = "$NetBSD: setup.c,v 1.8 2000/07/31 11:25:50 simonb Exp $";
+static const char rcsid[] __attribute__((__unused__)) = "$NetBSD: setup.c,v 1.9 2001/08/29 18:22:56 jsm Exp $";
 #endif
 #endif				/* not lint */
 

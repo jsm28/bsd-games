@@ -1,4 +1,4 @@
-/*	$NetBSD: wump.c,v 1.13 2000/05/08 07:56:06 mycroft Exp $	*/
+/*	$NetBSD: wump.c,v 1.14 2001/08/31 07:16:22 jsm Exp $	*/
 
 /*
  * Copyright (c) 1989, 1993
@@ -47,7 +47,7 @@ __COPYRIGHT("@(#) Copyright (c) 1989, 1993\n\
 #if 0
 static char sccsid[] = "@(#)wump.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: wump.c,v 1.13 2000/05/08 07:56:06 mycroft Exp $");
+__RCSID("$NetBSD: wump.c,v 1.14 2001/08/31 07:16:22 jsm Exp $");
 #endif
 #endif /* not lint */
 
