@@ -27,7 +27,8 @@ Specific games
 Under some circumstances, hunt fails to start the hunt daemon if one
 is not already running.  In general, hunt needs thorough testing by
 someone willing to investigate and fix bugs; at present hunt should be
-considered unsupported and probably broken.
+considered unsupported and probably broken.  OpenBSD has a
+substantially improved version that should be imported/merged.
 
 Saving in monop is completely broken.  Since it assumes it can save by
 writing out the whole data space from 0 to sbrk(0) and read it in to
