@@ -1,5 +1,7 @@
 2004-01-27  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* THANKS: Mention David A Bagley.
+
 	* sail/pl_1.c (child): Use int for wait status.
 
 	* gomoku/gomoku.h, robots/robots.h, sail/extern.h, sail/misc.c,
