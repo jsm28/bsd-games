@@ -1,6 +1,8 @@
+/*	$NetBSD: backgammon.c,v 1.3 1995/03/21 15:05:31 cgd Exp $	*/
+
 /*-
- * Copyright (c) 1991 The Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1991, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)backgammon.c	5.1 (Berkeley) 4/8/91";
+#if 0
+static char sccsid[] = "@(#)backgammon.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: backgammon.c,v 1.3 1995/03/21 15:05:31 cgd Exp $";
+#endif
 #endif /* not lint */
 
 /*
@@ -47,9 +53,9 @@ static char sccsid[] = "@(#)backgammon.c	5.1 (Berkeley) 4/8/91";
 #define	MAXGMOV		10
 #define	MAXIMOVES	1000
 #ifdef linux
-  /* For Linux, this is defined in the makefiles */
+/* For Linux, this is defined in the makefiles */
 #else
-  #define	RULES		"/usr/games/lib/backrules"
+#define	RULES		"/usr/games/lib/backrules"
 #endif
 
 char	level;		/*'b'=beginner, 'i'=intermediate, 'e'=expert*/

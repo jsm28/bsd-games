@@ -1,6 +1,8 @@
+/*	$NetBSD: main.c,v 1.4 1995/04/29 00:44:03 mycroft Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,13 +34,17 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1980 Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1980, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)main.c	5.6 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)main.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: main.c,v 1.4 1995/04/29 00:44:03 mycroft Exp $";
+#endif
 #endif /* not lint */
 
 #include <stdio.h>
@@ -49,7 +55,7 @@ static char sccsid[] = "@(#)main.c	5.6 (Berkeley) 6/1/90";
 
 extern char	*instr[];			/* text of instructions */
 extern char	*message[];			/* update message */
-short	ospeed;					/* tty output speed */
+speed_t	ospeed;					/* tty output speed */
 
 char	*helpm[] = {				/* help message */
 	"Enter a space or newline to roll, or",
@@ -105,16 +111,14 @@ char	**argv;
 
 	/* initialization */
 	bflag = 2;					/* default no board */
-	signal (2,getout);				/* trap interrupts */
-	if (gtty (0,&tty) == -1)			/* get old tty mode */
+	signal (2, getout);				/* trap interrupts */
+	if (tcgetattr (0, &old) == -1)			/* get old tty mode */
 		errexit ("backgammon(gtty)");
-	old = tty.sg_flags;
-#ifdef V7
-	bg_raw = ((noech = old & ~ECHO) | CBREAK);	/* set up modes */
-#else
-	bg_raw = ((noech = old & ~ECHO) | RAW);		/* set up modes */
-#endif
-	ospeed = tty.sg_ospeed;				/* for termlib */
+	noech = old;
+	noech.c_lflag &= ~ECHO;
+	bg_raw = noech;
+	bg_raw.c_lflag &= ~ICANON;				/* set up modes */
+	ospeed = cfgetospeed (&old);			/* for termlib */
 
 							/* check user count */
 # ifdef CORY
@@ -146,11 +150,11 @@ char	**argv;
 		getarg (&argv);
 	args[acnt] = '\0';
 	if (tflag)  {					/* clear screen */
-		noech &= ~(CRMOD|XTABS);
-		bg_raw &= ~(CRMOD|XTABS);
+		noech.c_oflag &= ~(ONLCR|OXTABS);
+		bg_raw.c_oflag &= ~(ONLCR|OXTABS);
 		clear();
 	}
-	fixtty (bg_raw);				/* go into raw mode */
+	fixtty (&bg_raw);				/* go into raw mode */
 
 							/* check if restored
 							 * game and save flag
@@ -173,12 +177,12 @@ char	**argv;
 			writel (rules);
 			if (yorn(0))  {
 
-				fixtty (old);		/* restore tty */
+				fixtty (&old);		/* restore tty */
 				execl (TEACH,"teachgammon",args,0);
 
 				tflag = 0;		/* error! */
 				writel (noteach);
-				exit();
+				exit(1);
 			} else  {			/* if not rules, then
 							 * instructions */
 				writel (need);

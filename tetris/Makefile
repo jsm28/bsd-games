@@ -24,7 +24,7 @@ clean:
 
 install:	tetris
 	$(INSTALL_SCORE_GAME) tetris $(INSTALL_PREFIX)$(GAMESDIR)/tetris-bsd
-	$(HIDE_GAME) tetris
+	$(HIDE_GAME) tetris-bsd
 	$(INSTALL_SCORE_FILE) $(TETRIS_SCOREFILE)
 	ln tetris.6 tetris-bsd.6
 	$(INSTALL_MANUAL) tetris-bsd.6

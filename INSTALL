@@ -1,4 +1,4 @@
-1997-05-03 - Installation directions
+1997-05-06 - Installation directions
 ====================================
 
 Non-free games
@@ -20,10 +20,22 @@ Building and installation
 1.  cd to the top level directory in the source distribution.  i.e. the
     directory that contains this file.  (You're probably already here!)
 2.  Run ./configure and configure the installation to your liking.
+    There may be some games you don't want to build because you have them
+    from another package; for example, there is another fortune package
+    (fortune-mod) available, and factor is included in GNU sh-utils as of
+    version 1.12q.  At present, there's no simple way to say you don't
+    want a particular game - you have to list those you do want.  You can
+    work around this by removing the directories for the games you don't
+    want, or renaming them to begin with a dot.
 3.  Type make.  Ignore compiler warnings.  They will mostly be fixed in
     a later release.
 4.  Become root.
 5.  Type make install.
+6.  If you had an old installation, check for file locations that have
+    changed.  You will probably want to remove old executables and static
+    data (formerly defaulting to installation in /usr/games/lib), and
+    replace any empty score files that have been installed with your old
+    ones (checking the permissions).
 
 Further information
 ===================

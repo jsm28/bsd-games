@@ -1,6 +1,8 @@
+/*	$NetBSD: back.h,v 1.5 1995/04/29 00:44:10 mycroft Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -30,14 +32,17 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- *	@(#)back.h	5.4 (Berkeley) 6/1/90
+ *	@(#)back.h	8.1 (Berkeley) 5/31/93
  */
 
-#include <sgtty.h>
-#ifdef linux
-#define stty(x,y) ioctl(x,TIOCSETP,y)
-#define gtty(x,y) ioctl(x,TIOCGETP,y)
+#include <termios.h>
+#include <stdlib.h>
+#include <string.h>
+
+#ifndef OXTABS
+#define OXTABS XTABS /* Linux (libc 5) needs this, glibc does it anyway */
 #endif
+
 #define rnum(r)	(random()%r)
 #define D0	dice[0]
 #define D1	dice[1]
@@ -56,7 +61,7 @@
  *
  */
 
-extern char	EXEC[];	        /* object for main program */
+extern char	EXEC[];		/* object for main program */
 extern char	TEACH[];	/* object for tutorial program */
 
 extern int	pnum;		/* color of player:
@@ -117,10 +122,7 @@ char	**colorptr;		/* color of current player */
 char	**Colorptr;		/* color of current player, capitalized */
 int	colen;			/* length of color of current player */
 
-struct sgttyb	tty;		/* tty information buffer */
-int		old;		/* original tty status */
-int		noech;		/* original tty status without echo */
-int		bg_raw;		/* raw tty status, no echo */
+struct termios	old, noech, bg_raw;/* original tty status */
 
 int	curr;			/* row position of cursor */
 int	curc;			/* column position of cursor */

@@ -1,6 +1,8 @@
+/*	$NetBSD: text.c,v 1.4 1995/04/29 00:44:06 mycroft Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)text.c	5.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)text.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: text.c,v 1.4 1995/04/29 00:44:06 mycroft Exp $";
+#endif
 #endif /* not lint */
 
 #include "back.h"
@@ -111,7 +117,7 @@ char	**t;
 	register int	i;
 	register char	*s, *a;
 
-	fixtty (noech);
+	fixtty (&noech);
 	while (*t != 0)  {
 		s = a = *t;
 		for (i = 0; *a != '\0'; i--)
@@ -121,12 +127,12 @@ char	**t;
 			writec ('\n');
 		} else  {
 			writel ("-->");
-			fixtty (bg_raw);
+			fixtty (&bg_raw);
 			while ((i = readc()) != ' ' && i != '\n');
-			fixtty (noech);
+			fixtty (&noech);
 			clear();
 		}
 		t++;
 	}
-	fixtty (bg_raw);
+	fixtty (&bg_raw);
 }

@@ -1,6 +1,8 @@
+/*	$NetBSD: com6.c,v 1.6 1997/01/07 11:56:38 tls Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,10 +34,15 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)com6.c	5.5 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)com6.c	8.2 (Berkeley) 4/28/95";
+#else
+static char rcsid[] = "$NetBSD: com6.c,v 1.6 1997/01/07 11:56:38 tls Exp $";
+#endif
 #endif /* not lint */
 
-#include "externs.h"
+#include <time.h>
+#include "extern.h"
 #include "pathnames.h"
 
 launch()
@@ -89,24 +96,19 @@ live()
 	exit(0);
 }
 
-/*
- * sigh -- this program thinks "time" is an int.  It's easier to not load
- * <time.h> than try and fix it.
- */
-#define KERNEL
-#include <sys/time.h>
-#undef KERNEL
-
 post(ch)
 char ch;
 {
 	FILE *fp;
-	struct timeval tv;
+	time_t tv;
 	char *date, *ctime();
-	int s = sigblock(sigmask(SIGINT));
+	sigset_t sigset, osigset;
 
-	gettimeofday(&tv, (struct timezone *)0);	/* can't call time */
-	date = ctime(&tv.tv_sec);
+	sigemptyset(&sigset);
+	sigaddset(&sigset, SIGINT);
+	sigprocmask(SIG_BLOCK, &sigset, &osigset);
+	tv = time(NULL);
+	date = ctime(&tv);
 	date[24] = '\0';
 	if (fp = fopen(_PATH_SCORE,"a")) {
 		fprintf(fp, "%s  %8s  %c%20s", date, uname, ch, rate());
@@ -118,7 +120,7 @@ char ch;
 			fprintf(fp, "\n");
 	} else
 		perror(_PATH_SCORE);
-	sigsetmask(s);
+	sigprocmask(SIG_SETMASK, &osigset, (sigset_t *)0);
 }
 
 char *

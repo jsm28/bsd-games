@@ -1,6 +1,8 @@
+/*	$NetBSD: move.c,v 1.5 1995/04/29 00:44:05 mycroft Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)move.c	5.6 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)move.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: move.c,v 1.5 1995/04/29 00:44:05 mycroft Exp $";
+#endif
 #endif /* not lint */
 
 #include "back.h"
@@ -125,14 +131,14 @@ int	okay;					/* zero if first move */
 						 * while thinking */
 	if (tflag)
 		cline();
-	fixtty (noech);
+	fixtty (&noech);
 
 						/* find out how many moves */
 	mvlim = movallow();
 	if (mvlim == 0)  {
 		writel (" but cannot use it.\n");
 		nexturn();
-		fixtty (bg_raw);
+		fixtty (&bg_raw);
 		return;
 	}
 
@@ -170,7 +176,7 @@ int	okay;					/* zero if first move */
 		buflush();
 		sleep (3);
 	}
-	fixtty (bg_raw);			/* no more tty interrupt */
+	fixtty (&bg_raw);				/* no more tty interrupt */
 }
 
 trymove (mvnum,swapped)
@@ -348,15 +354,13 @@ nextfree ()  {
 			writel ("\nOut of memory\n");
 			getout();
 		}
-		new->b_next = 0;
-		return (new);
+	} else {
+		new = freeq;
+		freeq = freeq->b_next;
 	}
 
-	new = freeq;
-	freeq = freeq->b_next;
-#ifdef linux
-	return(new);
-#endif
+	new->b_next = 0;
+	return (new);
 }
 
 pickmove ()  {

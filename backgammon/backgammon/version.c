@@ -1,6 +1,8 @@
+/*	$NetBSD: version.c,v 1.3 1995/03/21 15:05:16 cgd Exp $	*/
+
 /*
- * Copyright (c) 1980, 1987 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1987, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)version.c	1.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)version.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: version.c,v 1.3 1995/03/21 15:05:16 cgd Exp $";
+#endif
 #endif /* not lint */
 
 char	*message[] = {

@@ -1,6 +1,6 @@
 # Makefile - makefile for backgammon
 
-include ../Makeconfig
+# config information not needed!
 
 all:	backgammon/backgammon teachgammon/teachgammon
 

@@ -1,6 +1,8 @@
+/*	$NetBSD: subs.c,v 1.5 1995/04/29 00:44:15 mycroft Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,13 +34,17 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)subs.c	5.5 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)subs.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: subs.c,v 1.5 1995/04/29 00:44:15 mycroft Exp $";
+#endif
 #endif /* not lint */
 
 #include <stdio.h>
 #include "back.h"
 
-int	buffnum;
+int	buffnum = -1;
 char	outbuff[BUFSIZ];
 
 static char	plred[] = "Player is red, computer is white.";
@@ -309,7 +315,7 @@ register char	***arg;
 
 	s = *arg;
 	while (s[0] != NULL && s[0][0] == '-') {
-	  switch (s[0][1])  {
+		switch (s[0][1])  {
 
 		/* don't ask if rules or instructions needed */
 		case 'n':
@@ -378,8 +384,8 @@ register char	***arg;
 	}
 #ifdef linux
 	if (s[0] != NULL && *s[0] != 0)
-#else 
-	  if (s[0] != 0) 
+#else
+	if (s[0] != 0)
 #endif
 		recover(s[0]);
 }
@@ -411,14 +417,13 @@ wrscore ()  {
 	wrint (wscore);
 }
 
-fixtty (mode)
-int	mode;
+fixtty (t)
+struct termios	*t;
 {
 	if (tflag)
 		newpos();
 	buflush();
-	tty.sg_flags = mode;
-	if (stty (0,&tty) < 0)
+	if (tcsetattr (0, TCSADRAIN, t) < 0)
 		errexit("fixtty");
 }
 
@@ -431,8 +436,8 @@ getout ()  {
 		writec ('\n');
 
 	/* fix terminal status */
-	fixtty (old);
-	exit();
+	fixtty (&old);
+	exit(0);
 }
 roll ()  {
 	register char	c;

@@ -25,7 +25,7 @@ $(PROG):	$(OBJS)
 .c.o:	
 	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
-$(OBJS):	externs.h
+$(OBJS):	extern.h
 
 com6.o:	pathnames.h
 

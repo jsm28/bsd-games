@@ -1,6 +1,8 @@
+/*	$NetBSD: init.c,v 1.5 1997/01/07 11:56:45 tls Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,11 +34,15 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)init.c	5.5 (Berkeley) 2/27/91";
+#if 0
+static char sccsid[] = "@(#)init.c	8.4 (Berkeley) 4/30/95";
+#else
+static char rcsid[] = "$NetBSD: init.c,v 1.5 1997/01/07 11:56:45 tls Exp $";
+#endif
 #endif /* not lint */
 
 #include <sys/types.h>
-#include "externs.h"
+#include "extern.h"
 #include <pwd.h>
 
 initialize(startup)
@@ -48,12 +54,11 @@ initialize(startup)
 	puts("Version 4.2, fall 1984.");
 	puts("First Adventure game written by His Lordship, the honorable");
 	puts("Admiral D.W. Riggle\n");
+	location = dayfile;
 	srand(getpid());
 	getutmp(uname);
-	wiz = wizard(uname);
 	wordinit();
 	if (startup) {
-		location = dayfile;
 		direction = NORTH;
 		btime = 0;
 		snooze = CYCLE * 1.5;
@@ -65,6 +70,7 @@ initialize(startup)
 			setbit(location[p->room].objects, p->obj);
 	} else
 		restore();
+	wiz = wizard(uname);
 	signal(SIGINT, die);
 }
 

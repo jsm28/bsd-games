@@ -1,6 +1,8 @@
+/*	$NetBSD: instr.c,v 1.4 1996/02/06 22:47:18 jtc Exp $	*/
+
 /*-
- * Copyright (c) 1990 The Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1990, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,24 +34,37 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)instr.c	5.2 (Berkeley) 2/28/91";
+#if 0
+static char sccsid[] = "@(#)instr.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: instr.c,v 1.4 1996/02/06 22:47:18 jtc Exp $";
+#endif
 #endif /* not lint */
 
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <sys/errno.h>
 #include <sys/stat.h>
-#include <unistd.h>
+
+#include <curses.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <errno.h>
+
+#include "deck.h"
+#include "cribbage.h"
 #include "pathnames.h"
 
+void
 instructions()
 {
-	extern int errno;
 	struct stat sb;
+#ifdef linux
 	int pstat;
+#else
+	union wait pstat;
+#endif
 	pid_t pid;
 	char *pager, *path;
 
@@ -58,7 +73,7 @@ instructions()
 		    strerror(errno));
 		exit(1);
 	}
-	switch(pid = vfork()) {
+	switch (pid = vfork()) {
 	case -1:
 		(void)fprintf(stderr, "cribbage: %s.\n", strerror(errno));
 		exit(1);
@@ -75,7 +90,11 @@ instructions()
 		do {
 			pid = waitpid(pid, (int *)&pstat, 0);
 		} while (pid == -1 && errno == EINTR);
+#ifdef linux
 		if (pid == -1 || WEXITSTATUS(pstat))
+#else
+		if (pid == -1 || pstat.w_status)
+#endif
 			exit(1);
 	}
 }

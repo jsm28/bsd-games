@@ -1,6 +1,8 @@
+/*	$NetBSD: caesar.c,v 1.4 1996/02/06 22:47:15 jtc Exp $	*/
+
 /*
- * Copyright (c) 1989 The Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1989, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * This code is derived from software contributed to Berkeley by
  * Rick Adams.
@@ -40,19 +42,24 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1989 The Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1989, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)caesar.c	5.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)caesar.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: caesar.c,v 1.4 1996/02/06 22:47:15 jtc Exp $";
+#endif
 #endif /* not lint */
 
 #include <math.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <unistd.h>
+#include <errno.h>
 
 #define	LINELENGTH	2048
 #define	ROTATE(ch, perm) \
@@ -73,7 +80,6 @@ main(argc, argv)
 	int argc;
 	char **argv;
 {
-	extern int errno;
 	register int ch, dot, i, nread, winnerdot;
 	register char *inbuf;
 	int obs[26], try, winner;

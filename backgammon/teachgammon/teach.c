@@ -1,6 +1,8 @@
+/*	$NetBSD: teach.c,v 1.4 1995/04/29 00:44:18 mycroft Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,13 +34,17 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1980 Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1980, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)teach.c	5.6 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)teach.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: teach.c,v 1.4 1995/04/29 00:44:18 mycroft Exp $";
+#endif
 #endif /* not lint */
 
 #include "back.h"
@@ -56,7 +62,7 @@ extern char	*stragy[];
 extern char	*prog[];
 extern char	*lastch[];
 
-extern short	ospeed;			/* tty output speed for termlib */
+extern speed_t	ospeed;			/* tty output speed for termlib */
 
 char *helpm[] = {
 	"\nEnter a space or newline to roll, or",
@@ -79,15 +85,13 @@ char	**argv;
 	register int	i;
 
 	signal (2,getout);
-	if (gtty (0,&tty) == -1)			/* get old tty mode */
+	if (tcgetattr (0, &old) == -1)			/* get old tty mode */
 		errexit ("teachgammon(gtty)");
-	old = tty.sg_flags;
-#ifdef V7
-	bg_raw = ((noech = old & ~ECHO) | CBREAK);	/* set up modes */
-#else
-	bg_raw = ((noech = old & ~ECHO) | RAW);		/* set up modes */
-#endif
-	ospeed = tty.sg_ospeed;				/* for termlib */
+	noech = old;
+	noech.c_lflag &= ~ECHO;
+	bg_raw = noech;
+	bg_raw.c_lflag &= ~ICANON;			/* set up modes */
+	ospeed = cfgetospeed (&old);			/* for termlib */
 	tflag = getcaps (getenv ("TERM"));
 #ifdef V7
 	while (*++argv != 0)
@@ -96,8 +100,8 @@ char	**argv;
 #endif
 		getarg (&argv);
 	if (tflag)  {
-		noech &= ~(CRMOD|XTABS);
-		bg_raw &= ~(CRMOD|XTABS);
+		noech.c_oflag &= ~(ONLCR|OXTABS);
+		bg_raw.c_oflag &= ~(ONLCR|OXTABS);
 		clear();
 	}
 	text (hello);
@@ -159,7 +163,7 @@ leave()  {
 		clear();
 	else
 		writec ('\n');
-	fixtty(old);
+	fixtty(&old);
 #ifdef linux
 	execl (EXEC,"backgammon",args,"-n",0);
 #else

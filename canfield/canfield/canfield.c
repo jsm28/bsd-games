@@ -1,6 +1,8 @@
+/*	$NetBSD: canfield.c,v 1.7 1995/05/13 07:28:35 jtc Exp $	*/
+
 /*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,13 +34,17 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1980 Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1980, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)canfield.c	5.11 (Berkeley) 2/28/91";
+#if 0
+static char sccsid[] = "@(#)canfield.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: canfield.c,v 1.7 1995/05/13 07:28:35 jtc Exp $";
+#endif
 #endif /* not lint */
 
 /*
@@ -53,19 +59,15 @@ static char sccsid[] = "@(#)canfield.c	5.11 (Berkeley) 2/28/91";
  */
 
 #include <sys/types.h>
-#include <sys/signal.h>
-#ifdef linux
-#include <curses.h>
-#else
-#include <curses.h>
-#endif
-#include <ctype.h>
-#include "pathnames.h"
 
-#ifndef linux
-#define erasechar() _tty.sg_erase
-#define killchar() _tty.sg_kill
-#endif
+#include <curses.h>
+#include <termios.h>
+#include <ctype.h>
+#include <signal.h>
+#include <string.h>
+#include <termios.h>
+
+#include "pathnames.h"
 
 #define	decksize	52
 #define originrow	0
@@ -1272,7 +1274,7 @@ getcmd(row, col, cp)
 	int row, col;
 	char *cp;
 {
-	char cmd[2], ch;
+	char cmd[2] = { '\0', '\0'}, ch;
 	int i;
 
 	i = 0;
@@ -1294,11 +1296,11 @@ getcmd(row, col, cp)
 		} else if (ch == erasechar() && i > 0) {
 			printw("\b \b");
 			refresh();
-			i--;
+			cmd[--i] = '\0';
 		} else if (ch == killchar() && i > 0) {
 			while (i > 0) {
 				printw("\b \b");
-				i--;
+				cmd[--i] = '\0';
 			}
 			refresh();
 		} else if (ch == '\032') {	/* Control-Z */

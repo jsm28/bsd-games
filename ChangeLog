@@ -1,3 +1,67 @@
+Tue May  6 00:53:04 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* Version 1.3.4beta.
+
+	* NEWS: Update.
+
+	* bsd-games-non-free.lsm: Update.
+
+	* bsd-games.lsm: Update.
+
+	* README: Update.
+
+	* configure, tetris/Makefile: Consistently use tetris-bsd for
+	files associated with tetris.
+
+	* INSTALL: Update.
+
+	* factor/*: Update from NetBSD-current of 1997-04-26.
+
+	* cribbage/*: Update from NetBSD-current of 1997-04-26.
+
+Mon May  5 02:23:05 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* canfield/*: Update from NetBSD-current of 1997-04-26.
+
+	* caesar/caesar.6: Mention rot13.
+
+	* caesar/Makefile: Install rot13 and manpage link.
+
+	* caesar/rot13.sh: Rename to rot13.in.
+	* caesar/rot13.in: Parametrise to use full path of caesar.
+	* configure: Substitute in this file.
+	* Makefile: Remove rot13 in distclean.
+
+	* caesar/*: Update from NetBSD-current of 1997-04-26.
+
+	* bcd/*: Update from NetBSD-current of 1997-04-26.
+
+	* battlestar/com6.c (post): Change to use time() in line with
+	comments.
+
+	* battlestar/Makefile: Change dependency on externs.h to extern.h.
+
+	* battlestar/*: Update from NetBSD-current of 1997-04-26.
+
+	* backgammon/common_source/Makefile: Quote value of RULES; only
+	define when building sbackgammon.
+
+	* backgammon/backgammon/Makefile, backgammon/teachgammon/Makefile:
+	Don't include RULES in DEFS.
+
+	* backgammon/Makefile: Don't include ../Makeconfig.
+
+	* backgammon/common_source/back.h (OXTABS): Define to XTABS if not
+	defined (from glibc headers).
+
+	* backgammon/*: Update from NetBSD-current of 1997-04-26.
+
+Sun May  4 01:55:22 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* backgammon/common_source/subs.c: Initialise `buffnum' to -1, to
+	prevent a spurious NUL.
+	* backgammon/common_source/fancy.c: Mark `buffnum' as `extern'.
+
 Sat May  3 00:27:49 1997  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* Version 1.3.3beta.

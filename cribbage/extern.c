@@ -1,6 +1,8 @@
-/*
- * Copyright (c) 1980 Regents of the University of California.
- * All rights reserved.
+/*	$NetBSD: extern.c,v 1.3 1995/03/21 15:08:50 cgd Exp $	*/
+
+/*-
+ * Copyright (c) 1980, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,17 +34,22 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)extern.c	5.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)extern.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: extern.c,v 1.3 1995/03/21 15:08:50 cgd Exp $";
+#endif
 #endif /* not lint */
 
-# include	<curses.h>
-# include	"deck.h"
-# include	"cribbage.h"
+#include <curses.h>
 
-BOOLEAN	explain		= FALSE;	/* player mistakes explained */
-BOOLEAN	iwon		= FALSE;	/* if comp won last game */
-BOOLEAN	quiet		= FALSE;	/* if suppress random mess */
-BOOLEAN	rflag		= FALSE;	/* if all cuts random */
+#include "deck.h"
+#include "cribbage.h"
+
+bool	explain		= FALSE;	/* player mistakes explained */
+bool	iwon		= FALSE;	/* if comp won last game */
+bool	quiet		= FALSE;	/* if suppress random mess */
+bool	rflag		= FALSE;	/* if all cuts random */
 
 char	expl[128];			/* explanation */
 

@@ -1,6 +1,8 @@
+/*	$NetBSD: fly.c,v 1.4 1997/01/07 11:56:44 tls Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,13 +34,14 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)fly.c	5.6 (Berkeley) 3/4/91";
+#if 0
+static char sccsid[] = "@(#)fly.c	8.2 (Berkeley) 4/28/95";
+#else
+static char rcsid[] = "$NetBSD: fly.c,v 1.4 1997/01/07 11:56:44 tls Exp $";
+#endif
 #endif /* not lint */
 
-#include "externs.h"
-#ifdef linux
-  #include <signal.h>
-#endif
+#include "extern.h"
 #undef UP
 #include <curses.h>
 
@@ -71,7 +74,6 @@ visual()
 	void moveenemy();
 
 	destroyed = 0;
-	/*savetty();*/
 	if(initscr() == NULL){
 		puts("Whoops!  No more memory...");
 		return(0);

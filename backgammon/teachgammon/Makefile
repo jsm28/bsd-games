@@ -3,7 +3,7 @@
 include ../../Makeconfig
 
 INCS = -I../common_source $(BSD_INCS) $(NCURSES_INCS)
-DEFS = $(BSD_DEFS) -DV7 -DRULES=$(BACKGAMMON_RULES)
+DEFS = $(BSD_DEFS) -DV7
 LIBS = $(NCURSES_LIB) $(BSD_LIB)
 
 OBJS= data.o teach.o ttext1.o ttext2.o tutor.o

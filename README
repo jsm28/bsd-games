@@ -1,9 +1,10 @@
-1995-05-03
+1995-05-06
 
 Here is the bsd-games package, containing ports of your favorite
 (mostly curses-based) BSD games (descriptions to follow).  These games
 mostly came from ftp.uu.net:/systems/unix/bsd-sources/games with some
-older versions from the Tahoe release.  There's not much to do in
+older versions from the Tahoe release.  Work is in progress to update
+them to the versions from NetBSD-current.  There's not much to do in
 porting most of them, mostly busy-work.  We didn't really try to
 enhance them.  Maybe later.  We wanted to get out what we thought were
 the most popular games first so we will eventually hopefully have the
@@ -14,10 +15,10 @@ may also work with curses/termcap, but this is not tested by me.
 Support for libc 6 will be added in a later release.
 
 You need to configure the package with `./configure'.  You should read
-any README.linux files for the games you plan to install.  (Some of
-these README.linux files are out of date). You can make each package
-individually or do a make in the top level directory to make
-everything.  The `Makefile.orig' files are the original BSD makefiles.
+any README.linux files for the games you plan to install. You can make
+each package individually or do a make in the top level directory to
+make everything.  The `Makefile.orig' files are the original BSD
+makefiles.
 
 Two games that were in this package up to version 1.3, bog and
 paranoia, are now distributed separately because of restrictive
