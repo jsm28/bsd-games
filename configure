@@ -227,6 +227,19 @@ ask "Other LDFLAGS" other_ldflags ''
 echo
 ask "Pager" pager /usr/bin/less
 
+if building_in fortune; then
+    echo
+    echo "Fortune comes with some potentially offensive fortunes.  You should"
+    echo "only install these if you are sure that your users want them."
+    ask_yn "Install offensive fortunes" offensive_fortunes n
+    if [ $offensive_fortunes = y ]; then
+	fortune_type=real
+    else
+	fortune_type=fake
+    fi
+    subst_vars="$subst_vars fortune_type"
+fi
+
 echo
 echo "You can configure the exact names used for data files by various"
 echo "of the games.  Most probably the defaults are OK."

@@ -1,6 +1,8 @@
+/*	$NetBSD: strfile.c,v 1.5 1996/10/13 00:01:05 christos Exp $	*/
+
 /*-
- * Copyright (c) 1989 The Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1989, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * This code is derived from software contributed to Berkeley by
  * Ken Arnold.
@@ -35,22 +37,27 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1989 The Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1989, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)strfile.c	5.12 (Berkeley) 4/8/91";
+#if 0
+static char sccsid[] = "@(#)strfile.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: strfile.c,v 1.5 1996/10/13 00:01:05 christos Exp $";
+#endif
 #endif /* not lint */
 
-#ifndef linux
-# include	<machine/endian.h>
-#else
-# include       <time.h>
+#ifdef linux
+#include <time.h>
 #endif
+
+# include	<sys/types.h>
 # include	<sys/param.h>
 # include	<stdio.h>
+# include	<string.h>
 # include	<ctype.h>
 # include	"strfile.h"
 
@@ -109,7 +116,7 @@ static char sccsid[] = "@(#)strfile.c	5.12 (Berkeley) 4/8/91";
 
 typedef struct {
 	char	first;
-	off_t   pos;
+	off_t	pos;
 } STR;
 
 char	*Infile		= NULL,		/* input file name */
@@ -443,6 +450,7 @@ randomize()
 #ifndef linux
 	extern time_t	time();
 #endif
+
 	srandom((int)(time((time_t *) NULL) + getpid()));
 
 	Tbl.str_flags |= STR_RANDOM;

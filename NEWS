@@ -1,6 +1,13 @@
 This file contains a summary of changes in each version after 1.3.
 For fuller details, see ChangeLog and ChangeLog.0.
 
+Version 1.4
+===========
+
+* Fish, fortune and hangman updated to the versions in NetBSD-current.
+
+* Public release.
+
 Version 1.3.4beta
 =================
 

@@ -1,6 +1,8 @@
+/*	$NetBSD: fortune.c,v 1.8 1995/03/23 08:28:40 cgd Exp $	*/
+
 /*-
- * Copyright (c) 1986 The Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1986, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * This code is derived from software contributed to Berkeley by
  * Ken Arnold.
@@ -35,53 +37,32 @@
  */
 
 #ifndef lint
-char copyright[] =
-"@(#) Copyright (c) 1986 The Regents of the University of California.\n\
- All rights reserved.\n";
+static char copyright[] =
+"@(#) Copyright (c) 1986, 1993\n\
+	The Regents of the University of California.  All rights reserved.\n";
 #endif /* not lint */
 
 #ifndef lint
-static char sccsid[] = "@(#)fortune.c	5.13 (Berkeley) 4/8/91";
+#if 0
+static char sccsid[] = "@(#)fortune.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: fortune.c,v 1.8 1995/03/23 08:28:40 cgd Exp $";
+#endif
 #endif /* not lint */
 
-#ifndef linux
-# include	<machine/endian.h>
-#endif
 # include	<sys/param.h>
 # include	<sys/stat.h>
-# include	<sys/dir.h>
-# include	<stdio.h>
+
+# include	<dirent.h>
+# include	<fcntl.h>
 # include	<assert.h>
+# include	<unistd.h>
+# include	<stdio.h>
+# include	<ctype.h>
+# include	<stdlib.h>
+# include	<string.h>
 # include	"strfile.h"
 # include	"pathnames.h"
-
-#ifdef	SYSV
-# include	<dirent.h>
-
-# define	NO_LOCK
-# define	REGCMP
-# ifdef	NO_REGEX
-#	undef	 NO_REGEX
-# endif	/* NO_REGEX */
-# define	index	strchr
-# define	rindex	strrchr
-#endif	/* SYSV */
-
-#ifndef NO_REGEX
-# include	<ctype.h>
-#endif	/* NO_REGEX */
-
-# ifndef NO_LOCK
-# include	<sys/file.h>
-# endif	/* NO_LOCK */
-
-# ifndef F_OK
-/* codes for access() */
-# define	F_OK		0	/* does file exist */
-# define	X_OK		1	/* is it executable by caller */
-# define	W_OK		2	/* writable by caller */
-# define	R_OK		4	/* readable by caller */
-# endif	/* F_OK */
 
 # define	TRUE	1
 # define	FALSE	0
@@ -91,16 +72,16 @@ static char sccsid[] = "@(#)fortune.c	5.13 (Berkeley) 4/8/91";
 # define	CPERS	20		/* # of chars for each sec */
 # define	SLEN	160		/* # of chars in short fortune */
 
-# define	POS_UNKNOWN	((unsigned long) -1)	/* pos for file unknown */
+# define	POS_UNKNOWN	((off_t) -1)	/* pos for file unknown */
 # define	NO_PROB		(-1)		/* no prob specified for file */
 
 # ifdef DEBUG
 # define	DPRINTF(l,x)	if (Debug >= l) fprintf x; else
 # undef		NDEBUG
-# else	/* DEBUG */
+# else
 # define	DPRINTF(l,x)
 # define	NDEBUG	1
-# endif	/* DEBUG */
+# endif
 
 #ifdef linux
 #define d_namlen d_reclen
@@ -109,7 +90,7 @@ static char sccsid[] = "@(#)fortune.c	5.13 (Berkeley) 4/8/91";
 typedef struct fd {
 	int		percent;
 	int		fd, datfd;
-	unsigned long	pos;
+	off_t		pos;
 	FILE		*inf;
 	char		*name;
 	char		*path;
@@ -149,16 +130,44 @@ FILEDESC	*Fortfile;		/* Fortune file to use */
 
 STRFILE		Noprob_tbl;		/* sum of data for all no prob files */
 
-char	*do_malloc(), *copy(), *off_name();
+int	 add_dir __P((FILEDESC *));
+int	 add_file __P((int,
+	    char *, char *, FILEDESC **, FILEDESC **, FILEDESC *));
+void	 all_forts __P((FILEDESC *, char *));
+char	*copy __P((char *, u_int));
+void	 display __P((FILEDESC *));
+void	 do_free __P((void *));
+void	*do_malloc __P((u_int));
+int	 form_file_list __P((char **, int));
+int	 fortlen __P((void));
+void	 get_fort __P((void));
+void	 get_pos __P((FILEDESC *));
+void	 get_tbl __P((FILEDESC *));
+void	 getargs __P((int, char *[]));
+void	 init_prob __P((void));
+int	 is_dir __P((char *));
+int	 is_fortfile __P((char *, char **, char **, int));
+int	 is_off_name __P((char *));
+int	 max __P((int, int));
+FILEDESC *
+	 new_fp __P((void));
+char	*off_name __P((char *));
+void	 open_dat __P((FILEDESC *));
+void	 open_fp __P((FILEDESC *));
+FILEDESC *
+	 pick_child __P((FILEDESC *));
+void	 print_file_list __P((void));
+void	 print_list __P((FILEDESC *, int));
+void	 sum_noprobs __P((FILEDESC *));
+void	 sum_tbl __P((STRFILE *, STRFILE *));
+void	 usage __P((void));
+void	 zero_tbl __P((STRFILE *));
 
-FILEDESC	*pick_child(), *new_fp();
-
-extern char	*malloc(), *index(), *rindex(), *strcpy(), *strcat();
-
-extern time_t	time();
-
-#ifndef NO_REGEX
-char	*conv_pat();
+#ifndef	NO_REGEX
+char	*conv_pat __P((char *));
+int	 find_matches __P((void));
+void	 matches_in_list __P((FILEDESC *));
+int	 maxlen_in_list __P((FILEDESC *));
 #endif
 
 #ifndef NO_REGEX
@@ -175,15 +184,10 @@ char	*regcmp(), *regex();
 # define	BAD_COMP(f)	((f) != NULL)
 # define	RE_EXEC(p)	re_exec(p)
 
-char	*re_comp();
-#ifdef SYSV
-char	*re_exec();
-#else
-int	re_exec();
-#endif
 #endif
 #endif
 
+int
 main(ac, av)
 int	ac;
 char	*av[];
@@ -237,6 +241,7 @@ char	*av[];
 	/* NOTREACHED */
 }
 
+void
 display(fp)
 FILEDESC	*fp;
 {
@@ -244,7 +249,7 @@ FILEDESC	*fp;
 	char	line[BUFSIZ];
 
 	open_fp(fp);
-	(void) fseek(fp->inf, Seekpts[0], 0);
+	(void) fseek(fp->inf, (long)Seekpts[0], 0);
 	for (Fort_len = 0; fgets(line, sizeof line, fp->inf) != NULL &&
 	    !STR_ENDSTRING(line, fp->tbl); Fort_len++) {
 		if (fp->tbl.str_flags & STR_ROTATED)
@@ -262,6 +267,7 @@ FILEDESC	*fp;
  * fortlen:
  *	Return the length of the fortune.
  */
+int
 fortlen()
 {
 	register int	nchar;
@@ -271,7 +277,7 @@ fortlen()
 		nchar = (Seekpts[1] - Seekpts[0] <= SLEN);
 	else {
 		open_fp(Fortfile);
-		(void) fseek(Fortfile->inf, Seekpts[0], 0);
+		(void) fseek(Fortfile->inf, (long)Seekpts[0], 0);
 		nchar = 0;
 		while (fgets(line, sizeof line, Fortfile->inf) != NULL &&
 		       !STR_ENDSTRING(line, Fortfile->tbl))
@@ -284,20 +290,20 @@ fortlen()
 /*
  *	This routine evaluates the arguments on the command line
  */
+void
 getargs(argc, argv)
 register int	argc;
 register char	**argv;
 {
 	register int	ignore_case;
 # ifndef NO_REGEX
-	register char	*pat;
+	register char	*pat = NULL;
 # endif	/* NO_REGEX */
 	extern char *optarg;
 	extern int optind;
 	int ch;
 
 	ignore_case = FALSE;
-	pat = NULL;
 
 # ifdef DEBUG
 	while ((ch = getopt(argc, argv, "aDefilm:osw")) != EOF)
@@ -385,6 +391,7 @@ register char	**argv;
  * form_file_list:
  *	Form the file list from the file specifications.
  */
+int
 form_file_list(files, file_cnt)
 register char	**files;
 register int	file_cnt;
@@ -444,6 +451,7 @@ register int	file_cnt;
  * add_file:
  *	Add a file to the file list.
  */
+int
 add_file(percent, file, dir, head, tail, parent)
 int		percent;
 register char	*file;
@@ -610,6 +618,7 @@ char	*file;
  * is_off_name:
  *	Is the file an offensive-style name?
  */
+int
 is_off_name(file)
 char	*file;
 {
@@ -624,6 +633,7 @@ char	*file;
  *	Modify a FILEDESC element to be the parent of two children if
  *	there are two children to be a parent of.
  */
+void
 all_forts(fp, offensive)
 register FILEDESC	*fp;
 char			*offensive;
@@ -673,15 +683,12 @@ char			*offensive;
  * add_dir:
  *	Add the contents of an entire directory.
  */
+int
 add_dir(fp)
 register FILEDESC	*fp;
 {
 	register DIR		*dir;
-#ifdef SYSV
-	register struct dirent	*dirent;	/* NIH, of course! */
-#else
-	register struct direct	*dirent;
-#endif
+	register struct dirent  *dirent;
 	auto FILEDESC		*tailp;
 	auto char		*name;
 
@@ -715,6 +722,7 @@ register FILEDESC	*fp;
  * is_dir:
  *	Return TRUE if the file is a directory, FALSE otherwise.
  */
+int
 is_dir(file)
 char	*file;
 {
@@ -733,9 +741,9 @@ char	*file;
  *	suffixes, as contained in suflist[], are ruled out.
  */
 /* ARGSUSED */
+int
 is_fortfile(file, datp, posp, check_for_offend)
-char	*file;
-char	**datp, **posp;
+char	*file, **datp, **posp;
 int	check_for_offend;
 {
 	register int	i;
@@ -821,11 +829,11 @@ unsigned int	len;
  * do_malloc:
  *	Do a malloc, checking for NULL return.
  */
-char *
+void *
 do_malloc(size)
 unsigned int	size;
 {
-	char	*new;
+	void	*new;
 
 	if ((new = malloc(size)) == NULL) {
 		(void) fprintf(stderr, "fortune: out of memory.\n");
@@ -838,8 +846,9 @@ unsigned int	size;
  * do_free:
  *	Free malloc'ed space, if any.
  */
+void
 do_free(ptr)
-char	*ptr;
+void	*ptr;
 {
 	if (ptr != NULL)
 		free(ptr);
@@ -849,6 +858,7 @@ char	*ptr;
  * init_prob:
  *	Initialize the fortune probabilities.
  */
+void
 init_prob()
 {
 	register FILEDESC	*fp, *last;
@@ -920,11 +930,11 @@ init_prob()
  * get_fort:
  *	Get the fortune data file's seek pointer for the next fortune.
  */
+void
 get_fort()
 {
 	register FILEDESC	*fp;
 	register int		choice;
-	long random();
 
 	if (File_list->next == NULL || File_list->percent == NO_PROB)
 		fp = File_list;
@@ -1020,6 +1030,7 @@ FILEDESC	*parent;
  * sum_noprobs:
  *	Sum up all the noprob probabilities, starting with fp.
  */
+void
 sum_noprobs(fp)
 register FILEDESC	*fp;
 {
@@ -1036,6 +1047,7 @@ register FILEDESC	*fp;
 	did_noprobs = TRUE;
 }
 
+int
 max(i, j)
 register int	i, j;
 {
@@ -1046,6 +1058,7 @@ register int	i, j;
  * open_fp:
  *	Assocatiate a FILE * with the given FILEDESC.
  */
+void
 open_fp(fp)
 FILEDESC	*fp;
 {
@@ -1059,6 +1072,7 @@ FILEDESC	*fp;
  * open_dat:
  *	Open up the dat file if we need to.
  */
+void
 open_dat(fp)
 FILEDESC	*fp;
 {
@@ -1073,6 +1087,7 @@ FILEDESC	*fp;
  *	Get the position from the pos file, if there is one.  If not,
  *	return a random number.
  */
+void
 get_pos(fp)
 FILEDESC	*fp;
 {
@@ -1096,13 +1111,14 @@ FILEDESC	*fp;
 	}
 	if (++(fp->pos) >= fp->tbl.str_numstr)
 		fp->pos -= fp->tbl.str_numstr;
-	DPRINTF(1, (stderr, "pos for %s is %d\n", fp->name, fp->pos));
+	DPRINTF(1, (stderr, "pos for %s is %qd\n", fp->name, fp->pos));
 }
 
 /*
  * get_tbl:
  *	Get the tbl data file the datfile.
  */
+void
 get_tbl(fp)
 FILEDESC	*fp;
 {
@@ -1142,6 +1158,7 @@ FILEDESC	*fp;
  * zero_tbl:
  *	Zero out the fields we care about in a tbl structure.
  */
+void
 zero_tbl(tp)
 register STRFILE	*tp;
 {
@@ -1154,6 +1171,7 @@ register STRFILE	*tp;
  * sum_tbl:
  *	Merge the tbl data of t2 into t1.
  */
+void
 sum_tbl(t1, t2)
 register STRFILE	*t1, *t2;
 {
@@ -1170,6 +1188,7 @@ register STRFILE	*t1, *t2;
  * print_file_list:
  *	Print out the file list
  */
+void
 print_file_list()
 {
 	print_list(File_list, 0);
@@ -1179,6 +1198,7 @@ print_file_list()
  * print_list:
  *	Print out the actual list, recursively.
  */
+void
 print_list(list, lev)
 register FILEDESC	*list;
 int			lev;
@@ -1247,6 +1267,7 @@ register char	*orig;
  * find_matches:
  *	Find all the fortunes which match the pattern we've been given.
  */
+int
 find_matches()
 {
 	Fort_len = maxlen_in_list(File_list);
@@ -1264,6 +1285,7 @@ find_matches()
  * maxlen_in_list
  *	Return the maximum fortune len in the file list.
  */
+int
 maxlen_in_list(list)
 FILEDESC	*list;
 {
@@ -1289,6 +1311,7 @@ FILEDESC	*list;
  * matches_in_list
  *	Print out the matches from the files in the list.
  */
+void
 matches_in_list(list)
 FILEDESC	*list;
 {
@@ -1327,6 +1350,7 @@ FILEDESC	*list;
 }
 # endif	/* NO_REGEX */
 
+void
 usage()
 {
 	(void) fprintf(stderr, "fortune [-a");

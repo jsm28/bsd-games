@@ -20,8 +20,8 @@ install:	$(PROG)
 	$(INSTALL_MANUAL) $(PROG).6
 	$(INSTALL_MANUAL) $(PROG).6 rot13.6
 
-test:	$(PROG)
-	./caesar < ../fortune/datfiles/fortunes-o.fake.rot13
+#test:	$(PROG)
+#	./caesar < ../fortune/datfiles/fortunes-o.fake.rot13
 
 clean:
 	rm -f $(PROG) core *.o

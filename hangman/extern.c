@@ -1,6 +1,8 @@
+/*	$NetBSD: extern.c,v 1.3 1995/03/23 08:32:41 cgd Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,7 +34,11 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)extern.c	5.3 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)extern.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: extern.c,v 1.3 1995/03/23 08:32:41 cgd Exp $";
+#endif
 #endif /* not lint */
 
 # include	"hangman.h"

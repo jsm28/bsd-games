@@ -67,6 +67,7 @@ CANFIELD_SCOREFILE = @canfield_scorefile@
 CRIBBAGE_INSTRFILE = @cribbage_instrfile@
 CRIBBAGE_SCOREFILE = @cribbage_scorefile@
 FISH_INSTRFILE = @fish_instrfile@
+FORTUNE_TYPE = @fortune_type@
 HANGMAN_WORDSFILE = @hangman_wordsfile@
 MONOP_CARDSFILE = @monop_cardsfile@
 ROBOTS_SCOREFILE = @robots_scorefile@

@@ -3,7 +3,7 @@
 include Makeconfig
 
 # Directories we can do `make test' in
-TESTDIRS=bcd caesar factor morse primes number pom ppt wargames
+TESTDIRS=bcd factor morse primes number pom ppt wargames
 
 all:
 	@set -e; for i in $(BUILDDIRS); do \

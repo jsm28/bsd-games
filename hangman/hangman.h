@@ -1,6 +1,8 @@
+/*	$NetBSD: hangman.h,v 1.5 1995/04/24 12:23:44 cgd Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -30,7 +32,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- *	@(#)hangman.h	5.5 (Berkeley) 2/28/91
+ *	@(#)hangman.h	8.1 (Berkeley) 5/31/93
  */
 
 # include	<curses.h>
@@ -38,6 +40,7 @@
 # include	<sys/stat.h>
 # include	<ctype.h>
 # include	<signal.h>
+# include	<string.h>
 # include	"pathnames.h"
 
 # define	MINLEN	6
@@ -77,5 +80,3 @@ extern FILE	*Dict;
 extern off_t	Dict_size;
 
 void	die();
-
-off_t	abs();

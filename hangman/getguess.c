@@ -1,6 +1,8 @@
+/*	$NetBSD: getguess.c,v 1.5 1995/03/23 08:32:43 cgd Exp $	*/
+
 /*
- * Copyright (c) 1983 Regents of the University of California.
- * All rights reserved.
+ * Copyright (c) 1983, 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,10 +34,20 @@
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)getguess.c	5.4 (Berkeley) 6/1/90";
+#if 0
+static char sccsid[] = "@(#)getguess.c	8.1 (Berkeley) 5/31/93";
+#else
+static char rcsid[] = "$NetBSD: getguess.c,v 1.5 1995/03/23 08:32:43 cgd Exp $";
+#endif
 #endif /* not lint */
 
-# include	"hangman.h"
+#if !defined(linux) && !defined(__GLIBC__)
+#include <sys/ttydefaults.h>
+#endif
+#ifndef CTRL
+#define CTRL(X) ((X) & 037)
+#endif
+#include "hangman.h"
 
 /*
  * getguess:
@@ -60,11 +72,7 @@ getguess()
 			else
 				break;
 		}
-#ifdef linux
-		else if (ch == 4)
-#else
 		else if (ch == CTRL('D'))
-#endif
 			die();
 		else
 			mvprintw(MESGY, MESGX, "Not a valid guess: '%s'",
@@ -101,13 +109,13 @@ readch()
 			if (++cnt > 100)
 				die();
 		}
-#ifdef linux
-		else if (ch == 12) {
-#else
 		else if (ch == CTRL('L')) {
-#endif
 			wrefresh(curscr);
+#ifdef NCURSES_VERSION
 			mvcur(0, 0, curscr->_cury, curscr->_curx);
+#else
+			mvcur(0, 0, curscr->cury, curscr->curx);
+#endif
 		}
 		else
 			return ch;
