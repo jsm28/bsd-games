@@ -1,3 +1,16 @@
+2000-09-17  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* battlestar/com6.c (dooropen): New function, from OpenBSD.
+	* battlestar/cypher.c (cypher): Support new verbs OPEN, VERBOSE
+	and BRIEF, from OpenBSD.
+	* battlestar/extern.h: Add new verbs OPEN, VERBOSE and BRIEF, new
+	variable verbose, and new function dooropen(), from OpenBSD.
+	* battlestar/globals.c (verbose): New variable, from OpenBSD.
+	* battlestar/room.c (writedes): If verbose, always give long
+	description; from OpenBSD.
+	* battlestar/words.c (wlist): Add synonyms "payaya" and "coconut"
+	and verbs "open", "unlock", "verbose" and "brief", from OpenBSD.
+
 2000-09-10  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* battlestar/com2.c, battlestar/com3.c, battlestar/com4.c,

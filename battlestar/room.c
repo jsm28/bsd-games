@@ -52,7 +52,7 @@ writedes()
 	int     c;
 
 	printf("\n\t%s\n", location[position].name);
-	if (beenthere[position] < ROOMDESC) {
+	if (beenthere[position] < ROOMDESC || verbose) {
 		compass = NORTH;
 		for (p = location[position].desc; (c = *p++) != 0;)
 			if (c != '-' && c != '*' && c != '+') {

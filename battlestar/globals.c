@@ -256,6 +256,7 @@ unsigned int inven[NUMOFWORDS];
 unsigned int wear[NUMOFWORDS];
 char    beenthere[NUMOFROOMS + 1];
 char    injuries[NUMOFINJURIES];
+int     verbose = 0;
 
 const char *username;
 
