@@ -311,9 +311,22 @@ cypher()
 				for (n = 0; n < NUMOFOBJECTS; n++)
 					if (testbit(inven, n))
 						printf("\t%s\n", objsht[n]);
-				printf("\n= %d kilogram%s (%d%%)\n", carrying, (carrying == 1 ? "." : "s."), (WEIGHT ? carrying * 100 / WEIGHT : -1));
-				printf("Your arms are %d%% full.\n",
-				    (CUMBER ? encumber * 100 / CUMBER : -1));
+				if (WEIGHT == 0)
+					printf("\n= %d kilogram%s (%s)\n",
+					    carrying,
+					    (carrying == 1 ? "." : "s."),
+					    (carrying ? "overloaded" : "100%"));
+				else
+					printf("\n= %d kilogram%s (%d%%)\n",
+					    carrying,
+					    (carrying == 1 ? "." : "s."),
+					    carrying * 100 / WEIGHT);
+				if (CUMBER == 0)
+					printf("Your arms are %s.\n",
+					    (encumber ? "overfull" : "100% full"));
+				else
+					printf("Your arms are %d%% full.\n",
+					    encumber * 100 / CUMBER);
 			} else
 				puts("You aren't carrying anything.");
 

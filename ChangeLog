@@ -1,3 +1,8 @@
+2000-09-24  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* battlestar/cypher.c (cypher): For INVEN, give more sensible
+	messages when WEIGHT or CUMBER are zero.
+
 2000-09-23  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* battlestar/globals.c (objdes, objsht): Use NULL instead of 0;
