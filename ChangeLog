@@ -1,3 +1,7 @@
+2004-02-10  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* primes/primes.6: Update from NetBSD CVS.
+
 2004-02-09  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* configure: Ask for a documentation directory if building trek or
