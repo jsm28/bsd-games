@@ -1,5 +1,9 @@
 2000-09-24  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/getcom.c (getcom): If a line of standard input goes
+	beyond our buffer, discard extra characters rather than reading
+	them as our next command.  From OpenBSD.
+
 	* battlestar/cypher.c (cypher): Improve messages when WEIGHT or
 	CUMBER are zero.
 

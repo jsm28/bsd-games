@@ -65,6 +65,12 @@ getcom(buf, size, prompt, error)
 		if (error)
 			puts(error);
 	}
+	/* If we didn't get to the end of the line, don't read it in next time. */
+	if (buf[strlen(buf) - 1] != '\n') {
+		int i;
+		while ((i = getchar()) != '\n' && i != EOF)
+			continue;
+	}
 	return (buf);
 }
 
