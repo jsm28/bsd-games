@@ -1,3 +1,15 @@
+2004-12-07  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* arithmetic/arithmetic.c, battlestar/getcom.c,
+	boggle/boggle/bog.c, boggle/boggle/mach.c,
+	canfield/canfield/canfield.c, cribbage/io.c, dm/dm.c,
+	fortune/fortune/fortune.c, gomoku/stoc.c, hack/hack.u_init.c,
+	hangman/getword.c, hunt/hunt/hunt.c, hunt/hunt/otto.c,
+	hunt/huntd/answer.c, mille/move.c, monop/getinp.c, monop/misc.c,
+	number/number.c, pig/pig.c, robots/main.c, sail/dr_1.c,
+	sail/misc.c, sail/pl_4.c, sail/pl_5.c, worms/Makefile.bsd,
+	wtf/acronyms, wtf/acronyms.comp: Update from NetBSD CVS.
+
 2004-10-31  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* lib/fgetln.c: Handle case of line just fitting in buffer
