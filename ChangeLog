@@ -1,5 +1,9 @@
 2000-09-17  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/dayfile.c (dayfile), battlestar/nightfile.c
+	(nightfile): Add missing initialisers and comments giving room
+	numbers.
+
 	* wtf/acronyms: Update from NetBSD CVS.
 
 	* battlestar/com1.c, battlestar/com2.c, battlestar/com4.c,
