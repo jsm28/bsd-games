@@ -70,12 +70,16 @@ main(argc, argv)
 	open_score_file();
 	setregid(getgid(), getgid());
 
-	initialize((argc < 2) ? NULL : (strcmp(argv[1], "-r") ? argv[1]
-					: (argv[2] ? argv[2]
-					   : DEFAULT_SAVE_FILE)));
+	if (argc < 2)
+		initialize(NULL);
+	else if (strcmp(argv[1], "-r") == 0)
+		initialize((argc > 2) ? argv[2] : DEFAULT_SAVE_FILE);
+	else
+		initialize(argv[1]);
 start:
 	news();
-	beenthere[position]++;
+	if (beenthere[position] <= ROOMDESC)
+		beenthere[position]++;
 	if (notes[LAUNCHED])
 		crash();	/* decrements fuel & crash */
 	if (matchlight) {

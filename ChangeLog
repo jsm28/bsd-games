@@ -1,5 +1,15 @@
 2000-09-07  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/battlestar.6: Improvements from OpenBSD.
+	* battlestar/extern.h: Define ROOMDESC.
+	* battlestar/room.c (writedes): Use it.
+	* battlestar/battlestar.c: From OpenBSD, make clearer and don't
+	increase beenthere[position] beyond ROOMDESC.
+	* battlestar/com1.c (news), battlestar/com5.c (kiss),
+	battlestar/cypher.c (cypher), battlestar/dayfile.c (dayfile),
+	battlestar/globals.c (objdes, objsht), nightfile.c (nightfile):
+	Spelling and punctuation corrections or adjustments from OpenBSD.
+
 	* tests/battlestar.test: Test for wizard or anti-wizard users.
 
 2000-09-06  Joseph S. Myers  <jsm28@cam.ac.uk>

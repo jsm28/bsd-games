@@ -127,10 +127,10 @@ news()
 			convert(TONIGHT);
 			clearbit(location[POOLS].objects, BATHGOD);
 			if (OUTSIDE && ourtime - rythmn - CYCLE < 10) {
-				puts("The dying sun sinks into the ocean, leaving a blood stained sunset.");
+				puts("The dying sun sinks into the ocean, leaving a blood-stained sunset.");
 				puts("The sky slowly fades from orange to violet to black.  A few stars");
 				puts("flicker on, and it is night.");
-				puts("The world seems completly different at night.");
+				puts("The world seems completely different at night.");
 			}
 		}
 		rythmn = ourtime - ourtime % CYCLE;

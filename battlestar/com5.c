@@ -62,7 +62,7 @@ kiss()
 				puts("She is coming around; she didn't fight it as much.");
 				break;
 			case 2:
-				puts("She's begining to like it.");
+				puts("She's beginning to like it.");
 				break;
 			default:
 				puts("She's gone limp.");

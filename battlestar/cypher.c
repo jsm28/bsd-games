@@ -66,7 +66,7 @@ cypher()
 				if (!moveplayer(location[position].up, AHEAD))
 					return (-1);
 			} else {
-				puts("There is no way up");
+				puts("There is no way up.");
 				return (-1);
 			}
 			lflag = 0;

@@ -206,6 +206,9 @@
 #define DUG		5
 #define NUMOFNOTES	6
 
+/* Number of times room description shown. */
+#define ROOMDESC	3
+
  /* fundamental constants */
 #define NUMOFROOMS	275
 #define NUMOFWORDS	((NUMOFOBJECTS + BITS - 1) / BITS)
