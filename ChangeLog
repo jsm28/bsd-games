@@ -1,5 +1,8 @@
 2004-01-26  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* cribbage/cribbage.h, cribbage/crib.c, cribbage/io.c: Rename
+	receive_int to receive_intr.
+
 	* hack/hack.pri.c: Fix typo in merge from NetBSD.
 
 	* configure: Consistently use balanced parentheses in case

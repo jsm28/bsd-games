@@ -582,7 +582,7 @@ getline()
 }
 
 void
-receive_int(signo)
+receive_intr(signo)
 	int signo __attribute__((__unused__));
 {
 	bye();
