@@ -1,3 +1,10 @@
+2001-03-24  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* arithmetic/arithmetic.c, banner/banner.6,
+	fortune/datfiles/fortunes, fortune/datfiles/fortunes2-o.real,
+	fortune/fortune/fortune.c, wtf/acronyms: Update from NetBSD CVS
+	(but don't apply __progname changes).
+
 2001-03-19  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* bsd-games.lsm (Primary-site), bsd-games-non-free.lsm

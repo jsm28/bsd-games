@@ -1,4 +1,4 @@
-/*	$NetBSD: arithmetic.c,v 1.16 2001/02/05 00:20:58 christos Exp $	*/
+/*	$NetBSD: arithmetic.c,v 1.17 2001/02/19 22:41:45 cgd Exp $	*/
 
 /*
  * Copyright (c) 1989, 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1989, 1993\n\
 #if 0
 static char sccsid[] = "@(#)arithmetic.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: arithmetic.c,v 1.16 2001/02/05 00:20:58 christos Exp $");
+__RCSID("$NetBSD: arithmetic.c,v 1.17 2001/02/19 22:41:45 cgd Exp $");
 #endif
 #endif /* not lint */
 
