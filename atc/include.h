@@ -63,9 +63,6 @@
 #include <sys/utsname.h>
 #endif
 
-#ifdef linux
-  #include <bsd/signal.h>
-#endif
 #include <signal.h>
 #include <math.h>
 

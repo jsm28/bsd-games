@@ -33,12 +33,10 @@
  *	@(#)back.h	5.4 (Berkeley) 6/1/90
  */
 
+#include <sgtty.h>
 #ifdef linux
-#include <bsd/sgtty.h>
 #define stty(x,y) ioctl(x,TIOCSETP,y)
 #define gtty(x,y) ioctl(x,TIOCGETP,y)
-#else
-#include <sgtty.h>
 #endif
 #define rnum(r)	(random()%r)
 #define D0	dice[0]
@@ -58,26 +56,26 @@
  *
  */
 
-char	EXEC[];			/* object for main program */
-char	TEACH[];		/* object for tutorial program */
+extern char	EXEC[];	        /* object for main program */
+extern char	TEACH[];	/* object for tutorial program */
 
-int	pnum;			/* color of player:
+extern int	pnum;		/* color of player:
 					-1 = white
 					 1 = red
 					 0 = both
 					 2 = not yet init'ed */
 char	args[100];		/* args passed to teachgammon and back */
-int	acnt;			/* length of args */
-int	aflag;			/* flag to ask for rules or instructions */
-int	bflag;			/* flag for automatic board printing */
-int	cflag;			/* case conversion flag */
-int	hflag;			/* flag for cleaning screen */
-int	mflag;			/* backgammon flag */
-int	raflag;			/* 'roll again' flag for recovered game */
-int	rflag;			/* recovered game flag */
-int	tflag;			/* cursor addressing flag */
-int	rfl;			/* saved value of rflag */
-int	iroll;			/* special flag for inputting rolls */
+extern int	acnt;		/* length of args */
+extern int	aflag;		/* flag to ask for rules or instructions */
+extern int	bflag;		/* flag for automatic board printing */
+extern int	cflag;		/* case conversion flag */
+extern int	hflag;		/* flag for cleaning screen */
+extern int	mflag;		/* backgammon flag */
+extern int	raflag;		/* 'roll again' flag for recovered game */
+extern int	rflag;		/* recovered game flag */
+extern int	tflag;		/* cursor addressing flag */
+extern int	rfl;		/* saved value of rflag */
+extern int	iroll;		/* special flag for inputting rolls */
 int	board[26];		/* board:  negative values are white,
 				   positive are red */
 int	dice[2];		/* value of dice */
@@ -113,7 +111,7 @@ char	cin[100];		/* input line of current move
 				   (used for reconstructing input after
 				   a backspace) */
 
-char	*color[];
+extern char	*color[];
 				/* colors as strings */
 char	**colorptr;		/* color of current player */
 char	**Colorptr;		/* color of current player, capitalized */
@@ -122,7 +120,7 @@ int	colen;			/* length of color of current player */
 struct sgttyb	tty;		/* tty information buffer */
 int		old;		/* original tty status */
 int		noech;		/* original tty status without echo */
-int		raw;		/* raw tty status, no echo */
+int		bg_raw;		/* raw tty status, no echo */
 
 int	curr;			/* row position of cursor */
 int	curc;			/* column position of cursor */

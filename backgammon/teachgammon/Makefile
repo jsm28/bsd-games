@@ -1,28 +1,35 @@
-DESTDIR=	/usr/games
-CC=	gcc
+# Makefile - makefile for backgammon/teachgammon
 
-RULES=  \"$(LIBDIR)/backrules\"
-override CFLAGS=-g -O -I/usr/include -I../common_source -DV7 -DRULES=$(RULES)
-LDFLAGS= -ltermcap -lbsd
+include ../../Makeconfig
+
+RULES = \"$(SHAREDIR)/backrules\"
+
+INCS = -I../common_source $(BSD_INCS) $(NCURSES_INCS)
+DEFS = $(BSD_DEFS) -DV7 -DRULES=$(RULES)
+LIBS = $(NCURSES_LIB) $(BSD_LIB)
+
 OBJS= data.o teach.o ttext1.o ttext2.o tutor.o
 COMD= ../common_source
 COBJS= ${COMD}/allow.o ${COMD}/board.o ${COMD}/check.o \
 	${COMD}/fancy.o ${COMD}/init.o ${COMD}/odds.o \
 	${COMD}/one.o ${COMD}/save.o ${COMD}/subs.o ${COMD}/table.o
 
-all: teachgammon
+all:	teachgammon
 
-teachgammon: ${OBJS} ${COBJS} ${COMD}/back.h
-	$(CC) -o teachgammon ${OBJS} ${COBJS} ${LDFLAGS}
+teachgammon:	${OBJS} ${COBJS}
+	$(CC) -o teachgammon ${OBJS} ${COBJS} $(LIBS)
 
 ${COBJS}:
 	cd ${COMD}; make
 
-$(OBJS):        $(COMD)/back.h
-	$(CC) $(CFLAGS) -c $*.c -o $@
+.c.o:	
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
 
-install: teachgammon
-	install -g bin -o root -m 555 teachgammon ${DESTDIR}
+$(OBJS):        $(COMD)/back.h
+
+install:	teachgammon
+	$(INSTALL_BINARY) teachgammon $(INSTALL_PREFIX)$(GAMESDIR)
+	$(INSTALL_MANUAL) backgammon.6 teachgammon.6
 
 clean:
 	rm -f *.o core teachgammon

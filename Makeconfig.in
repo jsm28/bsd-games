@@ -1,0 +1,54 @@
+# Makeconfig.in - configuration included in Makefiles after substitution
+# If some variables are unexpanded in Makeconfig, this shouldn't be a
+# problem, it will be because they weren't configured since the relevant
+# games weren't being built.
+
+# Source directory
+SRCDIR = @srcdir@
+# Build directories
+BUILDDIRS = @build_dirs@
+# Installation prefix
+INSTALL_PREFIX = @install_prefix@
+# Games directory
+GAMESDIR = @gamesdir@
+# Daemon directory
+SBINDIR = @sbindir@
+# Directory for sockets (hunt)
+SOCKETDIR = @socketdir@
+# Other binaries directory
+USRBINDIR = @usrbindir@
+# Manual pages, section 6
+MAN6DIR = @man6dir@
+# Manual pages, section 8
+MAN8DIR = @man8dir@
+# Constant data (arch-dependent)
+LIBDIR = @usrlibdir@
+# Constant data (arch-independent)
+SHAREDIR = @sharedir@
+# Variable data
+VARLIBDIR = @varlibdir@
+# Installation commands, with install -c -o whatever -s etc.
+INSTALL_BINARY = @install_binary@
+INSTALL_SCORE_GAME = @install_score_game@
+INSTALL_DAEMON = @install_daemon@
+INSTALL_MANUAL = @srcdir@/install-man
+INSTALL_DATA = @install_constdata@
+INSTALL_VARDATA = @install_vardata@
+# Is the above actually needed (for games that start with non-empty scorefile?)
+# For games which can start with empty scorefile we do a touch and then:
+INSTALL_SCORE_FILE2 = chown @vardata_owner@.@vardata_group@
+INSTALL_SCORE_FILE3 = chmod @vardata_perms@
+# srcdir/hide-game or :
+HIDE_GAME = @hidegame@
+
+# Compilation details
+CC = @cc@
+OPTIMIZE = @optimize_flags@
+WARNING = @warning_flags@
+CFLAGS = $(OPTIMIZE) $(WARNING) @other_cflags@
+LDFLAGS = @other_ldflags@
+NCURSES_LIB = @ncurses_lib@
+NCURSES_INCS = @ncurses_includes@
+BSD_LIB = @bsd_lib@
+BSD_INCS = @bsd_includes@
+BSD_DEFS = @bsd_defs@

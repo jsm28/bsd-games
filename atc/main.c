@@ -163,6 +163,8 @@ main(ac, av)
 	bcopy(&tty_start, &tty_new, sizeof(tty_new));
 	tty_new.sg_flags |= CBREAK;
 	tty_new.sg_flags &= ~ECHO;
+	tty_new.sg_flags |= CRMOD; /* Needed with ncurses 1.9.9g (3.4)
+				      or later */
 	ioctl(fileno(stdin), TIOCSETP, &tty_new);
 #endif
 

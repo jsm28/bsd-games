@@ -1,0 +1,118 @@
+Sat Apr 19 20:06:08 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* backgammon/Makefile: Add missing semi-colon, and `cd ..'s.
+
+	* backgammon/common_source/subs.c (getarg): Check s[0] for being
+	NULL (from Debian).
+
+	* backgammon/backgammon/main.c, backgammon/backgammon/move.c,
+ 	backgammon/backgammon/text.c, backgammon/commmon_source/back.h,
+ 	backgammon/common_source/board.c, backgammon/teachgammon/teach.c,
+ 	backgammon/teachgammon/ttext1.c, backgammon/teachgammon/ttext2.c:
+ 	Change `raw' to `bg_raw', and `remove' to `removetxt' (from
+	Debian).
+
+	* backgammon/teachgammon/teach.c: Mark variables as `extern'.
+
+	* backgammon/teachgammon/teach.c: Change `ospeed' to `short'.
+
+	* backgammon/backgammon/main.c: Mark `instr' and `message' as
+	`extern'.  Also change `ospeed' from `char' to `short' (from
+	Debian).
+
+	* backgammon/common_source/back.h: Mark as `extern' variables
+	initialised in init.c.
+
+	* backgammon/common_source/back.h,
+	backgammon/common_source/init.c: Don't condition on linux for
+	including <bsd/sgtty.h> or <sgtty.h>, since redundant with
+	-I/usr/include/bsd.
+
+	* backgammon/README.linux: Update.
+
+	* atc/Makefile, backgammon/backgammon/Makefile,
+	backgammon/teachgammon/Makefile: Consistently use $(INCS) in
+	compilation rules.
+
+	* backgammon/common_source/Makefile: Rewrite to use config
+	information; fix dependencies.
+
+	* backgammon/backgammon/backgammon.6.in: Include teachgammon in
+	manpage (from Debian).
+	* backgammon/teachgammon/Makefile: Install .so link or symlink to
+	backgammon manpage.
+
+Fri Apr 18 11:02:30 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* install-man.in: New file to handle all the manpage installation
+	complexities.
+	* configure, Makeconfig.in, arithmetic/Makefile, atc/Makefile,
+	backgammon/backgammon/Makefile: Use this new script.
+
+	* backgammon/backgammon/Makefile, backgammon/teachgammon/Makefile:
+	Rewrite to use config information; fix dependencies.
+
+	* backgammon/backgammon/backgammon.6: Rename to backgammon.6.in.
+	* backgammon/backgammon/backgammon.6.in: Parametrise reference to
+	teachgammon.
+	* configure: Substitute in backgammon/backgammon/backgammon.6.in.
+
+	* backgammon/Makefile: Rewrite to use config information.
+
+	* atc/README.linux: Update.
+
+	* atc/main.c (main): Add CRMOD to terminal flags, since ncurses
+	1.9.9g (3.4) and 4.0 disable CR-NL translation.
+
+Thu Apr 17 12:31:00 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* atc/Makefile: Rewrite to use config information; fix
+	dependencies; fix libraries and installation of games (from
+	Debian).
+
+	* atc/include.h: Remove conditional inclusion of <bsd/signal.h>,
+	as it's redundant with -I/usr/include/bsd.
+
+	* atc/def.h: Change #ifndef linux to #ifndef PI for definition of
+	PI (from Debian).  Also improve accuracy of value.
+
+	* arithmetic/arithmetic.c: include <time.h>; remove declaration of
+	time().
+
+	* Makeconfig.in (CC): Add new macro.
+
+	* arithmetic/Makefile: Rewrite to use config information; fix
+	dependencies.
+	* arithmetic/README.linux: Update.
+
+	* Makeconfig.in (BUILDDIRS): Add new macro.
+	* configure: Always substitute for sbindir, socketdir and
+	usrbindir, even if not building relevant programs (so that we can
+	always create them).
+	* Makefile: Essentially complete rewrite to use configuration
+	information; allow installation prefix and use install -d instead
+	of mkdir -p as per Debian patch.  Also use set -e in all compound
+	commands.
+
+	* Makeconfig.in (INSTALL_SCORE_FILE2, INSTALL_SCORE_FILE3): Fix
+	commands for installing score files.
+
+	* configure, Makeconfig.in: Add configuration of socketdir, for
+	hunt to place its Unix domain sockets in.
+
+Wed Apr 16 21:31:18 1997  Joseph Samuel Myers  <jsm@octomino.demon.co.uk>
+
+	* BSD-games.src.lsm: Remove.
+	* bsd-games.lsm: New file - new-style LSM entry.
+
+	* configure, Makeconfig.in, hide-game.in: New files - beginnings
+ 	of a configuration system.
+
+	* CHANGELOG: Rename to ChangeLog.0.
+	* ChangeLog: New file.
+
+	* BSD-games.bin.lsm: Remove.
+
+	* New maintainer.
+
+See ChangeLog.0 for earlier changes.

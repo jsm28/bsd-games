@@ -4,15 +4,6 @@ for dumb terminals and the other is 'fancier' and uses termcaps.
 The simple one is not made by default. To make it, go to common_source
 and make simple. It leaves the game in 'sbackgammon'.
 
-If you want backgammon and teachgammon (displays the rules) someplace
-other than /usr/games, edit the DESTDIR in all Makefiles and also
-edit the paths in common_source/init.c (definitions for EXEC[] and
-TEACH[]).
-
-If you do not have teachgammon installed, and you answer 'yes' to the
-question backgammon asks about the rules, you will get booted out
-without explanation.
-
 The makefiles are not too smart. If you change a file in common_source,
 you should probably remove its .o file if you are going to do a make
 from the backgammon or teachgammon directories.

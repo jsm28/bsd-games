@@ -43,20 +43,20 @@ static char sccsid[] = "@(#)teach.c	5.6 (Berkeley) 6/1/90";
 
 #include "back.h"
 
-char	*hello[];
-char	*list[];
-char	*intro1[];
-char	*intro2[];
-char	*moves[];
-char	*remove[];
-char	*hits[];
-char	*endgame[];
-char	*doubl[];
-char	*stragy[];
-char	*prog[];
-char	*lastch[];
+extern char	*hello[];
+extern char	*list[];
+extern char	*intro1[];
+extern char	*intro2[];
+extern char	*moves[];
+extern char	*removetxt[];
+extern char	*hits[];
+extern char	*endgame[];
+extern char	*doubl[];
+extern char	*stragy[];
+extern char	*prog[];
+extern char	*lastch[];
 
-extern char	ospeed;			/* tty output speed for termlib */
+extern short	ospeed;			/* tty output speed for termlib */
 
 char *helpm[] = {
 	"\nEnter a space or newline to roll, or",
@@ -83,9 +83,9 @@ char	**argv;
 		errexit ("teachgammon(gtty)");
 	old = tty.sg_flags;
 #ifdef V7
-	raw = ((noech = old & ~ECHO) | CBREAK);		/* set up modes */
+	bg_raw = ((noech = old & ~ECHO) | CBREAK);	/* set up modes */
 #else
-	raw = ((noech = old & ~ECHO) | RAW);		/* set up modes */
+	bg_raw = ((noech = old & ~ECHO) | RAW);		/* set up modes */
 #endif
 	ospeed = tty.sg_ospeed;				/* for termlib */
 	tflag = getcaps (getenv ("TERM"));
@@ -97,7 +97,7 @@ char	**argv;
 		getarg (&argv);
 	if (tflag)  {
 		noech &= ~(CRMOD|XTABS);
-		raw &= ~(CRMOD|XTABS);
+		bg_raw &= ~(CRMOD|XTABS);
 		clear();
 	}
 	text (hello);
@@ -124,7 +124,7 @@ char	**argv;
 				break;
 		
 		case 4:
-			if (i = text(remove))
+			if (i = text(removetxt))
 				break;
 		
 		case 5:

@@ -121,12 +121,12 @@ char	**t;
 			writec ('\n');
 		} else  {
 			writel ("-->");
-			fixtty (raw);
+			fixtty (bg_raw);
 			while ((i = readc()) != ' ' && i != '\n');
 			fixtty (noech);
 			clear();
 		}
 		t++;
 	}
-	fixtty (raw);
+	fixtty (bg_raw);
 }

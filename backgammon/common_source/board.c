@@ -153,7 +153,7 @@ lastline:
 		writec ('\n');
 		writec ('\n');
 	}
-	fixtty(raw);
+	fixtty(bg_raw);
 }
 
 wrbsub () {

@@ -132,7 +132,7 @@ int	okay;					/* zero if first move */
 	if (mvlim == 0)  {
 		writel (" but cannot use it.\n");
 		nexturn();
-		fixtty (raw);
+		fixtty (bg_raw);
 		return;
 	}
 
@@ -170,7 +170,7 @@ int	okay;					/* zero if first move */
 		buflush();
 		sleep (3);
 	}
-	fixtty (raw);				/* no more tty interrupt */
+	fixtty (bg_raw);			/* no more tty interrupt */
 }
 
 trymove (mvnum,swapped)

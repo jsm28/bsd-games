@@ -1,41 +1,39 @@
-DESTDIR=	/usr/games
-LIBDIR=	$(DESTDIR)/lib
-MANDIR=	/usr/man/man6
-CC=	gcc
-CFLAGS=	-O
+# Makefile - makefile for backgammon
 
-RULES=  \"$(LIBDIR)/backrules\"
+include ../Makeconfig
 
-override CFLAGS="-O -DRULES=$(RULES)"
+RULES = \"$(SHAREDIR)/backrules\"
 
-all: backgammon/backgammon teachgammon/teachgammon
-
+all:	backgammon/backgammon teachgammon/teachgammon
 
 backgammon/backgammon:
-	for i in common_source backgammon ; do \
-	        echo "Making all in $$i"; \
-	        ( cd $$i; make DESTDIR=$(DESTDIR) LIBDIR=$(LIBDIR) \
-	        MANDIR=$(MANDIR) CFLAGS=$(CFLAGS) ) ; \
+	@set -e; for i in common_source backgammon; do \
+	    echo "Making all in $$i"; \
+	    cd $$i; \
+	    make all RULES=$(RULES); \
+	    cd ..; \
 	done
 
 teachgammon/teachgammon:
-	for i in common_source teachgammon ; do \
-	        echo "Making all in $$i"; \
-	        ( cd $$i; make DESTDIR=$(DESTDIR) LIBDIR=$(LIBDIR) \
-	        MANDIR=$(MANDIR) CFLAGS=$(CFLAGS) ) ; \
+	@set -e; for i in common_source teachgammon; do \
+	    echo "Making all in $$i"; \
+	    cd $$i; \
+	    make all RULES=$(RULES); \
+	    cd ..; \
 	done
 
 install:
-	for i in backgammon teachgammon ; do \
-	        echo "Making install in $$i"; \
-	        ( cd $$i; make install DESTDIR=$(DESTDIR) LIBDIR=$(LIBDIR) \
-	        MANDIR=$(MANDIR) CFLAGS=$(CFLAGS) ) ; \
+	@set -e; for i in backgammon teachgammon; do \
+	    echo "Making install in $$i"; \
+	    cd $$i; \
+	    make install RULES=$(RULES); \
+	    cd ..; \
 	done
 
-clean: 
-	for i in backgammon teachgammon common_source ; do \
-	        echo "Making clean in $$i"; \
-	        ( cd $$i; make clean DESTDIR=$(DESTDIR) LIBDIR=$(LIBDIR) \
-	        MANDIR=$(MANDIR) CFLAGS=$(CFLAGS) ) ; \
+clean:	
+	@set -e; for i in backgammon teachgammon common_source; do \
+	    echo "Making clean in $$i"; \
+	    cd $$i; \
+	    make clean; \
+	    cd ..; \
 	done
-

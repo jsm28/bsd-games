@@ -47,9 +47,9 @@ static char sccsid[] = "@(#)main.c	5.6 (Berkeley) 6/1/90";
 #define MVPAUSE	5				/* time to sleep when stuck */
 #define MAXUSERS 35				/* maximum number of users */
 
-char	*instr[];				/* text of instructions */
-char	*message[];				/* update message */
-char	ospeed;					/* tty output speed */
+extern char	*instr[];			/* text of instructions */
+extern char	*message[];			/* update message */
+short	ospeed;					/* tty output speed */
 
 char	*helpm[] = {				/* help message */
 	"Enter a space or newline to roll, or",
@@ -110,9 +110,9 @@ char	**argv;
 		errexit ("backgammon(gtty)");
 	old = tty.sg_flags;
 #ifdef V7
-	raw = ((noech = old & ~ECHO) | CBREAK);		/* set up modes */
+	bg_raw = ((noech = old & ~ECHO) | CBREAK);	/* set up modes */
 #else
-	raw = ((noech = old & ~ECHO) | RAW);		/* set up modes */
+	bg_raw = ((noech = old & ~ECHO) | RAW);		/* set up modes */
 #endif
 	ospeed = tty.sg_ospeed;				/* for termlib */
 
@@ -147,10 +147,10 @@ char	**argv;
 	args[acnt] = '\0';
 	if (tflag)  {					/* clear screen */
 		noech &= ~(CRMOD|XTABS);
-		raw &= ~(CRMOD|XTABS);
+		bg_raw &= ~(CRMOD|XTABS);
 		clear();
 	}
-	fixtty (raw);					/* go into raw mode */
+	fixtty (bg_raw);				/* go into raw mode */
 
 							/* check if restored
 							 * game and save flag

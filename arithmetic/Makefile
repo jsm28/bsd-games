@@ -1,17 +1,15 @@
-#	@(#)Makefile	5.2 (Berkeley) 5/11/90
+# Makefile - makefile for arithmetic
 
-DESTDIR=/usr/games
-MANDIR=	/usr/man/man6
-PROG=	arithmetic
-CC=	gcc
-CFLAGS= -O
+include ../Makeconfig
 
-$(PROG):
+PROG = arithmetic
+
+$(PROG):	$(PROG).c
 	$(CC) $(CFLAGS) -o $(PROG) $(PROG).c
 
 install:	$(PROG)
-	install -c -o bin -g root -m 755 $(PROG) $(DESTDIR)
-	install -c -o root -g root -m 444 $(PROG).6 $(MANDIR)
+	$(INSTALL_BINARY) $(PROG) $(INSTALL_PREFIX)$(GAMESDIR)
+	$(INSTALL_MANUAL) $(PROG).6
 
 clean:
 	rm -f $(PROG) core *.o

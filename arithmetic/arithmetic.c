@@ -78,6 +78,10 @@ static char sccsid[] = "@(#)arithmetic.c	5.5 (Berkeley) 2/27/91";
 #include <stdio.h>
 #include <string.h>
 
+#ifdef linux
+#include <time.h>
+#endif
+
 char keylist[] = "+-x/";
 char defaultkeys[] = "+-";
 char *keys = defaultkeys;
@@ -102,7 +106,9 @@ main(argc, argv)
 	extern char *optarg;
 	extern int optind;
 	int ch, cnt;
+#ifndef linux
 	time_t time();
+#endif
 	void intr();
 
 	while ((ch = getopt(argc, argv, "r:o:")) != EOF)

@@ -321,7 +321,7 @@ planewin()
 	int	warning = 0;
 
 #ifdef BSD
-	wclear(planes);
+	werase(planes);
 #endif
 
 	wmove(planes, 0,0);

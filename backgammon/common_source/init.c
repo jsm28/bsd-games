@@ -35,11 +35,7 @@
 static char sccsid[] = "@(#)init.c	5.4 (Berkeley) 6/1/90";
 #endif /* not lint */
 
-#ifdef linux
-  #include <bsd/sgtty.h>
-#else
-  #include <sgtty.h>
-#endif
+#include <sgtty.h>
 
 /*
  * variable initialization.

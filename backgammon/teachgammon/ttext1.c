@@ -130,7 +130,7 @@ char	*moves[] = {
     "",
     0};
 
-char	*remove[] = {
+char	*removetxt[] = {
     "\nRemoving Men from the Board:",
     "\n   The most important part of the game is removing men, since",
     "that is how you win the game.  Once a man is removed, he stays",

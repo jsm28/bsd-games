@@ -1,24 +1,28 @@
-DESTDIR=        /usr/games
-LIBDIR= $(DESTDIR)/lib
-MANDIR= /usr/man/man6
-CC=	gcc
-CFLAGS=	-O
+# Makefile - makefile for backgammon/common_source
 
-RULES=	\"$(LIBDIR)/backrules\"
-EXEC_PATH=	\"$(DESTDIR)/backgammon\"
-TEACH_PATH=	\"$(DESTDIR)/teachgammon\"
+include ../../Makeconfig
 
-override CFLAGS= -O -DRULES=$(RULES) -DEXEC_PATH=$(EXEC_PATH) \
-		-DTEACH_PATH=$(TEACH_PATH)
+RULES      = \"$(SHAREDIR)/backrules\"
 
-all: common_source
+EXEC_PATH  = \"$(GAMESDIR)/backgammon\"
+TEACH_PATH = \"$(GAMESDIR)/teachgammon\"
 
-common_source: allow.o board.o check.o fancy.o init.o \
-	odds.o one.o save.o subs.o table.o back.h
+INCS = $(BSD_INCS)
+DEFS = $(BSD_DEFS) -DRULES=$(RULES) -DEXEC_PATH=$(EXEC_PATH) \
+	-DTEACH_PATH=$(TEACH_PATH)
 
-simple: backgammon.c
-	$(CC) -g -DRULES=$(RULES) -o sbackgammon backgammon.c
+OBJS = allow.o board.o check.o fancy.o init.o odds.o one.o save.o \
+	subs.o table.o
+
+all:	$(OBJS)
+
+$(OBJS):	back.h
+
+.c.o:	
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -c $< -o $@
+
+simple:	backgammon.c
+	$(CC) $(CFLAGS) $(DEFS) $(INCS) -o sbackgammon backgammon.c
 
 clean:
 	rm -f *.o core a.out
-

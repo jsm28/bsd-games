@@ -143,7 +143,7 @@ char	**txt;
 			writel (a);
 			writec ('\n');
 		} else  {
-			fixtty (raw);
+			fixtty (bg_raw);
 			writel (prompt);
 			for (;;)  {
 				if ((b = readc()) == '?')  {
@@ -188,6 +188,6 @@ char	**txt;
 			begin = txt;
 		}
 	}
-	fixtty (raw);
+	fixtty (bg_raw);
 	return (0);
 }

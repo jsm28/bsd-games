@@ -35,6 +35,8 @@
 .UC 5
 .SH NAME
 backgammon \- the game of backgammon
+.br
+teachgammon \- learn to play backgammon
 .SH SYNOPSIS
 .B backgammon
 [ - ] [ n r w b pr pw pb t\c
@@ -42,6 +44,8 @@ backgammon \- the game of backgammon
 s\c
 .I file
 ]
+.BR
+.B teachgammon
 .SH DESCRIPTION
 This program lets you play backgammon against the computer
 or against a "friend".
@@ -194,7 +198,7 @@ or 0 or 25 as appropriate.
 Alan Char
 .SH FILES
 .TP 25
-/usr/games/teachgammon
+@gamesdir@/teachgammon
 \- rules and tutorial
 .br
 .TP 25
