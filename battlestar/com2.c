@@ -159,20 +159,16 @@ use()
 		ourtime++;
 		notes[CANTSEE] = 0;
 		return (0);
-	} else
-		if (position == FINAL)
-			puts("The amulet won't work in here.");
-		else
-			if (wordvalue[wordnumber] == COMPASS && testbit(inven, COMPASS))
-				printf("Your compass points %s.\n", truedirec(NORTH, '-'));
-			else
-				if (wordvalue[wordnumber] == COMPASS)
-					puts("You aren't holding the compass.");
-				else
-					if (wordvalue[wordnumber] == AMULET)
-						puts("You aren't holding the amulet.");
-					else
-						puts("There is no apparent use.");
+	} else if (position == FINAL)
+		puts("The amulet won't work in here.");
+	else if (wordvalue[wordnumber] == COMPASS && testbit(inven, COMPASS))
+		printf("Your compass points %s.\n", truedirec(NORTH, '-'));
+	else if (wordvalue[wordnumber] == COMPASS)
+		puts("You aren't holding the compass.");
+	else if (wordvalue[wordnumber] == AMULET)
+		puts("You aren't holding the amulet.");
+	else
+		puts("There is no apparent use.");
 	return (-1);
 }
 

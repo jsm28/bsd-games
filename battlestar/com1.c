@@ -51,7 +51,7 @@ moveplayer(thataway, token)
 	wordnumber++;
 	if ((!notes[CANTMOVE] && !notes[LAUNCHED]) ||
 	    testbit(location[position].objects, LAND) ||
-	    (fuel > 0 && notes[LAUNCHED]))
+	    (fuel > 0 && notes[LAUNCHED])) {
 		if (thataway) {
 			position = thataway;
 			newway(token);
@@ -62,11 +62,12 @@ moveplayer(thataway, token)
 			whichway(location[position]);
 			return (0);
 		}
-	else
+	} else {
 		if (notes[CANTMOVE] && !notes[LAUNCHED])
 			puts("You aren't able to move; you better drop something.");
 		else
 			puts("You are out of fuel; now you will rot in space forever!");
+	}
 	return (1);
 }
 

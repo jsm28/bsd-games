@@ -1,5 +1,9 @@
 2000-09-17  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/com1.c, battlestar/com2.c, battlestar/com4.c,
+	battlestar/com5.c, battlestar/com6.c, battlestar/com7.c,
+	battlestar/getcom.c: Clean up formatting; partly from OpenBSD.
+
 	* tests/battlestar.in9, tests/battlestar.out9,
 	tests/battlestar.in10, tests/battlestar.out10,
 	tests/battlestar.in11, tests/battlestar.out11,

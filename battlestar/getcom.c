@@ -84,19 +84,18 @@ getword(buf1, buf2, flag)
 			return (0);
 		}
 		while (*buf1 && !isspace(*buf1) && *buf1 != ',')
-			if (flag < 0)
+			if (flag < 0) {
 				if (isupper(*buf1))
 					*buf2++ = tolower(*buf1++);
 				else
 					*buf2++ = *buf1++;
-			else
-				if (flag > 0)
-					if (islower(*buf1))
-						*buf2++ = toupper(*buf1++);
-					else
-						*buf2++ = *buf1++;
+			} else if (flag > 0) {
+				if (islower(*buf1))
+					*buf2++ = toupper(*buf1++);
 				else
 					*buf2++ = *buf1++;
+			} else
+				*buf2++ = *buf1++;
 	} else
 		*buf2++ = *buf1++;
 	*buf2 = 0;
