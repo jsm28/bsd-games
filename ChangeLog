@@ -1,5 +1,8 @@
 2004-01-25  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* cribbage/cribbage.h, cribbage/crib.c, cribbage/io.c: Rename rint
+	to receive_int.
+
 	* fortune/fortune/fortune.c: Add test for __CYGWIN__.
 	* configure: Test for sig_t.
 	* include/signal.h: Use it.

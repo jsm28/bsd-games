@@ -107,7 +107,7 @@ main(argc, argv)
 		}
 
 	initscr();
-	(void)signal(SIGINT, rint);
+	(void)signal(SIGINT, receive_int);
 	cbreak();
 	noecho();
 
