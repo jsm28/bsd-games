@@ -10,7 +10,7 @@
 	* battlestar/words.c (wlist): Parse "," as AND.  From OpenBSD.
 	* battlestar/parse.c (parse): Trim AND AND.  When an OBJECT AND
 	EVERYTHING or NOUNS AND EVERYTHING sequence occurs, move the
-	EVERYTHING to the beginning.  Trim EVERYTHING and EVERYTHING.
+	EVERYTHING to the beginning.  Trim EVERYTHING AND EVERYTHING.
 	From OpenBSD.  Also disable parsing of "," as AND if followed by a
 	verb.
 	* tests/battlestar.in21, tests/battlestar.out21,
