@@ -1006,10 +1006,14 @@ cleanup(doexit)
 		nocbreak();
 		endwin();
 	}
-	fclose(Playersfp);
-	fclose(Monstfp);
-	fclose(Messagefp);
-	fclose(Energyvoidfp);
+	if (Playersfp)
+		fclose(Playersfp);
+	if (Monstfp)
+		fclose(Monstfp);
+	if (Messagefp)
+		fclose(Messagefp);
+	if (Energyvoidfp)
+		fclose(Energyvoidfp);
 
 	if (doexit)
 		exit(0);

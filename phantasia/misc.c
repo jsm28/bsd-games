@@ -945,7 +945,7 @@ error(whichfile)
 	} else
 		funcp = printf;
 
-	(*funcp) ("An unrecoverable error has occurred reading %s.  (errno = %d)\n", whichfile, errno);
+	(*funcp) ("An unrecoverable error has occurred reading %s.  (%s)\n", whichfile, strerror(errno));
 	(*funcp) ("Please run 'setup' to determine the problem.\n");
 	cleanup(TRUE);
 	/* NOTREACHED */

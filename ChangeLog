@@ -1,5 +1,12 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* phantasia/main.c (cleanup): Only close files that have been
+	opened successfully.
+	* phantasic/misc.c (error): Give error text rather than errno
+	number.
+	Patch from Joey Hess <joey@kitenet.net> for Debian bug 187251 from
+	Mikael Hedin <micce@debian.org>.
+
 	* wtf/acronyms: Add two acronyms suggested by Pavel Machek
 	<pavel@ucw.cz>.
 
