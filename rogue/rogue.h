@@ -192,7 +192,7 @@
 struct id {
 	short value;
 	char title[MAX_ID_TITLE_LEN];
-	char *real;
+	const char *real;
 	unsigned short id_status;
 };
 

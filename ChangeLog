@@ -1,5 +1,9 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* rogue/Makefrag: Don't use -fwritable-strings.
+	* rogue/rogue.h (struct id): Add const.
+	* TODO: Update.
+
 	* backgammon/teachgammon/data.c: Make tutorial text match actual
 	moves.  From FreeBSD via OpenBSD.  Fixes Debian bug 212478 from
 	Jim W. Jaszewski <grok@sprint.ca>.
