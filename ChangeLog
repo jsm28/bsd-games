@@ -1,5 +1,8 @@
 2001-08-29  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* wargames/wargames: Allow - in game names.  Bug reported by Guus
+	Sliepen <guus@sliepen.warande.net>.
+
 	* wtf/acronyms: Add AIUI.  Suggestion from Adam Olsen
 	<adamolsen@technologist.com>.
 

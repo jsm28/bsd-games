@@ -37,7 +37,7 @@
 echo -n "Would you like to play a game? "
 read x
 
-x=`echo $x | sed 's/[^a-z0-9]//g'`
+x=`echo $x | sed 's/[^-a-z0-9]//g'`
 
 if [ -f /usr/games/$x ] ; then
 	tput clear
