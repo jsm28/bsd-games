@@ -1,5 +1,8 @@
 2004-02-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* substscr: Explicitly set execute permissions from those of
+	source file.
+
 	* primes/primes.6: Separate manpage from that of factor.
 	* primes/Makefrag: Update.
 	* factor/factor.6: Change to be a manpage for factor only.
