@@ -1,3 +1,15 @@
+2000-09-23  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* battlestar/com4.c (drop): Disambiguate BODY; handle "kick
+	door".  From OpenBSD.
+	* tests/battlestar.in32, tests/battlestar.out32,
+	tests/battlestar.in33, tests/battlestar.out33,
+	tests/battlestar.in34, tests/battlestar.out34,
+	tests/battlestar.in35, tests/battlestar.out35,
+	tests/battlestar.in36, tests/battlestar.out36,
+	tests/battlestar.in37, tests/battlestar.out37: New tests.
+	* tests/battlestar.test: Update.
+
 2000-09-22  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* battlestar/com5.c (love): Allow for bathing goddess; better

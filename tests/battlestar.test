@@ -196,3 +196,33 @@ testno 31
 battlestar/battlestar <tests/battlestar.in31 >test.out 2>&1 || failtest
 compare test.out tests/battlestar.out31
 rm -f test.out
+
+testno 32
+battlestar/battlestar <tests/battlestar.in32 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out32
+rm -f test.out
+
+testno 33
+battlestar/battlestar <tests/battlestar.in33 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out33
+rm -f test.out
+
+testno 34
+battlestar/battlestar <tests/battlestar.in34 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out34
+rm -f test.out
+
+testno 35
+battlestar/battlestar <tests/battlestar.in35 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out35
+rm -f test.out
+
+testno 36
+battlestar/battlestar <tests/battlestar.in36 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out36
+rm -f test.out
+
+testno 37
+battlestar/battlestar <tests/battlestar.in37 >test.out 2>&1 || failtest
+compare test.out tests/battlestar.out37
+rm -f test.out
