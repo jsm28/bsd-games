@@ -1,3 +1,8 @@
+2004-12-23  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* monop/malloc.c, phantasia/main.c, phantasia/setup.c: Update from
+	NetBSD CVS.
+
 2004-12-07  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* arithmetic/arithmetic.c, battlestar/getcom.c,
