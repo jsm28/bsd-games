@@ -1,4 +1,4 @@
-/*	$NetBSD: fortune.c,v 1.33 2001/12/20 20:10:35 soren Exp $	*/
+/*	$NetBSD: fortune.c,v 1.38 2002/11/24 18:03:14 christos Exp $	*/
 
 /*-
  * Copyright (c) 1986, 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1986, 1993\n\
 #if 0
 static char sccsid[] = "@(#)fortune.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: fortune.c,v 1.33 2001/12/20 20:10:35 soren Exp $");
+__RCSID("$NetBSD: fortune.c,v 1.38 2002/11/24 18:03:14 christos Exp $");
 #endif
 #endif /* not lint */
 
@@ -182,12 +182,14 @@ int	 maxlen_in_list __P((FILEDESC *));
 #  define	RE_FREE(re)
 
 char	*Re_pat, *Re_pat13, *Re_use;
+char	*regcmp(), *regex();
+
+# elif HAVE_RE_COMP
+char	*Re_pat, *Re_pat13, *Re_use;
 char	*Re_error;
 
-char	*regcmp(), *regex();
-# elif HAVE_RE_COMP
 #  define	RE_INIT(re)
-#  define	RE_COMP(re, p)	((re) = re_comp(p))
+#  define	RE_COMP(re, p)	(Re_error = re_comp(p))
 #  define	RE_ERROR(re)	Re_error
 #  define	RE_OK(re)	(Re_error == NULL)
 #  define	RE_EXEC(re, p)	re_exec(p)
@@ -595,11 +597,11 @@ over:
 	{
 		if (parent == NULL)
 			warnx("`%s' not a fortune file or directory", path);
-		free((char *) fp);
 		if (was_malloc)
 			free(tpath);
 		do_free(fp->datfile);
 		do_free(fp->posfile);
+		free(fp);
 		do_free(offensive);
 		return FALSE;
 	}
@@ -768,7 +770,7 @@ add_dir(fp)
 			free(name);
 	}
 	if (fp->num_children == 0) {
-		warnx("`%s': No fortune files in directory.\n", fp->path);
+		warnx("`%s': No fortune files in directory.", fp->path);
 		return FALSE;
 	}
 	return TRUE;

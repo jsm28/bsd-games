@@ -1,4 +1,5 @@
-____ __   _  ____ __ __ ___  ___   ___
+
+%____ __   _  ____ __ __ ___  ___   ___
 ___ /  | / /__  _/ /_  /   |/ __\ / _ |
 __ /   |/ // _\/_  _/ / ' / \_ \ / /  /
 _ / /|   // __/ / /_ / , | __/ // / ,/
@@ -199,7 +200,6 @@ NetBSD: Designed to be {secure, reliable, portable, CORRECT}
 		-- Matthew Orgass
 %
 NetBSD: Download one, get ${NUMPORTS}-1 for free.
-		-- Antti Kantee
 %
 NetBSD: Empowering the VAX generation.
 		-- Andy Doran
@@ -328,7 +328,6 @@ NetBSD, No Worries!
 		-- Andrew Gillham
 %
 NetBSD: Not all of the First Ones have gone away.
-		-- Antti Kantee
 %
 NetBSD. Not Guano.
 		-- Hubert Feyrer
@@ -337,7 +336,6 @@ NetBSD: Not your mother's OS (unless you are P. Seebach)
 		-- Tom Harvey
 %
 NetBSD: Oh my god! They support my hardware! You hackers!
-		-- Antti Kantee
 %
 NetBSD: Perpetual performance!
 		-- Lars-Johan Liman
@@ -361,6 +359,8 @@ NetBSD: Professionalpower!
 		-- Lars-Johan Liman
 %
 NetBSD: "Progress on your system is closer than it appears."
+%
+NetBSD: Raiders of the Lost Arch
 %
 NetBSD: Re: NetBSD Slogans
 		-- Mirian Crzig Lennox
@@ -414,7 +414,6 @@ NetBSD: The Last Bastion of the true UNIX Religion.
 		-- Miles Nordin
 %
 NetBSD: The OS WORM - Write Once, Run Many
-		-- Antti Kantee
 %
 NetBSD: The Power of Code
 		-- Mason Loring Bliss
@@ -434,6 +433,8 @@ NetBSD: the server is up
 		-- David Brownlee
 %
 NetBSD: The Worlds Most Portable Operating System
+%
+NetBSD/toaster: we wish the toaster to be happy too.
 %
 NetBSD: To serve the power.
 		-- Herb Peyerl
@@ -458,7 +459,6 @@ NetBSD: Use the ENTIRE computer!
 		-- Andrew Gillham
 %
 NetBSD: userland included
-		-- Antti Kantee
 %
 NetBSD: We Come In Peace.
 		-- Andrew Gillham
@@ -530,4 +530,14 @@ Young or old; cutting edge or yesterday's NeWS, NetBSD is the UNIX for you.
 It can be a hulking monster in your basement, or fit in the palm
 of your hand.
 		-- Richard Rauch
+%
+#netbsd - where monks recite their internal dialogue while debugging.
+		-- Bernhard Riedel
+%
+I held off from Uni until NetBSD came out.
+I decided, ``if there's no NetBSD then I'll just flip burgers''
+		-- Roland Dowdeswell
+%
+NetBSD - love all, serve all.
+		-- Silke Mueller
 %

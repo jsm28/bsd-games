@@ -72,12 +72,6 @@ versions may produce many warnings in the system headers; these
 generally represent bugs in the headers whose only impact is cosmetic,
 and can be ignored.
 
-Some man pages may look better with the tmac.doc macros from NetBSD,
-rather than the older ones distributed with groff.  If any man pages
-look funny or appear to have words missing (especially the program
-name or a reference to NetBSD), having older tmac.doc may be the
-cause.
-
 Security
 ========
 

@@ -1,7 +1,7 @@
 # exec.objs - details of objects that go into bsd-games programs.
 # This file is used for automatic makefile generation.
 #
-# Copyright (c) 1998, 1999, 2000 Joseph Samuel Myers.
+# Copyright (c) 1998, 1999, 2000, 2001, 2003 Joseph Samuel Myers.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -106,7 +106,8 @@ robots			auto.o extern.o flush_in.o init_field.o main.o \
 	make_level.o move.o move_robs.o play_level.o query.o rnd_pos.o score.o
 rogue			hit.o init.o inventory.o level.o machdep.o main.o \
 	message.o monster.o move.o object.o pack.o play.o random.o ring.o \
-	room.o save.o score.o spec_hit.o throw.o trap.o use.o zap.o
+	room.o save.o score.o spec_hit.o throw.o trap.o use.o zap.o \
+	lib/strlcpy.o
 sail			assorted.o game.o globals.o dr_1.o dr_2.o dr_3.o \
 	dr_4.o dr_5.o dr_main.o lo_main.o main.o misc.o parties.o pl_1.o \
 	pl_2.o pl_3.o pl_4.o pl_5.o pl_6.o pl_7.o pl_main.o sync.o version.o

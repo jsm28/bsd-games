@@ -1,4 +1,4 @@
-/*	$NetBSD: rxp.c,v 1.7 1999/09/08 21:17:56 jsm Exp $	*/
+/*	$NetBSD: rxp.c,v 1.10 2002/12/06 01:54:55 thorpej Exp $	*/
 
 /*-
  * Copyright (c) 1991, 1993
@@ -42,7 +42,7 @@
 #if 0
 static char sccsid[] = "@(#)rxp.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: rxp.c,v 1.7 1999/09/08 21:17:56 jsm Exp $");
+__RCSID("$NetBSD: rxp.c,v 1.10 2002/12/06 01:54:55 thorpej Exp $");
 #endif
 #endif /* not lint */
 
@@ -68,6 +68,7 @@ __RCSID("$NetBSD: rxp.c,v 1.7 1999/09/08 21:17:56 jsm Exp $");
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <ctype.h>
 #include "quiz.h"
 					/* regexp tokens,	arg */
@@ -213,7 +214,6 @@ rxp__match(s, first, j_succ, j_fail, sp_fail)
 	static const char *sp;
 	int ch;
 	Rxp_t *grp_end = NULL;
-	int err;
 
 	if (first) {
 		rp = rxpbuf;
@@ -227,7 +227,7 @@ rxp__match(s, first, j_succ, j_fail, sp_fail)
 			if (ch != *sp++) {
 				rp = j_fail;
 				sp = sp_fail;
-				return (TRUE);
+				return (FALSE);
 			}
 			rp++;
 			break;
@@ -247,16 +247,17 @@ rxp__match(s, first, j_succ, j_fail, sp_fail)
 			break;
 		case ALT_S:
 			rp++;
-			if ((err = rxp__match(sp,
-			    FALSE, grp_end, rxpbuf + *rp++, sp)) != TRUE)
-				return (err);
+			rxp__match(sp, FALSE, grp_end, rxpbuf + *rp++, sp);
 			break;
 		case ALT_E:
 			rp = j_succ;
 			return (TRUE);
 		case GRP_E:
-		default:
+			rp = j_fail;
+			sp = sp_fail;
 			return (FALSE);
+		default:
+			abort();
 		}
 	return (*rp != END ? FALSE : TRUE);
 }

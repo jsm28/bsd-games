@@ -1,4 +1,4 @@
-/*	$NetBSD: getpar.c,v 1.8 2000/07/03 03:57:44 matt Exp $	*/
+/*	$NetBSD: getpar.c,v 1.10 2002/10/18 14:12:14 itojun Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -38,7 +38,7 @@
 #if 0
 static char sccsid[] = "@(#)getpar.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: getpar.c,v 1.8 2000/07/03 03:57:44 matt Exp $");
+__RCSID("$NetBSD: getpar.c,v 1.10 2002/10/18 14:12:14 itojun Exp $");
 #endif
 #endif /* not lint */
 
@@ -145,7 +145,7 @@ const struct cvntab *getcodpar(s, tab)
 		if (f)
 			cgetc(0);		/* throw out the newline */
 		scanf("%*[ \t;]");
-		if ((c = scanf("%[^ \t;\n]", input)) < 0)
+		if ((c = scanf("%99[^ \t;\n]", input)) < 0)
 			exit(1);
 		if (c == 0)
 			continue;
@@ -291,7 +291,7 @@ testterm()
 
 
 /*
-**  TEST FOR SPECIFIED DELIMETER
+**  TEST FOR SPECIFIED DELIMITER
 **
 **	The standard input is scanned for the parameter.  If found,
 **	it is thrown away and non-zero is returned.  If not found,

@@ -1,28 +1,29 @@
-.\"	$NetBSD: hack.6,v 1.7 2001/04/02 22:42:38 wiz Exp $	-*- nroff -*-
+.\"	$NetBSD: hack.6,v 1.11 2003/02/25 10:34:45 wiz Exp $	-*- nroff -*-
 .Dd March 31, 1985
 .Dt HACK 6
 .Os
 .Sh NAME
 .Nm hack
-.Nd Exploring The Dungeons of Doom
+.Nd exploring The Dungeons of Doom
 .Sh SYNOPSIS
-.Nm @gamesdir@/hack
+.Nm
 .Op Fl d Ar directory
 .Op Fl n
 .Op Fl u Ar playername
-.Nm @gamesdir@/hack
+.Nm
 .Op Fl d Ar directory
 .Op Fl s
 .Op Fl X
 .Op Ar playername ...
 .Sh DESCRIPTION
 .Nm
-is a display oriented dungeons & dragons - like game.
+is a display oriented dungeons \*[Am] dragons-like game.
 Both display and command structure resemble rogue.
 (For a game with the same structure but entirely different display -
 a real cave instead of dull rectangles - try Quest.)
 .Pp
-To get started you really only need to know two commands.  The command
+To get started you really only need to know two commands.
+The command
 .Ic ?
 will give you a list of the available commands and the command
 .Ic /
@@ -30,18 +31,18 @@ will identify the things you see on the screen.
 .Pp
 To win the game (as opposed to merely playing to beat other people high
 scores) you must locate the Amulet of Yendor which is somewhere below
-the 20th level of the dungeon and get it out.  Nobody has achieved this
-yet and if somebody does, he will probably go down in history as a hero
-among heroes.
+the 20th level of the dungeon and get it out.
+Nobody has achieved this yet and if somebody does, he will probably go
+down in history as a hero among heroes.
 .Pp
 When the game ends, either by your death, when you quit, or if you escape
 from the caves,
 .Nm
-will give you (a fragment of) the list of top scorers.  The scoring
-is based on many aspects of your behavior but a rough estimate is
-obtained by taking the amount of gold you've found in the cave plus four
-times your (real) experience. Precious stones may be worth a lot of gold
-when brought to the exit.
+will give you (a fragment of) the list of top scorers.
+The scoring is based on many aspects of your behavior but a rough estimate
+is obtained by taking the amount of gold you've found in the cave plus four
+times your (real) experience.
+Precious stones may be worth a lot of gold when brought to the exit.
 There is a 10% penalty for getting yourself killed.
 .Pp
 The administration of the game is kept in the directory specified with the
@@ -80,7 +81,8 @@ then this supplies the answer to the question "What kind of character ... ?".
 .Pp
 The
 .Fl s
-option will print out the list of your scores. It may be followed by arguments
+option will print out the list of your scores.
+It may be followed by arguments
 .Fl X
 where X is one of the letters C, F, K, S, T, W to print the scores of
 Cavemen, Fighters, Knights, Speleologists, Tourists or Wizards.
@@ -128,7 +130,8 @@ Pager used instead of default pager.
 .It Ev MAIL
 Mailbox file.
 .It Ev MAILREADER
-Reader used instead of default (probably /usr/bin/mail).
+Reader used instead of default (probably
+.Pa /usr/bin/mail ) .
 .It Ev HACKDIR
 Playground.
 .It Ev HACKOPTIONS

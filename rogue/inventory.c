@@ -1,4 +1,4 @@
-/*	$NetBSD: inventory.c,v 1.6 1998/11/10 13:01:32 hubertf Exp $	*/
+/*	$NetBSD: inventory.c,v 1.8 2002/10/01 14:18:57 mrg Exp $	*/
 
 /*
  * Copyright (c) 1988, 1993
@@ -41,7 +41,7 @@
 #if 0
 static char sccsid[] = "@(#)inventory.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: inventory.c,v 1.6 1998/11/10 13:01:32 hubertf Exp $");
+__RCSID("$NetBSD: inventory.c,v 1.8 2002/10/01 14:18:57 mrg Exp $");
 #endif
 #endif /* not lint */
 
@@ -362,15 +362,15 @@ pr_com_id(ch)
 }
 
 int
-get_com_id(index, ch)
-	int *index;
+get_com_id(indexp, ch)
+	int *indexp;
 	short ch;
 {
 	short i;
 
 	for (i = 0; i < COMS; i++) {
 		if (com_id_tab[i].com_char == ch) {
-			*index = i;
+			*indexp = i;
 			return(1);
 		}
 	}
@@ -421,14 +421,14 @@ void
 mix_colors()
 {
 	short i, j, k;
-	char *t;
+	char t[MAX_ID_TITLE_LEN];
 
 	for (i = 0; i <= 32; i++) {
 		j = get_rand(0, (POTIONS - 1));
 		k = get_rand(0, (POTIONS - 1));
-		t = id_potions[j].title;
-		id_potions[j].title = id_potions[k].title;
-		id_potions[k].title = t;
+		memcpy(t, id_potions[j].title, MAX_ID_TITLE_LEN);
+		memcpy(id_potions[j].title, id_potions[k].title, MAX_ID_TITLE_LEN);
+		memcpy(id_potions[k].title, t, MAX_ID_TITLE_LEN);
 	}
 }
 

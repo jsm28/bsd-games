@@ -1,3 +1,61 @@
+2003-03-28  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* Makefile.bsd, Makefile.inc.bsd, adventure/Makefile.bsd,
+	arithmetic/arithmetic.6, arithmetic/arithmetic.c, atc/atc.6.in,
+	backgammon/backgammon/backgammon.6.in,
+	backgammon/common_source/Makefile.bsd,
+	backgammon/teachgammon/Makefile.bsd, banner/banner.6,
+	battlestar/battlestar.6, bcd/bcd.6, boggle/Makefile.bsd,
+	boggle/boggle/boggle.6, boggle/boggle/timer.c,
+	boggle/mkdict/Makefile.bsd, boggle/mkindex/Makefile.bsd,
+	caesar/caesar.6, canfield/canfield/canfield.6.in,
+	canfield/cfscores/Makefile.bsd, countmail/countmail,
+	countmail/countmail.6, cribbage/cribbage.6.in,
+	cribbage/cribbage.h, cribbage/extern.c, cribbage/io.c,
+	cribbage/score.c, cribbage/support.c, dm/Makefile.bsd, dm/dm.8.in,
+	dm/dm.c, dm/dm.conf.5.in, factor/Makefile.bsd, factor/factor.6,
+	factor/factor.c, fortune/datfiles/Makefile.bsd,
+	fortune/datfiles/fortunes, fortune/datfiles/fortunes2,
+	fortune/datfiles/fortunes2-o.real, fortune/datfiles/limerick,
+	fortune/datfiles/netbsd, fortune/fortune/fortune.6.in,
+	fortune/fortune/fortune.c, fortune/strfile/strfile.8,
+	fortune/unstr/Makefile.bsd, gomoku/gomoku.6, hack/Makefile.bsd,
+	hack/extern.h, hack/hack.6.in, hack/hack.main.c,
+	hack/hack.mkshop.c, hack/hack.pri.c, hack/hack.topl.c,
+	hack/hack.tty.c, hack/help, hangman/hangman.6.in,
+	hunt/Makefile.inc.bsd, hunt/hunt/hunt.6.in, hunt/hunt/hunt.c,
+	hunt/hunt/playit.c, hunt/huntd/answer.c, hunt/huntd/bsd.h,
+	hunt/huntd/ctl_transact.c, hunt/huntd/driver.c,
+	hunt/huntd/extern.c, hunt/huntd/faketalk.c, hunt/huntd/hunt.h,
+	hunt/huntd/huntd.6.in, hunt/huntd/terminal.c, mille/mille.6,
+	mille/misc.c, monop/Makefile.bsd, monop/cards.c, monop/getinp.c,
+	monop/monop.6.in, monop/roll.c, morse/Makefile.bsd,
+	phantasia/Makefile.bsd, phantasia/misc.c, phantasia/phantasia.6,
+	pom/pom.6, ppt/Makefile.bsd, ppt/ppt.c, primes/Makefile.bsd,
+	quiz/datfiles/posneg, quiz/quiz.6.in, quiz/rxp.c, rain/rain.6,
+	random/random.6, robots/auto.c, robots/init_field.c,
+	robots/move.c, robots/robots.6.in, robots/robots.h,
+	rogue/Makefile.bsd, rogue/USD.doc/Makefile.bsd, rogue/hit.c,
+	rogue/inventory.c, rogue/level.c, rogue/message.c,
+	rogue/rogue.6.in, rogue/rogue.h, rogue/save.c, rogue/score.c,
+	sail/sail.6, snake/snake/snake.6.in, snake/snscore/Makefile.bsd,
+	tetris/input.c, tetris/scores.c, tetris/screen.c, tetris/shapes.c,
+	tetris/tetris.6.in, tetris/tetris.c, trek/USD.doc/Makefile.bsd,
+	trek/damage.c, trek/getpar.c, trek/trek.6.in, wargames/wargames.6,
+	worm/worm.6, worms/worms.6, wtf/acronyms, wtf/wtf.in,
+	wtf/wtf.6.in: Update from NetBSD CVS.
+	* include/sys/poll.h: New file.
+	* lib/strlcpy.c: New file.
+	* configure: Test for strlcpy.
+	* include/string.h: New file.
+	* exec.objs: Use it for rogue.
+	* trek/trek.6.in: Rename to trek.6.
+	* substfiles2: Update.
+	* COPYING: Update.
+	* INSTALL: No longer suggest not using groff's macros.
+	* PACKAGING: Update.
+	* SECURITY: Update.
+
 2002-06-18  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* BUGS, ChangeLog, INSTALL, README, README.non-free, SECURITY,

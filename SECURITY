@@ -22,7 +22,8 @@ sail, rogue, hack and tetris do not currently handle their score files
 in the above way, and so should be considered the most dangerous to
 install setgid.  If you are auditing these games, phantasia, sail,
 rogue, hack and tetris should be considered the most important to
-audit.
+audit.  In versions before 2.14, rogue had an exploitable buffer
+overrun (see NetBSD Security Advisory 2002-021).
 
 An effect of this security policy is that in some cases the score
 files need to be world-readable so that they can be opened for reading

@@ -55,8 +55,7 @@ BSD Users' Supplementary Documents for trek and rogue
 versions thereof), the AUTHORS and THANKS files, and the year 2000
 statement YEAR2000.  Note that the trek manpage contains a reference
 to /usr/doc/trek, which should be updated to point to where you put
-trek.me or a formatted version.  As noted below, it is better to
-update trek.6.in (before configure) than trek.6.
+trek.me or a formatted version.
 
 Assuming you distribute source for your package (I do not believe any
 of the games have licences requiring this), and separate your patches
