@@ -1,3 +1,7 @@
+2005-02-18  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* wtf/acronyms, wtf/acronyms.comp: Update from NetBSD CVS.
+
 2005-02-16  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* atc/input.c, backgammon/backgammon/main.c,
