@@ -104,10 +104,6 @@ main(argc, argv)
 	/* Revoke setgid privileges */
 	setregid(getgid(), getgid());
 
-	if (argc == 2)
-		start_len = atoi(argv[1]);
-	if ((start_len <= 0) || (start_len > 500))
-		start_len = LENGTH;
 	setbuf(stdout, outbuf);
 	srand(getpid());
 	signal(SIGALRM, wake);
@@ -121,6 +117,10 @@ main(argc, argv)
 #endif
 	slow = (baudrate() <= 1200);
 	clear();
+	if (argc == 2)
+		start_len = atoi(argv[1]);
+	if ((start_len <= 0) || (start_len > ((LINES-3) * (COLS-2)) / 3))
+		start_len = LENGTH;
 	stw = newwin(1, COLS-1, 0, 0);
 	tv = newwin(LINES-1, COLS-1, 1, 0);
 	box(tv, '*', '*');
@@ -152,14 +152,14 @@ void
 life()
 {
 	struct body *bp, *np;
-	int i;
+	int i, j = 1;
 
 	np = NULL;
 	head = newlink();
 	if (head == NULL)
 		err(1, NULL);
-	head->x = start_len+2;
-	head->y = 12;
+	head->x = start_len % (COLS-5) +2;
+	head->y = LINES / 2;
 	head->next = NULL;
 	display(head, HEAD);
 	for (i = 0, bp = head; i < start_len; i++, bp = np) {
@@ -168,8 +168,14 @@ life()
 			err(1, NULL);
 		np->next = bp;
 		bp->prev = np;
-		np->x = bp->x - 1;
-		np->y = bp->y;
+		if (((bp->x <= 2) && (j == 1)) || ((bp->x >= COLS-4) && (j == -1))) {
+			j *= -1;
+			np->x = bp->x;
+			np->y = bp->y + 1;
+		} else {
+			np->x = bp->x - j;
+			np->y = bp->y;
+		}
 		display(np, BODY);
 	}
 	tail = np;
