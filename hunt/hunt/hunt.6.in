@@ -164,13 +164,13 @@ Throw very, very big bomb (Takes 361 charges)
 .It Ic @
 Throw biggest bomb (Takes 441 charges)
 .It Ic o
-Throw small slime (Takes 15 charges)
+Throw small slime (Takes 5 charges)
 .It Ic O
-Throw big slime (Takes 30 charges)
+Throw big slime (Takes 10 charges)
 .It Ic p
-Throw bigger slime (Takes 45 charges)
+Throw bigger slime (Takes 15 charges)
 .It Ic P
-Throw biggest slime (Takes 60 charges)
+Throw biggest slime (Takes 20 charges)
 .It Ic s
 Scan (show where other players are) (Takes 1 charge)
 .It Ic c

@@ -1,3 +1,8 @@
+2001-10-06  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* hunt/hunt/hunt.6.in: Correct slime costs.  Bug reported by
+	Britton Leo Kerin <fsblk@aurora.uaf.edu>.
+
 2001-09-02  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* adventure/setup.c, atc/include.h, boggle/mkdict/mkdict.c,
