@@ -49,6 +49,7 @@ __RCSID("$NetBSD: execute.c,v 1.7 1999/09/08 21:17:51 jsm Exp $");
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/time.h>
+#include <time.h>
 
 #define	SEGSIZE	8192
 

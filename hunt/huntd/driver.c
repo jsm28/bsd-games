@@ -17,6 +17,7 @@ __RCSID("$NetBSD: driver.c,v 1.7 2001/01/09 23:49:54 lukem Exp $");
 # include	<errno.h>
 # include	<signal.h>
 # include	<stdlib.h>
+# include	<time.h>
 # include	<unistd.h>
 # include	"hunt.h"
 

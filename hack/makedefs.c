@@ -1,4 +1,4 @@
-/* $NetBSD: makedefs.c,v 1.6 2000/07/31 11:35:03 simonb Exp $ */
+/* $NetBSD: makedefs.c,v 1.7 2001/03/25 20:44:04 jsm Exp $ */
 
 /*
  * Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985.
@@ -6,7 +6,7 @@
 
 #ifndef lint
 static const char rcsid[] __attribute__((__unused__)) =
-    "$NetBSD: makedefs.c,v 1.6 2000/07/31 11:35:03 simonb Exp $";
+    "$NetBSD: makedefs.c,v 1.7 2001/03/25 20:44:04 jsm Exp $";
 #endif				/* not lint */
 
 #include <stdio.h>

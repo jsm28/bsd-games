@@ -1,4 +1,4 @@
-$NetBSD: acronyms,v 1.82 2001/03/13 05:51:46 mason Exp $
+$NetBSD: acronyms,v 1.89 2001/08/11 11:57:35 wennmach Exp $
 
 AFAICR	as far as I can recall
 AFAICT	as far as I can tell
@@ -19,6 +19,7 @@ BIALW	back in a little while
 BIAS	back in a second
 BIAW	back in a while
 BOFH	bastard operator from hell
+BOHICA	bend over here it comes again
 BRB	[I'll] be right back
 BTDT	been there, done that
 BTTH	butt to the head
@@ -33,8 +34,10 @@ DWIM	do what I mean
 EG	evil grin
 EMSG	email message
 ETLA	extended three letter acronym
+EWAG	experienced wild-ass guess
 FAQ	frequently asked question
 FIIK	fuck[ed] if I know
+FIIR	fuck[ed] if I remember
 FOAD	fall over and die
 FSDO	for some definition of
 FSVO	for some value of
@@ -117,21 +120,26 @@ SMOP	simple matter of programming
 SNAFU	situation normal, all fucked up
 SNERT	snot-nosed egotistical rude teenager
 SO	significant other
+SOB	son of [a] bitch
 SOL	shit out [of] luck
 SUS	stupid user syndrome
 SWAG	silly, wild-assed guess
 SWAHBI	silly, wild-assed hare-brained idea
 TANSTAAFL	there ain't no such thing as a free lunch
+TBD	to be {decided,determined,done}
 TIA	thanks in advance
 TLA	three letter acronym
+TMA	too many abbreviations
 TMI	too much information
 TTFN	ta ta for now
 TTYL	talk to you later
 TYVM	thank you very much
 UTSL	use the source, Luke
 VEG	very evil grin
+WAG	wild-ass guess
 WIBNI	wouldn't it be nice if
 WOFTAM	waste of fucking time and money
+WOMBAT	waste of money, brain, and time
 WTF	{what,where,who,why} the fuck
 WTH	{what,where,who,why} the hell
 WYSIWYG	what you see is what you get

@@ -1,4 +1,4 @@
-/*	$NetBSD: fortune.c,v 1.27 2001/02/19 22:41:45 cgd Exp $	*/
+/*	$NetBSD: fortune.c,v 1.30 2001/08/15 17:25:42 atatat Exp $	*/
 
 /*-
  * Copyright (c) 1986, 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1986, 1993\n\
 #if 0
 static char sccsid[] = "@(#)fortune.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: fortune.c,v 1.27 2001/02/19 22:41:45 cgd Exp $");
+__RCSID("$NetBSD: fortune.c,v 1.30 2001/08/15 17:25:42 atatat Exp $");
 #endif
 #endif /* not lint */
 
@@ -134,6 +134,7 @@ int	 add_file __P((int,
 	    const char *, const char *, FILEDESC **, FILEDESC **, FILEDESC *));
 void	 all_forts __P((FILEDESC *, const char *));
 char	*copy __P((const char *, u_int));
+void	 rot13 __P((char *line, int len));
 void	 display __P((FILEDESC *));
 void	 do_free __P((void *));
 void	*do_malloc __P((u_int));
@@ -172,32 +173,39 @@ int	 maxlen_in_list __P((FILEDESC *));
 
 #ifndef NO_REGEX
 # if HAVE_REGCMP
-#  define	RE_INIT()
-#  define	RE_COMP(p)	(Re_pat = regcmp(p, NULL))
-#  define	BAD_COMP(f)	((f) == NULL)
-#  define	RE_EXEC(p)	regex(Re_pat, (p))
-#  define	RE_FREE()
+#  define	RE_INIT(re)
+#  define	RE_COMP(re, p)	((re) = regcmp((p), NULL))
+#  define	RE_ERROR(re)	"Invalid pattern"
+#  define	RE_OK(re)	((re) != NULL)
+#  define	RE_EXEC(re, p)	regex((re), (p))
+#  define	RE_FREE(re)
 
-char	*Re_pat;
+char	*Re_pat, *Re_pat13, *Re_use;
+char	*Re_error;
 
 char	*regcmp(), *regex();
 # elif HAVE_RE_COMP
-#  define	RE_INIT()
-#  define	RE_COMP(p)	(p = re_comp(p))
-#  define	BAD_COMP(f)	((f) != NULL)
-#  define	RE_EXEC(p)	re_exec(p)
-#  define	RE_FREE()
+#  define	RE_INIT(re)
+#  define	RE_COMP(re, p)	((re) = re_comp(p))
+#  define	RE_ERROR(re)	Re_error
+#  define	RE_OK(re)	(Re_error == NULL)
+#  define	RE_EXEC(re, p)	re_exec(p)
+#  define	RE_FREE(re)
 # elif HAVE_REGCOMP
 #  include <regex.h>
-regex_t *Re_pat = NULL;
-#  define	RE_INIT()	if (Re_pat == NULL && \
-				    (Re_pat = calloc(sizeof(*Re_pat), 1)) == NULL)\
-					err(1, NULL)
-#  define	RE_COMP(p)	(regcomp(Re_pat, p, REG_EXTENDED))
-#  define	BAD_COMP(f)	((f) != 0)
-#  define	RE_EXEC(p)	(!regexec(Re_pat, p, 0, NULL, 0))
-#  define	RE_FREE()	if (Re_pat != NULL) \
-					regfree(Re_pat), Re_pat = NULL
+regex_t *Re_pat = NULL, *Re_pat13 = NULL, *Re_use = NULL;
+int	 Re_code;
+char	 Re_error[1024];
+#  define	RE_INIT(re)	if ((re) == NULL && \
+				    ((re) = calloc(sizeof(*(re)), 1)) \
+				    == NULL) err(1, NULL)
+#  define	RE_COMP(re, p)	(Re_code = regcomp((re), (p), REG_EXTENDED))
+#  define	RE_OK(re)	(Re_code == 0)
+#  define	RE_EXEC(re, p)	(!regexec((re), (p), 0, NULL, 0))
+#  define	RE_ERROR(re)	(regerror(Re_code, (re), Re_error, \
+				    sizeof(Re_error)), Re_error)
+#  define	RE_FREE(re)	if ((re) != NULL) do { regfree((re)); \
+				    (re) = NULL; } while (0)
 # else
 	#error "Need to define HAVE_REGCMP, HAVE_RE_COMP, or HAVE_REGCOMP"
 # endif
@@ -231,7 +239,7 @@ main(ac, av)
 #endif
 
 	init_prob();
-	srandom((int)(time((time_t *) NULL) ^ getpid()));
+	srandom((int)(time((time_t *) NULL) ^ getpid() * getpid()));
 	do {
 		get_fort();
 	} while ((Short_only && fortlen() > SLEN) ||
@@ -266,23 +274,34 @@ main(ac, av)
 }
 
 void
+rot13(line, len)
+	char *line;
+	int len;
+{
+	char	*p, ch;
+
+	if (len == 0)
+		len = strlen(line);
+
+	for (p = line; (ch = *p) != 0; ++p)
+		if (isupper(ch))
+			*p = 'A' + (ch - 'A' + 13) % 26;
+		else if (islower(ch))
+			*p = 'a' + (ch - 'a' + 13) % 26;
+}
+
+void
 display(fp)
 	FILEDESC	*fp;
 {
-	char	*p, ch;
 	char	line[BUFSIZ];
 
 	open_fp(fp);
 	(void) fseek(fp->inf, (long)Seekpts[0], SEEK_SET);
 	for (Fort_len = 0; fgets(line, sizeof line, fp->inf) != NULL &&
 	    !STR_ENDSTRING(line, fp->tbl); Fort_len++) {
-		if (fp->tbl.str_flags & STR_ROTATED) {
-			for (p = line; (ch = *p) != 0; ++p)
-				if (isupper(ch))
-					*p = 'A' + (ch - 'A' + 13) % 26;
-				else if (islower(ch))
-					*p = 'a' + (ch - 'a' + 13) % 26;
-		}
+		if (fp->tbl.str_flags & STR_ROTATED)
+			rot13(line, 0);
 		fputs(line, stdout);
 	}
 	(void) fflush(stdout);
@@ -397,14 +416,18 @@ getargs(argc, argv)
 	if (pat != NULL) {
 		if (ignore_case)
 			pat = conv_pat(pat);
-		RE_INIT();
-		if (BAD_COMP(RE_COMP(pat))) {
-#ifdef HAVE_REGCMP
-			warnx("bad pattern: %s\n", pat);
-#else	/* !HAVE_REGCMP */
-			warnx("%s\n", pat);
-#endif	/* !HAVE_REGCMP */
-			RE_FREE();
+		RE_INIT(Re_pat);
+		RE_COMP(Re_pat, pat);
+		if (!RE_OK(Re_pat)) {
+			warnx("%s: `%s'", RE_ERROR(Re_pat), pat);
+			RE_FREE(Re_pat);
+		}
+		rot13(pat, 0);
+		RE_INIT(Re_pat13);
+		RE_COMP(Re_pat13, pat);
+		if (!RE_OK(Re_pat13)) {
+			warnx("%s: `%s'", RE_ERROR(Re_pat13), pat);
+			RE_FREE(Re_pat13);
 		}
 	}
 # endif	/* NO_REGEX */
@@ -423,7 +446,7 @@ form_file_list(files, file_cnt)
 	const char	*sp;
 
 	if (file_cnt == 0) {
-		if (Find_files)
+		if (All_forts)
 			return add_file(NO_PROB, FORTDIR, NULL, &File_list,
 					&File_tail, NULL);
 		else
@@ -667,6 +690,8 @@ all_forts(fp, offensive)
 	FILEDESC	*scene, *obscene;
 	int		 fd;
 	char		*datfile, *posfile;
+
+	posfile = NULL;
 
 	if (fp->child != NULL)	/* this is a directory, not a file */
 		return;
@@ -1328,6 +1353,9 @@ matches_in_list(list)
 	FILEDESC	*fp;
 	int		 in_file;
 
+	if (!RE_OK(Re_pat) || !RE_OK(Re_pat13))
+		return;
+
 	for (fp = list; fp != NULL; fp = fp->next) {
 		if (fp->child != NULL) {
 			matches_in_list(fp->child);
@@ -1342,7 +1370,11 @@ matches_in_list(list)
 				sp += strlen(sp);
 			else {
 				*sp = '\0';
-				if (RE_EXEC(Fortbuf)) {
+				if (fp->tbl.str_flags & STR_ROTATED)
+					Re_use = Re_pat13;
+				else
+					Re_use = Re_pat;
+				if (RE_EXEC(Re_use, Fortbuf)) {
 					printf("%c%c", fp->tbl.str_delim,
 					    fp->tbl.str_delim);
 					if (!in_file) {
@@ -1351,12 +1383,15 @@ matches_in_list(list)
 						in_file = TRUE;
 					}
 					putchar('\n');
+					if (fp->tbl.str_flags & STR_ROTATED)
+						rot13(Fortbuf, (sp - Fortbuf));
 					(void) fwrite(Fortbuf, 1, (sp - Fortbuf), stdout);
 				}
 				sp = Fortbuf;
 			}
 	}
-	RE_FREE();
+	RE_FREE(Re_pat);
+	RE_FREE(Re_pat13);
 }
 # endif	/* NO_REGEX */
 

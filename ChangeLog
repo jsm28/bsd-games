@@ -1,3 +1,50 @@
+2001-08-29  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* arithmetic/arithmetic.6, atc/atc.6.in, atc/list.c,
+	backgammon/backgammon/backgammon.6,
+	backgammon/teachgammon/teach.c, battlestar/battlestar.6,
+	battlestar/com2.c, battlestar/parse.c, bcd/bcd.6,
+	boggle/boggle/boggle.6, canfield/canfield/canfield.6.in,
+	cribbage/cribbage.6.in, factor/factor.6, fish/fish.6,
+	fortune/datfiles/fortunes, fortune/datfiles/fortunes2,
+	fortune/datfiles/fortunes2-o.real, fortune/datfiles/netbsd,
+	fortune/datfiles/startrek, fortune/fortune/fortune.6.in,
+	fortune/fortune/fortune.c, fortune/strfile/strfile.c, hack/date.h,
+	hack/def.func_tab.h, hack/def.monst.h, hack/def.objclass.h,
+	hack/def.objects.h, hack/def.permonst.h, hack/extern.h,
+	hack/hack.6.in, hack/hack.Decl.c, hack/hack.apply.c,
+	hack/hack.bones.c, hack/hack.c, hack/hack.cmd.c, hack/hack.do.c,
+	hack/hack.do_name.c, hack/hack.dog.c, hack/hack.eat.c,
+	hack/hack.end.c, hack/hack.engrave.c, hack/hack.fight.c,
+	hack/hack.h, hack/hack.invent.c, hack/hack.lev.c,
+	hack/hack.main.c, hack/hack.makemon.c, hack/hack.mhitu.c,
+	hack/hack.mklev.c, hack/hack.mkmaze.c, hack/hack.mkobj.c,
+	hack/hack.mkshop.c, hack/hack.mon.c, hack/hack.monst.c,
+	hack/hack.o_init.c, hack/hack.objnam.c, hack/hack.pager.c,
+	hack/hack.potion.c, hack/hack.pri.c, hack/hack.read.c,
+	hack/hack.rip.c, hack/hack.save.c, hack/hack.shk.c,
+	hack/hack.shknam.c, hack/hack.timeout.c, hack/hack.topl.c,
+	hack/hack.trap.c, hack/hack.tty.c, hack/hack.u_init.c,
+	hack/hack.unix.c, hack/hack.vault.c, hack/hack.wield.c ,
+	hack/hack.wizard.c, hack/hack.zap.c, hack/makedefs.c,
+	hunt/hunt/hunt.6.in, hunt/huntd/ctl_transact.c,
+	hunt/huntd/huntd.6.in, mille/mille.c, monop/Makefile.bsd,
+	monop/initdeck.c, monop/monop.6.in, phantasia/Makefile.bsd,
+	phantasia/phantasia.6, phantasia/setup.c, pom/pom.6,
+	quiz/datfiles/collectives, quiz/datfiles/flowers, quiz/quiz.6.in,
+	rain/rain.6, robots/robots.6.in, rogue/USD.doc/rogue.me,
+	rogue/score.c, sail/sail.6, snake/snake/snake.6.in,
+	tetris/tetris.6.in, trek/DOC/read_me.nr, trek/DOC/trekmanual.nr,
+	trek/events.c, trek/main.c, trek/trek.6.in, trek/warp.c,
+	worms/worms.6, wtf/wtf.6.in: Update from NetBSD CVS.
+	* wtf/acronyms: Update from NetBSD CVS.
+	* phantasia/Makefrag: Update to build generated files in source
+	directory rather than on install.
+	* phantasia/.cvsignore: Update.
+	* atc/include.h, hunt/huntd/driver.c, monop/execute.c: Include
+	<time.h>.
+	* sail/misc.c: Include <stdlib.h>.
+
 2001-08-02  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* README, PACKAGING: Warn about inclusion of cryptographic

@@ -1,4 +1,4 @@
-/*	$NetBSD: hack.monst.c,v 1.4 1997/10/19 16:58:36 christos Exp $	*/
+/*	$NetBSD: hack.monst.c,v 1.5 2001/03/25 20:44:02 jsm Exp $	*/
 
 /*
  * Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985.
@@ -6,7 +6,7 @@
 
 #include <sys/cdefs.h>
 #ifndef lint
-__RCSID("$NetBSD: hack.monst.c,v 1.4 1997/10/19 16:58:36 christos Exp $");
+__RCSID("$NetBSD: hack.monst.c,v 1.5 2001/03/25 20:44:02 jsm Exp $");
 #endif				/* not lint */
 
 #include "hack.h"

@@ -46,6 +46,7 @@ __RCSID("$NetBSD: misc.c,v 1.12 2001/02/05 01:10:10 christos Exp $");
 #include <stdio.h>
 #include <sys/file.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include <string.h>
 #include "extern.h"
 #include "pathnames.h"

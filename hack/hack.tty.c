@@ -1,4 +1,4 @@
-/*	$NetBSD: hack.tty.c,v 1.8 2001/02/05 00:37:43 christos Exp $	*/
+/*	$NetBSD: hack.tty.c,v 1.9 2001/03/25 20:44:03 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1988, 1993
@@ -38,7 +38,7 @@
 #if 0
 static char     sccsid[] = "@(#)hack.tty.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: hack.tty.c,v 1.8 2001/02/05 00:37:43 christos Exp $");
+__RCSID("$NetBSD: hack.tty.c,v 1.9 2001/03/25 20:44:03 jsm Exp $");
 #endif
 #endif				/* not lint */
 

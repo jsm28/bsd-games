@@ -1,4 +1,4 @@
-/*	$NetBSD: hack.h,v 1.7 2001/02/05 00:37:43 christos Exp $	*/
+/*	$NetBSD: hack.h,v 1.8 2001/03/25 20:44:00 jsm Exp $	*/
 
 /*
  * Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985.

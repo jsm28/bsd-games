@@ -1,4 +1,4 @@
-/*	$NetBSD: def.func_tab.h,v 1.4 1997/10/19 16:56:58 christos Exp $	*/
+/*	$NetBSD: def.func_tab.h,v 1.5 2001/03/25 20:43:58 jsm Exp $	*/
 
 /*
  * Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985.
