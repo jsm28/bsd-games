@@ -1,5 +1,13 @@
 2002-01-19  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* backgammon/common_source/Makefile.bsd,
+	backgammon/teachgammon/Makefile.bsd, boggle/mkdict/Makefile.bsd,
+	boggle/mkindex/Makefile.bsd, canfield/cfscores/Makefile.bsd,
+	fortune/datfiles/netbsd, fortune/fortune/fortune.c,
+	fortune/unstr/Makefile.bsd, morse/Makefile.bsd, number/number.6,
+	phantasia/Makefile.bsd, ppt/Makefile.bsd, primes/Makefile.bsd,
+	snake/snscore/Makefile.bsd, wtf/acronyms: Update from NetBSD CVS.
+
 	* hangman/main.c: Include <err.h>.
 
 	* hangman/extern.c, hangman/getword.c, hangman/hangman.6.in,

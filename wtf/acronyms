@@ -1,4 +1,4 @@
-$NetBSD: acronyms,v 1.100 2001/12/04 03:04:16 simonb Exp $
+$NetBSD: acronyms,v 1.102 2002/01/19 13:40:33 wiz Exp $
 
 AFAICR	as far as I can recall
 AFAICT	as far as I can tell
@@ -22,6 +22,7 @@ BIALW	back in a little while
 BIAS	back in a second
 BIAW	back in a while
 BOFH	bastard operator from hell
+BOGAHICA	bend over, grab ankles, here it comes again
 BOHICA	bend over here it comes again
 BRB	[I'll] be right back
 BTDT	been there, done that
@@ -30,8 +31,8 @@ BTW	by the way
 CMIIW	correct me if I'm wrong
 CNP	continued [in my] next post
 CYA	see you around
-DNDK	don't know, don't care
-DSTM	Don't shoot the messenger
+DKDC	don't know, don't care
+DSTM	don't shoot the messenger
 DTRT	do the right thing
 DTWT	do the wrong thing
 DWIM	do what I mean
@@ -42,6 +43,7 @@ EWAG	experienced wild-ass guess
 FAQ	frequently asked question
 FIIK	fuck[ed] if I know
 FIIR	fuck[ed] if I remember
+FM	fucking magic
 FOAD	fall over and die
 FSDO	for some definition of
 FSVO	for some value of
@@ -116,6 +118,8 @@ QED	quod erat demonstrandum
 RFC	request for comments
 RL	real life
 RLC	rod length check
+ROFL	rolling on floor laughing
+ROFLMAO	rolling on floor laughing my ass off
 ROTFL	rolling on the floor laughing
 RP	responsible person
 RSN	real soon now

@@ -1,4 +1,4 @@
-/*	$NetBSD: fortune.c,v 1.32 2001/10/28 19:52:53 wiz Exp $	*/
+/*	$NetBSD: fortune.c,v 1.33 2001/12/20 20:10:35 soren Exp $	*/
 
 /*-
  * Copyright (c) 1986, 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1986, 1993\n\
 #if 0
 static char sccsid[] = "@(#)fortune.c	8.1 (Berkeley) 5/31/93";
 #else
-__RCSID("$NetBSD: fortune.c,v 1.32 2001/10/28 19:52:53 wiz Exp $");
+__RCSID("$NetBSD: fortune.c,v 1.33 2001/12/20 20:10:35 soren Exp $");
 #endif
 #endif /* not lint */
 
@@ -1405,7 +1405,7 @@ matches_in_list(list)
 void
 usage()
 {
-	(void) fprintf(stderr, "Usage: %s [-a", __progname);
+	(void) fprintf(stderr, "Usage: %s [-ae", __progname);
 #ifdef	DEBUG
 	(void) fprintf(stderr, "D");
 #endif	/* DEBUG */
