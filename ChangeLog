@@ -1,3 +1,7 @@
+2000-08-02  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* sail/extern.h (abs): Don't define; breaks with glibc 2.2.
+
 2000-07-22  Joseph S. Myers  <jsm28@cam.ac.uk>
 
 	* hack/hack.tty.c, monop/getinp.c, rogue/message.c, trek/phaser.c:

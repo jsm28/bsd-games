@@ -62,7 +62,6 @@ extern gid_t egid;
 
 #define die()		((rand() >> 3) % 6 + 1)
 #define sqr(a)		((a) * (a))
-#define abs(a)		((a) > 0 ? (a) : -(a))
 #define min(a,b)	((a) < (b) ? (a) : (b))
 
 #define grappled(a)	((a)->file->ngrap)
