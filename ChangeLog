@@ -1,3 +1,14 @@
+2004-02-13  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* morse/morse.c: Encode and decode more characters.  Don't put
+	commas after every character.  Don't encode whitespace as "...".
+	Don't fail decoding across a 1024-byte boundary.  Mark end of
+	message appropriately.  From OpenBSD but with punctuation taken
+	from ITU-T Recommendation F.1 (03/98).
+	* tests/morse.testsent, tests/morse.testsentd: New tests.
+	* tests/morse.SOS, tests/morse.foo, tests/morse.sos: Update.
+	* tests/morse.test: Update.
+
 2004-02-11  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* tests/pom.2003fm1, tests/pom.2003fm2, tests/pom.2003fq1,
