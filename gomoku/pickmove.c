@@ -1,4 +1,4 @@
-/*	$NetBSD: pickmove.c,v 1.8 1999/09/09 17:27:58 jsm Exp $	*/
+/*	$NetBSD: pickmove.c,v 1.9 1999/09/18 19:38:51 jsm Exp $	*/
 
 /*
  * Copyright (c) 1994
@@ -41,7 +41,7 @@
 #if 0
 static char sccsid[] = "@(#)pickmove.c	8.2 (Berkeley) 5/3/95";
 #else
-__RCSID("$NetBSD: pickmove.c,v 1.8 1999/09/09 17:27:58 jsm Exp $");
+__RCSID("$NetBSD: pickmove.c,v 1.9 1999/09/18 19:38:51 jsm Exp $");
 #endif
 #endif /* not lint */
 

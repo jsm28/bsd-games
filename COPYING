@@ -251,23 +251,22 @@ The above terms also apply to the scripts, makefile fragments and
 documentation added to the Linux bsd-games collection which are not
 significantly derived from bsd-games 1.3 by Curt Olson and Andy Tefft;
 this is all of them except for the files mentioned below to which the
-similar terms given below apply.  This includes the testsuite scripts;
-the testsuite input and output for caesar (`tests/caesar.constin' and
-`tests/caesar.constout') are from the US Constitution, so not
-copyright; I believe the other testsuite expected outputs are too
-trivial, or translations of inputs too trivial, to qualify for
-copyright; but if not, then the terms given above apply (and, of
-course, running the test command gives an identical output file to
-which you could apply your own copyright).
-
-XXXXX ***** To be confirmed with Curt Olson and Andy Tefft: ***** XXXXX
+similar terms given below are expected to apply.  This includes the
+testsuite scripts; the testsuite input and output for caesar
+(`tests/caesar.constin' and `tests/caesar.constout') are from the US
+Constitution, so not copyright; I believe the other testsuite expected
+outputs are too trivial, or translations of inputs too trivial, to
+qualify for copyright; but if not, then the terms given above apply
+(and, of course, running the test command gives an identical output
+file to which you could apply your own copyright).
 
 The files `bsd-games.lsm', `ChangeLog.0', `THANKS', `INSTALL',
 `README', `TODO', `boggle/README.linux', `fortune/README.linux', and
 `hunt/README.linux' are still significantly derived from files in the
-original bsd-games package for Linux by Curt Olson and Andy Tefft.
-The following terms apply to these files, and to the compilation
-copyright on the package as a whole:
+original bsd-games package for Linux by Curt Olson and Andy Tefft.  It
+is expected that the following terms will apply to these files, and to
+the compilation copyright on the package as a whole; ***this has yet
+to be confirmed with Andy Tefft***:
 
    Copyright (c) 1993 Curt Olson, Andy Tefft.
    Copyright (c) 1997, 1998, 1999 Joseph Samuel Myers.

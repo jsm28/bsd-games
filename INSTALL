@@ -46,6 +46,12 @@ but byacc will probably work as well.  Libc5 versions before 5.4.5, or
 libc4, will not work since they don't have the BSD <err.h> error
 reporting functions.
 
+You now need a word list for boggle and hangman; bsd-games no longer
+provides one itself.  The GNU miscfiles package contains one, for
+example.  The path can be specified at configure time (default:
+/usr/share/dict/words).  The file used by hangman can also be
+specified at run time with the `-d' option.
+
 The makefiles require GNU make; if you have a strange system on which
 `make' is not GNU make you can use it under some other name since
 $(MAKE) is used where appropriate.  The configure script assumes that

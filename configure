@@ -422,10 +422,20 @@ fi
 echo
 echo "You can configure the exact names used for data files by various"
 echo "of the games.  Most probably the defaults are OK."
+echo
+echo "Note that bsd-games no longer comes with its own word list."
+echo "For hangman you should specify the path to a word list to be read"
+echo "at runtime (probably /usr/share/dict/words or /usr/dict/words)."
+echo "For boggle you should specify one to be used at compile time to"
+echo "generate boggle's own data.  In both cases they should probably be"
+echo "English dictionaries; all words which do not consist entirely of"
+echo "lower-case ASCII letters will be silently ignored."
+echo
 game_ask atc "Directory for atc static data" atc_dir "$sharedir/atc"
 game_ask atc "Score file for atc" atc_scorefile "$varlibdir/atc_score"
 game_ask battlestar "Score file for battlestar" battlestar_scorefile "$varlibdir/battlestar.log"
 # Bog has some other configuration
+game_ask boggle "Dictionary for boggle (CHECK ANSWER)" dictionary_src /usr/share/dict/words
 game_ask boggle "Directory for boggle static data" boggle_dir "$sharedir/boggle"
 game_ask canfield "Score file for canfield" canfield_scorefile "$varlibdir/cfscores"
 game_ask cribbage "File for cribbage instructions" cribbage_instrfile "$sharedir/cribbage.instr"
@@ -434,7 +444,7 @@ game_ask dm "Configuration file for dm" dm_configfile /etc/dm.conf
 game_ask dm "File to disable games playing" dm_nogamesfile /etc/nogames
 game_ask dm "Log file for dm" dm_logfile "$varlibdir/games.log"
 game_ask fish "File for fish instructions" fish_instrfile "$sharedir/fish.instr"
-game_ask hangman "Words file for hangman" hangman_wordsfile "$sharedir/hangman-words"
+game_ask hangman "Words file for hangman (CHECK ANSWER)" hangman_wordsfile /usr/share/dict/words
 # Hunt has some other configuration
 game_ask monop "File for monop cards" monop_cardsfile "$sharedir/monop-cards.pck"
 game_ask phantasia "Directory for phantasia variable data" phantasia_dir "$varlibdir/phantasia"
@@ -554,11 +564,11 @@ cat >GNUmakefile <<EOF
 # Include configuration
 include Makeconfig
 
-# Include substitution rules.
-include subst.rules
-
 .PHONY:	all $all_dependencies
 all:	$all_dependencies
+
+# Include substitution rules.
+include subst.rules
 
 EOF
 
@@ -583,16 +593,21 @@ $dir/%.d:	$dir/%.c
 EOF
 done
 
-sed '/^#/d' <exec.libs |while read prog libs; do
+# This temporary file is needed because we don't know whether the last
+# part of a pipeline is in the current shell execution environment
+# (POSIX.2, 3.12 and rationale).
+sed '/^#/d' <exec.libs >exec.libs.tmp
+while read prog libs; do
     if ! building_in ${prog%%/*}; then
 	continue
     fi
     exec=$(prog_to_exec $prog)
     evar=$(slash_to_under $exec)_libs
     eval $evar=\"\$libs\"
-done
+done <exec.libs.tmp
 
-sed '/^#/d' <exec.objs |while read prog objs; do
+sed '/^#/d' <exec.objs >exec.objs.tmp
+while read prog objs; do
     if ! building_in ${prog%%/*}; then
 	continue
     fi
@@ -626,7 +641,9 @@ $exec:	$nobjs
 	\$(CC) \$(LDFLAGS) \$^ $libs \$(BASE_LIBS) -o \$@
 
 EOF
-done
+done <exec.objs.tmp
+
+rm -f exec.libs.tmp exec.objs.tmp
 
 clean_dependencies=
 install_dependencies=
@@ -663,6 +680,7 @@ distclean maintainer-clean:	clean
 	rm -f \`cat substfiles substfiles2 |sed '/^#/d'\`
 	rm -f GNUmakefile
 	rm -f a.out conftest.c include/bsd-games.h
+	rm -f exec.libs.tmp exec.objs.tmp
 
 .PHONY:	install install-strip
 

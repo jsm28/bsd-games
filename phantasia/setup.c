@@ -1,4 +1,4 @@
-/*	$NetBSD: setup.c,v 1.9 1999/09/08 21:17:55 jsm Exp $	*/
+/*	$NetBSD: setup.c,v 1.10 1999/09/19 18:14:52 jsm Exp $	*/
 
 /*
  * setup.c - set up all files for Phantasia

@@ -1,4 +1,4 @@
-/*	$NetBSD: mkdict.c,v 1.4 1999/09/10 00:18:20 jsm Exp $	*/
+/*	$NetBSD: mkdict.c,v 1.6 1999/09/19 18:10:48 jsm Exp $	*/
 
 /*-
  * Copyright (c) 1993
@@ -46,7 +46,7 @@ __COPYRIGHT("@(#) Copyright (c) 1993\n\
 #if 0
 static char sccsid[] = "@(#)mkdict.c	8.1 (Berkeley) 6/11/93";
 #else
-__RCSID("$NetBSD: mkdict.c,v 1.4 1999/09/10 00:18:20 jsm Exp $");
+__RCSID("$NetBSD: mkdict.c,v 1.6 1999/09/19 18:10:48 jsm Exp $");
 #endif
 #endif /* not lint */
 

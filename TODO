@@ -61,7 +61,7 @@ those.  The issues listed there are not included in this list.
              the Makefiles.
 
 1998-12-06 - Allow alternative dictionaries to be specified at runtime
-             for boggle and hangman.
+             for boggle.
 
 1998-12-11 - Support LFS (large files) - this requires using
              fseeko/ftello instead of fseek/ftell, where supported,

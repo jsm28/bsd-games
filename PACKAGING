@@ -70,6 +70,13 @@ makes it easier for readers to see how you have packaged it than
 running configure interactively and including the generated files in
 your patch.
 
+Since bsd-games no longer comes with its own words file, you may wish
+to ensure that the same dictionaries are used in the build of boggle
+regardless of the local configuration of the dictionaries installed on
+the computer used for the build.  (The list used by hangman can also
+be specified by the user at run time; future versions may provide for
+this to be done with boggle as well; see TODO.)
+
 Andries Brouwer has noted more than once on linux-kernel (and
 elsewhere) that some packagers (for various software and documentation
 used under Linux):

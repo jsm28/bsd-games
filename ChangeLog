@@ -1,4 +1,102 @@
+1999-09-26  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* Version 2.8.
+
+	* include/tzfile.h: Remove (no longer used).
+
+	* fortune/datfiles/Makefrag: Use $(SHAREDIR) not $(LIBDIR).
+
+	* NEWS: Update.
+
+	* bsd-games.lsm, bsd-games-non-free.lsm: Update.
+
+	* */Makefrag, */*/Makefrag: Add copyright notices and licence
+	terms.
+	* hangman/Makefrag: Remove reference to $(hangman_WORDS).
+	* COPYING: Tweak.
+	* NEWS: Add release dates.
+
+1999-09-23  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* dm/dm.c, fish/fish.c, fortune/fortune/fortune.c: Update from
+	NetBSD CVS after further merge.
+
+	* fortune/datfiles/Makefile.bsd: Update from NetBSD CVS.
+
+1999-09-19  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* boggle/boggle/bog.c, boggle/mkdict/mkdict.c, cribbage/extern.c,
+	dm/dm.c, phantasia/setup.c: Update from NetBSD CVS after further
+	merge.
+
+1999-09-18  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* boggle/mkdict/mkdict.c, boggle/mkindex/mkindex.c: Update from
+	NetBSD CVS after further merge.
+
+	* battlestar/com1.c, battlestar/com4.c: Tweak for NetBSD
+	alignment.
+
+	* battlestar/com1.c, battlestar/com4.c, boggle/boggle/bog.c,
+	cribbage/io.c, fortune/fortune/fortune.c,
+	fortune/strfile/strfile.c, fortune/unstr/unstr.c,
+	gomoku/pickmove.c, mille/comp.c, phantasia/interplayer.c,
+	pig/pig.c, robots/extern.c, robots/robots.h, robots/score.c,
+	rogue/save.c, tetris/scores.c, trek/main.c: Update from NetBSD CVS
+	after further merge.
+
+	* battlestar/battlestar.c, battlestar/cypher.c,
+	battlestar/dayobjs.c, battlestar/init.c, battlestar/nightobjs.c:
+	Update from NetBSD CVS after further merge.
+
+	* backgammon/backgammon/main.c, boggle/boggle/bog.c,
+	hangman/extern.c, hangman/hangman.6.in, hangman/hangman.h,
+	hangman/main.c, hangman/setup.c, quiz/quiz.c, sail/game.c,
+	tetris/scores.c, trek/externs.c, trek/trek.h: Update from NetBSD
+	CVS after further merge.
+
+1999-09-17  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* wtf/acronyms: Update from NetBSD CVS.
+
+	* NEWS: Update.
+
+	* hangman/extern.c, hangman/hangman.h, hangman/main.c,
+	hangman/setup.c: Make dictionary path selectable at run time.
+	* hangman/hangman.6.in: Document this.
+	* NEWS, TODO, INSTALL, PACKAGING: Update.
+
+1999-09-16  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* hangman/words: Remove.  The copyright status was not clear;
+	assertions in the LSM entry that it is free from copyright seem to
+	be contradicted by inspection of the READMEs.  (See
+	ftp://ftp.cs.unc.edu/pub/users/faith/linux/utils/ .)
+	* hangman/Makefrag: No longer install words file.
+	* configure: Update accordingly.
+	* boggle/mkdict/Makefrag: Update accordingly.
+	* Makeconfig.in: Update accordingly.
+	* NEWS: Update.
+	* INSTALL: Update.
+	* PACKAGING: Update.
+
+	* configure: Fix bugs in earlier changes.
+
+	* sail/game.c (maxturns): Tweak following comments from Hubert
+	Feyrer.
+
+	* boggle/boggle/bog.c (checkdict): Tweak following comments from
+	Hubert Feyrer.
+
+	* trek/trek.h: Modify form of structure/variable declarations
+	(following comments from Hubert Feyrer).
+
+	* battlestar/battlestar.c (main): Give a sensible error message in
+	the default (should't happen) case.
+
 1999-09-15  Joseph S. Myers  <jsm28@cam.ac.uk>
+
+	* COPYING: Update.
 
 	* substfiles: Move manpages and some other non-headers into
 	substfiles2 (new file).

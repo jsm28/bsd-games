@@ -1,4 +1,4 @@
-/*	$NetBSD: trek.h,v 1.7 1999/09/08 21:45:33 jsm Exp $	*/
+/*	$NetBSD: trek.h,v 1.8 1999/09/17 17:06:08 jsm Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993
@@ -219,7 +219,7 @@ extern const struct cvntab	Lentab[];
 
 
 /* information regarding the state of the starship */
-extern struct Ship_struct
+struct Ship_struct
 {
 	double	warp;		/* warp factor */
 	double	warp2;		/* warp factor squared */
@@ -242,12 +242,13 @@ extern struct Ship_struct
 	const char *shipname;	/* name of current starship */
 	char	ship;		/* current starship */
 	int	distressed;	/* number of distress calls */
-}	Ship;
+};
+extern struct Ship_struct Ship;
 
 /* sinsbad is set if SINS is working but not calibrated */
 
 /* game related information, mostly scoring */
-extern struct Game_struct
+struct Game_struct
 {
 	int	killk;		/* number of klingons killed */
 	int	deaths;		/* number of deaths onboard Enterprise */
@@ -263,10 +264,11 @@ extern struct Game_struct
 	char	snap;		/* set if snapshot taken */
 	char	helps;		/* number of help calls */
 	int	captives;	/* total number of captives taken */
-}	Game;
+};
+extern struct Game_struct Game;
 
 /* per move information */
-extern struct Move_struct
+struct Move_struct
 {
 	char	free;		/* set if a move is free */
 	char	endgame;	/* end of game flag */
@@ -274,10 +276,11 @@ extern struct Move_struct
 	char	newquad;	/* set if just entered this quadrant */
 	char	resting;	/* set if this move is a rest */
 	double	time;		/* time used this move */
-}	Move;
+};
+extern struct Move_struct Move;
 
 /* parametric information */
-extern struct Param_struct
+struct Param_struct
 {
 	unsigned char	bases;	/* number of starbases */
 	char	klings;		/* number of klingons */
@@ -308,12 +311,13 @@ extern struct Param_struct
 	int	klingcrew;	/* number of Klingons in a crew */
 	double	srndrprob;	/* surrender probability */
 	int	energylow;	/* low energy mark (cond YELLOW) */
-}	Param;
+};
+extern struct Param_struct Param;
 
 /* Sum of damage probabilities must add to 1000 */
 
 /* other information kept in a snapshot */
-extern struct Now_struct
+struct Now_struct
 {
 	unsigned char	bases;	/* number of starbases */
 	char	klings;		/* number of klingons */
@@ -323,10 +327,11 @@ extern struct Now_struct
 	char	distressed;	/* number of currently distressed quadrants */
 	struct event	*eventptr[NEVENTS];	/* pointer to event structs */
 	struct xy	base[MAXBASES];		/* locations of starbases */
-}	Now;
+};
+extern struct Now_struct Now;
 
 /* Other stuff, not dumped in a snapshot */
-extern struct Etc_struct
+struct Etc_struct
 {
 	struct kling	klingon[MAXKLQUAD];	/* sorted Klingon list */
 	short		nkling;			/* number of Klingons in this sector */
@@ -335,7 +340,8 @@ extern struct Etc_struct
 	struct xy	starbase;	/* starbase in current quadrant */
 	char		snapshot[sizeof Quad + sizeof Event + sizeof Now];	/* snapshot for time warp */
 	char		statreport;		/* set to get a status report on a srscan */
-}	Etc;
+};
+extern struct Etc_struct Etc;
 
 /*
  *	eventptr is a pointer to the event[] entry of the last

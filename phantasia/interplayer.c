@@ -1,4 +1,4 @@
-/*	$NetBSD: interplayer.c,v 1.5 1999/09/08 21:57:19 jsm Exp $	*/
+/*	$NetBSD: interplayer.c,v 1.6 1999/09/18 19:38:52 jsm Exp $	*/
 
 /*
  * interplayer.c - player to player routines for Phantasia

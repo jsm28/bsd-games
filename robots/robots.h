@@ -1,4 +1,4 @@
-/*	$NetBSD: robots.h,v 1.12 1999/09/12 09:02:22 jsm Exp $	*/
+/*	$NetBSD: robots.h,v 1.13 1999/09/18 19:38:54 jsm Exp $	*/
 
 /*
  * Copyright (c) 1980, 1993

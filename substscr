@@ -91,5 +91,6 @@ if echo $action |grep -q r; then
     cat >>subst.rules <<EOF
 $target:	$source subst.sed substscr
 	./substscr g $style $source $target
+
 EOF
 fi
