@@ -52,6 +52,10 @@ static struct termios saved_tty;
 extern int	_putchar();
 #endif
 
+#ifndef MAXHOSTNAMELEN
+#define MAXHOSTNAMELEN 256
+#endif
+
 FLAG	Last_player = FALSE;
 # ifdef MONITOR
 FLAG	Am_monitor = FALSE;

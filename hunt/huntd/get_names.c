@@ -23,6 +23,10 @@ __RCSID("$NetBSD: get_names.c,v 1.6 2001/02/05 00:42:15 christos Exp $");
 # include	"hunt.h"
 # include	"talk_ctl.h"
 
+#ifndef MAXHOSTNAMELEN
+#define MAXHOSTNAMELEN 256
+#endif
+
 static	char	hostname[MAXHOSTNAMELEN + 1];
 char		*my_machine_name;
 

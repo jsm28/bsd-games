@@ -1,5 +1,9 @@
 2001-08-30  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* hunt/hunt/hunt.c, hunt/huntd/get_names.c: Define MAXHOSTNAMELEN
+	if not already defined.  May fix Hurd compilation (original patch
+	from Igor Khavkine <i_khavki@alcor.concordia.ca>).
+
 	* snake/snake/snake.c (main): Control -d by #ifdef DEBUG; adjust
 	usage message accordingly.  Bug reported by Malcolm Parsons
 	<malcolm@ivywell.screaming.net>.
