@@ -1,5 +1,9 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* atc/atc.6.in: Document that pressing return allows you to "fast
+	forward" the game clock.  Patch from Peter Maydell
+	<pmaydell@chiark.greenend.org.uk> in Debian bug 216980.
+
 	* PACKAGING: Remove some old version references.
 
 	* INSTALL: Simplify and remove some obsolete information.
