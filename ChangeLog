@@ -1,5 +1,7 @@
 2004-02-13  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* morse/morse.c: Update from NetBSD CVS.
+
 	* morse/morse.c: Encode and decode more characters.  Don't put
 	commas after every character.  Don't encode whitespace as "...".
 	Don't fail decoding across a 1024-byte boundary.  Mark end of
