@@ -1,5 +1,13 @@
 2004-02-08  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* factor/factor.c: Only use Pollard p-1 if remaining factor isn't
+	prime.  Correct comment.  Increase base if p-1 algorithm reaches
+	1.
+	* tests/factor.2147483647111311, tests/factor.99999999999991: New
+	tests.
+	* tests/factor.test: Update.
+	Bugs reported by David A Bagley <bagleyd@tux.org>.
+
 	* countmail/countmail.6, phantasia/fight.c, phantasia/io.c,
 	sail/extern.h, sail/misc.c, snake/snake/snake.c: Update from
 	NetBSD CVS.
