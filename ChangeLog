@@ -1,5 +1,7 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* adventure/glorkz: Fix capitalisation of compass directions.
+
 	* phantasia/main.c (cleanup): Only close files that have been
 	opened successfully.
 	* phantasic/misc.c (error): Give error text rather than errno
