@@ -1,5 +1,8 @@
 2003-12-17  Joseph S. Myers  <jsm@polyomino.org.uk>
 
+	* wtf/acronyms: Add two acronyms suggested by Pavel Machek
+	<pavel@ucw.cz>.
+
 	* wargames/wargames.6: Fix typo.  Patch from Joey Hess
 	<joeyh@debian.org>.
 
