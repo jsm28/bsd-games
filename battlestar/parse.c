@@ -44,9 +44,15 @@ __RCSID("$NetBSD: parse.c,v 1.7 1999/02/10 01:36:50 hubertf Exp $");
 
 #include "extern.h"
 
+#define HASHSIZE	256
+#define HASHMUL		81
+#define HASHMASK	(HASHSIZE - 1)
+
 static int hash __P((const char *));
 static void install __P((struct wlist *));
 static struct wlist *lookup __P((const char *));
+
+static struct wlist *hashtab[HASHSIZE];
 
 void
 wordinit()

@@ -1,5 +1,8 @@
 2000-09-24  Joseph S. Myers  <jsm28@cam.ac.uk>
 
+	* battlestar/extern.h, battlestar/parse.c, battlestar/globals.c:
+	Make hash table static in parse.c.
+
 	* battlestar/cypher.c (cypher): For INVEN, give more sensible
 	messages when WEIGHT or CUMBER are zero.
 

@@ -302,10 +302,6 @@ struct wlist {
 	int     value, article;
 	struct wlist *next;
 };
-#define HASHSIZE	256
-#define HASHMUL		81
-#define HASHMASK	(HASHSIZE - 1)
-extern struct wlist *hashtab[HASHSIZE];
 extern struct wlist wlist[];
 
 struct objs {

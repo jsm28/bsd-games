@@ -270,5 +270,3 @@ char    injuries[NUMOFINJURIES];
 int     verbose = 0;
 
 const char *username;
-
-struct wlist *hashtab[HASHSIZE];
