@@ -1,0 +1,19 @@
+The scripts on this branch are provided to give information about some
+aspects of how bsd-games development formerly worked.  Because they
+include hard-coded paths and references to a Subversion repository,
+they will not be directly usable by a new maintainer.
+
+The make-bsd script (which uses the sed script xsubst.sed) was used to
+identify changes between the upstream NetBSD sources and this package,
+by copying a "base" directory with the upstream NetBSD sources to
+"netbsd", and a "games" directory with the sources of this package to
+"linux", and then modifying both those copies to reduce the number of
+mechanical changes appearing in the differences.  The residual
+differences between the "netbsd" and "linux" directories should
+include all the differences needing resolving (e.g. by merging
+upstream to NetBSD), but may also include some changes not appropriate
+to merge upstream to NetBSD.
+
+The make-release script was used to tag releases and build release
+tarballs.  In particular, it shows the logic for which files and
+directories went in the free and non-free tarballs.

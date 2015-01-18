@@ -1,0 +1,53 @@
+#!/bin/sh
+# make-bsd - create a copy of the games tree to diff against the BSD one.
+
+echo -n "Creating linux tree... "
+cp -a games linux
+echo "done."
+
+echo -n "Fixing up linux tree... "
+
+for f in $(find linux -name '*.bsd'); do
+    mv $f ${f%%.bsd}
+done
+
+for f in $(find linux -name '*.in'); do
+    sed -f xsubst.sed <$f >${f%%.in}
+    rm -f $f
+done
+
+for f in $(find linux -name '*.c'); do
+    if grep -q setregid $f; then
+	sed 's/setregid(getgid(), getgid())/setgid(getgid())/' <$f >$f.new
+	mv $f.new $f
+    fi
+done
+
+mv linux/caesar/rot13 linux/caesar/rot13.sh
+mv linux/wargames/wargames linux/wargames/wargames.sh
+
+rm -f linux/AUTHORS linux/THANKS
+rm -f linux/BUGS linux/TODO
+rm -f linux/COPYING
+rm -f linux/ChangeLog* linux/NEWS
+rm -f linux/INSTALL linux/PACKAGING
+rm -f linux/README* linux/*.lsm
+rm -f linux/SECURITY linux/YEAR2000
+rm -f linux/Makeconfig* linux/configure linux/config.params
+rm -f $(find linux -name Makefrag)
+rm -f $(find linux -name .cvsignore)
+rm -f linux/hide-game* linux/install* linux/subst*
+rm -f linux/exec.libs linux/exec.objs linux/mkdep
+rm -rf linux/include linux/lib linux/tests
+rm -f linux/hunt/Makeconfig
+rm -rf $(find linux -name .svn)
+
+echo "done."
+
+echo -n "Creating netbsd tree... "
+cp -a base netbsd
+echo "done."
+
+echo -n "Fixing up netbsd tree... "
+rm -rf netbsd/larn
+echo "done."

@@ -1,0 +1,102 @@
+#!/bin/sh
+# make-release - make release tar.gz files of bsd-games and bsd-games-non-free
+
+set -e
+
+if ! [ -d games ]; then
+    echo "Expect to find source in directory called \"games\"" >&2
+    exit 1
+fi
+
+if ! [ -d games/adventure ]; then
+    echo "Source tree incomplete!" >&2
+    exit 1
+fi
+
+repo=file:///home/jsm28/projects/svn-repos/bsd-games
+
+echo -n "Version? "
+read VERSION
+
+echo -n "Include non-free (y/n)? "
+read do_non_free
+if [ "$do_non_free" = y ]; then
+    echo "Doing non-free"
+else
+    echo "NOT doing non-free"
+    do_non_free=n
+fi
+us_version=$(echo $VERSION |sed 's/\./_/')
+free_tag=BSD_GAMES_$us_version
+version_tag=BSD_GAMES_VERSION_$us_version
+non_free_tag=BSD_GAMES_NON_FREE_$us_version
+
+if [ $do_non_free = y ]; then
+    echo "Tags <$free_tag> <$non_free_tag> <$version_tag>"
+    tags="$free_tag $non_free_tag $version_tag"
+else
+    echo "Tags <$free_tag> <$version_tag>"
+    tags="$free_tag $version_tag"
+fi
+
+echo "*** Building distribution for version $VERSION ***"
+
+sleep 5
+
+if [ -e games/GNUmakefile ]; then
+    cd games
+    make distclean nodep=true
+    cd ..
+fi
+
+if [ -e games/config.params ]; then
+    cd games
+    rm config.params
+    cd ..
+fi
+
+mkdir svn-tmp
+cd svn-tmp
+svn co --non-recursive $repo/tags
+cd tags
+svn copy $repo/trunk $version_tag
+svn copy $repo/trunk $free_tag
+svn rm $free_tag/rogue $free_tag/README.non-free $free_tag/bsd-games-non-free.lsm
+if [ $do_non_free = y ]; then
+    svn mkdir $non_free_tag
+    for f in AUTHORS BUGS COPYING ChangeLog \
+	ChangeLog.0 INSTALL Makeconfig.in NEWS PACKAGING README \
+	README.non-free SECURITY THANKS TODO YEAR2000 bsd-games-non-free.lsm \
+	configure exec.libs exec.objs hide-game.in include \
+	install-man.in install-score.in lib mkdep rogue substfiles \
+	substfiles2 substscr tests; do
+	svn copy $repo/trunk/$f $non_free_tag/$f;
+    done
+fi
+
+echo -n "Commit tags $tags (y/n)? "
+read do_commit
+if [ "$do_commit" = y ]; then
+    echo "Tagging"
+else
+    echo "Quitting"
+    exit 1
+fi
+
+
+svn commit -m "Tagged release $VERSION." $tags
+cd ../..
+rm -rf svn-tmp
+
+svn export $repo/tags/$free_tag bsd-games-$VERSION
+tar cf bsd-games-$VERSION.tar bsd-games-$VERSION
+gzip -9 bsd-games-$VERSION.tar
+rm -rf bsd-games-$VERSION
+cp games/bsd-games.lsm bsd-games-$VERSION.lsm
+if [ $do_non_free = y ]; then
+    svn export $repo/tags/$non_free_tag bsd-games-non-free-$VERSION
+    tar cf bsd-games-non-free-$VERSION.tar bsd-games-non-free-$VERSION
+    gzip -9 bsd-games-non-free-$VERSION.tar
+    rm -rf bsd-games-non-free-$VERSION
+    cp games/bsd-games-non-free.lsm bsd-games-non-free-$VERSION.lsm
+fi
