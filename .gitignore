@@ -1,0 +1,511 @@
+
+# /
+/Makeconfig
+/hide-game
+/install-man
+/install-score
+/subst.sed
+/subst.rules
+/test.out
+/GNUmakefile
+/conftest.c
+/exec.libs.tmp
+/exec.objs.tmp
+/a.out
+
+# /adventure/
+/adventure/a.out
+/adventure/*.d
+/adventure/*.i
+/adventure/*.s
+/adventure/*.d.tmp
+/adventure/adventure
+/adventure/setup
+/adventure/data.c
+
+# /arithmetic/
+/arithmetic/a.out
+/arithmetic/*.d
+/arithmetic/*.i
+/arithmetic/*.s
+/arithmetic/*.d.tmp
+/arithmetic/arithmetic
+
+# /atc/
+/atc/a.out
+/atc/*.d
+/atc/*.i
+/atc/*.s
+/atc/*.d.tmp
+/atc/atc
+/atc/pathnames.h
+/atc/atc.6
+/atc/grammar.c
+/atc/grammar.h
+/atc/y.tab.*
+/atc/lex.c
+/atc/lex.yy.c
+
+# /backgammon/backgammon/
+/backgammon/backgammon/a.out
+/backgammon/backgammon/*.d
+/backgammon/backgammon/*.i
+/backgammon/backgammon/*.s
+/backgammon/backgammon/*.d.tmp
+/backgammon/backgammon/backgammon
+/backgammon/backgammon/backgammon.6
+
+# /backgammon/common_source/
+/backgammon/common_source/a.out
+/backgammon/common_source/*.d
+/backgammon/common_source/*.i
+/backgammon/common_source/*.s
+/backgammon/common_source/*.d.tmp
+
+# /backgammon/teachgammon/
+/backgammon/teachgammon/a.out
+/backgammon/teachgammon/*.d
+/backgammon/teachgammon/*.i
+/backgammon/teachgammon/*.s
+/backgammon/teachgammon/*.d.tmp
+/backgammon/teachgammon/teachgammon
+
+# /banner/
+/banner/a.out
+/banner/*.d
+/banner/*.i
+/banner/*.s
+/banner/*.d.tmp
+/banner/banner
+
+# /battlestar/
+/battlestar/a.out
+/battlestar/*.d
+/battlestar/*.i
+/battlestar/*.s
+/battlestar/*.d.tmp
+/battlestar/battlestar
+/battlestar/pathnames.h
+
+# /bcd/
+/bcd/a.out
+/bcd/*.d
+/bcd/*.i
+/bcd/*.s
+/bcd/*.d.tmp
+/bcd/bcd
+
+# /boggle/boggle/
+/boggle/boggle/a.out
+/boggle/boggle/*.d
+/boggle/boggle/*.i
+/boggle/boggle/*.s
+/boggle/boggle/*.d.tmp
+/boggle/boggle/boggle
+/boggle/boggle/bog.h
+
+# /boggle/mkdict/
+/boggle/mkdict/a.out
+/boggle/mkdict/*.d
+/boggle/mkdict/*.i
+/boggle/mkdict/*.s
+/boggle/mkdict/*.d.tmp
+/boggle/mkdict/mkdict
+/boggle/mkdict/dictionary
+
+# /boggle/mkindex/
+/boggle/mkindex/a.out
+/boggle/mkindex/*.d
+/boggle/mkindex/*.i
+/boggle/mkindex/*.s
+/boggle/mkindex/*.d.tmp
+/boggle/mkindex/mkindex
+/boggle/mkindex/dictindex
+
+# /caesar/
+/caesar/a.out
+/caesar/*.d
+/caesar/*.i
+/caesar/*.s
+/caesar/*.d.tmp
+/caesar/caesar
+/caesar/rot13
+
+# /canfield/canfield/
+/canfield/canfield/a.out
+/canfield/canfield/*.d
+/canfield/canfield/*.i
+/canfield/canfield/*.s
+/canfield/canfield/*.d.tmp
+/canfield/canfield/canfield
+/canfield/canfield/pathnames.h
+/canfield/canfield/canfield.6
+
+# /canfield/cfscores/
+/canfield/cfscores/a.out
+/canfield/cfscores/*.d
+/canfield/cfscores/*.i
+/canfield/cfscores/*.s
+/canfield/cfscores/*.d.tmp
+/canfield/cfscores/cfscores
+
+# /cribbage/
+/cribbage/a.out
+/cribbage/*.d
+/cribbage/*.i
+/cribbage/*.s
+/cribbage/*.d.tmp
+/cribbage/cribbage
+/cribbage/pathnames.h
+/cribbage/cribbage.6
+
+# /dab/
+/dab/a.out
+/dab/*.d
+/dab/*.ii
+/dab/*.s
+/dab/*.d.tmp
+/dab/dab
+
+# /dm/
+/dm/a.out
+/dm/*.d
+/dm/*.i
+/dm/*.s
+/dm/*.d.tmp
+/dm/dm
+/dm/pathnames.h
+/dm/dm.8
+/dm/dm.conf.5
+
+# /factor/
+/factor/a.out
+/factor/*.d
+/factor/*.i
+/factor/*.s
+/factor/*.d.tmp
+/factor/factor
+
+# /fish/
+/fish/a.out
+/fish/*.d
+/fish/*.i
+/fish/*.s
+/fish/*.d.tmp
+/fish/fish
+/fish/pathnames.h
+
+# /fortune/datfiles/
+/fortune/datfiles/a.out
+/fortune/datfiles/*.d
+/fortune/datfiles/*.i
+/fortune/datfiles/*.s
+/fortune/datfiles/*.d.tmp
+/fortune/datfiles/*.dat
+/fortune/datfiles/*-o
+
+# /fortune/fortune/
+/fortune/fortune/a.out
+/fortune/fortune/*.d
+/fortune/fortune/*.i
+/fortune/fortune/*.s
+/fortune/fortune/*.d.tmp
+/fortune/fortune/fortune
+/fortune/fortune/pathnames.h
+/fortune/fortune/fortune.6
+
+# /fortune/strfile/
+/fortune/strfile/a.out
+/fortune/strfile/*.d
+/fortune/strfile/*.i
+/fortune/strfile/*.s
+/fortune/strfile/*.d.tmp
+/fortune/strfile/strfile
+
+# /fortune/unstr/
+/fortune/unstr/a.out
+/fortune/unstr/*.d
+/fortune/unstr/*.i
+/fortune/unstr/*.s
+/fortune/unstr/*.d.tmp
+/fortune/unstr/unstr
+
+# /gomoku/
+/gomoku/a.out
+/gomoku/*.d
+/gomoku/*.i
+/gomoku/*.s
+/gomoku/*.d.tmp
+/gomoku/gomoku
+
+# /hack/
+/hack/a.out
+/hack/*.d
+/hack/*.i
+/hack/*.s
+/hack/*.d.tmp
+/hack/hack
+/hack/makedefs
+/hack/pathnames.h
+/hack/hack.6
+/hack/hack.onames.h
+
+# /hangman/
+/hangman/a.out
+/hangman/*.d
+/hangman/*.i
+/hangman/*.s
+/hangman/*.d.tmp
+/hangman/hangman
+/hangman/pathnames.h
+/hangman/hangman.6
+
+# /hunt/hunt/
+/hunt/hunt/a.out
+/hunt/hunt/*.d
+/hunt/hunt/*.i
+/hunt/hunt/*.s
+/hunt/hunt/*.d.tmp
+/hunt/hunt/hunt
+/hunt/hunt/hunt.6
+
+# /hunt/huntd/
+/hunt/huntd/a.out
+/hunt/huntd/*.d
+/hunt/huntd/*.i
+/hunt/huntd/*.s
+/hunt/huntd/*.d.tmp
+/hunt/huntd/huntd
+/hunt/huntd/huntd.6
+
+# /include/
+/include/bsd-games.h
+
+# /lib/
+/lib/a.out
+/lib/*.d
+/lib/*.i
+/lib/*.s
+/lib/*.d.tmp
+
+# /mille/
+/mille/a.out
+/mille/*.d
+/mille/*.i
+/mille/*.s
+/mille/*.d.tmp
+/mille/mille
+
+# /monop/
+/monop/a.out
+/monop/*.d
+/monop/*.i
+/monop/*.s
+/monop/*.d.tmp
+/monop/monop
+/monop/initdeck
+/monop/pathnames.h
+/monop/monop.6
+/monop/cards.pck
+
+# /morse/
+/morse/a.out
+/morse/*.d
+/morse/*.i
+/morse/*.s
+/morse/*.d.tmp
+/morse/morse
+
+# /number/
+/number/a.out
+/number/*.d
+/number/*.i
+/number/*.s
+/number/*.d.tmp
+/number/number
+
+# /phantasia/
+/phantasia/a.out
+/phantasia/*.d
+/phantasia/*.i
+/phantasia/*.s
+/phantasia/*.d.tmp
+/phantasia/phantasia
+/phantasia/setup
+/phantasia/pathnames.h
+/phantasia/gold
+/phantasia/lastdead
+/phantasia/mess
+/phantasia/monsters
+/phantasia/motd
+/phantasia/void
+/phantasia/scoreboard
+/phantasia/characs
+/phantasia/scorefiles.stamp
+
+# /pig/
+/pig/a.out
+/pig/*.d
+/pig/*.i
+/pig/*.s
+/pig/*.d.tmp
+/pig/pig
+
+# /pom/
+/pom/a.out
+/pom/*.d
+/pom/*.i
+/pom/*.s
+/pom/*.d.tmp
+/pom/pom
+
+# /ppt/
+/ppt/a.out
+/ppt/*.d
+/ppt/*.i
+/ppt/*.s
+/ppt/*.d.tmp
+/ppt/ppt
+
+# /primes/
+/primes/a.out
+/primes/*.d
+/primes/*.i
+/primes/*.s
+/primes/*.d.tmp
+/primes/primes
+
+# /quiz/
+/quiz/a.out
+/quiz/*.d
+/quiz/*.i
+/quiz/*.s
+/quiz/*.d.tmp
+/quiz/quiz
+/quiz/pathnames.h
+/quiz/quiz.6
+
+# /quiz/datfiles/
+/quiz/datfiles/a.out
+/quiz/datfiles/*.d
+/quiz/datfiles/*.i
+/quiz/datfiles/*.s
+/quiz/datfiles/*.d.tmp
+/quiz/datfiles/index
+
+# /rain/
+/rain/a.out
+/rain/*.d
+/rain/*.i
+/rain/*.s
+/rain/*.d.tmp
+/rain/rain
+
+# /random/
+/random/a.out
+/random/*.d
+/random/*.i
+/random/*.s
+/random/*.d.tmp
+/random/random
+
+# /robots/
+/robots/a.out
+/robots/*.d
+/robots/*.i
+/robots/*.s
+/robots/*.d.tmp
+/robots/robots
+/robots/pathnames.h
+/robots/robots.6
+
+# /rogue/
+/rogue/a.out
+/rogue/*.d
+/rogue/*.i
+/rogue/*.s
+/rogue/*.d.tmp
+/rogue/rogue
+/rogue/pathnames.h
+/rogue/rogue.6
+
+# /sail/
+/sail/a.out
+/sail/*.d
+/sail/*.i
+/sail/*.s
+/sail/*.d.tmp
+/sail/sail
+/sail/pathnames.h
+
+# /snake/snake/
+/snake/snake/a.out
+/snake/snake/*.d
+/snake/snake/*.i
+/snake/snake/*.s
+/snake/snake/*.d.tmp
+/snake/snake/snake
+/snake/snake/pathnames.h
+/snake/snake/snake.6
+
+# /snake/snscore/
+/snake/snscore/a.out
+/snake/snscore/*.d
+/snake/snscore/*.i
+/snake/snscore/*.s
+/snake/snscore/*.d.tmp
+/snake/snscore/snscore
+
+# /tetris/
+/tetris/a.out
+/tetris/*.d
+/tetris/*.i
+/tetris/*.s
+/tetris/*.d.tmp
+/tetris/tetris
+/tetris/pathnames.h
+/tetris/tetris.6
+/tetris/tetris-bsd.6
+
+# /trek/
+/trek/a.out
+/trek/*.d
+/trek/*.i
+/trek/*.s
+/trek/*.d.tmp
+/trek/trek
+/trek/trek.6
+
+# /worm/
+/worm/a.out
+/worm/*.d
+/worm/*.i
+/worm/*.s
+/worm/*.d.tmp
+/worm/worm
+
+# /worms/
+/worms/a.out
+/worms/*.d
+/worms/*.i
+/worms/*.s
+/worms/*.d.tmp
+/worms/worms
+
+# /wtf/
+/wtf/a.out
+/wtf/*.d
+/wtf/*.i
+/wtf/*.s
+/wtf/*.d.tmp
+/wtf/wtf.6
+/wtf/wtf
+
+# /wump/
+/wump/a.out
+/wump/*.d
+/wump/*.i
+/wump/*.s
+/wump/*.d.tmp
+/wump/wump
+/wump/pathnames.h

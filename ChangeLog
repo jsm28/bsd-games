@@ -1,3 +1,7 @@
+2015-01-18  Joseph S. Myers  <jsm@polyomino.org.uk>
+
+	* .gitignore: New file.  Converted from svn:ignore properties.
+
 2005-02-18  Joseph S. Myers  <jsm@polyomino.org.uk>
 
 	* Version 2.17.
